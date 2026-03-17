@@ -44,3 +44,12 @@ Two long-term directions shape most of what I build:
 ## Stack
 
 Fedora · Podman · Python · Bash · JavaScript · OpenVINO · Ollama · OVMS
+
+## GitHub Stats
+
+<a href="https://github.com/anuraghazra/github-readme-stats">
+  <img height="180" align="center" src="https://github-readme-stats.vercel.app/api?username=8Dionysus&show_icons=true&theme=transparent&hide_border=true&include_all_commits=true&rank_icon=github" />
+</a>
+<a href="https://github.com/anuraghazra/github-readme-stats">
+  <img height="180" align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=8Dionysus&layout=compact&theme=transparent&hide_border=true&langs_count=8&size_weight=0.5&count_weight=0.5" />
+</a>

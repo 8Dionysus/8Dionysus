@@ -1,16 +1,46 @@
-## Hi there 👋
+# Dionysus
 
-<!--
-**8Dionysus/8Dionysus** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+I build local and hybrid AI systems, reusable agent techniques, and long-horizon knowledge architectures.
 
-Here are some ideas to get you started:
+## About
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+My work lives between engineering discipline and living systems of thought.
+
+I design workflows, stacks, and techniques that help humans and agents work together with more clarity, reproducibility, and safety.
+
+Two long-term directions shape most of what I build:
+- **Agents of Abyss (AoA)**: an evolving ecosystem of AI agents
+- **Tree of Sophia (ToS)**: a living knowledge architecture for philosophy and the history of thought
+
+## Current work
+
+- publishing reusable techniques in [aoa-techniques](https://github.com/8Dionysus/aoa-techniques)
+- building local agent systems
+- exploring reproducible workflows for agent-assisted engineering
+- developing modular AI infrastructure for future projects
+
+## Principles
+
+- publish techniques, not accidents
+- validation matters
+- adaptation notes matter
+- small reversible patterns beat vague complexity
+- meaning for humans, acceleration for agents
+
+## Selected repositories
+
+- **aoa-techniques**  
+  Reusable techniques for coding agents and humans
+
+- **ATM10-Agent**  
+  Local multimodal agent project with perception, memory, safe automation, and voice
+
+- **abyss-stack**  
+  Modular local AI stack for agent systems
+
+- **Tree-of-Sophia**  
+  Knowledge architecture for tracing ideas across time
+
+## Stack
+
+Fedora · Podman · Python · Bash · JavaScript · OpenVINO · Ollama · OVMS

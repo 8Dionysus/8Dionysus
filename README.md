@@ -1,6 +1,6 @@
 # Dionysus
 
-I build local and hybrid AI systems, reusable agent techniques, and long-horizon knowledge architectures.
+I build local and hybrid AI systems that turn reusable techniques into agent workflows and long-horizon knowledge architectures.
 
 ## About
 

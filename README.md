@@ -21,10 +21,10 @@ Two long-horizon directions organize most of what I build:
 
 ## Principles
 
-- publish techniques, not accidents
-- validation matters
-- adaptation notes matter
-- small reversible patterns beat vague complexity
+- publish durable techniques, not one-off accidents
+- build systems that stay legible, reviewable, and reproducible
+- let new tools become new layers, not chaos multipliers
+- prefer modular growth over brittle fusion
 - meaning for humans, acceleration for agents
 
 ## Selected repositories

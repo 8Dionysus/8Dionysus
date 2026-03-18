@@ -4,13 +4,13 @@ I build local and hybrid AI systems, reusable agent techniques, and long-horizon
 
 ## About
 
-My work lives between engineering discipline and living systems of thought.
+My work sits at the intersection of engineering discipline, agent systems, and living architectures of thought.
 
-I design workflows, stacks, and techniques that help humans and agents work together with more clarity, reproducibility, and safety.
+I build workflows, infrastructure, and reusable techniques that make collaboration between humans and agents more legible, reproducible, and safe.
 
-Two long-term directions shape most of what I build:
-- **Agents of Abyss (AoA)**: an evolving ecosystem of AI agents
-- **Tree of Sophia (ToS)**: a living knowledge architecture for philosophy and the history of thought
+Two long-horizon directions organize most of what I build:
+- **Agents of Abyss (AoA)**: an evolving ecosystem of agents, workflows, and infrastructure
+- **Tree of Sophia (ToS)**: a living knowledge architecture for philosophy and world thought
 
 ## Current work
 

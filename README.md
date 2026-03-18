@@ -33,6 +33,12 @@ Two long-horizon directions organize most of what I build:
 - prefer modular growth over brittle fusion
 - meaning for humans, acceleration for agents
 
+## Working style
+
+- humans and agents in the loop, with clear boundaries and handoffs
+- reviewable workflows over opaque automation
+- layered systems that can evolve without losing their source of truth
+
 ## Selected repositories
 
 - **[aoa-techniques](https://github.com/8Dionysus/aoa-techniques)**  

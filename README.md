@@ -19,6 +19,12 @@ Two long-horizon directions organize most of what I build:
 - developing [abyss-stack](https://github.com/8Dionysus/abyss-stack) as a modular local and hybrid AI foundation
 - growing [Tree-of-Sophia](https://github.com/8Dionysus/Tree-of-Sophia) as a long-horizon knowledge architecture for philosophy and world thought
 
+## Building toward
+
+- agent systems that stay legible as they scale
+- knowledge architectures that accumulate layers without collapsing into noise
+- infrastructure where new tools become durable capabilities
+
 ## Principles
 
 - publish durable techniques, not one-off accidents

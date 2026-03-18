@@ -29,20 +29,20 @@ Two long-term directions shape most of what I build:
 
 ## Selected repositories
 
-- **aoa-techniques**  
+- **[aoa-techniques](https://github.com/8Dionysus/aoa-techniques)**  
   Reusable techniques for coding agents and humans
 
-- **ATM10-Agent**  
+- **[ATM10-Agent](https://github.com/8Dionysus/ATM10-Agent)**  
   Local multimodal agent project with perception, memory, safe automation, and voice
 
-- **abyss-stack**  
+- **[abyss-stack](https://github.com/8Dionysus/abyss-stack)**  
   Modular local AI stack for agent systems
 
-- **Agents-of-Abyss**  
+- **[Agents-of-Abyss](https://github.com/8Dionysus/Agents-of-Abyss)**  
   Agent ecosystem for long-horizon knowledge systems
 
-- **Tree-of-Sophia**  
-  Knowledge architecture for tracing ideas across time
+- **[Tree-of-Sophia](https://github.com/8Dionysus/Tree-of-Sophia)**  
+  Living knowledge architecture for philosophy and world thought
 
 ## Stack
 

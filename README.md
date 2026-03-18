@@ -52,7 +52,13 @@ Two long-horizon directions organize most of what I build:
 
 ## Stack
 
-Fedora · Podman · Python · Bash · JavaScript · OpenVINO · Ollama · OVMS
+- **Systems**: Fedora, Podman
+- **Languages**: Python, Bash, JavaScript
+- **AI runtime**: OpenVINO, Ollama, OVMS
+
+## Elsewhere
+
+- [LinkedIn](https://www.linkedin.com/in/german-grant)
 
 ## GitHub Stats
 

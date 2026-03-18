@@ -38,6 +38,9 @@ Two long-term directions shape most of what I build:
 - **abyss-stack**  
   Modular local AI stack for agent systems
 
+- **Agents-of-Abyss**  
+  Agent ecosystem for long-horizon knowledge systems
+
 - **Tree-of-Sophia**  
   Knowledge architecture for tracing ideas across time
 

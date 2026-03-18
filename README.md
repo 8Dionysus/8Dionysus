@@ -52,9 +52,13 @@ Two long-horizon directions organize most of what I build:
 
 ## Stack
 
-- **Systems**: Fedora, Podman
-- **Languages**: Python, Bash, JavaScript
-- **AI runtime**: OpenVINO, Ollama, OVMS
+- **Systems**: Fedora, Podman, Windows 11
+- **Languages**: Python, Bash, JavaScript, PowerShell
+- **Agent & app layer**: FastAPI, Uvicorn, Streamlit, LangChain, LiteLLM, n8n
+- **Models & inference**: OpenVINO, OpenVINO GenAI, Ollama, Transformers, Torch
+- **Data & memory**: Postgres, Redis, Neo4j, Qdrant
+- **Observability**: Grafana, Prometheus, Alertmanager
+- **Build workflow**: ChatGPT, Codex, GitHub
 
 ## Elsewhere
 

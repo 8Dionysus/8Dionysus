@@ -15,9 +15,9 @@ Two long-term directions shape most of what I build:
 ## Current work
 
 - publishing reusable techniques in [aoa-techniques](https://github.com/8Dionysus/aoa-techniques)
-- building local agent systems
-- exploring reproducible workflows for agent-assisted engineering
-- developing modular AI infrastructure for future projects
+- shaping [Agents-of-Abyss](https://github.com/8Dionysus/Agents-of-Abyss) as a layered ecosystem of agents, workflows, and infrastructure
+- developing [abyss-stack](https://github.com/8Dionysus/abyss-stack) as a modular local and hybrid AI foundation
+- growing [Tree-of-Sophia](https://github.com/8Dionysus/Tree-of-Sophia) as a long-horizon knowledge architecture for philosophy and world thought
 
 ## Principles
 

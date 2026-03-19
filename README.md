@@ -15,9 +15,11 @@ Two long-horizon directions organize most of what I build:
 ## Current work
 
 - publishing reusable techniques in [aoa-techniques](https://github.com/8Dionysus/aoa-techniques)
+- building [aoa-skills](https://github.com/8Dionysus/aoa-skills) as the Codex-facing execution layer for reusable workflows
+- shaping [aoa-evals](https://github.com/8Dionysus/aoa-evals) as the proof layer for bounded agent quality
 - shaping [Agents-of-Abyss](https://github.com/8Dionysus/Agents-of-Abyss) as a layered ecosystem of agents, workflows, and infrastructure
-- developing [abyss-stack](https://github.com/8Dionysus/abyss-stack) as a modular local and hybrid AI foundation
 - growing [Tree-of-Sophia](https://github.com/8Dionysus/Tree-of-Sophia) as a long-horizon knowledge architecture for philosophy and world thought
+- developing `abyss-stack` as a private modular local and hybrid AI foundation *(in development)*
 
 ## Building toward
 
@@ -44,17 +46,25 @@ Two long-horizon directions organize most of what I build:
 - **[aoa-techniques](https://github.com/8Dionysus/aoa-techniques)**  
   Reusable techniques for coding agents and humans
 
-- **[ATM10-Agent](https://github.com/8Dionysus/ATM10-Agent)**  
-  Local multimodal agent project with perception, memory, safe automation, and voice
+- **[aoa-skills](https://github.com/8Dionysus/aoa-skills)**  
+  Codex-facing skill bundles built on top of reusable techniques
 
-- **[abyss-stack](https://github.com/8Dionysus/abyss-stack)**  
-  Modular local AI stack for agent systems
+- **[aoa-evals](https://github.com/8Dionysus/aoa-evals)**  
+  Portable evaluation bundles for agents and agent-shaped workflows
 
 - **[Agents-of-Abyss](https://github.com/8Dionysus/Agents-of-Abyss)**  
   Agent ecosystem for long-horizon knowledge systems
 
 - **[Tree-of-Sophia](https://github.com/8Dionysus/Tree-of-Sophia)**  
   Living knowledge architecture for philosophy and world thought
+
+## Private work in development
+
+- **`abyss-stack`** *(private, in development)*  
+  Modular local and hybrid AI foundation for agent workflows, memory, data, and observability
+
+- **`ATM10-Agent`** *(private, in development)*  
+  Local multimodal companion with perception, memory, safe automation, and voice
 
 ## Stack
 

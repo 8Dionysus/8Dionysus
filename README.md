@@ -14,13 +14,17 @@ Two long-horizon directions organize most of what I build:
 
 ## Current work
 
+- growing [Tree-of-Sophia](https://github.com/8Dionysus/Tree-of-Sophia) as a long-horizon knowledge architecture for philosophy and world thought
+- establishing [Agents-of-Abyss](https://github.com/8Dionysus/Agents-of-Abyss) as the ecosystem center and constitutional map of AoA
 - publishing reusable techniques in [aoa-techniques](https://github.com/8Dionysus/aoa-techniques)
 - building [aoa-skills](https://github.com/8Dionysus/aoa-skills) as the execution layer for bounded agent workflows
 - shaping [aoa-evals](https://github.com/8Dionysus/aoa-evals) as the proof layer for bounded agent quality and behavior
-- establishing [Agents-of-Abyss](https://github.com/8Dionysus/Agents-of-Abyss) as the ecosystem center and constitutional map of AoA
-- preparing [aoa-routing](https://github.com/8Dionysus/aoa-routing) as the future navigation and dispatch layer across AoA surfaces
-- growing [Tree-of-Sophia](https://github.com/8Dionysus/Tree-of-Sophia) as a long-horizon knowledge architecture for philosophy and world thought
-- developing `abyss-stack` as a private modular local and hybrid AI foundation *(in development)*
+- preparing [aoa-routing](https://github.com/8Dionysus/aoa-routing) as the navigation and dispatch layer across AoA surfaces
+- bootstrapping [aoa-memo](https://github.com/8Dionysus/aoa-memo) as the memory and recall layer for explicit, reviewable memory surfaces
+- bootstrapping [aoa-agents](https://github.com/8Dionysus/aoa-agents) as the role and persona layer for explicit agent contracts
+- bootstrapping [aoa-playbooks](https://github.com/8Dionysus/aoa-playbooks) as the scenario and composition layer for recurring operational recipes
+- bootstrapping [aoa-kag](https://github.com/8Dionysus/aoa-kag) as the derived knowledge substrate layer for provenance-aware knowledge structures
+- developing [abyss-stack](https://github.com/8Dionysus/abyss-stack) as the modular local and hybrid AI foundation beneath AoA and ToS
 
 ## Building toward
 
@@ -45,6 +49,9 @@ Two long-horizon directions organize most of what I build:
 
 ## Selected repositories
 
+- **[Tree-of-Sophia](https://github.com/8Dionysus/Tree-of-Sophia)**  
+  Living knowledge architecture for philosophy and world thought
+
 - **[Agents-of-Abyss](https://github.com/8Dionysus/Agents-of-Abyss)**  
   Ecosystem center for AoA: charter, layer map, federation rules, and program-level direction
 
@@ -60,13 +67,22 @@ Two long-horizon directions organize most of what I build:
 - **[aoa-routing](https://github.com/8Dionysus/aoa-routing)**  
   Emerging navigation and dispatch layer for routing models and humans across AoA surfaces
 
-- **[Tree-of-Sophia](https://github.com/8Dionysus/Tree-of-Sophia)**  
-  Living knowledge architecture for philosophy and world thought
+- **[aoa-memo](https://github.com/8Dionysus/aoa-memo)**  
+  Memory and recall layer for explicit, reviewable, provenance-aware memory surfaces
+
+- **[aoa-agents](https://github.com/8Dionysus/aoa-agents)**  
+  Role and persona layer for explicit agent contracts, boundaries, and handoff posture
+
+- **[aoa-playbooks](https://github.com/8Dionysus/aoa-playbooks)**  
+  Scenario and composition layer for recurring operational recipes across AoA surfaces
+
+- **[aoa-kag](https://github.com/8Dionysus/aoa-kag)**  
+  Derived knowledge substrate for provenance-aware, graph-friendly knowledge structures
+
+- **[abyss-stack](https://github.com/8Dionysus/abyss-stack)**  
+  Modular local and hybrid AI foundation for agent workflows, memory, data, and observability
 
 ## Private work in development
-
-- **`abyss-stack`** *(private, in development)*  
-  Modular local and hybrid AI foundation for agent workflows, memory, data, and observability
 
 - **`ATM10-Agent`** *(private, in development)*  
   Local multimodal companion with perception, memory, safe automation, and voice

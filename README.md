@@ -14,6 +14,13 @@ Two long-horizon directions organize most of what I build:
 
 For a compact ecosystem vocabulary, see [GLOSSARY.md](GLOSSARY.md).
 
+## Start here
+
+- for the ecosystem center, layer map, and federation rules, start with [Agents-of-Abyss](https://github.com/8Dionysus/Agents-of-Abyss)
+- for the knowledge world and long-horizon architecture of thought, start with [Tree-of-Sophia](https://github.com/8Dionysus/Tree-of-Sophia)
+- for reusable practice, execution workflows, and proof surfaces, move through [aoa-techniques](https://github.com/8Dionysus/aoa-techniques) -> [aoa-skills](https://github.com/8Dionysus/aoa-skills) -> [aoa-evals](https://github.com/8Dionysus/aoa-evals)
+- for the runtime body beneath AoA and ToS, go to [abyss-stack](https://github.com/8Dionysus/abyss-stack)
+
 ## Current work
 
 - growing [Tree-of-Sophia](https://github.com/8Dionysus/Tree-of-Sophia) as a long-horizon knowledge architecture for philosophy and world thought

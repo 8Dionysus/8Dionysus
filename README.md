@@ -12,6 +12,8 @@ Two long-horizon directions organize most of what I build:
 - **Agents of Abyss (AoA)**: an evolving ecosystem of agents, workflows, memory, routing, and infrastructure
 - **Tree of Sophia (ToS)**: a living knowledge architecture for philosophy and world thought
 
+For a compact ecosystem vocabulary, see [GLOSSARY.md](GLOSSARY.md).
+
 ## Current work
 
 - growing [Tree-of-Sophia](https://github.com/8Dionysus/Tree-of-Sophia) as a long-horizon knowledge architecture for philosophy and world thought

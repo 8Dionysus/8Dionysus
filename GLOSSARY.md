@@ -8,15 +8,17 @@ The goal is not to inflate terminology. The goal is to keep boundaries, roles, a
 ## Core directions
 
 ### Agents of Abyss (AoA)
-An evolving ecosystem of agents, workflows, memory, routing, and infrastructure.
+An evolving operational federation for long-horizon agentic systems.
 
 AoA is the operational and agentic side of the broader system.
 It is organized as a federation of explicit layers rather than one monolith.
 
-### Tree of Sophia (ToS)
-A living knowledge architecture for philosophy and world thought.
+Its current public layers include practice, execution, proof, routing, memory, agent roles, scenario composition, and derived knowledge substrate work, with `abyss-stack` beneath the system and `Tree-of-Sophia` as the source-first knowledge architecture counterpart.
 
-ToS is the knowledge world and long-horizon meaning architecture that AoA helps build, maintain, and operationalize.
+### Tree of Sophia (ToS)
+A source-first living knowledge architecture for philosophy and world thought.
+
+ToS is the knowledge world and long-horizon meaning architecture that AoA helps build, maintain, navigate, validate, and extend.
 
 ### abyss-stack
 The modular local and hybrid AI infrastructure substrate beneath AoA and ToS.

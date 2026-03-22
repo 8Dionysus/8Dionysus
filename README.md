@@ -1,6 +1,6 @@
 # Dionysus
 
-I build local and hybrid AI systems that turn reusable techniques into agent workflows and long-horizon knowledge architectures.
+I build local and hybrid AI systems that turn reusable techniques into agent workflows and source-first long-horizon knowledge architectures.
 
 ## About
 
@@ -9,8 +9,8 @@ My work sits at the intersection of engineering discipline, agent systems, and l
 I build workflows, infrastructure, and reusable techniques that make collaboration between humans and agents more legible, reproducible, and safe.
 
 Two long-horizon directions organize most of what I build:
-- **Agents of Abyss (AoA)**: an evolving ecosystem of agents, workflows, memory, routing, and infrastructure
-- **Tree of Sophia (ToS)**: a living knowledge architecture for philosophy and world thought
+- **Agents of Abyss (AoA)**: an evolving operational federation for long-horizon agentic systems
+- **Tree of Sophia (ToS)**: a source-first living knowledge architecture for philosophy and world thought
 
 For a compact ecosystem vocabulary, see [GLOSSARY.md](GLOSSARY.md).
 

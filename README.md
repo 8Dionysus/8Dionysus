@@ -2,7 +2,7 @@
 
 I build local and hybrid AI systems, bounded agent workflows, and source-first knowledge architectures.
 
-This profile repository is the public entry surface for my ecosystem. It helps humans and agents find the right repository, but it is not the source of truth for the specialized layers themselves.
+This profile repository serves as the public entry surface for my ecosystem, helping humans and agents locate the correct repositories. While it provides orientation, it is not the source of truth for specialized layers such as Agents of Abyss (AoA), Tree of Sophia (ToS), abyss-stack, or ATM10-Agent.
 
 Two long-horizon directions anchor most of the work:
 - **Agents of Abyss (AoA)**: an operational federation of explicit layers for long-horizon agentic systems

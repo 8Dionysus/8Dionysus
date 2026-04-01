@@ -1,0 +1,50 @@
+schema_version: work_quest_v1
+id: PROFILE-Q-0001
+title: Keep public repo links and role descriptions aligned with the planted ecosystem
+summary: Use a thin profile quest to track when the GitHub profile starts lying
+  about repository roles after real ecosystem changes land elsewhere.
+repo: 8Dionysus
+owner_surface: profile/orientation
+theme_ref: ''
+milestone_ref: ''
+kind: guardrail
+state: triaged
+band: frontier
+difficulty: d2_slice
+risk: r1_repo_local
+control_mode: human_codex_copilot
+delegate_tier: planner
+fallback_tier: verifier
+wrapper_class: hybrid
+write_scope: docs_only
+split_required: false
+complexity_basis:
+  scope: 1
+  ambiguity: 1
+  boundary: 1
+  verification: 1
+parent: null
+depends_on: []
+activation:
+  mode: on_review_of
+  ref: README.md
+  note: review when linked repositories change public role or navigation posture
+anchor_ref:
+  artifact: profile-readme
+  ref: README.md
+  note: the profile stays orientation-only and must not replace source repositories
+handoff_role: profile-maintainer
+evidence:
+  - public repo links and role descriptions stop drifting from actual repo ownership
+  - profile remains orientation-first instead of acting as control plane
+  - source-of-truth boundaries stay explicit
+harvest:
+  target: none
+opened_at: '2026-04-01'
+touched_at: '2026-04-01'
+tags:
+  - profile
+  - orientation
+  - links
+notes: ''
+public_safe: true

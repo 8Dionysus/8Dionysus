@@ -1,0 +1,50 @@
+schema_version: work_quest_v1
+id: PROFILE-Q-0002
+title: Track glossary and public orientation drift after ecosystem layer changes
+summary: Keep public vocabulary and profile-level orientation compatible as linked
+  repositories evolve, without pushing repository doctrine into the profile repo.
+repo: 8Dionysus
+owner_surface: glossary/orientation
+theme_ref: ''
+milestone_ref: ''
+kind: support
+state: captured
+band: near
+difficulty: d2_slice
+risk: r1_repo_local
+control_mode: codex_supervised
+delegate_tier: planner
+fallback_tier: verifier
+wrapper_class: local_patcher
+write_scope: docs_only
+split_required: false
+complexity_basis:
+  scope: 1
+  ambiguity: 1
+  boundary: 1
+  verification: 1
+parent: null
+depends_on: []
+activation:
+  mode: on_review_of
+  ref: GLOSSARY.md
+  note: review when public ecosystem vocabulary or orientation language shifts
+anchor_ref:
+  artifact: profile-boundary
+  ref: docs/QUESTBOOK_PROFILE_BOUNDARY.md
+  note: keep profile quest work limited to reflection and vocabulary debt
+handoff_role: profile-maintainer
+evidence:
+  - glossary and profile wording stay compatible
+  - profile-level vocabulary does not drift into false ownership claims
+  - reflection debt is tracked without inflating the profile into a control layer
+harvest:
+  target: none
+opened_at: '2026-04-01'
+touched_at: '2026-04-01'
+tags:
+  - glossary
+  - orientation
+  - reflection
+notes: ''
+public_safe: true

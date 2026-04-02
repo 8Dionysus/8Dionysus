@@ -2,13 +2,13 @@
 
 I build local and hybrid AI systems, bounded agent workflows, and source-first knowledge architectures.
 
-This profile repository serves as the public entry surface for my ecosystem, helping humans and agents locate the correct repositories. While it provides orientation, it is not the source of truth for specialized layers such as Agents of Abyss (AoA), Tree of Sophia (ToS), abyss-stack, or ATM10-Agent.
+This profile repository is the public entry surface for the ecosystem around Agents of Abyss (AoA), Tree of Sophia (ToS), abyss-stack, ATM10-Agent, and the public AoA layer federation. It helps humans and agents find the repositories that own the real charters, roadmaps, workflows, and implementations. It is a coordination surface, not the source of truth for those layers.
 
 Two long-horizon directions anchor most of the work:
 - **Agents of Abyss (AoA)**: an operational federation of explicit layers for long-horizon agentic systems
 - **Tree of Sophia (ToS)**: a source-first living knowledge architecture for philosophy and world thought
 
-Beneath them sits **[abyss-stack](https://github.com/8Dionysus/abyss-stack)**, the infrastructure substrate. Alongside them sits **[ATM10-Agent](https://github.com/8Dionysus/ATM10-Agent)**, a local-first companion surface shaped by the same broader direction.
+Beneath them sits **[abyss-stack](https://github.com/8Dionysus/abyss-stack)**, the runtime substrate. Alongside them sit **[ATM10-Agent](https://github.com/8Dionysus/ATM10-Agent)**, a local-first companion surface, and **[aoa-sdk](https://github.com/8Dionysus/aoa-sdk)**, a typed local-first consumer spine for source-owned AoA surfaces.
 
 For a compact ecosystem vocabulary, see [GLOSSARY.md](GLOSSARY.md).
 
@@ -17,19 +17,9 @@ For a compact ecosystem vocabulary, see [GLOSSARY.md](GLOSSARY.md).
 - for the ecosystem center, constitutional map, and federation rules, start with [Agents-of-Abyss](https://github.com/8Dionysus/Agents-of-Abyss)
 - for the knowledge world and source-first architecture of thought, start with [Tree-of-Sophia](https://github.com/8Dionysus/Tree-of-Sophia)
 - for the runtime body beneath AoA and ToS, go to [abyss-stack](https://github.com/8Dionysus/abyss-stack)
-- for a local-first companion application surface, go to [ATM10-Agent](https://github.com/8Dionysus/ATM10-Agent)
+- for the local-first companion application surface, go to [ATM10-Agent](https://github.com/8Dionysus/ATM10-Agent)
+- for typed local-first federation reads and orchestration helpers, go to [aoa-sdk](https://github.com/8Dionysus/aoa-sdk)
 - for reusable practice, execution, and proof, move through [aoa-techniques](https://github.com/8Dionysus/aoa-techniques) -> [aoa-skills](https://github.com/8Dionysus/aoa-skills) -> [aoa-evals](https://github.com/8Dionysus/aoa-evals)
-
-## What this profile is for
-
-This repository is a coordination and orientation surface.
-
-It exists to:
-- introduce the broader AoA / ToS ecosystem
-- point to the repositories that own the real charters, roadmaps, workflows, and implementations
-- keep the public layer map legible for humans, smaller models, and new collaborators
-
-It should not silently replace the source repositories it links to.
 
 ## Public ecosystem map
 
@@ -42,67 +32,61 @@ It should not silently replace the source repositories it links to.
   Living knowledge architecture for philosophy and world thought
 
 - **[abyss-stack](https://github.com/8Dionysus/abyss-stack)**  
-  Infrastructure substrate for AoA and ToS: modular, rootless, local-first runtime, deployment, storage, and lifecycle services for self-hosted AI systems
+  Infrastructure substrate for AoA and ToS: runtime, deployment, storage, lifecycle, and service posture
 
 - **[ATM10-Agent](https://github.com/8Dionysus/ATM10-Agent)**  
-  Local-first ATM10 companion for Windows 11: vision, RAG/KAG memory, dry-run automation, voice, and a gateway-backed operator panel
+  Local-first ATM10 companion: perception, memory, safe automation, voice, and operator surfaces
 
 ### Public AoA layers
 
 - **[aoa-techniques](https://github.com/8Dionysus/aoa-techniques)**  
-  Public canon of reusable engineering techniques for coding agents and humans
+  Reusable engineering practice
 
 - **[aoa-skills](https://github.com/8Dionysus/aoa-skills)**  
-  Bounded agent-facing skill bundles composed from reusable techniques
+  Bounded agent-facing execution workflows
 
 - **[aoa-evals](https://github.com/8Dionysus/aoa-evals)**  
-  Portable evaluation bundles for agents and agent-shaped workflows
+  Portable proof surfaces for bounded claims
 
 - **[aoa-routing](https://github.com/8Dionysus/aoa-routing)**  
-  Thin routing layer for explicit navigation, typing, and dispatch across AoA surfaces
+  Thin routing and dispatch layer across AoA surfaces
 
 - **[aoa-memo](https://github.com/8Dionysus/aoa-memo)**  
-  Memory and recall layer for explicit, reviewable, provenance-aware memory surfaces
+  Reviewable, provenance-aware memory and recall surfaces
 
 - **[aoa-agents](https://github.com/8Dionysus/aoa-agents)**  
-  Role and persona layer for explicit agent profiles, role contracts, and handoff posture
+  Role contracts, agent posture, and handoff boundaries
 
 - **[aoa-playbooks](https://github.com/8Dionysus/aoa-playbooks)**  
-  Scenario and composition layer for recurring operations, handoffs, fallback paths, and validation posture
+  Scenario composition, recurring operations, and method surfaces
 
 - **[aoa-kag](https://github.com/8Dionysus/aoa-kag)**  
-  Knowledge substrate layer for provenance-aware derived structures, graph-ready projections, and framework-neutral retrieval surfaces built from source-first repositories
+  Provenance-aware derived knowledge substrate and retrieval-ready structures
+
+### Supporting surface
+
+- **[aoa-sdk](https://github.com/8Dionysus/aoa-sdk)**  
+  Typed Python SDK and local-first consumer spine for source-owned AoA surfaces
 
 ## Current direction
 
 I am building toward:
 - agent systems that stay legible as they scale
 - knowledge architectures that accumulate layers without collapsing into noise
-- infrastructure where new tools become durable capabilities
 - local-first and hybrid systems that keep human meaning and operational clarity in view
 
 ## Working principles
 
-- publish durable techniques, not one-off accidents
 - keep source-of-truth boundaries explicit
+- publish durable techniques and reviewable workflows
 - prefer modular growth over brittle fusion
-- make workflows reviewable, reproducible, and portable
 - keep systems legible to humans while accelerating agents
-
-## Working style
-
-- humans and agents in the loop, with clear handoffs
-- compact public surfaces over inflated repository folklore
-- layered growth that does not erase ownership boundaries
 
 ## Stack
 
 - **Systems**: Fedora, Podman, Windows 11
 - **Languages**: Python, Bash, JavaScript, PowerShell
-- **Agent & app layer**: FastAPI, Uvicorn, Streamlit, LangChain, LiteLLM, n8n
-- **Models & inference**: OpenVINO, OpenVINO GenAI, Ollama, Transformers, Torch
-- **Data & memory**: Postgres, Redis, Neo4j, Qdrant
-- **Observability**: Grafana, Prometheus, Alertmanager
+- **Core surfaces**: FastAPI, Streamlit, LiteLLM, LangChain, n8n, OpenVINO, Ollama, Postgres, Redis, Neo4j, Qdrant, Grafana, Prometheus
 - **Build workflow**: ChatGPT, Codex, GitHub
 
 ## Elsewhere

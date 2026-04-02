@@ -1,62 +1,48 @@
 # AGENTS.md
 
-## Repository purpose
+## Purpose
 
-This is the GitHub profile repository for Dionysus.
-It is a docs-first coordination surface and public entrypoint for the AoA / ToS ecosystem.
-Treat it as orientation, not as the authoritative home of each linked project.
+This is the GitHub profile repository for Dionysus. It is a docs-first public entry surface for the AoA / ToS ecosystem. Treat it as orientation, not as the authoritative home of specialized repositories.
 
-## What owns truth here
+## Owns / does not own
 
-- `README.md` is the public landing page for humans.
-- `GLOSSARY.md` defines shared ecosystem vocabulary used across the public surface.
-- Linked repositories own their own charters, roadmaps, schemas, registries, scripts, and implementation details.
+- `README.md` owns the public landing page for humans.
+- `GLOSSARY.md` owns the shared ecosystem vocabulary used across the public surface.
+- Linked repositories own their charters, roadmaps, schemas, registries, scripts, and implementation detail.
 
-Do not move project-specific doctrine or implementation detail into this repository unless the task is explicitly about profile-level orientation.
+Do not move repo-specific doctrine or implementation detail here unless the task is explicitly about profile-level orientation.
+
+## Read first
+
+1. `README.md`
+2. `GLOSSARY.md`
 
 ## Editing priorities
 
-- Keep the profile concise, legible, and navigation-first.
-- Prefer stable descriptions over momentum words such as "bootstrapping" or "preparing" unless a status note is genuinely important.
-- Preserve exact repository names, capitalization, and hyphenation.
-- Use precise English with low hype.
-- Keep AoA / ToS vocabulary aligned with `GLOSSARY.md`.
-- Do not invent roadmap claims, maturity claims, or public/private status.
+- optimize `README.md` for the first screen of a GitHub profile page
+- keep the opening scan fast: identity, orientation, and route clarity
+- prefer stable descriptions over momentum words such as "bootstrapping" or "preparing"
+- preserve exact repository names, capitalization, and hyphenation
+- use precise English with low hype
+- keep AoA / ToS vocabulary aligned with `GLOSSARY.md`
+- do not invent roadmap claims, maturity claims, or public/private status
 
-## When editing README.md
+## When editing `README.md`
 
-- Optimize for fast scanning on a GitHub profile page.
-- Prefer descriptions that answer "what this repo owns" or "when to go there".
-- Keep the profile repository framed as a coordination surface, not a replacement for the source repositories.
-- When a linked repository becomes public, changes role, or gains a clearer description, update the README accordingly.
-- Avoid duplicating large blocks of doctrine from `Agents-of-Abyss` or `Tree-of-Sophia`; link outward instead.
+- answer "what does this repo own?" or "when should I go there?"
+- keep the profile repository framed as a coordination surface, not a replacement for source repositories
+- avoid duplicating doctrine from `Agents-of-Abyss` or `Tree-of-Sophia`; link outward instead
+- when a linked repository becomes public, changes role, or gains a clearer description, update the route map accordingly
+- be especially careful with `8Dionysus/README.md`: it is the public face of the ecosystem and should stay easy to scan in the first ~15 seconds
 
-## When editing GLOSSARY.md
+## Workflow
 
-- Preserve the boundary language around source of truth, coordination repository, layer, federation, provenance, bounded, reviewable, and reproducible.
-- Do not casually redefine core terms.
-- Keep definitions compact, reusable, and cross-repo friendly.
-- Prefer clarity over cleverness.
+`PLAN -> DIFF -> VERIFY -> REPORT`
 
-## Sync rules
-
-- `README.md` and `GLOSSARY.md` are the primary public docs in this repository.
-- Keep wording between them compatible, but do not create derivative sync artifacts unless the task explicitly asks for them.
-
-## Commands
-
-This repository has no build step and no formal test suite.
-Useful local checks:
-
-- Inspect the main docs: `sed -n '1,260p' README.md && printf '\n---\n' && sed -n '1,260p' GLOSSARY.md`
-- Search ecosystem references before renaming or rewording: `grep -RIn "Agents-of-Abyss\|Tree-of-Sophia\|aoa-\|abyss-stack\|ATM10-Agent" README.md GLOSSARY.md`
-
-## Validation checklist
-
-Before finishing, verify that:
+## Verify
 
 - all repository links resolve and use the exact repo name
 - README descriptions do not contradict current public repository descriptions
 - public/private claims are current
-- the profile repo is not presented as the source of truth for specialized layer content
-- tone remains compact, clear, and legible to humans and smaller models
+- the profile repository is not presented as the source of truth for specialized layer content
+- wording stays compact, clear, and navigation-first

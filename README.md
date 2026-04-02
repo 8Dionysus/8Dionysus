@@ -2,11 +2,11 @@
 
 I build local and hybrid AI systems, bounded agent workflows, and source-first knowledge architectures.
 
-This profile repository is the public entry surface for the ecosystem around Agents of Abyss (AoA), Tree of Sophia (ToS), abyss-stack, ATM10-Agent, and the public AoA layer federation. It helps humans and agents find the repositories that own the real charters, roadmaps, workflows, and implementations. It is a coordination surface, not the source of truth for those layers.
+This profile repository is the public entry surface for the ecosystem around Tree of Sophia (ToS), Agents of Abyss (AoA), abyss-stack, ATM10-Agent, and the public AoA layer federation. It helps humans and agents find the repositories that own the real charters, roadmaps, workflows, and implementations. It is a coordination surface, not the source of truth for those layers.
 
 Two long-horizon directions anchor most of the work:
-- **Agents of Abyss (AoA)**: an operational federation of explicit layers for long-horizon agentic systems
 - **Tree of Sophia (ToS)**: a source-first living knowledge architecture for philosophy and world thought
+- **Agents of Abyss (AoA)**: an operational federation of explicit layers for long-horizon agentic systems
 
 Beneath them sits **[abyss-stack](https://github.com/8Dionysus/abyss-stack)**, the runtime substrate. Alongside them sit **[ATM10-Agent](https://github.com/8Dionysus/ATM10-Agent)**, a local-first companion surface, and **[aoa-sdk](https://github.com/8Dionysus/aoa-sdk)**, a typed local-first consumer spine for source-owned AoA surfaces.
 
@@ -14,8 +14,8 @@ For a compact ecosystem vocabulary, see [GLOSSARY.md](GLOSSARY.md).
 
 ## Start here
 
-- for the ecosystem center, constitutional map, and federation rules, start with [Agents-of-Abyss](https://github.com/8Dionysus/Agents-of-Abyss)
 - for the knowledge world and source-first architecture of thought, start with [Tree-of-Sophia](https://github.com/8Dionysus/Tree-of-Sophia)
+- for the ecosystem center, constitutional map, and federation rules, start with [Agents-of-Abyss](https://github.com/8Dionysus/Agents-of-Abyss)
 - for the runtime body beneath AoA and ToS, go to [abyss-stack](https://github.com/8Dionysus/abyss-stack)
 - for the local-first companion application surface, go to [ATM10-Agent](https://github.com/8Dionysus/ATM10-Agent)
 - for typed local-first federation reads and orchestration helpers, go to [aoa-sdk](https://github.com/8Dionysus/aoa-sdk)
@@ -25,11 +25,11 @@ For a compact ecosystem vocabulary, see [GLOSSARY.md](GLOSSARY.md).
 
 ### Core anchors
 
-- **[Agents-of-Abyss](https://github.com/8Dionysus/Agents-of-Abyss)**  
-  Constitutional center of AoA: ecosystem identity, layer map, federation rules, and program-level direction
-
 - **[Tree-of-Sophia](https://github.com/8Dionysus/Tree-of-Sophia)**  
   Living knowledge architecture for philosophy and world thought
+
+- **[Agents-of-Abyss](https://github.com/8Dionysus/Agents-of-Abyss)**  
+  Constitutional center of AoA: ecosystem identity, layer map, federation rules, and program-level direction
 
 - **[abyss-stack](https://github.com/8Dionysus/abyss-stack)**  
   Infrastructure substrate for AoA and ToS: runtime, deployment, storage, lifecycle, and service posture

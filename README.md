@@ -92,8 +92,6 @@ I am building toward:
 - **Observability**: Grafana, Prometheus, Alertmanager
 - **Build workflow**: ChatGPT, Codex, GitHub
 
-The current bounded local-worker lane is `llama.cpp + LangGraph`, with Ollama retained as the control and rollback path.
-
 ## Elsewhere
 
 - [LinkedIn](https://www.linkedin.com/in/german-grant)

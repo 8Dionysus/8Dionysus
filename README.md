@@ -84,10 +84,15 @@ I am building toward:
 
 ## Stack
 
-- **Systems**: Fedora, Podman, Windows 11
+- **Systems**: Fedora, Windows 11, WSL2, rootless Podman
 - **Languages**: Python, Bash, JavaScript, PowerShell
-- **Core surfaces**: FastAPI, Streamlit, LiteLLM, LangChain, n8n, OpenVINO, Ollama, Postgres, Redis, Neo4j, Qdrant, Grafana, Prometheus
+- **App and orchestration**: FastAPI, Streamlit, LiteLLM, LangChain, LangGraph, n8n
+- **Inference and serving**: Ollama, llama.cpp, OpenVINO / OVMS
+- **Data and memory**: Postgres, Redis, Neo4j, Qdrant
+- **Observability**: Grafana, Prometheus, Alertmanager
 - **Build workflow**: ChatGPT, Codex, GitHub
+
+The current bounded local-worker lane is `llama.cpp + LangGraph`, with Ollama retained as the control and rollback path.
 
 ## Elsewhere
 

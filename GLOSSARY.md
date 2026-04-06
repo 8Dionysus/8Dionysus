@@ -82,6 +82,12 @@ The layer that stores portable evaluation bundles for bounded claims.
 In the current public ecosystem, this role belongs to `aoa-evals`.
 It exists to make claims about agent quality, behavior, boundaries, or regressions reviewable and defensible.
 
+### Derived observability layer
+The layer that stores machine-first derived summaries built from source-owned
+receipts, bounded eval verdicts, and small progression deltas.
+In the current public ecosystem, this role belongs to `aoa-stats`.
+It stays downstream from workflow and proof meaning and does not replace them.
+
 ### Navigation layer
 The layer that helps models and humans decide where to go next.
 In the current public ecosystem, this role belongs to `aoa-routing`.
@@ -307,6 +313,7 @@ If you want the shortest route into the ecosystem:
 - for reusable practice, go to [`aoa-techniques`](https://github.com/8Dionysus/aoa-techniques)
 - for bounded execution workflows, go to [`aoa-skills`](https://github.com/8Dionysus/aoa-skills)
 - for portable proof surfaces, go to [`aoa-evals`](https://github.com/8Dionysus/aoa-evals)
+- for derived observability and machine-first summary surfaces, go to [`aoa-stats`](https://github.com/8Dionysus/aoa-stats)
 - for navigation and dispatch, go to [`aoa-routing`](https://github.com/8Dionysus/aoa-routing)
 - for memory and recall, go to [`aoa-memo`](https://github.com/8Dionysus/aoa-memo)
 - for explicit agent roles, go to [`aoa-agents`](https://github.com/8Dionysus/aoa-agents)

@@ -19,7 +19,7 @@ For a compact ecosystem vocabulary, see [GLOSSARY.md](GLOSSARY.md).
 - for the runtime body beneath AoA and ToS, go to [abyss-stack](https://github.com/8Dionysus/abyss-stack)
 - for the local-first companion application surface, go to [ATM10-Agent](https://github.com/8Dionysus/ATM10-Agent)
 - for typed local-first federation reads and orchestration helpers, go to [aoa-sdk](https://github.com/8Dionysus/aoa-sdk)
-- for reusable practice, execution, and proof, move through [aoa-techniques](https://github.com/8Dionysus/aoa-techniques) -> [aoa-skills](https://github.com/8Dionysus/aoa-skills) -> [aoa-evals](https://github.com/8Dionysus/aoa-evals)
+- for reusable practice, execution, proof, and derived observability, move through [aoa-techniques](https://github.com/8Dionysus/aoa-techniques) -> [aoa-skills](https://github.com/8Dionysus/aoa-skills) -> [aoa-evals](https://github.com/8Dionysus/aoa-evals) -> [aoa-stats](https://github.com/8Dionysus/aoa-stats)
 
 ## Public ecosystem map
 
@@ -47,6 +47,9 @@ For a compact ecosystem vocabulary, see [GLOSSARY.md](GLOSSARY.md).
 
 - **[aoa-evals](https://github.com/8Dionysus/aoa-evals)**  
   Portable proof surfaces for bounded claims
+
+- **[aoa-stats](https://github.com/8Dionysus/aoa-stats)**  
+  Derived observability and machine-first summary layer built from source-owned receipts and bounded verdicts
 
 - **[aoa-routing](https://github.com/8Dionysus/aoa-routing)**  
   Thin routing and dispatch layer across AoA surfaces

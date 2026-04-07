@@ -2,7 +2,7 @@
 
 I build local and hybrid AI systems, bounded agent workflows, and source-first knowledge architectures.
 
-This profile repository is the public entry surface for the ecosystem around Tree of Sophia (ToS), Agents of Abyss (AoA), abyss-stack, ATM10-Agent, and the public AoA layer federation. It helps humans and agents find the repositories that own the real charters, roadmaps, workflows, and implementations. It is a coordination surface, not the source of truth for those layers.
+This profile repository is the public entry surface for the ecosystem around Tree of Sophia (ToS), Agents of Abyss (AoA), Dionysus, abyss-stack, ATM10-Agent, and the public AoA layer federation. It helps humans and agents find the repositories that own the real charters, roadmaps, workflows, and implementations. It is a coordination surface, not the source of truth for those layers.
 
 Two long-horizon directions anchor most of the work:
 - **Tree of Sophia (ToS)**: a source-first living knowledge architecture for philosophy and world thought
@@ -19,6 +19,8 @@ For a compact ecosystem vocabulary, see [GLOSSARY.md](GLOSSARY.md).
 - for the runtime body beneath AoA and ToS, go to [abyss-stack](https://github.com/8Dionysus/abyss-stack)
 - for the local-first companion application surface, go to [ATM10-Agent](https://github.com/8Dionysus/ATM10-Agent)
 - for typed local-first federation reads and orchestration helpers, go to [aoa-sdk](https://github.com/8Dionysus/aoa-sdk)
+- for the canonical sibling-workspace layout and shared skill install route, go to [docs/WORKSPACE_INSTALL.md](docs/WORKSPACE_INSTALL.md)
+- for the seed garden and staging surface, go to [Dionysus](https://github.com/8Dionysus/Dionysus)
 - for reusable practice, execution, proof, and derived observability, move through [aoa-techniques](https://github.com/8Dionysus/aoa-techniques) -> [aoa-skills](https://github.com/8Dionysus/aoa-skills) -> [aoa-evals](https://github.com/8Dionysus/aoa-evals) -> [aoa-stats](https://github.com/8Dionysus/aoa-stats)
 
 ## Public ecosystem map
@@ -66,7 +68,13 @@ For a compact ecosystem vocabulary, see [GLOSSARY.md](GLOSSARY.md).
 - **[aoa-kag](https://github.com/8Dionysus/aoa-kag)**  
   Provenance-aware derived knowledge substrate and retrieval-ready structures
 
-### Supporting surface
+### Coordination and supporting surfaces
+
+- **[Dionysus](https://github.com/8Dionysus/Dionysus)**  
+  Seed garden and staging surface
+
+- **[8Dionysus](https://github.com/8Dionysus/8Dionysus)**  
+  Public profile and route map for the ecosystem
 
 - **[aoa-sdk](https://github.com/8Dionysus/aoa-sdk)**  
   Typed Python SDK and local-first consumer spine for source-owned AoA surfaces

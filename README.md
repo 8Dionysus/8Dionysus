@@ -20,8 +20,18 @@ For a compact ecosystem vocabulary, see [GLOSSARY.md](GLOSSARY.md).
 - for the local-first companion application surface, go to [ATM10-Agent](https://github.com/8Dionysus/ATM10-Agent)
 - for typed local-first federation reads and orchestration helpers, go to [aoa-sdk](https://github.com/8Dionysus/aoa-sdk)
 - for the canonical sibling-workspace layout and shared skill install route, go to [docs/WORKSPACE_INSTALL.md](docs/WORKSPACE_INSTALL.md)
+- for the profile-level onboarding, support, and release boundary of this repository itself, go to [docs/PUBLIC_ENTRY_POSTURE.md](docs/PUBLIC_ENTRY_POSTURE.md)
 - for the seed garden and staging surface, go to [Dionysus](https://github.com/8Dionysus/Dionysus)
 - for reusable practice, execution, proof, and derived observability, move through [aoa-techniques](https://github.com/8Dionysus/aoa-techniques) -> [aoa-skills](https://github.com/8Dionysus/aoa-skills) -> [aoa-evals](https://github.com/8Dionysus/aoa-evals) -> [aoa-stats](https://github.com/8Dionysus/aoa-stats)
+
+## Public entry posture
+
+`8Dionysus` is a route map and glossary surface.
+It does not replace the charters, validators, release semantics, or CI surfaces of the repositories it links to.
+
+- ecosystem understanding and center-level support claims belong in [Agents-of-Abyss](https://github.com/8Dionysus/Agents-of-Abyss)
+- typed control-plane and local workspace guarantees belong in [aoa-sdk](https://github.com/8Dionysus/aoa-sdk)
+- this repository only owns public routing, short role descriptions, and glossary-level orientation; see [docs/PUBLIC_ENTRY_POSTURE.md](docs/PUBLIC_ENTRY_POSTURE.md)
 
 ## Public ecosystem map
 

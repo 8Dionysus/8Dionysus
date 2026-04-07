@@ -1,48 +1,76 @@
-# AGENTS.md
+# AGENTS.md — /srv workspace
 
 ## Purpose
 
-This is the GitHub profile repository for Dionysus. It is a docs-first public entry surface for the AoA / ToS ecosystem. Treat it as orientation, not as the authoritative home of specialized repositories.
-
-## Owns / does not own
-
-- `README.md` owns the public landing page for humans.
-- `GLOSSARY.md` owns the shared ecosystem vocabulary used across the public surface.
-- Linked repositories own their charters, roadmaps, schemas, registries, scripts, and implementation detail.
-
-Do not move repo-specific doctrine or implementation detail here unless the task is explicitly about profile-level orientation.
+`/srv` is the editable federation workspace root.
+Treat it as the sibling-parent directory for the public AoA / ToS repositories, not as the source of truth for any one layer.
 
 ## Read first
 
-1. `README.md`
-2. `GLOSSARY.md`
+1. `/srv/8Dionysus/README.md`
+2. `/srv/8Dionysus/GLOSSARY.md`
+3. the target repository's own `README.md` and `AGENTS.md`
 
-## Editing priorities
+## Session start
 
-- optimize `README.md` for the first screen of a GitHub profile page
-- keep the opening scan fast: identity, orientation, and route clarity
-- prefer stable descriptions over momentum words such as "bootstrapping" or "preparing"
-- preserve exact repository names, capitalization, and hyphenation
-- use precise English with low hype
-- keep AoA / ToS vocabulary aligned with `GLOSSARY.md`
-- do not invent roadmap claims, maturity claims, or public/private status
+For every new session started from `/srv`, before substantial work:
 
-## When editing `README.md`
+1. choose the primary `repo_root`
+2. run one ingress pass
 
-- answer "what does this repo own?" or "when should I go there?"
-- keep the profile repository framed as a coordination surface, not a replacement for source repositories
-- avoid duplicating doctrine from `Agents-of-Abyss` or `Tree-of-Sophia`; link outward instead
-- when a linked repository becomes public, changes role, or gains a clearer description, update the route map accordingly
-- be especially careful with `8Dionysus/README.md`: it is the public face of the ecosystem and should stay easy to scan in the first ~15 seconds
+```bash
+aoa skills enter <repo_root> --root /srv --intent-text "<short task summary>" --json
+```
+
+If the task is truly cross-repo and no single owner repo is primary yet, use `/srv` as `repo_root`.
+
+## Mutation gate
+
+Before risky, mutating, infra, runtime, repo-config, or public-share actions, run:
+
+```bash
+aoa skills guard <repo_root> --root /srv --intent-text "<planned change>" --mutation-surface <code|repo-config|infra|runtime|public-share> --json
+```
+
+Do not silently skip `must_confirm` or `blocked_actions`.
+
+## Additive surface detection
+
+Keep `aoa skills enter` and `aoa skills guard` as the primary workspace-level
+ingress and mutation gate. They stay skill-only.
+
+When the active task shows route drift, owner-layer ambiguity, proof need,
+recall need, role posture questions, or recurring-scenario signals, run one
+additive surface pass for the chosen `repo_root`:
+
+```bash
+aoa surfaces detect <repo_root> --root /srv --phase ingress --intent-text "<surface-aware task summary>" --json
+```
+
+Use `--phase pre-mutation` and the same `mutation_surface` when the signal
+appears during a risky change:
+
+```bash
+aoa surfaces detect <repo_root> --root /srv --phase pre-mutation --intent-text "<surface-aware task summary>" --mutation-surface <code|repo-config|infra|runtime|public-share> --json
+```
+
+Truth rules:
+
+- `aoa skills ...` remains skill-only
+- `aoa surfaces detect` is additive and read-only
+- non-skill surfaces are hints, candidates, or reviewed closeout handoffs, not
+  executable-now runtime objects
+- if the chosen repository has its own `AGENTS.md`, follow its narrower
+  surface-detection guidance after this root-level trigger fires
+
+## Workspace posture
+
+- `/srv/.agents/skills` is the shared project-foundation install.
+- `/srv/8Dionysus` is the public profile and route map.
+- `/srv/Dionysus` is the seed garden and staging surface.
+- source repositories live as sibling checkouts under `/srv`.
+- `abyss-stack` is part of the ecosystem, but its preferred source checkout may still live outside `/srv`; respect `aoa-sdk` workspace discovery and overrides.
 
 ## Workflow
 
-`PLAN -> DIFF -> VERIFY -> REPORT`
-
-## Verify
-
-- all repository links resolve and use the exact repo name
-- README descriptions do not contradict current public repository descriptions
-- public/private claims are current
-- the profile repository is not presented as the source of truth for specialized layer content
-- wording stays compact, clear, and navigation-first
+`INGRESS -> READ -> DIFF -> VERIFY -> REPORT`

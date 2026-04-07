@@ -33,6 +33,17 @@ It is part of the workspace, but it does not replace the source repositories.
 
 ## Foundation install
 
+The safest route is to use the `aoa-sdk` bootstrap command after the sibling checkouts are already present:
+
+```bash
+aoa workspace bootstrap <workspace-root> --json
+aoa workspace bootstrap <workspace-root> --execute --json
+```
+
+That command checks the sibling layout, installs the shared foundation into `<workspace-root>/.agents/skills`, and writes a root-level `AGENTS.md` when one is missing.
+
+Manual install remains available as the lower-level fallback:
+
 Install the shared project foundation into `<workspace-root>/.agents/skills` from `aoa-skills`:
 
 ```bash

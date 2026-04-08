@@ -1,29 +1,34 @@
 # Dionysus
 
-> Knowledge should not lose provenance as it grows.  
-> Agency should not lose boundaries as it scales.
+> Knowledge should deepen with provenance as it grows.  
+> Agency should grow beyond tools into self-agency.
 
-I build at that intersection through source-first knowledge systems, self-agent architectures, and local-first runtimes.
+I build source-first knowledge systems and local-first agent architectures that begin with bounded, reviewable agency and grow toward self-agency: agents that preserve continuity, revise their own methods, and participate in their own becoming.
 
-This repository is the public entry point to that ecosystem. It is a map, not the constitution: a surface for orientation, route-finding, and first contact for both humans and agents.
+This repository is the public entry point to that ecosystem. It is a map for humans and agents, not a substitute for the source-owned repositories that govern the actual charters, workflows, and guarantees.
 
-## The core wager
+## The arc
 
-Two long-horizon directions carry most of the weight here:
+Bounded agents are not the destination here. They are the first discipline: explicit limits, reviewable workflows, source-owned surfaces, and operational clarity.
 
-- **[Tree of Sophia (ToS)](https://github.com/8Dionysus/Tree-of-Sophia)** keeps knowledge source-linked, contextual, historically legible, and composable.
-- **[Agents of Abyss (AoA)](https://github.com/8Dionysus/Agents-of-Abyss)** keeps agency layered, bounded, reviewable, and operationally clear.
+The longer arc is toward self-agents: agents with continuity, memory, reflective revision, and the ability to reshape tactics without severing provenance, legibility, or human judgment.
+
+## Two long-horizon directions
+
+- **Tree of Sophia (ToS)** cultivates source-linked knowledge, context, lineage, and conceptual depth.
+- **Agents of Abyss (AoA)** cultivates layered agency that can orient, revise itself, and grow beyond task execution without collapsing into opacity.
 
 Together they form a shared wager:
 
-- knowledge should deepen without dissolving into detached summary
-- agency should expand without dissolving into opaque behavior
+- knowledge should deepen without losing provenance
+- agency should expand without losing legibility
 
-## What this profile is
+## Toward self-agency
 
-`8Dionysus` does not try to replace the repositories it points to.
-
-It exists to help people and agents find the surfaces that own the real charters, workflows, implementations, and guarantees. In other words: this profile routes. The source-owned repositories govern.
+- agents that accumulate continuity instead of resetting per task
+- agents that can revise methods, not only execute procedures
+- agents that form durable memory, orientation, and style across time
+- systems where self-agency grows inside explicit boundaries instead of bypassing them
 
 ## How the ecosystem fits together
 

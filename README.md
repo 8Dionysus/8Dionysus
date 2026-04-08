@@ -95,15 +95,6 @@ It does **not** replace the repositories that own:
 - implementation truth
 - layer-specific guarantees
 
-## Building toward
-
-I am building toward:
-
-- knowledge systems that accumulate depth without breaking provenance
-- agent systems that remain legible as they scale
-- local-first and hybrid runtimes that preserve human judgment while extending machine capability
-- modular ecosystems that grow through explicit boundaries instead of brittle fusion
-
 ## Working principles
 
 - keep source-of-truth boundaries explicit

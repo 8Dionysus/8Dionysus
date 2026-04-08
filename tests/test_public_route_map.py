@@ -1,0 +1,50 @@
+from __future__ import annotations
+
+import json
+import unittest
+from pathlib import Path
+
+import sys
+
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
+
+from public_route_map_common import PROFILE_PAYLOAD, build_payload, parse_public_entry_posture_rows
+
+
+class PublicRouteMapTests(unittest.TestCase):
+    def test_build_payload_stays_orientation_only(self) -> None:
+        payload = build_payload()
+
+        self.assertEqual(payload["version"], 1)
+        self.assertEqual(payload["profile"], PROFILE_PAYLOAD)
+        self.assertEqual(
+            [route["route_id"] for route in payload["routes"]],
+            [
+                "ecosystem-understanding",
+                "workspace-bootstrap",
+                "profile-correction",
+            ],
+        )
+
+    def test_public_entry_posture_table_keeps_expected_canonical_homes(self) -> None:
+        posture_path = Path(__file__).resolve().parents[1] / "docs" / "PUBLIC_ENTRY_POSTURE.md"
+        rows = parse_public_entry_posture_rows(posture_path.read_text(encoding="utf-8"))
+        by_need = {row["need"]: row["canonical home"] for row in rows}
+
+        self.assertEqual(by_need["ecosystem understanding"], "Agents-of-Abyss")
+        self.assertEqual(
+            by_need["local workspace bootstrap and typed control-plane use"],
+            "aoa-sdk",
+        )
+        self.assertEqual(by_need["profile-only route or glossary correction"], "8Dionysus")
+
+    def test_payload_is_json_serializable(self) -> None:
+        payload = build_payload()
+        rendered = json.dumps(payload, separators=(",", ":"))
+
+        self.assertIn("orientation_surface", rendered)
+
+
+if __name__ == "__main__":
+    unittest.main()

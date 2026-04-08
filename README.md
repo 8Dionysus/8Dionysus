@@ -3,7 +3,7 @@
 > Knowledge should not lose provenance as it grows.  
 > Agency should not lose boundaries as it scales.
 
-I build at that intersection through source-first knowledge systems, bounded agent architectures, and local-first runtimes.
+I build at that intersection through source-first knowledge systems, self-agent architectures, and local-first runtimes.
 
 This repository is the public entry point to that ecosystem. It is a map, not the constitution: a surface for orientation, route-finding, and first contact for both humans and agents.
 

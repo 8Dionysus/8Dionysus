@@ -309,18 +309,35 @@ A rare coordinated route that requires explicit multi-role or multi-tier choreog
 
 Raid language should remain exceptional. A difficult route is not automatically a raid.
 
+### Anchor
+A named condition, artifact, or verified footing that makes a route, quest, or questline safe to continue from.
+
+Anchors keep continuity honest. They prevent "we are still on the same route" from turning into a vague rhetorical claim.
+
+### Anchor class
+A typed category of acceptable anchors for a route or questline.
+
+Valid anchor classes should be named up front when reanchor matters.
+
 ### Reanchor
 Governed return after anchor loss.
 
 Reanchor is not mere retry. It names a disciplined return posture with explicit conditions.
 
-### Ability card
+### Stop condition
+An explicit condition under which a route, questline, or campaign must halt rather than pretend continuity after anchor loss.
+
+Stop conditions protect reviewability by naming when governed return is no longer available.
+
+### Skill ability card (ability card)
 A derived reader surface that lets a bounded skill bundle be read as an active ability in long-horizon quest work.
+
+Use the full term when boundary precision matters. "Ability card" is the shorter reading name.
 
 An ability card helps orientation. It does not replace `SKILL.md`, evaluation surfaces, portable-layer contracts, or other owner surfaces.
 
 ### Loadout
-A reviewable subset posture derived from pack, trust, adapter, and runtime-contract surfaces.
+A derived reader surface for a reviewable subset posture derived from pack-profile, trust, adapter, and runtime-contract surfaces.
 
 Loadout is not runtime inventory, not per-agent equipped state, not cooldown economics, and not a hidden control plane.
 
@@ -328,6 +345,11 @@ Loadout is not runtime inventory, not per-agent equipped state, not cooldown eco
 A descriptive, evidence-backed hint about when an ability becomes a sane fit for use.
 
 Unlock posture may reflect rank, mastery axes, risk ceilings, likely roles, or pack-profile fit, but it must not silently overrule trust or verification posture.
+
+### Harvest posture
+A declared review posture about whether and how a route, questline, or campaign may later be considered for promotion, repetition, or canonization.
+
+Harvest posture guides review. It is not harvest authority.
 
 ### Quest harvest
 A bounded post-session promotion triage for repeated reviewed quest units.
@@ -475,6 +497,21 @@ A good memory posture names whether memory is required, optional, bounded, or re
 The declared way an agent, workflow, or playbook relates to proof and verification.
 
 A good evaluation posture names what should be checked, how strongly, and under which limits.
+
+### Safe automation
+Automation that is intentionally bounded, inspectable, and designed to preserve operator review.
+
+Safe automation may reach action surfaces, but it should expose posture, checkpoints, and guardrails rather than widen authority by surprise.
+
+### Dry-run posture
+A default execution mode that simulates, stages, or previews action without committing external side effects.
+
+Dry-run posture is a trust-building discipline, not a permanent refusal to act.
+
+### Orchestrator surface
+A route-facing or alignment-facing surface that may be consumed by an orchestrator class without redefining that class.
+
+Orchestrator class identity remains upstream. A playbook- or quest-facing orchestrator surface only shapes what may be activated, aligned, handed off, or reviewed.
 
 ### Controlled orchestration
 Coordination that composes calls, reads, memory, and workflows across source-owned surfaces while keeping authority boundaries explicit.

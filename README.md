@@ -1,107 +1,111 @@
 # Dionysus
 
-I build local and hybrid AI systems, bounded agent workflows, and source-first knowledge architectures.
+> Knowledge should not lose provenance as it grows.  
+> Agency should not lose boundaries as it scales.
 
-This profile repository is the public entry surface for the ecosystem around Tree of Sophia (ToS), Agents of Abyss (AoA), Dionysus, abyss-stack, ATM10-Agent, and the public AoA layer federation. It helps humans and agents find the repositories that own the real charters, roadmaps, workflows, and implementations. It is a coordination surface, not the source of truth for those layers.
+I build at that intersection through source-first knowledge systems, bounded agent architectures, and local-first runtimes.
 
-Two long-horizon directions anchor most of the work:
-- **Tree of Sophia (ToS)**: a source-first living knowledge architecture for philosophy and world thought
-- **Agents of Abyss (AoA)**: an operational federation of explicit layers for long-horizon agentic systems
+This repository is the public entry point to that ecosystem. It is a map, not the constitution: a surface for orientation, route-finding, and first contact for both humans and agents.
 
-Beneath them sits **[abyss-stack](https://github.com/8Dionysus/abyss-stack)**, the runtime substrate. Alongside them sit **[ATM10-Agent](https://github.com/8Dionysus/ATM10-Agent)**, a local-first companion surface, and **[aoa-sdk](https://github.com/8Dionysus/aoa-sdk)**, a typed local-first consumer spine for source-owned AoA surfaces.
+## The core wager
 
-For a compact ecosystem vocabulary, see [GLOSSARY.md](GLOSSARY.md).
+Two long-horizon directions carry most of the weight here:
 
-## Start here
+- **[Tree of Sophia (ToS)](https://github.com/8Dionysus/Tree-of-Sophia)** keeps knowledge source-linked, contextual, historically legible, and composable.
+- **[Agents of Abyss (AoA)](https://github.com/8Dionysus/Agents-of-Abyss)** keeps agency layered, bounded, reviewable, and operationally clear.
 
-- for the knowledge world and source-first architecture of thought, start with [Tree-of-Sophia](https://github.com/8Dionysus/Tree-of-Sophia)
-- for the ecosystem center, constitutional map, and federation rules, start with [Agents-of-Abyss](https://github.com/8Dionysus/Agents-of-Abyss)
-- for the runtime body beneath AoA and ToS, go to [abyss-stack](https://github.com/8Dionysus/abyss-stack)
-- for the local-first companion application surface, go to [ATM10-Agent](https://github.com/8Dionysus/ATM10-Agent)
-- for typed local-first federation reads and orchestration helpers, go to [aoa-sdk](https://github.com/8Dionysus/aoa-sdk)
-- for the canonical sibling-workspace layout and shared skill install route, go to [docs/WORKSPACE_INSTALL.md](docs/WORKSPACE_INSTALL.md)
-- for the profile-level onboarding, support, and release boundary of this repository itself, go to [docs/PUBLIC_ENTRY_POSTURE.md](docs/PUBLIC_ENTRY_POSTURE.md)
-- for the seed garden and staging surface, go to [Dionysus](https://github.com/8Dionysus/Dionysus)
-- for reusable practice, execution, proof, and derived observability, move through [aoa-techniques](https://github.com/8Dionysus/aoa-techniques) -> [aoa-skills](https://github.com/8Dionysus/aoa-skills) -> [aoa-evals](https://github.com/8Dionysus/aoa-evals) -> [aoa-stats](https://github.com/8Dionysus/aoa-stats)
+Together they form a shared wager:
 
-## Public entry posture
+- knowledge should deepen without dissolving into detached summary
+- agency should expand without dissolving into opaque behavior
 
-`8Dionysus` is a route map and glossary surface.
-It does not replace the charters, validators, release semantics, or CI surfaces of the repositories it links to.
+## What this profile is
 
-- ecosystem understanding and center-level support claims belong in [Agents-of-Abyss](https://github.com/8Dionysus/Agents-of-Abyss)
-- typed control-plane and local workspace guarantees belong in [aoa-sdk](https://github.com/8Dionysus/aoa-sdk)
-- this repository only owns public routing, short role descriptions, and glossary-level orientation; see [docs/PUBLIC_ENTRY_POSTURE.md](docs/PUBLIC_ENTRY_POSTURE.md)
+`8Dionysus` does not try to replace the repositories it points to.
 
-## Public ecosystem map
+It exists to help people and agents find the surfaces that own the real charters, workflows, implementations, and guarantees. In other words: this profile routes. The source-owned repositories govern.
+
+## How the ecosystem fits together
 
 ### Core anchors
 
 - **[Tree-of-Sophia](https://github.com/8Dionysus/Tree-of-Sophia)**  
-  Living knowledge architecture for philosophy and world thought
+  The knowledge world: texts, concepts, contexts, lineages, and source-grounded synthesis across philosophy and world thought.
 
 - **[Agents-of-Abyss](https://github.com/8Dionysus/Agents-of-Abyss)**  
-  Constitutional center of AoA: ecosystem identity, layer map, federation rules, and program-level direction
+  The constitutional center: ecosystem identity, layer map, federation rules, and program-level direction.
 
 - **[abyss-stack](https://github.com/8Dionysus/abyss-stack)**  
-  Infrastructure substrate for AoA and ToS: runtime, deployment, storage, lifecycle, and service posture
+  The runtime body beneath AoA and ToS: local-first infrastructure, deployment, storage, lifecycle services, and operating posture.
 
 - **[ATM10-Agent](https://github.com/8Dionysus/ATM10-Agent)**  
-  Local-first ATM10 companion: perception, memory, safe automation, voice, and operator surfaces
+  The operator-facing companion: perception, memory, safe automation, voice, and controlled action surfaces.
+
+- **[aoa-sdk](https://github.com/8Dionysus/aoa-sdk)**  
+  The typed local-first access spine for source-owned AoA surfaces, workspace integration, and controlled orchestration.
 
 ### Public AoA layers
 
-- **[aoa-techniques](https://github.com/8Dionysus/aoa-techniques)**  
-  Reusable engineering practice
+- **[aoa-techniques](https://github.com/8Dionysus/aoa-techniques)**: reusable engineering practice
+- **[aoa-skills](https://github.com/8Dionysus/aoa-skills)**: bounded execution workflows
+- **[aoa-evals](https://github.com/8Dionysus/aoa-evals)**: portable proof surfaces
+- **[aoa-stats](https://github.com/8Dionysus/aoa-stats)**: derived observability from source-owned receipts and verdicts
+- **[aoa-routing](https://github.com/8Dionysus/aoa-routing)**: thin routing and dispatch across AoA surfaces
+- **[aoa-memo](https://github.com/8Dionysus/aoa-memo)**: provenance-aware memory and recall
+- **[aoa-agents](https://github.com/8Dionysus/aoa-agents)**: role contracts, posture, and handoff boundaries
+- **[aoa-playbooks](https://github.com/8Dionysus/aoa-playbooks)**: recurring operations and scenario composition
+- **[aoa-kag](https://github.com/8Dionysus/aoa-kag)**: derived knowledge structures and retrieval-ready substrates
 
-- **[aoa-skills](https://github.com/8Dionysus/aoa-skills)**  
-  Bounded agent-facing execution workflows
+### Supporting surfaces
 
-- **[aoa-evals](https://github.com/8Dionysus/aoa-evals)**  
-  Portable proof surfaces for bounded claims
+- **[Dionysus](https://github.com/8Dionysus/Dionysus)**: seed garden and staging surface
+- **[8Dionysus](https://github.com/8Dionysus/8Dionysus)**: public route map and profile surface
 
-- **[aoa-stats](https://github.com/8Dionysus/aoa-stats)**  
-  Derived observability and machine-first summary layer built from source-owned receipts and bounded verdicts
+## Start where your question begins
 
-- **[aoa-routing](https://github.com/8Dionysus/aoa-routing)**  
-  Thin routing and dispatch layer across AoA surfaces
+- For the knowledge world and source-first architecture of thought, start with **[Tree-of-Sophia](https://github.com/8Dionysus/Tree-of-Sophia)**
+- For the ecosystem center, constitutional map, and federation rules, start with **[Agents-of-Abyss](https://github.com/8Dionysus/Agents-of-Abyss)**
+- For the runtime underneath the system, go to **[abyss-stack](https://github.com/8Dionysus/abyss-stack)**
+- For the local-first companion surface, go to **[ATM10-Agent](https://github.com/8Dionysus/ATM10-Agent)**
+- For typed access and workspace integration, go to **[aoa-sdk](https://github.com/8Dionysus/aoa-sdk)**
+- For the practice → execution → proof → observability path, move through **[aoa-techniques](https://github.com/8Dionysus/aoa-techniques) → [aoa-skills](https://github.com/8Dionysus/aoa-skills) → [aoa-evals](https://github.com/8Dionysus/aoa-evals) → [aoa-stats](https://github.com/8Dionysus/aoa-stats)**
+- For a compact shared vocabulary, see **[GLOSSARY.md](https://github.com/8Dionysus/8Dionysus/blob/main/GLOSSARY.md)**
+- For the sibling-workspace layout and shared install route, see **[docs/WORKSPACE_INSTALL.md](https://github.com/8Dionysus/8Dionysus/blob/main/docs/WORKSPACE_INSTALL.md)**
+- For the posture and scope of this repository itself, see **[docs/PUBLIC_ENTRY_POSTURE.md](https://github.com/8Dionysus/8Dionysus/blob/main/docs/PUBLIC_ENTRY_POSTURE.md)**
 
-- **[aoa-memo](https://github.com/8Dionysus/aoa-memo)**  
-  Reviewable, provenance-aware memory and recall surfaces
+## What this repository owns
 
-- **[aoa-agents](https://github.com/8Dionysus/aoa-agents)**  
-  Role contracts, agent posture, and handoff boundaries
+`8Dionysus` owns:
 
-- **[aoa-playbooks](https://github.com/8Dionysus/aoa-playbooks)**  
-  Scenario composition, recurring operations, and method surfaces
+- public orientation
+- short role descriptions
+- ecosystem routing
+- profile-level onboarding
 
-- **[aoa-kag](https://github.com/8Dionysus/aoa-kag)**  
-  Provenance-aware derived knowledge substrate and retrieval-ready structures
+It does **not** replace the repositories that own:
 
-### Coordination and supporting surfaces
+- charters and doctrine
+- validators and CI
+- release semantics
+- implementation truth
+- layer-specific guarantees
 
-- **[Dionysus](https://github.com/8Dionysus/Dionysus)**  
-  Seed garden and staging surface
-
-- **[8Dionysus](https://github.com/8Dionysus/8Dionysus)**  
-  Public profile and route map for the ecosystem
-
-- **[aoa-sdk](https://github.com/8Dionysus/aoa-sdk)**  
-  Typed Python SDK and local-first consumer spine for source-owned AoA surfaces
-
-## Current direction
+## Building toward
 
 I am building toward:
-- agent systems that stay legible as they scale
-- knowledge architectures that accumulate layers without collapsing into noise
-- local-first and hybrid systems that keep human meaning and operational clarity in view
+
+- knowledge systems that accumulate depth without breaking provenance
+- agent systems that remain legible as they scale
+- local-first and hybrid runtimes that preserve human judgment while extending machine capability
+- modular ecosystems that grow through explicit boundaries instead of brittle fusion
 
 ## Working principles
 
 - keep source-of-truth boundaries explicit
-- publish durable techniques and reviewable workflows
-- prefer modular growth over brittle fusion
-- keep systems legible to humans while accelerating agents
+- prefer reviewable workflows over hidden glue
+- publish durable techniques over one-off tricks
+- let layers specialize without losing shared vocabulary
+- keep systems legible to humans while remaining useful to agents
 
 ## Stack
 
@@ -117,14 +121,4 @@ I am building toward:
 
 - [LinkedIn](https://www.linkedin.com/in/german-grant)
 
-## GitHub Stats
-
-<!-- Local static cards are generated by .github/workflows/update-github-stats.yml -->
-<a href="https://github.com/8Dionysus/8Dionysus">
-  <img height="180" align="center" alt="GitHub stats card"
-    src="./profile/stats.svg" />
-</a>
-<a href="https://github.com/8Dionysus/8Dionysus">
-  <img height="180" align="center" alt="Top languages card"
-    src="./profile/top-langs.svg" />
-</a>
+<!-- Optional: keep your current GitHub Stats block below this line if you still want the profile to render it. -->

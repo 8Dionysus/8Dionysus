@@ -277,6 +277,72 @@ The property by which a system makes its boundaries, ownership, current posture,
 
 Operational clarity is a precondition for trust, correction, and scalable collaboration.
 
+## Quest and RPG reflection vocabulary
+
+### RPG reflection layer
+A second-wave reader and progression vocabulary used to make long-horizon routes, quest work, ability posture, and scenario shape easier to read.
+
+This layer does not replace source-owned meaning. It reflects and organizes existing owner surfaces for humans and agents.
+
+### Quest
+A bounded tracked unit of deferred work, recurring follow-through, or progression that survives the current diff and needs explicit carry-forward.
+
+A quest should stay anchored to source-owned surfaces. It is not a vague aspiration, not raw chatter, and not hidden runtime state.
+
+### Questbook
+A public tracked surface that holds repo-local quests and their bounded progression posture.
+
+A questbook is evidence-first. It does not replace source docs, playbooks, evals, memo truth, or canonical skill meaning, and it must not become a hidden runtime ledger.
+
+### Questline
+A reviewed outline of linked source-owned quests where stage order matters and anchor / reanchor rules remain explicit.
+
+A questline is not runtime state. It is an outline surface for a bounded multi-stage lane.
+
+### Campaign
+A reviewed grouping of several questlines that share a larger horizon.
+
+A campaign should preserve lane-by-lane reviewability and must not become a grandiose name for unbounded sprawl.
+
+### Raid
+A rare coordinated route that requires explicit multi-role or multi-tier choreography.
+
+Raid language should remain exceptional. A difficult route is not automatically a raid.
+
+### Reanchor
+Governed return after anchor loss.
+
+Reanchor is not mere retry. It names a disciplined return posture with explicit conditions.
+
+### Ability card
+A derived reader surface that lets a bounded skill bundle be read as an active ability in long-horizon quest work.
+
+An ability card helps orientation. It does not replace `SKILL.md`, evaluation surfaces, portable-layer contracts, or other owner surfaces.
+
+### Loadout
+A reviewable subset posture derived from pack, trust, adapter, and runtime-contract surfaces.
+
+Loadout is not runtime inventory, not per-agent equipped state, not cooldown economics, and not a hidden control plane.
+
+### Unlock posture
+A descriptive, evidence-backed hint about when an ability becomes a sane fit for use.
+
+Unlock posture may reflect rank, mastery axes, risk ceilings, likely roles, or pack-profile fit, but it must not silently overrule trust or verification posture.
+
+### Quest harvest
+A bounded post-session promotion triage for repeated reviewed quest units.
+
+Quest harvest happens after a reviewed run, closure, or pause. It must not run inside an active route and may conclude with outcomes such as keeping a quest open or promoting it into a skill, playbook, memo, proof, or orchestrator surface.
+
+### Anti-pattern
+Do not let RPG reflection vocabulary replace source-owned repository semantics.
+
+Questbooks are not runtime ledgers.
+Ability cards are not canonical skill truth.
+Loadouts are not runtime inventory.
+Campaign language must not hide sprawl.
+Continuity language must not hide missing anchors.
+
 ## Bridge and growth vocabulary
 
 ### Counterpart bridge

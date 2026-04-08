@@ -39,6 +39,17 @@ class PublicRouteMapTests(unittest.TestCase):
         )
         self.assertEqual(by_need["profile-only route or glossary correction"], "8Dionysus")
 
+    def test_workspace_route_uses_sdk_capsule_surface(self) -> None:
+        payload = build_payload()
+        workspace_route = next(
+            route for route in payload["routes"] if route["route_id"] == "workspace-bootstrap"
+        )
+
+        self.assertEqual(
+            workspace_route["capsule_ref"],
+            "aoa-sdk:generated/workspace_control_plane.min.json",
+        )
+
     def test_payload_is_json_serializable(self) -> None:
         payload = build_payload()
         rendered = json.dumps(payload, separators=(",", ":"))

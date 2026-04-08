@@ -26,7 +26,7 @@ Use the smallest route that matches your need:
 | need | canonical home | shortest route | public verification surface |
 |---|---|---|---|
 | ecosystem understanding | `Agents-of-Abyss` | `README` -> `CHARTER` -> `ECOSYSTEM_MAP` -> `docs/FEDERATION_RULES` | `generated/ecosystem_registry.min.json`, `generated/federation_supporting_inventory.min.json`, `python scripts/validate_ecosystem.py`, `python -m pytest -q tests` |
-| local workspace bootstrap and typed control-plane use | `aoa-sdk` | `README` -> `docs/boundaries.md` -> `docs/workspace-layout.md` -> `docs/versioning.md` | `aoa workspace inspect /srv/aoa-sdk`, `aoa compatibility check /srv/aoa-sdk`, `python -m pytest -q`, `python -m ruff check .` |
+| local workspace bootstrap and typed control-plane use | `aoa-sdk` | `generated/workspace_control_plane.min.json` -> `docs/boundaries.md` -> `docs/workspace-layout.md` -> `docs/versioning.md` | `python scripts/build_workspace_control_plane.py --check`, `python scripts/validate_workspace_control_plane.py`, `aoa workspace inspect /srv/aoa-sdk`, `aoa compatibility check /srv/aoa-sdk`, `python -m pytest -q`, `python -m ruff check .` |
 | profile-only route or glossary correction | `8Dionysus` | `README.md`, `GLOSSARY.md`, `docs/QUESTBOOK_PROFILE_BOUNDARY.md` | link review against linked owner repos |
 
 ## Support and release semantics

@@ -30,7 +30,7 @@ ROUTE_METADATA_BY_NEED = {
     },
     "local workspace bootstrap and typed control-plane use": {
         "route_id": "workspace-bootstrap",
-        "capsule_ref": "aoa-sdk:.aoa/workspace.toml",
+        "capsule_ref": "aoa-sdk:generated/workspace_control_plane.min.json",
         "authority_ref": "aoa-sdk:docs/boundaries.md",
         "verification_refs": [
             "aoa-sdk:docs/workspace-layout.md",

@@ -78,6 +78,10 @@ aoa skills guard <repo-root> --intent-text "apply a risky mutation" --mutation-s
 
 `aoa skills enter` persists one ingress report under `aoa-sdk/.aoa/skill-dispatch/`.
 `aoa skills guard` persists one pre-mutation report there too.
+When checkpoint-phase surface detection sees a real growth signal, those
+commands may also append one local checkpoint note under
+`aoa-sdk/.aoa/session-growth/current/`. Use `--no-auto-checkpoint` to suppress
+that local note or `--checkpoint-kind` to force one explicit checkpoint event.
 
 ## Notes
 

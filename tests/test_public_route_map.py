@@ -9,15 +9,19 @@ import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 
-from public_route_map_common import PROFILE_PAYLOAD, build_payload, parse_public_entry_posture_rows
+from public_route_map_common import SURFACE_PAYLOAD, build_payload, parse_public_entry_posture_rows
 
 
 class PublicRouteMapTests(unittest.TestCase):
     def test_build_payload_stays_orientation_only(self) -> None:
         payload = build_payload()
 
-        self.assertEqual(payload["version"], 1)
-        self.assertEqual(payload["profile"], PROFILE_PAYLOAD)
+        self.assertEqual(payload["schema_version"], "8dionysus_public_route_map_v2")
+        self.assertEqual(payload["schema_ref"], "schemas/public-route-map.schema.json")
+        self.assertEqual(payload["owner_repo"], "8Dionysus")
+        self.assertEqual(payload["surface_kind"], "orientation_surface")
+        self.assertEqual(payload["authority_ref"], SURFACE_PAYLOAD["authority_ref"])
+        self.assertEqual(payload["posture"], "route-map-only")
         self.assertEqual(
             [route["route_id"] for route in payload["routes"]],
             [
@@ -55,6 +59,8 @@ class PublicRouteMapTests(unittest.TestCase):
         rendered = json.dumps(payload, separators=(",", ":"))
 
         self.assertIn("orientation_surface", rendered)
+        self.assertNotIn(":scripts/", rendered)
+        self.assertNotIn(":src/", rendered)
 
 
 if __name__ == "__main__":

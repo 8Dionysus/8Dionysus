@@ -6,16 +6,29 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+from jsonschema import Draft202012Validator
+
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 WORKSPACE_ROOT = REPO_ROOT.parent
 PUBLIC_ENTRY_POSTURE_PATH = REPO_ROOT / "docs" / "PUBLIC_ENTRY_POSTURE.md"
 PUBLIC_ROUTE_MAP_PATH = REPO_ROOT / "generated" / "public_route_map.min.json"
+SCHEMA_REF = "schemas/public-route-map.schema.json"
+VALIDATION_REFS = (
+    "scripts/build_public_route_map.py",
+    "scripts/validate_public_route_map.py",
+    "tests/test_public_route_map.py",
+)
+FORBIDDEN_LOW_CONTEXT_PREFIXES = ("src/", "scripts/")
 
-PROFILE_PAYLOAD = {
-    "repo": "8Dionysus",
+SURFACE_PAYLOAD = {
+    "schema_version": "8dionysus_public_route_map_v2",
+    "schema_ref": SCHEMA_REF,
+    "owner_repo": "8Dionysus",
     "surface_kind": "orientation_surface",
-    "authority_posture": "route-map-only",
+    "authority_ref": "docs/PUBLIC_ENTRY_POSTURE.md",
+    "posture": "route-map-only",
+    "validation_refs": list(VALIDATION_REFS),
 }
 
 ROUTE_METADATA_BY_NEED = {
@@ -126,6 +139,10 @@ def build_payload() -> dict[str, object]:
                 f"need '{need}' must keep canonical home '{expected_repo}', got '{canonical_repo}'"
             )
         metadata = ROUTE_METADATA_BY_NEED[need]
+        validate_low_context_repo_ref(metadata["capsule_ref"], f"route:{metadata['route_id']}.capsule_ref")
+        validate_low_context_repo_ref(metadata["authority_ref"], f"route:{metadata['route_id']}.authority_ref")
+        for ref in metadata["verification_refs"]:
+            validate_low_context_repo_ref(ref, f"route:{metadata['route_id']}.verification_refs")
         routes.append(
             {
                 "route_id": metadata["route_id"],
@@ -137,15 +154,28 @@ def build_payload() -> dict[str, object]:
             }
         )
 
-    return {
-        "version": 1,
-        "profile": dict(PROFILE_PAYLOAD),
+    resolve_local_ref(SURFACE_PAYLOAD["schema_ref"])
+    resolve_local_ref(SURFACE_PAYLOAD["authority_ref"])
+    for ref in SURFACE_PAYLOAD["validation_refs"]:
+        resolve_local_ref(ref)
+
+    payload = {
+        **SURFACE_PAYLOAD,
         "routes": routes,
     }
+    validate_payload_schema(payload)
+    return payload
 
 
 def render_payload(payload: dict[str, object]) -> str:
     return json.dumps(payload, ensure_ascii=False, separators=(",", ":")) + "\n"
+
+
+def resolve_local_ref(value: str) -> Path:
+    target_path = REPO_ROOT / value
+    if not target_path.exists():
+        raise ValueError(f"missing ref target '{value}'")
+    return target_path
 
 
 def resolve_repo_ref(value: str) -> Path:
@@ -157,3 +187,30 @@ def resolve_repo_ref(value: str) -> Path:
     if not target_path.exists():
         raise ValueError(f"missing ref target '{value}'")
     return target_path
+
+
+def validate_low_context_repo_ref(value: str, location: str) -> Path:
+    _, _, relative_path = value.partition(":")
+    for prefix in FORBIDDEN_LOW_CONTEXT_PREFIXES:
+        if relative_path.startswith(prefix):
+            raise ValueError(f"{location} must not point to implementation path '{value}'")
+    return resolve_repo_ref(value)
+
+
+def load_schema() -> dict[str, object]:
+    schema_path = resolve_local_ref(SCHEMA_REF)
+    return json.loads(schema_path.read_text(encoding="utf-8"))
+
+
+def validate_payload_schema(payload: dict[str, object]) -> None:
+    validator = Draft202012Validator(load_schema())
+    errors = sorted(validator.iter_errors(payload), key=lambda error: list(error.absolute_path))
+    if not errors:
+        return
+    error = errors[0]
+    path = "".join(f"[{item}]" if isinstance(item, int) else f".{item}" for item in error.absolute_path)
+    if path.startswith("."):
+        path = path[1:]
+    if path:
+        raise ValueError(f"schema violation at '{path}': {error.message}")
+    raise ValueError(f"schema violation: {error.message}")

@@ -6,23 +6,31 @@ from __future__ import annotations
 import json
 
 from public_route_map_common import (
-    PROFILE_PAYLOAD,
+    SURFACE_PAYLOAD,
     PUBLIC_ROUTE_MAP_PATH,
     ROUTE_METADATA_BY_NEED,
     build_payload,
-    resolve_repo_ref,
+    resolve_local_ref,
+    validate_low_context_repo_ref,
+    validate_payload_schema,
 )
 
 
 def main() -> int:
     expected_payload = build_payload()
     current_payload = json.loads(PUBLIC_ROUTE_MAP_PATH.read_text(encoding="utf-8"))
+    validate_payload_schema(current_payload)
     if current_payload != expected_payload:
         raise SystemExit("generated/public_route_map.min.json does not match the canonical rebuild")
 
-    profile = current_payload.get("profile")
-    if profile != PROFILE_PAYLOAD:
-        raise SystemExit("generated/public_route_map.min.json must stay orientation-only")
+    for key, expected in SURFACE_PAYLOAD.items():
+        if current_payload.get(key) != expected:
+            raise SystemExit(f"generated/public_route_map.min.json must keep {key}={expected!r}")
+        if key in {"schema_ref", "authority_ref"}:
+            resolve_local_ref(expected)
+        if key == "validation_refs":
+            for ref in expected:
+                resolve_local_ref(ref)
 
     routes = current_payload.get("routes")
     if not isinstance(routes, list) or len(routes) != len(ROUTE_METADATA_BY_NEED):
@@ -42,15 +50,15 @@ def main() -> int:
             value = route.get(key)
             if not value:
                 raise SystemExit(f"generated/public_route_map.min.json is missing route field '{key}'")
-        resolve_repo_ref(route["capsule_ref"])
-        resolve_repo_ref(route["authority_ref"])
+        validate_low_context_repo_ref(route["capsule_ref"], f"route:{route['route_id']}.capsule_ref")
+        validate_low_context_repo_ref(route["authority_ref"], f"route:{route['route_id']}.authority_ref")
         verification_refs = route["verification_refs"]
         if not isinstance(verification_refs, list) or not verification_refs:
             raise SystemExit("generated/public_route_map.min.json verification_refs must be a non-empty list")
         for ref in verification_refs:
             if not isinstance(ref, str) or not ref.strip():
                 raise SystemExit("generated/public_route_map.min.json verification_refs must contain strings")
-            resolve_repo_ref(ref)
+            validate_low_context_repo_ref(ref, f"route:{route['route_id']}.verification_refs")
 
     print("[ok] validated generated/public_route_map.min.json")
     return 0

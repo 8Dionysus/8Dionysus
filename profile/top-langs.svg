@@ -160,7 +160,7 @@
           data-testid="lang-progress"
           x="0.00"
           y="0"
-          width="247.22"
+          width="247.17"
           height="8"
           fill="#3572A5"
         />
@@ -168,9 +168,9 @@
         <rect
           mask="url(#rect-mask)"
           data-testid="lang-progress"
-          x="247.22"
+          x="247.17"
           y="0"
-          width="12.29"
+          width="12.34"
           height="8"
           fill="#89e051"
         />
@@ -180,7 +180,7 @@
           data-testid="lang-progress"
           x="249.50"
           y="0"
-          width="10.43"
+          width="10.42"
           height="8"
           fill="#012456"
         />
@@ -188,9 +188,9 @@
         <rect
           mask="url(#rect-mask)"
           data-testid="lang-progress"
-          x="249.93"
+          x="249.92"
           y="0"
-          width="10.07"
+          width="10.08"
           height="8"
           fill="#384d54"
         />
@@ -200,12 +200,12 @@
     <g transform="translate(0, 0)"><g transform="translate(0, 0)">
     <g class="stagger" style="animation-delay: 450ms">
       <circle cx="5" cy="6" r="5" fill="#3572A5" />
-      <text data-testid="lang-name" x="15" y="10" class="lang-name">Python 98.89%</text>
+      <text data-testid="lang-name" x="15" y="10" class="lang-name">Python 98.87%</text>
     </g>
   </g><g transform="translate(0, 25)">
     <g class="stagger" style="animation-delay: 600ms">
       <circle cx="5" cy="6" r="5" fill="#89e051" />
-      <text data-testid="lang-name" x="15" y="10" class="lang-name">Shell 0.92%</text>
+      <text data-testid="lang-name" x="15" y="10" class="lang-name">Shell 0.93%</text>
     </g>
   </g></g><g transform="translate(150, 0)"><g transform="translate(0, 0)">
     <g class="stagger" style="animation-delay: 750ms">

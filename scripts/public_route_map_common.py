@@ -34,7 +34,7 @@ SURFACE_PAYLOAD = {
 ROUTE_METADATA_BY_NEED = {
     "ecosystem understanding": {
         "route_id": "ecosystem-understanding",
-        "capsule_ref": "Agents-of-Abyss:README.md",
+        "capsule_ref": "Agents-of-Abyss:generated/center_entry_map.min.json",
         "authority_ref": "Agents-of-Abyss:CHARTER.md",
         "verification_refs": [
             "Agents-of-Abyss:generated/ecosystem_registry.min.json",

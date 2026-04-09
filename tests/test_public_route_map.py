@@ -54,6 +54,18 @@ class PublicRouteMapTests(unittest.TestCase):
             "aoa-sdk:generated/workspace_control_plane.min.json",
         )
 
+    def test_ecosystem_route_uses_center_entry_capsule(self) -> None:
+        payload = build_payload()
+        ecosystem_route = next(
+            route for route in payload["routes"] if route["route_id"] == "ecosystem-understanding"
+        )
+
+        self.assertEqual(
+            ecosystem_route["capsule_ref"],
+            "Agents-of-Abyss:generated/center_entry_map.min.json",
+        )
+        self.assertEqual(ecosystem_route["authority_ref"], "Agents-of-Abyss:CHARTER.md")
+
     def test_payload_is_json_serializable(self) -> None:
         payload = build_payload()
         rendered = json.dumps(payload, separators=(",", ":"))

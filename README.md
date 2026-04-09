@@ -1,5 +1,3 @@
-# Dionysus
-
 > Knowledge should deepen with provenance as it grows.  
 > Agency should grow beyond tools into self-agency.
 

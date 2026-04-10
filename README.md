@@ -1,5 +1,5 @@
-> Knowledge should deepen with provenance as it grows.  
-> Agency should grow beyond tools into self-agency.
+## Knowledge should deepen with provenance as it grows.  
+## Agency should grow beyond tools into self-agency.
 
 I build source-first knowledge systems and local-first agent architectures that begin with bounded, reviewable agency and grow toward self-agency: agents that preserve continuity, revise their own methods, and participate in their own becoming.
 

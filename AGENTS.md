@@ -1,10 +1,10 @@
-# AGENTS.md — /srv workspace
+# AGENTS.md — workspace root
 
-Guidance for coding agents and humans operating from the shared `/srv` AoA / ToS workspace.
+Guidance for coding agents and humans operating from a shared AoA / ToS workspace root.
 
 ## Purpose
 
-`/srv` is the editable federation workspace root.
+`<workspace-root>` is the editable federation workspace root.
 Treat it as the sibling-parent directory for the public AoA / ToS repositories, not as the source of truth for any one layer.
 
 This workspace is where bounded, reviewable agency enters the system.
@@ -17,18 +17,18 @@ Once a concrete `repo_root` is chosen, that repository's own `AGENTS.md` and nea
 
 ## Read first
 
-Before substantial work from `/srv`, read in this order:
+Before substantial work from the workspace root, read in this order:
 
-1. `/srv/8Dionysus/README.md`
-2. `/srv/8Dionysus/GLOSSARY.md`
-3. `/srv/8Dionysus/docs/PUBLIC_ENTRY_POSTURE.md`
+1. `<workspace-root>/8Dionysus/README.md`
+2. `<workspace-root>/8Dionysus/GLOSSARY.md`
+3. `<workspace-root>/8Dionysus/docs/PUBLIC_ENTRY_POSTURE.md`
 4. the target repository's own `README.md`
 5. the target repository's own `AGENTS.md`
 
 If the task is primarily about workspace layout or bootstrap, also read:
 
-- `/srv/8Dionysus/docs/WORKSPACE_INSTALL.md`
-- `/srv/aoa-sdk/docs/workspace-layout.md` when available
+- `<workspace-root>/8Dionysus/docs/WORKSPACE_INSTALL.md`
+- `<workspace-root>/aoa-sdk/docs/workspace-layout.md` when available
 
 ## Core arc
 
@@ -63,18 +63,18 @@ When choosing a primary `repo_root`, route by the question being asked:
 - `Dionysus` for seed-garden experiments, staging, and early forms
 - `8Dionysus` for public routing, glossary alignment, and profile-level orientation
 
-If the task is truly cross-repo and no single owner repo is primary yet, use `/srv` as the temporary `repo_root` only until the owning layer becomes clear.
+If the task is truly cross-repo and no single owner repo is primary yet, use `<workspace-root>` as the temporary `repo_root` only until the owning layer becomes clear.
 
 ## Session start
 
-For every new session started from `/srv`, before substantial work:
+For every new session started from the workspace root, before substantial work:
 
 1. choose the primary `repo_root`
 2. run one ingress pass
 
 ```bash
 aoa skills enter <repo_root> \
-  --root /srv \
+  --root <workspace-root> \
   --intent-text "<short task summary>" \
   --json
 ```
@@ -87,7 +87,7 @@ Before risky, mutating, infra, runtime, repo-config, or public-share actions, ru
 
 ```bash
 aoa skills guard <repo_root> \
-  --root /srv \
+  --root <workspace-root> \
   --intent-text "<planned change>" \
   --mutation-surface <code|repo-config|infra|runtime|public-share> \
   --json
@@ -105,7 +105,7 @@ When the active task shows route drift, owner-layer ambiguity, proof need, recal
 
 ```bash
 aoa surfaces detect <repo_root> \
-  --root /srv \
+  --root <workspace-root> \
   --phase ingress \
   --intent-text "<surface-aware task summary>" \
   --json
@@ -115,7 +115,7 @@ Use `--phase pre-mutation` and the same `mutation_surface` when the signal appea
 
 ```bash
 aoa surfaces detect <repo_root> \
-  --root /srv \
+  --root <workspace-root> \
   --phase pre-mutation \
   --intent-text "<surface-aware task summary>" \
   --mutation-surface <code|repo-config|infra|runtime|public-share> \
@@ -149,11 +149,11 @@ Remember:
 
 ## Workspace posture
 
-- `/srv/.agents/skills` is the shared project-foundation install
-- `/srv/8Dionysus` is the public profile and route map
-- `/srv/Dionysus` is the seed garden and staging surface
-- source repositories live as sibling checkouts under `/srv`
-- `abyss-stack` is part of the ecosystem, but its preferred source checkout may still live outside `/srv`; respect `aoa-sdk` workspace discovery and overrides
+- `<workspace-root>/.agents/skills` is the shared project-foundation install
+- `<workspace-root>/8Dionysus` is the public profile and route map
+- `<workspace-root>/Dionysus` is the seed garden and staging surface
+- source repositories live as sibling checkouts under `<workspace-root>`
+- `abyss-stack` is part of the ecosystem, but its preferred source checkout may still live outside `<workspace-root>`; respect `aoa-sdk` workspace discovery and overrides
 
 ## Workflow
 

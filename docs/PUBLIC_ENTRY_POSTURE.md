@@ -10,6 +10,7 @@ It keeps `8Dionysus` as a route map, not a hidden center of authority.
 - public repository routing
 - short role descriptions for the current public ecosystem
 - glossary-level orientation
+- selected shared-root install surfaces projected into the live workspace root, specifically `AGENTS.md`, `AOA_WORKSPACE_ROOT`, `.agents/`, and the project-level `.codex` source layer
 - profile-local reflection debt when linked public descriptions drift
 
 It does not own:
@@ -17,6 +18,7 @@ It does not own:
 - ecosystem charter or federation rules
 - source-owned release semantics for AoA layers
 - support guarantees for runtime, product, or infrastructure surfaces
+- personal `~/.codex` defaults or deploy-local runtime output under `<workspace-root>/.codex/generated/`
 - validators, workflows, or implementation truth from linked repositories
 
 ## Shortest onboarding paths
@@ -33,6 +35,9 @@ Use the smallest route that matches your need:
 
 `8Dionysus` does not issue ecosystem releases.
 Its changes are honest only when they follow already-landed owner-repo changes and keep route descriptions aligned with those owner surfaces.
+That includes the selected shared-root install surfaces it publishes into the
+live workspace root: those files may shape orientation and local bootstrap, but
+they still do not transfer layer authority away from the owning repositories.
 
 The profile may link to product-edge repositories such as `ATM10-Agent`, but their supported profiles, release cadence, and public test tiers remain owned by those repositories.
 In the current remediation program, the product-edge tightening still belongs to the later GitHub-only `WS12` track.

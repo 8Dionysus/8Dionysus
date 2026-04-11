@@ -1,4 +1,4 @@
-# AGENTS.md — workspace root
+# AGENTS.md — <workspace-root> workspace
 
 Guidance for coding agents and humans operating from a shared AoA / ToS workspace root.
 
@@ -28,6 +28,9 @@ Before substantial work from the workspace root, read in this order:
 If the task is primarily about workspace layout or bootstrap, also read:
 
 - `<workspace-root>/8Dionysus/docs/WORKSPACE_INSTALL.md`
+- `<workspace-root>/AOA_WORKSPACE_ROOT` when present
+- `<workspace-root>/.agents/plugins/marketplace.json` when present
+- `<workspace-root>/.codex/config.toml` when present
 - `<workspace-root>/aoa-sdk/docs/workspace-layout.md` when available
 
 ## Core arc
@@ -142,6 +145,7 @@ Remember:
 - `aoa surfaces detect` is additive and read-only
 - non-skill surfaces are hints, candidates, or reviewed closeout handoffs, not executable-now runtime objects
 - `8Dionysus` is the public route map, not the constitutional center
+- `8Dionysus` may own selected shared-root install surfaces without becoming the source of truth for the layers those surfaces help route into
 - `Agents-of-Abyss` is the ecosystem center, not the full implementation home
 - `aoa-sdk` stays on the control plane and does not absorb source-owned meaning
 - routing, memory, stats, KAG, and other derived surfaces must not masquerade as source truth
@@ -149,11 +153,81 @@ Remember:
 
 ## Workspace posture
 
+- `<workspace-root>/AGENTS.md`, `<workspace-root>/AOA_WORKSPACE_ROOT`, `<workspace-root>/.agents/`, and `<workspace-root>/.codex/` are selected shared-root install surfaces sourced from `8Dionysus` and projected into the live workspace root
 - `<workspace-root>/.agents/skills` is the shared project-foundation install
+- `<workspace-root>/.agents/plugins/marketplace.json` is the workspace plugin discovery surface when present
+- `<workspace-root>/.agents/skills/` remains an installed projection of `aoa-skills`, not an authority transfer into `8Dionysus`
+- `<workspace-root>/.codex/bin/aoa-workspace-project` is the short launcher for shared-root projection preview, check, and apply
+- `<workspace-root>/.codex/bin/`, `<workspace-root>/.codex/scripts/`, and `<workspace-root>/.codex/tools/` are workspace-local control-plane utilities
+- `<workspace-root>/.codex/plugins/` is the project-level Codex plugin install surface
+- `<workspace-root>/.codex/generated/` remains workspace-local runtime output and must not be mistaken for the source-owned install surface
 - `<workspace-root>/8Dionysus` is the public profile and route map
 - `<workspace-root>/Dionysus` is the seed garden and staging surface
 - source repositories live as sibling checkouts under `<workspace-root>`
 - `abyss-stack` is part of the ecosystem, but its preferred source checkout may still live outside `<workspace-root>`; respect `aoa-sdk` workspace discovery and overrides
+
+## Skill ↔ MCP route discipline
+
+- Prefer AoA skills whose generated `.agents/skills/*/agents/openai.yaml` or documented wiring examples declare named MCP dependencies when the route is sibling-workspace orientation, derived stats observability, or Dionysus seed routing
+- Treat `aoa_workspace` as the first orientation surface when owner-fit is unclear
+- Treat `aoa_stats` as derived observability only. Do not let it overrule owner truth or bounded eval verdicts
+- Treat `dionysus` as seed-garden and planting-lineage context. Do not mistake staging notes for final owner doctrine
+- Respect `allow_implicit_invocation` from the generated skill export and local adapter manifest. Do not silently force explicit-only skills into automatic use
+- Keep role-bearing work in custom agents when they exist. MCP dependencies do not by themselves create hidden actor behavior
+
+## Plugin posture
+
+If the `aoa-shared-launchers` plugin is installed, prefer its bundled launcher
+skills for:
+
+- cross-repo orientation
+- bounded growth snapshots
+- seed-route inspection
+- AoA Codex wiring diagnosis
+
+These plugin skills rely on the named MCP servers already configured for the
+workspace:
+
+- `aoa_workspace`
+- `aoa_stats`
+- `dionysus`
+
+Boundary rules:
+
+- the plugin is a launcher layer, not an owning layer
+- the plugin install path is workspace-local packaging, not owner-repo truth
+- `aoa_stats` remains derived
+- `Dionysus` remains staging and route context
+- owner truth stays in the owning repo
+
+## Convergence posture
+
+Use the workspace-local convergence seam for read-only drift checks:
+
+- doctor: `<workspace-root>/.codex/bin/aoa-codex-doctor`
+- status: `<workspace-root>/.codex/bin/aoa-codex-status`
+- bootstrap: `<workspace-root>/.codex/bin/aoa-codex-bootstrap`
+- reports: `<workspace-root>/.codex/generated/codex/aoa_codex_convergence_report.{json,md}`
+
+Boundary rules:
+
+- convergence reports are evidence, not authority
+- convergence may expose drift across MCP, plugins, skills, hooks, and subagents
+- convergence must not replace owner-repo validation or rewrite owner meaning
+
+## Hooks posture
+
+AoA hooks live under `<workspace-root>/.codex/hooks/` and write reports under
+`<workspace-root>/.codex/generated/codex/hooks/`.
+
+Use `<workspace-root>/.codex/bin/aoa-codex-hooks-doctor` for the manual
+hook-doctor surface.
+
+Boundary rules:
+
+- hooks stay deterministic, narrow, and fail-open
+- hooks may write reports and event logs only under the workspace-local hooks report surface
+- hooks do not become routing authority, plugin authority, or owner-repo truth
 
 ## Workflow
 

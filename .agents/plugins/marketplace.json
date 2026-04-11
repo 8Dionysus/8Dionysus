@@ -1,0 +1,20 @@
+{
+  "name": "aoa-local-plugins",
+  "interface": {
+    "displayName": "AoA Local Plugins"
+  },
+  "plugins": [
+    {
+      "name": "aoa-shared-launchers",
+      "source": {
+        "source": "local",
+        "path": "./.codex/plugins/aoa-shared-launchers"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

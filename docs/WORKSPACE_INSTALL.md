@@ -1,8 +1,10 @@
 # Workspace Install
 
 This note explains the public workspace layout for running the AoA / ToS ecosystem as one local project.
-It is an orientation surface.
+It is an orientation and install-source surface.
 The owning install logic still lives in `aoa-skills` and `aoa-sdk`.
+`8Dionysus` owns only the selected shared-root surfaces that are projected from
+this repository into the live workspace root.
 
 ## Canonical shape
 
@@ -10,8 +12,20 @@ Use one parent directory that keeps the public repositories as sibling checkouts
 
 ```text
 <workspace-root>/
+  AGENTS.md
+  AOA_WORKSPACE_ROOT
   .agents/
     skills/
+    plugins/
+      marketplace.json
+  .codex/
+    config.toml
+    hooks.json
+    agents/
+    hooks/
+    plugins/
+    scripts/
+    tools/
   8Dionysus/
   Agents-of-Abyss/
   Tree-of-Sophia/
@@ -31,6 +45,34 @@ Use one parent directory that keeps the public repositories as sibling checkouts
 `8Dionysus` stays the public profile and route map.
 It is part of the workspace, but it does not replace the source repositories.
 
+## Selected shared-root install surfaces
+
+`8Dionysus` is also the source-owned home for a small shared-root install
+subset that is projected into the live workspace root:
+
+- `<workspace-root>/AGENTS.md`
+- `<workspace-root>/AOA_WORKSPACE_ROOT`
+- `<workspace-root>/.agents/`
+- `<workspace-root>/.codex/`
+
+Those surfaces exist to make the live workspace legible and usable for Codex
+and AoA tooling. They do not make `8Dionysus` the owner of layer-specific
+runtime, charter, or implementation truth.
+
+Projection rules:
+
+- keep `README.md` profile-owned and GitHub-facing; it is not part of the shared-root install projection
+- keep personal Codex defaults in `~/.codex/config.toml`, not in the project-level `.codex/`
+- treat `<workspace-root>/AOA_WORKSPACE_ROOT` as the sibling-workspace marker for Codex and AoA tooling
+- treat `<workspace-root>/.agents/` as the workspace agent-install surface; `.agents/skills/` remains an installed projection of `aoa-skills`, while `.agents/plugins/marketplace.json` is the local plugin discovery surface
+- treat `<workspace-root>/.codex/` as the project-level Codex install surface for hooks, agents, plugins, scripts, convergence tooling, tests, and named MCP server wiring such as `aoa_workspace`, `aoa_stats`, and `dionysus`
+- treat the checked-in `.codex/` tree as the source-owned install surface for the current live workspace deployment; if the public workspace root changes, regenerate or adapt the path-bound wiring before projecting it
+- keep `<workspace-root>/.codex/generated/` deploy-local; generated reports, event logs, and other runtime output should not be copied back into `8Dionysus` as source truth
+
+Decision note:
+
+- `docs/decisions/0001-shared-root-projection.md`
+
 ## Foundation install
 
 The safest route is to use the `aoa-sdk` bootstrap command after the sibling checkouts are already present:
@@ -41,6 +83,8 @@ aoa workspace bootstrap <workspace-root> --execute --json
 ```
 
 That command checks the sibling layout, installs the shared foundation into `<workspace-root>/.agents/skills`, and writes a root-level `AGENTS.md` when one is missing.
+After the sibling layout is in place, the selected shared-root install surfaces
+from `8Dionysus` may then be projected into the live workspace root.
 
 Manual install remains available as the lower-level fallback:
 
@@ -67,6 +111,34 @@ python <workspace-root>/aoa-skills/scripts/verify_skill_pack.py \
   --format json
 ```
 
+## Projection sync
+
+Use the repository-local projection tool to preview or apply the selected
+shared-root surfaces from `8Dionysus` into the live workspace root:
+
+```bash
+<workspace-root>/.codex/bin/aoa-workspace-project --json
+<workspace-root>/.codex/bin/aoa-workspace-project --check --json
+<workspace-root>/.codex/bin/aoa-workspace-project --execute --json
+```
+
+The direct Python entrypoint remains available:
+
+```bash
+python <workspace-root>/8Dionysus/scripts/project_workspace_root.py --workspace-root <workspace-root> --json
+python <workspace-root>/8Dionysus/scripts/project_workspace_root.py --workspace-root <workspace-root> --check --json
+python <workspace-root>/8Dionysus/scripts/project_workspace_root.py --workspace-root <workspace-root> --execute --json
+```
+
+Behavior:
+
+- the launcher resolves both the source-owned `8Dionysus/.codex/bin/` copy and the projected live `<workspace-root>/.codex/bin/` copy
+- dry-run is the default
+- `--check` exits nonzero when drift exists
+- `--execute` applies the projection
+- `--prune` may be added when you want managed extra paths removed too
+- `AGENTS.md` is rendered by replacing `<workspace-root>` with the target live root
+
 ## Session start
 
 Use `aoa-sdk` as the control-plane entry surface for session ingress and mutation gates:
@@ -85,6 +157,8 @@ that local note or `--checkpoint-kind` to force one explicit checkpoint event.
 
 ## Notes
 
+- `8Dionysus` owns the source copies for the selected shared-root install surfaces it projects into the live workspace root.
+- `README.md` in `8Dionysus` remains the profile page and should not be treated as the workspace install authority surface.
 - `Dionysus` is the seed garden and staging surface in the public workspace.
 - `aoa-skills` owns the skill exports, install profiles, and validators.
 - `aoa-sdk` owns workspace discovery, typed reads, detector/dispatcher behavior, and closeout helpers.

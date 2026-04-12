@@ -69,6 +69,7 @@ Projection rules:
 - treat the checked-in `.codex/` tree as the source-owned install surface for the current live workspace deployment; if the public workspace root changes, regenerate or adapt the path-bound wiring before projecting it
 - the checked-in `.codex/config.toml` and `.codex/hooks.json` are source-owned generated deployment artifacts for the current chosen public workspace root; if that root changes, rerender them from `config/codex_plane/runtime_manifest.v1.json` and the selected profile before projection, rather than hand-editing them as the primary change surface
 - live rollout evidence for the current workspace root belongs under `<workspace-root>/.codex/generated/rollout/`; keep it deploy-local and use `docs/CODEX_PLANE_ROLLOUT.md` for trust, doctor, and rollback posture
+- checked-in trusted rollout campaign history for the shared-root Codex plane belongs under `8Dionysus/generated/codex/rollout/`; keep it source-owned and use `docs/CODEX_TRUSTED_ROLLOUT_OPERATIONS.md` for campaign, drift-window, rollback-window, and summary posture
 - keep `<workspace-root>/.codex/generated/` deploy-local; generated reports, event logs, and other runtime output should not be copied back into `8Dionysus` as source truth
 
 Decision note:
@@ -149,6 +150,11 @@ After rerender, treat rollout as a separate phase: capture trust, apply only as
 needed, run doctor/verify, and keep rollout receipts under
 `<workspace-root>/.codex/generated/rollout/` instead of treating render success
 as rollout success. See `docs/CODEX_PLANE_ROLLOUT.md`.
+
+When the route becomes a bounded campaign rather than one deploy-local apply,
+publish the checked-in shared-root campaign history, drift window, rollback
+window, and latest-trusted summary in `8Dionysus/generated/codex/rollout/` and
+review them through `docs/CODEX_TRUSTED_ROLLOUT_OPERATIONS.md`.
 
 Behavior:
 

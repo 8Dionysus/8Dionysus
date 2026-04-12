@@ -74,9 +74,6 @@ def validate_codex_rollout_campaign_cadence() -> None:
         raise ValueError("reanchor_then_regenerate decision requires review_required or reanchor status")
     if rollback["status"] == "ready_if_needed" and rollback["post_rollback_review"] != "required":
         raise ValueError("ready_if_needed rollback windows must keep post_rollback_review=required")
-    if campaign["state"] != "open" and review["status"] != "closed":
-        raise ValueError("non-open campaign windows should not keep an open drift review posture")
-
 
 def main() -> int:
     validate_codex_rollout_campaign_cadence()

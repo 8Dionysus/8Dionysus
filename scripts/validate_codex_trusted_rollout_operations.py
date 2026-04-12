@@ -114,8 +114,10 @@ def validate_codex_trusted_rollout_operations() -> None:
         drift_state = row.get("drift_state")
         if drift_state not in ALLOWED_DRIFT_STATES:
             raise ValueError(f"{location}.drift_state must stay inside the drift lifecycle vocabulary")
-        if state == "rolled_back" and not normalized_rollback_refs:
-            raise ValueError(f"{location}.rollback_window_refs must not be empty for rolled_back entries")
+        if state in {"rollback_open", "rolled_back"} and not normalized_rollback_refs:
+            raise ValueError(
+                f"{location}.rollback_window_refs must not be empty for {state} entries"
+            )
         if state == "stabilized" and normalized_rollback_refs:
             raise ValueError(f"{location}.rollback_window_refs must stay empty for stabilized entries")
 
@@ -139,11 +141,18 @@ def validate_codex_trusted_rollout_operations() -> None:
         raise ValueError("regeneration_campaigns.min.json must stay owned by 8Dionysus")
     if not isinstance(regeneration_campaigns, list) or not regeneration_campaigns:
         raise ValueError("regeneration_campaigns.min.json must expose a non-empty campaigns list")
-    if sorted(
-        require_match(ROLLOUT_REF_RE, item.get("rollout_campaign_ref"), "campaign.rollout_campaign_ref")
-        for item in regeneration_campaigns
-        if isinstance(item, dict)
-    ) != sorted(campaigns_from_history):
+    normalized_regeneration_campaigns: list[str] = []
+    for index, item in enumerate(regeneration_campaigns):
+        if not isinstance(item, dict):
+            raise ValueError(f"regeneration_campaigns.min.json.campaigns[{index}] must be an object")
+        normalized_regeneration_campaigns.append(
+            require_match(
+                ROLLOUT_REF_RE,
+                item.get("rollout_campaign_ref"),
+                f"regeneration_campaigns.min.json.campaigns[{index}].rollout_campaign_ref",
+            )
+        )
+    if sorted(normalized_regeneration_campaigns) != sorted(campaigns_from_history):
         raise ValueError("regeneration campaigns must cover exactly the rollout campaign refs from deploy history")
 
     rollback_windows = rollback.get("rollback_windows")

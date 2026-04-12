@@ -14,3 +14,5 @@ Bundled skills:
 - `aoa-config-doctor`
 
 Each bundled skill includes `agents/openai.yaml` with named MCP dependencies where appropriate.
+`aoa-config-doctor` now resolves the real AoA workspace root from either `/srv`
+or a repo-local checkout before it recommends workspace validators.

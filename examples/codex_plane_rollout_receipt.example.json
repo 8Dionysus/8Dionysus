@@ -1,0 +1,12 @@
+{
+  "schema_version": "8dionysus_codex_plane_rollout_receipt_v1",
+  "rollout_receipt_id": "cprollout-2026-04-11T210700Z-root-srv",
+  "trust_state_id": "cptrust-2026-04-11T210400Z-root-srv",
+  "regeneration_report_id": "cpregen-2026-04-11T210500Z-root-srv",
+  "apply_mode": "execute",
+  "deployment_state": "verified",
+  "doctor_result": "pass",
+  "rollback_plan_ref": "docs/CODEX_PLANE_ROLLOUT.md#rollback-posture",
+  "stats_refresh_required": true,
+  "verified_at": "2026-04-11T21:07:00Z"
+}

@@ -77,6 +77,9 @@ into the live workspace root.
 Regeneration happens before projection whenever the checked-in `.codex/`
 deployment needs a new live root.
 
+For the live deployment trail that follows rerender, use
+`docs/CODEX_PLANE_ROLLOUT.md`.
+
 ## Failure mode to avoid
 
 The bad pattern is this:

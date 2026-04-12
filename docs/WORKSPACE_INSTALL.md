@@ -68,6 +68,7 @@ Projection rules:
 - treat `<workspace-root>/.codex/` as the project-level Codex install surface for hooks, agents, plugins, scripts, convergence tooling, tests, and named MCP server wiring such as `aoa_workspace`, `aoa_stats`, and `dionysus`
 - treat the checked-in `.codex/` tree as the source-owned install surface for the current live workspace deployment; if the public workspace root changes, regenerate or adapt the path-bound wiring before projecting it
 - the checked-in `.codex/config.toml` and `.codex/hooks.json` are source-owned generated deployment artifacts for the current chosen public workspace root; if that root changes, rerender them from `config/codex_plane/runtime_manifest.v1.json` and the selected profile before projection, rather than hand-editing them as the primary change surface
+- live rollout evidence for the current workspace root belongs under `<workspace-root>/.codex/generated/rollout/`; keep it deploy-local and use `docs/CODEX_PLANE_ROLLOUT.md` for trust, doctor, and rollback posture
 - keep `<workspace-root>/.codex/generated/` deploy-local; generated reports, event logs, and other runtime output should not be copied back into `8Dionysus` as source truth
 
 Decision note:
@@ -143,6 +144,11 @@ python <workspace-root>/8Dionysus/scripts/render_codex_plane.py \
   --dest-report <workspace-root>/8Dionysus/config/codex_plane/examples/current-srv.paths.json
 python <workspace-root>/8Dionysus/scripts/validate_codex_plane_regeneration.py --workspace-root <workspace-root>
 ```
+
+After rerender, treat rollout as a separate phase: capture trust, apply only as
+needed, run doctor/verify, and keep rollout receipts under
+`<workspace-root>/.codex/generated/rollout/` instead of treating render success
+as rollout success. See `docs/CODEX_PLANE_ROLLOUT.md`.
 
 Behavior:
 

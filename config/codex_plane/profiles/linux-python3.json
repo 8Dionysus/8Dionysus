@@ -1,0 +1,8 @@
+{
+  "profile_id": "linux-python3",
+  "python_command": "python3",
+  "python_prefix_args": [],
+  "render_examples": {
+    "workspace_root": "/srv"
+  }
+}

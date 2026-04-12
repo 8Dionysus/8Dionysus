@@ -28,6 +28,7 @@ Before substantial work from the workspace root, read in this order:
 If the task is primarily about workspace layout or bootstrap, also read:
 
 - `<workspace-root>/8Dionysus/docs/WORKSPACE_INSTALL.md`
+- `<workspace-root>/8Dionysus/docs/CODEX_PLANE_REGENERATION.md`
 - `<workspace-root>/AOA_WORKSPACE_ROOT` when present
 - `<workspace-root>/.agents/plugins/marketplace.json` when present
 - `<workspace-root>/.codex/config.toml` when present
@@ -162,6 +163,7 @@ Remember:
 - `<workspace-root>/.codex/plugins/` is the project-level Codex plugin install surface
 - `<workspace-root>/.codex/generated/` remains workspace-local runtime output and must not be mistaken for the source-owned install surface
 - `<workspace-root>/8Dionysus` is the public profile and route map
+- `<workspace-root>/8Dionysus/config/codex_plane/` is the source-owned regeneration surface for the checked-in `.codex/config.toml` and `.codex/hooks.json`
 - `<workspace-root>/Dionysus` is the seed garden and staging surface
 - source repositories live as sibling checkouts under `<workspace-root>`
 - `abyss-stack` is part of the ecosystem, but its preferred source checkout may still live outside `<workspace-root>`; respect `aoa-sdk` workspace discovery and overrides

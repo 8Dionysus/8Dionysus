@@ -67,6 +67,7 @@ Projection rules:
 - treat `<workspace-root>/.agents/` as the workspace agent-install surface; `.agents/skills/` remains an installed projection of `aoa-skills`, while `.agents/plugins/marketplace.json` is the local plugin discovery surface
 - treat `<workspace-root>/.codex/` as the project-level Codex install surface for hooks, agents, plugins, scripts, convergence tooling, tests, and named MCP server wiring such as `aoa_workspace`, `aoa_stats`, and `dionysus`
 - treat the checked-in `.codex/` tree as the source-owned install surface for the current live workspace deployment; if the public workspace root changes, regenerate or adapt the path-bound wiring before projecting it
+- the checked-in `.codex/config.toml` and `.codex/hooks.json` are source-owned generated deployment artifacts for the current chosen public workspace root; if that root changes, rerender them from `config/codex_plane/runtime_manifest.v1.json` and the selected profile before projection, rather than hand-editing them as the primary change surface
 - keep `<workspace-root>/.codex/generated/` deploy-local; generated reports, event logs, and other runtime output should not be copied back into `8Dionysus` as source truth
 
 Decision note:
@@ -128,6 +129,19 @@ The direct Python entrypoint remains available:
 python <workspace-root>/8Dionysus/scripts/project_workspace_root.py --workspace-root <workspace-root> --json
 python <workspace-root>/8Dionysus/scripts/project_workspace_root.py --workspace-root <workspace-root> --check --json
 python <workspace-root>/8Dionysus/scripts/project_workspace_root.py --workspace-root <workspace-root> --execute --json
+```
+
+When the checked-in Codex plane needs a new live root, rerender it before projection:
+
+```bash
+python <workspace-root>/8Dionysus/scripts/render_codex_plane.py \
+  --manifest <workspace-root>/8Dionysus/config/codex_plane/runtime_manifest.v1.json \
+  --profile <workspace-root>/8Dionysus/config/codex_plane/profiles/linux-python3.json \
+  --workspace-root <workspace-root> \
+  --dest-config <workspace-root>/8Dionysus/.codex/config.toml \
+  --dest-hooks <workspace-root>/8Dionysus/.codex/hooks.json \
+  --dest-report <workspace-root>/8Dionysus/config/codex_plane/examples/current-srv.paths.json
+python <workspace-root>/8Dionysus/scripts/validate_codex_plane_regeneration.py --workspace-root <workspace-root>
 ```
 
 Behavior:

@@ -1,0 +1,118 @@
+{
+  "version": "1.0",
+  "workspace_marker": "AOA_WORKSPACE_ROOT",
+  "project_root_markers": [
+    "AOA_WORKSPACE_ROOT",
+    ".git"
+  ],
+  "features": {
+    "codex_hooks": true
+  },
+  "agents": {
+    "max_threads": 4,
+    "max_depth": 1,
+    "job_max_runtime_seconds": 1800,
+    "roles": [
+      {
+        "name": "architect",
+        "description": "AoA architect. Shapes structure, boundaries, and system-level direction across AoA surfaces.",
+        "config_file": "agents/architect.toml",
+        "nickname_candidates": [
+          "Atlas",
+          "Lattice",
+          "Spine"
+        ]
+      },
+      {
+        "name": "coder",
+        "description": "AoA coder. Implements bounded changes through explicit workflows, verification, and concise reporting.",
+        "config_file": "agents/coder.toml",
+        "nickname_candidates": [
+          "Forge",
+          "Rivet",
+          "Patch"
+        ]
+      },
+      {
+        "name": "evaluator",
+        "description": "AoA evaluator. Applies bounded proof surfaces and comparison discipline to agent-shaped work.",
+        "config_file": "agents/evaluator.toml",
+        "nickname_candidates": [
+          "Gauge",
+          "Prism",
+          "Delta"
+        ]
+      },
+      {
+        "name": "memory-keeper",
+        "description": "AoA memory-keeper. Preserves provenance, recall hygiene, and bounded memory-layer discipline across AoA surfaces.",
+        "config_file": "agents/memory-keeper.toml",
+        "nickname_candidates": [
+          "Archive",
+          "Ledger",
+          "Mneme"
+        ]
+      },
+      {
+        "name": "reviewer",
+        "description": "AoA reviewer. Inspects work for drift, boundedness, review quality, and handoff readiness.",
+        "config_file": "agents/reviewer.toml",
+        "nickname_candidates": [
+          "Sentinel",
+          "Lens",
+          "Check"
+        ]
+      }
+    ]
+  },
+  "repos": {
+    "aoa-sdk": "aoa-sdk",
+    "aoa-stats": "aoa-stats",
+    "Dionysus": "Dionysus",
+    "8Dionysus": "8Dionysus"
+  },
+  "mcp_servers": [
+    {
+      "name": "aoa_workspace",
+      "repo_key": "aoa-sdk",
+      "cwd_repo_rel": "",
+      "script_rel": "scripts/aoa_workspace_mcp_server.py"
+    },
+    {
+      "name": "aoa_stats",
+      "repo_key": "aoa-stats",
+      "cwd_repo_rel": "",
+      "script_rel": "scripts/aoa_stats_mcp_server.py"
+    },
+    {
+      "name": "dionysus",
+      "repo_key": "Dionysus",
+      "cwd_repo_rel": "",
+      "script_rel": "scripts/dionysus_mcp_server.py"
+    }
+  ],
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume",
+        "script_rel": ".codex/hooks/aoa_session_start.py",
+        "statusMessage": "AoA session-start trace",
+        "timeout": 20
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "script_rel": ".codex/hooks/aoa_user_prompt_submit.py",
+        "statusMessage": "AoA prompt trace",
+        "timeout": 20
+      }
+    ],
+    "Stop": [
+      {
+        "script_rel": ".codex/hooks/aoa_stop_doctor.py",
+        "statusMessage": "AoA stop doctor",
+        "timeout": 20
+      }
+    ]
+  }
+}

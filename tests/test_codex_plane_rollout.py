@@ -31,6 +31,29 @@ class CodexPlaneRolloutTests(unittest.TestCase):
         self.assertIn("When deployment signals disagree, prefer:", rollout)
         self.assertIn("/.codex/generated/rollout/codex_plane_trust_state.current.json", rollout)
 
+    def test_component_refresh_route_stays_discoverable_and_owner_bounded(self) -> None:
+        readme = (REPO_ROOT / "README.md").read_text(encoding="utf-8")
+        agents = (REPO_ROOT / "AGENTS.md").read_text(encoding="utf-8")
+        install = (REPO_ROOT / "docs" / "WORKSPACE_INSTALL.md").read_text(encoding="utf-8")
+        regeneration = (REPO_ROOT / "docs" / "CODEX_PLANE_REGENERATION.md").read_text(
+            encoding="utf-8"
+        )
+        rollout = (REPO_ROOT / "docs" / "CODEX_PLANE_ROLLOUT.md").read_text(encoding="utf-8")
+        component_refresh = (REPO_ROOT / "docs" / "COMPONENT_REFRESH_ROUTE.md").read_text(
+            encoding="utf-8"
+        )
+
+        self.assertIn("docs/COMPONENT_REFRESH_ROUTE.md", readme)
+        self.assertIn("generated or install drift", agents)
+        self.assertIn("owner repo", agents)
+        self.assertIn("docs/COMPONENT_REFRESH_ROUTE.md", install)
+        self.assertIn("docs/COMPONENT_REFRESH_ROUTE.md", regeneration)
+        self.assertIn("COMPONENT_REFRESH_ROUTE.md", rollout)
+        self.assertIn("component:codex-plane:shared-root", component_refresh)
+        self.assertIn("config/codex_plane/runtime_manifest.v1.json", component_refresh)
+        self.assertIn(".codex/config.toml", component_refresh)
+        self.assertIn("route the evidence to the owner repo", component_refresh)
+
     def test_rollout_examples_validate_and_stay_coherent(self) -> None:
         validate_codex_plane_rollout_contracts()
 

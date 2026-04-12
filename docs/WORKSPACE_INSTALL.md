@@ -70,6 +70,7 @@ Projection rules:
 - the checked-in `.codex/config.toml` and `.codex/hooks.json` are source-owned generated deployment artifacts for the current chosen public workspace root; if that root changes, rerender them from `config/codex_plane/runtime_manifest.v1.json` and the selected profile before projection, rather than hand-editing them as the primary change surface
 - live rollout evidence for the current workspace root belongs under `<workspace-root>/.codex/generated/rollout/`; keep it deploy-local and use `docs/CODEX_PLANE_ROLLOUT.md` for trust, doctor, and rollback posture
 - checked-in trusted rollout campaign history for the shared-root Codex plane belongs under `8Dionysus/generated/codex/rollout/`; keep it source-owned and use `docs/CODEX_TRUSTED_ROLLOUT_OPERATIONS.md` for campaign, drift-window, rollback-window, and summary posture
+- recurring campaign cadence windows that group multiple rollout attempts belong in `8Dionysus/examples/` and `docs/TRUSTED_ROLLOUT_CAMPAIGNS.md`; keep them source-owned, reviewable, and companion-only rather than letting them become a scheduler or a second playbook
 - keep `<workspace-root>/.codex/generated/` deploy-local; generated reports, event logs, and other runtime output should not be copied back into `8Dionysus` as source truth
 
 Decision note:
@@ -155,6 +156,11 @@ When the route becomes a bounded campaign rather than one deploy-local apply,
 publish the checked-in shared-root campaign history, drift window, rollback
 window, and latest-trusted summary in `8Dionysus/generated/codex/rollout/` and
 review them through `docs/CODEX_TRUSTED_ROLLOUT_OPERATIONS.md`.
+
+When recurring grouped maintenance needs one cadence layer above those
+individual rollout attempts, keep the campaign, drift-review, and
+rollback-followthrough windows source-owned in `8Dionysus/examples/` and
+review them through `docs/TRUSTED_ROLLOUT_CAMPAIGNS.md`.
 
 Behavior:
 

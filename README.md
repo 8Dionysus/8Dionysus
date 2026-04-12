@@ -77,6 +77,7 @@ Together they form a shared wager:
 - For the source-owned Codex-plane manifest, rerender, and drift-check route, see **[docs/CODEX_PLANE_REGENERATION.md](https://github.com/8Dionysus/8Dionysus/blob/main/docs/CODEX_PLANE_REGENERATION.md)**
 - For live Codex-plane trust, rollout, doctor, and rollback posture after rerender, see **[docs/CODEX_PLANE_ROLLOUT.md](https://github.com/8Dionysus/8Dionysus/blob/main/docs/CODEX_PLANE_ROLLOUT.md)**
 - For bounded rollout campaigns, drift windows, rollback windows, and checked-in trusted rollout history for the shared-root Codex plane, see **[docs/CODEX_TRUSTED_ROLLOUT_OPERATIONS.md](https://github.com/8Dionysus/8Dionysus/blob/main/docs/CODEX_TRUSTED_ROLLOUT_OPERATIONS.md)**
+- For recurring rollout campaign cadence windows that group drift review and rollback follow-through without becoming a scheduler or second playbook, see **[docs/TRUSTED_ROLLOUT_CAMPAIGNS.md](https://github.com/8Dionysus/8Dionysus/blob/main/docs/TRUSTED_ROLLOUT_CAMPAIGNS.md)**
 - For the posture and scope of this repository itself, see **[docs/PUBLIC_ENTRY_POSTURE.md](https://github.com/8Dionysus/8Dionysus/blob/main/docs/PUBLIC_ENTRY_POSTURE.md)**
 
 ## What this page owns

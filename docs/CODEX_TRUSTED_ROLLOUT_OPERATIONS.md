@@ -7,6 +7,9 @@ Use [CODEX_PLANE_REGENERATION.md](CODEX_PLANE_REGENERATION.md) for manifest and
 profile rerender.
 Use [CODEX_PLANE_ROLLOUT.md](CODEX_PLANE_ROLLOUT.md) for deploy-local trust,
 doctor, and rollback posture at the current live root.
+Use [TRUSTED_ROLLOUT_CAMPAIGNS.md](TRUSTED_ROLLOUT_CAMPAIGNS.md) for recurring
+campaign windows that group multiple rollout attempts into one bounded cadence
+review layer without becoming a scheduler or second source of truth.
 Use this note for source-owned rollout campaign history that should remain
 reviewable after one live deploy-local receipt is no longer enough context.
 

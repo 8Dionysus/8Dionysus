@@ -1,0 +1,26 @@
+{
+  "schema_version": "8dionysus_drift_review_window_v1",
+  "review_ref": "DREV-20260412-codex-cadence-01",
+  "campaign_ref": "CAMP-20260412-codex-cadence-01",
+  "status": "review_required",
+  "signals": {
+    "path_drift": false,
+    "trust_drift": false,
+    "hook_drift": true,
+    "mcp_drift": false,
+    "marketplace_drift": false
+  },
+  "decision": "reanchor_then_regenerate",
+  "evidence_refs": [
+    "generated/codex/rollout/deploy_history.jsonl",
+    "generated/codex/rollout/rollback_windows.min.json",
+    "docs/CODEX_TRUSTED_ROLLOUT_OPERATIONS.md"
+  ],
+  "rollback_anchor": "ROLL-20260411-codex-plane-regen-01",
+  "reviewed_at": "2026-04-12T20:10:00Z",
+  "source_refs": [
+    ".codex/config.toml",
+    ".codex/hooks.json",
+    "docs/WORKSPACE_INSTALL.md"
+  ]
+}

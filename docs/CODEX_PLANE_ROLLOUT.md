@@ -11,6 +11,9 @@ Use [CODEX_TRUSTED_ROLLOUT_OPERATIONS.md](CODEX_TRUSTED_ROLLOUT_OPERATIONS.md)
 for the checked-in shared-root rollout campaign history, drift windows,
 rollback windows, and latest trusted rollout summary that remain source-owned in
 `8Dionysus`.
+Use [TRUSTED_ROLLOUT_CAMPAIGNS.md](TRUSTED_ROLLOUT_CAMPAIGNS.md) when the route
+widens from one checked-in rollout history line into one recurring campaign
+cadence layer with grouped drift review and rollback-followthrough windows.
 
 ## Boundary
 

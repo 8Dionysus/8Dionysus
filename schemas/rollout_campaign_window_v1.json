@@ -1,0 +1,145 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aoa.local/8dionysus/schemas/rollout_campaign_window_v1.json",
+  "title": "8Dionysus rollout campaign window",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "campaign_ref",
+    "workspace_root",
+    "plane",
+    "scope",
+    "state",
+    "cadence_policy",
+    "rollout_campaign_refs",
+    "latest_rollout_campaign_ref",
+    "latest_stable_rollout_campaign_ref",
+    "window_opened_at",
+    "next_review_due_at",
+    "source_refs",
+    "owner_surface"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "8dionysus_rollout_campaign_window_v1"
+    },
+    "campaign_ref": {
+      "type": "string",
+      "pattern": "^CAMP-\\d{8}-[a-z0-9-]+-\\d{2}$"
+    },
+    "workspace_root": {
+      "type": "string",
+      "minLength": 1
+    },
+    "plane": {
+      "const": "codex_plane"
+    },
+    "scope": {
+      "type": "string",
+      "minLength": 1
+    },
+    "state": {
+      "enum": [
+        "open",
+        "paused",
+        "closed",
+        "review_required"
+      ]
+    },
+    "cadence_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "review_every",
+        "batch_size_goal",
+        "max_open_batches"
+      ],
+      "properties": {
+        "review_every": {
+          "type": "string",
+          "minLength": 1
+        },
+        "batch_size_goal": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "max_open_batches": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "lineage_refs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "candidate_refs",
+        "seed_refs",
+        "object_refs"
+      ],
+      "properties": {
+        "candidate_refs": {
+          "$ref": "#/$defs/string_list"
+        },
+        "seed_refs": {
+          "$ref": "#/$defs/string_list"
+        },
+        "object_refs": {
+          "$ref": "#/$defs/string_list"
+        }
+      }
+    },
+    "rollout_campaign_refs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "pattern": "^ROLL-\\d{8}-[a-z0-9-]+-\\d{2}$"
+      },
+      "uniqueItems": true
+    },
+    "latest_rollout_campaign_ref": {
+      "type": "string",
+      "pattern": "^ROLL-\\d{8}-[a-z0-9-]+-\\d{2}$"
+    },
+    "latest_stable_rollout_campaign_ref": {
+      "type": "string",
+      "pattern": "^ROLL-\\d{8}-[a-z0-9-]+-\\d{2}$"
+    },
+    "window_opened_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "next_review_due_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "source_refs": {
+      "$ref": "#/$defs/nonempty_string_list"
+    },
+    "owner_surface": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "$defs": {
+    "string_list": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "nonempty_string_list": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    }
+  }
+}

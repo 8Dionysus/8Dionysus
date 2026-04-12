@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aoa.local/8dionysus/schemas/rollback_followthrough_window_v1.json",
+  "title": "8Dionysus rollback followthrough window",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "rollback_ref",
+    "campaign_ref",
+    "status",
+    "trigger_conditions",
+    "rollback_anchor",
+    "bounded_scope",
+    "post_rollback_review",
+    "prepared_at",
+    "source_refs"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "8dionysus_rollback_followthrough_window_v1"
+    },
+    "rollback_ref": {
+      "type": "string",
+      "pattern": "^RFU-\\d{8}-[a-z0-9-]+-\\d{2}$"
+    },
+    "campaign_ref": {
+      "type": "string",
+      "pattern": "^CAMP-\\d{8}-[a-z0-9-]+-\\d{2}$"
+    },
+    "status": {
+      "enum": [
+        "ready_if_needed",
+        "armed",
+        "executed",
+        "retired"
+      ]
+    },
+    "trigger_conditions": {
+      "$ref": "#/$defs/nonempty_string_list"
+    },
+    "rollback_anchor": {
+      "type": "string",
+      "pattern": "^ROLL-\\d{8}-[a-z0-9-]+-\\d{2}$"
+    },
+    "bounded_scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "paths",
+        "surface"
+      ],
+      "properties": {
+        "paths": {
+          "$ref": "#/$defs/nonempty_string_list"
+        },
+        "surface": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "post_rollback_review": {
+      "enum": [
+        "required",
+        "optional"
+      ]
+    },
+    "prepared_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "source_refs": {
+      "$ref": "#/$defs/nonempty_string_list"
+    }
+  },
+  "$defs": {
+    "nonempty_string_list": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    }
+  }
+}

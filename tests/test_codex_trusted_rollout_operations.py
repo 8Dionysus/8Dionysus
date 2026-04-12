@@ -233,6 +233,106 @@ class CodexTrustedRolloutOperationsTests(unittest.TestCase):
                 ):
                     rollout_validator.validate_codex_trusted_rollout_operations()
 
+    def test_validator_rejects_non_object_rollback_window_items(self) -> None:
+        with TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            deploy_history_path = root / "deploy_history.jsonl"
+            regeneration_path = root / "regeneration_campaigns.min.json"
+            rollback_path = root / "rollback_windows.min.json"
+            latest_path = root / "rollout_latest.min.json"
+
+            write_jsonl(
+                deploy_history_path,
+                [
+                    {
+                        "schema_version": "8dionysus_codex_trusted_rollout_entry_v1",
+                        "rollout_campaign_ref": "ROLL-20260411-codex-plane-regen-01",
+                        "state": "stabilized",
+                        "activated_at": "2026-04-11T21:10:00Z",
+                        "actor": "codex+review",
+                        "scope": "shared-root-codex-plane",
+                        "deploy_receipt_refs": ["DEPLOY-20260411-codex-plane-regen-01"],
+                        "drift_window_refs": ["DRIFT-20260411-codex-plane-regen-01"],
+                        "rollback_window_refs": [],
+                        "drift_state": "quiet",
+                        "repair_attempted": False,
+                        "summary": "Stable rollout.",
+                    },
+                    {
+                        "schema_version": "8dionysus_codex_trusted_rollout_entry_v1",
+                        "rollout_campaign_ref": "ROLL-20260412-codex-hooks-tighten-02",
+                        "state": "rolled_back",
+                        "activated_at": "2026-04-12T20:10:00Z",
+                        "actor": "codex+review",
+                        "scope": "shared-root-codex-plane",
+                        "deploy_receipt_refs": ["DEPLOY-20260412-codex-hooks-tighten-02"],
+                        "drift_window_refs": ["DRIFT-20260412-codex-hooks-tighten-02"],
+                        "rollback_window_refs": ["RBK-20260412-codex-hooks-tighten-02"],
+                        "drift_state": "rolled_back",
+                        "repair_attempted": True,
+                        "summary": "Rollback completed.",
+                    },
+                ],
+            )
+            write_json(
+                regeneration_path,
+                {
+                    "schema_version": "8dionysus_codex_trusted_rollout_campaigns_v1",
+                    "owner_repo": "8Dionysus",
+                    "campaigns": [
+                        {
+                            "rollout_campaign_ref": "ROLL-20260411-codex-plane-regen-01",
+                            "state": "stabilized",
+                        },
+                        {
+                            "rollout_campaign_ref": "ROLL-20260412-codex-hooks-tighten-02",
+                            "state": "rolled_back",
+                        },
+                    ],
+                },
+            )
+            write_json(
+                rollback_path,
+                {
+                    "schema_version": "8dionysus_codex_trusted_rollback_windows_v1",
+                    "owner_repo": "8Dionysus",
+                    "rollback_windows": [
+                        {
+                            "rollback_window_ref": "RBK-20260412-codex-hooks-tighten-02",
+                        },
+                        "RBK-20260412-codex-hooks-tighten-02",
+                    ],
+                },
+            )
+            write_json(
+                latest_path,
+                {
+                    "schema_version": "8dionysus_codex_trusted_rollout_latest_v1",
+                    "owner_repo": "8Dionysus",
+                    "latest_rollout_campaign_ref": "ROLL-20260412-codex-hooks-tighten-02",
+                    "latest_state": "rolled_back",
+                    "active_drift_window_ref": None,
+                    "active_rollback_window_ref": None,
+                    "latest_stable_rollout_campaign_ref": "ROLL-20260411-codex-plane-regen-01",
+                    "source_refs": [
+                        "generated/codex/rollout/deploy_history.jsonl",
+                        "generated/codex/rollout/regeneration_campaigns.min.json",
+                        "generated/codex/rollout/rollback_windows.min.json",
+                    ],
+                },
+            )
+
+            with patch.object(rollout_validator, "DEPLOY_HISTORY_PATH", deploy_history_path), patch.object(
+                rollout_validator, "REGENERATION_PATH", regeneration_path
+            ), patch.object(rollout_validator, "ROLLBACK_PATH", rollback_path), patch.object(
+                rollout_validator, "LATEST_PATH", latest_path
+            ):
+                with self.assertRaisesRegex(
+                    ValueError,
+                    "rollback_windows.min.json.rollback_windows\\[1\\] must be an object",
+                ):
+                    rollout_validator.validate_codex_trusted_rollout_operations()
+
 
 if __name__ == "__main__":
     unittest.main()

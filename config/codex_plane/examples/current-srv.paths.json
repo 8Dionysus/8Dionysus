@@ -1,0 +1,43 @@
+{
+  "workspace_root": "/srv",
+  "workspace_marker": "AOA_WORKSPACE_ROOT",
+  "python_command": "python3",
+  "python_prefix_args": [],
+  "repos": {
+    "aoa-sdk": "/srv/aoa-sdk",
+    "aoa-stats": "/srv/aoa-stats",
+    "Dionysus": "/srv/Dionysus",
+    "8Dionysus": "/srv/8Dionysus"
+  },
+  "mcp_servers": {
+    "aoa_workspace": {
+      "cwd": "/srv/aoa-sdk",
+      "script_rel": "scripts/aoa_workspace_mcp_server.py"
+    },
+    "aoa_stats": {
+      "cwd": "/srv/aoa-stats",
+      "script_rel": "scripts/aoa_stats_mcp_server.py"
+    },
+    "dionysus": {
+      "cwd": "/srv/Dionysus",
+      "script_rel": "scripts/dionysus_mcp_server.py"
+    }
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "script_rel": ".codex/hooks/aoa_session_start.py"
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "script_rel": ".codex/hooks/aoa_user_prompt_submit.py"
+      }
+    ],
+    "Stop": [
+      {
+        "script_rel": ".codex/hooks/aoa_stop_doctor.py"
+      }
+    ]
+  }
+}

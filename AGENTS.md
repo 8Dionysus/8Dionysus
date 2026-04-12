@@ -172,6 +172,13 @@ Remember:
 - source repositories live as sibling checkouts under `<workspace-root>`
 - `abyss-stack` is part of the ecosystem, but its preferred source checkout may still live outside `<workspace-root>`; respect `aoa-sdk` workspace discovery and overrides
 
+Projection edit law:
+
+- when a shared-root install surface needs a real change, edit the source-owned copy under `<workspace-root>/8Dionysus/` first and then project it into the live workspace root
+- do not treat the live copies at `<workspace-root>/AGENTS.md`, `<workspace-root>/AOA_WORKSPACE_ROOT`, `<workspace-root>/.agents/`, or `<workspace-root>/.codex/` as the primary source of truth
+- preview or verify that drift with `<workspace-root>/.codex/bin/aoa-workspace-project --check --json`, then apply with `--execute`
+- keep `<workspace-root>/8Dionysus/README.md` profile-owned and GitHub-facing; it is not part of the shared-root projection contract
+
 ## Skill ↔ MCP route discipline
 
 - Prefer AoA skills whose generated `.agents/skills/*/agents/openai.yaml` or documented wiring examples declare named MCP dependencies when the route is sibling-workspace orientation, derived stats observability, or Dionysus seed routing

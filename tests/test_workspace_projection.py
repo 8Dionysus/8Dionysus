@@ -32,6 +32,13 @@ class WorkspaceProjectionTests(unittest.TestCase):
 
             report = project_workspace_root(repo_root, workspace_root, execute=False)
             self.assertTrue(report["changed"])
+            self.assertEqual(report["owner_repo"], "8Dionysus")
+            self.assertTrue(report["projection_contract"]["edit_source_first"])
+            self.assertTrue(report["projection_contract"]["do_not_edit_live_workspace_copy_as_source"])
+            self.assertFalse(report["projection_contract"]["profile_readme_projected"])
+            self.assertIn("Do not patch the live workspace copy", report["next_step"])
+            self.assertIn((repo_root / "AGENTS.md").as_posix(), report["projection_contract"]["source_paths"])
+            self.assertIn((workspace_root / "AGENTS.md").as_posix(), report["projection_contract"]["projected_paths"])
 
             paths = {entry["dest_path"] for entry in report["operations"]}
             self.assertIn("AGENTS.md", paths)
@@ -53,6 +60,9 @@ class WorkspaceProjectionTests(unittest.TestCase):
 
             report = project_workspace_root(repo_root, workspace_root, execute=True)
             self.assertTrue(report["changed"])
+            self.assertEqual(report["owner_repo"], "8Dionysus")
+            self.assertTrue(report["projection_contract"]["apply_via_projection"])
+            self.assertIn("aoa-workspace-project --execute --json", report["projection_contract"]["execute_command"])
             self.assertIn("/workspace", (workspace_root / "AGENTS.md").read_text(encoding="utf-8"))
             self.assertTrue((workspace_root / "AOA_WORKSPACE_ROOT").exists())
             self.assertEqual(

@@ -1,0 +1,122 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://8dionysus/schemas/codex_plane_trust_state_v1.json",
+  "title": "8Dionysus Codex Plane Trust State v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "trust_state_id",
+    "workspace_root",
+    "detected_project_root",
+    "project_root_markers_expected",
+    "project_root_marker_match",
+    "project_config_active",
+    "active_config_layers",
+    "hooks_enabled",
+    "hook_layers_detected",
+    "mcp_server_names_expected",
+    "mcp_server_names_detected",
+    "stable_names_ok",
+    "trust_posture",
+    "warnings",
+    "captured_at"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "8dionysus_codex_plane_trust_state_v1"
+    },
+    "trust_state_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "workspace_root": {
+      "type": "string",
+      "minLength": 1
+    },
+    "detected_project_root": {
+      "type": "string",
+      "minLength": 1
+    },
+    "project_root_markers_expected": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "project_root_marker_match": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "project_config_active": {
+      "type": "boolean"
+    },
+    "active_config_layers": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "hooks_enabled": {
+      "type": "boolean"
+    },
+    "hook_layers_detected": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "mcp_server_names_expected": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "mcp_server_names_detected": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "stable_names_ok": {
+      "type": "boolean"
+    },
+    "trust_posture": {
+      "enum": [
+        "unknown",
+        "root_mismatch",
+        "config_inactive",
+        "trusted_ready",
+        "rollout_active",
+        "rollback_recommended"
+      ]
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "captured_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

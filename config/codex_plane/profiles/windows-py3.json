@@ -1,0 +1,10 @@
+{
+  "profile_id": "windows-py3",
+  "python_command": "py",
+  "python_prefix_args": [
+    "-3"
+  ],
+  "render_examples": {
+    "workspace_root": "C:\\\\aoa"
+  }
+}

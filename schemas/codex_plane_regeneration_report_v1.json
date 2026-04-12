@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://8dionysus/schemas/codex_plane_regeneration_report_v1.json",
+  "title": "8Dionysus Codex Plane Regeneration Report v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "regeneration_report_id",
+    "source_profile_ref",
+    "target_workspace_root",
+    "render_posture",
+    "rendered_files",
+    "stable_names",
+    "warnings",
+    "generated_at"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "8dionysus_codex_plane_regeneration_report_v1"
+    },
+    "regeneration_report_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_profile_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "target_workspace_root": {
+      "type": "string",
+      "minLength": 1
+    },
+    "render_posture": {
+      "enum": [
+        "dry_run",
+        "check",
+        "execute"
+      ]
+    },
+    "rendered_files": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "relative_path",
+          "source_path",
+          "mode",
+          "changed",
+          "sha256"
+        ],
+        "properties": {
+          "relative_path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "mode": {
+            "enum": [
+              "rewrite",
+              "copy",
+              "render_text",
+              "symlink"
+            ]
+          },
+          "changed": {
+            "type": "boolean"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        }
+      }
+    },
+    "stable_names": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "aoa_workspace",
+        "aoa_stats",
+        "dionysus"
+      ],
+      "properties": {
+        "aoa_workspace": {
+          "type": "boolean"
+        },
+        "aoa_stats": {
+          "type": "boolean"
+        },
+        "dionysus": {
+          "type": "boolean"
+        }
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

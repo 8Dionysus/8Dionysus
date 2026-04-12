@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://8dionysus/schemas/codex_plane_rollout_receipt_v1.json",
+  "title": "8Dionysus Codex Plane Rollout Receipt v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "rollout_receipt_id",
+    "trust_state_id",
+    "regeneration_report_id",
+    "apply_mode",
+    "deployment_state",
+    "doctor_result",
+    "rollback_plan_ref",
+    "stats_refresh_required",
+    "verified_at"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "8dionysus_codex_plane_rollout_receipt_v1"
+    },
+    "rollout_receipt_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "trust_state_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "regeneration_report_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "apply_mode": {
+      "enum": [
+        "dry_run",
+        "execute"
+      ]
+    },
+    "deployment_state": {
+      "enum": [
+        "render_only",
+        "dry_run_ready",
+        "applied",
+        "verified",
+        "drifted",
+        "rollback_recommended"
+      ]
+    },
+    "doctor_result": {
+      "enum": [
+        "pass",
+        "warn",
+        "fail"
+      ]
+    },
+    "rollback_plan_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "stats_refresh_required": {
+      "type": "boolean"
+    },
+    "verified_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

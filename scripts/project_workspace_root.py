@@ -84,16 +84,49 @@ def project_workspace_root(
             _apply_operation(operation)
 
     summary = [operation.to_summary(workspace_root) for operation in operations]
+    projection_contract = _projection_contract(repo_root, workspace_root, changed=bool(summary))
     return {
         "repo_root": repo_root.as_posix(),
+        "owner_repo": "8Dionysus",
         "workspace_root": workspace_root.as_posix(),
         "mode": "execute" if execute else "dry-run",
         "prune": prune,
         "changed": bool(summary),
         "surface_count": len(SHARED_ROOT_SURFACES),
         "managed_surfaces": [surface.dest_rel for surface in SHARED_ROOT_SURFACES],
+        "projection_contract": projection_contract,
+        "next_step": projection_contract["next_step"],
         "operation_count": len(summary),
         "operations": summary,
+    }
+
+
+def _projection_contract(repo_root: Path, workspace_root: Path, *, changed: bool) -> dict[str, object]:
+    source_paths = [(repo_root / surface.source_rel).as_posix() for surface in SHARED_ROOT_SURFACES]
+    projected_paths = [(workspace_root / surface.dest_rel).as_posix() for surface in SHARED_ROOT_SURFACES]
+    if changed:
+        next_step = (
+            "Edit the source-owned surface under 8Dionysus if the change is real, then rerun "
+            "aoa-workspace-project --execute. Do not patch the live workspace copy as the source of truth."
+        )
+    else:
+        next_step = (
+            "Projection is already in sync. If you need to change a shared-root surface, edit 8Dionysus first and "
+            "then rerun aoa-workspace-project --execute."
+        )
+    return {
+        "edit_source_first": True,
+        "apply_via_projection": True,
+        "do_not_edit_live_workspace_copy_as_source": True,
+        "profile_readme_projected": False,
+        "profile_readme_note": "8Dionysus/README.md stays profile-owned and is not part of the shared-root projection.",
+        "source_root": repo_root.as_posix(),
+        "workspace_root": workspace_root.as_posix(),
+        "source_paths": source_paths,
+        "projected_paths": projected_paths,
+        "check_command": f"{(workspace_root / '.codex' / 'bin' / 'aoa-workspace-project').as_posix()} --check --json",
+        "execute_command": f"{(workspace_root / '.codex' / 'bin' / 'aoa-workspace-project').as_posix()} --execute --json",
+        "next_step": next_step,
     }
 
 
@@ -350,6 +383,7 @@ def _format_text_report(report: dict[str, object]) -> str:
         f"workspace_root: {report['workspace_root']}",
         f"changed: {report['changed']}",
         f"operation_count: {report['operation_count']}",
+        f"owner_repo: {report['owner_repo']}",
     ]
     for operation in report["operations"]:
         path = operation["dest_path"]
@@ -358,6 +392,7 @@ def _format_text_report(report: dict[str, object]) -> str:
         if "symlink_target" in operation:
             suffix = f" -> {operation['symlink_target']}"
         lines.append(f"{operation['action']}: {path}{suffix} [{reason}]")
+    lines.append(f"next_step: {report['next_step']}")
     return "\n".join(lines)
 
 

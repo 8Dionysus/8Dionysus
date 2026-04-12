@@ -134,6 +134,14 @@ python <workspace-root>/8Dionysus/scripts/project_workspace_root.py --workspace-
 python <workspace-root>/8Dionysus/scripts/project_workspace_root.py --workspace-root <workspace-root> --execute --json
 ```
 
+Source-first law for these projected surfaces:
+
+- if the change is real, edit the source-owned copy under `<workspace-root>/8Dionysus/` first
+- do not hand-edit `<workspace-root>/AGENTS.md`, `<workspace-root>/AOA_WORKSPACE_ROOT`, `<workspace-root>/.agents/`, or `<workspace-root>/.codex/` as if those live copies were the primary source of truth
+- use `--check --json` to see the owner repo, source paths, projected paths, and the next-step guidance before mutation
+- after the source edit, rerun the projection with `--execute` and confirm `--check` returns clean
+- keep `8Dionysus/README.md` profile-owned and outside this projection path
+
 When the checked-in Codex plane needs a new live root, rerender it before projection:
 
 ```bash

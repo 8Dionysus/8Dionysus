@@ -9,7 +9,7 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO_ROOT / "scripts"))
 
-from validate_codex_plane_rollout_contracts import validate_codex_plane_rollout_contracts
+from validate_codex_plane_rollout_contracts import validate_codex_plane_rollout_contracts  # noqa: E402
 
 
 def load_json(relative_path: str) -> dict[str, object]:
@@ -53,6 +53,17 @@ class CodexPlaneRolloutTests(unittest.TestCase):
         self.assertIn("config/codex_plane/runtime_manifest.v1.json", component_refresh)
         self.assertIn(".codex/config.toml", component_refresh)
         self.assertIn("route the evidence to the owner repo", component_refresh)
+
+    def test_shared_root_projection_stays_source_first(self) -> None:
+        agents = (REPO_ROOT / "AGENTS.md").read_text(encoding="utf-8")
+        install = (REPO_ROOT / "docs" / "WORKSPACE_INSTALL.md").read_text(encoding="utf-8")
+
+        self.assertIn("edit the source-owned copy under `<workspace-root>/8Dionysus/` first", agents)
+        self.assertIn("do not treat the live copies", agents)
+        self.assertIn("README.md` profile-owned and GitHub-facing", agents)
+        self.assertIn("do not hand-edit `<workspace-root>/AGENTS.md`", install)
+        self.assertIn("use `--check --json` to see the owner repo, source paths, projected paths", install)
+        self.assertIn("keep `8Dionysus/README.md` profile-owned", install)
 
     def test_rollout_examples_validate_and_stay_coherent(self) -> None:
         validate_codex_plane_rollout_contracts()

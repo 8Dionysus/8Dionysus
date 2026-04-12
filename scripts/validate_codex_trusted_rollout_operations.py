@@ -162,11 +162,17 @@ def validate_codex_trusted_rollout_operations() -> None:
         raise ValueError("rollback_windows.min.json must stay owned by 8Dionysus")
     if not isinstance(rollback_windows, list):
         raise ValueError("rollback_windows.min.json must expose a rollback_windows list")
-    rollback_refs = {
-        require_match(ROLLBACK_REF_RE, item.get("rollback_window_ref"), "rollback.rollback_window_ref")
-        for item in rollback_windows
-        if isinstance(item, dict)
-    }
+    rollback_refs: set[str] = set()
+    for index, item in enumerate(rollback_windows):
+        if not isinstance(item, dict):
+            raise ValueError(f"rollback_windows.min.json.rollback_windows[{index}] must be an object")
+        rollback_refs.add(
+            require_match(
+                ROLLBACK_REF_RE,
+                item.get("rollback_window_ref"),
+                f"rollback_windows.min.json.rollback_windows[{index}].rollback_window_ref",
+            )
+        )
     history_rollback_refs = {
         ref
         for row in deploy_history

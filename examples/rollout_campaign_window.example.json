@@ -1,0 +1,33 @@
+{
+  "schema_version": "8dionysus_rollout_campaign_window_v1",
+  "campaign_ref": "CAMP-20260412-codex-cadence-01",
+  "workspace_root": "/srv",
+  "plane": "codex_plane",
+  "scope": "shared-root-codex-plane",
+  "state": "open",
+  "cadence_policy": {
+    "review_every": "48h",
+    "batch_size_goal": 2,
+    "max_open_batches": 1
+  },
+  "lineage_refs": {
+    "candidate_refs": [],
+    "seed_refs": [],
+    "object_refs": []
+  },
+  "rollout_campaign_refs": [
+    "ROLL-20260411-codex-plane-regen-01",
+    "ROLL-20260411-codex-hooks-tighten-02"
+  ],
+  "latest_rollout_campaign_ref": "ROLL-20260411-codex-hooks-tighten-02",
+  "latest_stable_rollout_campaign_ref": "ROLL-20260411-codex-plane-regen-01",
+  "window_opened_at": "2026-04-12T20:00:00Z",
+  "next_review_due_at": "2026-04-14T20:00:00Z",
+  "source_refs": [
+    "generated/codex/rollout/deploy_history.jsonl",
+    "generated/codex/rollout/regeneration_campaigns.min.json",
+    "generated/codex/rollout/rollback_windows.min.json",
+    "docs/CODEX_TRUSTED_ROLLOUT_OPERATIONS.md"
+  ],
+  "owner_surface": "docs/TRUSTED_ROLLOUT_CAMPAIGNS.md"
+}

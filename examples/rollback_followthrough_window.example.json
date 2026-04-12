@@ -1,0 +1,24 @@
+{
+  "schema_version": "8dionysus_rollback_followthrough_window_v1",
+  "rollback_ref": "RFU-20260412-codex-cadence-01",
+  "campaign_ref": "CAMP-20260412-codex-cadence-01",
+  "status": "ready_if_needed",
+  "trigger_conditions": [
+    "hook drift returns after regeneration",
+    "stable MCP names drift after rollout follow-through"
+  ],
+  "rollback_anchor": "ROLL-20260411-codex-plane-regen-01",
+  "bounded_scope": {
+    "paths": [
+      ".codex/config.toml",
+      ".codex/hooks.json"
+    ],
+    "surface": "shared-root-codex-plane"
+  },
+  "post_rollback_review": "required",
+  "prepared_at": "2026-04-12T20:12:00Z",
+  "source_refs": [
+    "generated/codex/rollout/rollback_windows.min.json",
+    "docs/TRUSTED_ROLLOUT_CAMPAIGNS.md"
+  ]
+}

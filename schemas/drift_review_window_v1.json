@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aoa.local/8dionysus/schemas/drift_review_window_v1.json",
+  "title": "8Dionysus drift review window",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "review_ref",
+    "campaign_ref",
+    "status",
+    "signals",
+    "decision",
+    "evidence_refs",
+    "rollback_anchor",
+    "reviewed_at",
+    "source_refs"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "8dionysus_drift_review_window_v1"
+    },
+    "review_ref": {
+      "type": "string",
+      "pattern": "^DREV-\\d{8}-[a-z0-9-]+-\\d{2}$"
+    },
+    "campaign_ref": {
+      "type": "string",
+      "pattern": "^CAMP-\\d{8}-[a-z0-9-]+-\\d{2}$"
+    },
+    "status": {
+      "enum": [
+        "review_required",
+        "accepted",
+        "reanchor",
+        "rollback_considered",
+        "closed"
+      ]
+    },
+    "signals": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path_drift",
+        "trust_drift",
+        "hook_drift",
+        "mcp_drift",
+        "marketplace_drift"
+      ],
+      "properties": {
+        "path_drift": {
+          "type": "boolean"
+        },
+        "trust_drift": {
+          "type": "boolean"
+        },
+        "hook_drift": {
+          "type": "boolean"
+        },
+        "mcp_drift": {
+          "type": "boolean"
+        },
+        "marketplace_drift": {
+          "type": "boolean"
+        }
+      }
+    },
+    "decision": {
+      "enum": [
+        "stay_course",
+        "reanchor_then_regenerate",
+        "prepare_bounded_rollback",
+        "split_campaign",
+        "safe_stop"
+      ]
+    },
+    "evidence_refs": {
+      "$ref": "#/$defs/nonempty_string_list"
+    },
+    "rollback_anchor": {
+      "type": "string",
+      "pattern": "^ROLL-\\d{8}-[a-z0-9-]+-\\d{2}$"
+    },
+    "reviewed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "source_refs": {
+      "$ref": "#/$defs/nonempty_string_list"
+    }
+  },
+  "$defs": {
+    "nonempty_string_list": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    }
+  }
+}

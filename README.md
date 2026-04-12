@@ -73,6 +73,7 @@ Together they form a shared wager:
 - For typed access and workspace integration, go to **[aoa-sdk](https://github.com/8Dionysus/aoa-sdk)**
 - For the practice → execution → proof → observability path, move through **[aoa-techniques](https://github.com/8Dionysus/aoa-techniques) → [aoa-skills](https://github.com/8Dionysus/aoa-skills) → [aoa-evals](https://github.com/8Dionysus/aoa-evals) → [aoa-stats](https://github.com/8Dionysus/aoa-stats)**
 - For a compact shared vocabulary, see **[GLOSSARY.md](https://github.com/8Dionysus/8Dionysus/blob/main/GLOSSARY.md)**
+- For a compact map of the planted system capabilities, owner repos, playbook openings, and MCP lanes, see **[docs/SYSTEM_CAPABILITY_MAP.md](https://github.com/8Dionysus/8Dionysus/blob/main/docs/SYSTEM_CAPABILITY_MAP.md)**
 - For the sibling-workspace layout and shared install route, see **[docs/WORKSPACE_INSTALL.md](https://github.com/8Dionysus/8Dionysus/blob/main/docs/WORKSPACE_INSTALL.md)**
 - For the source-owned Codex-plane manifest, rerender, and drift-check route, see **[docs/CODEX_PLANE_REGENERATION.md](https://github.com/8Dionysus/8Dionysus/blob/main/docs/CODEX_PLANE_REGENERATION.md)**
 - For owner-routed component drift at the shared workspace root, see **[docs/COMPONENT_REFRESH_ROUTE.md](https://github.com/8Dionysus/8Dionysus/blob/main/docs/COMPONENT_REFRESH_ROUTE.md)**

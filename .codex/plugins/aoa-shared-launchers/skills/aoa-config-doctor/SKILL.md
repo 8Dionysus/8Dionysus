@@ -16,11 +16,41 @@ Diagnose the wiring instead of guessing.
    - `dionysus`
 
 ## If local shell access is appropriate
-Recommend running the dependency checker script from this pack:
+Recommend the smallest real validators that already exist in the workspace:
 
 ```bash
-python tools/check_skill_mcp_dependencies.py           --skills-root ~/.agents/skills           --codex-config /ABSOLUTE/PATH/TO/AOA_WORKSPACE/.codex/config.toml
+WORKSPACE_ROOT="$(
+python - <<'PY'
+from pathlib import Path
+
+start = Path.cwd().resolve()
+for candidate in [start, *start.parents]:
+    if not (candidate / "AOA_WORKSPACE_ROOT").exists():
+        continue
+    if (
+        (candidate / "aoa-sdk").exists()
+        and (candidate / "aoa-skills").exists()
+        and (candidate / ".codex").exists()
+    ):
+        print(candidate)
+        break
+else:
+    raise SystemExit("Could not find an AoA workspace root above the current directory.")
+PY
+)"
+
+python "$WORKSPACE_ROOT/.codex/scripts/aoa_codex_doctor.py" \
+  --workspace-root "$WORKSPACE_ROOT" \
+  --write-report
+
+python "$WORKSPACE_ROOT/aoa-skills/scripts/validate_skill_mcp_wiring.py" \
+  --workspace-config "$WORKSPACE_ROOT/.codex/config.toml" \
+  --paths "$WORKSPACE_ROOT"/.codex/plugins/aoa-shared-launchers/skills/*/agents/openai.yaml \
+  --format text
 ```
+
+Use the first command for workspace-root Codex seam drift.
+Use the second command when the plugin is visible but MCP dependency names or skill metadata still look wrong.
 
 ## Output contract
 Return:

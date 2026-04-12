@@ -105,7 +105,7 @@ Do not weaken dry-run, bounded-claim, or human-judgment posture by convenience.
 Keep `aoa skills enter` and `aoa skills guard` as the primary workspace-level ingress and mutation gate.
 They stay skill-only.
 
-When the active task shows route drift, owner-layer ambiguity, proof need, recall need, role posture questions, continuity questions, anchor loss, reanchor need, or recurring-scenario signals, run one additive surface pass for the chosen `repo_root`:
+When the active task shows route drift, owner-layer ambiguity, proof need, recall need, role posture questions, continuity questions, anchor loss, reanchor need, recurring-scenario signals, repeated doctor warnings, repeated manual refresh patches, generated or install drift, stale summary windows, or rollout or continuity routes blocked by one named component, run one additive surface pass for the chosen `repo_root`:
 
 ```bash
 aoa surfaces detect <repo_root> \
@@ -125,6 +125,10 @@ aoa surfaces detect <repo_root> \
   --mutation-surface <code|repo-config|infra|runtime|public-share> \
   --json
 ```
+
+When those component-refresh signals appear, keep the root posture narrow:
+route the evidence to the owner repo, preserve reviewed hints, and do not
+pretend the workspace root owns the drifting component.
 
 ## Quest and growth posture
 

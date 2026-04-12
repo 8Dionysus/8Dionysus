@@ -162,6 +162,11 @@ individual rollout attempts, keep the campaign, drift-review, and
 rollback-followthrough windows source-owned in `8Dionysus/examples/` and
 review them through `docs/TRUSTED_ROLLOUT_CAMPAIGNS.md`.
 
+When repeated doctor warnings, hand-patched refreshes, stale generated
+surfaces, or blocked rollout or continuity routes point at one drifting
+component, keep the workspace role narrow and route that evidence through
+`docs/COMPONENT_REFRESH_ROUTE.md` back to the owner repo.
+
 Behavior:
 
 - the launcher resolves both the source-owned `8Dionysus/.codex/bin/` copy and the projected live `<workspace-root>/.codex/bin/` copy
@@ -194,4 +199,5 @@ that local note or `--checkpoint-kind` to force one explicit checkpoint event.
 - `Dionysus` is the seed garden and staging surface in the public workspace.
 - `aoa-skills` owns the skill exports, install profiles, and validators.
 - `aoa-sdk` owns workspace discovery, typed reads, detector/dispatcher behavior, and closeout helpers.
+- `docs/COMPONENT_REFRESH_ROUTE.md` names the workspace-root route for owner-owned component drift without transferring component truth into `8Dionysus`.
 - `abyss-stack` is part of the ecosystem, but the current preferred source checkout remains separately managed. For its machine-readable path rules, see `aoa-sdk/docs/workspace-layout.md`.

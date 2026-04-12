@@ -16,6 +16,8 @@ It should be rerenderable.
 `docs/WORKSPACE_INSTALL.md` already says that if the public workspace root
 changes, the checked-in `.codex/` tree should be regenerated or adapted before
 projection. This note turns that sentence into doctrine.
+When recurring drift pressure at the workspace root needs one owner-routing
+note before rerender or rollout, use `docs/COMPONENT_REFRESH_ROUTE.md`.
 
 ## Governing split
 
@@ -79,6 +81,8 @@ deployment needs a new live root.
 
 For the live deployment trail that follows rerender, use
 `docs/CODEX_PLANE_ROLLOUT.md`.
+For owner-routed component drift at the shared workspace root, use
+`docs/COMPONENT_REFRESH_ROUTE.md`.
 
 ## Failure mode to avoid
 

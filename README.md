@@ -75,6 +75,7 @@ Together they form a shared wager:
 - For a compact shared vocabulary, see **[GLOSSARY.md](https://github.com/8Dionysus/8Dionysus/blob/main/GLOSSARY.md)**
 - For the sibling-workspace layout and shared install route, see **[docs/WORKSPACE_INSTALL.md](https://github.com/8Dionysus/8Dionysus/blob/main/docs/WORKSPACE_INSTALL.md)**
 - For the source-owned Codex-plane manifest, rerender, and drift-check route, see **[docs/CODEX_PLANE_REGENERATION.md](https://github.com/8Dionysus/8Dionysus/blob/main/docs/CODEX_PLANE_REGENERATION.md)**
+- For owner-routed component drift at the shared workspace root, see **[docs/COMPONENT_REFRESH_ROUTE.md](https://github.com/8Dionysus/8Dionysus/blob/main/docs/COMPONENT_REFRESH_ROUTE.md)**
 - For live Codex-plane trust, rollout, doctor, and rollback posture after rerender, see **[docs/CODEX_PLANE_ROLLOUT.md](https://github.com/8Dionysus/8Dionysus/blob/main/docs/CODEX_PLANE_ROLLOUT.md)**
 - For bounded rollout campaigns, drift windows, rollback windows, and checked-in trusted rollout history for the shared-root Codex plane, see **[docs/CODEX_TRUSTED_ROLLOUT_OPERATIONS.md](https://github.com/8Dionysus/8Dionysus/blob/main/docs/CODEX_TRUSTED_ROLLOUT_OPERATIONS.md)**
 - For recurring rollout campaign cadence windows that group drift review and rollback follow-through without becoming a scheduler or second playbook, see **[docs/TRUSTED_ROLLOUT_CAMPAIGNS.md](https://github.com/8Dionysus/8Dionysus/blob/main/docs/TRUSTED_ROLLOUT_CAMPAIGNS.md)**

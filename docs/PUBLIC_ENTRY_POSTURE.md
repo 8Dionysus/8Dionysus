@@ -29,7 +29,7 @@ Use the smallest route that matches your need:
 | need | canonical home | shortest route | public verification surface |
 |---|---|---|---|
 | ecosystem understanding | `Agents-of-Abyss` | `generated/public_route_map.min.json` -> linked `Agents-of-Abyss` center entry surfaces | `generated/public_route_map.min.json`, `python scripts/build_public_route_map.py --check`, `python scripts/validate_public_route_map.py`, and link review against the current `Agents-of-Abyss` owner validators |
-| local workspace bootstrap and typed control-plane use | `aoa-sdk` | `generated/public_route_map.min.json` -> linked `aoa-sdk` workspace entry surfaces -> `docs/workspace-layout.md` -> `docs/versioning.md` | `generated/public_route_map.min.json`, `python scripts/build_public_route_map.py --check`, `python scripts/validate_public_route_map.py`, and the linked `aoa-sdk` owner validation surfaces |
+| local workspace bootstrap and typed control-plane use | `aoa-sdk` | `generated/public_route_map.min.json` -> linked `aoa-sdk` workspace entry surfaces -> `docs/workspace-layout.md` -> `docs/versioning.md` -> `8Dionysus/docs/WORKSPACE_INSTALL.md` -> `8Dionysus/docs/CODEX_PLANE_REGENERATION.md` | `generated/public_route_map.min.json`, `python scripts/build_public_route_map.py --check`, `python scripts/validate_public_route_map.py`, `docs/WORKSPACE_INSTALL.md`, `<workspace-root>/.codex/bin/aoa-workspace-project --check --json`, `python scripts/validate_codex_plane_regeneration.py --workspace-root <workspace-root>`, and the linked `aoa-sdk` owner validation surfaces |
 | profile-only route or glossary correction | `8Dionysus` | `README.md`, `GLOSSARY.md`, `docs/QUESTBOOK_PROFILE_BOUNDARY.md` | link review against linked owner repos |
 
 ## Capability overview
@@ -61,5 +61,6 @@ It does not claim a federation-wide CI tier map of its own.
 Use it to route toward the real verification surfaces:
 
 - `Agents-of-Abyss` for ecosystem-center claims
+- `8Dionysus` for shared-root projection sync and Codex-plane regeneration checks on the selected install subset
 - `aoa-sdk` for control-plane compatibility and workspace validation
 - linked owner repos for layer-local or runtime guarantees

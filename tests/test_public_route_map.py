@@ -53,6 +53,15 @@ class PublicRouteMapTests(unittest.TestCase):
             workspace_route["capsule_ref"],
             "aoa-sdk:generated/workspace_control_plane.min.json",
         )
+        self.assertEqual(
+            workspace_route["verification_refs"],
+            [
+                "aoa-sdk:docs/workspace-layout.md",
+                "aoa-sdk:docs/versioning.md",
+                "8Dionysus:docs/WORKSPACE_INSTALL.md",
+                "8Dionysus:docs/CODEX_PLANE_REGENERATION.md",
+            ],
+        )
 
     def test_ecosystem_route_uses_center_entry_capsule(self) -> None:
         payload = build_payload()
@@ -65,6 +74,35 @@ class PublicRouteMapTests(unittest.TestCase):
             "Agents-of-Abyss:generated/center_entry_map.min.json",
         )
         self.assertEqual(ecosystem_route["authority_ref"], "Agents-of-Abyss:CHARTER.md")
+
+    def test_workspace_row_keeps_projection_and_regeneration_visible(self) -> None:
+        posture_path = Path(__file__).resolve().parents[1] / "docs" / "PUBLIC_ENTRY_POSTURE.md"
+        posture = posture_path.read_text(encoding="utf-8")
+        rows = parse_public_entry_posture_rows(posture)
+        workspace_row = next(
+            row
+            for row in rows
+            if row["need"] == "local workspace bootstrap and typed control-plane use"
+        )
+
+        self.assertIn("8Dionysus/docs/WORKSPACE_INSTALL.md", workspace_row["shortest route"])
+        self.assertIn(
+            "8Dionysus/docs/CODEX_PLANE_REGENERATION.md",
+            workspace_row["shortest route"],
+        )
+        self.assertIn("docs/WORKSPACE_INSTALL.md", workspace_row["public verification surface"])
+        self.assertIn(
+            ".codex/bin/aoa-workspace-project --check --json",
+            workspace_row["public verification surface"],
+        )
+        self.assertIn(
+            "python scripts/validate_codex_plane_regeneration.py --workspace-root <workspace-root>",
+            workspace_row["public verification surface"],
+        )
+        self.assertIn(
+            "shared-root projection sync and Codex-plane regeneration checks",
+            posture,
+        )
 
     def test_payload_is_json_serializable(self) -> None:
         payload = build_payload()

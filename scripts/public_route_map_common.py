@@ -48,6 +48,8 @@ ROUTE_METADATA_BY_NEED = {
         "verification_refs": [
             "aoa-sdk:docs/workspace-layout.md",
             "aoa-sdk:docs/versioning.md",
+            "8Dionysus:docs/WORKSPACE_INSTALL.md",
+            "8Dionysus:docs/CODEX_PLANE_REGENERATION.md",
         ],
     },
     "profile-only route or glossary correction": {

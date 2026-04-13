@@ -28,8 +28,8 @@ Use the smallest route that matches your need:
 
 | need | canonical home | shortest route | public verification surface |
 |---|---|---|---|
-| ecosystem understanding | `Agents-of-Abyss` | `generated/center_entry_map.min.json` -> `README.md` -> `CHARTER.md` -> `docs/FEDERATION_RULES.md` | `generated/ecosystem_registry.min.json`, `generated/federation_supporting_inventory.min.json`, `python scripts/build_center_entry_map.py --check`, `python scripts/validate_center_entry_map.py`, `python scripts/validate_ecosystem.py`, `python -m pytest -q tests` |
-| local workspace bootstrap and typed control-plane use | `aoa-sdk` | `generated/workspace_control_plane.min.json` -> `docs/boundaries.md` -> `docs/workspace-layout.md` -> `docs/versioning.md` | `python scripts/build_workspace_control_plane.py --check`, `python scripts/validate_workspace_control_plane.py`, `aoa workspace inspect /srv/aoa-sdk`, `aoa compatibility check /srv/aoa-sdk`, `python -m pytest -q`, `python -m ruff check .` |
+| ecosystem understanding | `Agents-of-Abyss` | `generated/public_route_map.min.json` -> linked `Agents-of-Abyss` center entry surfaces | `generated/public_route_map.min.json`, `python scripts/build_public_route_map.py --check`, `python scripts/validate_public_route_map.py`, and link review against the current `Agents-of-Abyss` owner validators |
+| local workspace bootstrap and typed control-plane use | `aoa-sdk` | `generated/public_route_map.min.json` -> linked `aoa-sdk` workspace entry surfaces -> `docs/workspace-layout.md` -> `docs/versioning.md` | `generated/public_route_map.min.json`, `python scripts/build_public_route_map.py --check`, `python scripts/validate_public_route_map.py`, and the linked `aoa-sdk` owner validation surfaces |
 | profile-only route or glossary correction | `8Dionysus` | `README.md`, `GLOSSARY.md`, `docs/QUESTBOOK_PROFILE_BOUNDARY.md` | link review against linked owner repos |
 
 ## Capability overview
@@ -51,7 +51,7 @@ live workspace root: those files may shape orientation and local bootstrap, but
 they still do not transfer layer authority away from the owning repositories.
 
 The profile may link to product-edge repositories such as `ATM10-Agent`, but their supported profiles, release cadence, and public test tiers remain owned by those repositories.
-In the current remediation program, the product-edge tightening still belongs to the later GitHub-only `WS12` track.
+Any later product-edge tightening also remains owner-repo work rather than a local `8Dionysus` support track.
 
 ## CI and verification posture
 

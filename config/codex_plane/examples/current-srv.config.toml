@@ -6,7 +6,7 @@ project_root_markers = ["AOA_WORKSPACE_ROOT", ".git"]
 codex_hooks = true
 
 [agents]
-max_threads = 4
+max_threads = 20
 max_depth = 1
 job_max_runtime_seconds = 1800
 

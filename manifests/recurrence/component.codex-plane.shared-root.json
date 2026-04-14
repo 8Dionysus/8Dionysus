@@ -1,0 +1,125 @@
+{
+  "schema_version": "aoa_recurrence_component_v1",
+  "component_ref": "component:codex-plane:shared-root",
+  "owner_repo": "8Dionysus",
+  "description": "Shared-root Codex plane render, drift carry, and bounded downstream follow-through.",
+  "source_inputs": [
+    "config/codex_plane/runtime_manifest.v1.json",
+    "config/codex_plane/profiles/*.json"
+  ],
+  "generated_surfaces": [
+    ".codex/config.toml",
+    ".codex/hooks.json"
+  ],
+  "contract_surfaces": [
+    "docs/CODEX_PLANE_REGENERATION.md",
+    "docs/WORKSPACE_INSTALL.md",
+    "docs/COMPONENT_REFRESH_ROUTE.md",
+    "docs/CODEX_PLANE_ROLLOUT.md"
+  ],
+  "proof_surfaces": [
+    "python scripts/render_codex_plane.py",
+    "python scripts/validate_codex_plane.py",
+    "python .codex/bin/aoa-codex-doctor"
+  ],
+  "refresh_routes": [
+    {
+      "action": "regenerate",
+      "commands": [
+        "python scripts/render_codex_plane.py",
+        "python scripts/validate_codex_plane.py",
+        "python .codex/bin/aoa-codex-doctor"
+      ],
+      "notes": "rerender checked-in deployment surfaces from source manifest and profiles"
+    },
+    {
+      "action": "repair",
+      "commands": [
+        "python scripts/render_codex_plane.py",
+        "python scripts/validate_codex_plane.py"
+      ],
+      "notes": "repair path-bound drift through normal rerender and validation"
+    }
+  ],
+  "consumer_edges": [
+    {
+      "kind": "routes_via",
+      "target": "generated/return_navigation_hints.min.json",
+      "target_repo": "aoa-routing",
+      "required": true,
+      "suggested_action": "reroute",
+      "suggested_commands": [
+        "python scripts/build_router.py",
+        "python scripts/validate_router.py"
+      ],
+      "notes": "refresh bounded return hints after shared-root Codex plane change"
+    },
+    {
+      "kind": "summarized_by",
+      "target": "generated/component_refresh_summary.min.json",
+      "target_repo": "aoa-stats",
+      "required": true,
+      "suggested_action": "restat",
+      "suggested_commands": [
+        "python scripts/build_views.py",
+        "python scripts/validate_repo.py"
+      ],
+      "notes": "publish descriptive closure after owner refresh work"
+    },
+    {
+      "kind": "requires_regrounding",
+      "target": "generated/return_regrounding_pack.min.json",
+      "target_repo": "aoa-kag",
+      "required": true,
+      "suggested_action": "reground",
+      "suggested_commands": [],
+      "notes": "fill from aoa-kag owner route when the manifest lands"
+    },
+    {
+      "kind": "handoff_home",
+      "target": "AOA-P-0030",
+      "target_repo": "aoa-playbooks",
+      "required": true,
+      "suggested_action": "handoff",
+      "suggested_commands": [],
+      "notes": "component refresh opener when one named component has real owner-law drift"
+    }
+  ],
+  "drift_signals": [
+    {
+      "signal": "public_workspace_root_changed_without_rerender",
+      "recommended_action": "regenerate",
+      "severity": "high"
+    },
+    {
+      "signal": "stable_mcp_names_drifted",
+      "recommended_action": "repair",
+      "severity": "high"
+    },
+    {
+      "signal": "doctor_fail_after_render",
+      "recommended_action": "repair",
+      "severity": "medium"
+    },
+    {
+      "signal": "same_hand_patch_repeated",
+      "recommended_action": "regenerate",
+      "severity": "medium"
+    }
+  ],
+  "freshness": {
+    "stale_after_days": 7,
+    "repeat_trigger_threshold": 2,
+    "open_window_days": 5
+  },
+  "rollback_anchors": [
+    "docs/CODEX_PLANE_ROLLOUT.md",
+    ".codex/config.toml",
+    ".codex/hooks.json"
+  ],
+  "tags": [
+    "workspace",
+    "codex",
+    "shared-root"
+  ]
+}

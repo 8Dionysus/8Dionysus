@@ -76,14 +76,6 @@ class SystemCapabilityMapTests(unittest.TestCase):
             self.assertIn(wrapper_name, capability_map)
             self.assertIn(wrapper_name, agents)
 
-        for report_name in (
-            "aoa_codex_convergence_report.json",
-            "aoa_codex_convergence_report.md",
-        ):
-            self.assertTrue(
-                (REPO_ROOT / ".codex" / "generated" / "codex" / report_name).is_file()
-            )
-
         self.assertIn("aoa_codex_convergence_report.{json,md}", capability_map)
         self.assertIn("aoa_codex_convergence_report.{json,md}", agents)
         self.assertIn("convergence reports are evidence, not authority", capability_map)

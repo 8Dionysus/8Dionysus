@@ -1,0 +1,55 @@
+name: Repo Validation
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  repo_validation:
+    name: Repo Validation
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with:
+          path: 8Dionysus
+
+      - name: Checkout Agents-of-Abyss
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with:
+          repository: 8Dionysus/Agents-of-Abyss
+          path: Agents-of-Abyss
+          fetch-depth: 1
+
+      - name: Checkout aoa-sdk
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with:
+          repository: 8Dionysus/aoa-sdk
+          path: aoa-sdk
+          fetch-depth: 1
+
+      - name: Setup Python
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405
+        with:
+          python-version: "3.12"
+
+      - name: Install validator dependency
+        run: python -m pip install jsonschema
+
+      - name: Run unit tests
+        working-directory: 8Dionysus
+        run: python -m unittest discover -s tests -p 'test_*.py'
+
+      - name: Verify generated public route map
+        working-directory: 8Dionysus
+        run: python scripts/build_public_route_map.py --check
+
+      - name: Validate public route map
+        working-directory: 8Dionysus
+        run: python scripts/validate_public_route_map.py

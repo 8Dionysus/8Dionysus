@@ -1,0 +1,300 @@
+{
+  "schema_version": "8dionysus_github_required_check_contracts_v1",
+  "tracked_branch": "main",
+  "authority_scope": "coordination-only",
+  "authority_note": "8Dionysus owns the coordination contract for stable required GitHub check names across the public repo family. Owner repositories still own workflow behavior, validation semantics, release policy, and runtime guarantees.",
+  "repos": [
+    {
+      "repo": "8Dionysus/8Dionysus",
+      "family": "repo-validation",
+      "protection_expected": true,
+      "required_status_checks": [
+        "Repo Validation"
+      ],
+      "workflow_checks": [
+        {
+          "path": ".github/workflows/repo-validation.yml",
+          "expected_workflow_name": "Repo Validation",
+          "required_job_names": [
+            "Repo Validation"
+          ]
+        }
+      ]
+    },
+    {
+      "repo": "8Dionysus/ATM10-Agent",
+      "family": "atm10-main-gate",
+      "protection_expected": true,
+      "required_status_checks": [
+        "test",
+        "smoke"
+      ],
+      "workflow_checks": [
+        {
+          "path": ".github/workflows/pytest.yml",
+          "expected_workflow_name": "Pytest",
+          "required_job_names": [
+            "test",
+            "smoke"
+          ]
+        }
+      ]
+    },
+    {
+      "repo": "8Dionysus/Agents-of-Abyss",
+      "family": "repo-validation",
+      "protection_expected": true,
+      "required_status_checks": [
+        "Repo Validation"
+      ],
+      "workflow_checks": [
+        {
+          "path": ".github/workflows/repo-validation.yml",
+          "expected_workflow_name": "Repo Validation",
+          "required_job_names": [
+            "Repo Validation"
+          ]
+        }
+      ]
+    },
+    {
+      "repo": "8Dionysus/Dionysus",
+      "family": "repo-validation",
+      "protection_expected": true,
+      "required_status_checks": [
+        "Repo Validation"
+      ],
+      "workflow_checks": [
+        {
+          "path": ".github/workflows/validate-seed-surfaces.yml",
+          "expected_workflow_name": "Repo Validation",
+          "required_job_names": [
+            "Repo Validation"
+          ]
+        }
+      ]
+    },
+    {
+      "repo": "8Dionysus/Tree-of-Sophia",
+      "family": "repo-validation",
+      "protection_expected": true,
+      "required_status_checks": [
+        "Repo Validation"
+      ],
+      "workflow_checks": [
+        {
+          "path": ".github/workflows/repo-validation.yml",
+          "expected_workflow_name": "Repo Validation",
+          "required_job_names": [
+            "Repo Validation"
+          ]
+        }
+      ]
+    },
+    {
+      "repo": "8Dionysus/abyss-stack",
+      "family": "abyss-stack-main-gate",
+      "protection_expected": true,
+      "required_status_checks": [
+        "Repo Validation",
+        "validate-windows-host-bridge"
+      ],
+      "workflow_checks": [
+        {
+          "path": ".github/workflows/validate-stack.yml",
+          "expected_workflow_name": "Repo Validation",
+          "required_job_names": [
+            "Repo Validation",
+            "validate-windows-host-bridge"
+          ]
+        }
+      ]
+    },
+    {
+      "repo": "8Dionysus/abyss-stack_old",
+      "family": "manual-review-unprotected",
+      "protection_expected": false,
+      "required_status_checks": [],
+      "workflow_checks": [],
+      "review_note": "No repo-family required-check contract is declared here. Review manually before any tightening, migration, or deletion work."
+    },
+    {
+      "repo": "8Dionysus/aoa-agents",
+      "family": "repo-validation",
+      "protection_expected": true,
+      "required_status_checks": [
+        "Repo Validation"
+      ],
+      "workflow_checks": [
+        {
+          "path": ".github/workflows/repo-validation.yml",
+          "expected_workflow_name": "Repo Validation",
+          "required_job_names": [
+            "Repo Validation"
+          ]
+        }
+      ]
+    },
+    {
+      "repo": "8Dionysus/aoa-evals",
+      "family": "repo-validation",
+      "protection_expected": true,
+      "required_status_checks": [
+        "Repo Validation"
+      ],
+      "workflow_checks": [
+        {
+          "path": ".github/workflows/repo-validation.yml",
+          "expected_workflow_name": "Repo Validation",
+          "required_job_names": [
+            "Repo Validation"
+          ]
+        }
+      ]
+    },
+    {
+      "repo": "8Dionysus/aoa-kag",
+      "family": "repo-validation",
+      "protection_expected": true,
+      "required_status_checks": [
+        "Repo Validation"
+      ],
+      "workflow_checks": [
+        {
+          "path": ".github/workflows/repo-validation.yml",
+          "expected_workflow_name": "Repo Validation",
+          "required_job_names": [
+            "Repo Validation"
+          ]
+        }
+      ]
+    },
+    {
+      "repo": "8Dionysus/aoa-memo",
+      "family": "repo-validation",
+      "protection_expected": true,
+      "required_status_checks": [
+        "Repo Validation"
+      ],
+      "workflow_checks": [
+        {
+          "path": ".github/workflows/repo-validation.yml",
+          "expected_workflow_name": "Repo Validation",
+          "required_job_names": [
+            "Repo Validation"
+          ]
+        }
+      ]
+    },
+    {
+      "repo": "8Dionysus/aoa-playbooks",
+      "family": "repo-validation",
+      "protection_expected": true,
+      "required_status_checks": [
+        "Repo Validation"
+      ],
+      "workflow_checks": [
+        {
+          "path": ".github/workflows/repo-validation.yml",
+          "expected_workflow_name": "Repo Validation",
+          "required_job_names": [
+            "Repo Validation"
+          ]
+        }
+      ]
+    },
+    {
+      "repo": "8Dionysus/aoa-routing",
+      "family": "repo-validation",
+      "protection_expected": true,
+      "required_status_checks": [
+        "Repo Validation"
+      ],
+      "workflow_checks": [
+        {
+          "path": ".github/workflows/repo-validation.yml",
+          "expected_workflow_name": "Repo Validation",
+          "required_job_names": [
+            "Repo Validation"
+          ]
+        }
+      ]
+    },
+    {
+      "repo": "8Dionysus/aoa-sdk",
+      "family": "repo-validation",
+      "protection_expected": true,
+      "required_status_checks": [
+        "Repo Validation"
+      ],
+      "workflow_checks": [
+        {
+          "path": ".github/workflows/repo-validation.yml",
+          "expected_workflow_name": "Repo Validation",
+          "required_job_names": [
+            "Repo Validation"
+          ]
+        }
+      ]
+    },
+    {
+      "repo": "8Dionysus/aoa-skills",
+      "family": "aoa-skills-main-gate",
+      "protection_expected": true,
+      "required_status_checks": [
+        "Repo Validation",
+        "build-validate"
+      ],
+      "workflow_checks": [
+        {
+          "path": ".github/workflows/repo-validation.yml",
+          "expected_workflow_name": "Repo Validation",
+          "required_job_names": [
+            "Repo Validation"
+          ]
+        },
+        {
+          "path": ".github/workflows/codex-portable-export.yml",
+          "expected_workflow_name": "codex-portable-export",
+          "required_job_names": [
+            "build-validate"
+          ]
+        }
+      ]
+    },
+    {
+      "repo": "8Dionysus/aoa-stats",
+      "family": "repo-validation",
+      "protection_expected": true,
+      "required_status_checks": [
+        "Repo Validation"
+      ],
+      "workflow_checks": [
+        {
+          "path": ".github/workflows/validate.yml",
+          "expected_workflow_name": "Repo Validation",
+          "required_job_names": [
+            "Repo Validation"
+          ]
+        }
+      ]
+    },
+    {
+      "repo": "8Dionysus/aoa-techniques",
+      "family": "repo-validation",
+      "protection_expected": true,
+      "required_status_checks": [
+        "Repo Validation"
+      ],
+      "workflow_checks": [
+        {
+          "path": ".github/workflows/repo-validation.yml",
+          "expected_workflow_name": "Repo Validation",
+          "required_job_names": [
+            "Repo Validation"
+          ]
+        }
+      ]
+    }
+  ]
+}

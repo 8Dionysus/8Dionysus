@@ -1,0 +1,33 @@
+name: Repo Family Drift Check
+
+on:
+  schedule:
+    - cron: "23 4 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: repo-family-drift-check
+  cancel-in-progress: true
+
+jobs:
+  drift_check:
+    name: Repo Family Drift Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+
+      - name: Setup Python
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405
+        with:
+          python-version: "3.12"
+
+      - name: Install validator dependency
+        run: python -m pip install jsonschema
+
+      - name: Validate repo-family workflow drift
+        run: python scripts/validate_github_required_check_contracts.py --remote-workflows

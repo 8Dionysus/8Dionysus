@@ -74,6 +74,23 @@ jobs:
         self.assertEqual(workflow_name, "Repo Validation")
         self.assertEqual(job_names, ["Repo Validation", "build_validate"])
 
+    def test_parse_workflow_metadata_accepts_nonstandard_job_indentation(self) -> None:
+        workflow_name, job_names = parse_workflow_metadata(
+            """name: "Repo Validation"
+
+jobs:
+    release_audit:
+        name: Repo Validation
+        runs-on: ubuntu-latest
+    build_validate:
+        runs-on: ubuntu-latest
+""",
+            "fixture-indented.yml",
+        )
+
+        self.assertEqual(workflow_name, "Repo Validation")
+        self.assertEqual(job_names, ["Repo Validation", "build_validate"])
+
     def test_parse_workflow_metadata_ignores_block_scalar_contents(self) -> None:
         workflow_name, job_names = parse_workflow_metadata(
             """name: Pytest
@@ -110,6 +127,24 @@ jobs:
           name: dependency-audit-report
 """,
             "fixture-nested-name.yml",
+        )
+
+        self.assertEqual(workflow_name, "Pytest")
+        self.assertEqual(job_names, ["smoke"])
+
+    def test_parse_workflow_metadata_ignores_nested_step_names_with_nonstandard_indentation(self) -> None:
+        workflow_name, job_names = parse_workflow_metadata(
+            """name: Pytest
+
+jobs:
+    smoke:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/upload-artifact@v4
+              with:
+                  name: dependency-audit-report
+""",
+            "fixture-nested-indent.yml",
         )
 
         self.assertEqual(workflow_name, "Pytest")
@@ -194,16 +229,56 @@ jobs:
         }
 
         def fake_gh_runner(api_path: str) -> SimpleNamespace:
-            if api_path.endswith("8Dionysus/example/branches/main/protection/required_status_checks"):
+            if api_path.endswith("8Dionysus/example/branches/main"):
                 return SimpleNamespace(
                     returncode=0,
-                    stdout='{"strict": true, "contexts": ["Repo Validation"]}',
+                    stdout='{"protected": true, "protection": {"required_status_checks": {"contexts": ["Repo Validation"]}}}',
                     stderr="",
                 )
-            return SimpleNamespace(returncode=1, stdout="", stderr="404 Not Found")
+            self.assertTrue(api_path.endswith("8Dionysus/manual/branches/main"))
+            return SimpleNamespace(
+                returncode=0,
+                stdout='{"protected": false, "protection": {"required_status_checks": {"contexts": []}}}',
+                stderr="",
+            )
 
         validate_contract_structure(contract)
         validate_live_github_protection(contract, [], gh_runner=fake_gh_runner)
+
+    def test_live_github_protection_validation_rejects_unprotected_repo_api_failures(self) -> None:
+        contract = {
+            "schema_version": "8dionysus_github_required_check_contracts_v1",
+            "tracked_branch": "main",
+            "authority_scope": "coordination-only",
+            "authority_note": "fixture",
+            "repos": [
+                {
+                    "repo": "8Dionysus/manual",
+                    "family": "manual",
+                    "protection_expected": False,
+                    "required_status_checks": [],
+                    "workflow_checks": [],
+                }
+            ],
+        }
+
+        def fake_gh_runner(api_path: str) -> SimpleNamespace:
+            self.assertEqual(
+                "repos/8Dionysus/manual/branches/main",
+                api_path,
+            )
+            return SimpleNamespace(
+                returncode=1,
+                stdout='{"message":"Upgrade to GitHub Pro or make this repository public to enable this feature.","status":"403"}',
+                stderr="gh: Upgrade to GitHub Pro or make this repository public to enable this feature. (HTTP 403)",
+            )
+
+        validate_contract_structure(contract)
+        with self.assertRaisesRegex(
+            ValueError,
+            r"8Dionysus/manual protection check failed",
+        ):
+            validate_live_github_protection(contract, [], gh_runner=fake_gh_runner)
 
 
 if __name__ == "__main__":

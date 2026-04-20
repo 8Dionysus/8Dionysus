@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://8dionysus/schemas/github_required_check_contracts.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "tracked_branch",
+    "authority_scope",
+    "authority_note",
+    "repos"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "8dionysus_github_required_check_contracts_v1"
+    },
+    "tracked_branch": {
+      "type": "string",
+      "minLength": 1
+    },
+    "authority_scope": {
+      "const": "coordination-only"
+    },
+    "authority_note": {
+      "type": "string",
+      "minLength": 1
+    },
+    "repos": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "repo",
+          "family",
+          "protection_expected",
+          "required_status_checks",
+          "workflow_checks"
+        ],
+        "properties": {
+          "repo": {
+            "type": "string",
+            "pattern": "^[^/]+/[^/]+$"
+          },
+          "family": {
+            "type": "string",
+            "minLength": 1
+          },
+          "protection_expected": {
+            "type": "boolean"
+          },
+          "required_status_checks": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "workflow_checks": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "path",
+                "expected_workflow_name",
+                "required_job_names"
+              ],
+              "properties": {
+                "path": {
+                  "type": "string",
+                  "pattern": "^\\.github/workflows/[^/]+\\.ya?ml$"
+                },
+                "expected_workflow_name": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "required_job_names": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              }
+            }
+          },
+          "review_note": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  }
+}

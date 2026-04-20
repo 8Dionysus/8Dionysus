@@ -68,6 +68,20 @@ Validate live `main` branch protection contexts through the authenticated GitHub
 python scripts/validate_github_required_check_contracts.py --github-protection
 ```
 
+Run the trigger-aware closeout helper from the repo you just changed:
+
+```bash
+<workspace-root>/.codex/bin/aoa-required-check-audit --repo-root <repo_root>
+```
+
+If that same session also changed branch protection through `gh`, include:
+
+```bash
+<workspace-root>/.codex/bin/aoa-required-check-audit \
+  --repo-root <repo_root> \
+  --github-protection
+```
+
 Limit either live route to one repo:
 
 ```bash

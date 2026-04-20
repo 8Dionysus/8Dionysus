@@ -185,7 +185,7 @@ def main() -> int:
     else:
         print("[info] no_changed_paths_detected=true")
 
-    if not args.force and not trigger_paths:
+    if not args.force and not args.github_protection and not trigger_paths:
         print("[skip] required-check audit not triggered")
         return 0
 

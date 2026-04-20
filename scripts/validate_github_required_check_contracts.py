@@ -166,16 +166,28 @@ def parse_workflow_metadata(text: str, source_label: str) -> tuple[str, list[str
     workflow_name: str | None = None
     job_names: list[str] = []
     in_jobs = False
+    jobs_indent: int | None = None
     current_job_id: str | None = None
+    current_job_indent: int | None = None
+    current_job_field_indent: int | None = None
     current_job_name: str | None = None
     block_scalar_indent: int | None = None
 
     def finalize_job() -> None:
-        nonlocal current_job_id, current_job_name
+        nonlocal current_job_id, current_job_indent, current_job_field_indent, current_job_name
         if current_job_id is None:
             return
         job_names.append(current_job_name or current_job_id)
         current_job_id = None
+        current_job_indent = None
+        current_job_field_indent = None
+        current_job_name = None
+
+    def start_job(job_id: str, indent: int) -> None:
+        nonlocal current_job_id, current_job_indent, current_job_field_indent, current_job_name
+        current_job_id = job_id
+        current_job_indent = indent
+        current_job_field_indent = None
         current_job_name = None
 
     for lineno, line in enumerate(text.splitlines(), start=1):
@@ -199,6 +211,7 @@ def parse_workflow_metadata(text: str, source_label: str) -> tuple[str, list[str
 
         if indent == 0:
             finalize_job()
+            jobs_indent = None
             in_jobs = stripped.startswith("jobs:")
             if stripped.startswith("name:"):
                 workflow_name = parse_inline_scalar(stripped.split(":", 1)[1], source_label, lineno)
@@ -206,12 +219,38 @@ def parse_workflow_metadata(text: str, source_label: str) -> tuple[str, list[str
 
         if not in_jobs:
             continue
-        if indent == 2 and stripped.endswith(":") and not stripped.startswith("-"):
+
+        is_mapping_key = stripped.endswith(":") and not stripped.startswith("-")
+        if current_job_id is not None and jobs_indent is not None and is_mapping_key and indent == jobs_indent:
             finalize_job()
-            current_job_id = stripped[:-1].strip()
-            current_job_name = None
+            start_job(stripped[:-1].strip(), indent)
             continue
-        if current_job_id is not None and indent == 4 and stripped.startswith("name:"):
+
+        if current_job_id is None:
+            if is_mapping_key:
+                if jobs_indent is None:
+                    jobs_indent = indent
+                if indent == jobs_indent:
+                    start_job(stripped[:-1].strip(), indent)
+            continue
+
+        if current_job_indent is not None and indent <= current_job_indent:
+            finalize_job()
+            if is_mapping_key:
+                if jobs_indent is None:
+                    jobs_indent = indent
+                if indent == jobs_indent:
+                    start_job(stripped[:-1].strip(), indent)
+            continue
+
+        if current_job_field_indent is None and not stripped.startswith("-"):
+            current_job_field_indent = indent
+
+        if (
+            current_job_field_indent is not None
+            and indent == current_job_field_indent
+            and stripped.startswith("name:")
+        ):
             current_job_name = parse_inline_scalar(stripped.split(":", 1)[1], source_label, lineno)
 
     finalize_job()
@@ -297,17 +336,32 @@ def validate_live_github_protection(
             f"{repo}.required_status_checks",
         )
         protection_expected = repo_entry["protection_expected"]
-        api_path = f"repos/{repo}/branches/{branch}/protection/required_status_checks"
+        api_path = f"repos/{repo}/branches/{branch}"
         response = gh_runner(api_path)
         returncode = getattr(response, "returncode", 1)
         stdout = getattr(response, "stdout", "")
         stderr = getattr(response, "stderr", "")
+        if returncode != 0:
+            raise ValueError(f"{repo} protection check failed: {stderr.strip() or stdout.strip()}")
+
+        payload = json.loads(stdout)
+        protected = payload.get("protected")
+        if not isinstance(protected, bool):
+            raise ValueError(f"{repo} branch payload is missing boolean 'protected' state")
 
         if protection_expected:
-            if returncode != 0:
-                raise ValueError(f"{repo} protection check failed: {stderr.strip() or stdout.strip()}")
-            payload = json.loads(stdout)
-            contexts = normalize_unique_strings(payload.get("contexts", []), f"{repo}.live_contexts")
+            if not protected:
+                raise ValueError(f"{repo} expected live branch protection on {branch}")
+            protection = payload.get("protection")
+            if not isinstance(protection, dict):
+                raise ValueError(f"{repo} branch payload is missing protection details")
+            required_checks = protection.get("required_status_checks")
+            if not isinstance(required_checks, dict):
+                raise ValueError(f"{repo} branch payload is missing required_status_checks details")
+            contexts = normalize_unique_strings(
+                required_checks.get("contexts", []),
+                f"{repo}.live_contexts",
+            )
             if sorted(contexts) != sorted(required_status_checks):
                 raise ValueError(
                     f"{repo} live required_status_checks {contexts!r} != {required_status_checks!r}"
@@ -315,8 +369,8 @@ def validate_live_github_protection(
             print(f"[ok] live branch protection {repo}@{branch}")
             continue
 
-        if returncode == 0:
-            raise ValueError(f"{repo} unexpectedly has live required_status_checks configured")
+        if protected:
+            raise ValueError(f"{repo} unexpectedly has live branch protection configured")
         print(f"[ok] live branch protection intentionally absent for {repo}@{branch}")
 
 

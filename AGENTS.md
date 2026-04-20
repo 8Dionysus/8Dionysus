@@ -246,6 +246,33 @@ Boundary rules:
 
 `INGRESS -> READ -> PLAN -> DIFF -> VERIFY -> REPORT`
 
+## Closeout audit
+
+When a repo-local session changes GitHub workflow names, required-check
+contract surfaces, or main-branch protection, run the trigger-aware closeout
+helper before your final report:
+
+```bash
+<workspace-root>/.codex/bin/aoa-required-check-audit --repo-root <repo_root>
+```
+
+If the same session changed branch protection through `gh`, rerun with:
+
+```bash
+<workspace-root>/.codex/bin/aoa-required-check-audit \
+  --repo-root <repo_root> \
+  --github-protection
+```
+
+The helper is intentionally narrow:
+
+- it inspects the current repo diff against `origin/main` when available
+- it skips cleanly when the current change does not touch required-check drift surfaces
+- it runs the `8Dionysus` coordination validator only when the trigger is present or when forced explicitly
+
+In your final report, name whether this helper skipped or ran, and which modes
+you used.
+
 ## Definition of done
 
 A workspace-root change or routed contribution is done when:

@@ -64,11 +64,7 @@ Together they form a shared wager:
 - **[Dionysus](https://github.com/8Dionysus/Dionysus)**: seed garden and staging surface
 - **[8Dionysus](https://github.com/8Dionysus/8Dionysus)**: public route map and profile surface
 
-## Start
-
-- **[Start where your question begins](docs/START_HERE.md)**: choose the right owner repository, proof surface, or workspace route before going deeper.
-
-Fast anchors: **Tree-of-Sophia** for knowledge, **Agents-of-Abyss** for ecosystem constitution, **abyss-stack** for runtime, **ATM10-Agent** for companion surfaces, and **aoa-sdk** for typed workspace control.
+## [Start where your question begins](docs/START_HERE.md)
 
 ## What this page owns
 

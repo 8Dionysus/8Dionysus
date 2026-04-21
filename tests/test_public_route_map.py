@@ -104,6 +104,17 @@ class PublicRouteMapTests(unittest.TestCase):
             posture,
         )
 
+    def test_profile_route_uses_start_here_surface(self) -> None:
+        payload = build_payload()
+        profile_route = next(
+            route for route in payload["routes"] if route["route_id"] == "profile-correction"
+        )
+
+        self.assertIn("8Dionysus:docs/START_HERE.md", profile_route["verification_refs"])
+        posture_path = Path(__file__).resolve().parents[1] / "docs" / "PUBLIC_ENTRY_POSTURE.md"
+        posture = posture_path.read_text(encoding="utf-8")
+        self.assertIn("docs/START_HERE.md", posture)
+
     def test_payload_is_json_serializable(self) -> None:
         payload = build_payload()
         rendered = json.dumps(payload, separators=(",", ":"))

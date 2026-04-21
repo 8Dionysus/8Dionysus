@@ -64,23 +64,11 @@ Together they form a shared wager:
 - **[Dionysus](https://github.com/8Dionysus/Dionysus)**: seed garden and staging surface
 - **[8Dionysus](https://github.com/8Dionysus/8Dionysus)**: public route map and profile surface
 
-## Start where your question begins
+## Start
 
-- For the knowledge world and source-first architecture of thought, start with **[Tree-of-Sophia](https://github.com/8Dionysus/Tree-of-Sophia)**
-- For the ecosystem center, constitutional map, and federation rules, start with **[Agents-of-Abyss](https://github.com/8Dionysus/Agents-of-Abyss)**
-- For the runtime underneath the system, go to **[abyss-stack](https://github.com/8Dionysus/abyss-stack)**
-- For the local-first companion surface, go to **[ATM10-Agent](https://github.com/8Dionysus/ATM10-Agent)**
-- For typed access and workspace integration, go to **[aoa-sdk](https://github.com/8Dionysus/aoa-sdk)**
-- For the practice → execution → proof → observability path, move through **[aoa-techniques](https://github.com/8Dionysus/aoa-techniques) → [aoa-skills](https://github.com/8Dionysus/aoa-skills) → [aoa-evals](https://github.com/8Dionysus/aoa-evals) → [aoa-stats](https://github.com/8Dionysus/aoa-stats)**
-- For a compact shared vocabulary, see **[GLOSSARY.md](https://github.com/8Dionysus/8Dionysus/blob/main/GLOSSARY.md)**
-- For a compact map of the planted system capabilities, owner repos, playbook openings, and MCP lanes, see **[docs/SYSTEM_CAPABILITY_MAP.md](https://github.com/8Dionysus/8Dionysus/blob/main/docs/SYSTEM_CAPABILITY_MAP.md)**
-- For the sibling-workspace layout and shared install route, see **[docs/WORKSPACE_INSTALL.md](https://github.com/8Dionysus/8Dionysus/blob/main/docs/WORKSPACE_INSTALL.md)**
-- For the source-owned Codex-plane manifest, rerender, and drift-check route, see **[docs/CODEX_PLANE_REGENERATION.md](https://github.com/8Dionysus/8Dionysus/blob/main/docs/CODEX_PLANE_REGENERATION.md)**
-- For owner-routed component drift at the shared workspace root, see **[docs/COMPONENT_REFRESH_ROUTE.md](https://github.com/8Dionysus/8Dionysus/blob/main/docs/COMPONENT_REFRESH_ROUTE.md)**
-- For live Codex-plane trust, rollout, doctor, and rollback posture after rerender, see **[docs/CODEX_PLANE_ROLLOUT.md](https://github.com/8Dionysus/8Dionysus/blob/main/docs/CODEX_PLANE_ROLLOUT.md)**
-- For bounded rollout campaigns, drift windows, rollback windows, and checked-in trusted rollout history for the shared-root Codex plane, see **[docs/CODEX_TRUSTED_ROLLOUT_OPERATIONS.md](https://github.com/8Dionysus/8Dionysus/blob/main/docs/CODEX_TRUSTED_ROLLOUT_OPERATIONS.md)**
-- For recurring rollout campaign cadence windows that group drift review and rollback follow-through without becoming a scheduler or second playbook, see **[docs/TRUSTED_ROLLOUT_CAMPAIGNS.md](https://github.com/8Dionysus/8Dionysus/blob/main/docs/TRUSTED_ROLLOUT_CAMPAIGNS.md)**
-- For the posture and scope of this repository itself, see **[docs/PUBLIC_ENTRY_POSTURE.md](https://github.com/8Dionysus/8Dionysus/blob/main/docs/PUBLIC_ENTRY_POSTURE.md)**
+- **[Start where your question begins](docs/START_HERE.md)**: choose the right owner repository, proof surface, or workspace route before going deeper.
+
+Fast anchors: **Tree-of-Sophia** for knowledge, **Agents-of-Abyss** for ecosystem constitution, **abyss-stack** for runtime, **ATM10-Agent** for companion surfaces, and **aoa-sdk** for typed workspace control.
 
 ## What this page owns
 

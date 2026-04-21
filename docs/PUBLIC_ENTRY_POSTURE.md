@@ -8,6 +8,7 @@ It keeps `8Dionysus` as a route map, not a hidden center of authority.
 `8Dionysus` owns:
 
 - public repository routing
+- profile-level route-index delegation through `docs/START_HERE.md`
 - short role descriptions for the current public ecosystem
 - glossary-level orientation
 - one compact capability-map route for already-landed cross-repo families
@@ -30,7 +31,7 @@ Use the smallest route that matches your need:
 |---|---|---|---|
 | ecosystem understanding | `Agents-of-Abyss` | `generated/public_route_map.min.json` -> linked `Agents-of-Abyss` center entry surfaces | `generated/public_route_map.min.json`, `python scripts/build_public_route_map.py --check`, `python scripts/validate_public_route_map.py`, and link review against the current `Agents-of-Abyss` owner validators |
 | local workspace bootstrap and typed control-plane use | `aoa-sdk` | `generated/public_route_map.min.json` -> linked `aoa-sdk` workspace entry surfaces -> `docs/workspace-layout.md` -> `docs/versioning.md` -> `8Dionysus/docs/WORKSPACE_INSTALL.md` -> `8Dionysus/docs/CODEX_PLANE_REGENERATION.md` | `generated/public_route_map.min.json`, `python scripts/build_public_route_map.py --check`, `python scripts/validate_public_route_map.py`, `docs/WORKSPACE_INSTALL.md`, `<workspace-root>/.codex/bin/aoa-workspace-project --check --json`, `python scripts/validate_codex_plane_regeneration.py --workspace-root <workspace-root>`, and the linked `aoa-sdk` owner validation surfaces |
-| profile-only route or glossary correction | `8Dionysus` | `README.md`, `GLOSSARY.md`, `docs/QUESTBOOK_PROFILE_BOUNDARY.md` | link review against linked owner repos |
+| profile-only route or glossary correction | `8Dionysus` | `README.md` -> `docs/START_HERE.md` -> `GLOSSARY.md`, `docs/QUESTBOOK_PROFILE_BOUNDARY.md` | `README.md`, `docs/START_HERE.md`, `docs/QUESTBOOK_PROFILE_BOUNDARY.md`, and link review against linked owner repos |
 
 ## Capability overview
 

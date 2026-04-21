@@ -20,10 +20,11 @@ Once a concrete `repo_root` is chosen, that repository's own `AGENTS.md` and nea
 Before substantial work from the workspace root, read in this order:
 
 1. `<workspace-root>/8Dionysus/README.md`
-2. `<workspace-root>/8Dionysus/GLOSSARY.md`
-3. `<workspace-root>/8Dionysus/docs/PUBLIC_ENTRY_POSTURE.md`
-4. the target repository's own `README.md`
-5. the target repository's own `AGENTS.md`
+2. `<workspace-root>/8Dionysus/docs/START_HERE.md`
+3. `<workspace-root>/8Dionysus/GLOSSARY.md`
+4. `<workspace-root>/8Dionysus/docs/PUBLIC_ENTRY_POSTURE.md`
+5. the target repository's own `README.md`
+6. the target repository's own `AGENTS.md`
 
 If the task is primarily about workspace layout or bootstrap, also read:
 

@@ -58,6 +58,7 @@ ROUTE_METADATA_BY_NEED = {
         "authority_ref": "8Dionysus:docs/PUBLIC_ENTRY_POSTURE.md",
         "verification_refs": [
             "8Dionysus:README.md",
+            "8Dionysus:docs/START_HERE.md",
             "8Dionysus:docs/QUESTBOOK_PROFILE_BOUNDARY.md",
         ],
     },

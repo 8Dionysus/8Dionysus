@@ -12,10 +12,12 @@ class CurrentDirectionRoutesTestCase(unittest.TestCase):
     def test_root_entrypoints_route_to_public_entry_posture(self) -> None:
         posture_path = REPO_ROOT / "docs" / "PUBLIC_ENTRY_POSTURE.md"
         readme = (REPO_ROOT / "README.md").read_text(encoding="utf-8")
+        start_here = (REPO_ROOT / "docs" / "START_HERE.md").read_text(encoding="utf-8")
         agents = (REPO_ROOT / "AGENTS.md").read_text(encoding="utf-8")
 
         self.assertTrue(posture_path.is_file())
-        self.assertIn(CURRENT_SURFACE, readme)
+        self.assertIn("docs/START_HERE.md", readme)
+        self.assertIn("PUBLIC_ENTRY_POSTURE.md", start_here)
         self.assertIn(CURRENT_SURFACE, agents)
 
 

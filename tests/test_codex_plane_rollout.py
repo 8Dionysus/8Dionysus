@@ -19,13 +19,15 @@ def load_json(relative_path: str) -> dict[str, object]:
 class CodexPlaneRolloutTests(unittest.TestCase):
     def test_rollout_docs_stay_discoverable_from_primary_routes(self) -> None:
         readme = (REPO_ROOT / "README.md").read_text(encoding="utf-8")
+        start_here = (REPO_ROOT / "docs" / "START_HERE.md").read_text(encoding="utf-8")
         install = (REPO_ROOT / "docs" / "WORKSPACE_INSTALL.md").read_text(encoding="utf-8")
         regeneration = (REPO_ROOT / "docs" / "CODEX_PLANE_REGENERATION.md").read_text(
             encoding="utf-8"
         )
         rollout = (REPO_ROOT / "docs" / "CODEX_PLANE_ROLLOUT.md").read_text(encoding="utf-8")
 
-        self.assertIn("docs/CODEX_PLANE_ROLLOUT.md", readme)
+        self.assertIn("docs/START_HERE.md", readme)
+        self.assertIn("CODEX_PLANE_ROLLOUT.md", start_here)
         self.assertIn("docs/CODEX_PLANE_ROLLOUT.md", install)
         self.assertIn("CODEX_PLANE_ROLLOUT.md", regeneration)
         self.assertIn("When deployment signals disagree, prefer:", rollout)
@@ -33,6 +35,7 @@ class CodexPlaneRolloutTests(unittest.TestCase):
 
     def test_component_refresh_route_stays_discoverable_and_owner_bounded(self) -> None:
         readme = (REPO_ROOT / "README.md").read_text(encoding="utf-8")
+        start_here = (REPO_ROOT / "docs" / "START_HERE.md").read_text(encoding="utf-8")
         agents = (REPO_ROOT / "AGENTS.md").read_text(encoding="utf-8")
         install = (REPO_ROOT / "docs" / "WORKSPACE_INSTALL.md").read_text(encoding="utf-8")
         regeneration = (REPO_ROOT / "docs" / "CODEX_PLANE_REGENERATION.md").read_text(
@@ -43,7 +46,8 @@ class CodexPlaneRolloutTests(unittest.TestCase):
             encoding="utf-8"
         )
 
-        self.assertIn("docs/COMPONENT_REFRESH_ROUTE.md", readme)
+        self.assertIn("docs/START_HERE.md", readme)
+        self.assertIn("COMPONENT_REFRESH_ROUTE.md", start_here)
         self.assertIn("generated or install drift", agents)
         self.assertIn("owner repo", agents)
         self.assertIn("docs/COMPONENT_REFRESH_ROUTE.md", install)

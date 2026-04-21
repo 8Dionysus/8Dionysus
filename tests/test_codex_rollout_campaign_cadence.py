@@ -27,6 +27,7 @@ def write_json(path: Path, payload: object) -> None:
 class CodexRolloutCampaignCadenceTests(unittest.TestCase):
     def test_campaign_cadence_docs_stay_discoverable(self) -> None:
         readme = (REPO_ROOT / "README.md").read_text(encoding="utf-8")
+        start_here = (REPO_ROOT / "docs" / "START_HERE.md").read_text(encoding="utf-8")
         install = (REPO_ROOT / "docs" / "WORKSPACE_INSTALL.md").read_text(encoding="utf-8")
         rollout = (REPO_ROOT / "docs" / "CODEX_PLANE_ROLLOUT.md").read_text(encoding="utf-8")
         operations = (REPO_ROOT / "docs" / "CODEX_TRUSTED_ROLLOUT_OPERATIONS.md").read_text(
@@ -36,7 +37,8 @@ class CodexRolloutCampaignCadenceTests(unittest.TestCase):
             encoding="utf-8"
         )
 
-        self.assertIn("docs/TRUSTED_ROLLOUT_CAMPAIGNS.md", readme)
+        self.assertIn("docs/START_HERE.md", readme)
+        self.assertIn("TRUSTED_ROLLOUT_CAMPAIGNS.md", start_here)
         self.assertIn("docs/TRUSTED_ROLLOUT_CAMPAIGNS.md", install)
         self.assertIn("TRUSTED_ROLLOUT_CAMPAIGNS.md", rollout)
         self.assertIn("TRUSTED_ROLLOUT_CAMPAIGNS.md", operations)

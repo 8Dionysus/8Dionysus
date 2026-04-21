@@ -45,13 +45,15 @@ def write_jsonl(path: Path, rows: list[dict[str, object]]) -> None:
 class CodexTrustedRolloutOperationsTests(unittest.TestCase):
     def test_trusted_rollout_docs_stay_discoverable(self) -> None:
         readme = (REPO_ROOT / "README.md").read_text(encoding="utf-8")
+        start_here = (REPO_ROOT / "docs" / "START_HERE.md").read_text(encoding="utf-8")
         install = (REPO_ROOT / "docs" / "WORKSPACE_INSTALL.md").read_text(encoding="utf-8")
         rollout = (REPO_ROOT / "docs" / "CODEX_PLANE_ROLLOUT.md").read_text(encoding="utf-8")
         operations = (REPO_ROOT / "docs" / "CODEX_TRUSTED_ROLLOUT_OPERATIONS.md").read_text(
             encoding="utf-8"
         )
 
-        self.assertIn("docs/CODEX_TRUSTED_ROLLOUT_OPERATIONS.md", readme)
+        self.assertIn("docs/START_HERE.md", readme)
+        self.assertIn("CODEX_TRUSTED_ROLLOUT_OPERATIONS.md", start_here)
         self.assertIn("docs/CODEX_TRUSTED_ROLLOUT_OPERATIONS.md", install)
         self.assertIn("CODEX_TRUSTED_ROLLOUT_OPERATIONS.md", rollout)
         self.assertIn("generated/codex/rollout/deploy_history.jsonl", operations)

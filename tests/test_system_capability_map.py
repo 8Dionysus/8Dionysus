@@ -11,12 +11,14 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 class SystemCapabilityMapTests(unittest.TestCase):
     def test_capability_map_stays_discoverable_and_owner_bounded(self) -> None:
         readme = (REPO_ROOT / "README.md").read_text(encoding="utf-8")
+        start_here = (REPO_ROOT / "docs" / "START_HERE.md").read_text(encoding="utf-8")
         posture = (REPO_ROOT / "docs" / "PUBLIC_ENTRY_POSTURE.md").read_text(encoding="utf-8")
         capability_map = (REPO_ROOT / "docs" / "SYSTEM_CAPABILITY_MAP.md").read_text(
             encoding="utf-8"
         )
 
-        self.assertIn("docs/SYSTEM_CAPABILITY_MAP.md", readme)
+        self.assertIn("docs/START_HERE.md", readme)
+        self.assertIn("SYSTEM_CAPABILITY_MAP.md", start_here)
         self.assertIn("SYSTEM_CAPABILITY_MAP.md", posture)
         self.assertIn("routing surface, not a new source of truth", capability_map)
         self.assertIn("aoa skills enter", capability_map)

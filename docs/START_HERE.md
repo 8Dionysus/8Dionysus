@@ -37,6 +37,7 @@ Use the smallest route that matches the question. This page routes humans and ag
 - For live Codex-plane trust, rollout, doctor, and rollback posture after rerender, see **[CODEX_PLANE_ROLLOUT.md](CODEX_PLANE_ROLLOUT.md)**.
 - For bounded rollout campaigns, drift windows, rollback windows, and checked-in trusted rollout history for the shared-root Codex plane, see **[CODEX_TRUSTED_ROLLOUT_OPERATIONS.md](CODEX_TRUSTED_ROLLOUT_OPERATIONS.md)**.
 - For recurring rollout campaign cadence windows that group drift review and rollback follow-through without becoming a scheduler or second playbook, see **[TRUSTED_ROLLOUT_CAMPAIGNS.md](TRUSTED_ROLLOUT_CAMPAIGNS.md)**.
+- For the first Titan service-cohort route, use **[TITAN_FIRST_APPEARANCE_RUNBOOK.md](TITAN_FIRST_APPEARANCE_RUNBOOK.md)**, then follow owner truth in `aoa-agents`, runtime helpers in `aoa-sdk`, and candidate memory posture in `aoa-memo`.
 - For the posture and scope of this repository itself, see **[PUBLIC_ENTRY_POSTURE.md](PUBLIC_ENTRY_POSTURE.md)**.
 
 ## Boundary

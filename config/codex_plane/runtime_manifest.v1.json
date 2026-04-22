@@ -18,9 +18,9 @@
         "description": "AoA architect. Shapes structure, boundaries, and system-level direction across AoA surfaces.",
         "config_file": "agents/architect.toml",
         "nickname_candidates": [
-          "Atlas",
           "Lattice",
-          "Spine"
+          "Spine",
+          "Frame"
         ]
       },
       {
@@ -28,9 +28,9 @@
         "description": "AoA coder. Implements bounded changes through explicit workflows, verification, and concise reporting.",
         "config_file": "agents/coder.toml",
         "nickname_candidates": [
-          "Forge",
           "Rivet",
-          "Patch"
+          "Patch",
+          "Weld"
         ]
       },
       {
@@ -40,7 +40,7 @@
         "nickname_candidates": [
           "Gauge",
           "Prism",
-          "Delta"
+          "Measure"
         ]
       },
       {
@@ -50,7 +50,7 @@
         "nickname_candidates": [
           "Archive",
           "Ledger",
-          "Mneme"
+          "Index"
         ]
       },
       {
@@ -58,9 +58,49 @@
         "description": "AoA reviewer. Inspects work for drift, boundedness, review quality, and handoff readiness.",
         "config_file": "agents/reviewer.toml",
         "nickname_candidates": [
-          "Sentinel",
           "Lens",
-          "Check"
+          "Check",
+          "Signal"
+        ]
+      },
+      {
+        "name": "Atlas",
+        "description": "Titan Atlas, active bearer of role class `architect`. Maps structure, owner boundaries, source-of-truth surfaces, and route frames.",
+        "config_file": "agents/Atlas.toml",
+        "nickname_candidates": [
+          "Atlas"
+        ]
+      },
+      {
+        "name": "Sentinel",
+        "description": "Titan Sentinel, active bearer of role class `reviewer`. Finds drift, risk, weak evidence, broken gates, and boundary violations.",
+        "config_file": "agents/Sentinel.toml",
+        "nickname_candidates": [
+          "Sentinel"
+        ]
+      },
+      {
+        "name": "Mneme",
+        "description": "Titan Mneme, active bearer of role class `memory-keeper`. Maintains provenance, recall candidates, lineage hygiene, and memory humility.",
+        "config_file": "agents/Mneme.toml",
+        "nickname_candidates": [
+          "Mneme"
+        ]
+      },
+      {
+        "name": "Forge",
+        "description": "Titan Forge, active bearer of role class `coder`. Implements bounded changes after explicit mutation gate approval.",
+        "config_file": "agents/Forge.toml",
+        "nickname_candidates": [
+          "Forge"
+        ]
+      },
+      {
+        "name": "Delta",
+        "description": "Titan Delta, active bearer of role class `evaluator`. Compares evidence, runs verdict posture, and judges regression only after judgment gate.",
+        "config_file": "agents/Delta.toml",
+        "nickname_candidates": [
+          "Delta"
         ]
       }
     ]

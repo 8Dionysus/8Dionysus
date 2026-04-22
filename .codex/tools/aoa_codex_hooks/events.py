@@ -42,6 +42,18 @@ def _trim_message(message: str, *, max_chars: int = 240) -> str:
     return message[: max_chars - 1].rstrip() + "…"
 
 
+def _titan_incarnation_context(workspace_root: Path) -> str:
+    context_tool = workspace_root / ".codex" / "tools" / "aoa_titan_incarnation_context.py"
+    if not context_tool.exists():
+        return ""
+    return (
+        " Titan Incarnation Spine source is present: summon named custom agents "
+        "Atlas/Sentinel/Mneme, not generic architect/reviewer/memory-keeper "
+        "shadows. Forge requires a mutation payload gate; Delta requires a "
+        "judgment payload gate. No autospawn."
+    )
+
+
 def handle_session_start(event: dict[str, Any], workspace_root: Path) -> dict[str, Any]:
     report = build_hook_report(workspace_root)
     log_path = write_event_log(workspace_root, "session_start", {"event": event, "report": report})
@@ -61,6 +73,8 @@ def handle_session_start(event: dict[str, Any], workspace_root: Path) -> dict[st
             "for live derived context use MCP, and for role delegation use subagents. "
             f"Latest hook log: {log_path}."
         )
+
+    additional_context += _titan_incarnation_context(workspace_root)
 
     return {
         "continue": True,

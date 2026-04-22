@@ -13,27 +13,52 @@ job_max_runtime_seconds = 1800
 [agents.architect]
 description = "AoA architect. Shapes structure, boundaries, and system-level direction across AoA surfaces."
 config_file = "agents/architect.toml"
-nickname_candidates = ["Atlas", "Lattice", "Spine"]
+nickname_candidates = ["Lattice", "Spine", "Frame"]
 
 [agents.coder]
 description = "AoA coder. Implements bounded changes through explicit workflows, verification, and concise reporting."
 config_file = "agents/coder.toml"
-nickname_candidates = ["Forge", "Rivet", "Patch"]
+nickname_candidates = ["Rivet", "Patch", "Weld"]
 
 [agents.evaluator]
 description = "AoA evaluator. Applies bounded proof surfaces and comparison discipline to agent-shaped work."
 config_file = "agents/evaluator.toml"
-nickname_candidates = ["Gauge", "Prism", "Delta"]
+nickname_candidates = ["Gauge", "Prism", "Measure"]
 
 [agents.memory-keeper]
 description = "AoA memory-keeper. Preserves provenance, recall hygiene, and bounded memory-layer discipline across AoA surfaces."
 config_file = "agents/memory-keeper.toml"
-nickname_candidates = ["Archive", "Ledger", "Mneme"]
+nickname_candidates = ["Archive", "Ledger", "Index"]
 
 [agents.reviewer]
 description = "AoA reviewer. Inspects work for drift, boundedness, review quality, and handoff readiness."
 config_file = "agents/reviewer.toml"
-nickname_candidates = ["Sentinel", "Lens", "Check"]
+nickname_candidates = ["Lens", "Check", "Signal"]
+
+[agents.Atlas]
+description = "Titan Atlas, active bearer of role class `architect`. Maps structure, owner boundaries, source-of-truth surfaces, and route frames."
+config_file = "agents/Atlas.toml"
+nickname_candidates = ["Atlas"]
+
+[agents.Sentinel]
+description = "Titan Sentinel, active bearer of role class `reviewer`. Finds drift, risk, weak evidence, broken gates, and boundary violations."
+config_file = "agents/Sentinel.toml"
+nickname_candidates = ["Sentinel"]
+
+[agents.Mneme]
+description = "Titan Mneme, active bearer of role class `memory-keeper`. Maintains provenance, recall candidates, lineage hygiene, and memory humility."
+config_file = "agents/Mneme.toml"
+nickname_candidates = ["Mneme"]
+
+[agents.Forge]
+description = "Titan Forge, active bearer of role class `coder`. Implements bounded changes after explicit mutation gate approval."
+config_file = "agents/Forge.toml"
+nickname_candidates = ["Forge"]
+
+[agents.Delta]
+description = "Titan Delta, active bearer of role class `evaluator`. Compares evidence, runs verdict posture, and judges regression only after judgment gate."
+config_file = "agents/Delta.toml"
+nickname_candidates = ["Delta"]
 
 # Keep these server names stable if skill↔MCP wiring depends on them:
 # - aoa_workspace

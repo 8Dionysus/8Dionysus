@@ -14,8 +14,8 @@ The longer arc is toward self-agents: agents with continuity, memory, reflective
 
 ## Two long-horizon directions
 
-- **Tree of Sophia (ToS)** cultivates source-linked knowledge, context, lineage, and conceptual depth.
-- **Agents of Abyss (AoA)** cultivates layered agency that can orient, revise itself, and grow beyond task execution without collapsing into opacity.
+- **[Tree of Sophia (ToS)](https://github.com/8Dionysus/Tree-of-Sophia)** cultivates source-linked knowledge, context, lineage, and conceptual depth.
+- **[Agents of Abyss (AoA)](https://github.com/8Dionysus/Agents-of-Abyss)** cultivates layered agency that can orient, revise itself, and grow beyond task execution without collapsing into opacity.
 
 Together they form a shared wager:
 

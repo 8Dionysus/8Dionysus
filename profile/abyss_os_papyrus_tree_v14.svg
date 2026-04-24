@@ -59,7 +59,7 @@
 <rect x="1776" y="1080" width="16" height="7"/>
 </g>
   </g>
-  <g id="ecosystem" shape-rendering="crispEdges">
+  <g id="ecosystem" shape-rendering="crispEdges" transform="translate(95 75) scale(0.9)">
     <ellipse cx="890" cy="650" rx="760" ry="500" fill="none" stroke="#b85a24" stroke-width="2" stroke-opacity="0.12"/>
     <ellipse cx="890" cy="650" rx="660" ry="430" fill="none" stroke="#f0aa45" stroke-width="2" stroke-opacity="0.08"/>
     <g id="title" transform="translate(0 12)">

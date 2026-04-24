@@ -24,19 +24,19 @@ python scripts/audit_agents_map.py --public-baseline \
 
 ## Current totals
 
-- `agents_md_files`: 121
-- `high_risk_dirs_without_agents`: 141
+- `agents_md_files`: 142
+- `high_risk_dirs_without_agents`: 122
 - `known_repositories`: 16
 - `known_repositories_missing`: 0
 - `long_root_agents`: 3
 - `missing_required_agents`: 0
-- `nested_agents_files`: 105
+- `nested_agents_files`: 126
 - `repos_with_issues`: 15
 - `repositories_listed`: 16
 - `repositories_scanned`: 16
 - `root_agents_present`: 16
-- `unvalidated_nested_agents`: 39
-- `validator_required_agents`: 66
+- `unvalidated_nested_agents`: 33
+- `validator_required_agents`: 93
 - `validators_present`: 16
 
 ## Repository coverage
@@ -48,16 +48,16 @@ python scripts/audit_agents_map.py --public-baseline \
 | `Tree-of-Sophia` | `scanned` | 19 | 18 | True | one or more AGENTS.md files do not start with '# AGENTS.md' |
 | `abyss-stack` | `scanned` | 10 | 9 | True | one or more AGENTS.md files do not start with '# AGENTS.md' |
 | `ATM10-Agent` | `scanned` | 12 | 11 | True | one or more AGENTS.md files do not start with '# AGENTS.md' |
-| `Dionysus` | `scanned` | 7 | 6 | True | one or more AGENTS.md files do not start with '# AGENTS.md' |
+| `Dionysus` | `scanned` | 15 | 14 | True | one or more AGENTS.md files do not start with '# AGENTS.md' |
 | `aoa-sdk` | `scanned` | 7 | 6 | True | root AGENTS.md is long (317 lines; threshold 240) |
 | `aoa-techniques` | `scanned` | 9 | 8 | True | one or more AGENTS.md files do not start with '# AGENTS.md' |
 | `aoa-skills` | `scanned` | 6 | 5 | True | one or more AGENTS.md files do not start with '# AGENTS.md'; root AGENTS.md is long (260 lines; threshold 240) |
 | `aoa-evals` | `scanned` | 8 | 7 | True | one or more AGENTS.md files do not start with '# AGENTS.md' |
-| `aoa-stats` | `scanned` | 1 | 0 | True |  |
+| `aoa-stats` | `scanned` | 9 | 8 | True |  |
 | `aoa-routing` | `scanned` | 6 | 5 | True | one or more AGENTS.md files do not start with '# AGENTS.md' |
 | `aoa-memo` | `scanned` | 6 | 5 | True | one or more AGENTS.md files do not start with '# AGENTS.md' |
 | `aoa-agents` | `scanned` | 13 | 12 | True | one or more AGENTS.md files do not start with '# AGENTS.md' |
-| `aoa-playbooks` | `scanned` | 4 | 3 | True | one or more AGENTS.md files do not start with '# AGENTS.md' |
+| `aoa-playbooks` | `scanned` | 9 | 8 | True | one or more AGENTS.md files do not start with '# AGENTS.md' |
 | `aoa-kag` | `scanned` | 6 | 5 | True | one or more AGENTS.md files do not start with '# AGENTS.md' |
 
 ## How to read the signals

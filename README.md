@@ -66,10 +66,8 @@ Arrows mean exchange, feedback, and distillation; they do not transfer ownership
 |---|---|
 | public orientation<br>short role descriptions<br>ecosystem routing<br>profile-level onboarding | charters and doctrine<br>validators and CI<br>release semantics<br>implementation truth<br>layer-specific guarantees |
 
-## Operating principles
-
 <p align="center">
-  <img src="profile/aoa_operating_principles_tablet.svg" alt="Operating principles: Source boundaries stay visible. Review precedes automation. Provenance survives synthesis. Repetition becomes durable technique. Layers specialize; vocabulary holds. Humans can read what agents can use." width="760">
+  <img src="profile/aoa_operating_principles_tablet.svg" alt="Operating principles: Source boundaries stay visible. Review precedes automation. Provenance survives synthesis. Repetition becomes durable technique. Layers specialize; vocabulary holds. Humans can read what agents can use." width="860">
 </p>
 
 ## Stack

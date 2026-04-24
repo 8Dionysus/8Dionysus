@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1900" height="1260" viewBox="0 0 1900 1260" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="svgTitle svgDesc">
+<title id="svgTitle">Abyss OS compact reciprocal tree</title>
+<desc id="svgDesc">A compact red-orange zig-zag map of Abyss OS showing Tree of Sophia, Agents of Abyss, AoA layers, ATM10-Agent, Dionysus, abyss-stack and 8Dionysus with reciprocal exchange arrows and no ownership collapse.</desc>
+<defs>
+  <radialGradient id="bgRadial" cx="48%" cy="8%" r="88%">
+    <stop offset="0%" stop-color="#2A1208" stop-opacity="0.84"/>
+    <stop offset="42%" stop-color="#111827" stop-opacity="1"/>
+    <stop offset="100%" stop-color="#05070C" stop-opacity="1"/>
+  </radialGradient>
+  <linearGradient id="spineGrad" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#FF7A1A"/>
+    <stop offset="44%" stop-color="#FBBF24"/>
+    <stop offset="100%" stop-color="#EF4444"/>
+  </linearGradient>
+  <filter id="shadow" x="-20%" y="-30%" width="140%" height="170%">
+    <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#000000" flood-opacity="0.42"/>
+  </filter>
+  <filter id="softGlow" x="-40%" y="-40%" width="180%" height="180%">
+    <feGaussianBlur stdDeviation="7" result="blur"/>
+    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <marker id="arrowEnd" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="strokeWidth">
+    <path d="M 1 1 L 7 4 L 1 7 z" fill="#FFB86B" opacity="0.84"/>
+  </marker>
+  <marker id="arrowStart" markerWidth="8" markerHeight="8" refX="1" refY="4" orient="auto" markerUnits="strokeWidth">
+    <path d="M 7 1 L 1 4 L 7 7 z" fill="#FFB86B" opacity="0.84"/>
+  </marker>
+  <pattern id="emberGrid" width="80" height="80" patternUnits="userSpaceOnUse">
+    <path d="M 80 0 L 0 0 0 80" stroke="#8B3A16" stroke-opacity="0.07" stroke-width="1"/>
+  </pattern>
+</defs>
+<rect width="1900" height="1260" fill="url(#bgRadial)"/>
+<rect width="1900" height="1260" fill="url(#emberGrid)" opacity="0.48"/>
+
+<!-- one organism: repeated exchange without ownership collapse -->
+<ellipse cx="890" cy="650.0" rx="760" ry="500" fill="none" stroke="#FF7A1A" stroke-opacity="0.10" stroke-width="2"/>
+<ellipse cx="890" cy="650.0" rx="660" ry="430" fill="none" stroke="#FBBF24" stroke-opacity="0.06" stroke-width="2"/>
+
+
+<g id="title">
+  <text x="950.0" y="42" text-anchor="middle"
+    font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    font-size="22" font-weight="650" fill="#FFF7ED" opacity="0.95">Abyss OS</text>
+  <text x="950.0" y="66" text-anchor="middle"
+    font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    font-size="14" fill="#FED7AA" opacity="0.80">compact reciprocal tree · reading order, not command hierarchy</text>
+</g>
+
+
+<!-- reciprocal trunk: a common metabolism, not a command chain -->
+<path d="M 850 130 C 838.3 153.3, 768.3 226.7, 780.0 270.0 C 791.7 313.3, 908.3 355.0, 920.0 390.0 C 931.7 425.0, 861.7 436.7, 850.0 480.0 C 838.3 523.3, 838.3 598.3, 850.0 650.0 C 861.7 701.7, 920.0 743.3, 920.0 790.0 C 920.0 836.7, 871.7 888.3, 850.0 930.0 C 828.3 971.7, 790.0 1003.3, 790.0 1040.0 C 790.0 1076.7, 840.0 1131.7, 850.0 1150.0" stroke="#FF7A1A" stroke-opacity="0.15" stroke-width="22" stroke-linecap="round" filter="url(#softGlow)"/>
+<path d="M 850 130 C 838.3 153.3, 768.3 226.7, 780.0 270.0 C 791.7 313.3, 908.3 355.0, 920.0 390.0 C 931.7 425.0, 861.7 436.7, 850.0 480.0 C 838.3 523.3, 838.3 598.3, 850.0 650.0 C 861.7 701.7, 920.0 743.3, 920.0 790.0 C 920.0 836.7, 871.7 888.3, 850.0 930.0 C 828.3 971.7, 790.0 1003.3, 790.0 1040.0 C 790.0 1076.7, 840.0 1131.7, 850.0 1150.0" stroke="url(#spineGrad)" stroke-opacity="0.74" stroke-width="4.2" stroke-linecap="round"/>
+
+<circle cx="850" cy="130" r="5.4" fill="#FFB86B" opacity="0.95" />
+<circle cx="850" cy="130" r="12" fill="none" stroke="#FF7A1A" stroke-opacity="0.16" stroke-width="2" />
+
+
+<circle cx="780" cy="270" r="5.4" fill="#FFB86B" opacity="0.95" />
+<circle cx="780" cy="270" r="12" fill="none" stroke="#FF7A1A" stroke-opacity="0.16" stroke-width="2" />
+
+
+<circle cx="920" cy="390" r="5.4" fill="#FFB86B" opacity="0.95" />
+<circle cx="920" cy="390" r="12" fill="none" stroke="#FF7A1A" stroke-opacity="0.16" stroke-width="2" />
+
+
+<circle cx="850" cy="480" r="5.4" fill="#FFB86B" opacity="0.95" />
+<circle cx="850" cy="480" r="12" fill="none" stroke="#FF7A1A" stroke-opacity="0.16" stroke-width="2" />
+
+
+<circle cx="850" cy="650" r="5.4" fill="#FFB86B" opacity="0.95" />
+<circle cx="850" cy="650" r="12" fill="none" stroke="#FF7A1A" stroke-opacity="0.16" stroke-width="2" />
+
+
+<circle cx="920" cy="790" r="5.4" fill="#FFB86B" opacity="0.95" />
+<circle cx="920" cy="790" r="12" fill="none" stroke="#FF7A1A" stroke-opacity="0.16" stroke-width="2" />
+
+
+<circle cx="850" cy="930" r="5.4" fill="#FFB86B" opacity="0.95" />
+<circle cx="850" cy="930" r="12" fill="none" stroke="#FF7A1A" stroke-opacity="0.16" stroke-width="2" />
+
+
+<circle cx="790" cy="1040" r="5.4" fill="#FFB86B" opacity="0.95" />
+<circle cx="790" cy="1040" r="12" fill="none" stroke="#FF7A1A" stroke-opacity="0.16" stroke-width="2" />
+
+
+<circle cx="850" cy="1150" r="5.4" fill="#FFB86B" opacity="0.95" />
+<circle cx="850" cy="1150" r="12" fill="none" stroke="#FF7A1A" stroke-opacity="0.16" stroke-width="2" />
+
+<text x="798.0" y="204.0" text-anchor="middle"
+      font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+      font-size="13" letter-spacing="4" fill="#F9A66B" opacity="0.72">CROWN</text>
+<text x="858.0" y="234.0" text-anchor="middle"
+      font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+      font-size="13" letter-spacing="4" fill="#F9A66B" opacity="0.72">ROLES</text>
+<text x="842.0" y="354.0" text-anchor="middle"
+      font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+      font-size="13" letter-spacing="4" fill="#F9A66B" opacity="0.72">MEMORY</text>
+<text x="744.0" y="438.0" text-anchor="middle"
+      font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+      font-size="13" letter-spacing="4" fill="#F9A66B" opacity="0.72">PRACTICE</text>
+<text x="766.0" y="598.0" text-anchor="middle"
+      font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+      font-size="13" letter-spacing="4" fill="#F9A66B" opacity="0.72">PROOF</text>
+<text x="1016.0" y="748.0" text-anchor="middle"
+      font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+      font-size="13" letter-spacing="4" fill="#F9A66B" opacity="0.72">DERIVED</text>
+<text x="756.0" y="888.0" text-anchor="middle"
+      font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+      font-size="13" letter-spacing="4" fill="#F9A66B" opacity="0.72">SEEDS</text>
+<text x="882.0" y="998.0" text-anchor="middle"
+      font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+      font-size="13" letter-spacing="4" fill="#F9A66B" opacity="0.72">RUNTIME</text>
+<text x="796.0" y="1214.0" text-anchor="middle"
+      font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+      font-size="13" letter-spacing="4" fill="#F9A66B" opacity="0.72">ENTRY</text>
+
+<!-- Every card exchanges with the shared trunk. Neighbors in a row are not special private pairs. -->
+<g id="connectors"><path d="M 615.0 130.0 C 713.7 130.0, 751.3 130.0, 850.0 130.0"
+       fill="none" stroke="#FF7A1A" stroke-width="2.0" stroke-opacity="0.62"
+       marker-start="url(#arrowStart)" marker-end="url(#arrowEnd)" />
+<path d="M 985.0 130.0 C 928.3 130.0, 906.7 130.0, 850.0 130.0"
+       fill="none" stroke="#FF7A1A" stroke-width="2.0" stroke-opacity="0.62"
+       marker-start="url(#arrowStart)" marker-end="url(#arrowEnd)" />
+<path d="M 535.0 270.0 C 637.9 270.0, 677.1 270.0, 780.0 270.0"
+       fill="none" stroke="#FB923C" stroke-width="2.0" stroke-opacity="0.62"
+       marker-start="url(#arrowStart)" marker-end="url(#arrowEnd)" />
+<path d="M 1005.0 270.0 C 910.5 270.0, 874.5 270.0, 780.0 270.0"
+       fill="none" stroke="#FB923C" stroke-width="2.0" stroke-opacity="0.62"
+       marker-start="url(#arrowStart)" marker-end="url(#arrowEnd)" />
+<path d="M 585.0 390.0 C 725.7 390.0, 779.3 390.0, 920.0 390.0"
+       fill="none" stroke="#FB923C" stroke-width="2.0" stroke-opacity="0.62"
+       marker-start="url(#arrowStart)" marker-end="url(#arrowEnd)" />
+<path d="M 1055.0 390.0 C 998.3 390.0, 976.7 390.0, 920.0 390.0"
+       fill="none" stroke="#FB923C" stroke-width="2.0" stroke-opacity="0.62"
+       marker-start="url(#arrowStart)" marker-end="url(#arrowEnd)" />
+<path d="M 440.0 510.0 C 612.2 510.0, 677.8 480.0, 850.0 480.0"
+       fill="none" stroke="#FB923C" stroke-width="2.0" stroke-opacity="0.62"
+       marker-start="url(#arrowStart)" marker-end="url(#arrowEnd)" />
+
+<path d="M 1260.0 510.0 C 1087.8 510.0, 1022.2 480.0, 850.0 480.0"
+       fill="none" stroke="#FB923C" stroke-width="2.0" stroke-opacity="0.62"
+       marker-start="url(#arrowStart)" marker-end="url(#arrowEnd)" />
+
+<path d="M 585.0 790.0 C 725.7 790.0, 779.3 790.0, 920.0 790.0"
+       fill="none" stroke="#FBBF24" stroke-width="2.0" stroke-opacity="0.62"
+       marker-start="url(#arrowStart)" marker-end="url(#arrowEnd)" />
+<path d="M 1055.0 790.0 C 998.3 790.0, 976.7 790.0, 920.0 790.0"
+       fill="none" stroke="#FBBF24" stroke-width="2.0" stroke-opacity="0.62"
+       marker-start="url(#arrowStart)" marker-end="url(#arrowEnd)" />
+
+
+
+<path d="M 1470.0 344.0 C 1320.0 344.0, 1080.0 315.0, 830.0 315.0"
+       fill="none" stroke="#EF4444" stroke-width="2.0" stroke-opacity="0.62"
+       marker-start="url(#arrowStart)" marker-end="url(#arrowEnd)" /></g>
+
+
+    <g id="tos" class="card">
+      <rect x="165.0" y="88.0" width="450.0" height="84.0" rx="22" ry="22"
+        fill="#14100C" stroke="#FF7A1A" stroke-width="2.35" filter="url(#shadow)" />
+      <text x="390.0" y="123.0" text-anchor="middle"
+        font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+        font-size="26" font-weight="750" fill="#F8FAFC">Tree of Sophia</text>
+      <text x="390.0" y="152.0" text-anchor="middle"
+        font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+        font-size="16" font-weight="450" fill="#CBD5E1">source-linked knowledge</text>
+    </g>
+    
+
+    <g id="aoa" class="card">
+      <rect x="985.0" y="88.0" width="450.0" height="84.0" rx="22" ry="22"
+        fill="#14100C" stroke="#FF7A1A" stroke-width="2.35" filter="url(#shadow)" />
+      <text x="1210.0" y="123.0" text-anchor="middle"
+        font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+        font-size="24" font-weight="750" fill="#F8FAFC">Agents of Abyss</text>
+      <text x="1210.0" y="152.0" text-anchor="middle"
+        font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+        font-size="16" font-weight="450" fill="#CBD5E1">legible agency federation</text>
+    </g>
+    
+
+    <g id="agents" class="card">
+      <rect x="185.0" y="233.0" width="350.0" height="74.0" rx="22" ry="22"
+        fill="#10141A" stroke="#FB923C" stroke-width="2.35" filter="url(#shadow)" />
+      <text x="360.0" y="263.0" text-anchor="middle"
+        font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+        font-size="26" font-weight="750" fill="#F8FAFC">aoa-agents</text>
+      <text x="360.0" y="292.0" text-anchor="middle"
+        font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+        font-size="16" font-weight="450" fill="#CBD5E1">role contracts</text>
+    </g>
+    
+
+    <g id="sdk" class="card">
+      <rect x="1005.0" y="233.0" width="350.0" height="74.0" rx="22" ry="22"
+        fill="#10141A" stroke="#FB923C" stroke-width="2.35" filter="url(#shadow)" />
+      <text x="1180.0" y="263.0" text-anchor="middle"
+        font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+        font-size="26" font-weight="750" fill="#F8FAFC">aoa-sdk</text>
+      <text x="1180.0" y="292.0" text-anchor="middle"
+        font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+        font-size="16" font-weight="450" fill="#CBD5E1">typed spine</text>
+    </g>
+    
+
+    <g id="memo" class="card">
+      <rect x="235.0" y="353.0" width="350.0" height="74.0" rx="22" ry="22"
+        fill="#10141A" stroke="#FB923C" stroke-width="2.35" filter="url(#shadow)" />
+      <text x="410.0" y="383.0" text-anchor="middle"
+        font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+        font-size="26" font-weight="750" fill="#F8FAFC">aoa-memo</text>
+      <text x="410.0" y="412.0" text-anchor="middle"
+        font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+        font-size="16" font-weight="450" fill="#CBD5E1">memory continuity</text>
+    </g>
+    
+
+    <g id="stats" class="card">
+      <rect x="1055.0" y="353.0" width="350.0" height="74.0" rx="22" ry="22"
+        fill="#10141A" stroke="#FB923C" stroke-width="2.35" filter="url(#shadow)" />
+      <text x="1230.0" y="383.0" text-anchor="middle"
+        font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+        font-size="26" font-weight="750" fill="#F8FAFC">aoa-stats</text>
+      <text x="1230.0" y="412.0" text-anchor="middle"
+        font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+        font-size="16" font-weight="450" fill="#CBD5E1">derived observability</text>
+    </g>
+    
+
+    <g id="tech" class="card">
+      <rect x="110.0" y="483.0" width="330.0" height="74.0" rx="22" ry="22"
+        fill="#10141A" stroke="#FB923C" stroke-width="2.35" filter="url(#shadow)" />
+      <text x="275.0" y="513.0" text-anchor="middle"
+        font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+        font-size="26" font-weight="750" fill="#F8FAFC">aoa-techniques</text>
+      <text x="275.0" y="542.0" text-anchor="middle"
+        font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+        font-size="16" font-weight="450" fill="#CBD5E1">reusable practice</text>
+    </g>
+    
+
+    <g id="skills" class="card">
+      <rect x="685.0" y="483.0" width="330.0" height="74.0" rx="22" ry="22"
+        fill="#10141A" stroke="#FB923C" stroke-width="2.35" filter="url(#shadow)" />
+      <text x="850.0" y="513.0" text-anchor="middle"
+        font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+        font-size="26" font-weight="750" fill="#F8FAFC">aoa-skills</text>
+      <text x="850.0" y="542.0" text-anchor="middle"
+        font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+        font-size="16" font-weight="450" fill="#CBD5E1">bounded workflows</text>
+    </g>
+    
+
+    <g id="play" class="card">
+      <rect x="1260.0" y="483.0" width="330.0" height="74.0" rx="22" ry="22"
+        fill="#10141A" stroke="#FB923C" stroke-width="2.35" filter="url(#shadow)" />
+      <text x="1425.0" y="513.0" text-anchor="middle"
+        font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+        font-size="26" font-weight="750" fill="#F8FAFC">aoa-playbooks</text>
+      <text x="1425.0" y="542.0" text-anchor="middle"
+        font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+        font-size="16" font-weight="450" fill="#CBD5E1">scenarios &amp; return paths</text>
+    </g>
+    
+
+    <g id="evals" class="card">
+      <rect x="670.0" y="613.0" width="360.0" height="74.0" rx="22" ry="22"
+        fill="#11130D" stroke="#FBBF24" stroke-width="2.35" filter="url(#shadow)" />
+      <text x="850.0" y="643.0" text-anchor="middle"
+        font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+        font-size="26" font-weight="750" fill="#F8FAFC">aoa-evals</text>
+      <text x="850.0" y="672.0" text-anchor="middle"
+        font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+        font-size="16" font-weight="450" fill="#CBD5E1">portable proof gate</text>
+    </g>
+    
+
+    <g id="kag" class="card">
+      <rect x="235.0" y="753.0" width="350.0" height="74.0" rx="22" ry="22"
+        fill="#11130D" stroke="#FBBF24" stroke-width="2.35" filter="url(#shadow)" />
+      <text x="410.0" y="783.0" text-anchor="middle"
+        font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+        font-size="26" font-weight="750" fill="#F8FAFC">aoa-kag</text>
+      <text x="410.0" y="812.0" text-anchor="middle"
+        font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+        font-size="16" font-weight="450" fill="#CBD5E1">derived ground</text>
+    </g>
+    
+
+    <g id="routing" class="card">
+      <rect x="1055.0" y="753.0" width="350.0" height="74.0" rx="22" ry="22"
+        fill="#11130D" stroke="#FBBF24" stroke-width="2.35" filter="url(#shadow)" />
+      <text x="1230.0" y="783.0" text-anchor="middle"
+        font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+        font-size="26" font-weight="750" fill="#F8FAFC">aoa-routing</text>
+      <text x="1230.0" y="812.0" text-anchor="middle"
+        font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+        font-size="16" font-weight="450" fill="#CBD5E1">route surface</text>
+    </g>
+    
+
+    <g id="dionysus" class="card">
+      <rect x="670.0" y="893.0" width="360.0" height="74.0" rx="22" ry="22"
+        fill="#1A0B05" stroke="#F97316" stroke-width="2.35" filter="url(#shadow)" />
+      <text x="850.0" y="923.0" text-anchor="middle"
+        font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+        font-size="26" font-weight="750" fill="#F8FAFC">Dionysus</text>
+      <text x="850.0" y="952.0" text-anchor="middle"
+        font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+        font-size="16" font-weight="450" fill="#CBD5E1">seed garden &amp; dispatch</text>
+    </g>
+    
+
+    <g id="stack" class="card">
+      <rect x="670.0" y="1003.0" width="360.0" height="74.0" rx="22" ry="22"
+        fill="#1A0B05" stroke="#F97316" stroke-width="2.35" filter="url(#shadow)" />
+      <text x="850.0" y="1033.0" text-anchor="middle"
+        font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+        font-size="26" font-weight="750" fill="#F8FAFC">abyss-stack</text>
+      <text x="850.0" y="1062.0" text-anchor="middle"
+        font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+        font-size="16" font-weight="450" fill="#CBD5E1">runtime body</text>
+    </g>
+    
+
+    <g id="route" class="card">
+      <rect x="670.0" y="1113.0" width="360.0" height="74.0" rx="22" ry="22"
+        fill="#140D09" stroke="#FF8A3D" stroke-width="2.35" filter="url(#shadow)" />
+      <text x="850.0" y="1143.0" text-anchor="middle"
+        font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+        font-size="26" font-weight="750" fill="#F8FAFC">8Dionysus</text>
+      <text x="850.0" y="1172.0" text-anchor="middle"
+        font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+        font-size="16" font-weight="450" fill="#CBD5E1">public route map</text>
+    </g>
+    
+
+    <g id="atm" class="card">
+      <rect x="1470.0" y="304.0" width="380.0" height="92.0" rx="22" ry="22"
+        fill="#1A0B0B" stroke="#EF4444" stroke-width="2.35" filter="url(#shadow)" />
+      <text x="1660.0" y="343.0" text-anchor="middle"
+        font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+        font-size="26" font-weight="750" fill="#F8FAFC">ATM10-Agent</text>
+      <text x="1660.0" y="372.0" text-anchor="middle"
+        font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+        font-size="14.5" font-weight="450" fill="#CBD5E1">operator companion · absorbs · distills · returns</text>
+    </g>
+    
+
+<g id="legend">
+  <rect x="86" y="1192" width="530" height="38" rx="19" fill="#070B12" stroke="#5A3A28" stroke-width="1.2" opacity="0.95"/>
+  <text x="112" y="1217" font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    font-size="15" fill="#E5E7EB">reciprocal exchange · no ownership collapse</text>
+</g>
+
+</svg>

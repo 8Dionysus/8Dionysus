@@ -31,56 +31,9 @@ Together they form a shared wager:
 
 ## How the ecosystem fits together
 
-```mermaid
-flowchart TB
-  %% Abyss OS public README hero tree - v11 compact reciprocal zig-zag
-  %% All arrows mean exchange / feedback / distillation.
-  %% Reading order is preserved; arrows do not transfer ownership.
-
-  classDef crown fill:#14100C,stroke:#FF7A1A,stroke-width:3px,color:#F8FAFC;
-  classDef organ fill:#10141A,stroke:#FB923C,stroke-width:2px,color:#F8FAFC;
-  classDef proof fill:#11130D,stroke:#FBBF24,stroke-width:2px,color:#FFFBEB;
-  classDef root fill:#1A0B05,stroke:#F97316,stroke-width:2px,color:#FFF7ED;
-  classDef route fill:#140D09,stroke:#FF8A3D,stroke-width:2px,color:#FFF7ED;
-  classDef companion fill:#1A0B0B,stroke:#EF4444,stroke-width:3px,color:#FFF7ED;
-  classDef law fill:#070B12,stroke:#5A3A28,stroke-width:1px,color:#E5E7EB;
-
-  TOS["Tree of Sophia<br/>source-linked knowledge"]:::crown
-  AOA["Agents of Abyss<br/>legible agency federation"]:::crown
-  LAW["reciprocal trunk<br/>exchange · feedback · distillation<br/>no ownership collapse"]:::law
-
-  AGENTS["aoa-agents<br/>role contracts"]:::organ
-  SDK["aoa-sdk<br/>typed spine"]:::organ
-  MEMO["aoa-memo<br/>memory continuity"]:::organ
-  STATS["aoa-stats<br/>derived observability"]:::organ
-  TECH["aoa-techniques<br/>reusable practice"]:::organ
-  SKILLS["aoa-skills<br/>bounded workflows"]:::organ
-  PLAY["aoa-playbooks<br/>scenarios & return paths"]:::organ
-  EVALS["aoa-evals<br/>portable proof gate"]:::proof
-  KAG["aoa-kag<br/>derived knowledge substrate"]:::proof
-  ROUTING["aoa-routing<br/>route surface"]:::proof
-  DIONYSUS["Dionysus<br/>seed garden & dispatch"]:::root
-  STACK["abyss-stack<br/>runtime body"]:::root
-  ENTRY["8Dionysus<br/>public route map"]:::route
-  ATM["ATM10-Agent<br/>operator companion<br/>absorbs · distills · returns"]:::companion
-
-  TOS <--> LAW
-  AOA <--> LAW
-  LAW <--> AGENTS
-  LAW <--> SDK
-  LAW <--> MEMO
-  LAW <--> STATS
-  LAW <--> TECH
-  LAW <--> SKILLS
-  LAW <--> PLAY
-  LAW <--> EVALS
-  LAW <--> KAG
-  LAW <--> ROUTING
-  LAW <--> DIONYSUS
-  LAW <--> STACK
-  LAW <--> ENTRY
-  ATM <--> LAW
-```
+<p align="center">
+  <img src="profile/abyss_os_zigzag_tree_v11.svg" alt="Abyss OS compact reciprocal ecosystem tree showing Tree of Sophia, Agents of Abyss, AoA layers, Dionysus, abyss-stack, 8Dionysus, and ATM10-Agent." width="960">
+</p>
 
 Arrows mean exchange, feedback, and distillation; they do not transfer ownership.
 

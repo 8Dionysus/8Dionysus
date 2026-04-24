@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 960 420" width="960" height="420" shape-rendering="crispEdges">
+  <title>Operating principles</title>
+  <desc>Source boundaries stay visible. Review precedes automation. Provenance survives synthesis. Repetition becomes durable technique. Layers specialize; vocabulary holds. Humans can read what agents can use.</desc>
+
+  <defs>
+    <linearGradient id="stone" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#d7c7a2"/>
+      <stop offset="0.45" stop-color="#a89672"/>
+      <stop offset="1" stop-color="#6f6048"/>
+    </linearGradient>
+    <linearGradient id="inner" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f0dfb7"/>
+      <stop offset="1" stop-color="#b89a64"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="960" height="420" fill="none"/>
+
+  <!-- hard pixel shadow -->
+  <g fill="#20170f" opacity="0.45">
+    <rect x="112" y="60" width="752" height="316"/>
+    <rect x="96" y="76" width="784" height="284"/>
+    <rect x="80" y="100" width="816" height="236"/>
+  </g>
+
+  <!-- outer stone silhouette -->
+  <rect x="104" y="52" width="752" height="316" fill="#4d3f2e"/>
+  <rect x="88" y="68" width="784" height="284" fill="#4d3f2e"/>
+  <rect x="72" y="92" width="816" height="236" fill="#4d3f2e"/>
+
+  <rect x="112" y="60" width="736" height="300" fill="url(#stone)"/>
+  <rect x="96" y="76" width="768" height="268" fill="url(#stone)"/>
+  <rect x="80" y="92" width="800" height="252" fill="url(#stone)"/>
+
+  <!-- pixel chips and edge blocks -->
+  <rect x="80" y="92" width="24" height="24" fill="#efe0bb"/>
+  <rect x="856" y="92" width="24" height="24" fill="#4f412f"/>
+  <rect x="80" y="320" width="24" height="24" fill="#6f6048"/>
+  <rect x="856" y="320" width="24" height="24" fill="#dbc79e"/>
+  <rect x="128" y="60" width="48" height="16" fill="#f3e7c8"/>
+  <rect x="680" y="60" width="56" height="16" fill="#6a5840"/>
+  <rect x="192" y="344" width="64" height="16" fill="#6a5840"/>
+  <rect x="696" y="344" width="80" height="16" fill="#ead6aa"/>
+  <rect x="64" y="164" width="16" height="56" fill="#392c1e"/>
+  <rect x="880" y="220" width="16" height="56" fill="#392c1e"/>
+
+  <!-- inner writing field -->
+  <rect x="136" y="104" width="688" height="244" fill="#5a4630"/>
+  <rect x="128" y="96" width="688" height="244" fill="url(#inner)"/>
+  <rect x="144" y="112" width="656" height="212" fill="#e7cf93"/>
+  <rect x="160" y="128" width="624" height="180" fill="#f1dfa9"/>
+
+  <!-- carved pixel noise -->
+  <rect x="184" y="144" width="8" height="8" fill="#c1a36b" opacity="0.75"/>
+  <rect x="736" y="144" width="8" height="8" fill="#c1a36b" opacity="0.75"/>
+  <rect x="216" y="292" width="8" height="8" fill="#b18e56" opacity="0.75"/>
+  <rect x="704" y="292" width="8" height="8" fill="#b18e56" opacity="0.75"/>
+  <rect x="272" y="128" width="8" height="8" fill="#d8bb7f" opacity="0.9"/>
+  <rect x="608" y="128" width="8" height="8" fill="#d8bb7f" opacity="0.9"/>
+  <rect x="432" y="320" width="8" height="8" fill="#c7a56b" opacity="0.8"/>
+  <rect x="520" y="320" width="8" height="8" fill="#c7a56b" opacity="0.8"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" text-anchor="middle" fill="#3a2416">
+    <text x="480" y="148" font-size="30" font-weight="700" letter-spacing="1.5">OPERATING PRINCIPLES</text>
+    <text x="480" y="180" font-size="20">Source boundaries stay visible.</text>
+    <text x="480" y="206" font-size="20">Review precedes automation.</text>
+    <text x="480" y="232" font-size="20">Provenance survives synthesis.</text>
+    <text x="480" y="258" font-size="20">Repetition becomes durable technique.</text>
+    <text x="480" y="284" font-size="20">Layers specialize; vocabulary holds.</text>
+    <text x="480" y="310" font-size="20">Humans can read what agents can use.</text>
+  </g>
+</svg>

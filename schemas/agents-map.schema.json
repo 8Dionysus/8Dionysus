@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://8dionysus.dev/schemas/agents-map.schema.json",
+  "title": "8Dionysus AGENTS map audit",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "schema_ref",
+    "owner_repo",
+    "surface_kind",
+    "generated_by",
+    "audit_mode",
+    "known_repositories",
+    "high_risk_directory_kinds",
+    "totals",
+    "repositories"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "8dionysus_agents_map_v1"
+    },
+    "schema_ref": {
+      "const": "schemas/agents-map.schema.json"
+    },
+    "owner_repo": {
+      "const": "8Dionysus"
+    },
+    "surface_kind": {
+      "enum": [
+        "agents_map_audit",
+        "agents_map_public_baseline"
+      ]
+    },
+    "generated_by": {
+      "type": "string"
+    },
+    "audit_mode": {
+      "enum": [
+        "live-workspace",
+        "public-baseline"
+      ]
+    },
+    "known_repositories": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "high_risk_directory_kinds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "totals": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+      }
+    },
+    "repositories": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "kind",
+          "role",
+          "checkout_state"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "kind": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string"
+          },
+          "checkout_state": {
+            "enum": [
+              "scanned",
+              "missing",
+              "public-baseline"
+            ]
+          },
+          "agents_md_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "root_agents_present": {
+            "type": "boolean"
+          },
+          "nested_agents_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "validator_present": {
+            "type": "boolean"
+          },
+          "issues": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

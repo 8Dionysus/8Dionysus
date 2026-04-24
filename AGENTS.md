@@ -180,6 +180,27 @@ Projection edit law:
 - preview or verify that drift with `<workspace-root>/.codex/bin/aoa-workspace-project --check --json`, then apply with `--execute`
 - keep `<workspace-root>/8Dionysus/README.md` profile-owned and GitHub-facing; it is not part of the shared-root projection contract
 
+## AGENTS map audit
+
+Before large `AGENTS.md` refactors or cross-repo guidance work, use the map audit as the measurement pass:
+
+```bash
+python scripts/audit_agents_map.py \
+  --workspace-root <workspace-root> \
+  --write generated/agents_map.min.json \
+  --markdown docs/AGENTS_MAP.md
+```
+
+`generated/agents_map.min.json` and `docs/AGENTS_MAP.md` are map surfaces, not doctrine. They show root/nested coverage, validator declarations, high-risk directories without direct local guidance, long roots, and missing checkouts. Use findings to move guidance to the smallest owner surface; do not copy one repository's law into another repository.
+
+For a public bootstrap seed without sibling checkouts, run:
+
+```bash
+python scripts/audit_agents_map.py --public-baseline \
+  --write generated/agents_map.min.json \
+  --markdown docs/AGENTS_MAP.md
+```
+
 ## Skill ↔ MCP route discipline
 
 - Prefer AoA skills whose generated `.agents/skills/*/agents/openai.yaml` or documented wiring examples declare named MCP dependencies when the route is sibling-workspace orientation, derived stats observability, or Dionysus seed routing

@@ -66,10 +66,6 @@ Arrows mean exchange, feedback, and distillation; they do not transfer ownership
 |---|---|
 | public orientation<br>short role descriptions<br>ecosystem routing<br>profile-level onboarding | charters and doctrine<br>validators and CI<br>release semantics<br>implementation truth<br>layer-specific guarantees |
 
-<p align="center">
-  <img src="profile/aoa_operating_principles_tablet.svg" alt="Operating principles: Source boundaries stay visible. Review precedes automation. Provenance survives synthesis. Repetition becomes durable technique. Layers specialize; vocabulary holds. Humans can read what agents can use." width="860">
-</p>
-
 ## Stack
 
 - **Systems**: Fedora, Windows 11, WSL2, rootless Podman
@@ -79,3 +75,7 @@ Arrows mean exchange, feedback, and distillation; they do not transfer ownership
 - **Data and memory**: Postgres, Redis, Neo4j, Qdrant
 - **Observability**: Grafana, Prometheus, Alertmanager
 - **Build workflow**: ChatGPT, Codex, GitHub
+
+<p align="center">
+  <img src="profile/aoa_operating_principles_tablet.svg" alt="Operating principles: Source boundaries stay visible. Review precedes automation. Provenance survives synthesis. Repetition becomes durable technique. Layers specialize; vocabulary holds. Humans can read what agents can use." width="860">
+</p>

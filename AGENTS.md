@@ -93,6 +93,12 @@ For public bootstrap without sibling checkouts:
 python scripts/audit_agents_map.py --public-baseline --write generated/agents_map.min.json --markdown docs/AGENTS_MAP.md
 ```
 
+After local `AGENTS.md` coverage changes, refresh the frontier report:
+
+```bash
+python scripts/recon_agents_frontier.py --map generated/agents_map.min.json --write generated/agents_frontier_recon.min.json --markdown generated/agents_frontier_recon.md
+```
+
 ## Verify
 
 Use the smallest route-safe check for the changed surface. For AGENTS-map or workspace route changes, run one of the audit commands above and report whether it was a public-baseline or sibling-workspace pass.

@@ -216,6 +216,17 @@ python scripts/audit_agents_map.py --public-baseline \
   --markdown docs/AGENTS_MAP.md
 ```
 
+After local `AGENTS.md` coverage changes, refresh the frontier reconnaissance report:
+
+```bash
+python scripts/recon_agents_frontier.py \
+  --map generated/agents_map.min.json \
+  --write generated/agents_frontier_recon.min.json \
+  --markdown generated/agents_frontier_recon.md
+```
+
+`generated/agents_frontier_recon.min.json` and `generated/agents_frontier_recon.md` are evidence surfaces for the next local-guidance candidates, not owner doctrine.
+
 ## Skill ↔ MCP route discipline
 
 - Prefer AoA skills whose generated `.agents/skills/*/agents/openai.yaml` or documented wiring examples declare named MCP dependencies when the route is sibling-workspace orientation, derived stats observability, or Dionysus seed routing

@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Validate nested AGENTS.md guidance for 8Dionysus.
 
-This validator-first spine protects local AGENTS.md surfaces that already exist.
-It also reports high-risk directories that are likely to need future local
-guidance, without making those future files blocking before they land.
+This validator protects the public entry repository's local instruction
+surfaces after the frontier reconnaissance pass. It is intentionally local-only:
+it reads checked-out files and does not call GitHub, network services, MCP
+servers, or workspace launchers.
 """
 from __future__ import annotations
 
@@ -12,10 +13,96 @@ from dataclasses import dataclass
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-REPOSITORY_NAME = '8Dionysus'
+REPOSITORY_NAME = "8Dionysus"
 
-REQUIRED_AGENTS_DOCS: dict[str, tuple[str, ...]] = {}
-ADVISORY_AGENT_DIRS: tuple[str, ...] = ('.agents', '.codex', 'config', 'docs', 'generated', 'manifests/recurrence', 'profile', 'quests', 'schemas', 'scripts', 'tests')
+REQUIRED_AGENTS_DOCS: dict[str, tuple[str, ...]] = {
+    ".agents/AGENTS.md": (
+        "shared-root projection source",
+        "projected live workspace copies",
+        "public-safe",
+        "audit_agents_map.py",
+    ),
+    ".codex/AGENTS.md": (
+        "Codex-plane projection",
+        "Source-owned files",
+        "No secrets",
+        "audit_agents_map.py",
+    ),
+    ".github/AGENTS.md": (
+        "public platform-facing automation",
+        "public contract edits",
+        "Do not add secrets",
+        "validate_nested_agents.py",
+    ),
+    "config/AGENTS.md": (
+        "public configuration inputs",
+        "sibling repo truth",
+        "environment assumptions",
+        "audit_agents_map.py",
+    ),
+    "docs/AGENTS.md": (
+        "public orientation",
+        "nearest `AGENTS.md`",
+        "owning repository",
+        "audit_agents_map.py",
+    ),
+    "examples/AGENTS.md": (
+        "public-safe examples",
+        "teaching surfaces",
+        "No secrets",
+        "source-owned surface",
+    ),
+    "generated/AGENTS.md": (
+        "derived audit",
+        "not source-owned doctrine",
+        "regenerating generated files",
+        "recon_agents_frontier.py",
+    ),
+    "manifests/AGENTS.md": (
+        "public route",
+        "coordination evidence",
+        "sibling-repo doctrine",
+        "recon_agents_frontier.py",
+    ),
+    "manifests/recurrence/AGENTS.md": (
+        "recurrence",
+        "not proof of completion",
+        "owning sibling repository",
+        "audit_agents_map.py",
+    ),
+    "profile/AGENTS.md": (
+        "public profile orientation",
+        "source-owned repository truth",
+        "No private biographical residue",
+        "validate_nested_agents.py",
+    ),
+    "quests/AGENTS.md": (
+        "bounded navigation",
+        "evidence-linked",
+        "aoa-playbooks",
+        "aoa-evals",
+    ),
+    "schemas/AGENTS.md": (
+        "Schema edits are contract edits",
+        "$schema",
+        "downstream readers",
+        "unittest discover",
+    ),
+    "scripts/AGENTS.md": (
+        "deterministic",
+        "repo-relative",
+        "local-only",
+        "uncontrolled sibling mutation",
+    ),
+    "tests/AGENTS.md": (
+        "temporary directories",
+        "local-only",
+        "network access",
+        "validate_nested_agents.py",
+    ),
+}
+
+ADVISORY_AGENT_DIRS: tuple[str, ...] = ()
 HEADING_PREFIXES = ("# AGENTS.md", "# AGENTS")
 IGNORED_DIRS = {".git", ".venv", "__pycache__", ".pytest_cache", ".mypy_cache"}
 
@@ -133,6 +220,7 @@ def main(argv: list[str] | None = None) -> int:
         for issue in result.issues:
             print(f"- {issue}")
         return 1
+
     print(
         f"Nested AGENTS validation passed for {REPOSITORY_NAME}: "
         f"{len(REQUIRED_AGENTS_DOCS)} required nested document(s)."

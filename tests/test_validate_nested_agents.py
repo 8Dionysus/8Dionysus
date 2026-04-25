@@ -33,14 +33,31 @@ class ValidateNestedAgentsTests(unittest.TestCase):
             result = validator.validate(repo_root)
             self.assertEqual((), result.issues)
 
+    def test_required_frontier_docs_are_declared(self) -> None:
+        expected = {
+            ".agents/AGENTS.md",
+            ".codex/AGENTS.md",
+            ".github/AGENTS.md",
+            "config/AGENTS.md",
+            "docs/AGENTS.md",
+            "examples/AGENTS.md",
+            "generated/AGENTS.md",
+            "manifests/AGENTS.md",
+            "manifests/recurrence/AGENTS.md",
+            "profile/AGENTS.md",
+            "quests/AGENTS.md",
+            "schemas/AGENTS.md",
+            "scripts/AGENTS.md",
+            "tests/AGENTS.md",
+        }
+        self.assertEqual(expected, set(validator.REQUIRED_AGENTS_DOCS))
+
     def test_missing_root_agents_fails(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             result = validator.validate(Path(tmp))
             self.assertIn("AGENTS.md: root guidance file is missing", result.issues)
 
-    def test_missing_required_doc_fails_when_required_docs_exist(self) -> None:
-        if not validator.REQUIRED_AGENTS_DOCS:
-            self.skipTest("repository has no required nested AGENTS.md docs yet")
+    def test_missing_required_doc_fails(self) -> None:
         first_rel = next(iter(validator.REQUIRED_AGENTS_DOCS))
         with tempfile.TemporaryDirectory() as tmp:
             repo_root = Path(tmp)
@@ -49,26 +66,26 @@ class ValidateNestedAgentsTests(unittest.TestCase):
             result = validator.validate(repo_root)
             self.assertTrue(any(first_rel in issue for issue in result.issues))
 
-    def test_missing_required_snippet_fails_when_required_docs_exist(self) -> None:
-        if not validator.REQUIRED_AGENTS_DOCS:
-            self.skipTest("repository has no required nested AGENTS.md docs yet")
+    def test_missing_required_snippet_fails(self) -> None:
         first_rel = next(iter(validator.REQUIRED_AGENTS_DOCS))
         with tempfile.TemporaryDirectory() as tmp:
             repo_root = Path(tmp)
             _write_minimal_required_tree(repo_root)
             _write(repo_root / first_rel, "# AGENTS.md\nToo thin.\n")
             result = validator.validate(repo_root)
-            self.assertTrue(any(first_rel in issue and "missing required snippet" in issue for issue in result.issues))
+            self.assertTrue(
+                any(first_rel in issue and "missing required snippet" in issue for issue in result.issues)
+            )
 
-    def test_advisory_can_become_strict(self) -> None:
-        if not validator.ADVISORY_AGENT_DIRS:
-            self.skipTest("repository has no advisory AGENTS.md candidates")
+    def test_untracked_nested_doc_warns_and_can_fail(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             repo_root = Path(tmp)
             _write_minimal_required_tree(repo_root)
-            (repo_root / validator.ADVISORY_AGENT_DIRS[0]).mkdir(parents=True, exist_ok=True)
-            result = validator.validate(repo_root, strict_advisory=True)
-            self.assertTrue(any("high-risk directory" in issue for issue in result.issues))
+            _write(repo_root / "extra" / "AGENTS.md", "# AGENTS.md\nExtra.\n")
+            advisory = validator.validate(repo_root)
+            self.assertTrue(any("untracked nested AGENTS.md" in warning for warning in advisory.warnings))
+            strict = validator.validate(repo_root, fail_on_untracked=True)
+            self.assertTrue(any("untracked nested AGENTS.md" in issue for issue in strict.issues))
 
 
 if __name__ == "__main__":

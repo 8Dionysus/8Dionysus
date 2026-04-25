@@ -22,29 +22,40 @@ python scripts/audit_agents_map.py --public-baseline \
   --markdown docs/AGENTS_MAP.md
 ```
 
+After changing local `AGENTS.md` coverage, regenerate the frontier reconnaissance report:
+
+```bash
+python scripts/recon_agents_frontier.py \
+  --map generated/agents_map.min.json \
+  --write generated/agents_frontier_recon.min.json \
+  --markdown generated/agents_frontier_recon.md
+```
+
+For reading guidance, see [AGENTS_FRONTIER_RECON](AGENTS_FRONTIER_RECON.md).
+
 ## Current totals
 
-- `agents_md_files`: 184
-- `high_risk_dirs_without_agents`: 91
+- `agents_md_files`: 208
+- `high_risk_dirs_without_agents`: 78
 - `known_repositories`: 16
 - `known_repositories_missing`: 0
 - `long_root_agents`: 0
 - `missing_required_agents`: 0
-- `nested_agents_files`: 168
+- `nested_agents_files`: 192
 - `repos_with_issues`: 13
 - `repositories_listed`: 16
 - `repositories_scanned`: 16
 - `root_agents_present`: 16
-- `unvalidated_nested_agents`: 75
-- `validator_required_agents`: 93
+- `unvalidated_nested_agents`: 85
+- `validator_required_agents`: 107
 - `validators_present`: 16
 
 ## Repository coverage
 
 | Repository | State | AGENTS.md | Nested | Validator | Issues |
 |---|---:|---:|---:|---:|---|
-| `8Dionysus` | `scanned` | 1 | 0 | True |  |
-| `Agents-of-Abyss` | `scanned` | 6 | 5 | True | one or more AGENTS.md files do not start with '# AGENTS.md' |
+| `8Dionysus` | `scanned` | 15 | 14 | True |  |
+| `Agents-of-Abyss` | `scanned` | 16 | 15 | True | one or more AGENTS.md files do not start with '# AGENTS.md' |
 | `Tree-of-Sophia` | `scanned` | 19 | 18 | True | one or more AGENTS.md files do not start with '# AGENTS.md' |
 | `abyss-stack` | `scanned` | 10 | 9 | True | one or more AGENTS.md files do not start with '# AGENTS.md' |
 | `ATM10-Agent` | `scanned` | 12 | 11 | True | one or more AGENTS.md files do not start with '# AGENTS.md' |

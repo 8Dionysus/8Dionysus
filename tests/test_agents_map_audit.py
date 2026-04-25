@@ -137,6 +137,8 @@ class AgentsMapAuditTests(unittest.TestCase):
 
         self.assertIn("python scripts/audit_agents_map.py", markdown)
         self.assertIn("--workspace-root <workspace-root>", markdown)
+        self.assertIn("recon_agents_frontier.py", markdown)
+        self.assertIn("AGENTS_FRONTIER_RECON", markdown)
         self.assertIn("unvalidated_nested_agents", markdown)
         self.assertIn("high_risk_dirs_without_agents", markdown)
         self.assertIn("8Dionysus", markdown)

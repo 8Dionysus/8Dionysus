@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://8dionysus.github.io/schemas/agents-frontier-recon.schema.json",
+  "title": "AGENTS frontier reconnaissance report",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "schema_ref",
+    "surface_kind",
+    "generated_by",
+    "totals",
+    "top_candidates",
+    "repositories"
+  ],
+  "properties": {
+    "schema_version": { "const": "8dionysus_agents_frontier_recon_v1" },
+    "schema_ref": { "const": "schemas/agents-frontier-recon.schema.json" },
+    "surface_kind": { "const": "agents_frontier_recon" },
+    "generated_by": { "type": "string" },
+    "source_map_schema_version": { "type": "string" },
+    "source_map_audit_mode": { "type": "string" },
+    "totals": {
+      "type": "object",
+      "required": ["candidate_count", "repositories_listed", "repos_with_candidates"],
+      "additionalProperties": { "type": "integer", "minimum": 0 }
+    },
+    "top_candidates": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/candidate" }
+    },
+    "repositories": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/repository" }
+    },
+    "reading_notes": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "additionalProperties": true,
+  "$defs": {
+    "candidate": {
+      "type": "object",
+      "required": ["repository", "path", "priority", "score", "decision", "rationale"],
+      "properties": {
+        "repository": { "type": "string" },
+        "repository_kind": { "type": "string" },
+        "path": { "type": "string" },
+        "directory": { "type": "string" },
+        "priority": { "enum": ["P0", "P1", "P2", "P3"] },
+        "score": { "type": "integer" },
+        "decision": { "type": "string" },
+        "rationale": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "repository": {
+      "type": "object",
+      "required": ["name", "candidate_count", "top_candidates"],
+      "properties": {
+        "name": { "type": "string" },
+        "kind": { "type": "string" },
+        "checkout_state": { "type": "string" },
+        "validator_present": { "type": "boolean" },
+        "nested_validators_present": { "type": "integer", "minimum": 0 },
+        "semantic_validators_present": { "type": "integer", "minimum": 0 },
+        "candidate_count": { "type": "integer", "minimum": 0 },
+        "top_candidates": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/candidate" }
+        }
+      },
+      "additionalProperties": true
+    }
+  }
+}

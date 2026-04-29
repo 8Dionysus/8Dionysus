@@ -40,6 +40,16 @@ It does not own:
 - Self-agency, recurrence, quest, progression, checkpoint, or growth language must stay bounded, reviewable, evidence-linked, and reversible.
 - Report what changed, what was verified, what was not verified, and where the next agent should resume.
 
+## Decision memory
+
+After a meaningful structural, ownership, workflow, route-law, validator-authority,
+public-contract, or topology change, perform a decision review in the owning
+repository.
+
+If future agents will need to know why this path was chosen, add or update the
+repo-local decision record surface, usually `docs/decisions/`. If no record is
+needed, say so in closeout.
+
 ## Route by intent
 
 - `Agents-of-Abyss`: ecosystem identity, charter, layer map, federation rules, program direction.

@@ -35,18 +35,18 @@ For reading guidance, see [AGENTS_FRONTIER_RECON](AGENTS_FRONTIER_RECON.md).
 
 ## Current totals
 
-- `agents_md_files`: 208
-- `high_risk_dirs_without_agents`: 78
+- `agents_md_files`: 255
+- `high_risk_dirs_without_agents`: 75
 - `known_repositories`: 16
 - `known_repositories_missing`: 0
 - `long_root_agents`: 0
 - `missing_required_agents`: 0
-- `nested_agents_files`: 192
-- `repos_with_issues`: 13
-- `repositories_listed`: 16
-- `repositories_scanned`: 16
-- `root_agents_present`: 16
-- `unvalidated_nested_agents`: 85
+- `nested_agents_files`: 237
+- `repos_with_issues`: 12
+- `repositories_listed`: 18
+- `repositories_scanned`: 18
+- `root_agents_present`: 18
+- `unvalidated_nested_agents`: 130
 - `validator_required_agents`: 107
 - `validators_present`: 16
 
@@ -55,7 +55,7 @@ For reading guidance, see [AGENTS_FRONTIER_RECON](AGENTS_FRONTIER_RECON.md).
 | Repository | State | AGENTS.md | Nested | Validator | Issues |
 |---|---:|---:|---:|---:|---|
 | `8Dionysus` | `scanned` | 15 | 14 | True |  |
-| `Agents-of-Abyss` | `scanned` | 16 | 15 | True | one or more AGENTS.md files do not start with '# AGENTS.md' |
+| `Agents-of-Abyss` | `scanned` | 61 | 60 | True |  |
 | `Tree-of-Sophia` | `scanned` | 19 | 18 | True | one or more AGENTS.md files do not start with '# AGENTS.md' |
 | `abyss-stack` | `scanned` | 10 | 9 | True | one or more AGENTS.md files do not start with '# AGENTS.md' |
 | `ATM10-Agent` | `scanned` | 12 | 11 | True | one or more AGENTS.md files do not start with '# AGENTS.md' |
@@ -70,6 +70,8 @@ For reading guidance, see [AGENTS_FRONTIER_RECON](AGENTS_FRONTIER_RECON.md).
 | `aoa-agents` | `scanned` | 19 | 18 | True | one or more AGENTS.md files do not start with '# AGENTS.md' |
 | `aoa-playbooks` | `scanned` | 9 | 8 | True | one or more AGENTS.md files do not start with '# AGENTS.md' |
 | `aoa-kag` | `scanned` | 11 | 10 | True | one or more AGENTS.md files do not start with '# AGENTS.md' |
+| `.agents` | `scanned` | 1 | 0 | False |  |
+| `.codex` | `scanned` | 1 | 0 | False |  |
 
 ## How to read the signals
 

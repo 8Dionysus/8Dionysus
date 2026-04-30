@@ -28,9 +28,9 @@ and they do not transfer authority away from owner repos.
 
 At the workspace root, the honest sequence is still:
 
-1. orient with `aoa skills enter <repo_root> --root /srv ...`
+1. orient with `aoa skills enter <repo_root> --root /srv/AbyssOS ...`
 2. add route hints with `aoa surfaces detect ...` when ambiguity appears
-3. gate risky mutation with `aoa skills guard <repo_root> --root /srv ...`
+3. gate risky mutation with `aoa skills guard <repo_root> --root /srv/AbyssOS ...`
 4. move the real change into the owner repo
 5. prove the move with owner validators, evals, or reviewed runs
 6. let stats, memo, and Dionysus preserve weaker follow-through

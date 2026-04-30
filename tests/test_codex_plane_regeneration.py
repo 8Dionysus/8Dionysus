@@ -32,7 +32,7 @@ class CodexPlaneRegenerationTests(unittest.TestCase):
         profile = render_codex_plane.load_json_object(
             REPO_ROOT / "config" / "codex_plane" / "profiles" / "linux-python3.json"
         )
-        workspace_root = Path("/srv")
+        workspace_root = Path("/srv/AbyssOS")
 
         rendered_config = render_codex_plane.render_config_toml(
             manifest=manifest,
@@ -80,10 +80,10 @@ class CodexPlaneRegenerationTests(unittest.TestCase):
         )
 
     def test_validator_accepts_checked_in_srv_render(self) -> None:
-        summary = validate_codex_plane_regeneration(REPO_ROOT, Path("/srv"))
+        summary = validate_codex_plane_regeneration(REPO_ROOT, Path("/srv/AbyssOS"))
 
         self.assertEqual(summary.repo_root, REPO_ROOT)
-        self.assertEqual(summary.workspace_root, Path("/srv"))
+        self.assertEqual(summary.workspace_root, Path("/srv/AbyssOS"))
         self.assertEqual(summary.profile_id, "linux-python3")
 
     def test_validator_detects_render_drift(self) -> None:
@@ -122,7 +122,7 @@ class CodexPlaneRegenerationTests(unittest.TestCase):
             write_text(root / ".codex" / "hooks.json", "{}\n")
 
             with self.assertRaisesRegex(ValueError, "config.toml drift detected"):
-                validate_codex_plane_regeneration(root, Path("/srv"))
+                validate_codex_plane_regeneration(root, Path("/srv/AbyssOS"))
 
 
 if __name__ == "__main__":

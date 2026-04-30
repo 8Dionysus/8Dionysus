@@ -74,7 +74,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         description="Validate rendered AoA Codex plane surfaces against the manifest/profile."
     )
     parser.add_argument("--repo-root", type=Path, default=Path(__file__).resolve().parents[1])
-    parser.add_argument("--workspace-root", type=Path, default=Path("/srv"))
+    parser.add_argument("--workspace-root", type=Path, default=Path("/srv/AbyssOS"))
     return parser.parse_args(argv)
 
 

@@ -2,7 +2,7 @@
 
 ## Context
 
-The live AoA / ToS workspace root under `/srv` carries a small set of shared
+The live AoA / ToS workspace root under `/srv/AbyssOS` carries a small set of shared
 install surfaces that agents and local tooling rely on directly:
 
 - `AGENTS.md`
@@ -17,7 +17,7 @@ deployed root copies can be reviewed, updated, and projected from.
 
 ## Options considered
 
-1. treat the live `/srv` root as the only authoritative copy
+1. treat the live `/srv/AbyssOS` root as the only authoritative copy
 2. keep copying root surfaces back into `8Dionysus` by hand
 3. keep source-owned copies in `8Dionysus` and project them into the live workspace root with an explicit tool
 

@@ -1,25 +1,25 @@
 {
-  "workspace_root": "/srv",
+  "workspace_root": "/srv/AbyssOS",
   "workspace_marker": "AOA_WORKSPACE_ROOT",
   "python_command": "python3",
   "python_prefix_args": [],
   "repos": {
-    "aoa-sdk": "/srv/aoa-sdk",
-    "aoa-stats": "/srv/aoa-stats",
-    "Dionysus": "/srv/Dionysus",
-    "8Dionysus": "/srv/8Dionysus"
+    "aoa-sdk": "/srv/AbyssOS/aoa-sdk",
+    "aoa-stats": "/srv/AbyssOS/aoa-stats",
+    "Dionysus": "/srv/AbyssOS/Dionysus",
+    "8Dionysus": "/srv/AbyssOS/8Dionysus"
   },
   "mcp_servers": {
     "aoa_workspace": {
-      "cwd": "/srv/aoa-sdk",
+      "cwd": "/srv/AbyssOS/aoa-sdk",
       "script_rel": "scripts/aoa_workspace_mcp_server.py"
     },
     "aoa_stats": {
-      "cwd": "/srv/aoa-stats",
+      "cwd": "/srv/AbyssOS/aoa-stats",
       "script_rel": "scripts/aoa_stats_mcp_server.py"
     },
     "dionysus": {
-      "cwd": "/srv/Dionysus",
+      "cwd": "/srv/AbyssOS/Dionysus",
       "script_rel": "scripts/dionysus_mcp_server.py"
     }
   },

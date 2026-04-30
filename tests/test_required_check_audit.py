@@ -41,7 +41,7 @@ class RequiredCheckAuditTests(unittest.TestCase):
         )
 
     def test_build_audit_commands_adds_github_protection_on_request(self) -> None:
-        contract_repo = Path("/srv/8Dionysus")
+        contract_repo = Path("/srv/AbyssOS/8Dionysus")
 
         default_commands = build_audit_commands(contract_repo, include_github_protection=False)
         self.assertEqual(len(default_commands), 2)

@@ -19,5 +19,5 @@ Delta locked: judgment gate required
 Receipt:
 
 ```bash
-python /srv/aoa-sdk/scripts/titanctl.py summon --workspace /srv --operator Dionysus --out /srv/.titan/receipts/example.json
+python /srv/AbyssOS/aoa-sdk/scripts/titanctl.py summon --workspace /srv/AbyssOS --operator Dionysus --out /srv/AbyssOS/.titan/receipts/example.json
 ```

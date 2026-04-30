@@ -7,7 +7,7 @@ Suggested SessionStart addition after existing AoA hook:
 ```json
 {
   "type": "command",
-  "command": "python3 /srv/8Dionysus/.codex/tools/aoa_titan_context.py",
+  "command": "python3 /srv/AbyssOS/8Dionysus/.codex/tools/aoa_titan_context.py",
   "statusMessage": "Titan context",
   "timeout": 10
 }

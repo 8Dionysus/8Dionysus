@@ -284,6 +284,18 @@ AoA hooks live under `<workspace-root>/.codex/hooks/` and write reports under
 Use `<workspace-root>/.codex/bin/aoa-codex-hooks-doctor` for the manual
 hook-doctor surface.
 
+Repo-local Git checkpoint hooks live in each checkout's private `.git/hooks/`
+directory. Their source templates live under
+`<workspace-root>/8Dionysus/config/git_hooks/`, and the bounded installer is:
+
+```bash
+<workspace-root>/.codex/bin/aoa-workspace-git-hooks --check --json
+<workspace-root>/.codex/bin/aoa-workspace-git-hooks --execute --json
+```
+
+The installer manages only the AoA checkpoint hooks and blocks instead of
+overwriting unmanaged local hooks.
+
 Boundary rules:
 
 - hooks stay deterministic, narrow, and fail-open

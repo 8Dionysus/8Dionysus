@@ -184,6 +184,36 @@ Behavior:
 - `--prune` may be added when you want managed extra paths removed too
 - `AGENTS.md` is rendered by replacing `<workspace-root>` with the target live root
 
+## Repo-local Git hooks
+
+Git stores active hooks inside each checkout's private `.git/hooks/` directory,
+so they are not normal shared-root projection files. `8Dionysus` keeps the
+source templates for AoA checkpoint hooks under `config/git_hooks/` and manages
+the active local copies with:
+
+```bash
+python <workspace-root>/8Dionysus/scripts/manage_workspace_git_hooks.py \
+  --workspace-root <workspace-root> \
+  --check \
+  --json
+python <workspace-root>/8Dionysus/scripts/manage_workspace_git_hooks.py \
+  --workspace-root <workspace-root> \
+  --execute \
+  --json
+```
+
+After projection, the same route is available through the workspace launcher:
+
+```bash
+<workspace-root>/.codex/bin/aoa-workspace-git-hooks --check --json
+<workspace-root>/.codex/bin/aoa-workspace-git-hooks --execute --json
+```
+
+The managed hooks are `pre-merge-commit`, `pre-push`, and `post-commit`. The
+installer renders their workspace-root default, preserves local overrides via
+`AOA_CHECKPOINT_WORKSPACE_ROOT` and `AOA_CHECKPOINT_AOA_BIN`, and refuses to
+overwrite unmanaged existing hooks unless `--force` is passed after review.
+
 ## Session start
 
 Use `aoa-sdk` as the control-plane entry surface for session ingress and mutation gates:

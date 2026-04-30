@@ -28,12 +28,16 @@ note before rerender or rollout, use `docs/COMPONENT_REFRESH_ROUTE.md`.
 - the renderer and drift validator
 - the checked-in generated `.codex/config.toml` and `.codex/hooks.json` for the
   current chosen public root
+- the source templates and bounded installer for AoA-managed repo-local Git
+  checkpoint hooks
 
 It does not own:
 
 - role meaning owned by `aoa-agents`
 - MCP implementation meaning owned by `aoa-sdk`, `aoa-stats`, and `Dionysus`
 - user-global Codex defaults in `~/.codex/config.toml`
+- unmanaged custom hooks already present in a checkout's private `.git/hooks/`
+  directory
 
 ## Primary edit surface
 
@@ -83,6 +87,11 @@ For the live deployment trail that follows rerender, use
 `docs/CODEX_PLANE_ROLLOUT.md`.
 For owner-routed component drift at the shared workspace root, use
 `docs/COMPONENT_REFRESH_ROUTE.md`.
+
+Repo-local Git hooks are adjacent local runtime state, not Codex event hooks.
+After a root move or checkout refresh, validate them with
+`scripts/manage_workspace_git_hooks.py --check` and reinstall with `--execute`
+from the source templates in `config/git_hooks/`.
 
 ## Failure mode to avoid
 

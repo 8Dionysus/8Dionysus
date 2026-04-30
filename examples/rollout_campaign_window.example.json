@@ -1,7 +1,7 @@
 {
   "schema_version": "8dionysus_rollout_campaign_window_v1",
   "campaign_ref": "CAMP-20260412-codex-cadence-01",
-  "workspace_root": "/srv",
+  "workspace_root": "/srv/AbyssOS",
   "plane": "codex_plane",
   "scope": "shared-root-codex-plane",
   "state": "open",

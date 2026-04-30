@@ -486,7 +486,7 @@ def report_to_markdown(report: dict[str, Any]) -> str:
 
 
 BOOTSTRAP_CONFIG_SNIPPET = """# Review-only convergence snippet.
-# Merge this into /srv/.codex/config.toml only if the marker entry is missing.
+# Merge this into /srv/AbyssOS/.codex/config.toml only if the marker entry is missing.
 project_root_markers = ["AOA_WORKSPACE_ROOT", ".git"]
 """
 

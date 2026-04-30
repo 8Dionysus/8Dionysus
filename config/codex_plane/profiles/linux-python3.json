@@ -3,6 +3,6 @@
   "python_command": "python3",
   "python_prefix_args": [],
   "render_examples": {
-    "workspace_root": "/srv"
+    "workspace_root": "/srv/AbyssOS"
   }
 }

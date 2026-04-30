@@ -20,8 +20,8 @@ def write_text(path: Path, text: str) -> None:
 
 class WorkspaceProjectionTests(unittest.TestCase):
     def test_render_agents_text_substitutes_workspace_root(self) -> None:
-        rendered = render_agents_text("use <workspace-root>/foo", Path("/srv"))
-        self.assertEqual(rendered, "use /srv/foo")
+        rendered = render_agents_text("use <workspace-root>/foo", Path("/srv/AbyssOS"))
+        self.assertEqual(rendered, "use /srv/AbyssOS/foo")
 
     def test_dry_run_reports_managed_surface_changes_without_runtime_artifacts(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:

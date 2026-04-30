@@ -1,8 +1,8 @@
 {
   "schema_version": "8dionysus_codex_plane_trust_state_v1",
   "trust_state_id": "cptrust-2026-04-11T210400Z-root-srv",
-  "workspace_root": "/srv",
-  "detected_project_root": "/srv",
+  "workspace_root": "/srv/AbyssOS",
+  "detected_project_root": "/srv/AbyssOS",
   "project_root_markers_expected": [
     "AOA_WORKSPACE_ROOT",
     ".git"
@@ -12,11 +12,11 @@
   ],
   "project_config_active": true,
   "active_config_layers": [
-    "/srv/.codex/config.toml"
+    "/srv/AbyssOS/.codex/config.toml"
   ],
   "hooks_enabled": true,
   "hook_layers_detected": [
-    "/srv/.codex/hooks.json"
+    "/srv/AbyssOS/.codex/hooks.json"
   ],
   "mcp_server_names_expected": [
     "aoa_workspace",

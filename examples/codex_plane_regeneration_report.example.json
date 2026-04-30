@@ -2,7 +2,7 @@
   "schema_version": "8dionysus_codex_plane_regeneration_report_v1",
   "regeneration_report_id": "cpregen-2026-04-11T210500Z-root-srv",
   "source_profile_ref": "8Dionysus:config/codex_plane/profiles/linux-python3.json",
-  "target_workspace_root": "/srv",
+  "target_workspace_root": "/srv/AbyssOS",
   "render_posture": "execute",
   "rendered_files": [
     {

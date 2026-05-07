@@ -1,0 +1,19 @@
+# Narrow ownership map for governance-critical public entry surfaces.
+/.agents/ @8Dionysus
+/.codex/ @8Dionysus
+/.github/ @8Dionysus
+/config/ @8Dionysus
+/docs/ @8Dionysus
+/generated/ @8Dionysus
+/manifests/ @8Dionysus
+/profile/ @8Dionysus
+/quests/ @8Dionysus
+/schemas/ @8Dionysus
+/scripts/ @8Dionysus
+/tests/ @8Dionysus
+
+/AGENTS.md @8Dionysus
+/AOA_WORKSPACE_ROOT @8Dionysus
+/GLOSSARY.md @8Dionysus
+/QUESTBOOK.md @8Dionysus
+/README.md @8Dionysus

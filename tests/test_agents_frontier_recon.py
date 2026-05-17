@@ -70,6 +70,17 @@ class AgentsFrontierReconTests(unittest.TestCase):
         self.assertIn("| Priority | Score | Repository | Path | Decision | Rationale |", text)
         self.assertIn("schemas/AGENTS.md", text)
 
+    def test_candidate_limit_does_not_truncate_priority_totals(self) -> None:
+        result = frontier.build_frontier(self.sample_map(), max_candidates=1)
+        totals = result["totals"]
+
+        self.assertEqual(1, len(result["top_candidates"]))
+        self.assertEqual(4, totals["candidate_count"])
+        self.assertEqual(
+            totals["candidate_count"],
+            totals["p0_candidates"] + totals["p1_candidates"] + totals["p2_candidates"] + totals["p3_candidates"],
+        )
+
     def test_cli_writes_outputs(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)

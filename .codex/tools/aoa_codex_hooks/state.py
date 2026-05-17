@@ -143,7 +143,7 @@ def build_hook_report(workspace_root: Path) -> dict[str, Any]:
 
     config, config_error = _safe_read_config(config_path)
     features = (config or {}).get("features", {}) if config else {}
-    codex_hooks_enabled = isinstance(features, dict) and bool(features.get("codex_hooks"))
+    codex_hooks_enabled = isinstance(features, dict) and bool(features.get("codex_hooks") or features.get("hooks"))
     project_root_marker_present = _contains_project_root_marker(config or {}) if config else False
 
     surfaces: list[Surface] = []
@@ -251,12 +251,26 @@ def build_hook_report(workspace_root: Path) -> dict[str, Any]:
     )
 
     uhooks = user_hooks_path()
+    user_hook_commands = _parse_hook_commands(uhooks)
+    user_hooks_are_aoa_session_memory = bool(user_hook_commands) and all(
+        "aoa_session_memory.py" in command for command in user_hook_commands
+    )
+    if not uhooks.exists():
+        user_hooks_status = "ok"
+        user_hooks_summary = "No user-level hooks.json detected."
+    elif user_hooks_are_aoa_session_memory:
+        user_hooks_status = "ok"
+        user_hooks_summary = "User-level hooks.json routes host-wide capture to AoA session memory."
+    else:
+        user_hooks_status = "warn"
+        user_hooks_summary = "User-level hooks.json also exists; both layers will run."
     surfaces.append(
         Surface(
             name="user_hooks_overlap",
-            status="warn" if uhooks.exists() else "ok",
-            summary="User-level hooks.json also exists; both layers will run." if uhooks.exists() else "No user-level hooks.json detected.",
+            status=user_hooks_status,
+            summary=user_hooks_summary,
             path=str(uhooks),
+            details={"commands": user_hook_commands} if user_hook_commands else None,
         )
     )
 
@@ -316,7 +330,7 @@ def build_hook_report(workspace_root: Path) -> dict[str, Any]:
         recommendations.append("Install project-level .codex/hooks.json next to the active config layer.")
     if missing_scripts:
         recommendations.append("Install the AoA hook scripts under .codex/hooks/ and the helper module under .codex/tools/aoa_codex_hooks/.")
-    if uhooks.exists():
+    if uhooks.exists() and not user_hooks_are_aoa_session_memory:
         recommendations.append("Audit user-level hooks.json to avoid duplicate hook execution across layers.")
 
     error_count = sum(1 for surface in surfaces if surface.status == "error")

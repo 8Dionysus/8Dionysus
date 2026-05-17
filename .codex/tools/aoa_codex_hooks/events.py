@@ -1,6 +1,8 @@
 from __future__ import annotations
 
+import importlib.util
 import json
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -36,6 +38,39 @@ def write_event_log(workspace_root: Path, event_name: str, payload: dict[str, An
     return str(log_path)
 
 
+def _session_memory_hook(event_name: str, event: dict[str, Any], workspace_root: Path) -> dict[str, Any]:
+    script = workspace_root / ".aoa" / "scripts" / "aoa_session_memory.py"
+    if not script.exists():
+        return {"ok": True, "skipped": True, "reason": "aoa_session_memory.py missing"}
+    try:
+        spec = importlib.util.spec_from_file_location("aoa_session_memory", script)
+        if spec is None or spec.loader is None:
+            return {"ok": False, "error": "could not load aoa_session_memory.py"}
+        module = importlib.util.module_from_spec(spec)
+        sys.modules["aoa_session_memory"] = module
+        spec.loader.exec_module(module)
+        receipt = module.handle_hook_event(event_name, event, workspace_root=workspace_root)
+        return receipt if isinstance(receipt, dict) else {"ok": False, "error": "invalid receipt"}
+    except Exception as exc:  # Hooks stay fail-open.
+        return {"ok": False, "error": f"{exc.__class__.__name__}: {exc}"}
+
+
+def _session_memory_context(receipt: dict[str, Any]) -> str:
+    if receipt.get("skipped"):
+        return ""
+    if not receipt.get("ok"):
+        return f" AoA session memory hook failed open: {receipt.get('error', 'unknown error')}."
+    session_dir = receipt.get("session_dir")
+    actions = receipt.get("actions", [])
+    if "raw_unavailable_incident_written" in actions:
+        incident = receipt.get("incident", {})
+        diagnostic = incident.get("diagnostic") if isinstance(incident, dict) else None
+        return f" AoA session memory raw source unavailable; diagnostic: {diagnostic}."
+    if session_dir:
+        return f" AoA session memory archived/indexed this transcript under {session_dir}."
+    return ""
+
+
 def _trim_message(message: str, *, max_chars: int = 240) -> str:
     if len(message) <= max_chars:
         return message
@@ -56,7 +91,12 @@ def _titan_incarnation_context(workspace_root: Path) -> str:
 
 def handle_session_start(event: dict[str, Any], workspace_root: Path) -> dict[str, Any]:
     report = build_hook_report(workspace_root)
-    log_path = write_event_log(workspace_root, "session_start", {"event": event, "report": report})
+    session_memory = _session_memory_hook("SessionStart", event, workspace_root)
+    log_path = write_event_log(
+        workspace_root,
+        "session_start",
+        {"event": event, "report": report, "session_memory": session_memory},
+    )
 
     missing = [surface["name"] for surface in report["surfaces"] if surface["status"] == "error"]
     if missing:
@@ -75,6 +115,7 @@ def handle_session_start(event: dict[str, Any], workspace_root: Path) -> dict[st
         )
 
     additional_context += _titan_incarnation_context(workspace_root)
+    additional_context += _session_memory_context(session_memory)
 
     return {
         "continue": True,
@@ -104,7 +145,8 @@ KEYWORD_GUIDANCE = {
 
 def handle_user_prompt_submit(event: dict[str, Any], workspace_root: Path) -> dict[str, Any]:
     prompt = str(event.get("prompt") or "")
-    payload = {"event": event}
+    session_memory = _session_memory_hook("UserPromptSubmit", event, workspace_root)
+    payload = {"event": event, "session_memory": session_memory}
     log_path = write_event_log(workspace_root, "user_prompt_submit", payload)
 
     if not prompt_mentions_codex_surfaces(prompt):
@@ -139,11 +181,13 @@ def handle_stop(
     autocontinue_critical: bool = False,
 ) -> dict[str, Any]:
     report = build_hook_report(workspace_root)
+    session_memory = _session_memory_hook("Stop", event, workspace_root)
     stamp = utc_stamp()
     paths = write_report_files(workspace_root, report, stem=f"aoa_codex_hooks_report_{stamp}")
     event_log = {
         "event": event,
         "report": report,
+        "session_memory": session_memory,
         "report_paths": paths,
         "markdown_preview": report_to_markdown(report),
     }
@@ -169,6 +213,12 @@ def handle_stop(
             f"AoA hook doctor found {report['warn_count']} warning(s). "
             f"See {paths['latest_markdown']} and {log_path}."
         )
+    memory_actions = session_memory.get("actions", []) if isinstance(session_memory, dict) else []
+    memory_context = ""
+    if not session_memory.get("ok") or "raw_unavailable_incident_written" in memory_actions:
+        memory_context = _session_memory_context(session_memory)
+    if memory_context:
+        system_message = _trim_message((system_message or "") + memory_context, max_chars=500)
 
     payload: dict[str, Any] = {"continue": True}
     if system_message:

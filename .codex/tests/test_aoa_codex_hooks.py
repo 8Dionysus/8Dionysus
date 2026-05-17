@@ -114,6 +114,32 @@ def test_session_start_includes_titan_incarnation_context_when_present(tmp_path:
     assert "No autospawn" in context
 
 
+def test_session_start_calls_aoa_session_memory_when_present(tmp_path: Path) -> None:
+    workspace = make_workspace(tmp_path)
+    write_text(
+        workspace / ".aoa" / "scripts" / "aoa_session_memory.py",
+        """
+from pathlib import Path
+
+
+def handle_hook_event(event_name, event, workspace_root=None, aoa_root=None):
+    marker = Path(workspace_root) / ".aoa" / "called.txt"
+    marker.parent.mkdir(parents=True, exist_ok=True)
+    marker.write_text(event_name, encoding="utf-8")
+    return {
+        "ok": True,
+        "hook_event_name": event_name,
+        "session_dir": str(Path(workspace_root) / ".aoa" / "codex-sessions" / "demo"),
+        "actions": ["hook_event_recorded", "raw_mirrored", "segments_indexed"],
+    }
+""",
+    )
+    payload = handle_session_start({"source": "startup"}, workspace)
+    context = payload["hookSpecificOutput"]["additionalContext"]
+    assert (workspace / ".aoa" / "called.txt").read_text(encoding="utf-8") == "SessionStart"
+    assert "AoA session memory archived/indexed" in context
+
+
 def test_user_prompt_submit_on_match(tmp_path: Path) -> None:
     workspace = make_workspace(tmp_path)
     payload = handle_user_prompt_submit({"prompt": "Please wire MCP for Codex"}, workspace)

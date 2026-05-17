@@ -165,16 +165,17 @@ def build_frontier(payload: Mapping[str, Any], *, max_candidates: int | None = N
         )
 
     all_candidates.sort(key=lambda item: (-int(item["score"]), item["repository"], item["directory"]))
+    total_candidates = list(all_candidates)
     if max_candidates is not None:
         all_candidates = all_candidates[:max_candidates]
 
     totals = {
         "repositories_listed": len(repo_reports),
         "candidate_count": sum(report["candidate_count"] for report in repo_reports),
-        "p0_candidates": sum(1 for item in all_candidates if item["priority"] == "P0"),
-        "p1_candidates": sum(1 for item in all_candidates if item["priority"] == "P1"),
-        "p2_candidates": sum(1 for item in all_candidates if item["priority"] == "P2"),
-        "p3_candidates": sum(1 for item in all_candidates if item["priority"] == "P3"),
+        "p0_candidates": sum(1 for item in total_candidates if item["priority"] == "P0"),
+        "p1_candidates": sum(1 for item in total_candidates if item["priority"] == "P1"),
+        "p2_candidates": sum(1 for item in total_candidates if item["priority"] == "P2"),
+        "p3_candidates": sum(1 for item in total_candidates if item["priority"] == "P3"),
         "repos_with_candidates": sum(1 for report in repo_reports if report["candidate_count"]),
     }
 

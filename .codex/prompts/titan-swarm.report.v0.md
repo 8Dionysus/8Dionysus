@@ -12,7 +12,7 @@ Return a `titan_agent_report.v1`-shaped answer:
   "summary": "...",
   "findings": [
     {
-      "severity": "P1|P2|P3|note",
+      "severity": "P0|P1|P2|P3|note",
       "claim": "...",
       "evidence_refs": ["..."],
       "recommended_action": "...",

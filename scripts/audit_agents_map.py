@@ -11,9 +11,13 @@ import argparse
 import ast
 import json
 import os
-import tomllib
 from pathlib import Path
 from typing import Any, Mapping, Sequence
+
+try:
+    import tomllib
+except ModuleNotFoundError:  # pragma: no cover - exercised on Python 3.10.
+    import tomli as tomllib  # type: ignore[no-redef]
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 SCHEMA_VERSION = "8dionysus_agents_map_v1"

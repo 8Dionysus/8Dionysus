@@ -129,7 +129,7 @@ def workspace_git_hooks_report(
     blocked = [operation for operation in operations if operation.action == "blocked"]
     writable = [operation for operation in operations if operation.action != "blocked"]
 
-    if execute and not blocked:
+    if execute:
         for operation in writable:
             _apply_operation(operation)
 
@@ -296,6 +296,11 @@ def _display_path(path: Path, root: Path) -> str:
 
 
 def _next_step(*, changed: bool, blocked: bool, execute: bool) -> str:
+    if blocked and changed and execute:
+        return (
+            "Writable repo-local Git hooks were installed where safe. Review unmanaged local Git hooks before replacing them. "
+            "Re-run with --force only after confirming those local hooks are safe to overwrite."
+        )
     if blocked:
         return (
             "Review unmanaged local Git hooks before replacing them. Re-run with --force only after "

@@ -15,9 +15,17 @@ from pathlib import Path
 from typing import Any, Mapping, Sequence
 
 try:
-    import tomllib
+    import tomllib as _tomllib
 except ModuleNotFoundError:  # pragma: no cover - exercised on Python 3.10.
-    import tomli as tomllib  # type: ignore[no-redef]
+    try:
+        import tomli as _tomllib  # type: ignore[no-redef]
+    except ModuleNotFoundError:  # pragma: no cover - exercised on dependency-free Python 3.10.
+        _tomllib = None
+
+if _tomllib is not None:
+    TOML_DECODE_ERRORS = (_tomllib.TOMLDecodeError, ValueError, SyntaxError)
+else:
+    TOML_DECODE_ERRORS = (ValueError, SyntaxError)
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 SCHEMA_VERSION = "8dionysus_agents_map_v1"
@@ -378,13 +386,90 @@ def expand_manifest_path(raw_value: str, workspace_root: Path) -> Path:
     return Path(expanded).expanduser().resolve()
 
 
+def _strip_toml_inline_comment(line: str) -> str:
+    in_single_quote = False
+    in_double_quote = False
+    escaped = False
+    for index, char in enumerate(line):
+        if escaped:
+            escaped = False
+            continue
+        if in_double_quote and char == "\\":
+            escaped = True
+            continue
+        if char == "'" and not in_double_quote:
+            in_single_quote = not in_single_quote
+            continue
+        if char == '"' and not in_single_quote:
+            in_double_quote = not in_double_quote
+            continue
+        if char == "#" and not in_single_quote and not in_double_quote:
+            return line[:index].rstrip()
+    return line.rstrip()
+
+
+def _parse_limited_toml_value(raw_value: str) -> Any:
+    value = raw_value.strip()
+    if not value:
+        raise ValueError("empty TOML value")
+    if value[0] in {"'", '"'} or value.startswith("["):
+        parsed = ast.literal_eval(value)
+        if isinstance(parsed, (str, list)):
+            return parsed
+        raise ValueError(f"unsupported TOML value: {raw_value}")
+    if value.isdigit():
+        return int(value)
+    raise ValueError(f"unsupported TOML value: {raw_value}")
+
+
+def _parse_limited_workspace_toml(text: str) -> dict[str, Any]:
+    data: dict[str, Any] = {}
+    current_table: list[str] | None = None
+    for raw_line in text.splitlines():
+        line = _strip_toml_inline_comment(raw_line).strip()
+        if not line:
+            continue
+        if line.startswith("[") and line.endswith("]"):
+            table_name = line[1:-1].strip()
+            if not table_name:
+                raise ValueError("empty TOML table name")
+            current_table = table_name.split(".")
+            target = data
+            for part in current_table:
+                if not part:
+                    raise ValueError(f"invalid TOML table name: {table_name}")
+                next_target = target.setdefault(part, {})
+                if not isinstance(next_target, dict):
+                    raise ValueError(f"TOML table conflicts with value: {table_name}")
+                target = next_target
+            continue
+        if "=" not in line:
+            raise ValueError(f"unsupported TOML line: {raw_line}")
+        key, raw_value = line.split("=", 1)
+        key = key.strip()
+        if not key:
+            raise ValueError(f"empty TOML key: {raw_line}")
+        target = data
+        if current_table:
+            for part in current_table:
+                target = target[part]
+        target[key] = _parse_limited_toml_value(raw_value)
+    return data
+
+
+def load_workspace_toml(text: str) -> Mapping[str, Any]:
+    if _tomllib is not None:
+        return _tomllib.loads(text)
+    return _parse_limited_workspace_toml(text)
+
+
 def workspace_manifest_repo_paths(workspace_root: Path) -> dict[str, Path]:
     manifest_path = workspace_root / "aoa-sdk" / ".aoa" / "workspace.toml"
     if not manifest_path.is_file():
         return {}
     try:
-        data = tomllib.loads(read_text(manifest_path))
-    except tomllib.TOMLDecodeError:
+        data = load_workspace_toml(read_text(manifest_path))
+    except TOML_DECODE_ERRORS:
         return {}
 
     repo_paths: dict[str, Path] = {}

@@ -97,6 +97,47 @@ class AgentsMapAuditTests(unittest.TestCase):
             self.assertNotEqual(scanned["path_hint"], "abyss-stack")
             self.assertNotIn(str(root), scanned["path_hint"])
 
+    def test_workspace_manifest_limited_toml_fallback_supports_preferred_paths(self) -> None:
+        original_tomllib = audit_agents_map._tomllib
+        audit_agents_map._tomllib = None
+        try:
+            manifest = audit_agents_map.load_workspace_toml(
+                '''
+                schema_version = 1
+
+                [repos.abyss-stack]
+                role = "source_checkout"
+                preferred = ["~/src/abyss-stack", "{workspace_parent}/abyss-stack"] # keep source first
+                runtime_mirror = "{workspace_parent}/abyss-stack"
+                '''
+            )
+        finally:
+            audit_agents_map._tomllib = original_tomllib
+
+        self.assertEqual(
+            manifest["repos"]["abyss-stack"]["preferred"],
+            ["~/src/abyss-stack", "{workspace_parent}/abyss-stack"],
+        )
+        self.assertEqual(manifest["repos"]["abyss-stack"]["role"], "source_checkout")
+
+    def test_workspace_manifest_limited_toml_parser_supports_preferred_paths(self) -> None:
+        manifest = audit_agents_map._parse_limited_workspace_toml(
+            '''
+            schema_version = 1
+
+            [repos.abyss-stack]
+            role = "source_checkout"
+            preferred = ["~/src/abyss-stack", "{workspace_parent}/abyss-stack"] # keep source first
+            runtime_mirror = "{workspace_parent}/abyss-stack"
+            '''
+        )
+
+        self.assertEqual(
+            manifest["repos"]["abyss-stack"]["preferred"],
+            ["~/src/abyss-stack", "{workspace_parent}/abyss-stack"],
+        )
+        self.assertEqual(manifest["repos"]["abyss-stack"]["role"], "source_checkout")
+
     def test_unvalidated_nested_agents_are_reported_without_executing_validator(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             workspace = Path(tmp)

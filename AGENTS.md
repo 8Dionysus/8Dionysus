@@ -69,6 +69,21 @@ needed, say so in closeout.
 - `aoa-stats`: derived observability and movement summaries.
 - `8Dionysus`: public route map, shared-root projection source, AGENTS map audit.
 
+## Memory route
+
+Use `aoa_memo` when a workspace task asks to recall, continue, preserve, compare
+with past work, recover after compaction, create a memory candidate, inspect a
+local memo port, or route evidence toward reviewed memory.
+
+- Need continuity or context: call `aoa_memo_brief` for the owning repository
+  and current intent.
+- Need to preserve new memory: write through that repository's `memo/` port when
+  it exists, then validate and index the port.
+- Need durable reviewed memory: export reviewed intake to `aoa-memo`; the shared
+  root and MCP plane do not land durable memo truth directly.
+- Need owner truth: follow the owning repository first; memo carries recall,
+  provenance, local candidates, and reviewed handoff.
+
 ## Workspace ingress and mutation gate
 
 For substantial workspace-root work, run one ingress pass once the owner repo is chosen:

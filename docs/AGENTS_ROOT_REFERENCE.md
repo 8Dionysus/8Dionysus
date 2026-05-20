@@ -234,6 +234,10 @@ python scripts/recon_agents_frontier.py \
 - Treat `aoa_stats` as derived observability only. Do not let it overrule owner truth or bounded eval verdicts
 - Treat `dionysus` as seed-garden and planting-lineage context. Do not mistake staging notes for final owner doctrine
 - Treat `aoa_memo` as the memory access plane. It can brief, search, and create candidates, but durable memory truth still lands through `aoa-memo`
+- Use `aoa_memo` when a task asks for recall, continuity, compaction recovery,
+  local memo port state, memory candidate creation, port indexing, or reviewed
+  intake preparation. Write durable memory only through the reviewed
+  `aoa-memo` route.
 - Respect `allow_implicit_invocation` from the generated skill export and local adapter manifest. Do not silently force explicit-only skills into automatic use
 - Keep role-bearing work in custom agents when they exist. MCP dependencies do not by themselves create hidden actor behavior
 

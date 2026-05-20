@@ -8,6 +8,11 @@ Keep projected copies secondary. Source-owned files in this repository may be ed
 
 No secrets, tokens, private hostnames, unreviewed hooks, or hidden local automation may be added here. Any mutating helper must stay bounded, documented, reversible, and route-aware.
 
+Memory access in the Codex plane uses `aoa_memo` as an access plane. Use it for
+brief, search, local-port status, candidate creation, port indexing, and intake
+review when work asks for recall, continuity, preservation, compaction recovery,
+or memory handoff. Durable reviewed memory still lands through `aoa-memo`.
+
 Verify with:
 
 ```bash

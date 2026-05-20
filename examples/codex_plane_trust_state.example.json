@@ -21,12 +21,14 @@
   "mcp_server_names_expected": [
     "aoa_workspace",
     "aoa_stats",
-    "dionysus"
+    "dionysus",
+    "aoa_memo"
   ],
   "mcp_server_names_detected": [
     "aoa_workspace",
     "aoa_stats",
-    "dionysus"
+    "dionysus",
+    "aoa_memo"
   ],
   "stable_names_ok": true,
   "trust_posture": "trusted_ready",

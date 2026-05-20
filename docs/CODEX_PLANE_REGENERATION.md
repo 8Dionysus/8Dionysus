@@ -34,7 +34,8 @@ note before rerender or rollout, use `docs/COMPONENT_REFRESH_ROUTE.md`.
 It does not own:
 
 - role meaning owned by `aoa-agents`
-- MCP implementation meaning owned by `aoa-sdk`, `aoa-stats`, and `Dionysus`
+- MCP implementation meaning owned by `aoa-sdk`, `aoa-stats`, `Dionysus`, and
+  `abyss-stack` for the `aoa-memo-mcp` access plane
 - user-global Codex defaults in `~/.codex/config.toml`
 - unmanaged custom hooks already present in a checkout's private `.git/hooks/`
   directory
@@ -72,7 +73,7 @@ The regeneration path must preserve the stable project-facing names that other
 AoA surfaces may already depend on:
 
 - project root markers: `AOA_WORKSPACE_ROOT`, `.git`
-- MCP server names: `aoa_workspace`, `aoa_stats`, `dionysus`
+- MCP server names: `aoa_workspace`, `aoa_stats`, `dionysus`, `aoa_memo`
 - hook events: `SessionStart`, `UserPromptSubmit`, `Stop`
 
 ## Relation to projection

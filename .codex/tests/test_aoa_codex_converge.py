@@ -124,6 +124,28 @@ def test_optional_repo_mcp_detection(tmp_path: Path) -> None:
     assert names_to_status["dionysus_mcp"] == "ok"
 
 
+def test_optional_memo_mcp_detection(tmp_path: Path) -> None:
+    write_bootstrap_scaffold(tmp_path)
+    _write(
+        tmp_path / ".codex" / "config.toml",
+        _minimal_config(tmp_path)
+        + f"""
+[mcp_servers.aoa_memo]
+command = "python"
+args = [".codex/bin/aoa-memo-mcp-server.py"]
+cwd = "{tmp_path}"
+""",
+    )
+    _write(tmp_path / "aoa-sdk" / "scripts" / "aoa_workspace_mcp_server.py", "print('ok')\n")
+    _write(tmp_path / ".codex" / "bin" / "aoa-memo-mcp-server.py", "print('ok')\n")
+    for name in ["architect", "coder", "reviewer", "evaluator", "memory-keeper"]:
+        _write(tmp_path / ".codex" / "agents" / f"{name}.toml", _agent_toml(name))
+
+    report = build_report(tmp_path)
+    names_to_status = {item["name"]: item["status"] for item in report["surfaces"]}
+    assert names_to_status["memo_mcp"] == "ok"
+
+
 def test_plugin_marketplace_path_can_point_into_dot_codex(tmp_path: Path) -> None:
     write_bootstrap_scaffold(tmp_path)
     _write(tmp_path / ".codex" / "config.toml", _minimal_config(tmp_path))

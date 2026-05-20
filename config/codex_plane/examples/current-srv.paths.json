@@ -4,6 +4,7 @@
   "python_command": "python3",
   "python_prefix_args": [],
   "repos": {
+    "workspace": "/srv/AbyssOS",
     "aoa-sdk": "/srv/AbyssOS/aoa-sdk",
     "aoa-stats": "/srv/AbyssOS/aoa-stats",
     "Dionysus": "/srv/AbyssOS/Dionysus",
@@ -21,6 +22,10 @@
     "dionysus": {
       "cwd": "/srv/AbyssOS/Dionysus",
       "script_rel": "scripts/dionysus_mcp_server.py"
+    },
+    "aoa_memo": {
+      "cwd": "/srv/AbyssOS",
+      "script_rel": ".codex/bin/aoa-memo-mcp-server.py"
     }
   },
   "hooks": {

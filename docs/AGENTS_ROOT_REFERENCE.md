@@ -229,10 +229,11 @@ python scripts/recon_agents_frontier.py \
 
 ## Skill ↔ MCP route discipline
 
-- Prefer AoA skills whose generated `.agents/skills/*/agents/openai.yaml` or documented wiring examples declare named MCP dependencies when the route is sibling-workspace orientation, derived stats observability, or Dionysus seed routing
+- Prefer AoA skills whose generated `.agents/skills/*/agents/openai.yaml` or documented wiring examples declare named MCP dependencies when the route is sibling-workspace orientation, derived stats observability, Dionysus seed routing, or memory access
 - Treat `aoa_workspace` as the first orientation surface when owner-fit is unclear
 - Treat `aoa_stats` as derived observability only. Do not let it overrule owner truth or bounded eval verdicts
 - Treat `dionysus` as seed-garden and planting-lineage context. Do not mistake staging notes for final owner doctrine
+- Treat `aoa_memo` as the memory access plane. It can brief, search, and create candidates, but durable memory truth still lands through `aoa-memo`
 - Respect `allow_implicit_invocation` from the generated skill export and local adapter manifest. Do not silently force explicit-only skills into automatic use
 - Keep role-bearing work in custom agents when they exist. MCP dependencies do not by themselves create hidden actor behavior
 
@@ -252,6 +253,7 @@ workspace:
 - `aoa_workspace`
 - `aoa_stats`
 - `dionysus`
+- `aoa_memo`
 
 Boundary rules:
 
@@ -259,6 +261,7 @@ Boundary rules:
 - the plugin install path is workspace-local packaging, not owner-repo truth
 - `aoa_stats` remains derived
 - `Dionysus` remains staging and route context
+- `aoa_memo` remains an access plane over reviewed memory, session evidence, and local ports
 - owner truth stays in the owning repo
 
 ## Convergence posture

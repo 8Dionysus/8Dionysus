@@ -84,7 +84,8 @@
       "required": [
         "aoa_workspace",
         "aoa_stats",
-        "dionysus"
+        "dionysus",
+        "aoa_memo"
       ],
       "properties": {
         "aoa_workspace": {
@@ -94,6 +95,9 @@
           "type": "boolean"
         },
         "dionysus": {
+          "type": "boolean"
+        },
+        "aoa_memo": {
           "type": "boolean"
         }
       }

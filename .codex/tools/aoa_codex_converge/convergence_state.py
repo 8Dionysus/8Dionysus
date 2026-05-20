@@ -168,6 +168,7 @@ def build_report(workspace_root: Path | str) -> dict[str, Any]:
     stats_catalog = stats_repo / "generated" / "summary_surface_catalog.min.json"
     dionysus_repo = root / "Dionysus"
     dionysus_catalog = dionysus_repo / "generated" / "seed_route_map.min.json"
+    memo_service = Path.home() / "src" / "abyss-stack" / "mcp" / "services" / "aoa-memo-mcp"
 
     config = _read_toml(codex_config_path)
     marketplace = _read_json(plugin_marketplace_path)
@@ -312,6 +313,35 @@ def build_report(workspace_root: Path | str) -> dict[str, Any]:
             ),
             evidence=dionysus_evidence,
             next_step="Wire dionysus into workspace .codex/config.toml and ensure the repo-local server plus generated seed route map exist.",
+        )
+    )
+
+    memo_entry = mcp_servers.get("aoa_memo") if isinstance(mcp_servers, dict) else None
+    memo_script_path, memo_evidence = _resolve_mcp_script(root, memo_entry)
+    if isinstance(mcp_servers, dict) and "aoa_memo" in mcp_servers:
+        memo_evidence.insert(0, "[mcp_servers.aoa_memo] in .codex/config.toml")
+    if memo_script_path is not None and memo_script_path.exists():
+        memo_evidence.append(str(memo_script_path))
+    if memo_service.exists():
+        memo_evidence.append(str(memo_service))
+    memo_mcp_ok = (
+        isinstance(mcp_servers, dict)
+        and "aoa_memo" in mcp_servers
+        and memo_script_path is not None
+        and memo_script_path.exists()
+    )
+    surfaces.append(
+        SurfaceStatus(
+            name="memo_mcp",
+            status="ok" if memo_mcp_ok else "warn",
+            required=False,
+            summary=(
+                "aoa-memo MCP access plane is configured."
+                if memo_mcp_ok
+                else "aoa-memo MCP access plane is not wired into the Codex plane."
+            ),
+            evidence=memo_evidence,
+            next_step="Wire [mcp_servers.aoa_memo] to .codex/bin/aoa-memo-mcp-server.py and keep the service source under abyss-stack.",
         )
     )
 

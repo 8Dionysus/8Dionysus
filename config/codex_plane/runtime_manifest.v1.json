@@ -106,6 +106,7 @@
     ]
   },
   "repos": {
+    "workspace": ".",
     "aoa-sdk": "aoa-sdk",
     "aoa-stats": "aoa-stats",
     "Dionysus": "Dionysus",
@@ -129,6 +130,12 @@
       "repo_key": "Dionysus",
       "cwd_repo_rel": "",
       "script_rel": "scripts/dionysus_mcp_server.py"
+    },
+    {
+      "name": "aoa_memo",
+      "repo_key": "workspace",
+      "cwd_repo_rel": "",
+      "script_rel": ".codex/bin/aoa-memo-mcp-server.py"
     }
   ],
   "hooks": {

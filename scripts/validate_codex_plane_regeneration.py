@@ -7,6 +7,8 @@ from pathlib import Path
 
 import render_codex_plane
 
+STABLE_MCP_SERVER_NAMES = ["aoa_workspace", "aoa_stats", "dionysus", "aoa_memo"]
+
 
 @dataclass(frozen=True)
 class CodexPlaneValidationSummary:
@@ -59,8 +61,11 @@ def validate_codex_plane_regeneration(
         raise ValueError(".codex/hooks.json drift detected; rerender from config/codex_plane/")
 
     expected_server_names = [server["name"] for server in manifest["mcp_servers"]]
-    if expected_server_names != ["aoa_workspace", "aoa_stats", "dionysus"]:
+    if expected_server_names != STABLE_MCP_SERVER_NAMES:
         raise ValueError("manifest must preserve the stable AoA MCP server names")
+    memo_launcher = resolved_repo_root / ".codex" / "bin" / "aoa-memo-mcp-server.py"
+    if not memo_launcher.exists():
+        raise ValueError(f"missing source-owned aoa_memo launcher: {memo_launcher}")
 
     return CodexPlaneValidationSummary(
         repo_root=resolved_repo_root,

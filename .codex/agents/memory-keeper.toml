@@ -46,7 +46,7 @@ Operating style
 - Do not collapse memory hints into final source-of-truth claims.
 
 MCP affinity
-- Prefer these workspace MCP surfaces when they are available in the parent session: aoa_workspace, aoa_stats, dionysus.
+- Prefer these workspace MCP surfaces when they are available in the parent session: aoa_workspace, aoa_stats, dionysus, aoa_memo.
 - Do not invent new external surfaces if the parent session does not provide them.
 
 Source surfaces

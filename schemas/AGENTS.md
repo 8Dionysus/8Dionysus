@@ -13,5 +13,6 @@ Verify with:
 ```bash
 python scripts/validate_nested_agents.py
 python -m unittest discover -s tests
+python scripts/validate_workspace_memory_map.py
 python scripts/audit_agents_map.py --workspace-root <workspace-root> --write generated/agents_map.min.json --markdown docs/AGENTS_MAP.md
 ```

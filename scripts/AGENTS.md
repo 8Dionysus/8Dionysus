@@ -12,5 +12,6 @@ Verify with:
 
 ```bash
 python scripts/validate_nested_agents.py
+python scripts/build_workspace_memory_map.py --check
 python -m unittest discover -s tests
 ```

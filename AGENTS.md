@@ -83,6 +83,9 @@ local memo port, or route evidence toward reviewed memory.
   root and MCP plane do not land durable memo truth directly.
 - Need owner truth: follow the owning repository first; memo carries recall,
   provenance, local candidates, and reviewed handoff.
+- Need workspace memory status: regenerate `generated/workspace_memory_map.min.json`
+  and `docs/WORKSPACE_MEMORY_MAP.md` from `scripts/build_workspace_memory_map.py`
+  instead of guessing which repos have local ports.
 
 ## Workspace ingress and mutation gate
 
@@ -110,6 +113,13 @@ Use `aoa surfaces detect` only as additive read-only routing help. It does not o
 
 ```bash
 python scripts/audit_agents_map.py --workspace-root <workspace-root> --write generated/agents_map.min.json --markdown docs/AGENTS_MAP.md
+```
+
+For workspace memory overlay status:
+
+```bash
+python scripts/build_workspace_memory_map.py --workspace-root <workspace-root> --write generated/workspace_memory_map.min.json --markdown docs/WORKSPACE_MEMORY_MAP.md
+python scripts/validate_workspace_memory_map.py
 ```
 
 For public bootstrap without sibling checkouts:

@@ -1,0 +1,268 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://8dionysus.dev/schemas/workspace-memory-map.schema.json",
+  "title": "OS Abyss workspace memory overlay map",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "schema_ref",
+    "owner_repo",
+    "surface_kind",
+    "generated_by",
+    "workspace_root_hint",
+    "taxonomy",
+    "reviewed_memory_owner",
+    "session_evidence_owner",
+    "access_plane",
+    "totals",
+    "places"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "8dionysus_workspace_memory_map_v1"
+    },
+    "schema_ref": {
+      "const": "schemas/workspace-memory-map.schema.json"
+    },
+    "owner_repo": {
+      "const": "8Dionysus"
+    },
+    "surface_kind": {
+      "const": "workspace_memory_overlay_map"
+    },
+    "generated_by": {
+      "const": "scripts/build_workspace_memory_map.py"
+    },
+    "workspace_root_hint": {
+      "type": "string"
+    },
+    "taxonomy": {
+      "type": "object",
+      "required": [
+        "port_levels",
+        "meaning"
+      ],
+      "properties": {
+        "port_levels": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "none",
+              "route_only",
+              "stub_port",
+              "full_port",
+              "mature_port"
+            ]
+          },
+          "minItems": 5,
+          "maxItems": 5
+        },
+        "meaning": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "reviewed_memory_owner": {
+      "const": "aoa-memo"
+    },
+    "session_evidence_owner": {
+      "const": ".aoa"
+    },
+    "access_plane": {
+      "type": "object",
+      "required": [
+        "name",
+        "status",
+        "access_plane_owner",
+        "authority_owner"
+      ],
+      "properties": {
+        "name": {
+          "const": "aoa_memo"
+        },
+        "status": {
+          "enum": [
+            "registered",
+            "not-registered"
+          ]
+        },
+        "runtime_status": {
+          "enum": [
+            "not_asserted_by_workspace_map"
+          ]
+        },
+        "access_plane_owner": {
+          "const": "abyss-stack"
+        },
+        "authority_owner": {
+          "const": "aoa-memo"
+        },
+        "service_source_hint": {
+          "type": "string"
+        },
+        "smoke_check": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "totals": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+      }
+    },
+    "places": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "kind",
+          "role",
+          "place_kind",
+          "checkout_state",
+          "path_hint",
+          "memory_role",
+          "refactor_state",
+          "root_agents_present",
+          "memory_route_status",
+          "current_port_level",
+          "recommended_port_level",
+          "reviewed_memory_route",
+          "evidence_route",
+          "mcp",
+          "memo_port",
+          "validation_command",
+          "issues"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "kind": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string"
+          },
+          "place_kind": {
+            "type": "string"
+          },
+          "checkout_state": {
+            "enum": [
+              "scanned",
+              "missing"
+            ]
+          },
+          "path_hint": {
+            "type": "string"
+          },
+          "memory_role": {
+            "type": "string"
+          },
+          "refactor_state": {
+            "type": "string"
+          },
+          "root_agents_present": {
+            "type": "boolean"
+          },
+          "memory_route_status": {
+            "enum": [
+              "missing",
+              "root_memory_route",
+              "local_port_route",
+              "session_evidence_route"
+            ]
+          },
+          "current_port_level": {
+            "enum": [
+              "none",
+              "route_only",
+              "stub_port",
+              "full_port",
+              "mature_port"
+            ]
+          },
+          "recommended_port_level": {
+            "enum": [
+              "none",
+              "route_only",
+              "stub_port",
+              "full_port",
+              "mature_port"
+            ]
+          },
+          "reviewed_memory_route": {
+            "const": "aoa-memo:reviewed-intake"
+          },
+          "evidence_route": {
+            "type": "string",
+            "pattern": "^\\.aoa:"
+          },
+          "mcp": {
+            "type": "object"
+          },
+          "memo_port": {
+            "type": "object",
+            "required": [
+              "present",
+              "path_hint",
+              "port_level",
+              "index_present",
+              "missing_files",
+              "missing_dirs",
+              "local_candidates",
+              "validation_receipts",
+              "pending_exports",
+              "local_records"
+            ],
+            "properties": {
+              "present": {
+                "type": "boolean"
+              },
+              "path_hint": {
+                "type": "string"
+              },
+              "port_level": {
+                "enum": [
+                  "none",
+                  "route_only",
+                  "stub_port",
+                  "full_port",
+                  "mature_port"
+                ]
+              },
+              "local_candidates": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "pending_exports": {
+                "type": "integer",
+                "minimum": 0
+              }
+            },
+            "additionalProperties": true
+          },
+          "validation_command": {
+            "type": "string"
+          },
+          "issues": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

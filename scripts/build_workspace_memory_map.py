@@ -45,6 +45,7 @@ MEMORY_ROUTE_STATUSES = (
     "local_port_route",
     "session_evidence_route",
 )
+MCP_CLI_PYTHONPATH = "${AOA_ABYSS_STACK_ROOT:-$HOME/src/abyss-stack}/mcp/services/aoa-memo-mcp/src"
 TERMINAL_REVIEW_STATES = {"rejected", "landed", "superseded", "archived"}
 
 FULL_PORT_RECOMMENDED = frozenset(
@@ -300,6 +301,10 @@ def memo_port_record(root: Path, workspace_root: Path) -> dict[str, Any]:
     }
 
 
+def mcp_cli_command(args: str) -> str:
+    return f'PYTHONPATH="{MCP_CLI_PYTHONPATH}" python -m aoa_memo_mcp.cli {args}'
+
+
 def recommended_port_level(name: str) -> str:
     if name in FULL_PORT_RECOMMENDED:
         return "full_port"
@@ -408,7 +413,7 @@ def place_record(
 
     validation_command = "python scripts/build_workspace_memory_map.py --check"
     if memo_port["present"]:
-        validation_command = f"python -m aoa_memo_mcp.cli validate-port --repo {name}"
+        validation_command = mcp_cli_command(f"validate-port --repo {name}")
 
     return {
         "name": name,

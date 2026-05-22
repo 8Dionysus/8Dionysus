@@ -17,7 +17,7 @@ python scripts/validate_workspace_memory_map.py
 
 ## Totals
 
-- `full_ports`: 3
+- `full_ports`: 9
 - `landed_exports`: 1
 - `local_candidates`: 2
 - `memory_routes`: 20
@@ -25,11 +25,11 @@ python scripts/validate_workspace_memory_map.py
 - `pending_exports`: 1
 - `places_listed`: 20
 - `places_scanned`: 20
-- `places_with_issues`: 6
+- `places_with_issues`: 0
 - `ready_exports`: 0
-- `recommended_full_ports_missing`: 6
+- `recommended_full_ports_missing`: 0
 - `root_memory_routes`: 19
-- `route_only`: 17
+- `route_only`: 11
 - `session_evidence_routes`: 1
 
 ## Access Plane
@@ -57,22 +57,22 @@ python scripts/validate_workspace_memory_map.py
 | Place | Role | Current | Recommended | Route | Pending candidates | Pending exports | Ready | Landed | Validator | Issues |
 |---|---|---|---|---|---:|---:|---:|---:|---|---|
 | 8Dionysus | workspace-route-map-owner | `route_only` | `route_only` | root_memory_route | 0 | 0 | 0 | 0 | `python scripts/build_workspace_memory_map.py --check` | ok |
-| Agents-of-Abyss | local-memory-port-candidate | `full_port` | `full_port` | local_port_route | 0 | 0 | 0 | 0 | `python -m aoa_memo_mcp.cli validate-port --repo Agents-of-Abyss` | ok |
-| Tree-of-Sophia | local-memory-port-candidate | `route_only` | `full_port` | root_memory_route | 0 | 0 | 0 | 0 | `python scripts/build_workspace_memory_map.py --check` | recommended full memo port not yet present |
-| abyss-stack | mcp-access-plane-owner | `full_port` | `full_port` | local_port_route | 2 | 1 | 0 | 1 | `python -m aoa_memo_mcp.cli validate-port --repo abyss-stack` | ok |
+| Agents-of-Abyss | local-memory-port-candidate | `full_port` | `full_port` | local_port_route | 0 | 0 | 0 | 0 | `PYTHONPATH="${AOA_ABYSS_STACK_ROOT:-$HOME/src/abyss-stack}/mcp/services/aoa-memo-mcp/src" python -m aoa_memo_mcp.cli validate-port --repo Agents-of-Abyss` | ok |
+| Tree-of-Sophia | local-memory-port-candidate | `full_port` | `full_port` | local_port_route | 0 | 0 | 0 | 0 | `PYTHONPATH="${AOA_ABYSS_STACK_ROOT:-$HOME/src/abyss-stack}/mcp/services/aoa-memo-mcp/src" python -m aoa_memo_mcp.cli validate-port --repo Tree-of-Sophia` | ok |
+| abyss-stack | mcp-access-plane-owner | `full_port` | `full_port` | local_port_route | 2 | 1 | 0 | 1 | `PYTHONPATH="${AOA_ABYSS_STACK_ROOT:-$HOME/src/abyss-stack}/mcp/services/aoa-memo-mcp/src" python -m aoa_memo_mcp.cli validate-port --repo abyss-stack` | ok |
 | ATM10-Agent | workspace-memory-route | `route_only` | `route_only` | root_memory_route | 0 | 0 | 0 | 0 | `python scripts/build_workspace_memory_map.py --check` | ok |
-| Dionysus | local-memory-port-candidate | `route_only` | `full_port` | root_memory_route | 0 | 0 | 0 | 0 | `python scripts/build_workspace_memory_map.py --check` | recommended full memo port not yet present |
+| Dionysus | local-memory-port-candidate | `full_port` | `full_port` | local_port_route | 0 | 0 | 0 | 0 | `PYTHONPATH="${AOA_ABYSS_STACK_ROOT:-$HOME/src/abyss-stack}/mcp/services/aoa-memo-mcp/src" python -m aoa_memo_mcp.cli validate-port --repo Dionysus` | ok |
 | aoa-sdk | workspace-memory-route | `route_only` | `route_only` | root_memory_route | 0 | 0 | 0 | 0 | `python scripts/build_workspace_memory_map.py --check` | ok |
-| aoa-techniques | local-memory-port-candidate | `route_only` | `full_port` | root_memory_route | 0 | 0 | 0 | 0 | `python scripts/build_workspace_memory_map.py --check` | recommended full memo port not yet present |
-| aoa-skills | local-memory-port-candidate | `route_only` | `full_port` | root_memory_route | 0 | 0 | 0 | 0 | `python scripts/build_workspace_memory_map.py --check` | recommended full memo port not yet present |
+| aoa-techniques | local-memory-port-candidate | `full_port` | `full_port` | local_port_route | 0 | 0 | 0 | 0 | `PYTHONPATH="${AOA_ABYSS_STACK_ROOT:-$HOME/src/abyss-stack}/mcp/services/aoa-memo-mcp/src" python -m aoa_memo_mcp.cli validate-port --repo aoa-techniques` | ok |
+| aoa-skills | local-memory-port-candidate | `full_port` | `full_port` | local_port_route | 0 | 0 | 0 | 0 | `PYTHONPATH="${AOA_ABYSS_STACK_ROOT:-$HOME/src/abyss-stack}/mcp/services/aoa-memo-mcp/src" python -m aoa_memo_mcp.cli validate-port --repo aoa-skills` | ok |
 | aoa-evals | workspace-memory-route | `route_only` | `route_only` | root_memory_route | 0 | 0 | 0 | 0 | `python scripts/build_workspace_memory_map.py --check` | ok |
 | aoa-stats | workspace-memory-route | `route_only` | `route_only` | root_memory_route | 0 | 0 | 0 | 0 | `python scripts/build_workspace_memory_map.py --check` | ok |
 | aoa-routing | workspace-memory-route | `route_only` | `route_only` | root_memory_route | 0 | 0 | 0 | 0 | `python scripts/build_workspace_memory_map.py --check` | ok |
 | aoa-memo | reviewed-memory-owner | `route_only` | `route_only` | root_memory_route | 0 | 0 | 0 | 0 | `python scripts/build_workspace_memory_map.py --check` | ok |
-| aoa-agents | local-memory-port-candidate | `route_only` | `full_port` | root_memory_route | 0 | 0 | 0 | 0 | `python scripts/build_workspace_memory_map.py --check` | recommended full memo port not yet present |
-| aoa-playbooks | local-memory-port-candidate | `route_only` | `full_port` | root_memory_route | 0 | 0 | 0 | 0 | `python scripts/build_workspace_memory_map.py --check` | recommended full memo port not yet present |
+| aoa-agents | local-memory-port-candidate | `full_port` | `full_port` | local_port_route | 0 | 0 | 0 | 0 | `PYTHONPATH="${AOA_ABYSS_STACK_ROOT:-$HOME/src/abyss-stack}/mcp/services/aoa-memo-mcp/src" python -m aoa_memo_mcp.cli validate-port --repo aoa-agents` | ok |
+| aoa-playbooks | local-memory-port-candidate | `full_port` | `full_port` | local_port_route | 0 | 0 | 0 | 0 | `PYTHONPATH="${AOA_ABYSS_STACK_ROOT:-$HOME/src/abyss-stack}/mcp/services/aoa-memo-mcp/src" python -m aoa_memo_mcp.cli validate-port --repo aoa-playbooks` | ok |
 | aoa-kag | workspace-memory-route | `route_only` | `route_only` | root_memory_route | 0 | 0 | 0 | 0 | `python scripts/build_workspace_memory_map.py --check` | ok |
-| abyss-machine | host-local-memory-port | `full_port` | `full_port` | local_port_route | 0 | 0 | 0 | 0 | `python -m aoa_memo_mcp.cli validate-port --repo abyss-machine` | ok |
+| abyss-machine | host-local-memory-port | `full_port` | `full_port` | local_port_route | 0 | 0 | 0 | 0 | `PYTHONPATH="${AOA_ABYSS_STACK_ROOT:-$HOME/src/abyss-stack}/mcp/services/aoa-memo-mcp/src" python -m aoa_memo_mcp.cli validate-port --repo abyss-machine` | ok |
 | .aoa | session-evidence-kernel | `route_only` | `route_only` | session_evidence_route | 0 | 0 | 0 | 0 | `python scripts/build_workspace_memory_map.py --check` | ok |
 | .codex | workspace-memory-route | `route_only` | `route_only` | root_memory_route | 0 | 0 | 0 | 0 | `python scripts/build_workspace_memory_map.py --check` | ok |
 | .agents | workspace-memory-route | `route_only` | `route_only` | root_memory_route | 0 | 0 | 0 | 0 | `python scripts/build_workspace_memory_map.py --check` | ok |

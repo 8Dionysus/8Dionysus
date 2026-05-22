@@ -74,7 +74,12 @@ def validate_payload(payload: Mapping[str, Any]) -> None:
         memo_port = place["memo_port"]
         _require(isinstance(memo_port, dict), "memo_port must be an object")
         _require("local_candidates" in memo_port, "memo_port missing local_candidates")
+        _require("pending_candidates" in memo_port, "memo_port missing pending_candidates")
+        _require("total_exports" in memo_port, "memo_port missing total_exports")
         _require("pending_exports" in memo_port, "memo_port missing pending_exports")
+        _require("ready_exports" in memo_port, "memo_port missing ready_exports")
+        _require("landed_exports" in memo_port, "memo_port missing landed_exports")
+        _require("validation_command" in place, "place missing validation_command")
 
     _require(
         by_name["aoa-memo"]["memory_role"] == "reviewed-memory-owner",

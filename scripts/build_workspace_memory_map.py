@@ -45,6 +45,7 @@ MEMORY_ROUTE_STATUSES = (
     "local_port_route",
     "session_evidence_route",
 )
+TERMINAL_REVIEW_STATES = {"rejected", "landed", "superseded", "archived"}
 
 FULL_PORT_RECOMMENDED = frozenset(
     {
@@ -149,6 +150,65 @@ def _count_packet_files(path: Path) -> int:
     return sum(1 for item in path.iterdir() if item.is_file() and not item.name.startswith("."))
 
 
+def _load_json(path: Path) -> dict[str, Any]:
+    if not path.is_file():
+        return {}
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return {}
+    return payload if isinstance(payload, dict) else {}
+
+
+def _packet_files(path: Path) -> list[Path]:
+    if not path.is_dir():
+        return []
+    return sorted(item for item in path.iterdir() if item.is_file() and item.suffix == ".json")
+
+
+def _copied_intake_exists(workspace_root: Path, repo: str, export_path: Path) -> bool:
+    copied = workspace_root / "aoa-memo" / "memo" / "intake" / "reviewed" / f"{repo}.{export_path.name}"
+    return copied.is_file()
+
+
+def _port_packet_counts(memo_root: Path, dirs: Mapping[str, str], repo: str, workspace_root: Path) -> dict[str, int]:
+    candidates = _packet_files(memo_root / dirs["candidates"])
+    receipts = _packet_files(memo_root / dirs["receipts"])
+    exports = _packet_files(memo_root / dirs["exports"])
+    local_records = _packet_files(memo_root / dirs["local"])
+
+    pending_candidates = 0
+    for path in candidates:
+        payload = _load_json(path)
+        review_state = str(payload.get("review_state") or "candidate")
+        if review_state not in TERMINAL_REVIEW_STATES:
+            pending_candidates += 1
+
+    landed_exports = 0
+    ready_exports = 0
+    blocked_exports = 0
+    for path in exports:
+        payload = _load_json(path)
+        if _copied_intake_exists(workspace_root, repo, path):
+            landed_exports += 1
+        elif payload.get("allowed_result") == "reviewed_write" and payload.get("receipt_refs"):
+            ready_exports += 1
+        else:
+            blocked_exports += 1
+
+    return {
+        "local_candidates": len(candidates),
+        "pending_candidates": pending_candidates,
+        "validation_receipts": len(receipts),
+        "total_exports": len(exports),
+        "pending_exports": ready_exports + blocked_exports,
+        "ready_exports": ready_exports,
+        "blocked_exports": blocked_exports,
+        "landed_exports": landed_exports,
+        "local_records": len(local_records),
+    }
+
+
 def _parse_scalar(raw: str) -> Any:
     value = raw.strip()
     if value.lower() == "true":
@@ -204,7 +264,7 @@ def memo_port_record(root: Path, workspace_root: Path) -> dict[str, Any]:
     missing_files = [name for name in required_files if not (memo_root / name).is_file()]
     missing_dirs = [name for name, rel in dirs.items() if not (memo_root / rel).is_dir()]
     index_present = (memo_root / "index.min.json").is_file()
-    present = memo_root.is_dir()
+    present = memo_root.is_dir() and port_yaml.is_file()
 
     if present and not missing_files and not missing_dirs and index_present:
         level = "full_port"
@@ -215,6 +275,12 @@ def memo_port_record(root: Path, workspace_root: Path) -> dict[str, Any]:
 
     root_hint = path_hint(root, workspace_root)
     memo_hint = f"{root_hint}/memo" if present else ""
+    packet_counts = _port_packet_counts(
+        memo_root,
+        dirs,
+        str(port.get("repo") or root.name),
+        workspace_root,
+    )
 
     return {
         "present": present,
@@ -230,10 +296,7 @@ def memo_port_record(root: Path, workspace_root: Path) -> dict[str, Any]:
         "index_present": index_present,
         "missing_files": missing_files,
         "missing_dirs": missing_dirs,
-        "local_candidates": _count_packet_files(memo_root / dirs["candidates"]),
-        "validation_receipts": _count_packet_files(memo_root / dirs["receipts"]),
-        "pending_exports": _count_packet_files(memo_root / dirs["exports"]),
-        "local_records": _count_packet_files(memo_root / dirs["local"]),
+        **packet_counts,
     }
 
 
@@ -453,7 +516,10 @@ def build_workspace_memory_map(workspace_root: Path) -> dict[str, Any]:
             and place["current_port_level"] in {"none", "route_only"}
         ),
         "local_candidates": sum(int(place["memo_port"]["local_candidates"]) for place in places),
+        "pending_candidates": sum(int(place["memo_port"]["pending_candidates"]) for place in places),
         "pending_exports": sum(int(place["memo_port"]["pending_exports"]) for place in places),
+        "ready_exports": sum(int(place["memo_port"]["ready_exports"]) for place in places),
+        "landed_exports": sum(int(place["memo_port"]["landed_exports"]) for place in places),
         "places_with_issues": sum(1 for place in places if place["issues"]),
     }
     return {
@@ -543,21 +609,24 @@ def render_markdown(payload: Mapping[str, Any]) -> str:
             "",
             "## Places",
             "",
-            "| Place | Role | Current | Recommended | Route | Candidates | Pending exports | Issues |",
-            "|---|---|---|---|---|---:|---:|---|",
+            "| Place | Role | Current | Recommended | Route | Pending candidates | Pending exports | Ready | Landed | Validator | Issues |",
+            "|---|---|---|---|---|---:|---:|---:|---:|---|---|",
         ]
     )
     for place in places:
         issues = ", ".join(place["issues"]) if place["issues"] else "ok"
         lines.append(
-            "| {name} | {memory_role} | `{current}` | `{recommended}` | {route} | {candidates} | {exports} | {issues} |".format(
+            "| {name} | {memory_role} | `{current}` | `{recommended}` | {route} | {candidates} | {exports} | {ready} | {landed} | `{validator}` | {issues} |".format(
                 name=place["name"],
                 memory_role=place["memory_role"],
                 current=place["current_port_level"],
                 recommended=place["recommended_port_level"],
                 route=place["memory_route_status"],
-                candidates=place["memo_port"]["local_candidates"],
+                candidates=place["memo_port"]["pending_candidates"],
                 exports=place["memo_port"]["pending_exports"],
+                ready=place["memo_port"]["ready_exports"],
+                landed=place["memo_port"]["landed_exports"],
+                validator=place["validation_command"],
                 issues=issues,
             )
         )

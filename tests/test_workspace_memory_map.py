@@ -34,6 +34,11 @@ class WorkspaceMemoryMapTests(unittest.TestCase):
 
             self.assertEqual(by_name["8Dionysus"]["current_port_level"], "route_only")
             self.assertEqual(by_name["Agents-of-Abyss"]["current_port_level"], "full_port")
+            self.assertIn(
+                "PYTHONPATH",
+                by_name["Agents-of-Abyss"]["validation_command"],
+            )
+            self.assertIn("validate-port --repo Agents-of-Abyss", by_name["Agents-of-Abyss"]["validation_command"])
             self.assertEqual(by_name["Tree-of-Sophia"]["recommended_port_level"], "full_port")
             self.assertIn("recommended full memo port not yet present", by_name["Tree-of-Sophia"]["issues"])
             self.assertEqual(by_name["aoa-memo"]["memory_role"], "reviewed-memory-owner")

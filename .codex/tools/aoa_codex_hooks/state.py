@@ -19,6 +19,10 @@ HOOK_SCRIPT_NAMES = [
     "aoa_user_prompt_submit.py",
     "aoa_stop_doctor.py",
 ]
+EXPECTED_USER_HOOK_COMMAND_MARKERS = [
+    "aoa_session_memory.py",
+    "abyss-machine typing codex-prompt-hook",
+]
 TRIGGER_WORDS = {
     "codex",
     "mcp",
@@ -134,6 +138,13 @@ def _parse_hook_commands(hooks_path: Path) -> list[str]:
     return commands
 
 
+def _expected_user_hook_commands(commands: list[str]) -> bool:
+    return bool(commands) and all(
+        any(marker in command for marker in EXPECTED_USER_HOOK_COMMAND_MARKERS)
+        for command in commands
+    )
+
+
 def build_hook_report(workspace_root: Path) -> dict[str, Any]:
     workspace_root = workspace_root.resolve()
     config_path = workspace_root / ".codex" / "config.toml"
@@ -143,7 +154,14 @@ def build_hook_report(workspace_root: Path) -> dict[str, Any]:
 
     config, config_error = _safe_read_config(config_path)
     features = (config or {}).get("features", {}) if config else {}
-    codex_hooks_enabled = isinstance(features, dict) and bool(features.get("codex_hooks") or features.get("hooks"))
+    hooks_enabled = isinstance(features, dict) and bool(features.get("hooks") or features.get("codex_hooks"))
+    hook_feature_summary = (
+        "features.hooks is enabled."
+        if isinstance(features, dict) and features.get("hooks")
+        else "features.codex_hooks is enabled as a deprecated alias."
+        if isinstance(features, dict) and features.get("codex_hooks")
+        else "features.hooks is missing or false."
+    )
     project_root_marker_present = _contains_project_root_marker(config or {}) if config else False
 
     surfaces: list[Surface] = []
@@ -189,8 +207,8 @@ def build_hook_report(workspace_root: Path) -> dict[str, Any]:
     surfaces.append(
         Surface(
             name="hooks_feature_flag",
-            status="ok" if codex_hooks_enabled else "error",
-            summary="features.codex_hooks is enabled." if codex_hooks_enabled else "features.codex_hooks is missing or false.",
+            status="ok" if hooks_enabled else "error",
+            summary=hook_feature_summary,
             path=str(config_path),
         )
     )
@@ -252,15 +270,14 @@ def build_hook_report(workspace_root: Path) -> dict[str, Any]:
 
     uhooks = user_hooks_path()
     user_hook_commands = _parse_hook_commands(uhooks)
-    user_hooks_are_aoa_session_memory = bool(user_hook_commands) and all(
-        "aoa_session_memory.py" in command for command in user_hook_commands
-    )
+    user_hooks_include_session_memory = any("aoa_session_memory.py" in command for command in user_hook_commands)
+    user_hooks_are_expected = user_hooks_include_session_memory and _expected_user_hook_commands(user_hook_commands)
     if not uhooks.exists():
         user_hooks_status = "ok"
         user_hooks_summary = "No user-level hooks.json detected."
-    elif user_hooks_are_aoa_session_memory:
+    elif user_hooks_are_expected:
         user_hooks_status = "ok"
-        user_hooks_summary = "User-level hooks.json routes host-wide capture to AoA session memory."
+        user_hooks_summary = "User-level hooks.json has expected AoA session memory and host bridge hooks."
     else:
         user_hooks_status = "warn"
         user_hooks_summary = "User-level hooks.json also exists; both layers will run."
@@ -320,8 +337,8 @@ def build_hook_report(workspace_root: Path) -> dict[str, Any]:
         recommendations.append("Create AOA_WORKSPACE_ROOT at the intended sibling-workspace root.")
     if not config_path.exists():
         recommendations.append("Add .codex/config.toml at the workspace root and trust the project.")
-    if config_path.exists() and not codex_hooks_enabled:
-        recommendations.append("Enable [features].codex_hooks = true in project config.")
+    if config_path.exists() and not hooks_enabled:
+        recommendations.append("Enable [features].hooks = true in project config.")
     if config_path.exists() and not project_root_marker_present:
         recommendations.append("Add AOA_WORKSPACE_ROOT to project_root_markers so root discovery reaches the workspace root.")
     if hooks_path.exists() and has_placeholder:
@@ -330,7 +347,7 @@ def build_hook_report(workspace_root: Path) -> dict[str, Any]:
         recommendations.append("Install project-level .codex/hooks.json next to the active config layer.")
     if missing_scripts:
         recommendations.append("Install the AoA hook scripts under .codex/hooks/ and the helper module under .codex/tools/aoa_codex_hooks/.")
-    if uhooks.exists() and not user_hooks_are_aoa_session_memory:
+    if uhooks.exists() and not user_hooks_are_expected:
         recommendations.append("Audit user-level hooks.json to avoid duplicate hook execution across layers.")
 
     error_count = sum(1 for surface in surfaces if surface.status == "error")

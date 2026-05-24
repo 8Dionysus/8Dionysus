@@ -29,7 +29,7 @@ def make_workspace(tmp_path: Path) -> Path:
     write_text(tmp_path / "AOA_WORKSPACE_ROOT", "")
     write_text(
         tmp_path / ".codex" / "config.toml",
-        'project_root_markers = ["AOA_WORKSPACE_ROOT", ".git"]\n\n[features]\ncodex_hooks = true\n',
+        'project_root_markers = ["AOA_WORKSPACE_ROOT", ".git"]\n\n[features]\nhooks = true\n',
     )
     write_text(
         tmp_path / ".codex" / "hooks.json",
@@ -88,6 +88,41 @@ def test_build_hook_report_detects_placeholder(tmp_path: Path) -> None:
     assert report["ready"] is True
     hooks_surface = next(surface for surface in report["surfaces"] if surface["name"] == "project_hooks_json")
     assert hooks_surface["status"] == "warn"
+
+
+def test_build_hook_report_accepts_expected_user_hook_bridge(tmp_path: Path, monkeypatch) -> None:
+    home = tmp_path / "home"
+    monkeypatch.setenv("HOME", str(home))
+    workspace = make_workspace(tmp_path / "workspace")
+    write_text(
+        home / ".codex" / "hooks.json",
+        json.dumps(
+            {
+                "hooks": {
+                    "UserPromptSubmit": [
+                        {
+                            "hooks": [
+                                {
+                                    "type": "command",
+                                    "command": "python3 /srv/AbyssOS/.aoa/scripts/aoa_session_memory.py hook --event-name UserPromptSubmit",
+                                },
+                                {
+                                    "type": "command",
+                                    "command": "abyss-machine typing codex-prompt-hook",
+                                },
+                            ]
+                        }
+                    ]
+                }
+            }
+        ),
+    )
+
+    report = build_hook_report(workspace)
+    overlap = next(surface for surface in report["surfaces"] if surface["name"] == "user_hooks_overlap")
+    assert overlap["status"] == "ok"
+    assert "expected AoA session memory" in overlap["summary"]
+    assert "Audit user-level hooks.json" not in report["recommendations"]
 
 
 def test_prompt_detection() -> None:

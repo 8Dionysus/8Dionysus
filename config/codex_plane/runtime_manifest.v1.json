@@ -6,7 +6,7 @@
     ".git"
   ],
   "features": {
-    "codex_hooks": true
+    "hooks": true
   },
   "agents": {
     "max_threads": 20,

@@ -70,6 +70,7 @@ def seam_report(root: Path | None = None) -> dict[str, Any]:
     marker_path = target_root / WORKSPACE_MARKER
     config, config_error = load_project_config(target_root)
     features = config.get("features", {}) if isinstance(config, dict) else {}
+    hooks_enabled = bool(features.get("hooks") or features.get("codex_hooks")) if isinstance(features, dict) else False
     markers = config.get("project_root_markers", []) if isinstance(config, dict) else []
 
     return {
@@ -83,7 +84,7 @@ def seam_report(root: Path | None = None) -> dict[str, Any]:
             "present": config_path.exists(),
             "parse_error": config_error,
             "project_root_markers": markers if isinstance(markers, list) else [],
-            "codex_hooks_enabled": bool(features.get("codex_hooks")) if isinstance(features, dict) else False,
+            "codex_hooks_enabled": hooks_enabled,
         },
         "project_hooks_json": {
             "path": str(hooks_path),

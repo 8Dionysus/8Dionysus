@@ -2,4 +2,4 @@
 project_root_markers = ["AOA_WORKSPACE_ROOT", ".git"]
 
 [features]
-codex_hooks = true
+hooks = true

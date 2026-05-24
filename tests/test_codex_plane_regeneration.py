@@ -95,7 +95,7 @@ class CodexPlaneRegenerationTests(unittest.TestCase):
                     "version": "1.0",
                     "workspace_marker": "AOA_WORKSPACE_ROOT",
                     "project_root_markers": ["AOA_WORKSPACE_ROOT", ".git"],
-                    "features": {"codex_hooks": True},
+                    "features": {"hooks": True},
                     "agents": {"max_threads": 1, "max_depth": 1, "job_max_runtime_seconds": 60, "roles": []},
                     "repos": {"aoa-sdk": "aoa-sdk", "aoa-stats": "aoa-stats", "Dionysus": "Dionysus"},
                     "mcp_servers": [

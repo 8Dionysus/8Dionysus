@@ -75,6 +75,14 @@ Use `aoa_memo` when a workspace task asks to recall, continue, preserve, compare
 with past work, recover after compaction, create a memory candidate, inspect a
 local memo port, or route evidence toward reviewed memory.
 
+- After a meaningful landing, run a memory writeback check before closeout.
+  Meaningful includes changes to owner boundaries, route law, MCP or service
+  contracts, eval or proof surfaces, release posture, workflows, decisions,
+  topology, public contracts, or important failures and fixes.
+- Prefer `aoa-memo-writeback` for the judgment-heavy path: inspect the
+  diff/PR/commits and session evidence, decide whether the event is
+  memory-worthy, then create a local candidate/export or an explicit
+  no-writeback closeout.
 - Need continuity or context: call `aoa_memo_brief` for the owning repository
   and current intent.
 - Need to preserve new memory: write through that repository's `memo/` port when

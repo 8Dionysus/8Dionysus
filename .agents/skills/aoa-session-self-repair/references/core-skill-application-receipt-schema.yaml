@@ -11,6 +11,7 @@ required_payload_fields:
   - detail_receipt_ref
 optional_payload_fields:
   - route_ref
+  - authority_contract
   - surface_detection_context
 rules:
   - `application_stage` must equal `finish`
@@ -19,4 +20,5 @@ rules:
   - `detail_event_kind` must equal `repair_cycle_receipt`
   - `detail_receipt_ref` must point to the bounded finish receipt for the same completed run
   - include `route_ref` only when the detail receipt already names it honestly
+  - if present, `authority_contract` must keep only the bounded checkpoint bridge fields accepted by the publisher
   - if present, `surface_detection_context` stays advisory and may only preserve shortlist, ambiguity, handoff, and closeout-link truth; it must not claim non-skill activation

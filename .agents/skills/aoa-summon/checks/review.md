@@ -18,7 +18,7 @@ route may be summoned from an already-anchored parent route.
 - [ ] The parent route has a real anchor and named expected outputs.
 - [ ] Branch choice is already settled; unresolved competing routes were sent to `aoa-session-route-forks` first.
 - [ ] The quest passport is present and was actually used for lane selection.
-- [ ] `codex_local` remained the default unless a separate execution surface was genuinely needed.
+- [ ] Local-agent execution remained the default unless a separate execution surface was genuinely needed.
 - [ ] `d3+` work was blocked into `split_required` instead of being launched directly.
 - [ ] Stress posture only narrowed or blocked the route and did not widen authority.
 - [ ] Progression and self-agent gates were checked when the route required them.

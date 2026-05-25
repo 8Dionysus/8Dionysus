@@ -172,7 +172,7 @@ Project overlays may add:
 - local stage-status vocabulary and report locations, as long as the donor ->
   progression -> quest dependency order remains visible
 - local owner-layer route maps for generated donor packets
-- project-local reviewed follow-through notes under `docs/session-harvests/`
+- project-local reviewed follow-through notes under `mechanics/growth-cycle/session-harvests/`
   when bridge upkeep becomes reusable but is still below promotion authority
 - project-local reminders that downstream `aoa-session-self-diagnose`, owner
   follow-through, and stats refresh stay explicit next steps outside this skill

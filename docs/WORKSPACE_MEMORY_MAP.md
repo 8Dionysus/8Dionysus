@@ -31,6 +31,11 @@ python scripts/validate_workspace_memory_map.py
 - `root_memory_routes`: 19
 - `route_only`: 11
 - `session_evidence_routes`: 1
+- `writeback_live_checks`: 5
+- `writeback_markers`: 5
+- `writeback_needs_marker`: 15
+- `writeback_not_applicable`: 0
+- `writeback_unknown`: 0
 
 ## Access Plane
 
@@ -51,6 +56,39 @@ python scripts/validate_workspace_memory_map.py
 | `stub_port` | memo/ exists with route card and PORT.yaml, but is not yet fully indexed |
 | `full_port` | memo/ has route card, PORT.yaml, packet dirs, and index |
 | `mature_port` | future state: local port is connected to reviewed landing, stats/evals, and repo vocabulary |
+
+## Writeback Debt
+
+The checked-in map records stable marker routes. Git currentness is live-derived so the map does not become stale from its own commit.
+
+```bash
+python scripts/build_workspace_memory_map.py \
+  --workspace-root <workspace-root> \
+  --writeback-debt-json
+```
+
+| Place | Debt route | Marker | Decision | Next route |
+|---|---|---|---|---|
+| 8Dionysus | `live_check_required` | 8Dionysus/docs/decisions/0010-workspace-writeback-marker-debt-surface.md | `route_only_debt` | run live writeback debt check before closeout |
+| Agents-of-Abyss | `needs_marker` | missing | `` | run aoa-memo-writeback and record a candidate/export/no-writeback marker |
+| Tree-of-Sophia | `needs_marker` | missing | `` | run aoa-memo-writeback and record a candidate/export/no-writeback marker |
+| abyss-stack | `live_check_required` | ~/src/abyss-stack/memo/receipts/20260522T021004Z.aoa-memo-mcp-access-plane.forwarding-receipt.json | `write_candidate` | run live writeback debt check before closeout |
+| ATM10-Agent | `needs_marker` | missing | `` | run aoa-memo-writeback and record a candidate/export/no-writeback marker |
+| Dionysus | `needs_marker` | missing | `` | run aoa-memo-writeback and record a candidate/export/no-writeback marker |
+| aoa-sdk | `needs_marker` | missing | `` | run aoa-memo-writeback and record a candidate/export/no-writeback marker |
+| aoa-techniques | `needs_marker` | missing | `` | run aoa-memo-writeback and record a candidate/export/no-writeback marker |
+| aoa-skills | `live_check_required` | aoa-skills/docs/decisions/2026-05-25-memo-writeback-skill-owner-boundary.md | `route_only_debt` | run live writeback debt check before closeout |
+| aoa-evals | `live_check_required` | aoa-evals/docs/decisions/0045-closeout-writeback-ingress-boundary.md | `route_only_debt` | run live writeback debt check before closeout |
+| aoa-stats | `needs_marker` | missing | `` | run aoa-memo-writeback and record a candidate/export/no-writeback marker |
+| aoa-routing | `needs_marker` | missing | `` | run aoa-memo-writeback and record a candidate/export/no-writeback marker |
+| aoa-memo | `live_check_required` | aoa-memo/docs/decisions/2026-05-19-writeback-part-local-artifacts.md | `route_only_debt` | run live writeback debt check before closeout |
+| aoa-agents | `needs_marker` | missing | `` | run aoa-memo-writeback and record a candidate/export/no-writeback marker |
+| aoa-playbooks | `needs_marker` | missing | `` | run aoa-memo-writeback and record a candidate/export/no-writeback marker |
+| aoa-kag | `needs_marker` | missing | `` | run aoa-memo-writeback and record a candidate/export/no-writeback marker |
+| abyss-machine | `needs_marker` | missing | `` | run aoa-memo-writeback and record a candidate/export/no-writeback marker |
+| .aoa | `needs_marker` | missing | `` | run aoa-memo-writeback and record a candidate/export/no-writeback marker |
+| .codex | `needs_marker` | missing | `` | run aoa-memo-writeback and record a candidate/export/no-writeback marker |
+| .agents | `needs_marker` | missing | `` | run aoa-memo-writeback and record a candidate/export/no-writeback marker |
 
 ## Places
 
@@ -83,3 +121,4 @@ python scripts/validate_workspace_memory_map.py
 - Need session evidence, compaction recovery, or raw transcript grounding: route to `.aoa` retrieval or rehydration packets.
 - Need to preserve local memory in a place that has a port: write a candidate under `repo/memo/`, validate it, then export for reviewed intake.
 - Need durable cross-system memory: land through `aoa-memo` reviewed intake and validators.
+- Need writeback currentness: run the live debt command, then use `aoa-memo-writeback`; debt is a prompt to judge, not proof that a candidate must exist.

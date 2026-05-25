@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import json
+import shutil
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -23,6 +25,10 @@ class WorkspaceMemoryMapTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             workspace = Path(tmp)
             self._make_root(workspace / "8Dionysus", with_memory_route=True)
+            write_text(
+                workspace / "8Dionysus" / "docs" / "decisions" / "0001-memory-writeback.md",
+                "# Memory writeback\n",
+            )
             self._make_root(workspace / "Agents-of-Abyss", with_memory_route=True)
             self._make_full_port(workspace / "Agents-of-Abyss" / "memo", "Agents-of-Abyss")
             self._make_root(workspace / "Tree-of-Sophia", with_memory_route=True)
@@ -45,9 +51,13 @@ class WorkspaceMemoryMapTests(unittest.TestCase):
             self.assertEqual(by_name[".aoa"]["memory_role"], "session-evidence-kernel")
             self.assertEqual(by_name[".aoa"]["memory_route_status"], "session_evidence_route")
             self.assertEqual(by_name[".aoa"]["current_port_level"], "route_only")
+            self.assertEqual(by_name["8Dionysus"]["writeback_marker"]["status"], "present")
+            self.assertEqual(by_name["8Dionysus"]["writeback_debt"]["status"], "live_check_required")
+            self.assertEqual(by_name["aoa-memo"]["writeback_debt"]["status"], "needs_marker")
 
             validate_workspace_memory_map.validate_payload(payload)
             self.assertEqual(payload["access_plane"]["runtime_status"], "not_asserted_by_workspace_map")
+            self.assertEqual(payload["writeback_surface"]["judgment_route"], "aoa-memo-writeback")
             self.assertIn("smoke_aoa_memo_mcp.py", payload["access_plane"]["smoke_check"])
             rendered = json.dumps(payload, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
             self.assertNotIn(str(workspace), rendered)
@@ -81,6 +91,34 @@ allowed_routes:
         self.assertIn("MCP", markdown)
         self.assertIn("repo/memo", markdown)
         self.assertIn("runtime_status", markdown)
+        self.assertIn("Writeback Debt", markdown)
+        self.assertIn("writeback-debt-json", markdown)
+
+    @unittest.skipIf(shutil.which("git") is None, "git is required for live debt currentness")
+    def test_live_writeback_debt_reports_commits_after_marker(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            workspace = Path(tmp)
+            root = workspace / "8Dionysus"
+            self._make_root(root, with_memory_route=True)
+            write_text(
+                root / "docs" / "decisions" / "0001-memory-writeback.md",
+                "# Memory writeback\n",
+            )
+            self._git(root, "init")
+            self._git(root, "config", "user.email", "test@example.invalid")
+            self._git(root, "config", "user.name", "AoA Test")
+            self._git(root, "add", ".")
+            self._git(root, "commit", "-m", "add memory writeback marker")
+            write_text(root / "README.md", "# Demo\n")
+            self._git(root, "add", "README.md")
+            self._git(root, "commit", "-m", "land work after marker")
+
+            readout = build_workspace_memory_map.build_writeback_debt_readout(workspace)
+            by_name = {place["name"]: place for place in readout["places"]}
+
+            self.assertEqual(by_name["8Dionysus"]["status"], "has_unmarked_changes")
+            self.assertEqual(by_name["8Dionysus"]["commits_since_marker"], 1)
+            self.assertIn("aoa-memo-writeback", readout["judgment_route"])
 
     def _make_root(self, root: Path, *, with_memory_route: bool) -> None:
         text = "# AGENTS.md\n\n## Purpose\n\nDemo root.\n"
@@ -112,6 +150,9 @@ return_receipts: true
         write_text(memo / "index.min.json", "{}\n")
         for name in ("candidates", "receipts", "exports", "local"):
             (memo / name).mkdir(parents=True, exist_ok=True)
+
+    def _git(self, root: Path, *args: str) -> None:
+        subprocess.run(["git", "-C", str(root), *args], check=True, capture_output=True, text=True)
 
 
 if __name__ == "__main__":

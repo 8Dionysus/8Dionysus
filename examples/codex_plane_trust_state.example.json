@@ -22,13 +22,15 @@
     "aoa_workspace",
     "aoa_stats",
     "dionysus",
-    "aoa_memo"
+    "aoa_memo",
+    "aoa_evals"
   ],
   "mcp_server_names_detected": [
     "aoa_workspace",
     "aoa_stats",
     "dionysus",
-    "aoa_memo"
+    "aoa_memo",
+    "aoa_evals"
   ],
   "stable_names_ok": true,
   "trust_posture": "trusted_ready",

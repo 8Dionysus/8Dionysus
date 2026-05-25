@@ -35,7 +35,8 @@ It does not own:
 
 - role meaning owned by `aoa-agents`
 - MCP implementation meaning owned by `aoa-sdk`, `aoa-stats`, `Dionysus`, and
-  `abyss-stack` for the `aoa-memo-mcp` access plane
+  `abyss-stack` for stack-owned access planes such as `aoa-memo-mcp` and
+  `aoa-evals-mcp`; `aoa-evals` owns the proof contract exposed by `aoa_evals`
 - user-global Codex defaults in `~/.codex/config.toml`
 - unmanaged custom hooks already present in a checkout's private `.git/hooks/`
   directory
@@ -73,7 +74,7 @@ The regeneration path must preserve the stable project-facing names that other
 AoA surfaces may already depend on:
 
 - project root markers: `AOA_WORKSPACE_ROOT`, `.git`
-- MCP server names: `aoa_workspace`, `aoa_stats`, `dionysus`, `aoa_memo`
+- MCP server names: `aoa_workspace`, `aoa_stats`, `dionysus`, `aoa_memo`, `aoa_evals`
 - hook events: `SessionStart`, `UserPromptSubmit`, `Stop`
 
 ## Relation to projection

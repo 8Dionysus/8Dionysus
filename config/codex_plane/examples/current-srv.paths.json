@@ -26,6 +26,10 @@
     "aoa_memo": {
       "cwd": "/srv/AbyssOS",
       "script_rel": ".codex/bin/aoa-memo-mcp-server.py"
+    },
+    "aoa_evals": {
+      "cwd": "/srv/AbyssOS",
+      "script_rel": ".codex/bin/aoa-evals-mcp-server.py"
     }
   },
   "hooks": {

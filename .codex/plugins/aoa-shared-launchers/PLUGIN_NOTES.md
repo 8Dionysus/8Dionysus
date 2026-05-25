@@ -10,9 +10,10 @@ This plugin is intentionally narrow.
   status, candidate creation, port indexing, and reviewed-intake preparation.
   Durable memory truth still lands through `aoa-memo`.
 - It treats `aoa_evals` as the bounded proof access plane for selection,
-  inspection, generated-reader context, runtime evidence templates, and
-  candidate-only report skeletons. Verdict authority still lands through
-  `aoa-evals`.
+  inspection, generated-reader context, read-only find-or-propose eval-need
+  routing, runtime evidence templates, and candidate-only report skeletons.
+  Verdict authority, proposal approval, and source bundle creation still land
+  through `aoa-evals`.
 
 Bundled skills:
 - `aoa-workspace-recon`

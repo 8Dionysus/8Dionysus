@@ -142,6 +142,12 @@
       "repo_key": "workspace",
       "cwd_repo_rel": "",
       "script_rel": ".codex/bin/aoa-evals-mcp-server.py"
+    },
+    {
+      "name": "abyss_machine",
+      "repo_key": "workspace",
+      "cwd_repo_rel": "",
+      "script_rel": ".codex/bin/abyss-machine-mcp-server.py"
     }
   ],
   "hooks": {

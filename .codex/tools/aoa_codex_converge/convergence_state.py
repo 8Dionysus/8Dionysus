@@ -173,6 +173,7 @@ def build_report(workspace_root: Path | str) -> dict[str, Any]:
     evals_catalog = evals_repo / "generated" / "eval_catalog.min.json"
     evals_contract = evals_repo / "docs" / "architecture" / "AOA_EVALS_MCP_CONTRACT.md"
     evals_service = Path.home() / "src" / "abyss-stack" / "mcp" / "services" / "aoa-evals-mcp"
+    machine_service = Path.home() / "src" / "abyss-stack" / "mcp" / "services" / "abyss-machine-mcp"
 
     config = _read_toml(codex_config_path)
     marketplace = _read_json(plugin_marketplace_path)
@@ -389,6 +390,35 @@ def build_report(workspace_root: Path | str) -> dict[str, Any]:
             ),
             evidence=evals_evidence,
             next_step="Wire [mcp_servers.aoa_evals] to .codex/bin/aoa-evals-mcp-server.py and keep proof authority in aoa-evals.",
+        )
+    )
+
+    machine_entry = mcp_servers.get("abyss_machine") if isinstance(mcp_servers, dict) else None
+    machine_script_path, machine_evidence = _resolve_mcp_script(root, machine_entry)
+    if isinstance(mcp_servers, dict) and "abyss_machine" in mcp_servers:
+        machine_evidence.insert(0, "[mcp_servers.abyss_machine] in .codex/config.toml")
+    if machine_script_path is not None and machine_script_path.exists():
+        machine_evidence.append(str(machine_script_path))
+    if machine_service.exists():
+        machine_evidence.append(str(machine_service))
+    machine_mcp_ok = (
+        isinstance(mcp_servers, dict)
+        and "abyss_machine" in mcp_servers
+        and machine_script_path is not None
+        and machine_script_path.exists()
+    )
+    surfaces.append(
+        SurfaceStatus(
+            name="machine_mcp",
+            status="ok" if machine_mcp_ok else "warn",
+            required=False,
+            summary=(
+                "abyss-machine MCP access plane looks wired."
+                if machine_mcp_ok
+                else "abyss-machine MCP access plane is not wired into the Codex plane."
+            ),
+            evidence=machine_evidence,
+            next_step="Wire [mcp_servers.abyss_machine] to .codex/bin/abyss-machine-mcp-server.py and keep host truth in abyss-machine.",
         )
     )
 

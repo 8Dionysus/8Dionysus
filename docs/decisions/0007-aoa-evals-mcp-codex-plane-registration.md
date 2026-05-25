@@ -27,8 +27,13 @@ service from `AOA_ABYSS_STACK_ROOT`, `AOA_EVALS_MCP_ROOT`,
 `8Dionysus` owns the Codex-plane name, projection, launcher, and drift
 validation. `abyss-stack` owns the MCP service implementation. `aoa-evals`
 remains the authority for proof meaning; `aoa_evals` is only an access plane
-for selection, inspection, generated-reader context, runtime evidence template
-lookup, and candidate-only report skeletons.
+for selection, inspection, generated-reader context, read-only find-or-propose
+eval-need routing, runtime evidence template lookup, candidate validation,
+runtime candidate export reads, and candidate-only report skeletons.
+
+Find-or-propose output is route context only. Proposal approval, source bundle
+creation, verdicts, receipt publication, bundle promotion, and proof authority
+stay outside the shared-root Codex plane.
 
 Future Codex-plane regeneration must preserve `aoa_evals` with the existing
 stable MCP names and verify that the launcher script resolves before rollout.

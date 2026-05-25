@@ -65,6 +65,7 @@ nickname_candidates = ["Delta"]
 # - aoa_stats
 # - dionysus
 # - aoa_memo
+# - aoa_evals
 
 [mcp_servers.aoa_workspace]
 command = "python3"
@@ -84,4 +85,9 @@ cwd = "/srv/AbyssOS/Dionysus"
 [mcp_servers.aoa_memo]
 command = "python3"
 args = [".codex/bin/aoa-memo-mcp-server.py"]
+cwd = "/srv/AbyssOS"
+
+[mcp_servers.aoa_evals]
+command = "python3"
+args = [".codex/bin/aoa-evals-mcp-server.py"]
 cwd = "/srv/AbyssOS"

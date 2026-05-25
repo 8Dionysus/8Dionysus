@@ -169,6 +169,10 @@ def build_report(workspace_root: Path | str) -> dict[str, Any]:
     dionysus_repo = root / "Dionysus"
     dionysus_catalog = dionysus_repo / "generated" / "seed_route_map.min.json"
     memo_service = Path.home() / "src" / "abyss-stack" / "mcp" / "services" / "aoa-memo-mcp"
+    evals_repo = root / "aoa-evals"
+    evals_catalog = evals_repo / "generated" / "eval_catalog.min.json"
+    evals_contract = evals_repo / "docs" / "architecture" / "AOA_EVALS_MCP_CONTRACT.md"
+    evals_service = Path.home() / "src" / "abyss-stack" / "mcp" / "services" / "aoa-evals-mcp"
 
     config = _read_toml(codex_config_path)
     marketplace = _read_json(plugin_marketplace_path)
@@ -342,6 +346,49 @@ def build_report(workspace_root: Path | str) -> dict[str, Any]:
             ),
             evidence=memo_evidence,
             next_step="Wire [mcp_servers.aoa_memo] to .codex/bin/aoa-memo-mcp-server.py and keep the service source under abyss-stack.",
+        )
+    )
+
+    evals_entry = mcp_servers.get("aoa_evals") if isinstance(mcp_servers, dict) else None
+    evals_script_path, evals_evidence = _resolve_mcp_script(root, evals_entry)
+    if evals_repo.exists():
+        evals_evidence.insert(0, str(evals_repo))
+    if isinstance(mcp_servers, dict) and "aoa_evals" in mcp_servers:
+        evals_evidence.insert(
+            1 if evals_repo.exists() else 0,
+            "[mcp_servers.aoa_evals] in .codex/config.toml",
+        )
+    if evals_script_path is not None and evals_script_path.exists():
+        evals_evidence.append(str(evals_script_path))
+    if evals_catalog.exists():
+        evals_evidence.append(str(evals_catalog))
+    if evals_contract.exists():
+        evals_evidence.append(str(evals_contract))
+    if evals_service.exists():
+        evals_evidence.append(str(evals_service))
+    evals_mcp_ok = (
+        not evals_repo.exists()
+        or (
+            isinstance(mcp_servers, dict)
+            and "aoa_evals" in mcp_servers
+            and evals_script_path is not None
+            and evals_script_path.exists()
+            and evals_catalog.exists()
+            and evals_contract.exists()
+        )
+    )
+    surfaces.append(
+        SurfaceStatus(
+            name="evals_mcp",
+            status="info" if not evals_repo.exists() else ("ok" if evals_mcp_ok else "warn"),
+            required=False,
+            summary=(
+                "aoa-evals repo not present under the workspace root."
+                if not evals_repo.exists()
+                else ("aoa-evals MCP access plane looks wired." if evals_mcp_ok else "aoa-evals repo exists but its MCP seam is incomplete.")
+            ),
+            evidence=evals_evidence,
+            next_step="Wire [mcp_servers.aoa_evals] to .codex/bin/aoa-evals-mcp-server.py and keep proof authority in aoa-evals.",
         )
     )
 

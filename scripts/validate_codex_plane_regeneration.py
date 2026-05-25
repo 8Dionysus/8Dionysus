@@ -7,7 +7,7 @@ from pathlib import Path
 
 import render_codex_plane
 
-STABLE_MCP_SERVER_NAMES = ["aoa_workspace", "aoa_stats", "dionysus", "aoa_memo"]
+STABLE_MCP_SERVER_NAMES = ["aoa_workspace", "aoa_stats", "dionysus", "aoa_memo", "aoa_evals"]
 
 
 @dataclass(frozen=True)
@@ -66,6 +66,9 @@ def validate_codex_plane_regeneration(
     memo_launcher = resolved_repo_root / ".codex" / "bin" / "aoa-memo-mcp-server.py"
     if not memo_launcher.exists():
         raise ValueError(f"missing source-owned aoa_memo launcher: {memo_launcher}")
+    evals_launcher = resolved_repo_root / ".codex" / "bin" / "aoa-evals-mcp-server.py"
+    if not evals_launcher.exists():
+        raise ValueError(f"missing source-owned aoa_evals launcher: {evals_launcher}")
 
     return CodexPlaneValidationSummary(
         repo_root=resolved_repo_root,

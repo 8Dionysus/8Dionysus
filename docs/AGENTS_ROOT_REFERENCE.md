@@ -234,6 +234,9 @@ python scripts/recon_agents_frontier.py \
 - Treat `aoa_stats` as derived observability only. Do not let it overrule owner truth or bounded eval verdicts
 - Treat `dionysus` as seed-garden and planting-lineage context. Do not mistake staging notes for final owner doctrine
 - Treat `aoa_memo` as the memory access plane. It can brief, search, and create candidates, but durable memory truth still lands through `aoa-memo`
+- Treat `aoa_evals` as the bounded proof access plane. It can select, inspect,
+  expand, compare, and prepare candidate evidence/report skeletons, but verdicts
+  and proof authority stay in `aoa-evals`
 - Use `aoa_memo` when a task asks for recall, continuity, compaction recovery,
   local memo port state, memory candidate creation, port indexing, or reviewed
   intake preparation. Write durable memory only through the reviewed
@@ -258,6 +261,7 @@ workspace:
 - `aoa_stats`
 - `dionysus`
 - `aoa_memo`
+- `aoa_evals`
 
 Boundary rules:
 
@@ -266,6 +270,7 @@ Boundary rules:
 - `aoa_stats` remains derived
 - `Dionysus` remains staging and route context
 - `aoa_memo` remains an access plane over reviewed memory, session evidence, and local ports
+- `aoa_evals` remains an access plane over bounded proof readers, not a verdict engine
 - owner truth stays in the owning repo
 
 ## Convergence posture

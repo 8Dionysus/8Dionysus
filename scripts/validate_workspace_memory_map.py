@@ -7,13 +7,19 @@ import json
 from pathlib import Path
 from typing import Any, Mapping
 
+from jsonschema import Draft202012Validator
+
 from build_workspace_memory_map import (
     DEFAULT_JSON_PATH,
     DEFAULT_MARKDOWN_PATH,
+    LIVE_WRITEBACK_DEBT_STATUSES,
     OWNER_REPO,
     PORT_LEVELS,
     SCHEMA_REF,
     SCHEMA_VERSION,
+    WRITEBACK_DEBT_STATUSES,
+    WRITEBACK_DECISIONS,
+    WRITEBACK_MARKER_STATUSES,
     build_workspace_memory_map,
     render_markdown,
     render_payload,
@@ -29,6 +35,7 @@ REQUIRED_PLACES = (
     "abyss-stack",
     "abyss-machine",
 )
+REPO_ROOT = Path(__file__).resolve().parents[1]
 
 
 def _require(condition: bool, message: str) -> None:
@@ -36,7 +43,23 @@ def _require(condition: bool, message: str) -> None:
         raise SystemExit(message)
 
 
+def validate_payload_schema(payload: Mapping[str, Any]) -> None:
+    schema = json.loads((REPO_ROOT / SCHEMA_REF).read_text(encoding="utf-8"))
+    validator = Draft202012Validator(schema)
+    errors = sorted(validator.iter_errors(payload), key=lambda error: list(error.absolute_path))
+    if not errors:
+        return
+    error = errors[0]
+    path = "".join(f"[{item}]" if isinstance(item, int) else f".{item}" for item in error.absolute_path)
+    if path.startswith("."):
+        path = path[1:]
+    if path:
+        raise SystemExit(f"schema violation at '{path}': {error.message}")
+    raise SystemExit(f"schema violation: {error.message}")
+
+
 def validate_payload(payload: Mapping[str, Any]) -> None:
+    validate_payload_schema(payload)
     _require(payload.get("schema_version") == SCHEMA_VERSION, "wrong schema_version")
     _require(payload.get("schema_ref") == SCHEMA_REF, "wrong schema_ref")
     _require(payload.get("owner_repo") == OWNER_REPO, "wrong owner_repo")
@@ -46,6 +69,28 @@ def validate_payload(payload: Mapping[str, Any]) -> None:
     taxonomy = payload.get("taxonomy")
     _require(isinstance(taxonomy, dict), "taxonomy must be an object")
     _require(tuple(taxonomy.get("port_levels", ())) == PORT_LEVELS, "port level taxonomy drifted")
+    _require(
+        tuple(taxonomy.get("writeback_decisions", ())) == WRITEBACK_DECISIONS,
+        "writeback decision taxonomy drifted",
+    )
+    _require(
+        tuple(taxonomy.get("writeback_marker_statuses", ())) == WRITEBACK_MARKER_STATUSES,
+        "writeback marker status taxonomy drifted",
+    )
+    _require(
+        tuple(taxonomy.get("writeback_debt_statuses", ())) == WRITEBACK_DEBT_STATUSES,
+        "writeback debt status taxonomy drifted",
+    )
+    _require(
+        tuple(taxonomy.get("live_writeback_debt_statuses", ())) == LIVE_WRITEBACK_DEBT_STATUSES,
+        "live writeback debt status taxonomy drifted",
+    )
+
+    writeback_surface = payload.get("writeback_surface")
+    _require(isinstance(writeback_surface, dict), "writeback_surface must be an object")
+    _require(writeback_surface.get("owner") == OWNER_REPO, "wrong writeback surface owner")
+    _require(writeback_surface.get("judgment_route") == "aoa-memo-writeback", "wrong writeback judgment route")
+    _require("writeback-debt-json" in str(writeback_surface.get("live_debt_command", "")), "missing live debt command")
 
     places = payload.get("places")
     _require(isinstance(places, list) and places, "places must be a non-empty list")
@@ -64,6 +109,8 @@ def validate_payload(payload: Mapping[str, Any]) -> None:
             "evidence_route",
             "mcp",
             "memo_port",
+            "writeback_marker",
+            "writeback_debt",
             "issues",
         ):
             _require(key in place, f"place missing required field: {key}")
@@ -79,6 +126,18 @@ def validate_payload(payload: Mapping[str, Any]) -> None:
         _require("pending_exports" in memo_port, "memo_port missing pending_exports")
         _require("ready_exports" in memo_port, "memo_port missing ready_exports")
         _require("landed_exports" in memo_port, "memo_port missing landed_exports")
+        marker = place["writeback_marker"]
+        _require(isinstance(marker, dict), "writeback_marker must be an object")
+        _require(marker.get("status") in WRITEBACK_MARKER_STATUSES, "invalid writeback marker status")
+        if marker.get("status") == "present":
+            _require(marker.get("decision") in WRITEBACK_DECISIONS, "invalid writeback marker decision")
+            _require(bool(marker.get("marker_ref")), "present marker missing marker_ref")
+            _require(bool(marker.get("marker_path")), "present marker missing marker_path")
+        debt = place["writeback_debt"]
+        _require(isinstance(debt, dict), "writeback_debt must be an object")
+        _require(debt.get("status") in WRITEBACK_DEBT_STATUSES, "invalid writeback debt status")
+        _require("writeback-debt-json" in str(debt.get("live_command", "")), "debt missing live command")
+        _require(bool(debt.get("next_route")), "debt missing next_route")
         _require("validation_command" in place, "place missing validation_command")
 
     _require(

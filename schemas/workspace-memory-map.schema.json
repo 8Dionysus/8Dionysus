@@ -11,6 +11,7 @@
     "generated_by",
     "workspace_root_hint",
     "taxonomy",
+    "writeback_surface",
     "reviewed_memory_owner",
     "session_evidence_owner",
     "access_plane",
@@ -40,6 +41,10 @@
       "type": "object",
       "required": [
         "port_levels",
+        "writeback_decisions",
+        "writeback_marker_statuses",
+        "writeback_debt_statuses",
+        "live_writeback_debt_statuses",
         "meaning"
       ],
       "properties": {
@@ -62,6 +67,92 @@
           "additionalProperties": {
             "type": "string"
           }
+        },
+        "writeback_decisions": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "write_candidate",
+              "prepare_export",
+              "no_writeback_needed",
+              "route_only_debt",
+              "needs_owner_review",
+              "blocked"
+            ]
+          },
+          "minItems": 6,
+          "maxItems": 6
+        },
+        "writeback_marker_statuses": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "present",
+              "missing",
+              "not_applicable",
+              "unknown"
+            ]
+          },
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "writeback_debt_statuses": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "live_check_required",
+              "needs_marker",
+              "not_applicable",
+              "unknown"
+            ]
+          },
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "live_writeback_debt_statuses": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "clean",
+              "has_unmarked_changes",
+              "needs_marker",
+              "not_applicable",
+              "unknown"
+            ]
+          },
+          "minItems": 5,
+          "maxItems": 5
+        }
+      },
+      "additionalProperties": true
+    },
+    "writeback_surface": {
+      "type": "object",
+      "required": [
+        "owner",
+        "authority_limit",
+        "marker_sources",
+        "live_debt_command",
+        "judgment_route"
+      ],
+      "properties": {
+        "owner": {
+          "const": "8Dionysus"
+        },
+        "authority_limit": {
+          "type": "string"
+        },
+        "marker_sources": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "live_debt_command": {
+          "type": "string"
+        },
+        "judgment_route": {
+          "const": "aoa-memo-writeback"
         }
       },
       "additionalProperties": true
@@ -139,6 +230,8 @@
           "evidence_route",
           "mcp",
           "memo_port",
+          "writeback_marker",
+          "writeback_debt",
           "validation_command",
           "issues"
         ],
@@ -246,6 +339,72 @@
               "pending_exports": {
                 "type": "integer",
                 "minimum": 0
+              }
+            },
+            "additionalProperties": true
+          },
+          "writeback_marker": {
+            "type": "object",
+            "required": [
+              "status",
+              "decision",
+              "marker_kind",
+              "marker_ref",
+              "marker_path",
+              "source"
+            ],
+            "properties": {
+              "status": {
+                "enum": [
+                  "present",
+                  "missing",
+                  "not_applicable",
+                  "unknown"
+                ]
+              },
+              "decision": {
+                "type": "string"
+              },
+              "marker_kind": {
+                "type": "string"
+              },
+              "marker_ref": {
+                "type": "string"
+              },
+              "marker_path": {
+                "type": "string"
+              },
+              "source": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": true
+          },
+          "writeback_debt": {
+            "type": "object",
+            "required": [
+              "status",
+              "basis",
+              "live_command",
+              "next_route"
+            ],
+            "properties": {
+              "status": {
+                "enum": [
+                  "live_check_required",
+                  "needs_marker",
+                  "not_applicable",
+                  "unknown"
+                ]
+              },
+              "basis": {
+                "type": "string"
+              },
+              "live_command": {
+                "type": "string"
+              },
+              "next_route": {
+                "type": "string"
               }
             },
             "additionalProperties": true

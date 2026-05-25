@@ -30,6 +30,10 @@
     "aoa_evals": {
       "cwd": "/srv/AbyssOS",
       "script_rel": ".codex/bin/aoa-evals-mcp-server.py"
+    },
+    "abyss_machine": {
+      "cwd": "/srv/AbyssOS",
+      "script_rel": ".codex/bin/abyss-machine-mcp-server.py"
     }
   },
   "hooks": {

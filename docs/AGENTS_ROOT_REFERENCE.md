@@ -235,8 +235,9 @@ python scripts/recon_agents_frontier.py \
 - Treat `dionysus` as seed-garden and planting-lineage context. Do not mistake staging notes for final owner doctrine
 - Treat `aoa_memo` as the memory access plane. It can brief, search, and create candidates, but durable memory truth still lands through `aoa-memo`
 - Treat `aoa_evals` as the bounded proof access plane. It can select, inspect,
-  expand, compare, and prepare candidate evidence/report skeletons, but verdicts
-  and proof authority stay in `aoa-evals`
+  expand, compare, return read-only find-or-propose eval-need context, and
+  prepare candidate evidence/report skeletons, but verdicts, proposal approval,
+  source bundle creation, and proof authority stay in `aoa-evals`
 - Use `aoa_memo` when a task asks for recall, continuity, compaction recovery,
   local memo port state, memory candidate creation, port indexing, or reviewed
   intake preparation. Write durable memory only through the reviewed

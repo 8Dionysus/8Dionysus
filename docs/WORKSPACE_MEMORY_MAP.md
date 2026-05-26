@@ -81,7 +81,7 @@ python scripts/build_workspace_memory_map.py \
 | aoa-evals | `live_check_required` | aoa-evals/docs/decisions/0113-aoa-memo-writeback-decision-quality-eval.md | `route_only_debt` | run live writeback debt check before closeout |
 | aoa-stats | `needs_first_marker` | missing | `` | inspect the owner repo route; record a route-only marker only when there is meaningful landed work or an explicit no-writeback baseline |
 | aoa-routing | `needs_first_marker` | missing | `` | inspect the owner repo route; record a route-only marker only when there is meaningful landed work or an explicit no-writeback baseline |
-| aoa-memo | `live_check_required` | aoa-memo/memo/intake/receipts/20260526T023000Z.abyss-stack.abyss-stack-aoa-memo-mcp-workspace-port-discovery.landing-receipt.json | `reviewed_write` | run live writeback debt check before closeout |
+| aoa-memo | `live_check_required` | aoa-memo/generated/memory/workspace_memo_port_status.min.json | `no_writeback_needed` | run live writeback debt check before closeout |
 | aoa-agents | `live_check_required` | aoa-agents/memo/candidates/20260526T015747Z.de2a2b2a.aoa-agents-owns-role-layer-memory-rights-and-han.candidate.json | `write_candidate` | run live writeback debt check before closeout |
 | aoa-playbooks | `live_check_required` | aoa-playbooks/memo/candidates/20260526T015747Z.1df6959b.aoa-playbooks-treats-playbook-memory-fields-as-c.candidate.json | `write_candidate` | run live writeback debt check before closeout |
 | aoa-kag | `needs_first_marker` | missing | `` | inspect the owner repo route; record a route-only marker only when there is meaningful landed work or an explicit no-writeback baseline |

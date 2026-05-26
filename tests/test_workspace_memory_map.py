@@ -143,6 +143,58 @@ allowed_routes:
             self.assertEqual(marker["marker_ref"], "8Dionysus/generated/workspace_memory_map.min.json")
             validate_workspace_memory_map.validate_payload(payload)
 
+    def test_aoa_memo_operational_readout_sync_is_marker(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            workspace = Path(tmp)
+            root = workspace / "aoa-memo"
+            self._make_root(root, with_memory_route=True)
+            write_text(root / "generated" / "memory" / "access_plane_currentness.min.json", "{}\n")
+            write_text(root / "generated" / "memory" / "workspace_memo_port_status.min.json", "{}\n")
+
+            payload = build_workspace_memory_map.build_workspace_memory_map(workspace)
+            by_name = {place["name"]: place for place in payload["places"]}
+            marker = by_name["aoa-memo"]["writeback_marker"]
+
+            self.assertEqual(marker["status"], "present")
+            self.assertEqual(marker["marker_kind"], "memo_operational_readout_sync")
+            self.assertEqual(marker["decision"], "no_writeback_needed")
+            self.assertEqual(marker["source"], "memo_operational_readout_sync")
+            self.assertEqual(marker["marker_ref"], "aoa-memo/generated/memory/workspace_memo_port_status.min.json")
+            validate_workspace_memory_map.validate_payload(payload)
+
+    @unittest.skipIf(shutil.which("git") is None, "git is required for marker currentness ordering")
+    def test_latest_committed_marker_wins_over_lexicographic_path(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            workspace = Path(tmp)
+            root = workspace / "aoa-memo"
+            self._make_root(root, with_memory_route=True)
+            write_text(
+                root / "memo" / "intake" / "receipts" / "20260526T004143Z.demo.landing-receipt.json",
+                json.dumps(
+                    {
+                        "schema": "aoa_memo_reviewed_intake_landing_receipt_v1",
+                        "repo": "demo",
+                        "result": "landed",
+                        "object_ref": "memo.decision.2026-05-26.demo-memory",
+                    }
+                ),
+            )
+            self._git(root, "init")
+            self._git(root, "config", "user.email", "test@example.invalid")
+            self._git(root, "config", "user.name", "AoA Test")
+            self._git(root, "add", ".")
+            self._git(root, "commit", "-m", "land reviewed intake")
+            write_text(root / "generated" / "memory" / "workspace_memo_port_status.min.json", "{}\n")
+            self._git(root, "add", ".")
+            self._git(root, "commit", "-m", "refresh memo readout")
+
+            payload = build_workspace_memory_map.build_workspace_memory_map(workspace)
+            by_name = {place["name"]: place for place in payload["places"]}
+            marker = by_name["aoa-memo"]["writeback_marker"]
+
+            self.assertEqual(marker["marker_kind"], "memo_operational_readout_sync")
+            self.assertEqual(marker["marker_ref"], "aoa-memo/generated/memory/workspace_memo_port_status.min.json")
+
     def test_markdown_keeps_route_contract_visible(self) -> None:
         payload = build_workspace_memory_map.build_workspace_memory_map(Path(__file__).resolve().parents[2])
         markdown = build_workspace_memory_map.render_markdown(payload)

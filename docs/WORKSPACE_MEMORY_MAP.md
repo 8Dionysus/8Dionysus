@@ -69,7 +69,7 @@ python scripts/build_workspace_memory_map.py \
 
 | Place | Debt route | Marker | Decision | Next route |
 |---|---|---|---|---|
-| 8Dionysus | `live_check_required` | 8Dionysus/docs/decisions/0010-workspace-writeback-marker-debt-surface.md | `route_only_debt` | run live writeback debt check before closeout |
+| 8Dionysus | `live_check_required` | 8Dionysus/docs/decisions/0011-workspace-memory-map-writeback-sync.md | `route_only_debt` | run live writeback debt check before closeout |
 | Agents-of-Abyss | `needs_marker` | missing | `` | run aoa-memo-writeback and record a candidate/export/no-writeback marker |
 | Tree-of-Sophia | `needs_marker` | missing | `` | run aoa-memo-writeback and record a candidate/export/no-writeback marker |
 | abyss-stack | `live_check_required` | ~/src/abyss-stack/memo/receipts/20260522T021004Z.aoa-memo-mcp-access-plane.forwarding-receipt.json | `write_candidate` | run live writeback debt check before closeout |
@@ -81,7 +81,7 @@ python scripts/build_workspace_memory_map.py \
 | aoa-evals | `live_check_required` | aoa-evals/docs/decisions/0045-closeout-writeback-ingress-boundary.md | `route_only_debt` | run live writeback debt check before closeout |
 | aoa-stats | `needs_marker` | missing | `` | run aoa-memo-writeback and record a candidate/export/no-writeback marker |
 | aoa-routing | `needs_marker` | missing | `` | run aoa-memo-writeback and record a candidate/export/no-writeback marker |
-| aoa-memo | `live_check_required` | aoa-memo/docs/decisions/2026-05-19-writeback-part-local-artifacts.md | `route_only_debt` | run live writeback debt check before closeout |
+| aoa-memo | `live_check_required` | aoa-memo/docs/decisions/2026-05-25-writeback-debt-catchup-reviewed-objects.md | `route_only_debt` | run live writeback debt check before closeout |
 | aoa-agents | `needs_marker` | missing | `` | run aoa-memo-writeback and record a candidate/export/no-writeback marker |
 | aoa-playbooks | `needs_marker` | missing | `` | run aoa-memo-writeback and record a candidate/export/no-writeback marker |
 | aoa-kag | `needs_marker` | missing | `` | run aoa-memo-writeback and record a candidate/export/no-writeback marker |

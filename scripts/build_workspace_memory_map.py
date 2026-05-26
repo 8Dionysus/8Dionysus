@@ -412,6 +412,20 @@ def _writeback_marker_candidates(root: Path, workspace_root: Path) -> list[dict[
             }
         )
 
+    map_sync_path = root / "generated" / "workspace_memory_map.min.json"
+    map_markdown_path = root / "docs" / "WORKSPACE_MEMORY_MAP.md"
+    if root.name == OWNER_REPO and map_sync_path.is_file() and map_markdown_path.is_file():
+        rel_path = _relative_path(map_sync_path, root)
+        candidates.append(
+            {
+                "marker_kind": "workspace_memory_map_sync",
+                "decision": "no_writeback_needed",
+                "marker_path": rel_path,
+                "marker_ref": _place_file_ref(root, workspace_root, rel_path),
+                "source": "workspace_memory_map_sync",
+            }
+        )
+
     decision_root = root / "docs" / "decisions"
     if decision_root.is_dir():
         for path in sorted(decision_root.glob("*.md")):
@@ -831,6 +845,7 @@ def build_workspace_memory_map(workspace_root: Path) -> dict[str, Any]:
             "marker_sources": [
                 "repo/memo candidates, receipts, exports, and local records",
                 "aoa-memo reviewed intake landing receipts",
+                "8Dionysus generated workspace memory map sync",
                 "repo-local docs/decisions records with writeback in the filename",
             ],
             "live_debt_command": WRITEBACK_LIVE_COMMAND,

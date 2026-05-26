@@ -19,9 +19,9 @@ python scripts/validate_workspace_memory_map.py
 
 - `full_ports`: 9
 - `landed_exports`: 2
-- `local_candidates`: 3
+- `local_candidates`: 5
 - `memory_routes`: 20
-- `pending_candidates`: 3
+- `pending_candidates`: 5
 - `pending_exports`: 1
 - `places_listed`: 20
 - `places_scanned`: 20
@@ -31,9 +31,9 @@ python scripts/validate_workspace_memory_map.py
 - `root_memory_routes`: 19
 - `route_only`: 11
 - `session_evidence_routes`: 1
-- `writeback_live_checks`: 5
-- `writeback_markers`: 5
-- `writeback_needs_first_marker`: 15
+- `writeback_live_checks`: 7
+- `writeback_markers`: 7
+- `writeback_needs_first_marker`: 13
 - `writeback_not_applicable`: 0
 - `writeback_unknown`: 0
 
@@ -82,8 +82,8 @@ python scripts/build_workspace_memory_map.py \
 | aoa-stats | `needs_first_marker` | missing | `` | inspect the owner repo route; record a route-only marker only when there is meaningful landed work or an explicit no-writeback baseline |
 | aoa-routing | `needs_first_marker` | missing | `` | inspect the owner repo route; record a route-only marker only when there is meaningful landed work or an explicit no-writeback baseline |
 | aoa-memo | `live_check_required` | aoa-memo/memo/intake/receipts/20260526T004143Z.abyss-stack.abyss-stack-os-access-plane-mcp-services.landing-receipt.json | `reviewed_write` | run live writeback debt check before closeout |
-| aoa-agents | `needs_first_marker` | missing | `` | inspect the owner repo and local memo port; record a bounded candidate/export only for meaningful landed work, otherwise record an explicit no-writeback marker |
-| aoa-playbooks | `needs_first_marker` | missing | `` | inspect the owner repo and local memo port; record a bounded candidate/export only for meaningful landed work, otherwise record an explicit no-writeback marker |
+| aoa-agents | `live_check_required` | aoa-agents/memo/candidates/20260526T015747Z.de2a2b2a.aoa-agents-owns-role-layer-memory-rights-and-han.candidate.json | `write_candidate` | run live writeback debt check before closeout |
+| aoa-playbooks | `live_check_required` | aoa-playbooks/memo/candidates/20260526T015747Z.1df6959b.aoa-playbooks-treats-playbook-memory-fields-as-c.candidate.json | `write_candidate` | run live writeback debt check before closeout |
 | aoa-kag | `needs_first_marker` | missing | `` | inspect the owner repo route; record a route-only marker only when there is meaningful landed work or an explicit no-writeback baseline |
 | abyss-machine | `needs_first_marker` | missing | `` | inspect the owner repo and local memo port; record a bounded candidate/export only for meaningful landed work, otherwise record an explicit no-writeback marker |
 | .aoa | `needs_first_marker` | missing | `` | review the .aoa session-evidence route before deciding whether any durable memo writeback is warranted |
@@ -107,8 +107,8 @@ python scripts/build_workspace_memory_map.py \
 | aoa-stats | workspace-memory-route | `route_only` | `route_only` | root_memory_route | 0 | 0 | 0 | 0 | `python scripts/build_workspace_memory_map.py --check` | ok |
 | aoa-routing | workspace-memory-route | `route_only` | `route_only` | root_memory_route | 0 | 0 | 0 | 0 | `python scripts/build_workspace_memory_map.py --check` | ok |
 | aoa-memo | reviewed-memory-owner | `route_only` | `route_only` | root_memory_route | 0 | 0 | 0 | 0 | `python scripts/build_workspace_memory_map.py --check` | ok |
-| aoa-agents | local-memory-port-candidate | `full_port` | `full_port` | local_port_route | 0 | 0 | 0 | 0 | `PYTHONPATH="${AOA_ABYSS_STACK_ROOT:-$HOME/src/abyss-stack}/mcp/services/aoa-memo-mcp/src" python -m aoa_memo_mcp.cli validate-port --repo aoa-agents` | ok |
-| aoa-playbooks | local-memory-port-candidate | `full_port` | `full_port` | local_port_route | 0 | 0 | 0 | 0 | `PYTHONPATH="${AOA_ABYSS_STACK_ROOT:-$HOME/src/abyss-stack}/mcp/services/aoa-memo-mcp/src" python -m aoa_memo_mcp.cli validate-port --repo aoa-playbooks` | ok |
+| aoa-agents | local-memory-port-candidate | `full_port` | `full_port` | local_port_route | 1 | 0 | 0 | 0 | `PYTHONPATH="${AOA_ABYSS_STACK_ROOT:-$HOME/src/abyss-stack}/mcp/services/aoa-memo-mcp/src" python -m aoa_memo_mcp.cli validate-port --repo aoa-agents` | ok |
+| aoa-playbooks | local-memory-port-candidate | `full_port` | `full_port` | local_port_route | 1 | 0 | 0 | 0 | `PYTHONPATH="${AOA_ABYSS_STACK_ROOT:-$HOME/src/abyss-stack}/mcp/services/aoa-memo-mcp/src" python -m aoa_memo_mcp.cli validate-port --repo aoa-playbooks` | ok |
 | aoa-kag | workspace-memory-route | `route_only` | `route_only` | root_memory_route | 0 | 0 | 0 | 0 | `python scripts/build_workspace_memory_map.py --check` | ok |
 | abyss-machine | host-local-memory-port | `full_port` | `full_port` | local_port_route | 0 | 0 | 0 | 0 | `PYTHONPATH="${AOA_ABYSS_STACK_ROOT:-$HOME/src/abyss-stack}/mcp/services/aoa-memo-mcp/src" python -m aoa_memo_mcp.cli validate-port --repo abyss-machine` | ok |
 | .aoa | session-evidence-kernel | `route_only` | `route_only` | session_evidence_route | 0 | 0 | 0 | 0 | `python scripts/build_workspace_memory_map.py --check` | ok |

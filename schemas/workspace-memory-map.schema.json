@@ -74,14 +74,15 @@
             "enum": [
               "write_candidate",
               "prepare_export",
+              "reviewed_write",
               "no_writeback_needed",
               "route_only_debt",
               "needs_owner_review",
               "blocked"
             ]
           },
-          "minItems": 6,
-          "maxItems": 6
+          "minItems": 7,
+          "maxItems": 7
         },
         "writeback_marker_statuses": {
           "type": "array",

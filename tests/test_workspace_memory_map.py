@@ -82,6 +82,38 @@ allowed_routes:
             self.assertTrue(payload["return_receipts"])
             self.assertEqual(payload["allowed_routes"], ["local_only", "reviewed_intake"])
 
+    def test_reviewed_landing_receipts_are_writeback_markers(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            workspace = Path(tmp)
+            self._make_root(workspace / "aoa-memo", with_memory_route=True)
+            write_text(
+                workspace
+                / "aoa-memo"
+                / "memo"
+                / "intake"
+                / "receipts"
+                / "20260526T004143Z.demo.demo-memory.landing-receipt.json",
+                json.dumps(
+                    {
+                        "schema": "aoa_memo_reviewed_intake_landing_receipt_v1",
+                        "repo": "demo",
+                        "result": "landed",
+                        "object_ref": "memo.decision.2026-05-26.demo-memory",
+                    }
+                ),
+            )
+
+            payload = build_workspace_memory_map.build_workspace_memory_map(workspace)
+            by_name = {place["name"]: place for place in payload["places"]}
+            marker = by_name["aoa-memo"]["writeback_marker"]
+
+            self.assertEqual(marker["status"], "present")
+            self.assertEqual(marker["marker_kind"], "reviewed_memory_landing_receipt")
+            self.assertEqual(marker["decision"], "reviewed_write")
+            self.assertEqual(marker["source"], "reviewed_memory_corpus")
+            self.assertIn("aoa-memo/memo/intake/receipts/", marker["marker_ref"])
+            validate_workspace_memory_map.validate_payload(payload)
+
     def test_markdown_keeps_route_contract_visible(self) -> None:
         payload = build_workspace_memory_map.build_workspace_memory_map(Path(__file__).resolve().parents[2])
         markdown = build_workspace_memory_map.render_markdown(payload)

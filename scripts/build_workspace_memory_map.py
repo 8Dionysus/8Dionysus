@@ -58,13 +58,19 @@ WRITEBACK_DECISIONS = (
     "blocked",
 )
 WRITEBACK_MARKER_STATUSES = ("present", "missing", "not_applicable", "unknown")
-WRITEBACK_DEBT_STATUSES = ("live_check_required", "needs_marker", "not_applicable", "unknown")
+WRITEBACK_DEBT_STATUSES = ("live_check_required", "needs_first_marker", "not_applicable", "unknown")
 LIVE_WRITEBACK_DEBT_STATUSES = (
     "clean",
     "has_unmarked_changes",
-    "needs_marker",
+    "needs_first_marker",
     "not_applicable",
     "unknown",
+)
+FIRST_MARKER_ROUTES = (
+    "local_memo_port_activation",
+    "route_only_owner_decision",
+    "session_evidence_kernel_review",
+    "workspace_plane_route_decision",
 )
 WRITEBACK_DECISION_KEYS = ("memo_writeback_decision", "writeback_decision", "decision")
 WRITEBACK_LIVE_COMMAND = (
@@ -484,7 +490,50 @@ def writeback_marker_record(
     return {"status": "present", **latest}
 
 
-def writeback_debt_record(marker: Mapping[str, Any]) -> dict[str, Any]:
+def _first_marker_route(
+    *,
+    name: str,
+    memory_route_status: str,
+    current_port_level: str,
+) -> str:
+    if name == ".aoa" or memory_route_status == "session_evidence_route":
+        return "session_evidence_kernel_review"
+    if name in {".codex", ".agents"}:
+        return "workspace_plane_route_decision"
+    if current_port_level in {"stub_port", "full_port", "mature_port"}:
+        return "local_memo_port_activation"
+    return "route_only_owner_decision"
+
+
+def _first_marker_next_route(first_marker_route: str) -> str:
+    routes = {
+        "local_memo_port_activation": (
+            "inspect the owner repo and local memo port; record a bounded candidate/export "
+            "only for meaningful landed work, otherwise record an explicit no-writeback marker"
+        ),
+        "session_evidence_kernel_review": (
+            "review the .aoa session-evidence route before deciding whether any durable memo "
+            "writeback is warranted"
+        ),
+        "workspace_plane_route_decision": (
+            "record an owner-reviewed route decision only when this workspace plane has "
+            "meaningful landed work"
+        ),
+        "route_only_owner_decision": (
+            "inspect the owner repo route; record a route-only marker only when there is "
+            "meaningful landed work or an explicit no-writeback baseline"
+        ),
+    }
+    return routes.get(first_marker_route, "inspect the owner route manually")
+
+
+def writeback_debt_record(
+    marker: Mapping[str, Any],
+    *,
+    name: str = "",
+    memory_route_status: str = "",
+    current_port_level: str = "",
+) -> dict[str, Any]:
     marker_status = str(marker.get("status", "unknown"))
     if marker_status == "present":
         return {
@@ -494,11 +543,20 @@ def writeback_debt_record(marker: Mapping[str, Any]) -> dict[str, Any]:
             "next_route": "run live writeback debt check before closeout",
         }
     if marker_status == "missing":
+        first_marker_route = _first_marker_route(
+            name=name,
+            memory_route_status=memory_route_status,
+            current_port_level=current_port_level,
+        )
         return {
-            "status": "needs_marker",
-            "basis": "memory route exists but no writeback marker source was found",
+            "status": "needs_first_marker",
+            "basis": (
+                "memory route exists but no first writeback marker source was found; this is "
+                "first-marker activation backlog, not evidence of post-marker debt"
+            ),
+            "first_marker_route": first_marker_route,
             "live_command": WRITEBACK_LIVE_COMMAND,
-            "next_route": "run aoa-memo-writeback and record a candidate/export/no-writeback marker",
+            "next_route": _first_marker_next_route(first_marker_route),
         }
     if marker_status == "not_applicable":
         return {
@@ -644,7 +702,12 @@ def place_record(
             "mcp": dict(mcp_status),
             "memo_port": memo_port_record(Path("__missing__"), workspace_root),
             "writeback_marker": marker,
-            "writeback_debt": writeback_debt_record(marker),
+            "writeback_debt": writeback_debt_record(
+                marker,
+                name=name,
+                memory_route_status="missing",
+                current_port_level="none",
+            ),
             "validation_command": "python scripts/build_workspace_memory_map.py --check",
             "issues": ["place root not found"],
         }
@@ -707,7 +770,12 @@ def place_record(
         "mcp": dict(mcp_status),
         "memo_port": memo_port,
         "writeback_marker": marker,
-        "writeback_debt": writeback_debt_record(marker),
+        "writeback_debt": writeback_debt_record(
+            marker,
+            name=name,
+            memory_route_status=route_status,
+            current_port_level=current_level,
+        ),
         "validation_command": validation_command,
         "issues": sorted(set(issues)),
     }
@@ -806,8 +874,8 @@ def build_workspace_memory_map(workspace_root: Path) -> dict[str, Any]:
         "writeback_live_checks": sum(
             1 for place in places if place["writeback_debt"]["status"] == "live_check_required"
         ),
-        "writeback_needs_marker": sum(
-            1 for place in places if place["writeback_debt"]["status"] == "needs_marker"
+        "writeback_needs_first_marker": sum(
+            1 for place in places if place["writeback_debt"]["status"] == "needs_first_marker"
         ),
         "writeback_not_applicable": sum(
             1 for place in places if place["writeback_debt"]["status"] == "not_applicable"
@@ -827,6 +895,7 @@ def build_workspace_memory_map(workspace_root: Path) -> dict[str, Any]:
             "writeback_marker_statuses": list(WRITEBACK_MARKER_STATUSES),
             "writeback_debt_statuses": list(WRITEBACK_DEBT_STATUSES),
             "live_writeback_debt_statuses": list(LIVE_WRITEBACK_DEBT_STATUSES),
+            "first_marker_routes": list(FIRST_MARKER_ROUTES),
             "meaning": {
                 "none": "no visible local memo route in this place yet",
                 "route_only": "root AGENTS.md or owner-local route points to aoa_memo/.aoa/reviewed memory without a local memo port",
@@ -834,7 +903,10 @@ def build_workspace_memory_map(workspace_root: Path) -> dict[str, Any]:
                 "full_port": "memo/ has route card, PORT.yaml, packet dirs, and index",
                 "mature_port": "future state: local port is connected to reviewed landing, stats/evals, and repo vocabulary",
                 "live_check_required": "checked-in map found a stable marker route; run the live debt command for git currentness",
-                "needs_marker": "memory route exists but no writeback marker source was found",
+                "needs_first_marker": (
+                    "memory route exists but no first writeback marker source was found; this is "
+                    "activation backlog, not evidence of post-marker debt"
+                ),
                 "not_applicable": "no visible memory route or local memo port to track yet",
                 "unknown": "place root, marker source, or git currentness could not be established",
             },
@@ -898,6 +970,7 @@ def _live_writeback_debt_for_place(
         "marker_commit_ref": "",
         "head_ref": "",
         "worktree_dirty": None,
+        "first_marker_route": place["writeback_debt"].get("first_marker_route", ""),
         "next_route": "inspect the owner route manually",
     }
     if marker_status == "not_applicable":
@@ -909,12 +982,14 @@ def _live_writeback_debt_for_place(
             "next_route": "add a memory route before writeback tracking",
         }
     if marker_status == "missing":
+        first_marker_route = str(place["writeback_debt"].get("first_marker_route", ""))
         return {
             **base,
-            "status": "needs_marker",
+            "status": "needs_first_marker",
             "commits_since_marker": 0,
             "worktree_dirty": False,
-            "next_route": "run aoa-memo-writeback and record a marker",
+            "first_marker_route": first_marker_route,
+            "next_route": _first_marker_next_route(first_marker_route),
         }
     if root is None or not root.is_dir() or not _git_is_worktree(root):
         return {
@@ -966,7 +1041,7 @@ def build_writeback_debt_readout(workspace_root: Path) -> dict[str, Any]:
         "places_listed": len(places),
         "clean": sum(1 for place in places if place["status"] == "clean"),
         "has_unmarked_changes": sum(1 for place in places if place["status"] == "has_unmarked_changes"),
-        "needs_marker": sum(1 for place in places if place["status"] == "needs_marker"),
+        "needs_first_marker": sum(1 for place in places if place["status"] == "needs_first_marker"),
         "not_applicable": sum(1 for place in places if place["status"] == "not_applicable"),
         "unknown": sum(1 for place in places if place["status"] == "unknown"),
     }
@@ -1040,9 +1115,9 @@ def render_markdown(payload: Mapping[str, Any]) -> str:
     lines.extend(
         [
             "",
-            "## Writeback Debt",
+            "## Writeback Currentness",
             "",
-            "The checked-in map records stable marker routes. Git currentness is live-derived so the map does not become stale from its own commit.",
+            "The checked-in map records stable marker routes and separates first-marker activation from post-marker debt. Git currentness is live-derived so the map does not become stale from its own commit.",
             "",
             "```bash",
             "python scripts/build_workspace_memory_map.py \\",
@@ -1050,7 +1125,7 @@ def render_markdown(payload: Mapping[str, Any]) -> str:
             "  --writeback-debt-json",
             "```",
             "",
-            "| Place | Debt route | Marker | Decision | Next route |",
+            "| Place | Currentness route | Marker | Decision | Next route |",
             "|---|---|---|---|---|",
         ]
     )

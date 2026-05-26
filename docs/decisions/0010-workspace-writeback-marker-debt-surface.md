@@ -39,8 +39,9 @@ python scripts/build_workspace_memory_map.py \
   --writeback-debt-json
 ```
 
-The live output may report `clean`, `has_unmarked_changes`, `needs_marker`,
-`not_applicable`, or `unknown`. These statuses are routing signals only.
+The live output may report `clean`, `has_unmarked_changes`,
+`needs_first_marker`, `not_applicable`, or `unknown`. These statuses are
+routing signals only.
 Memory-worthiness remains a judgment step owned by `aoa-memo-writeback`; durable
 memory still lands through local memo ports and reviewed `aoa-memo` intake.
 
@@ -54,3 +55,18 @@ memory still lands through local memo ports and reviewed `aoa-memo` intake.
   authority.
 - `aoa-evals` can test whether agents use the marker/debt route correctly
   without owning capture or durable memory.
+
+## Review Log
+
+### 2026-05-26 - First Marker Activation Is Not Post-Marker Debt
+
+- Previous status language used `needs_marker` for every routed place with no
+  marker source.
+- New status language uses `needs_first_marker` for that case and preserves
+  `has_unmarked_changes` for real post-marker git currentness debt.
+- Reason: a missing first marker means the memory route needs activation and
+  owner judgment; it does not prove that a local memo candidate, export, or
+  route-only decision should be created.
+- The live readout now carries `first_marker_route` so distant agents can see
+  whether the next honest move is local memo-port activation, route-only owner
+  decision, session-evidence review, or workspace-plane route decision.

@@ -53,12 +53,21 @@ class WorkspaceMemoryMapTests(unittest.TestCase):
             self.assertEqual(by_name[".aoa"]["current_port_level"], "route_only")
             self.assertEqual(by_name["8Dionysus"]["writeback_marker"]["status"], "present")
             self.assertEqual(by_name["8Dionysus"]["writeback_debt"]["status"], "live_check_required")
-            self.assertEqual(by_name["aoa-memo"]["writeback_debt"]["status"], "needs_marker")
+            self.assertEqual(by_name["aoa-memo"]["writeback_debt"]["status"], "needs_first_marker")
+            self.assertEqual(
+                by_name["aoa-memo"]["writeback_debt"]["first_marker_route"],
+                "route_only_owner_decision",
+            )
 
             validate_workspace_memory_map.validate_payload(payload)
             self.assertEqual(payload["access_plane"]["runtime_status"], "not_asserted_by_workspace_map")
             self.assertEqual(payload["writeback_surface"]["judgment_route"], "aoa-memo-writeback")
+            self.assertIn("local_memo_port_activation", payload["taxonomy"]["first_marker_routes"])
             self.assertIn("smoke_aoa_memo_mcp.py", payload["access_plane"]["smoke_check"])
+            live_readout = build_workspace_memory_map.build_writeback_debt_readout(workspace)
+            live_by_name = {place["name"]: place for place in live_readout["places"]}
+            self.assertEqual(live_by_name["aoa-memo"]["status"], "needs_first_marker")
+            self.assertGreaterEqual(live_readout["totals"]["needs_first_marker"], 1)
             rendered = json.dumps(payload, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
             self.assertNotIn(str(workspace), rendered)
 
@@ -143,7 +152,8 @@ allowed_routes:
         self.assertIn("MCP", markdown)
         self.assertIn("repo/memo", markdown)
         self.assertIn("runtime_status", markdown)
-        self.assertIn("Writeback Debt", markdown)
+        self.assertIn("Writeback Currentness", markdown)
+        self.assertIn("needs_first_marker", markdown)
         self.assertIn("writeback-debt-json", markdown)
 
     @unittest.skipIf(shutil.which("git") is None, "git is required for live debt currentness")

@@ -33,7 +33,7 @@ python scripts/validate_workspace_memory_map.py
 - `session_evidence_routes`: 1
 - `writeback_live_checks`: 5
 - `writeback_markers`: 5
-- `writeback_needs_marker`: 15
+- `writeback_needs_first_marker`: 15
 - `writeback_not_applicable`: 0
 - `writeback_unknown`: 0
 
@@ -57,9 +57,9 @@ python scripts/validate_workspace_memory_map.py
 | `full_port` | memo/ has route card, PORT.yaml, packet dirs, and index |
 | `mature_port` | future state: local port is connected to reviewed landing, stats/evals, and repo vocabulary |
 
-## Writeback Debt
+## Writeback Currentness
 
-The checked-in map records stable marker routes. Git currentness is live-derived so the map does not become stale from its own commit.
+The checked-in map records stable marker routes and separates first-marker activation from post-marker debt. Git currentness is live-derived so the map does not become stale from its own commit.
 
 ```bash
 python scripts/build_workspace_memory_map.py \
@@ -67,28 +67,28 @@ python scripts/build_workspace_memory_map.py \
   --writeback-debt-json
 ```
 
-| Place | Debt route | Marker | Decision | Next route |
+| Place | Currentness route | Marker | Decision | Next route |
 |---|---|---|---|---|
 | 8Dionysus | `live_check_required` | 8Dionysus/generated/workspace_memory_map.min.json | `no_writeback_needed` | run live writeback debt check before closeout |
-| Agents-of-Abyss | `needs_marker` | missing | `` | run aoa-memo-writeback and record a candidate/export/no-writeback marker |
-| Tree-of-Sophia | `needs_marker` | missing | `` | run aoa-memo-writeback and record a candidate/export/no-writeback marker |
+| Agents-of-Abyss | `needs_first_marker` | missing | `` | inspect the owner repo and local memo port; record a bounded candidate/export only for meaningful landed work, otherwise record an explicit no-writeback marker |
+| Tree-of-Sophia | `needs_first_marker` | missing | `` | inspect the owner repo and local memo port; record a bounded candidate/export only for meaningful landed work, otherwise record an explicit no-writeback marker |
 | abyss-stack | `live_check_required` | ~/src/abyss-stack/memo/receipts/20260526T003646Z.export-abyss-stack-20260526t003500z-os-access-pl.forwarding-receipt.json | `write_candidate` | run live writeback debt check before closeout |
-| ATM10-Agent | `needs_marker` | missing | `` | run aoa-memo-writeback and record a candidate/export/no-writeback marker |
-| Dionysus | `needs_marker` | missing | `` | run aoa-memo-writeback and record a candidate/export/no-writeback marker |
-| aoa-sdk | `needs_marker` | missing | `` | run aoa-memo-writeback and record a candidate/export/no-writeback marker |
-| aoa-techniques | `needs_marker` | missing | `` | run aoa-memo-writeback and record a candidate/export/no-writeback marker |
+| ATM10-Agent | `needs_first_marker` | missing | `` | inspect the owner repo route; record a route-only marker only when there is meaningful landed work or an explicit no-writeback baseline |
+| Dionysus | `needs_first_marker` | missing | `` | inspect the owner repo and local memo port; record a bounded candidate/export only for meaningful landed work, otherwise record an explicit no-writeback marker |
+| aoa-sdk | `needs_first_marker` | missing | `` | inspect the owner repo route; record a route-only marker only when there is meaningful landed work or an explicit no-writeback baseline |
+| aoa-techniques | `needs_first_marker` | missing | `` | inspect the owner repo and local memo port; record a bounded candidate/export only for meaningful landed work, otherwise record an explicit no-writeback marker |
 | aoa-skills | `live_check_required` | aoa-skills/docs/decisions/2026-05-25-memo-writeback-skill-owner-boundary.md | `route_only_debt` | run live writeback debt check before closeout |
 | aoa-evals | `live_check_required` | aoa-evals/docs/decisions/0113-aoa-memo-writeback-decision-quality-eval.md | `route_only_debt` | run live writeback debt check before closeout |
-| aoa-stats | `needs_marker` | missing | `` | run aoa-memo-writeback and record a candidate/export/no-writeback marker |
-| aoa-routing | `needs_marker` | missing | `` | run aoa-memo-writeback and record a candidate/export/no-writeback marker |
+| aoa-stats | `needs_first_marker` | missing | `` | inspect the owner repo route; record a route-only marker only when there is meaningful landed work or an explicit no-writeback baseline |
+| aoa-routing | `needs_first_marker` | missing | `` | inspect the owner repo route; record a route-only marker only when there is meaningful landed work or an explicit no-writeback baseline |
 | aoa-memo | `live_check_required` | aoa-memo/memo/intake/receipts/20260526T004143Z.abyss-stack.abyss-stack-os-access-plane-mcp-services.landing-receipt.json | `reviewed_write` | run live writeback debt check before closeout |
-| aoa-agents | `needs_marker` | missing | `` | run aoa-memo-writeback and record a candidate/export/no-writeback marker |
-| aoa-playbooks | `needs_marker` | missing | `` | run aoa-memo-writeback and record a candidate/export/no-writeback marker |
-| aoa-kag | `needs_marker` | missing | `` | run aoa-memo-writeback and record a candidate/export/no-writeback marker |
-| abyss-machine | `needs_marker` | missing | `` | run aoa-memo-writeback and record a candidate/export/no-writeback marker |
-| .aoa | `needs_marker` | missing | `` | run aoa-memo-writeback and record a candidate/export/no-writeback marker |
-| .codex | `needs_marker` | missing | `` | run aoa-memo-writeback and record a candidate/export/no-writeback marker |
-| .agents | `needs_marker` | missing | `` | run aoa-memo-writeback and record a candidate/export/no-writeback marker |
+| aoa-agents | `needs_first_marker` | missing | `` | inspect the owner repo and local memo port; record a bounded candidate/export only for meaningful landed work, otherwise record an explicit no-writeback marker |
+| aoa-playbooks | `needs_first_marker` | missing | `` | inspect the owner repo and local memo port; record a bounded candidate/export only for meaningful landed work, otherwise record an explicit no-writeback marker |
+| aoa-kag | `needs_first_marker` | missing | `` | inspect the owner repo route; record a route-only marker only when there is meaningful landed work or an explicit no-writeback baseline |
+| abyss-machine | `needs_first_marker` | missing | `` | inspect the owner repo and local memo port; record a bounded candidate/export only for meaningful landed work, otherwise record an explicit no-writeback marker |
+| .aoa | `needs_first_marker` | missing | `` | review the .aoa session-evidence route before deciding whether any durable memo writeback is warranted |
+| .codex | `needs_first_marker` | missing | `` | record an owner-reviewed route decision only when this workspace plane has meaningful landed work |
+| .agents | `needs_first_marker` | missing | `` | record an owner-reviewed route decision only when this workspace plane has meaningful landed work |
 
 ## Places
 

@@ -45,6 +45,7 @@
         "writeback_marker_statuses",
         "writeback_debt_statuses",
         "live_writeback_debt_statuses",
+        "first_marker_routes",
         "meaning"
       ],
       "properties": {
@@ -102,7 +103,7 @@
           "items": {
             "enum": [
               "live_check_required",
-              "needs_marker",
+              "needs_first_marker",
               "not_applicable",
               "unknown"
             ]
@@ -116,13 +117,26 @@
             "enum": [
               "clean",
               "has_unmarked_changes",
-              "needs_marker",
+              "needs_first_marker",
               "not_applicable",
               "unknown"
             ]
           },
           "minItems": 5,
           "maxItems": 5
+        },
+        "first_marker_routes": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "local_memo_port_activation",
+              "route_only_owner_decision",
+              "session_evidence_kernel_review",
+              "workspace_plane_route_decision"
+            ]
+          },
+          "minItems": 4,
+          "maxItems": 4
         }
       },
       "additionalProperties": true
@@ -393,7 +407,7 @@
               "status": {
                 "enum": [
                   "live_check_required",
-                  "needs_marker",
+                  "needs_first_marker",
                   "not_applicable",
                   "unknown"
                 ]
@@ -406,6 +420,15 @@
               },
               "next_route": {
                 "type": "string"
+              },
+              "first_marker_route": {
+                "enum": [
+                  "",
+                  "local_memo_port_activation",
+                  "route_only_owner_decision",
+                  "session_evidence_kernel_review",
+                  "workspace_plane_route_decision"
+                ]
               }
             },
             "additionalProperties": true

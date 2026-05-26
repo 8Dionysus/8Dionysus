@@ -114,6 +114,26 @@ allowed_routes:
             self.assertIn("aoa-memo/memo/intake/receipts/", marker["marker_ref"])
             validate_workspace_memory_map.validate_payload(payload)
 
+    def test_workspace_memory_map_sync_is_8dionysus_marker(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            workspace = Path(tmp)
+            root = workspace / "8Dionysus"
+            self._make_root(root, with_memory_route=True)
+            write_text(root / "docs" / "decisions" / "0001-memory-writeback.md", "# Memory writeback\n")
+            write_text(root / "docs" / "WORKSPACE_MEMORY_MAP.md", "# Workspace memory map\n")
+            write_text(root / "generated" / "workspace_memory_map.min.json", "{}\n")
+
+            payload = build_workspace_memory_map.build_workspace_memory_map(workspace)
+            by_name = {place["name"]: place for place in payload["places"]}
+            marker = by_name["8Dionysus"]["writeback_marker"]
+
+            self.assertEqual(marker["status"], "present")
+            self.assertEqual(marker["marker_kind"], "workspace_memory_map_sync")
+            self.assertEqual(marker["decision"], "no_writeback_needed")
+            self.assertEqual(marker["source"], "workspace_memory_map_sync")
+            self.assertEqual(marker["marker_ref"], "8Dionysus/generated/workspace_memory_map.min.json")
+            validate_workspace_memory_map.validate_payload(payload)
+
     def test_markdown_keeps_route_contract_visible(self) -> None:
         payload = build_workspace_memory_map.build_workspace_memory_map(Path(__file__).resolve().parents[2])
         markdown = build_workspace_memory_map.render_markdown(payload)

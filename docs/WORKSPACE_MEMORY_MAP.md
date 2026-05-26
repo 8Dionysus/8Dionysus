@@ -69,7 +69,7 @@ python scripts/build_workspace_memory_map.py \
 
 | Place | Debt route | Marker | Decision | Next route |
 |---|---|---|---|---|
-| 8Dionysus | `live_check_required` | 8Dionysus/docs/decisions/0012-reviewed-memory-landing-receipts-as-writeback-markers.md | `route_only_debt` | run live writeback debt check before closeout |
+| 8Dionysus | `live_check_required` | 8Dionysus/generated/workspace_memory_map.min.json | `no_writeback_needed` | run live writeback debt check before closeout |
 | Agents-of-Abyss | `needs_marker` | missing | `` | run aoa-memo-writeback and record a candidate/export/no-writeback marker |
 | Tree-of-Sophia | `needs_marker` | missing | `` | run aoa-memo-writeback and record a candidate/export/no-writeback marker |
 | abyss-stack | `live_check_required` | ~/src/abyss-stack/memo/receipts/20260526T003646Z.export-abyss-stack-20260526t003500z-os-access-pl.forwarding-receipt.json | `write_candidate` | run live writeback debt check before closeout |
@@ -78,7 +78,7 @@ python scripts/build_workspace_memory_map.py \
 | aoa-sdk | `needs_marker` | missing | `` | run aoa-memo-writeback and record a candidate/export/no-writeback marker |
 | aoa-techniques | `needs_marker` | missing | `` | run aoa-memo-writeback and record a candidate/export/no-writeback marker |
 | aoa-skills | `live_check_required` | aoa-skills/docs/decisions/2026-05-25-memo-writeback-skill-owner-boundary.md | `route_only_debt` | run live writeback debt check before closeout |
-| aoa-evals | `live_check_required` | aoa-evals/docs/decisions/0045-closeout-writeback-ingress-boundary.md | `route_only_debt` | run live writeback debt check before closeout |
+| aoa-evals | `live_check_required` | aoa-evals/docs/decisions/0113-aoa-memo-writeback-decision-quality-eval.md | `route_only_debt` | run live writeback debt check before closeout |
 | aoa-stats | `needs_marker` | missing | `` | run aoa-memo-writeback and record a candidate/export/no-writeback marker |
 | aoa-routing | `needs_marker` | missing | `` | run aoa-memo-writeback and record a candidate/export/no-writeback marker |
 | aoa-memo | `live_check_required` | aoa-memo/memo/intake/receipts/20260526T004143Z.abyss-stack.abyss-stack-os-access-plane-mcp-services.landing-receipt.json | `reviewed_write` | run live writeback debt check before closeout |

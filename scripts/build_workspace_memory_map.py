@@ -432,6 +432,22 @@ def _writeback_marker_candidates(root: Path, workspace_root: Path) -> list[dict[
             }
         )
 
+    if root.name == "aoa-memo":
+        for rel_path in (
+            "generated/memory/access_plane_currentness.min.json",
+            "generated/memory/workspace_memo_port_status.min.json",
+        ):
+            if (root / rel_path).is_file():
+                candidates.append(
+                    {
+                        "marker_kind": "memo_operational_readout_sync",
+                        "decision": "no_writeback_needed",
+                        "marker_path": rel_path,
+                        "marker_ref": _place_file_ref(root, workspace_root, rel_path),
+                        "source": "memo_operational_readout_sync",
+                    }
+                )
+
     decision_root = root / "docs" / "decisions"
     if decision_root.is_dir():
         for path in sorted(decision_root.glob("*.md")):
@@ -486,8 +502,18 @@ def writeback_marker_record(
             "marker_path": "",
             "source": "",
         }
-    latest = sorted(candidates, key=lambda item: item["marker_path"])[-1]
+    latest = sorted(candidates, key=lambda item: _marker_candidate_sort_key(root, item))[-1]
     return {"status": "present", **latest}
+
+
+def _marker_candidate_sort_key(root: Path, marker: Mapping[str, str]) -> tuple[int, int, str, str]:
+    marker_commit = _git_file_commit(root, marker["marker_path"])
+    if not marker_commit:
+        return (0, -1_000_000, "", marker["marker_path"])
+    count = _git_commit_count_since(root, marker_commit["sha"])
+    if count is None:
+        return (1, -1_000_000, marker_commit.get("committed_at", ""), marker["marker_path"])
+    return (1, -count, marker_commit.get("committed_at", ""), marker["marker_path"])
 
 
 def _first_marker_route(
@@ -917,6 +943,7 @@ def build_workspace_memory_map(workspace_root: Path) -> dict[str, Any]:
             "marker_sources": [
                 "repo/memo candidates, receipts, exports, and local records",
                 "aoa-memo reviewed intake landing receipts",
+                "aoa-memo generated operational readout sync",
                 "8Dionysus generated workspace memory map sync",
                 "repo-local docs/decisions records with writeback in the filename",
             ],

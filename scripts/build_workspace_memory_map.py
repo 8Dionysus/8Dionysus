@@ -51,6 +51,7 @@ TERMINAL_REVIEW_STATES = {"rejected", "landed", "superseded", "archived"}
 WRITEBACK_DECISIONS = (
     "write_candidate",
     "prepare_export",
+    "reviewed_write",
     "no_writeback_needed",
     "route_only_debt",
     "needs_owner_review",
@@ -392,6 +393,24 @@ def _writeback_marker_candidates(root: Path, workspace_root: Path) -> list[dict[
                     "source": "memo_port_packet",
                 }
             )
+
+    intake_receipts_root = memo_root / "intake" / "receipts"
+    for path in _packet_files(intake_receipts_root):
+        payload = _load_json(path)
+        if payload.get("schema") != "aoa_memo_reviewed_intake_landing_receipt_v1":
+            continue
+        if payload.get("result") != "landed":
+            continue
+        rel_path = _relative_path(path, root)
+        candidates.append(
+            {
+                "marker_kind": "reviewed_memory_landing_receipt",
+                "decision": "reviewed_write",
+                "marker_path": rel_path,
+                "marker_ref": _place_file_ref(root, workspace_root, rel_path),
+                "source": "reviewed_memory_corpus",
+            }
+        )
 
     decision_root = root / "docs" / "decisions"
     if decision_root.is_dir():
@@ -811,6 +830,7 @@ def build_workspace_memory_map(workspace_root: Path) -> dict[str, Any]:
             "authority_limit": "marker and debt routing only; durable memory truth stays in local memo ports and reviewed aoa-memo intake",
             "marker_sources": [
                 "repo/memo candidates, receipts, exports, and local records",
+                "aoa-memo reviewed intake landing receipts",
                 "repo-local docs/decisions records with writeback in the filename",
             ],
             "live_debt_command": WRITEBACK_LIVE_COMMAND,

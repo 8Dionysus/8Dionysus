@@ -18,10 +18,10 @@ python scripts/validate_workspace_memory_map.py
 ## Totals
 
 - `full_ports`: 9
-- `landed_exports`: 1
-- `local_candidates`: 2
+- `landed_exports`: 2
+- `local_candidates`: 3
 - `memory_routes`: 20
-- `pending_candidates`: 2
+- `pending_candidates`: 3
 - `pending_exports`: 1
 - `places_listed`: 20
 - `places_scanned`: 20
@@ -69,10 +69,10 @@ python scripts/build_workspace_memory_map.py \
 
 | Place | Debt route | Marker | Decision | Next route |
 |---|---|---|---|---|
-| 8Dionysus | `live_check_required` | 8Dionysus/docs/decisions/0011-workspace-memory-map-writeback-sync.md | `route_only_debt` | run live writeback debt check before closeout |
+| 8Dionysus | `live_check_required` | 8Dionysus/docs/decisions/0012-reviewed-memory-landing-receipts-as-writeback-markers.md | `route_only_debt` | run live writeback debt check before closeout |
 | Agents-of-Abyss | `needs_marker` | missing | `` | run aoa-memo-writeback and record a candidate/export/no-writeback marker |
 | Tree-of-Sophia | `needs_marker` | missing | `` | run aoa-memo-writeback and record a candidate/export/no-writeback marker |
-| abyss-stack | `live_check_required` | ~/src/abyss-stack/memo/receipts/20260522T021004Z.aoa-memo-mcp-access-plane.forwarding-receipt.json | `write_candidate` | run live writeback debt check before closeout |
+| abyss-stack | `live_check_required` | ~/src/abyss-stack/memo/receipts/20260526T003646Z.export-abyss-stack-20260526t003500z-os-access-pl.forwarding-receipt.json | `write_candidate` | run live writeback debt check before closeout |
 | ATM10-Agent | `needs_marker` | missing | `` | run aoa-memo-writeback and record a candidate/export/no-writeback marker |
 | Dionysus | `needs_marker` | missing | `` | run aoa-memo-writeback and record a candidate/export/no-writeback marker |
 | aoa-sdk | `needs_marker` | missing | `` | run aoa-memo-writeback and record a candidate/export/no-writeback marker |
@@ -81,7 +81,7 @@ python scripts/build_workspace_memory_map.py \
 | aoa-evals | `live_check_required` | aoa-evals/docs/decisions/0045-closeout-writeback-ingress-boundary.md | `route_only_debt` | run live writeback debt check before closeout |
 | aoa-stats | `needs_marker` | missing | `` | run aoa-memo-writeback and record a candidate/export/no-writeback marker |
 | aoa-routing | `needs_marker` | missing | `` | run aoa-memo-writeback and record a candidate/export/no-writeback marker |
-| aoa-memo | `live_check_required` | aoa-memo/docs/decisions/2026-05-25-writeback-debt-catchup-reviewed-objects.md | `route_only_debt` | run live writeback debt check before closeout |
+| aoa-memo | `live_check_required` | aoa-memo/memo/intake/receipts/20260526T004143Z.abyss-stack.abyss-stack-os-access-plane-mcp-services.landing-receipt.json | `reviewed_write` | run live writeback debt check before closeout |
 | aoa-agents | `needs_marker` | missing | `` | run aoa-memo-writeback and record a candidate/export/no-writeback marker |
 | aoa-playbooks | `needs_marker` | missing | `` | run aoa-memo-writeback and record a candidate/export/no-writeback marker |
 | aoa-kag | `needs_marker` | missing | `` | run aoa-memo-writeback and record a candidate/export/no-writeback marker |
@@ -97,7 +97,7 @@ python scripts/build_workspace_memory_map.py \
 | 8Dionysus | workspace-route-map-owner | `route_only` | `route_only` | root_memory_route | 0 | 0 | 0 | 0 | `python scripts/build_workspace_memory_map.py --check` | ok |
 | Agents-of-Abyss | local-memory-port-candidate | `full_port` | `full_port` | local_port_route | 0 | 0 | 0 | 0 | `PYTHONPATH="${AOA_ABYSS_STACK_ROOT:-$HOME/src/abyss-stack}/mcp/services/aoa-memo-mcp/src" python -m aoa_memo_mcp.cli validate-port --repo Agents-of-Abyss` | ok |
 | Tree-of-Sophia | local-memory-port-candidate | `full_port` | `full_port` | local_port_route | 0 | 0 | 0 | 0 | `PYTHONPATH="${AOA_ABYSS_STACK_ROOT:-$HOME/src/abyss-stack}/mcp/services/aoa-memo-mcp/src" python -m aoa_memo_mcp.cli validate-port --repo Tree-of-Sophia` | ok |
-| abyss-stack | mcp-access-plane-owner | `full_port` | `full_port` | local_port_route | 2 | 1 | 0 | 1 | `PYTHONPATH="${AOA_ABYSS_STACK_ROOT:-$HOME/src/abyss-stack}/mcp/services/aoa-memo-mcp/src" python -m aoa_memo_mcp.cli validate-port --repo abyss-stack` | ok |
+| abyss-stack | mcp-access-plane-owner | `full_port` | `full_port` | local_port_route | 3 | 1 | 0 | 2 | `PYTHONPATH="${AOA_ABYSS_STACK_ROOT:-$HOME/src/abyss-stack}/mcp/services/aoa-memo-mcp/src" python -m aoa_memo_mcp.cli validate-port --repo abyss-stack` | ok |
 | ATM10-Agent | workspace-memory-route | `route_only` | `route_only` | root_memory_route | 0 | 0 | 0 | 0 | `python scripts/build_workspace_memory_map.py --check` | ok |
 | Dionysus | local-memory-port-candidate | `full_port` | `full_port` | local_port_route | 0 | 0 | 0 | 0 | `PYTHONPATH="${AOA_ABYSS_STACK_ROOT:-$HOME/src/abyss-stack}/mcp/services/aoa-memo-mcp/src" python -m aoa_memo_mcp.cli validate-port --repo Dionysus` | ok |
 | aoa-sdk | workspace-memory-route | `route_only` | `route_only` | root_memory_route | 0 | 0 | 0 | 0 | `python scripts/build_workspace_memory_map.py --check` | ok |

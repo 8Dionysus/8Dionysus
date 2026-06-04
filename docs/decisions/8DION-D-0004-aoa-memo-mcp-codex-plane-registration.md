@@ -1,4 +1,14 @@
-# 0004 AoA Memo MCP Codex-Plane Registration
+# AoA Memo MCP Codex-Plane Registration
+
+## Index Metadata
+
+- Decision ID: 8DION-D-0004
+- Original date: 2026-05-20
+- Surface classes: codex plane, MCP access, memory route
+- Route anchors: .codex/config.toml, .codex/bin/aoa-memo-mcp-server.py, config/codex_plane/runtime_manifest.v1.json
+- Owner lanes: 8Dionysus, abyss-stack, aoa-memo
+- Guard families: access-plane boundary, projection drift, stable MCP name
+- Posture: accepted
 
 ## Status
 

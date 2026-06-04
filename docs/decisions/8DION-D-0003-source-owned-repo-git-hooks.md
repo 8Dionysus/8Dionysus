@@ -1,4 +1,14 @@
-# 0003 Source-Owned Repo Git Hooks
+# Source-Owned Repo Git Hooks
+
+## Index Metadata
+
+- Decision ID: 8DION-D-0003
+- Original date: 2026-04-30
+- Surface classes: git hooks, shared-root projection, repo-local automation
+- Route anchors: config/git_hooks, scripts/manage_workspace_git_hooks.py, .git/hooks
+- Owner lanes: 8Dionysus, workspace checkouts
+- Guard families: source-owned templates, unmanaged-hook safety, root move repair
+- Posture: accepted
 
 ## Status
 

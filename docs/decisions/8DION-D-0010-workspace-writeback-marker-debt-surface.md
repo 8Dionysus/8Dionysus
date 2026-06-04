@@ -1,4 +1,14 @@
-# 0010 Workspace Writeback Marker Debt Surface
+# Workspace Writeback Marker Debt Surface
+
+## Index Metadata
+
+- Decision ID: 8DION-D-0010
+- Original date: 2026-05-25
+- Surface classes: workspace memory map, writeback debt, generated read model
+- Route anchors: generated/workspace_memory_map.min.json, docs/WORKSPACE_MEMORY_MAP.md, scripts/build_workspace_memory_map.py
+- Owner lanes: 8Dionysus, aoa-memo, repository owners
+- Guard families: live debt readout, marker taxonomy, durable memory authority
+- Posture: accepted
 
 ## Status
 

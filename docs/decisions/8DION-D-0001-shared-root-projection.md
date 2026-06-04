@@ -1,4 +1,14 @@
-# Decision 0001: Shared-Root Projection Lives in 8Dionysus
+# Shared-Root Projection Lives in 8Dionysus
+
+## Index Metadata
+
+- Decision ID: 8DION-D-0001
+- Original date: 2026-04-11
+- Surface classes: shared-root projection, public entry, workspace install
+- Route anchors: AGENTS.md, AOA_WORKSPACE_ROOT, .agents, .codex, scripts/project_workspace_root.py
+- Owner lanes: 8Dionysus, workspace root, sibling owner repos
+- Guard families: projection source truth, owner boundary, drift preview
+- Posture: accepted
 
 ## Context
 

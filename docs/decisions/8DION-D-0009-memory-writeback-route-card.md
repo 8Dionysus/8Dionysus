@@ -1,4 +1,14 @@
-# 0009 Memory Writeback Route Card
+# Memory Writeback Route Card
+
+## Index Metadata
+
+- Decision ID: 8DION-D-0009
+- Original date: 2026-05-25
+- Surface classes: memory writeback, route card, skill dispatch
+- Route anchors: AGENTS.md, aoa-memo-writeback, repo-local memo ports
+- Owner lanes: 8Dionysus, aoa-memo, repository owners
+- Guard families: judgment-heavy writeback, hook boundary, durable memory authority
+- Posture: accepted
 
 ## Status
 

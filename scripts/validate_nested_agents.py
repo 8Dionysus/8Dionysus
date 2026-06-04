@@ -46,6 +46,12 @@ REQUIRED_AGENTS_DOCS: dict[str, tuple[str, ...]] = {
         "owning repository",
         "audit_agents_map.py",
     ),
+    "docs/decisions/AGENTS.md": (
+        "canonical rationale lane",
+        "8DION-D-####",
+        "Generated indexes",
+        "validate_decision_records.py",
+    ),
     "examples/AGENTS.md": (
         "public-safe examples",
         "teaching surfaces",

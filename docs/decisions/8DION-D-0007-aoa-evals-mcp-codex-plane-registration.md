@@ -1,4 +1,14 @@
-# 0007 AoA Evals MCP Codex-Plane Registration
+# AoA Evals MCP Codex-Plane Registration
+
+## Index Metadata
+
+- Decision ID: 8DION-D-0007
+- Original date: 2026-05-25
+- Surface classes: codex plane, MCP access, proof route
+- Route anchors: .codex/config.toml, .codex/bin/aoa-evals-mcp-server.py, config/codex_plane/runtime_manifest.v1.json
+- Owner lanes: 8Dionysus, abyss-stack, aoa-evals
+- Guard families: stable MCP name, proof authority boundary, access-plane boundary
+- Posture: accepted
 
 ## Status
 

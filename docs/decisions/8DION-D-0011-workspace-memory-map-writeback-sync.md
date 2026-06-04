@@ -1,4 +1,14 @@
-# 0011 Workspace Memory Map Writeback Sync
+# Workspace Memory Map Writeback Sync
+
+## Index Metadata
+
+- Decision ID: 8DION-D-0011
+- Original date: 2026-05-26
+- Surface classes: workspace memory map, generated read model, writeback marker
+- Route anchors: generated/workspace_memory_map.min.json, docs/WORKSPACE_MEMORY_MAP.md, scripts/build_workspace_memory_map.py
+- Owner lanes: 8Dionysus, aoa-memo
+- Guard families: self-debt prevention, generated map marker, owner-routed memory
+- Posture: accepted
 
 ## Status
 

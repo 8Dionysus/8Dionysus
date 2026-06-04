@@ -1,4 +1,14 @@
-# 0008 Abyss Machine MCP Codex-Plane Registration
+# Abyss Machine MCP Codex-Plane Registration
+
+## Index Metadata
+
+- Decision ID: 8DION-D-0008
+- Original date: 2026-05-25
+- Surface classes: codex plane, MCP access, host-machine route
+- Route anchors: .codex/config.toml, .codex/bin/abyss-machine-mcp-server.py, config/codex_plane/runtime_manifest.v1.json
+- Owner lanes: 8Dionysus, abyss-stack, abyss-machine
+- Guard families: stable MCP name, host truth boundary, read-only access plane
+- Posture: accepted
 
 ## Status
 

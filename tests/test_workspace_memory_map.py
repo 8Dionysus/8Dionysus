@@ -26,7 +26,7 @@ class WorkspaceMemoryMapTests(unittest.TestCase):
             workspace = Path(tmp)
             self._make_root(workspace / "8Dionysus", with_memory_route=True)
             write_text(
-                workspace / "8Dionysus" / "docs" / "decisions" / "0001-memory-writeback.md",
+                workspace / "8Dionysus" / "docs" / "decisions" / "8DION-D-0001-memory-writeback.md",
                 "# Memory writeback\n",
             )
             self._make_root(workspace / "Agents-of-Abyss", with_memory_route=True)
@@ -128,7 +128,7 @@ allowed_routes:
             workspace = Path(tmp)
             root = workspace / "8Dionysus"
             self._make_root(root, with_memory_route=True)
-            write_text(root / "docs" / "decisions" / "0001-memory-writeback.md", "# Memory writeback\n")
+            write_text(root / "docs" / "decisions" / "8DION-D-0001-memory-writeback.md", "# Memory writeback\n")
             write_text(root / "docs" / "WORKSPACE_MEMORY_MAP.md", "# Workspace memory map\n")
             write_text(root / "generated" / "workspace_memory_map.min.json", "{}\n")
 
@@ -215,7 +215,7 @@ allowed_routes:
             root = workspace / "8Dionysus"
             self._make_root(root, with_memory_route=True)
             write_text(
-                root / "docs" / "decisions" / "0001-memory-writeback.md",
+                root / "docs" / "decisions" / "8DION-D-0001-memory-writeback.md",
                 "# Memory writeback\n",
             )
             self._git(root, "init")

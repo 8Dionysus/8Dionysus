@@ -40,6 +40,7 @@ class ValidateNestedAgentsTests(unittest.TestCase):
             ".github/AGENTS.md",
             "config/AGENTS.md",
             "docs/AGENTS.md",
+            "docs/decisions/AGENTS.md",
             "examples/AGENTS.md",
             "generated/AGENTS.md",
             "manifests/AGENTS.md",

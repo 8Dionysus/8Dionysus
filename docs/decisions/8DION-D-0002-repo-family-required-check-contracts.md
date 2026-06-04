@@ -1,4 +1,14 @@
-# Decision 0002: Repo-Family Required Check Contracts Stay Coordination-Only in 8Dionysus
+# Repo-Family Required Check Contracts Stay Coordination-Only in 8Dionysus
+
+## Index Metadata
+
+- Decision ID: 8DION-D-0002
+- Original date: 2026-04-19
+- Surface classes: github required checks, repo-family coordination, public contract
+- Route anchors: config/github_required_check_contracts.json, docs/GITHUB_REQUIRED_CHECK_CONTRACTS.md, scripts/validate_github_required_check_contracts.py, scripts/run_required_check_audit.py
+- Owner lanes: 8Dionysus, public repo family, owner repositories
+- Guard families: branch protection, workflow drift, coordination-only
+- Posture: accepted
 
 ## Context
 

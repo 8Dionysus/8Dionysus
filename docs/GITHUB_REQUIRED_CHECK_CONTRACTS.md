@@ -7,7 +7,7 @@ It does not make `8Dionysus` the owner of linked repository workflow meaning.
 Owner repos still decide what their checks actually prove, how broad they are,
 and what release or runtime guarantees they carry.
 
-Decision note: [docs/decisions/0002-repo-family-required-check-contracts.md](decisions/0002-repo-family-required-check-contracts.md)
+Decision note: [docs/decisions/8DION-D-0002-repo-family-required-check-contracts.md](decisions/8DION-D-0002-repo-family-required-check-contracts.md)
 
 ## Canonical files
 

@@ -17,7 +17,7 @@ TRIGGER_PATHS = {
     ".codex/bin/aoa-required-check-audit",
     "config/github_required_check_contracts.json",
     "docs/GITHUB_REQUIRED_CHECK_CONTRACTS.md",
-    "docs/decisions/0002-repo-family-required-check-contracts.md",
+    "docs/decisions/8DION-D-0002-repo-family-required-check-contracts.md",
     "schemas/github_required_check_contracts.schema.json",
     "scripts/run_required_check_audit.py",
     "scripts/validate_github_required_check_contracts.py",

@@ -1,4 +1,14 @@
-# Decision 0006: System Local Memo Port Rollout
+# System Local Memo Port Rollout
+
+## Index Metadata
+
+- Decision ID: 8DION-D-0006
+- Original date: 2026-05-22
+- Surface classes: memory port rollout, workspace route, local memo ports
+- Route anchors: memo/PORT.yaml, memo/INDEX.md, generated/workspace_memory_map.min.json
+- Owner lanes: 8Dionysus, aoa-memo, target owner repositories
+- Guard families: packet-first memory, reviewed intake boundary, route-only migration
+- Posture: accepted
 
 ## Context
 

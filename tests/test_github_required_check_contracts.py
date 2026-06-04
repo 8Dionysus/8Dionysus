@@ -40,7 +40,7 @@ class GitHubRequiredCheckContractTests(unittest.TestCase):
             REPO_ROOT
             / "docs"
             / "decisions"
-            / "0002-repo-family-required-check-contracts.md"
+            / "8DION-D-0002-repo-family-required-check-contracts.md"
         ).read_text(encoding="utf-8")
         workflow = (
             REPO_ROOT / ".github" / "workflows" / "repo-family-drift-check.yml"
@@ -49,7 +49,7 @@ class GitHubRequiredCheckContractTests(unittest.TestCase):
         self.assertIn("config/github_required_check_contracts.json", doc)
         self.assertIn("schemas/github_required_check_contracts.schema.json", doc)
         self.assertIn("scripts/validate_github_required_check_contracts.py", doc)
-        self.assertIn("docs/decisions/0002-repo-family-required-check-contracts.md", doc)
+        self.assertIn("docs/decisions/8DION-D-0002-repo-family-required-check-contracts.md", doc)
         self.assertIn("docs/GITHUB_REQUIRED_CHECK_CONTRACTS.md", decision)
         self.assertIn("--remote-workflows", workflow)
         self.assertIn("validate_github_required_check_contracts.py", workflow)

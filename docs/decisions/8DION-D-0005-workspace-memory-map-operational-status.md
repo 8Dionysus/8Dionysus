@@ -1,4 +1,14 @@
-# Decision 0005: Workspace Memory Map Tracks Operational Memory Status
+# Workspace Memory Map Tracks Operational Memory Status
+
+## Index Metadata
+
+- Decision ID: 8DION-D-0005
+- Original date: 2026-05-22
+- Surface classes: workspace memory map, generated read model, memory route
+- Route anchors: generated/workspace_memory_map.min.json, docs/WORKSPACE_MEMORY_MAP.md, scripts/build_workspace_memory_map.py
+- Owner lanes: 8Dionysus, aoa-memo, local memo ports
+- Guard families: generated route, memory authority boundary, operational status
+- Posture: accepted
 
 ## Context
 

@@ -1,4 +1,14 @@
-# 0012 Reviewed Memory Landing Receipts As Writeback Markers
+# Reviewed Memory Landing Receipts As Writeback Markers
+
+## Index Metadata
+
+- Decision ID: 8DION-D-0012
+- Original date: 2026-05-26
+- Surface classes: workspace memory map, reviewed memory receipt, writeback marker
+- Route anchors: scripts/build_workspace_memory_map.py, memo/intake/receipts/*.json, generated/workspace_memory_map.min.json
+- Owner lanes: 8Dionysus, aoa-memo
+- Guard families: reviewed receipt marker, durable memory authority, marker taxonomy
+- Posture: accepted
 
 ## Status
 

@@ -1,0 +1,29 @@
+schema_version: 8dion_decision_index_contract_v1
+authority: docs/decisions/AGENTS.md
+source_records: docs/decisions/8DION-D-*.md
+generated_by: scripts/generate_decision_indexes.py
+id:
+  prefix: 8DION-D
+  pattern: 8DION-D-####
+filename:
+  pattern: 8DION-D-####-short-kebab-title.md
+  path_mode: full_canonical_id_filename
+metadata:
+  required_fields:
+    - Decision ID
+    - Original date
+    - Surface classes
+    - Route anchors
+    - Owner lanes
+    - Guard families
+    - Posture
+  original_date:
+    pattern: YYYY-MM-DD
+generated_indexes:
+  - docs/decisions/indexes/README.md
+  - docs/decisions/indexes/by-number.md
+  - docs/decisions/indexes/by-date.md
+  - docs/decisions/indexes/by-surface.md
+  - docs/decisions/indexes/by-route-anchor.md
+  - docs/decisions/indexes/by-owner-lane.md
+  - docs/decisions/indexes/by-guard.md

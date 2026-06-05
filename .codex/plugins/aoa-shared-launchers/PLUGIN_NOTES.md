@@ -14,6 +14,10 @@ This plugin is intentionally narrow.
   routing, runtime evidence templates, and candidate-only report skeletons.
   Verdict authority, proposal approval, and source bundle creation still land
   through `aoa-evals`.
+- It treats `aoa_decisions` as the decision-lane access plane for status,
+  search, repo packets, decision packets, graph refresh, and issue lookup.
+  Decision authority still lands through the owning repo's `docs/decisions/`
+  source notes and validators.
 
 Bundled skills:
 - `aoa-workspace-recon`

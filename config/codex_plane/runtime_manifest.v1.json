@@ -144,6 +144,12 @@
       "script_rel": ".codex/bin/aoa-evals-mcp-server.py"
     },
     {
+      "name": "aoa_decisions",
+      "repo_key": "workspace",
+      "cwd_repo_rel": "",
+      "script_rel": ".codex/bin/aoa-decisions-mcp-server.py"
+    },
+    {
       "name": "abyss_machine",
       "repo_key": "workspace",
       "cwd_repo_rel": "",

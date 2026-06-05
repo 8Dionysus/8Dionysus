@@ -102,6 +102,70 @@ class DecisionIndexTests(unittest.TestCase):
 
         self.assertTrue(any("top-level decision markdown must use 8DION-D-####-slug.md" in message for _, message in issues))
 
+    def test_index_contract_requires_explicit_modeled_surfaces_list(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo_root = Path(tmp)
+            _write(repo_root / "docs" / "decisions" / "8DION-D-0001-example.md", _decision_text())
+            _write(
+                repo_root / "docs" / "decisions" / "indexes" / "index_contract.yaml",
+                "schema_version: 8dion_decision_index_contract_v1\n",
+            )
+
+            issues = decision_indexes.validate_decision_lane_surfaces(repo_root)
+
+        self.assertIn(
+            (
+                "docs/decisions/indexes/index_contract.yaml",
+                "missing explicit modeled_surfaces list",
+            ),
+            issues,
+        )
+
+    def test_explicit_empty_modeled_surfaces_list_is_valid(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo_root = Path(tmp)
+            _write(repo_root / "docs" / "decisions" / "8DION-D-0001-example.md", _decision_text())
+            _write(
+                repo_root / "docs" / "decisions" / "indexes" / "index_contract.yaml",
+                "modeled_surfaces: []\n",
+            )
+
+            issues = decision_indexes.validate_decision_lane_surfaces(repo_root)
+
+        self.assertEqual([], issues)
+
+    def test_modeled_surfaces_reject_path_escape(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo_root = Path(tmp)
+            _write(repo_root / "docs" / "decisions" / "8DION-D-0001-example.md", _decision_text())
+            _write(
+                repo_root / "docs" / "decisions" / "indexes" / "index_contract.yaml",
+                "modeled_surfaces:\n  - docs/decisions/../../README.md\n",
+            )
+
+            issues = decision_indexes.validate_decision_lane_surfaces(repo_root)
+
+        self.assertTrue(any("safe relative path" in message for _, message in issues))
+
+    def test_modeled_surfaces_reject_null_style_blank_list(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo_root = Path(tmp)
+            _write(repo_root / "docs" / "decisions" / "8DION-D-0001-example.md", _decision_text())
+            _write(
+                repo_root / "docs" / "decisions" / "indexes" / "index_contract.yaml",
+                "modeled_surfaces:\n",
+            )
+
+            issues = decision_indexes.validate_decision_lane_surfaces(repo_root)
+
+        self.assertIn(
+            (
+                "docs/decisions/indexes/index_contract.yaml",
+                "modeled_surfaces must be [] or a non-empty list",
+            ),
+            issues,
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

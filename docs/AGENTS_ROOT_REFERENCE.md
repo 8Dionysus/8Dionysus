@@ -238,6 +238,10 @@ python scripts/recon_agents_frontier.py \
   expand, compare, return read-only find-or-propose eval-need context, and
   prepare candidate evidence/report skeletons, but verdicts, proposal approval,
   source bundle creation, and proof authority stay in `aoa-evals`
+- Treat `aoa_decisions` as the decision-lane access plane. It can status-check,
+  search, packetize, compare repo symmetry, refresh the graph, and surface
+  issues, but decision creation, correction, supersession, and rationale
+  authority stay in the owning repo's `docs/decisions/` lane.
 - Use `aoa_memo` when a task asks for recall, continuity, compaction recovery,
   local memo port state, memory candidate creation, port indexing, or reviewed
   intake preparation. Write durable memory only through the reviewed
@@ -263,6 +267,7 @@ workspace:
 - `dionysus`
 - `aoa_memo`
 - `aoa_evals`
+- `aoa_decisions`
 
 Boundary rules:
 
@@ -272,6 +277,7 @@ Boundary rules:
 - `Dionysus` remains staging and route context
 - `aoa_memo` remains an access plane over reviewed memory, session evidence, and local ports
 - `aoa_evals` remains an access plane over bounded proof readers, not a verdict engine
+- `aoa_decisions` remains an access plane over decision graph read models, not decision authority
 - owner truth stays in the owning repo
 
 ## Convergence posture

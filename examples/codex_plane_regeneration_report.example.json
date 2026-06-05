@@ -25,7 +25,8 @@
     "aoa_stats": true,
     "dionysus": true,
     "aoa_memo": true,
-    "aoa_evals": true
+    "aoa_evals": true,
+    "aoa_decisions": true
   },
   "warnings": [],
   "generated_at": "2026-04-11T21:05:00Z"

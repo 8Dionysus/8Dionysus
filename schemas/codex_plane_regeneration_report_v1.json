@@ -86,7 +86,8 @@
         "aoa_stats",
         "dionysus",
         "aoa_memo",
-        "aoa_evals"
+        "aoa_evals",
+        "aoa_decisions"
       ],
       "properties": {
         "aoa_workspace": {
@@ -102,6 +103,9 @@
           "type": "boolean"
         },
         "aoa_evals": {
+          "type": "boolean"
+        },
+        "aoa_decisions": {
           "type": "boolean"
         }
       }

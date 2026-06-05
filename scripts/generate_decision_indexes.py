@@ -186,6 +186,96 @@ def validate_index_contract(repo_root: Path = REPO_ROOT) -> list[tuple[str, str]
     return issues
 
 
+def _contract_list_values(repo_root: Path, key: str, issues: list[tuple[str, str]]) -> set[str]:
+    path = repo_root / INDEX_DIR / "index_contract.yaml"
+    rel = (INDEX_DIR / "index_contract.yaml").as_posix()
+    if not path.is_file():
+        return set()
+
+    values: set[str] = set()
+    in_list = False
+    found = False
+    for line in path.read_text(encoding="utf-8").splitlines():
+        if line == f"{key}: []":
+            found = True
+            in_list = False
+            continue
+        if line == f"{key}:":
+            found = True
+            in_list = True
+            continue
+        if in_list and line.startswith("  - "):
+            value = line[4:].strip().strip("'\"")
+            if value:
+                values.add(value)
+            continue
+        if in_list and line and not line.startswith(" "):
+            in_list = False
+
+    if not found:
+        issues.append((rel, f"missing explicit {key} list"))
+    elif in_list and not values:
+        issues.append((rel, f"{key} must be [] or a non-empty list"))
+    return values
+
+
+def _modeled_contract_surfaces(repo_root: Path, issues: list[tuple[str, str]]) -> set[str]:
+    allowed: set[str] = set()
+    contract_rel = (INDEX_DIR / "index_contract.yaml").as_posix()
+    for item in _contract_list_values(repo_root, "modeled_surfaces", issues):
+        relative = Path(item)
+        if relative.is_absolute() or ".." in relative.parts:
+            issues.append((contract_rel, f"modeled_surfaces entry must be a safe relative path: {item}"))
+            continue
+        try:
+            relative.relative_to(DECISIONS_DIR)
+        except ValueError:
+            issues.append((contract_rel, f"modeled_surfaces entry must live under {DECISIONS_DIR.as_posix()}: {item}"))
+            continue
+        if relative.parent == DECISIONS_DIR and relative.suffix == ".md" and relative.name not in STATIC_MARKDOWN and not DECISION_RE.match(relative.name):
+            issues.append((contract_rel, f"modeled_surfaces must not include root non-record Markdown: {item}"))
+            continue
+        if not (repo_root / relative).is_file():
+            issues.append((contract_rel, f"modeled_surfaces entry does not exist: {item}"))
+            continue
+        allowed.add(item)
+    return allowed
+
+
+def validate_decision_lane_surfaces(repo_root: Path = REPO_ROOT) -> list[tuple[str, str]]:
+    repo_root = repo_root.resolve()
+    decision_root = repo_root / DECISIONS_DIR
+    if not decision_root.is_dir():
+        return [(DECISIONS_DIR.as_posix(), "decision directory is missing")]
+
+    issues: list[tuple[str, str]] = []
+    allowed_paths = {
+        (DECISIONS_DIR / "AGENTS.md").as_posix(),
+        (DECISIONS_DIR / "README.md").as_posix(),
+        (DECISIONS_DIR / "TEMPLATE.md").as_posix(),
+        (INDEX_DIR / "index_contract.yaml").as_posix(),
+        *(path.as_posix() for path in INDEX_PATHS),
+        *_modeled_contract_surfaces(repo_root, issues),
+    }
+    for path in sorted(decision_root.rglob("*")):
+        if not path.is_file():
+            continue
+        relative = path.relative_to(repo_root)
+        relative_text = relative.as_posix()
+        if relative_text in allowed_paths:
+            continue
+        decision_relative = path.relative_to(decision_root)
+        if len(decision_relative.parts) == 1 and DECISION_RE.match(path.name):
+            continue
+        issues.append(
+            (
+                relative_text,
+                "unmodeled decision-lane surface; add it to modeled_surfaces in docs/decisions/indexes/index_contract.yaml or move it outside docs/decisions",
+            )
+        )
+    return issues
+
+
 def _record_link(record: DecisionRecord) -> str:
     return f"[{record.decision_id} - {record.title}](../{Path(record.path).name})"
 
@@ -320,6 +410,7 @@ def render_index_files(records: list[DecisionRecord]) -> dict[Path, str]:
 
 def validate_decision_indexes(repo_root: Path = REPO_ROOT) -> list[tuple[str, str]]:
     records, issues = collect_decision_records(repo_root)
+    issues.extend(validate_decision_lane_surfaces(repo_root))
     issues.extend(validate_index_contract(repo_root))
     if issues:
         return issues
@@ -343,6 +434,7 @@ def main(argv: list[str] | None = None) -> int:
 
     repo_root = args.repo_root.resolve()
     records, issues = collect_decision_records(repo_root)
+    issues.extend(validate_decision_lane_surfaces(repo_root))
     issues.extend(validate_index_contract(repo_root))
     if issues:
         for location, message in issues:

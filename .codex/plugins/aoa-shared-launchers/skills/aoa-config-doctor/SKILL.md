@@ -16,6 +16,7 @@ Diagnose the wiring instead of guessing.
    - `dionysus`
    - `aoa_memo`
    - `aoa_evals`
+   - `aoa_decisions`
 
 ## If local shell access is appropriate
 Recommend the smallest real validators that already exist in the workspace:

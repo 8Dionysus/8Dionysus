@@ -25,6 +25,13 @@ only. Verdicts, proposal approval, source bundle creation, evidence acceptance,
 receipt publication, bundle promotion, and proof authority remain in
 `aoa-evals`.
 
+Decision-lane access in the Codex plane uses `aoa_decisions` as an access
+plane. Use it to search, inspect, and packetize workspace `docs/decisions/`
+records before broad repo reads. The service refreshes its generated graph
+cache before reads when the input fingerprint changes. Decision creation,
+correction, supersession, and authority still land in the owning repository's
+source decision notes and local decision-index validators.
+
 Host-machine context in the Codex plane uses `abyss_machine` as an access plane.
 Use it for compact owner-aware machine briefs, evidence maps, safe read surfaces
 such as resource/memory/typing/nervous status, focused nervous recall, and
@@ -43,6 +50,7 @@ python scripts/validate_nested_agents.py
 python scripts/build_workspace_memory_map.py --check
 python scripts/smoke_aoa_memo_mcp.py --workspace-root /srv/AbyssOS
 python scripts/smoke_aoa_evals_mcp.py --workspace-root /srv/AbyssOS
+python scripts/smoke_aoa_decisions_mcp.py --workspace-root /srv/AbyssOS
 python scripts/smoke_abyss_machine_mcp.py --workspace-root /srv/AbyssOS
 python scripts/audit_agents_map.py --workspace-root <workspace-root> --write generated/agents_map.min.json --markdown docs/AGENTS_MAP.md
 ```

@@ -65,6 +65,7 @@ nickname_candidates = ["Delta"]
 # - aoa_stats
 # - dionysus
 # - aoa_memo
+# - aoa_session_memory
 # - aoa_evals
 # - aoa_decisions
 # - abyss_machine
@@ -87,6 +88,11 @@ cwd = "/srv/AbyssOS/Dionysus"
 [mcp_servers.aoa_memo]
 command = "python3"
 args = [".codex/bin/aoa-memo-mcp-server.py"]
+cwd = "/srv/AbyssOS"
+
+[mcp_servers.aoa_session_memory]
+command = "python3"
+args = [".codex/bin/aoa-session-memory-mcp-server.py"]
 cwd = "/srv/AbyssOS"
 
 [mcp_servers.aoa_evals]

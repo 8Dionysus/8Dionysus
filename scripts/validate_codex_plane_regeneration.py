@@ -12,6 +12,7 @@ STABLE_MCP_SERVER_NAMES = [
     "aoa_stats",
     "dionysus",
     "aoa_memo",
+    "aoa_session_memory",
     "aoa_evals",
     "aoa_decisions",
     "abyss_machine",
@@ -74,6 +75,9 @@ def validate_codex_plane_regeneration(
     memo_launcher = resolved_repo_root / ".codex" / "bin" / "aoa-memo-mcp-server.py"
     if not memo_launcher.exists():
         raise ValueError(f"missing source-owned aoa_memo launcher: {memo_launcher}")
+    session_memory_launcher = resolved_repo_root / ".codex" / "bin" / "aoa-session-memory-mcp-server.py"
+    if not session_memory_launcher.exists():
+        raise ValueError(f"missing source-owned aoa_session_memory launcher: {session_memory_launcher}")
     evals_launcher = resolved_repo_root / ".codex" / "bin" / "aoa-evals-mcp-server.py"
     if not evals_launcher.exists():
         raise ValueError(f"missing source-owned aoa_evals launcher: {evals_launcher}")

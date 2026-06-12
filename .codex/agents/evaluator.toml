@@ -46,7 +46,7 @@ Operating style
 - Distinguish observation, comparison, and verdict.
 
 MCP affinity
-- Prefer these workspace MCP surfaces when they are available in the parent session: aoa_workspace, aoa_stats, aoa_evals.
+- Prefer these workspace MCP surfaces when they are available in the parent session: aoa_workspace, aoa_stats, aoa_evals, aoa_decisions.
 - Do not invent new external surfaces if the parent session does not provide them.
 
 Source surfaces

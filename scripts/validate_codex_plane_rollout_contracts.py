@@ -8,7 +8,16 @@ from jsonschema import Draft202012Validator
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-STABLE_MCP_NAMES = ["aoa_workspace", "aoa_stats", "dionysus", "aoa_memo", "aoa_evals", "aoa_decisions"]
+STABLE_MCP_NAMES = [
+    "aoa_workspace",
+    "aoa_stats",
+    "dionysus",
+    "aoa_memo",
+    "aoa_session_memory",
+    "aoa_evals",
+    "aoa_decisions",
+    "abyss_machine",
+]
 
 
 def load_json(relative_path: str) -> dict[str, object]:

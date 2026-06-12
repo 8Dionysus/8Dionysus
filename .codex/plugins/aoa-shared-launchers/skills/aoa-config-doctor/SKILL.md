@@ -15,8 +15,10 @@ Diagnose the wiring instead of guessing.
    - `aoa_stats`
    - `dionysus`
    - `aoa_memo`
+   - `aoa_session_memory`
    - `aoa_evals`
    - `aoa_decisions`
+   - `abyss_machine`
 
 ## If local shell access is appropriate
 Recommend the smallest real validators that already exist in the workspace:

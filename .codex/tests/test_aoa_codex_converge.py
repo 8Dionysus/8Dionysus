@@ -146,6 +146,29 @@ cwd = "{tmp_path}"
     assert names_to_status["memo_mcp"] == "ok"
 
 
+def test_optional_session_memory_mcp_detection(tmp_path: Path) -> None:
+    write_bootstrap_scaffold(tmp_path)
+    _write(
+        tmp_path / ".codex" / "config.toml",
+        _minimal_config(tmp_path)
+        + f"""
+[mcp_servers.aoa_session_memory]
+command = "python"
+args = [".codex/bin/aoa-session-memory-mcp-server.py"]
+cwd = "{tmp_path}"
+""",
+    )
+    _write(tmp_path / "aoa-sdk" / "scripts" / "aoa_workspace_mcp_server.py", "print('ok')\n")
+    _write(tmp_path / ".codex" / "bin" / "aoa-session-memory-mcp-server.py", "print('ok')\n")
+    _write(tmp_path / ".aoa" / "AGENTS.md", "# .aoa route\n")
+    for name in ["architect", "coder", "reviewer", "evaluator", "memory-keeper"]:
+        _write(tmp_path / ".codex" / "agents" / f"{name}.toml", _agent_toml(name))
+
+    report = build_report(tmp_path)
+    names_to_status = {item["name"]: item["status"] for item in report["surfaces"]}
+    assert names_to_status["session_memory_mcp"] == "ok"
+
+
 def test_optional_evals_mcp_detection(tmp_path: Path) -> None:
     write_bootstrap_scaffold(tmp_path)
     _write(
@@ -168,6 +191,28 @@ cwd = "{tmp_path}"
     report = build_report(tmp_path)
     names_to_status = {item["name"]: item["status"] for item in report["surfaces"]}
     assert names_to_status["evals_mcp"] == "ok"
+
+
+def test_optional_decisions_mcp_detection(tmp_path: Path) -> None:
+    write_bootstrap_scaffold(tmp_path)
+    _write(
+        tmp_path / ".codex" / "config.toml",
+        _minimal_config(tmp_path)
+        + f"""
+[mcp_servers.aoa_decisions]
+command = "python"
+args = [".codex/bin/aoa-decisions-mcp-server.py"]
+cwd = "{tmp_path}"
+""",
+    )
+    _write(tmp_path / "aoa-sdk" / "scripts" / "aoa_workspace_mcp_server.py", "print('ok')\n")
+    _write(tmp_path / ".codex" / "bin" / "aoa-decisions-mcp-server.py", "print('ok')\n")
+    for name in ["architect", "coder", "reviewer", "evaluator", "memory-keeper"]:
+        _write(tmp_path / ".codex" / "agents" / f"{name}.toml", _agent_toml(name))
+
+    report = build_report(tmp_path)
+    names_to_status = {item["name"]: item["status"] for item in report["surfaces"]}
+    assert names_to_status["decisions_mcp"] == "ok"
 
 
 def test_optional_machine_mcp_detection(tmp_path: Path) -> None:

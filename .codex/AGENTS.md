@@ -15,6 +15,14 @@ or memory handoff. Use `generated/workspace_memory_map.min.json` to inspect
 which roots have local ports or route-only status. Durable reviewed memory still
 lands through `aoa-memo`.
 
+Session-evidence access in the Codex plane uses `aoa_session_memory` as an
+access plane. Use it to inspect `.aoa` search, route maps, session briefs,
+retrieval packets, evidence handles, freshness, diagnostics, and non-mutating
+maintenance plans when work asks to debug or study a stable skill, MCP, hook,
+tool, path, goal, or other recurring agent-process anchor. Raw transcript,
+segment indexes, atlas maps, diagnostics, and reviewed distillation authority
+remain in `.aoa`; the MCP must return refs and route signals, not become truth.
+
 Bounded proof access in the Codex plane uses `aoa_evals` as an access plane.
 Use it to select and inspect eval bundles, generated readers, comparison
 records, read-only find-or-propose eval-need routes, runtime evidence templates,
@@ -49,6 +57,7 @@ Verify with:
 python scripts/validate_nested_agents.py
 python scripts/build_workspace_memory_map.py --check
 python scripts/smoke_aoa_memo_mcp.py --workspace-root /srv/AbyssOS
+python scripts/smoke_aoa_session_memory_mcp.py --workspace-root /srv/AbyssOS
 python scripts/smoke_aoa_evals_mcp.py --workspace-root /srv/AbyssOS
 python scripts/smoke_aoa_decisions_mcp.py --workspace-root /srv/AbyssOS
 python scripts/smoke_abyss_machine_mcp.py --workspace-root /srv/AbyssOS

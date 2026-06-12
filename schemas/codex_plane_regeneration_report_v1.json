@@ -86,8 +86,10 @@
         "aoa_stats",
         "dionysus",
         "aoa_memo",
+        "aoa_session_memory",
         "aoa_evals",
-        "aoa_decisions"
+        "aoa_decisions",
+        "abyss_machine"
       ],
       "properties": {
         "aoa_workspace": {
@@ -102,10 +104,16 @@
         "aoa_memo": {
           "type": "boolean"
         },
+        "aoa_session_memory": {
+          "type": "boolean"
+        },
         "aoa_evals": {
           "type": "boolean"
         },
         "aoa_decisions": {
+          "type": "boolean"
+        },
+        "abyss_machine": {
           "type": "boolean"
         }
       }

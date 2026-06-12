@@ -169,10 +169,12 @@ def build_report(workspace_root: Path | str) -> dict[str, Any]:
     dionysus_repo = root / "Dionysus"
     dionysus_catalog = dionysus_repo / "generated" / "seed_route_map.min.json"
     memo_service = Path.home() / "src" / "abyss-stack" / "mcp" / "services" / "aoa-memo-mcp"
+    session_memory_service = Path.home() / "src" / "abyss-stack" / "mcp" / "services" / "aoa-session-memory-mcp"
     evals_repo = root / "aoa-evals"
     evals_catalog = evals_repo / "generated" / "eval_catalog.min.json"
     evals_contract = evals_repo / "docs" / "architecture" / "AOA_EVALS_MCP_CONTRACT.md"
     evals_service = Path.home() / "src" / "abyss-stack" / "mcp" / "services" / "aoa-evals-mcp"
+    decisions_service = Path.home() / "src" / "abyss-stack" / "mcp" / "services" / "aoa-decisions-mcp"
     machine_service = Path.home() / "src" / "abyss-stack" / "mcp" / "services" / "abyss-machine-mcp"
 
     config = _read_toml(codex_config_path)
@@ -350,6 +352,38 @@ def build_report(workspace_root: Path | str) -> dict[str, Any]:
         )
     )
 
+    session_memory_entry = mcp_servers.get("aoa_session_memory") if isinstance(mcp_servers, dict) else None
+    session_memory_script_path, session_memory_evidence = _resolve_mcp_script(root, session_memory_entry)
+    if isinstance(mcp_servers, dict) and "aoa_session_memory" in mcp_servers:
+        session_memory_evidence.insert(0, "[mcp_servers.aoa_session_memory] in .codex/config.toml")
+    if session_memory_script_path is not None and session_memory_script_path.exists():
+        session_memory_evidence.append(str(session_memory_script_path))
+    if (root / ".aoa").exists():
+        session_memory_evidence.append(str(root / ".aoa"))
+    if session_memory_service.exists():
+        session_memory_evidence.append(str(session_memory_service))
+    session_memory_mcp_ok = (
+        isinstance(mcp_servers, dict)
+        and "aoa_session_memory" in mcp_servers
+        and session_memory_script_path is not None
+        and session_memory_script_path.exists()
+        and (root / ".aoa").exists()
+    )
+    surfaces.append(
+        SurfaceStatus(
+            name="session_memory_mcp",
+            status="ok" if session_memory_mcp_ok else "warn",
+            required=False,
+            summary=(
+                "aoa-session-memory MCP access plane looks wired."
+                if session_memory_mcp_ok
+                else "aoa-session-memory MCP access plane is not wired into the Codex plane."
+            ),
+            evidence=session_memory_evidence,
+            next_step="Wire [mcp_servers.aoa_session_memory] to .codex/bin/aoa-session-memory-mcp-server.py and keep raw session truth in .aoa.",
+        )
+    )
+
     evals_entry = mcp_servers.get("aoa_evals") if isinstance(mcp_servers, dict) else None
     evals_script_path, evals_evidence = _resolve_mcp_script(root, evals_entry)
     if evals_repo.exists():
@@ -390,6 +424,35 @@ def build_report(workspace_root: Path | str) -> dict[str, Any]:
             ),
             evidence=evals_evidence,
             next_step="Wire [mcp_servers.aoa_evals] to .codex/bin/aoa-evals-mcp-server.py and keep proof authority in aoa-evals.",
+        )
+    )
+
+    decisions_entry = mcp_servers.get("aoa_decisions") if isinstance(mcp_servers, dict) else None
+    decisions_script_path, decisions_evidence = _resolve_mcp_script(root, decisions_entry)
+    if isinstance(mcp_servers, dict) and "aoa_decisions" in mcp_servers:
+        decisions_evidence.insert(0, "[mcp_servers.aoa_decisions] in .codex/config.toml")
+    if decisions_script_path is not None and decisions_script_path.exists():
+        decisions_evidence.append(str(decisions_script_path))
+    if decisions_service.exists():
+        decisions_evidence.append(str(decisions_service))
+    decisions_mcp_ok = (
+        isinstance(mcp_servers, dict)
+        and "aoa_decisions" in mcp_servers
+        and decisions_script_path is not None
+        and decisions_script_path.exists()
+    )
+    surfaces.append(
+        SurfaceStatus(
+            name="decisions_mcp",
+            status="ok" if decisions_mcp_ok else "warn",
+            required=False,
+            summary=(
+                "aoa-decisions MCP access plane looks wired."
+                if decisions_mcp_ok
+                else "aoa-decisions MCP access plane is not wired into the Codex plane."
+            ),
+            evidence=decisions_evidence,
+            next_step="Wire [mcp_servers.aoa_decisions] to .codex/bin/aoa-decisions-mcp-server.py and keep decision truth in repo-local docs/decisions lanes.",
         )
     )
 

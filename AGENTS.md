@@ -75,6 +75,13 @@ Use `aoa_memo` when a workspace task asks to recall, continue, preserve, compare
 with past work, recover after compaction, create a memory candidate, inspect a
 local memo port, or route evidence toward reviewed memory.
 
+- Need session evidence for a stable agent-process anchor such as a skill, MCP,
+  hook, tool, path, goal, or recurring failure: use `aoa_session_memory` to
+  search `.aoa`, trace route maps, build retrieval/evidence packets, and check
+  freshness before drawing conclusions.
+- Do not treat `aoa_session_memory` as memory writeback, repair, reindex,
+  distillation, or promotion authority. It is a read-only route over `.aoa`
+  refs; raw transcript and reviewed session-memory authority remain in `.aoa`.
 - After a meaningful landing, run a memory writeback check before closeout.
   Meaningful includes changes to owner boundaries, route law, MCP or service
   contracts, eval or proof surfaces, release posture, workflows, decisions,

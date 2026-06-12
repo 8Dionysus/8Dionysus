@@ -234,6 +234,7 @@ python scripts/recon_agents_frontier.py \
 - Treat `aoa_stats` as derived observability only. Do not let it overrule owner truth or bounded eval verdicts
 - Treat `dionysus` as seed-garden and planting-lineage context. Do not mistake staging notes for final owner doctrine
 - Treat `aoa_memo` as the memory access plane. It can brief, search, and create candidates, but durable memory truth still lands through `aoa-memo`
+- Treat `aoa_session_memory` as the session-evidence access plane. It can search `.aoa`, trace route maps, build retrieval/evidence packets, and check freshness, but raw transcript and reviewed distillation truth stay in `.aoa`
 - Treat `aoa_evals` as the bounded proof access plane. It can select, inspect,
   expand, compare, return read-only find-or-propose eval-need context, and
   prepare candidate evidence/report skeletons, but verdicts, proposal approval,
@@ -246,6 +247,10 @@ python scripts/recon_agents_frontier.py \
   local memo port state, memory candidate creation, port indexing, or reviewed
   intake preparation. Write durable memory only through the reviewed
   `aoa-memo` route.
+- Use `aoa_session_memory` when a task asks to debug, study, improve, or verify
+  a stable skill, MCP, hook, tool, path, goal, recurring event, or similar
+  agent-process anchor against session evidence. Carry returned refs into review
+  instead of treating MCP summaries as truth.
 - Respect `allow_implicit_invocation` from the generated skill export and local adapter manifest. Do not silently force explicit-only skills into automatic use
 - Keep role-bearing work in custom agents when they exist. MCP dependencies do not by themselves create hidden actor behavior
 
@@ -266,6 +271,7 @@ workspace:
 - `aoa_stats`
 - `dionysus`
 - `aoa_memo`
+- `aoa_session_memory`
 - `aoa_evals`
 - `aoa_decisions`
 
@@ -276,6 +282,7 @@ Boundary rules:
 - `aoa_stats` remains derived
 - `Dionysus` remains staging and route context
 - `aoa_memo` remains an access plane over reviewed memory, session evidence, and local ports
+- `aoa_session_memory` remains an access plane over `.aoa` raw refs, route maps, and freshness diagnostics
 - `aoa_evals` remains an access plane over bounded proof readers, not a verdict engine
 - `aoa_decisions` remains an access plane over decision graph read models, not decision authority
 - owner truth stays in the owning repo

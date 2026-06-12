@@ -9,15 +9,19 @@ This plugin is intentionally narrow.
 - It treats `aoa_memo` as the memory access plane for brief, search, local-port
   status, candidate creation, port indexing, and reviewed-intake preparation.
   Durable memory truth still lands through `aoa-memo`.
+- It treats `aoa_session_memory` as the session-evidence access plane for
+  `.aoa` search, route maps, briefs, retrieval packets, evidence handles,
+  freshness, diagnostics, and non-mutating maintenance plans. Raw transcript
+  and reviewed distillation truth still live in `.aoa`.
 - It treats `aoa_evals` as the bounded proof access plane for selection,
   inspection, generated-reader context, read-only find-or-propose eval-need
   routing, runtime evidence templates, and candidate-only report skeletons.
   Verdict authority, proposal approval, and source bundle creation still land
   through `aoa-evals`.
-- It treats `aoa_decisions` as the decision-lane access plane for status,
-  search, repo packets, decision packets, graph refresh, and issue lookup.
-  Decision authority still lands through the owning repo's `docs/decisions/`
-  source notes and validators.
+- It treats `aoa_decisions` as the workspace decision graph access plane for
+  search, repo packets, decision packets, and graph freshness checks. Source
+  decision records, creation, correction, and supersession still land through
+  the owning repository's `docs/decisions/` lane.
 
 Bundled skills:
 - `aoa-workspace-recon`

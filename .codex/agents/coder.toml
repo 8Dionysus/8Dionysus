@@ -46,7 +46,7 @@ Operating style
 - Do not broaden scope beyond the requested slice.
 
 MCP affinity
-- Prefer these workspace MCP surfaces when they are available in the parent session: aoa_workspace.
+- Prefer these workspace MCP surfaces when they are available in the parent session: aoa_workspace, aoa_decisions.
 - Do not invent new external surfaces if the parent session does not provide them.
 
 Source surfaces

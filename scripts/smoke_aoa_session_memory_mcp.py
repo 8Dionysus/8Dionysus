@@ -36,6 +36,45 @@ REQUIRED_TOOLS = {
 }
 
 
+def evidence_ref_count(payload: object) -> int:
+    if not isinstance(payload, dict):
+        return 0
+    count = 0
+    refs = payload.get("evidence_refs")
+    if isinstance(refs, list):
+        count += len(refs)
+
+    lexical = payload.get("lexical")
+    if isinstance(lexical, dict):
+        results = lexical.get("results")
+        if isinstance(results, list):
+            count += sum(1 for item in results if isinstance(item, dict) and isinstance(item.get("refs"), dict))
+
+    packet = payload.get("packet")
+    if isinstance(packet, dict):
+        count += evidence_ref_count(packet)
+
+    return count
+
+
+def quality_ready_count(payload: object) -> int:
+    if not isinstance(payload, dict):
+        return 0
+    value = payload.get("ready_for_manual_verdict_count")
+    if isinstance(value, int):
+        return value
+    samples = payload.get("sample_overview")
+    if not isinstance(samples, list):
+        return 0
+    return sum(
+        1
+        for item in samples
+        if isinstance(item, dict)
+        and item.get("review_status") == "ready_for_manual_verdict"
+        and (item.get("has_raw_ref") or item.get("has_segment_ref"))
+    )
+
+
 async def run_smoke(workspace_root: Path) -> dict[str, object]:
     env = os.environ.copy()
     env["AOA_WORKSPACE_ROOT"] = str(workspace_root)
@@ -95,6 +134,10 @@ async def run_smoke(workspace_root: Path) -> dict[str, object]:
             graphrag_payload = json.loads(graphrag.content[0].text)
             explain_payload = json.loads(explain.content[0].text)
             quality_payload = json.loads(quality.content[0].text)
+    graph_ref_count = evidence_ref_count(graph_payload)
+    graphrag_ref_count = evidence_ref_count(graphrag_payload)
+    explain_ref_count = evidence_ref_count(explain_payload)
+    ready_count = quality_ready_count(quality_payload)
     errors: list[str] = []
     if missing_tools:
         errors.append(f"missing tools: {', '.join(missing_tools)}")
@@ -116,13 +159,13 @@ async def run_smoke(workspace_root: Path) -> dict[str, object]:
         errors.append("aoa_session_evidence_packet returned no evidence handles")
     if not brief_payload.get("session"):
         errors.append("aoa_session_brief(latest) returned no session brief")
-    if not graph_payload.get("evidence_refs"):
+    if graph_ref_count < 1:
         errors.append("aoa_session_graph_neighborhood returned no evidence refs")
-    if not graphrag_payload.get("evidence_refs"):
+    if graphrag_ref_count < 1:
         errors.append("aoa_session_graphrag_packet returned no evidence refs")
-    if not explain_payload.get("evidence_refs"):
+    if explain_ref_count < 1:
         errors.append("aoa_session_explain_graph_packet returned no evidence refs")
-    if quality_payload.get("ok") is not True or quality_payload.get("ready_for_manual_verdict_count", 0) < 1:
+    if quality_payload.get("ok") is not True or ready_count < 1:
         errors.append("aoa_session_graph_quality_audit returned no verdict-ready graph samples")
     return {
         "schema": "8dionysus_aoa_session_memory_mcp_smoke_v1",
@@ -135,10 +178,10 @@ async def run_smoke(workspace_root: Path) -> dict[str, object]:
         "trace_candidate_count": len(route_candidates),
         "route_match_count": route_payload.get("match_count"),
         "evidence_search_hits": len(evidence_payload.get("search_hits", [])),
-        "graph_evidence_refs": len(graph_payload.get("evidence_refs", [])),
-        "graphrag_evidence_refs": len(graphrag_payload.get("evidence_refs", [])),
-        "graph_explain_evidence_refs": len(explain_payload.get("evidence_refs", [])),
-        "graph_quality_ready_count": quality_payload.get("ready_for_manual_verdict_count"),
+        "graph_evidence_refs": graph_ref_count,
+        "graphrag_evidence_refs": graphrag_ref_count,
+        "graph_explain_evidence_refs": explain_ref_count,
+        "graph_quality_ready_count": ready_count,
         "latest_session": brief_payload.get("session", {}).get("label")
         or brief_payload.get("session", {}).get("session_label")
         or brief_payload.get("session", {}).get("session_id"),

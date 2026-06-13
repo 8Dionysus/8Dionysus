@@ -52,6 +52,12 @@ REQUIRED_AGENTS_DOCS: dict[str, tuple[str, ...]] = {
         "Generated indexes",
         "validate_decision_records.py",
     ),
+    "evals/AGENTS.md": (
+        "public-entry and workspace-route eval pressure",
+        "proof doctrine",
+        "central eval verdict",
+        "validate_local_eval_port.py",
+    ),
     "examples/AGENTS.md": (
         "public-safe examples",
         "teaching surfaces",

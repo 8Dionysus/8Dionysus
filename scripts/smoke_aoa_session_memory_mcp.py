@@ -37,19 +37,53 @@ REQUIRED_TOOLS = {
 }
 
 
+REF_CONTAINER_KEYS = {
+    "evidence_ref",
+    "evidence_refs",
+    "raw",
+    "raw_ref",
+    "raw_refs",
+    "segment",
+    "segment_ref",
+    "segment_refs",
+}
+
+
+def ref_value_count(value: object) -> int:
+    if isinstance(value, str):
+        return 1 if value.strip() else 0
+    if isinstance(value, list):
+        return sum(ref_value_count(item) for item in value)
+    if isinstance(value, dict):
+        return refs_dict_count(value)
+    return 0
+
+
+def refs_dict_count(refs: object) -> int:
+    if not isinstance(refs, dict) or not refs:
+        return 0
+    count = 0
+    for key, value in refs.items():
+        if key in REF_CONTAINER_KEYS:
+            count += ref_value_count(value) or int(bool(value))
+    if count:
+        return count
+    return sum(ref_value_count(value) for value in refs.values())
+
+
 def evidence_ref_count(payload: object) -> int:
     if not isinstance(payload, dict):
         return 0
     count = 0
     refs = payload.get("evidence_refs")
     if isinstance(refs, list):
-        count += len(refs)
+        count += sum(ref_value_count(item) or int(bool(item)) for item in refs)
 
     lexical = payload.get("lexical")
     if isinstance(lexical, dict):
         results = lexical.get("results")
         if isinstance(results, list):
-            count += sum(1 for item in results if isinstance(item, dict) and isinstance(item.get("refs"), dict))
+            count += sum(refs_dict_count(item.get("refs")) for item in results if isinstance(item, dict))
 
     packet = payload.get("packet")
     if isinstance(packet, dict):

@@ -58,6 +58,17 @@ def runtime_walkthrough_summary(
     }
 
 
+def selected_eval_name(selection_payload: dict[str, object]) -> str | None:
+    matches = selection_payload.get("matches")
+    if not isinstance(matches, list) or not matches:
+        return None
+    first = matches[0]
+    if not isinstance(first, dict):
+        return None
+    name = first.get("name")
+    return name if isinstance(name, str) and name else None
+
+
 async def run_smoke(workspace_root: Path) -> dict[str, object]:
     from mcp import ClientSession, StdioServerParameters
     from mcp.client.stdio import stdio_client
@@ -82,7 +93,7 @@ async def run_smoke(workspace_root: Path) -> dict[str, object]:
                 },
             )
             selection_payload = json.loads(selection.content[0].text)
-            first = selection_payload["matches"][0]["name"] if selection_payload.get("matches") else ""
+            first = selected_eval_name(selection_payload)
             proposal = await session.call_tool(
                 "aoa_evals_find_or_propose",
                 {
@@ -90,47 +101,51 @@ async def run_smoke(workspace_root: Path) -> dict[str, object]:
                     "proposal": {"category": "workflow"},
                 },
             )
-            inspection = await session.call_tool("aoa_evals_inspect", {"name": first})
-            skeleton = await session.call_tool(
-                "aoa_evals_report_skeleton",
-                {"name": first, "evidence_refs": ["artifact:smoke"]},
-            )
             status = await session.call_tool("aoa_evals_runtime_status", {})
             exports = await session.call_tool("aoa_evals_runtime_candidate_exports", {"limit": 3})
-            candidate = {
-                "surface_type": "runtime_evidence_selection",
-                "selection_id": "aoa-evals-mcp-smoke",
-                "source_repo": "abyss-stack",
-                "source_schema_ref": "repo:8Dionysus/scripts/smoke_aoa_evals_mcp.py",
-                "source_manifests": ["local:aoa-evals-mcp-smoke"],
-                "bounded_claim": "Smoke-check that aoa_evals validates candidate packet shape only.",
-                "promotion_target": "local-only",
-                "comparison_mode": "none",
-                "target_eval": first,
-                "selected_evidence": [
-                    {
-                        "artifact_ref": "local:aoa-evals-mcp-smoke",
-                        "evidence_role": "summary",
-                        "summary_only": True,
-                    }
-                ],
-                "environment_invariants": ["stdio MCP smoke only"],
-                "do_not_overread": ["does not prove an eval verdict"],
-                "review_posture": {
-                    "portable_enough": False,
-                    "comparison_hygiene_named": True,
-                    "human_review_required": True,
-                },
-            }
-            validation = await session.call_tool(
-                "aoa_evals_validate_evidence_candidate",
-                {"packet": candidate},
-            )
-            inspection_payload = json.loads(inspection.content[0].text)
-            skeleton_payload = json.loads(skeleton.content[0].text)
+            inspection_payload: dict[str, object] | None = None
+            skeleton_payload: dict[str, object] | None = None
+            validation_payload: dict[str, object] | None = None
+            if first:
+                inspection = await session.call_tool("aoa_evals_inspect", {"name": first})
+                skeleton = await session.call_tool(
+                    "aoa_evals_report_skeleton",
+                    {"name": first, "evidence_refs": ["artifact:smoke"]},
+                )
+                candidate = {
+                    "surface_type": "runtime_evidence_selection",
+                    "selection_id": "aoa-evals-mcp-smoke",
+                    "source_repo": "abyss-stack",
+                    "source_schema_ref": "repo:8Dionysus/scripts/smoke_aoa_evals_mcp.py",
+                    "source_manifests": ["local:aoa-evals-mcp-smoke"],
+                    "bounded_claim": "Smoke-check that aoa_evals validates candidate packet shape only.",
+                    "promotion_target": "local-only",
+                    "comparison_mode": "none",
+                    "target_eval": first,
+                    "selected_evidence": [
+                        {
+                            "artifact_ref": "local:aoa-evals-mcp-smoke",
+                            "evidence_role": "summary",
+                            "summary_only": True,
+                        }
+                    ],
+                    "environment_invariants": ["stdio MCP smoke only"],
+                    "do_not_overread": ["does not prove an eval verdict"],
+                    "review_posture": {
+                        "portable_enough": False,
+                        "comparison_hygiene_named": True,
+                        "human_review_required": True,
+                    },
+                }
+                validation = await session.call_tool(
+                    "aoa_evals_validate_evidence_candidate",
+                    {"packet": candidate},
+                )
+                inspection_payload = json.loads(inspection.content[0].text)
+                skeleton_payload = json.loads(skeleton.content[0].text)
+                validation_payload = json.loads(validation.content[0].text)
             status_payload = json.loads(status.content[0].text)
             exports_payload = json.loads(exports.content[0].text)
-            validation_payload = json.loads(validation.content[0].text)
             proposal_payload = json.loads(proposal.content[0].text)
             runtime_walkthrough_payload: dict[str, object] | None = None
             runtime_walkthrough_report_payload: dict[str, object] | None = None
@@ -180,13 +195,20 @@ async def run_smoke(workspace_root: Path) -> dict[str, object]:
         errors.append("aoa_evals_find_or_propose returned invalid eval_need_v1 context")
     if proposal_payload.get("proposal_context", {}).get("packet", {}).get("schema_version") != "eval_need_v1":
         errors.append("aoa_evals_find_or_propose did not return eval_need_v1 packet context")
-    if inspection_payload.get("authority_boundary", {}).get("stronger_owner") != "bundle-local EVAL.md and eval.yaml":
+    if (
+        inspection_payload is not None
+        and inspection_payload.get("authority_boundary", {}).get("stronger_owner")
+        != "bundle-local EVAL.md and eval.yaml"
+    ):
         errors.append("aoa_evals_inspect did not preserve source authority boundary")
-    if skeleton_payload.get("sections", {}).get("verdict") != "UNSET: MCP must not compute verdicts":
+    if (
+        skeleton_payload is not None
+        and skeleton_payload.get("sections", {}).get("verdict") != "UNSET: MCP must not compute verdicts"
+    ):
         errors.append("aoa_evals_report_skeleton did not leave verdict unset")
     if status_payload.get("freshness", {}).get("mirror_is_authority") is not False:
         errors.append("aoa_evals_runtime_status did not preserve mirror boundary")
-    if validation_payload.get("valid") is not True:
+    if validation_payload is not None and validation_payload.get("valid") is not True:
         errors.append("aoa_evals_validate_evidence_candidate rejected the smoke candidate")
     if exports_payload.get("private_payloads_included") is not False:
         errors.append("aoa_evals_runtime_candidate_exports leaked private payloads in listing")
@@ -209,13 +231,13 @@ async def run_smoke(workspace_root: Path) -> dict[str, object]:
         "ok": not errors,
         "workspace_root": str(workspace_root),
         "tools": sorted(tools),
-        "selected_eval": first,
-        "candidate_only": skeleton_payload.get("candidate_only"),
+        "selected_eval": first or "",
+        "candidate_only": None if skeleton_payload is None else skeleton_payload.get("candidate_only"),
         "find_or_propose_outcome": proposal_payload.get("outcome"),
         "find_or_propose_valid": proposal_payload.get("proposal_validation", {}).get("valid"),
         "find_or_propose_source_mutation_allowed": proposal_payload.get("source_mutation_allowed"),
         "freshness_status": status_payload.get("freshness", {}).get("status"),
-        "candidate_validation": validation_payload.get("valid"),
+        "candidate_validation": None if validation_payload is None else validation_payload.get("valid"),
         "runtime_candidate_export_count": exports_payload.get("count"),
         "runtime_candidate_export_validation": None
         if export_read_payload is None

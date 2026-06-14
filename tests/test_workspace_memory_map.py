@@ -123,6 +123,32 @@ allowed_routes:
             self.assertIn("aoa-memo/memo/intake/receipts/", marker["marker_ref"])
             validate_workspace_memory_map.validate_payload(payload)
 
+    def test_reviewed_landing_receipts_do_not_mark_non_owner_repos(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            workspace = Path(tmp)
+            root = workspace / "aoa-sdk"
+            self._make_root(root, with_memory_route=True)
+            write_text(
+                root / "memo" / "intake" / "receipts" / "20260526T004143Z.demo.landing-receipt.json",
+                json.dumps(
+                    {
+                        "schema": "aoa_memo_reviewed_intake_landing_receipt_v1",
+                        "repo": "demo",
+                        "result": "landed",
+                        "object_ref": "memo.decision.2026-05-26.demo-memory",
+                    }
+                ),
+            )
+
+            payload = build_workspace_memory_map.build_workspace_memory_map(workspace)
+            by_name = {place["name"]: place for place in payload["places"]}
+            marker = by_name["aoa-sdk"]["writeback_marker"]
+
+            self.assertEqual(marker["status"], "missing")
+            self.assertNotEqual(marker["marker_kind"], "reviewed_memory_landing_receipt")
+            self.assertEqual(by_name["aoa-sdk"]["writeback_debt"]["status"], "needs_first_marker")
+            validate_workspace_memory_map.validate_payload(payload)
+
     def test_workspace_memory_map_sync_is_8dionysus_marker(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             workspace = Path(tmp)

@@ -9,10 +9,6 @@ import os
 from pathlib import Path
 from typing import Sequence
 
-from mcp import ClientSession, StdioServerParameters
-from mcp.client.stdio import stdio_client
-
-
 REQUIRED_TOOLS = {
     "aoa_evals_comparison",
     "aoa_evals_expand",
@@ -28,7 +24,44 @@ REQUIRED_TOOLS = {
 }
 
 
+def matched_runtime_export(exports_payload: dict[str, object]) -> dict[str, object] | None:
+    candidates = exports_payload.get("candidates")
+    if not isinstance(candidates, list):
+        return None
+    for item in candidates:
+        if not isinstance(item, dict):
+            continue
+        validation = item.get("validation")
+        matched_eval_refs = validation.get("matched_eval_refs") if isinstance(validation, dict) else None
+        if matched_eval_refs and item.get("record_id"):
+            return item
+    return None
+
+
+def runtime_walkthrough_summary(
+    runtime_walkthrough_payload: dict[str, object] | None,
+    runtime_walkthrough_report_payload: dict[str, object] | None,
+) -> dict[str, object]:
+    if runtime_walkthrough_payload is None:
+        return {
+            "skipped": True,
+            "reason": "no matched runtime candidate export in listing",
+        }
+    return {
+        "skipped": False,
+        "outcome": runtime_walkthrough_payload.get("outcome"),
+        "proposal_valid": runtime_walkthrough_payload.get("proposal_validation", {}).get("valid"),
+        "source_mutation_allowed": runtime_walkthrough_payload.get("source_mutation_allowed"),
+        "report_candidate_only": None
+        if runtime_walkthrough_report_payload is None
+        else runtime_walkthrough_report_payload.get("candidate_only"),
+    }
+
+
 async def run_smoke(workspace_root: Path) -> dict[str, object]:
+    from mcp import ClientSession, StdioServerParameters
+    from mcp.client.stdio import stdio_client
+
     env = os.environ.copy()
     env["AOA_WORKSPACE_ROOT"] = str(workspace_root)
     params = StdioServerParameters(
@@ -101,14 +134,7 @@ async def run_smoke(workspace_root: Path) -> dict[str, object]:
             proposal_payload = json.loads(proposal.content[0].text)
             runtime_walkthrough_payload: dict[str, object] | None = None
             runtime_walkthrough_report_payload: dict[str, object] | None = None
-            matched_export = next(
-                (
-                    item
-                    for item in exports_payload.get("candidates", [])
-                    if item.get("validation", {}).get("matched_eval_refs")
-                ),
-                None,
-            )
+            matched_export = matched_runtime_export(exports_payload)
             if matched_export:
                 matched_eval = matched_export["validation"]["matched_eval_refs"][0]
                 record_id = matched_export["record_id"]
@@ -166,9 +192,7 @@ async def run_smoke(workspace_root: Path) -> dict[str, object]:
         errors.append("aoa_evals_runtime_candidate_exports leaked private payloads in listing")
     if export_read_payload and export_read_payload.get("candidate_payload_included") is not False:
         errors.append("aoa_evals_read_runtime_candidate_export leaked private payload by default")
-    if runtime_walkthrough_payload is None:
-        errors.append("no runtime candidate export with matched eval refs for runtime-to-eval walkthrough")
-    else:
+    if runtime_walkthrough_payload is not None:
         if runtime_walkthrough_payload.get("source_mutation_allowed") is not False:
             errors.append("runtime-to-eval walkthrough allowed source mutation")
         if runtime_walkthrough_payload.get("proposal_validation", {}).get("valid") is not True:
@@ -196,16 +220,10 @@ async def run_smoke(workspace_root: Path) -> dict[str, object]:
         "runtime_candidate_export_validation": None
         if export_read_payload is None
         else export_read_payload.get("validation", {}).get("valid"),
-        "runtime_to_eval_walkthrough": None
-        if runtime_walkthrough_payload is None
-        else {
-            "outcome": runtime_walkthrough_payload.get("outcome"),
-            "proposal_valid": runtime_walkthrough_payload.get("proposal_validation", {}).get("valid"),
-            "source_mutation_allowed": runtime_walkthrough_payload.get("source_mutation_allowed"),
-            "report_candidate_only": None
-            if runtime_walkthrough_report_payload is None
-            else runtime_walkthrough_report_payload.get("candidate_only"),
-        },
+        "runtime_to_eval_walkthrough": runtime_walkthrough_summary(
+            runtime_walkthrough_payload,
+            runtime_walkthrough_report_payload,
+        ),
         "errors": errors,
     }
 

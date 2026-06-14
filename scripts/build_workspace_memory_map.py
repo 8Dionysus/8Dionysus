@@ -400,23 +400,24 @@ def _writeback_marker_candidates(root: Path, workspace_root: Path, *, place_name
                 }
             )
 
-    intake_receipts_root = memo_root / "intake" / "receipts"
-    for path in _packet_files(intake_receipts_root):
-        payload = _load_json(path)
-        if payload.get("schema") != "aoa_memo_reviewed_intake_landing_receipt_v1":
-            continue
-        if payload.get("result") != "landed":
-            continue
-        rel_path = _relative_path(path, root)
-        candidates.append(
-            {
-                "marker_kind": "reviewed_memory_landing_receipt",
-                "decision": "reviewed_write",
-                "marker_path": rel_path,
-                "marker_ref": _place_file_ref(root, workspace_root, rel_path),
-                "source": "reviewed_memory_corpus",
-            }
-        )
+    if place_name == "aoa-memo":
+        intake_receipts_root = memo_root / "intake" / "receipts"
+        for path in _packet_files(intake_receipts_root):
+            payload = _load_json(path)
+            if payload.get("schema") != "aoa_memo_reviewed_intake_landing_receipt_v1":
+                continue
+            if payload.get("result") != "landed":
+                continue
+            rel_path = _relative_path(path, root)
+            candidates.append(
+                {
+                    "marker_kind": "reviewed_memory_landing_receipt",
+                    "decision": "reviewed_write",
+                    "marker_path": rel_path,
+                    "marker_ref": _place_file_ref(root, workspace_root, rel_path),
+                    "source": "reviewed_memory_corpus",
+                }
+            )
 
     map_sync_path = root / "generated" / "workspace_memory_map.min.json"
     map_markdown_path = root / "docs" / "WORKSPACE_MEMORY_MAP.md"

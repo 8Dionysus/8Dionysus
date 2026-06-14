@@ -374,7 +374,7 @@ def _extract_writeback_decision(payload: Mapping[str, Any]) -> str:
     return ""
 
 
-def _writeback_marker_candidates(root: Path, workspace_root: Path) -> list[dict[str, str]]:
+def _writeback_marker_candidates(root: Path, workspace_root: Path, *, place_name: str) -> list[dict[str, str]]:
     candidates: list[dict[str, str]] = []
     memo_root = root / "memo"
     port = parse_port_yaml(memo_root / "PORT.yaml")
@@ -420,7 +420,7 @@ def _writeback_marker_candidates(root: Path, workspace_root: Path) -> list[dict[
 
     map_sync_path = root / "generated" / "workspace_memory_map.min.json"
     map_markdown_path = root / "docs" / "WORKSPACE_MEMORY_MAP.md"
-    if root.name == OWNER_REPO and map_sync_path.is_file() and map_markdown_path.is_file():
+    if place_name == OWNER_REPO and map_sync_path.is_file() and map_markdown_path.is_file():
         rel_path = _relative_path(map_sync_path, root)
         candidates.append(
             {
@@ -432,7 +432,7 @@ def _writeback_marker_candidates(root: Path, workspace_root: Path) -> list[dict[
             }
         )
 
-    if root.name == "aoa-memo":
+    if place_name == "aoa-memo":
         for rel_path in (
             "generated/memory/access_plane_currentness.min.json",
             "generated/memory/workspace_memo_port_status.min.json",
@@ -468,6 +468,7 @@ def _writeback_marker_candidates(root: Path, workspace_root: Path) -> list[dict[
 
 def writeback_marker_record(
     *,
+    name: str,
     root: Path | None,
     workspace_root: Path,
     memory_route_status: str,
@@ -492,7 +493,7 @@ def writeback_marker_record(
             "source": "",
         }
 
-    candidates = _writeback_marker_candidates(root, workspace_root)
+    candidates = _writeback_marker_candidates(root, workspace_root, place_name=name)
     if not candidates:
         return {
             "status": "missing",
@@ -705,6 +706,7 @@ def place_record(
     issues: list[str] = []
     if root is None or not root.is_dir():
         marker = writeback_marker_record(
+            name=name,
             root=root,
             workspace_root=workspace_root,
             memory_route_status="missing",
@@ -772,6 +774,7 @@ def place_record(
         validation_command = mcp_cli_command(f"validate-port --repo {name}")
 
     marker = writeback_marker_record(
+        name=name,
         root=root,
         workspace_root=workspace_root,
         memory_route_status=route_status,

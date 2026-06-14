@@ -91,6 +91,43 @@ allowed_routes:
             self.assertTrue(payload["return_receipts"])
             self.assertEqual(payload["allowed_routes"], ["local_only", "reviewed_intake"])
 
+    def test_corrupt_packet_json_does_not_abort_map_build(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            workspace = Path(tmp)
+            self._make_root(workspace / "Agents-of-Abyss", with_memory_route=True)
+            self._make_full_port(workspace / "Agents-of-Abyss" / "memo", "Agents-of-Abyss")
+            (workspace / "Agents-of-Abyss" / "memo" / "candidates" / "bad.json").write_bytes(b"\xff\xfe\x00")
+
+            payload = build_workspace_memory_map.build_workspace_memory_map(workspace)
+            by_name = {place["name"]: place for place in payload["places"]}
+
+            self.assertEqual(by_name["Agents-of-Abyss"]["memo_port"]["local_candidates"], 1)
+            self.assertEqual(by_name["Agents-of-Abyss"]["memo_port"]["pending_candidates"], 1)
+            validate_workspace_memory_map.validate_payload(payload)
+
+    def test_memo_directory_without_port_yaml_reports_broken_port(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            workspace = Path(tmp)
+            root = workspace / "Agents-of-Abyss"
+            self._make_root(root, with_memory_route=True)
+            write_text(root / "memo" / "AGENTS.md", "# AGENTS.md\n\n## Memory route\n")
+            write_text(root / "memo" / "README.md", "# Memo\n")
+            (root / "memo" / "candidates").mkdir(parents=True)
+
+            payload = build_workspace_memory_map.build_workspace_memory_map(workspace)
+            by_name = {place["name"]: place for place in payload["places"]}
+            place = by_name["Agents-of-Abyss"]
+
+            self.assertTrue(place["memo_port"]["present"])
+            self.assertEqual(place["memo_port"]["port_level"], "stub_port")
+            self.assertEqual(place["current_port_level"], "stub_port")
+            self.assertEqual(place["memory_route_status"], "local_port_route")
+            self.assertIn("PORT.yaml", place["memo_port"]["missing_files"])
+            self.assertIn("memo port missing PORT.yaml", place["issues"])
+            self.assertIn("memo port missing exports/", place["issues"])
+            self.assertIn("validate-port --repo Agents-of-Abyss", place["validation_command"])
+            validate_workspace_memory_map.validate_payload(payload)
+
     def test_reviewed_landing_receipts_are_writeback_markers(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             workspace = Path(tmp)

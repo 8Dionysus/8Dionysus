@@ -186,7 +186,7 @@ def _load_json(path: Path) -> dict[str, Any]:
         return {}
     try:
         payload = json.loads(path.read_text(encoding="utf-8"))
-    except json.JSONDecodeError:
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError):
         return {}
     return payload if isinstance(payload, dict) else {}
 
@@ -610,11 +610,16 @@ def memo_port_record(root: Path, workspace_root: Path) -> dict[str, Any]:
     missing_files = [name for name in required_files if not (memo_root / name).is_file()]
     missing_dirs = [name for name, rel in dirs.items() if not (memo_root / rel).is_dir()]
     index_present = (memo_root / "index.min.json").is_file()
-    present = memo_root.is_dir() and port_yaml.is_file()
+    present = memo_root.is_dir()
+    has_port_markers = (
+        any((memo_root / name).exists() for name in required_files)
+        or any((memo_root / rel).is_dir() for rel in dirs.values())
+        or index_present
+    )
 
     if present and not missing_files and not missing_dirs and index_present:
         level = "full_port"
-    elif present and (memo_root / "AGENTS.md").is_file() and port_yaml.is_file():
+    elif present and has_port_markers:
         level = "stub_port"
     else:
         level = "none"
@@ -745,7 +750,7 @@ def place_record(
     has_memory_route = _has_memory_route(root)
     memo_port = memo_port_record(root, workspace_root)
     current_level = memo_port["port_level"]
-    if current_level == "none" and has_memory_route:
+    if current_level == "none" and has_memory_route and not memo_port["present"]:
         current_level = "route_only"
 
     route_status = "root_memory_route" if has_memory_route else "missing"
@@ -929,7 +934,7 @@ def build_workspace_memory_map(workspace_root: Path) -> dict[str, Any]:
             "meaning": {
                 "none": "no visible local memo route in this place yet",
                 "route_only": "root AGENTS.md or owner-local route points to aoa_memo/.aoa/reviewed memory without a local memo port",
-                "stub_port": "memo/ exists with route card and PORT.yaml, but is not yet fully indexed",
+                "stub_port": "memo/ exists with local port markers, but required files, dirs, or index are incomplete",
                 "full_port": "memo/ has route card, PORT.yaml, packet dirs, and index",
                 "mature_port": "future state: local port is connected to reviewed landing, stats/evals, and repo vocabulary",
                 "live_check_required": "checked-in map found a stable marker route; run the live debt command for git currentness",

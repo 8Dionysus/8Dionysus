@@ -143,6 +143,30 @@ allowed_routes:
             self.assertEqual(marker["marker_ref"], "8Dionysus/generated/workspace_memory_map.min.json")
             validate_workspace_memory_map.validate_payload(payload)
 
+    def test_workspace_memory_map_sync_uses_manifest_repo_identity(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            workspace = Path(tmp)
+            root = workspace / "entry-route"
+            self._make_root(root, with_memory_route=True)
+            write_text(root / "docs" / "WORKSPACE_MEMORY_MAP.md", "# Workspace memory map\n")
+            write_text(root / "generated" / "workspace_memory_map.min.json", "{}\n")
+            write_text(
+                workspace / "aoa-sdk" / ".aoa" / "workspace.toml",
+                """[repos.8Dionysus]
+preferred = ["{workspace_root}/entry-route"]
+""",
+            )
+
+            payload = build_workspace_memory_map.build_workspace_memory_map(workspace)
+            by_name = {place["name"]: place for place in payload["places"]}
+            marker = by_name["8Dionysus"]["writeback_marker"]
+
+            self.assertEqual(by_name["8Dionysus"]["path_hint"], "entry-route")
+            self.assertEqual(marker["status"], "present")
+            self.assertEqual(marker["marker_kind"], "workspace_memory_map_sync")
+            self.assertEqual(marker["marker_ref"], "entry-route/generated/workspace_memory_map.min.json")
+            validate_workspace_memory_map.validate_payload(payload)
+
     def test_aoa_memo_operational_readout_sync_is_marker(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             workspace = Path(tmp)

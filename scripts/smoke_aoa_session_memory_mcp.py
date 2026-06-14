@@ -16,6 +16,7 @@ from mcp.client.stdio import stdio_client
 REQUIRED_TOOLS = {
     "aoa_session_brief",
     "aoa_session_evidence_packet",
+    "aoa_session_entity_inventory",
     "aoa_session_freshness_check",
     "aoa_session_explain_graph_packet",
     "aoa_session_graph_cooccurrence",
@@ -109,6 +110,10 @@ async def run_smoke(workspace_root: Path) -> dict[str, object]:
                 "aoa_session_brief",
                 {"session": "latest", "max_segments": 2},
             )
+            skill_inventory = await session.call_tool(
+                "aoa_session_entity_inventory",
+                {"layer": "skill", "session": "latest", "limit": 5, "sample_limit": 0},
+            )
             graph = await session.call_tool(
                 "aoa_session_graph_neighborhood",
                 {"anchor": "aoa-session-memory-mcp", "kind": "mcp", "limit": 20},
@@ -130,6 +135,7 @@ async def run_smoke(workspace_root: Path) -> dict[str, object]:
             route_payload = json.loads(route.content[0].text)
             evidence_payload = json.loads(evidence.content[0].text)
             brief_payload = json.loads(brief.content[0].text)
+            skill_inventory_payload = json.loads(skill_inventory.content[0].text)
             graph_payload = json.loads(graph.content[0].text)
             graphrag_payload = json.loads(graphrag.content[0].text)
             explain_payload = json.loads(explain.content[0].text)
@@ -159,6 +165,12 @@ async def run_smoke(workspace_root: Path) -> dict[str, object]:
         errors.append("aoa_session_evidence_packet returned no evidence handles")
     if not brief_payload.get("session"):
         errors.append("aoa_session_brief(latest) returned no session brief")
+    if skill_inventory_payload.get("ok") is not True:
+        errors.append("aoa_session_entity_inventory(skill) did not report ok")
+    if skill_inventory_payload.get("layer") != "skill":
+        errors.append("aoa_session_entity_inventory(skill) returned the wrong layer")
+    if int(skill_inventory_payload.get("entity_count") or 0) < 1:
+        errors.append("aoa_session_entity_inventory(skill) returned no skill entities")
     if graph_ref_count < 1:
         errors.append("aoa_session_graph_neighborhood returned no evidence refs")
     if graphrag_ref_count < 1:
@@ -178,6 +190,8 @@ async def run_smoke(workspace_root: Path) -> dict[str, object]:
         "trace_candidate_count": len(route_candidates),
         "route_match_count": route_payload.get("match_count"),
         "evidence_search_hits": len(evidence_payload.get("search_hits", [])),
+        "skill_inventory_entity_count": skill_inventory_payload.get("entity_count"),
+        "skill_inventory_source": skill_inventory_payload.get("source"),
         "graph_evidence_refs": graph_ref_count,
         "graphrag_evidence_refs": graphrag_ref_count,
         "graph_explain_evidence_refs": explain_ref_count,

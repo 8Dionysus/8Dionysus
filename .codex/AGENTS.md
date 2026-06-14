@@ -56,10 +56,10 @@ Verify with:
 ```bash
 python scripts/validate_nested_agents.py
 python scripts/build_workspace_memory_map.py --check
-python scripts/smoke_aoa_memo_mcp.py --workspace-root /srv/AbyssOS
-python scripts/smoke_aoa_session_memory_mcp.py --workspace-root /srv/AbyssOS
-python scripts/smoke_aoa_evals_mcp.py --workspace-root /srv/AbyssOS
-python scripts/smoke_aoa_decisions_mcp.py --workspace-root /srv/AbyssOS
-python scripts/smoke_abyss_machine_mcp.py --workspace-root /srv/AbyssOS
+python /srv/AbyssOS/8Dionysus/scripts/smoke_aoa_memo_mcp.py --workspace-root /srv/AbyssOS
+python /srv/AbyssOS/8Dionysus/scripts/smoke_aoa_session_memory_mcp.py --workspace-root /srv/AbyssOS
+python /srv/AbyssOS/8Dionysus/scripts/smoke_aoa_evals_mcp.py --workspace-root /srv/AbyssOS
+python /srv/AbyssOS/8Dionysus/scripts/smoke_aoa_decisions_mcp.py --workspace-root /srv/AbyssOS
+python /srv/AbyssOS/8Dionysus/scripts/smoke_abyss_machine_mcp.py --workspace-root /srv/AbyssOS
 python scripts/audit_agents_map.py --workspace-root <workspace-root> --write generated/agents_map.min.json --markdown docs/AGENTS_MAP.md
 ```

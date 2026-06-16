@@ -128,6 +128,31 @@ allowed_routes:
             self.assertIn("validate-port --repo Agents-of-Abyss", place["validation_command"])
             validate_workspace_memory_map.validate_payload(payload)
 
+    def test_aoa_memo_reviewed_corpus_is_not_a_stub_local_port(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            workspace = Path(tmp)
+            root = workspace / "aoa-memo"
+            self._make_root(root, with_memory_route=True)
+            write_text(root / "memo" / "AGENTS.md", "# AGENTS.md\n\n## Memory route\n")
+            write_text(root / "memo" / "README.md", "# Reviewed corpus\n")
+            write_text(
+                root / "memo" / "objects" / "decisions" / "2026" / "demo" / "object.json",
+                json.dumps({"id": "memo.decision.2026-06-15.demo"}),
+            )
+
+            payload = build_workspace_memory_map.build_workspace_memory_map(workspace)
+            by_name = {place["name"]: place for place in payload["places"]}
+            place = by_name["aoa-memo"]
+
+            self.assertEqual(place["memory_role"], "reviewed-memory-owner")
+            self.assertFalse(place["memo_port"]["present"])
+            self.assertEqual(place["memo_port"]["port_level"], "none")
+            self.assertEqual(place["current_port_level"], "route_only")
+            self.assertEqual(place["memory_route_status"], "root_memory_route")
+            self.assertEqual(place["validation_command"], "python scripts/build_workspace_memory_map.py --check")
+            self.assertNotIn("memo port missing PORT.yaml", place["issues"])
+            validate_workspace_memory_map.validate_payload(payload)
+
     def test_reviewed_landing_receipts_are_writeback_markers(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             workspace = Path(tmp)

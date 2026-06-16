@@ -18,6 +18,14 @@ def load_smoke_module():
 
 
 class SmokeAoaSessionMemoryMcpTests(unittest.TestCase):
+    def test_skill_inventory_smoke_uses_global_inventory(self) -> None:
+        module = load_smoke_module()
+
+        self.assertEqual(module.SKILL_INVENTORY_ARGUMENTS["layer"], "skill")
+        self.assertEqual(module.SKILL_INVENTORY_ARGUMENTS["limit"], 5)
+        self.assertEqual(module.SKILL_INVENTORY_ARGUMENTS["sample_limit"], 0)
+        self.assertNotIn("session", module.SKILL_INVENTORY_ARGUMENTS)
+
     def test_evidence_ref_count_ignores_empty_lexical_ref_containers(self) -> None:
         module = load_smoke_module()
 

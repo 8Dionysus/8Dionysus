@@ -9,9 +9,6 @@ import os
 from pathlib import Path
 from typing import Sequence
 
-from mcp import ClientSession, StdioServerParameters
-from mcp.client.stdio import stdio_client
-
 
 REQUIRED_TOOLS = {
     "aoa_session_brief",
@@ -111,6 +108,9 @@ def quality_ready_count(payload: object) -> int:
 
 
 async def run_smoke(workspace_root: Path) -> dict[str, object]:
+    from mcp import ClientSession, StdioServerParameters
+    from mcp.client.stdio import stdio_client
+
     env = os.environ.copy()
     env["AOA_WORKSPACE_ROOT"] = str(workspace_root)
     params = StdioServerParameters(

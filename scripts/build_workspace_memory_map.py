@@ -749,6 +749,13 @@ def place_record(
     root_agents_present = (root / "AGENTS.md").is_file()
     has_memory_route = _has_memory_route(root)
     memo_port = memo_port_record(root, workspace_root)
+    if name == "aoa-memo" and memory_role(name) == "reviewed-memory-owner":
+        memo_port = {
+            **memo_port,
+            "present": False,
+            "path_hint": "",
+            "port_level": "none",
+        }
     current_level = memo_port["port_level"]
     if current_level == "none" and has_memory_route and not memo_port["present"]:
         current_level = "route_only"

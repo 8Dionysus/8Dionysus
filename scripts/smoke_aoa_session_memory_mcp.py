@@ -34,6 +34,9 @@ REQUIRED_TOOLS = {
 }
 
 
+SKILL_INVENTORY_ARGUMENTS = {"layer": "skill", "limit": 5, "sample_limit": 0}
+
+
 REF_CONTAINER_KEYS = {
     "evidence_ref",
     "evidence_refs",
@@ -146,7 +149,7 @@ async def run_smoke(workspace_root: Path) -> dict[str, object]:
             )
             skill_inventory = await session.call_tool(
                 "aoa_session_entity_inventory",
-                {"layer": "skill", "session": "latest", "limit": 5, "sample_limit": 0},
+                SKILL_INVENTORY_ARGUMENTS,
             )
             graph = await session.call_tool(
                 "aoa_session_graph_neighborhood",

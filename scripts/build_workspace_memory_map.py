@@ -610,12 +610,13 @@ def memo_port_record(root: Path, workspace_root: Path) -> dict[str, Any]:
     missing_files = [name for name in required_files if not (memo_root / name).is_file()]
     missing_dirs = [name for name, rel in dirs.items() if not (memo_root / rel).is_dir()]
     index_present = (memo_root / "index.min.json").is_file()
-    present = memo_root.is_dir()
+    memo_dir_present = memo_root.is_dir()
     has_port_markers = (
         any((memo_root / name).exists() for name in required_files)
         or any((memo_root / rel).is_dir() for rel in dirs.values())
         or index_present
     )
+    present = memo_dir_present and has_port_markers
 
     if present and not missing_files and not missing_dirs and index_present:
         level = "full_port"

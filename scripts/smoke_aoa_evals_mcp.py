@@ -185,8 +185,11 @@ async def run_smoke(workspace_root: Path) -> dict[str, object]:
     errors: list[str] = []
     if missing_tools:
         errors.append(f"missing tools: {', '.join(missing_tools)}")
-    if not selection_payload.get("matches"):
+    selection_matches = selection_payload.get("matches")
+    if not isinstance(selection_matches, list) or not selection_matches:
         errors.append("aoa_evals_select returned no bounded candidates")
+    elif first is None:
+        errors.append("aoa_evals_select returned matches without a usable eval name")
     if proposal_payload.get("read_only") is not True:
         errors.append("aoa_evals_find_or_propose did not report read_only=true")
     if proposal_payload.get("source_mutation_allowed") is not False:

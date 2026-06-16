@@ -23,48 +23,10 @@ def load_smoke_module():
 
 
 class SmokeAoaEvalsMcpTests(unittest.TestCase):
-    def test_matched_runtime_export_returns_none_without_matched_refs(self) -> None:
-        module = load_smoke_module()
-
-        self.assertIsNone(
-            module.matched_runtime_export(
-                {
-                    "candidates": [
-                        {"record_id": "one", "validation": {"matched_eval_refs": []}},
-                        {"record_id": "two", "validation": {"valid": True}},
-                    ]
-                }
-            )
-        )
-
-    def test_matched_runtime_export_selects_first_export_with_eval_refs(self) -> None:
-        module = load_smoke_module()
-
-        match = module.matched_runtime_export(
-            {
-                "candidates": [
-                    {"record_id": "one", "validation": {"matched_eval_refs": []}},
-                    {"record_id": "two", "validation": {"matched_eval_refs": ["aoa-bounded-change-quality"]}},
-                ]
-            }
-        )
-
-        self.assertEqual(match["record_id"], "two")
-
-    def test_runtime_walkthrough_summary_marks_missing_export_as_skipped(self) -> None:
-        module = load_smoke_module()
-
-        summary = module.runtime_walkthrough_summary(None, None)
-
-        self.assertEqual(
-            summary,
-            {
-                "skipped": True,
-                "reason": "no matched runtime candidate export in listing",
-            },
-        )
-
-    def test_empty_selection_skips_inspect_report_and_validation_followups(self) -> None:
+    def run_smoke_with_selection(
+        self,
+        selection_payload: dict[str, object],
+    ) -> tuple[dict[str, object], list[str]]:
         module = load_smoke_module()
         calls: list[str] = []
 
@@ -98,7 +60,7 @@ class SmokeAoaEvalsMcpTests(unittest.TestCase):
                 }:
                     raise AssertionError(f"{name} should not run without a selected eval")
                 payloads: dict[str, dict[str, object]] = {
-                    "aoa_evals_select": {"matches": []},
+                    "aoa_evals_select": selection_payload,
                     "aoa_evals_find_or_propose": {
                         "outcome": "proposed",
                         "read_only": True,
@@ -145,6 +107,52 @@ class SmokeAoaEvalsMcpTests(unittest.TestCase):
         ):
             smoke = asyncio.run(module.run_smoke(ROOT))
 
+        return smoke, calls
+
+    def test_matched_runtime_export_returns_none_without_matched_refs(self) -> None:
+        module = load_smoke_module()
+
+        self.assertIsNone(
+            module.matched_runtime_export(
+                {
+                    "candidates": [
+                        {"record_id": "one", "validation": {"matched_eval_refs": []}},
+                        {"record_id": "two", "validation": {"valid": True}},
+                    ]
+                }
+            )
+        )
+
+    def test_matched_runtime_export_selects_first_export_with_eval_refs(self) -> None:
+        module = load_smoke_module()
+
+        match = module.matched_runtime_export(
+            {
+                "candidates": [
+                    {"record_id": "one", "validation": {"matched_eval_refs": []}},
+                    {"record_id": "two", "validation": {"matched_eval_refs": ["aoa-bounded-change-quality"]}},
+                ]
+            }
+        )
+
+        self.assertEqual(match["record_id"], "two")
+
+    def test_runtime_walkthrough_summary_marks_missing_export_as_skipped(self) -> None:
+        module = load_smoke_module()
+
+        summary = module.runtime_walkthrough_summary(None, None)
+
+        self.assertEqual(
+            summary,
+            {
+                "skipped": True,
+                "reason": "no matched runtime candidate export in listing",
+            },
+        )
+
+    def test_empty_selection_skips_inspect_report_and_validation_followups(self) -> None:
+        smoke, calls = self.run_smoke_with_selection({"matches": []})
+
         self.assertFalse(smoke["ok"])
         self.assertEqual(smoke["selected_eval"], "")
         self.assertIsNone(smoke["candidate_only"])
@@ -153,6 +161,23 @@ class SmokeAoaEvalsMcpTests(unittest.TestCase):
         self.assertNotIn("aoa_evals_inspect", calls)
         self.assertNotIn("aoa_evals_report_skeleton", calls)
         self.assertNotIn("aoa_evals_validate_evidence_candidate", calls)
+
+    def test_malformed_selection_reports_error_before_selected_eval_followups(self) -> None:
+        for selection_payload in ({"matches": [{}]}, {"matches": [{"name": 123}]}):
+            with self.subTest(selection_payload=selection_payload):
+                smoke, calls = self.run_smoke_with_selection(selection_payload)
+
+                self.assertFalse(smoke["ok"])
+                self.assertEqual(smoke["selected_eval"], "")
+                self.assertIsNone(smoke["candidate_only"])
+                self.assertIsNone(smoke["candidate_validation"])
+                self.assertEqual(
+                    smoke["errors"],
+                    ["aoa_evals_select returned matches without a usable eval name"],
+                )
+                self.assertNotIn("aoa_evals_inspect", calls)
+                self.assertNotIn("aoa_evals_report_skeleton", calls)
+                self.assertNotIn("aoa_evals_validate_evidence_candidate", calls)
 
 
 if __name__ == "__main__":

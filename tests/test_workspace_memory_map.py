@@ -128,6 +128,25 @@ allowed_routes:
             self.assertIn("validate-port --repo Agents-of-Abyss", place["validation_command"])
             validate_workspace_memory_map.validate_payload(payload)
 
+    def test_empty_memo_directory_keeps_route_only_status(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            workspace = Path(tmp)
+            root = workspace / "aoa-sdk"
+            self._make_root(root, with_memory_route=True)
+            (root / "memo").mkdir(parents=True)
+
+            payload = build_workspace_memory_map.build_workspace_memory_map(workspace)
+            by_name = {place["name"]: place for place in payload["places"]}
+            place = by_name["aoa-sdk"]
+
+            self.assertFalse(place["memo_port"]["present"])
+            self.assertEqual(place["memo_port"]["port_level"], "none")
+            self.assertEqual(place["current_port_level"], "route_only")
+            self.assertEqual(place["memory_route_status"], "root_memory_route")
+            self.assertEqual(place["validation_command"], "python scripts/build_workspace_memory_map.py --check")
+            self.assertNotIn("memo port missing PORT.yaml", place["issues"])
+            validate_workspace_memory_map.validate_payload(payload)
+
     def test_aoa_memo_reviewed_corpus_is_not_a_stub_local_port(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             workspace = Path(tmp)

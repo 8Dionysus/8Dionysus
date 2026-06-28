@@ -1,0 +1,69 @@
+{
+  "schema_version": "aoa-local-kag-manifest-v1",
+  "repo": "8Dionysus",
+  "owner_surface": "kag/AGENTS.md",
+  "source_surfaces": [
+    {
+      "repo": "8Dionysus",
+      "path": "generated/workspace_memory_map.min.json",
+      "source_class": "route_source",
+      "role": "primary",
+      "authority": "derived_readmodel"
+    },
+    {
+      "repo": "8Dionysus",
+      "path": "README.md",
+      "source_class": "route_source",
+      "role": "owner_route",
+      "authority": "authored_source"
+    },
+    {
+      "repo": "8Dionysus",
+      "path": "docs/WORKSPACE_MEMORY_MAP.md",
+      "source_class": "route_source",
+      "role": "supporting",
+      "authority": "derived_readmodel"
+    },
+    {
+      "repo": "8Dionysus",
+      "path": "docs/START_HERE.md",
+      "source_class": "route_source",
+      "role": "supporting",
+      "authority": "authored_source"
+    }
+  ],
+  "record_classes": [
+    "node",
+    "edge",
+    "index",
+    "projection",
+    "receipt"
+  ],
+  "storage_posture": {
+    "git_surface": "portable_records",
+    "payload_class": "manifest",
+    "runtime_route": "source-repo"
+  },
+  "validation_routes": [
+    {
+      "route": "python scripts/build_workspace_memory_map.py --check",
+      "lane": "owner-local"
+    },
+    {
+      "route": "python scripts/validate_workspace_memory_map.py",
+      "lane": "owner-local"
+    }
+  ],
+  "consumer_routes": [
+    "aoa-kag registry",
+    "abyss-stack federation mirror",
+    "aoa-kag-mcp resource"
+  ],
+  "owner_return_routes": [
+    {
+      "repo": "8Dionysus",
+      "surface": "README.md",
+      "route_kind": "authored_meaning"
+    }
+  ]
+}

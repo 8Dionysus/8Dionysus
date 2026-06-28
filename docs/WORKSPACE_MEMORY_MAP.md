@@ -17,7 +17,7 @@ python scripts/validate_workspace_memory_map.py
 
 ## Totals
 
-- `full_ports`: 9
+- `full_ports`: 10
 - `landed_exports`: 3
 - `local_candidates`: 50
 - `memory_routes`: 19
@@ -29,7 +29,7 @@ python scripts/validate_workspace_memory_map.py
 - `ready_exports`: 0
 - `recommended_full_ports_missing`: 0
 - `root_memory_routes`: 18
-- `route_only`: 11
+- `route_only`: 10
 - `session_evidence_routes`: 1
 - `writeback_live_checks`: 8
 - `writeback_markers`: 8
@@ -103,7 +103,7 @@ python scripts/build_workspace_memory_map.py \
 | aoa-sdk | workspace-memory-route | `route_only` | `route_only` | root_memory_route | 0 | 0 | 0 | 0 | `python scripts/build_workspace_memory_map.py --check` | ok |
 | aoa-techniques | local-memory-port-candidate | `full_port` | `full_port` | local_port_route | 1 | 0 | 0 | 0 | `PYTHONPATH="${AOA_ABYSS_STACK_ROOT:-$HOME/src/abyss-stack}/mcp/services/aoa-memo-mcp/src" python -m aoa_memo_mcp.cli validate-port --repo aoa-techniques` | ok |
 | aoa-skills | local-memory-port-candidate | `full_port` | `full_port` | local_port_route | 1 | 0 | 0 | 0 | `PYTHONPATH="${AOA_ABYSS_STACK_ROOT:-$HOME/src/abyss-stack}/mcp/services/aoa-memo-mcp/src" python -m aoa_memo_mcp.cli validate-port --repo aoa-skills` | ok |
-| aoa-evals | workspace-memory-route | `route_only` | `route_only` | root_memory_route | 0 | 0 | 0 | 0 | `python scripts/build_workspace_memory_map.py --check` | ok |
+| aoa-evals | workspace-memory-route | `full_port` | `route_only` | local_port_route | 0 | 0 | 0 | 0 | `PYTHONPATH="${AOA_ABYSS_STACK_ROOT:-$HOME/src/abyss-stack}/mcp/services/aoa-memo-mcp/src" python -m aoa_memo_mcp.cli validate-port --repo aoa-evals` | ok |
 | aoa-stats | workspace-memory-route | `route_only` | `route_only` | root_memory_route | 0 | 0 | 0 | 0 | `python scripts/build_workspace_memory_map.py --check` | ok |
 | aoa-routing | workspace-memory-route | `route_only` | `route_only` | root_memory_route | 0 | 0 | 0 | 0 | `python scripts/build_workspace_memory_map.py --check` | ok |
 | aoa-memo | reviewed-memory-owner | `route_only` | `route_only` | root_memory_route | 0 | 0 | 0 | 0 | `python scripts/build_workspace_memory_map.py --check` | ok |

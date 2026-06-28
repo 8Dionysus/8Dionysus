@@ -37,6 +37,18 @@ REQUIRED_RESOURCE_TEMPLATES = {
     "aoa-kag://providers/{repo}/records/{record_class}",
 }
 
+SAMPLE_PROVIDER_REPOS = (
+    "aoa-kag",
+    "Agents-of-Abyss",
+    "aoa-memo",
+    "aoa-evals",
+    "aoa-skills",
+)
+SAMPLE_RECORD_PROVIDER = "aoa-kag"
+RECORD_CLASSES = ("node", "edge", "index", "projection", "receipt")
+REQUIRED_OS_SURFACES = {".codex", "src/abyss-stack"}
+REQUIRED_SERVICE_ROUTE = "abyss-stack/mcp/services/aoa-kag-mcp"
+
 
 def _json_tool_payload(result: Any) -> dict[str, object]:
     return json.loads(result.content[0].text)
@@ -83,13 +95,19 @@ async def run_smoke(workspace_root: Path) -> dict[str, object]:
             prompts = {prompt.name for prompt in (await session.list_prompts()).prompts}
 
             status = _json_tool_payload(await session.call_tool("aoa_kag_provider_status", {}))
-            lookup = _json_tool_payload(
-                await session.call_tool("aoa_kag_provider_lookup", {"repo": "aoa-kag"})
-            )
+            provider_lookups = {
+                repo: _json_tool_payload(
+                    await session.call_tool("aoa_kag_provider_lookup", {"repo": repo})
+                )
+                for repo in SAMPLE_PROVIDER_REPOS
+            }
             freshness = _json_tool_payload(await session.call_tool("aoa_kag_freshness_check", {}))
-            source_return = _json_tool_payload(
-                await session.call_tool("aoa_kag_source_return_lookup", {"repo": "aoa-kag"})
-            )
+            source_returns = {
+                repo: _json_tool_payload(
+                    await session.call_tool("aoa_kag_source_return_lookup", {"repo": repo})
+                )
+                for repo in SAMPLE_PROVIDER_REPOS
+            }
             registry = _json_tool_payload(
                 await session.call_tool("aoa_kag_registry_slice", {"limit": 5})
             )
@@ -108,17 +126,51 @@ async def run_smoke(workspace_root: Path) -> dict[str, object]:
             readiness = _json_resource_payload(
                 await session.read_resource("aoa-kag://readiness/os-surfaces")
             )
-            manifest = _json_resource_payload(
-                await session.read_resource("aoa-kag://providers/aoa-kag/manifest")
-            )
-            node_records = _json_resource_payload(
-                await session.read_resource("aoa-kag://providers/aoa-kag/records/node")
-            )
+            manifests = {
+                repo: _json_resource_payload(
+                    await session.read_resource(f"aoa-kag://providers/{repo}/manifest")
+                )
+                for repo in SAMPLE_PROVIDER_REPOS
+            }
+            provider_records = {
+                record_class: _json_resource_payload(
+                    await session.read_resource(
+                        f"aoa-kag://providers/{SAMPLE_RECORD_PROVIDER}/records/{record_class}"
+                    )
+                )
+                for record_class in RECORD_CLASSES
+            }
 
     status_block = status.get("status") if isinstance(status.get("status"), dict) else {}
     provider_count = int(status_block.get("provider_count") or 0)
     readiness_surfaces = readiness.get("os_surfaces")
-    manifest_repo = manifest.get("repo")
+    readiness_surface_ids = {
+        surface.get("surface_id")
+        for surface in readiness_surfaces
+        if isinstance(surface, dict)
+    } if isinstance(readiness_surfaces, list) else set()
+    provider_map_handoff = (
+        provider_map.get("mcp_handoff")
+        if isinstance(provider_map.get("mcp_handoff"), dict)
+        else {}
+    )
+    service_route = provider_map_handoff.get("service_route")
+    provider_lookup_statuses = {
+        repo: packet.get("status")
+        for repo, packet in provider_lookups.items()
+    }
+    source_return_route_counts = {
+        repo: len(packet.get("owner_return_routes", []))
+        for repo, packet in source_returns.items()
+    }
+    manifest_repos = {
+        repo: packet.get("repo")
+        for repo, packet in manifests.items()
+    }
+    record_class_counts = {
+        record_class: packet.get("count")
+        for record_class, packet in provider_records.items()
+    }
     errors: list[str] = []
 
     missing_tools = sorted(REQUIRED_TOOLS - tools)
@@ -135,24 +187,33 @@ async def run_smoke(workspace_root: Path) -> dict[str, object]:
         errors.append(f"missing resource templates: {', '.join(missing_templates)}")
     if provider_count < 1:
         errors.append("aoa_kag_provider_status returned no providers")
-    if lookup.get("status") != "provider_ready":
-        errors.append("aoa_kag_provider_lookup did not return provider_ready for aoa-kag")
+    for repo, lookup_status in provider_lookup_statuses.items():
+        if lookup_status != "provider_ready":
+            errors.append(f"aoa_kag_provider_lookup did not return provider_ready for {repo}")
     if freshness.get("ok") is not True:
         errors.append("aoa_kag_freshness_check reported missing freshness handles")
-    if not source_return.get("owner_return_routes"):
-        errors.append("aoa_kag_source_return_lookup returned no owner routes for aoa-kag")
+    for repo, route_count in source_return_route_counts.items():
+        if route_count < 1:
+            errors.append(f"aoa_kag_source_return_lookup returned no owner routes for {repo}")
     if int(registry.get("count") or 0) < 1:
         errors.append("aoa_kag_registry_slice returned no rows")
     if int(composition.get("count") or 0) < 1:
         errors.append("aoa_kag_composition_slice returned no rows for query 'kag'")
     if provider_map.get("schema_version") != "aoa-local-kag-provider-map-v1":
         errors.append("provider-map resource returned unexpected schema_version")
+    if service_route != REQUIRED_SERVICE_ROUTE:
+        errors.append("provider-map resource returned unexpected aoa-kag-mcp service route")
     if not isinstance(readiness_surfaces, list) or not readiness_surfaces:
         errors.append("readiness resource returned no OS surfaces")
-    if manifest_repo != "aoa-kag":
-        errors.append("aoa-kag provider manifest did not identify repo=aoa-kag")
-    if int(node_records.get("count") or 0) < 1:
-        errors.append("aoa-kag node record resource returned no records")
+    missing_os_surfaces = sorted(REQUIRED_OS_SURFACES - readiness_surface_ids)
+    if missing_os_surfaces:
+        errors.append(f"readiness resource is missing OS surfaces: {', '.join(missing_os_surfaces)}")
+    for repo, manifest_repo in manifest_repos.items():
+        if manifest_repo != repo:
+            errors.append(f"{repo} provider manifest did not identify repo={repo}")
+    for record_class, count in record_class_counts.items():
+        if int(count or 0) < 1:
+            errors.append(f"{SAMPLE_RECORD_PROVIDER} {record_class} record resource returned no records")
 
     return {
         "schema": "8dionysus_aoa_kag_mcp_smoke_v1",
@@ -166,15 +227,18 @@ async def run_smoke(workspace_root: Path) -> dict[str, object]:
         "provider_count": provider_count,
         "remaining_route_count": status_block.get("remaining_route_count"),
         "os_surface_count": status_block.get("os_surface_count"),
-        "aoa_kag_lookup_status": lookup.get("status"),
+        "service_route": service_route,
+        "sample_provider_lookup_statuses": provider_lookup_statuses,
         "freshness_ok": freshness.get("ok"),
         "missing_receipts": freshness.get("missing_receipts", []),
-        "owner_return_route_count": len(source_return.get("owner_return_routes", [])),
+        "sample_source_return_route_counts": source_return_route_counts,
         "registry_count": registry.get("count"),
         "composition_count": composition.get("count"),
         "validation_provider_home_count": len(validation.get("provider_homes", [])),
-        "manifest_repo": manifest_repo,
-        "node_record_count": node_records.get("count"),
+        "sample_manifest_repos": manifest_repos,
+        "record_provider": SAMPLE_RECORD_PROVIDER,
+        "record_class_counts": record_class_counts,
+        "required_os_surfaces": sorted(REQUIRED_OS_SURFACES),
         "errors": errors,
     }
 

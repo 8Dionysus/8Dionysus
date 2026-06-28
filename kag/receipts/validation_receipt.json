@@ -1,0 +1,54 @@
+{
+  "schema_version": "aoa-local-kag-record-v1",
+  "repo": "8Dionysus",
+  "local_id": "receipt:validation:profile-provider",
+  "record_class": "receipt",
+  "source_refs": [
+    {
+      "repo": "8Dionysus",
+      "path": "generated/workspace_memory_map.min.json",
+      "source_class": "route_source",
+      "role": "primary",
+      "authority": "derived_readmodel"
+    },
+    {
+      "repo": "8Dionysus",
+      "path": "README.md",
+      "source_class": "route_source",
+      "role": "owner_route",
+      "authority": "authored_source"
+    }
+  ],
+  "source_owner": "8Dionysus",
+  "provenance_mode": "strict_source_linked",
+  "derived_method": "source-linked local KAG receipt over public profile records",
+  "generated_or_authored": "generated_from_source",
+  "status": "active",
+  "owner_return_route": {
+    "repo": "8Dionysus",
+    "surface": "README.md",
+    "route_kind": "authored_meaning"
+  },
+  "freshness": {
+    "mode": "validator_receipt",
+    "state": "current",
+    "checked_ref": "generated/workspace_memory_map.min.json"
+  },
+  "builder": {
+    "route": "python scripts/build_workspace_memory_map.py --check",
+    "surface": "scripts/build_workspace_memory_map.py"
+  },
+  "validator": {
+    "route": "python scripts/validate_workspace_memory_map.py",
+    "lane": "owner-local"
+  },
+  "storage_posture": {
+    "git_surface": "receipt",
+    "payload_class": "receipt",
+    "runtime_route": "source-repo"
+  },
+  "consumer_route": "aoa-kag registry",
+  "receipt_kind": "validation",
+  "result": "current",
+  "fallback_route": "python scripts/validate_workspace_memory_map.py"
+}

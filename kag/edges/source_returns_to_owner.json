@@ -1,0 +1,55 @@
+{
+  "schema_version": "aoa-local-kag-record-v1",
+  "repo": "8Dionysus",
+  "local_id": "edge:profile:source-returns-to-owner",
+  "record_class": "edge",
+  "source_refs": [
+    {
+      "repo": "8Dionysus",
+      "path": "generated/workspace_memory_map.min.json",
+      "source_class": "route_source",
+      "role": "primary",
+      "authority": "derived_readmodel"
+    },
+    {
+      "repo": "8Dionysus",
+      "path": "README.md",
+      "source_class": "route_source",
+      "role": "owner_route",
+      "authority": "authored_source"
+    }
+  ],
+  "source_owner": "8Dionysus",
+  "provenance_mode": "strict_source_linked",
+  "derived_method": "source-linked local KAG edge over public profile and workspace memory-map routing",
+  "generated_or_authored": "generated_from_source",
+  "status": "active",
+  "owner_return_route": {
+    "repo": "8Dionysus",
+    "surface": "README.md",
+    "route_kind": "authored_meaning"
+  },
+  "freshness": {
+    "mode": "source_snapshot",
+    "state": "current",
+    "checked_ref": "generated/workspace_memory_map.min.json"
+  },
+  "builder": {
+    "route": "workspace memory map builder",
+    "surface": "scripts/build_workspace_memory_map.py"
+  },
+  "validator": {
+    "route": "python scripts/validate_workspace_memory_map.py",
+    "lane": "owner-local"
+  },
+  "storage_posture": {
+    "git_surface": "portable_records",
+    "payload_class": "edge",
+    "runtime_route": "source-repo"
+  },
+  "consumer_route": "aoa-kag registry",
+  "from_id": "node:profile:workspace-memory-map",
+  "to_id": "node:profile:public-route",
+  "edge_kind": "returns_to",
+  "edge_trace": "workspace memory-map projection returns to README.md for public ecosystem orientation and owner routing"
+}

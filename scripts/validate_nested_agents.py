@@ -70,6 +70,12 @@ REQUIRED_AGENTS_DOCS: dict[str, tuple[str, ...]] = {
         "regenerating generated files",
         "recon_agents_frontier.py",
     ),
+    "kag/AGENTS.md": (
+        "local KAG provider home",
+        "source-linked records",
+        "aoa-kag",
+        "source-return route",
+    ),
     "manifests/AGENTS.md": (
         "public route",
         "coordination evidence",

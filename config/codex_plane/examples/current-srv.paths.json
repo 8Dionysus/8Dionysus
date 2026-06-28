@@ -35,6 +35,10 @@
       "cwd": "/srv/AbyssOS",
       "script_rel": ".codex/bin/aoa-evals-mcp-server.py"
     },
+    "aoa_kag": {
+      "cwd": "/srv/AbyssOS",
+      "script_rel": ".codex/bin/aoa-kag-mcp-server.py"
+    },
     "aoa_decisions": {
       "cwd": "/srv/AbyssOS",
       "script_rel": ".codex/bin/aoa-decisions-mcp-server.py"

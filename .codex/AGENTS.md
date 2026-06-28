@@ -33,6 +33,13 @@ only. Verdicts, proposal approval, source bundle creation, evidence acceptance,
 receipt publication, bundle promotion, and proof authority remain in
 `aoa-evals`.
 
+KAG access in the Codex plane uses `aoa_kag` as an access plane. Use it to
+inspect KAG provider status, provider records, source-return routes, freshness
+handles, registry slices, composition slices, validation status, and prompt
+routes. KAG schema, readiness, generated provider maps, and provider-home
+validation remain in `aoa-kag`; runnable MCP service code remains in
+`abyss-stack`; source meaning remains with the provider repositories.
+
 Decision-lane access in the Codex plane uses `aoa_decisions` as an access
 plane. Use it to search, inspect, and packetize workspace `docs/decisions/`
 records before broad repo reads. The service refreshes its generated graph
@@ -59,6 +66,7 @@ python scripts/build_workspace_memory_map.py --check
 python /srv/AbyssOS/8Dionysus/scripts/smoke_aoa_memo_mcp.py --workspace-root /srv/AbyssOS
 python /srv/AbyssOS/8Dionysus/scripts/smoke_aoa_session_memory_mcp.py --workspace-root /srv/AbyssOS
 python /srv/AbyssOS/8Dionysus/scripts/smoke_aoa_evals_mcp.py --workspace-root /srv/AbyssOS
+python /srv/AbyssOS/8Dionysus/scripts/smoke_aoa_kag_mcp.py --workspace-root /srv/AbyssOS
 python /srv/AbyssOS/8Dionysus/scripts/smoke_aoa_decisions_mcp.py --workspace-root /srv/AbyssOS
 python /srv/AbyssOS/8Dionysus/scripts/smoke_abyss_machine_mcp.py --workspace-root /srv/AbyssOS
 python scripts/audit_agents_map.py --workspace-root <workspace-root> --write generated/agents_map.min.json --markdown docs/AGENTS_MAP.md

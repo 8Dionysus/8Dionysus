@@ -35,44 +35,45 @@ For reading guidance, see [AGENTS_FRONTIER_RECON](AGENTS_FRONTIER_RECON.md).
 
 ## Current totals
 
-- `agents_md_files`: 1600
-- `high_risk_dirs_without_agents`: 28
+- `agents_md_files`: 1704
+- `high_risk_dirs_without_agents`: 24
 - `known_repositories`: 16
 - `known_repositories_missing`: 0
-- `long_root_agents`: 2
+- `long_root_agents`: 3
 - `missing_required_agents`: 0
-- `nested_agents_files`: 1581
+- `nested_agents_files`: 1684
 - `repos_with_issues`: 12
-- `repositories_listed`: 19
-- `repositories_scanned`: 19
-- `root_agents_present`: 19
-- `unvalidated_nested_agents`: 1368
-- `validator_required_agents`: 213
+- `repositories_listed`: 20
+- `repositories_scanned`: 20
+- `root_agents_present`: 20
+- `unvalidated_nested_agents`: 1488
+- `validator_required_agents`: 196
 - `validators_present`: 13
 
 ## Repository coverage
 
 | Repository | State | AGENTS.md | Nested | Validator | Issues |
 |---|---:|---:|---:|---:|---|
-| `8Dionysus` | `scanned` | 17 | 16 | True |  |
-| `Agents-of-Abyss` | `scanned` | 63 | 62 | False | nested AGENTS.md files exist without scripts/validate_nested_agents.py |
-| `Tree-of-Sophia` | `scanned` | 48 | 47 | True | one or more AGENTS.md files do not start with '# AGENTS.md' |
-| `abyss-stack` | `scanned` | 43 | 42 | True | one or more AGENTS.md files do not start with '# AGENTS.md'; root AGENTS.md is long (310 lines; threshold 240) |
-| `ATM10-Agent` | `scanned` | 15 | 14 | True |  |
-| `Dionysus` | `scanned` | 19 | 18 | True | one or more AGENTS.md files do not start with '# AGENTS.md' |
-| `aoa-sdk` | `scanned` | 49 | 48 | True |  |
-| `aoa-techniques` | `scanned` | 93 | 92 | True |  |
-| `aoa-skills` | `scanned` | 67 | 66 | False | nested AGENTS.md files exist without scripts/validate_nested_agents.py; root AGENTS.md is long (315 lines; threshold 240) |
-| `aoa-evals` | `scanned` | 86 | 85 | True |  |
-| `aoa-stats` | `scanned` | 12 | 11 | True |  |
-| `aoa-routing` | `scanned` | 50 | 49 | True | one or more AGENTS.md files do not start with '# AGENTS.md' |
-| `aoa-memo` | `scanned` | 116 | 115 | False | nested AGENTS.md files exist without scripts/validate_nested_agents.py |
-| `aoa-agents` | `scanned` | 62 | 61 | True | one or more AGENTS.md files do not start with '# AGENTS.md' |
-| `aoa-playbooks` | `scanned` | 36 | 35 | True | one or more AGENTS.md files do not start with '# AGENTS.md' |
-| `aoa-kag` | `scanned` | 14 | 13 | True | one or more AGENTS.md files do not start with '# AGENTS.md' |
+| `8Dionysus` | `scanned` | 18 | 17 | True |  |
+| `Agents-of-Abyss` | `scanned` | 64 | 63 | False | nested AGENTS.md files exist without scripts/validate_nested_agents.py |
+| `Tree-of-Sophia` | `scanned` | 53 | 52 | True |  |
+| `abyss-stack` | `scanned` | 47 | 46 | True | one or more AGENTS.md files do not start with '# AGENTS.md'; root AGENTS.md is long (310 lines; threshold 240) |
+| `ATM10-Agent` | `scanned` | 16 | 15 | True |  |
+| `Dionysus` | `scanned` | 20 | 19 | True | one or more AGENTS.md files do not start with '# AGENTS.md' |
+| `aoa-sdk` | `scanned` | 50 | 49 | True |  |
+| `aoa-techniques` | `scanned` | 94 | 93 | True |  |
+| `aoa-skills` | `scanned` | 68 | 67 | False | nested AGENTS.md files exist without scripts/validate_nested_agents.py; root AGENTS.md is long (315 lines; threshold 240) |
+| `aoa-evals` | `scanned` | 88 | 87 | True |  |
+| `aoa-stats` | `scanned` | 13 | 12 | True |  |
+| `aoa-routing` | `scanned` | 51 | 50 | True | one or more AGENTS.md files do not start with '# AGENTS.md' |
+| `aoa-memo` | `scanned` | 117 | 116 | False | nested AGENTS.md files exist without scripts/validate_nested_agents.py |
+| `aoa-agents` | `scanned` | 63 | 62 | True | one or more AGENTS.md files do not start with '# AGENTS.md' |
+| `aoa-playbooks` | `scanned` | 37 | 36 | True | one or more AGENTS.md files do not start with '# AGENTS.md' |
+| `aoa-kag` | `scanned` | 57 | 56 | True | one or more AGENTS.md files do not start with '# AGENTS.md'; root AGENTS.md is long (289 lines; threshold 240) |
 | `.agents` | `scanned` | 1 | 0 | False |  |
-| `.aoa` | `scanned` | 278 | 277 | False | nested AGENTS.md files exist without scripts/validate_nested_agents.py; one or more AGENTS.md files do not start with '# AGENTS.md' |
+| `.aoa` | `scanned` | 300 | 299 | False | nested AGENTS.md files exist without scripts/validate_nested_agents.py; one or more AGENTS.md files do not start with '# AGENTS.md' |
 | `.codex` | `scanned` | 531 | 530 | False | nested AGENTS.md files exist without scripts/validate_nested_agents.py; one or more AGENTS.md files do not start with '# AGENTS.md' |
+| `connectors` | `scanned` | 16 | 15 | False | nested AGENTS.md files exist without scripts/validate_nested_agents.py; one or more AGENTS.md files do not start with '# AGENTS.md' |
 
 ## How to read the signals
 

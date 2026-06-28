@@ -44,6 +44,7 @@ class ValidateNestedAgentsTests(unittest.TestCase):
             "evals/AGENTS.md",
             "examples/AGENTS.md",
             "generated/AGENTS.md",
+            "kag/AGENTS.md",
             "manifests/AGENTS.md",
             "manifests/recurrence/AGENTS.md",
             "profile/AGENTS.md",

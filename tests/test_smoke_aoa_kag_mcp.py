@@ -83,19 +83,29 @@ class SmokeAoaKagMcpTests(unittest.TestCase):
                 )
 
             async def call_tool(self, name: str, args: dict[str, object]) -> object:
+                if name == "aoa_kag_provider_lookup":
+                    return result(
+                        {
+                            "repo": args["repo"],
+                            "status": "provider_ready",
+                        }
+                    )
+                if name == "aoa_kag_source_return_lookup":
+                    return result(
+                        {
+                            "repo": args["repo"],
+                            "owner_return_routes": [{"surface": "kag/README.md"}],
+                        }
+                    )
                 payloads: dict[str, dict[str, object]] = {
                     "aoa_kag_provider_status": {
                         "status": {
                             "provider_count": 15,
                             "remaining_route_count": 0,
-                            "os_surface_count": 13,
+                            "os_surface_count": 14,
                         }
                     },
-                    "aoa_kag_provider_lookup": {"status": "provider_ready"},
                     "aoa_kag_freshness_check": {"ok": True, "missing_receipts": []},
-                    "aoa_kag_source_return_lookup": {
-                        "owner_return_routes": [{"surface": "kag/README.md"}]
-                    },
                     "aoa_kag_registry_slice": {"count": 5},
                     "aoa_kag_composition_slice": {"count": 3},
                     "aoa_kag_validation_status": {"provider_homes": [{"repo": "aoa-kag"}]},
@@ -103,17 +113,31 @@ class SmokeAoaKagMcpTests(unittest.TestCase):
                 return result(payloads[name])
 
             async def read_resource(self, uri: str) -> object:
-                payloads: dict[str, dict[str, object]] = {
-                    "aoa-kag://registry/provider-map": {
-                        "schema_version": "aoa-local-kag-provider-map-v1"
-                    },
-                    "aoa-kag://readiness/os-surfaces": {
-                        "os_surfaces": [{"root_id": "aoa-kag"}]
-                    },
-                    "aoa-kag://providers/aoa-kag/manifest": {"repo": "aoa-kag"},
-                    "aoa-kag://providers/aoa-kag/records/node": {"count": 1},
-                }
-                return resource(payloads[uri])
+                if uri == "aoa-kag://registry/provider-map":
+                    return resource(
+                        {
+                            "schema_version": "aoa-local-kag-provider-map-v1",
+                            "mcp_handoff": {
+                                "service_route": "abyss-stack/mcp/services/aoa-kag-mcp"
+                            },
+                        }
+                    )
+                if uri == "aoa-kag://readiness/os-surfaces":
+                    return resource(
+                        {
+                            "os_surfaces": [
+                                {"surface_id": ".codex"},
+                                {"surface_id": "src/abyss-stack"},
+                            ]
+                        }
+                    )
+                for repo in module.SAMPLE_PROVIDER_REPOS:
+                    if uri == f"aoa-kag://providers/{repo}/manifest":
+                        return resource({"repo": repo})
+                for record_class in module.RECORD_CLASSES:
+                    if uri == f"aoa-kag://providers/aoa-kag/records/{record_class}":
+                        return resource({"count": 1})
+                raise AssertionError(f"unexpected resource URI: {uri}")
 
         class FakeStdioClient:
             async def __aenter__(self) -> tuple[object, object]:
@@ -145,7 +169,15 @@ class SmokeAoaKagMcpTests(unittest.TestCase):
 
         self.assertTrue(smoke["ok"])
         self.assertEqual(smoke["provider_count"], 15)
-        self.assertEqual(smoke["aoa_kag_lookup_status"], "provider_ready")
+        self.assertEqual(
+            smoke["sample_provider_lookup_statuses"],
+            {repo: "provider_ready" for repo in module.SAMPLE_PROVIDER_REPOS},
+        )
+        self.assertEqual(
+            smoke["record_class_counts"],
+            {record_class: 1 for record_class in module.RECORD_CLASSES},
+        )
+        self.assertEqual(smoke["service_route"], "abyss-stack/mcp/services/aoa-kag-mcp")
         self.assertEqual(smoke["errors"], [])
 
 

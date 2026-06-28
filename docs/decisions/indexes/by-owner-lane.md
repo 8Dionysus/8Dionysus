@@ -22,6 +22,7 @@
 - [8DION-D-0012 - Reviewed Memory Landing Receipts As Writeback Markers](../8DION-D-0012-reviewed-memory-landing-receipts-as-writeback-markers.md) (`docs/decisions/8DION-D-0012-reviewed-memory-landing-receipts-as-writeback-markers.md`)
 - [8DION-D-0013 - AoA Session Memory MCP Codex-Plane Registration](../8DION-D-0013-aoa-session-memory-mcp-codex-plane-registration.md) (`docs/decisions/8DION-D-0013-aoa-session-memory-mcp-codex-plane-registration.md`)
 - [8DION-D-0014 - AoA Decisions MCP Codex-Plane Registration](../8DION-D-0014-aoa-decisions-mcp-codex-plane-registration.md) (`docs/decisions/8DION-D-0014-aoa-decisions-mcp-codex-plane-registration.md`)
+- [8DION-D-0015 - AoA KAG MCP Codex-Plane Registration](../8DION-D-0015-aoa-kag-mcp-codex-plane-registration.md) (`docs/decisions/8DION-D-0015-aoa-kag-mcp-codex-plane-registration.md`)
 
 ## abyss-machine
 
@@ -34,10 +35,15 @@
 - [8DION-D-0008 - Abyss Machine MCP Codex-Plane Registration](../8DION-D-0008-abyss-machine-mcp-codex-plane-registration.md) (`docs/decisions/8DION-D-0008-abyss-machine-mcp-codex-plane-registration.md`)
 - [8DION-D-0013 - AoA Session Memory MCP Codex-Plane Registration](../8DION-D-0013-aoa-session-memory-mcp-codex-plane-registration.md) (`docs/decisions/8DION-D-0013-aoa-session-memory-mcp-codex-plane-registration.md`)
 - [8DION-D-0014 - AoA Decisions MCP Codex-Plane Registration](../8DION-D-0014-aoa-decisions-mcp-codex-plane-registration.md) (`docs/decisions/8DION-D-0014-aoa-decisions-mcp-codex-plane-registration.md`)
+- [8DION-D-0015 - AoA KAG MCP Codex-Plane Registration](../8DION-D-0015-aoa-kag-mcp-codex-plane-registration.md) (`docs/decisions/8DION-D-0015-aoa-kag-mcp-codex-plane-registration.md`)
 
 ## aoa-evals
 
 - [8DION-D-0007 - AoA Evals MCP Codex-Plane Registration](../8DION-D-0007-aoa-evals-mcp-codex-plane-registration.md) (`docs/decisions/8DION-D-0007-aoa-evals-mcp-codex-plane-registration.md`)
+
+## aoa-kag
+
+- [8DION-D-0015 - AoA KAG MCP Codex-Plane Registration](../8DION-D-0015-aoa-kag-mcp-codex-plane-registration.md) (`docs/decisions/8DION-D-0015-aoa-kag-mcp-codex-plane-registration.md`)
 
 ## aoa-memo
 

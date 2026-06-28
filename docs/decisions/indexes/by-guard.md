@@ -8,6 +8,7 @@
 - [8DION-D-0007 - AoA Evals MCP Codex-Plane Registration](../8DION-D-0007-aoa-evals-mcp-codex-plane-registration.md) (`docs/decisions/8DION-D-0007-aoa-evals-mcp-codex-plane-registration.md`)
 - [8DION-D-0013 - AoA Session Memory MCP Codex-Plane Registration](../8DION-D-0013-aoa-session-memory-mcp-codex-plane-registration.md) (`docs/decisions/8DION-D-0013-aoa-session-memory-mcp-codex-plane-registration.md`)
 - [8DION-D-0014 - AoA Decisions MCP Codex-Plane Registration](../8DION-D-0014-aoa-decisions-mcp-codex-plane-registration.md) (`docs/decisions/8DION-D-0014-aoa-decisions-mcp-codex-plane-registration.md`)
+- [8DION-D-0015 - AoA KAG MCP Codex-Plane Registration](../8DION-D-0015-aoa-kag-mcp-codex-plane-registration.md) (`docs/decisions/8DION-D-0015-aoa-kag-mcp-codex-plane-registration.md`)
 
 ## branch protection
 
@@ -50,6 +51,10 @@
 ## judgment-heavy writeback
 
 - [8DION-D-0009 - Memory Writeback Route Card](../8DION-D-0009-memory-writeback-route-card.md) (`docs/decisions/8DION-D-0009-memory-writeback-route-card.md`)
+
+## KAG provider map freshness
+
+- [8DION-D-0015 - AoA KAG MCP Codex-Plane Registration](../8DION-D-0015-aoa-kag-mcp-codex-plane-registration.md) (`docs/decisions/8DION-D-0015-aoa-kag-mcp-codex-plane-registration.md`)
 
 ## live debt readout
 
@@ -124,6 +129,10 @@
 
 - [8DION-D-0003 - Source-Owned Repo Git Hooks](../8DION-D-0003-source-owned-repo-git-hooks.md) (`docs/decisions/8DION-D-0003-source-owned-repo-git-hooks.md`)
 
+## source-return boundary
+
+- [8DION-D-0015 - AoA KAG MCP Codex-Plane Registration](../8DION-D-0015-aoa-kag-mcp-codex-plane-registration.md) (`docs/decisions/8DION-D-0015-aoa-kag-mcp-codex-plane-registration.md`)
+
 ## stable MCP name
 
 - [8DION-D-0004 - AoA Memo MCP Codex-Plane Registration](../8DION-D-0004-aoa-memo-mcp-codex-plane-registration.md) (`docs/decisions/8DION-D-0004-aoa-memo-mcp-codex-plane-registration.md`)
@@ -131,6 +140,7 @@
 - [8DION-D-0008 - Abyss Machine MCP Codex-Plane Registration](../8DION-D-0008-abyss-machine-mcp-codex-plane-registration.md) (`docs/decisions/8DION-D-0008-abyss-machine-mcp-codex-plane-registration.md`)
 - [8DION-D-0013 - AoA Session Memory MCP Codex-Plane Registration](../8DION-D-0013-aoa-session-memory-mcp-codex-plane-registration.md) (`docs/decisions/8DION-D-0013-aoa-session-memory-mcp-codex-plane-registration.md`)
 - [8DION-D-0014 - AoA Decisions MCP Codex-Plane Registration](../8DION-D-0014-aoa-decisions-mcp-codex-plane-registration.md) (`docs/decisions/8DION-D-0014-aoa-decisions-mcp-codex-plane-registration.md`)
+- [8DION-D-0015 - AoA KAG MCP Codex-Plane Registration](../8DION-D-0015-aoa-kag-mcp-codex-plane-registration.md) (`docs/decisions/8DION-D-0015-aoa-kag-mcp-codex-plane-registration.md`)
 
 ## unmanaged-hook safety
 

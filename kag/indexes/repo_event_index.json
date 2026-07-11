@@ -1,0 +1,974 @@
+{
+  "entries": [
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:81a0cca1b8019274fbe7",
+      "observation_state": "declared",
+      "path": ".agents/skills/aoa-dry-run-first/scripts/dry_run_contract.py",
+      "source_record_id": "file:.agents/skills/aoa-dry-run-first/scripts/dry_run_contract.py:e1480fe2d2"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:8971ddcf6dfdefc516fe",
+      "observation_state": "declared",
+      "path": ".agents/skills/aoa-dry-run-first/scripts/preview_gap_check.py",
+      "source_record_id": "file:.agents/skills/aoa-dry-run-first/scripts/preview_gap_check.py:0ea89b83a2"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:c31ca3671aac635202be",
+      "observation_state": "declared",
+      "path": ".agents/skills/aoa-local-stack-bringup/scripts/bringup_contract.py",
+      "source_record_id": "file:.agents/skills/aoa-local-stack-bringup/scripts/bringup_contract.py:65fb7d4d41"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:74103297b9b11e0116ed",
+      "observation_state": "declared",
+      "path": ".agents/skills/aoa-local-stack-bringup/scripts/readiness_summary.py",
+      "source_record_id": "file:.agents/skills/aoa-local-stack-bringup/scripts/readiness_summary.py:b9778391e0"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:37b81b7dcc86076f8e72",
+      "observation_state": "declared",
+      "path": ".agents/skills/aoa-safe-infra-change/scripts/infra_change_contract.py",
+      "source_record_id": "file:.agents/skills/aoa-safe-infra-change/scripts/infra_change_contract.py:f074327882"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:42366871c99c8d57483b",
+      "observation_state": "declared",
+      "path": ".agents/skills/aoa-safe-infra-change/scripts/risk_surface_scan.py",
+      "source_record_id": "file:.agents/skills/aoa-safe-infra-change/scripts/risk_surface_scan.py:4783038b81"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:f69387725bfb2feb0ae3",
+      "observation_state": "declared",
+      "path": ".codex/bin/abyss-machine-mcp-server.py",
+      "source_record_id": "file:.codex/bin/abyss-machine-mcp-server.py:74ddea4059"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:d82933bd76b2d3d0b006",
+      "observation_state": "declared",
+      "path": ".codex/bin/aoa-codex-bootstrap",
+      "source_record_id": "file:.codex/bin/aoa-codex-bootstrap:14e1203fcd"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:56ca86a6033e107f9617",
+      "observation_state": "declared",
+      "path": ".codex/bin/aoa-codex-doctor",
+      "source_record_id": "file:.codex/bin/aoa-codex-doctor:53ed79e413"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:d07f152445611002bcb8",
+      "observation_state": "declared",
+      "path": ".codex/bin/aoa-codex-hooks-doctor",
+      "source_record_id": "file:.codex/bin/aoa-codex-hooks-doctor:ddfd42774f"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:dbbe509ce7b705c42e74",
+      "observation_state": "declared",
+      "path": ".codex/bin/aoa-codex-status",
+      "source_record_id": "file:.codex/bin/aoa-codex-status:a22c1b420b"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:f741bae1b7807962c793",
+      "observation_state": "declared",
+      "path": ".codex/bin/aoa-decisions-mcp-server.py",
+      "source_record_id": "file:.codex/bin/aoa-decisions-mcp-server.py:3edaf356c6"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:b0dff168fa71e226f830",
+      "observation_state": "declared",
+      "path": ".codex/bin/aoa-evals-mcp-server.py",
+      "source_record_id": "file:.codex/bin/aoa-evals-mcp-server.py:fb34878925"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:b80263ba6c80f7aad184",
+      "observation_state": "declared",
+      "path": ".codex/bin/aoa-kag-mcp-server.py",
+      "source_record_id": "file:.codex/bin/aoa-kag-mcp-server.py:46bade0360"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:5b2be5fdb542b21af2ab",
+      "observation_state": "declared",
+      "path": ".codex/bin/aoa-memo-mcp-server.py",
+      "source_record_id": "file:.codex/bin/aoa-memo-mcp-server.py:2d7cfa2906"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:05a53bc1572558dbdf84",
+      "observation_state": "declared",
+      "path": ".codex/bin/aoa-required-check-audit",
+      "source_record_id": "file:.codex/bin/aoa-required-check-audit:e2225aeb3d"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:39cff956cf89886a697c",
+      "observation_state": "declared",
+      "path": ".codex/bin/aoa-session-memory-mcp-server.py",
+      "source_record_id": "file:.codex/bin/aoa-session-memory-mcp-server.py:807ac69403"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:b8fac0b7dbd5a7a00634",
+      "observation_state": "declared",
+      "path": ".codex/bin/aoa-workspace-git-hooks",
+      "source_record_id": "file:.codex/bin/aoa-workspace-git-hooks:0be8b58510"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:7782cb7cc6d67fe9dd8d",
+      "observation_state": "declared",
+      "path": ".codex/bin/aoa-workspace-project",
+      "source_record_id": "file:.codex/bin/aoa-workspace-project:15353ee85d"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:4577146958d5eca5100d",
+      "observation_state": "declared",
+      "path": ".codex/hooks/aoa_session_start.py",
+      "source_record_id": "file:.codex/hooks/aoa_session_start.py:c3bdc9588a"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:223d9dc3e831d7cdb19a",
+      "observation_state": "declared",
+      "path": ".codex/hooks/aoa_stop_doctor.py",
+      "source_record_id": "file:.codex/hooks/aoa_stop_doctor.py:48c39ade35"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:78cd541e2cf7087be8ed",
+      "observation_state": "declared",
+      "path": ".codex/hooks/aoa_user_prompt_submit.py",
+      "source_record_id": "file:.codex/hooks/aoa_user_prompt_submit.py:09ff79f40f"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:c8212832edd9a35a7cbd",
+      "observation_state": "declared",
+      "path": ".codex/scripts/aoa_codex_hooks_doctor.py",
+      "source_record_id": "file:.codex/scripts/aoa_codex_hooks_doctor.py:f7bcbdac79"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:51276d6353f768efab9c",
+      "observation_state": "declared",
+      "path": ".codex/tests/test_aoa_codex_converge.py",
+      "source_record_id": "file:.codex/tests/test_aoa_codex_converge.py:d44d79a8cf"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:6505c971604e56ac1769",
+      "observation_state": "declared",
+      "path": ".codex/tests/test_aoa_codex_hooks.py",
+      "source_record_id": "file:.codex/tests/test_aoa_codex_hooks.py:bef15512c0"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:6ab9bf01e8f4966977d6",
+      "observation_state": "declared",
+      "path": ".codex/tools/aoa_titan_bridge_context.py",
+      "source_record_id": "file:.codex/tools/aoa_titan_bridge_context.py:716960463a"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:035efcc9ce2ba0944594",
+      "observation_state": "declared",
+      "path": ".codex/tools/aoa_titan_console_context.py",
+      "source_record_id": "file:.codex/tools/aoa_titan_console_context.py:e3e87db47d"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:af0008e4aa05426bea37",
+      "observation_state": "declared",
+      "path": ".codex/tools/aoa_titan_context.py",
+      "source_record_id": "file:.codex/tools/aoa_titan_context.py:37b3d1c1ed"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:09d5eb23de643a9d2d6e",
+      "observation_state": "declared",
+      "path": ".codex/tools/aoa_titan_incarnation_context.py",
+      "source_record_id": "file:.codex/tools/aoa_titan_incarnation_context.py:378e77f691"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:e5ba0ac7330969323a23",
+      "observation_state": "declared",
+      "path": ".codex/tools/aoa_titan_memory_context.py",
+      "source_record_id": "file:.codex/tools/aoa_titan_memory_context.py:e178cfb67c"
+    },
+    {
+      "event_kind": "workflow_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:781f0d608d62528e3347",
+      "observation_state": "declared",
+      "path": ".github/workflows/repo-family-drift-check.yml",
+      "source_record_id": "file:.github/workflows/repo-family-drift-check.yml:9a0ea28463"
+    },
+    {
+      "event_kind": "workflow_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:500ea3bb034e83c4d000",
+      "observation_state": "declared",
+      "path": ".github/workflows/repo-validation.yml",
+      "source_record_id": "file:.github/workflows/repo-validation.yml:3affb923d0"
+    },
+    {
+      "event_kind": "workflow_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:6437786401b5bd10f932",
+      "observation_state": "declared",
+      "path": ".github/workflows/update-github-stats.yml",
+      "source_record_id": "file:.github/workflows/update-github-stats.yml:eb0ca67b1b"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:f97857c90a82976bc123",
+      "observation_state": "declared",
+      "path": "config/git_hooks/post-commit.sh",
+      "source_record_id": "file:config/git_hooks/post-commit.sh:bfb198746b"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:0cc96e641d8027b7c7ff",
+      "observation_state": "declared",
+      "path": "config/git_hooks/pre-merge-commit.sh",
+      "source_record_id": "file:config/git_hooks/pre-merge-commit.sh:d70af392f7"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:25cbf7fdb4d02c6aef81",
+      "observation_state": "declared",
+      "path": "config/git_hooks/pre-push.sh",
+      "source_record_id": "file:config/git_hooks/pre-push.sh:558b9de2f2"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:7b925ce979c56bfadc95",
+      "observation_state": "declared",
+      "path": "docs/decisions/8DION-D-0001-shared-root-projection.md",
+      "source_record_id": "file:docs/decisions/8dion-d-0001-shared-root-projection.md:986aa318c7"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:560f431e56697c2a3b49",
+      "observation_state": "declared",
+      "path": "docs/decisions/8DION-D-0002-repo-family-required-check-contracts.md",
+      "source_record_id": "file:docs/decisions/8dion-d-0002-repo-family-required-check-contracts.md:50cdcadae5"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:ccea8f7dd760abf75b64",
+      "observation_state": "declared",
+      "path": "docs/decisions/8DION-D-0003-source-owned-repo-git-hooks.md",
+      "source_record_id": "file:docs/decisions/8dion-d-0003-source-owned-repo-git-hooks.md:60d0ea4577"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:ca3e34ab3cfd5bf48d3e",
+      "observation_state": "declared",
+      "path": "docs/decisions/8DION-D-0004-aoa-memo-mcp-codex-plane-registration.md",
+      "source_record_id": "file:docs/decisions/8dion-d-0004-aoa-memo-mcp-codex-plane-registration.md:e5327fdce2"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:4305fbc31f7ae45d4ed9",
+      "observation_state": "declared",
+      "path": "docs/decisions/8DION-D-0005-workspace-memory-map-operational-status.md",
+      "source_record_id": "file:docs/decisions/8dion-d-0005-workspace-memory-map-operational-status.md:84eac0a301"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:0760d7b43800b5cfa0c7",
+      "observation_state": "declared",
+      "path": "docs/decisions/8DION-D-0006-system-local-memo-port-rollout.md",
+      "source_record_id": "file:docs/decisions/8dion-d-0006-system-local-memo-port-rollout.md:c115dbfbb9"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:ff99d77066ff91b47d1b",
+      "observation_state": "declared",
+      "path": "docs/decisions/8DION-D-0007-aoa-evals-mcp-codex-plane-registration.md",
+      "source_record_id": "file:docs/decisions/8dion-d-0007-aoa-evals-mcp-codex-plane-registration.md:e3d7acd24f"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:53ffd8f692e5925bf428",
+      "observation_state": "declared",
+      "path": "docs/decisions/8DION-D-0008-abyss-machine-mcp-codex-plane-registration.md",
+      "source_record_id": "file:docs/decisions/8dion-d-0008-abyss-machine-mcp-codex-plane-registration.md:c7575f5645"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:4fb4e993fdf55f37e5b6",
+      "observation_state": "declared",
+      "path": "docs/decisions/8DION-D-0009-memory-writeback-route-card.md",
+      "source_record_id": "file:docs/decisions/8dion-d-0009-memory-writeback-route-card.md:430336bef0"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:308b40e21eb223388cab",
+      "observation_state": "declared",
+      "path": "docs/decisions/8DION-D-0010-workspace-writeback-marker-debt-surface.md",
+      "source_record_id": "file:docs/decisions/8dion-d-0010-workspace-writeback-marker-debt-surface.md:c9eb0c17ef"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:6507f5af00a3a2111ffd",
+      "observation_state": "declared",
+      "path": "docs/decisions/8DION-D-0011-workspace-memory-map-writeback-sync.md",
+      "source_record_id": "file:docs/decisions/8dion-d-0011-workspace-memory-map-writeback-sync.md:44e8f9d73e"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:90b85b85b8d67619cbf8",
+      "observation_state": "declared",
+      "path": "docs/decisions/8DION-D-0012-reviewed-memory-landing-receipts-as-writeback-markers.md",
+      "source_record_id": "file:docs/decisions/8dion-d-0012-reviewed-memory-landing-receipts-as-writeback-markers.md:ad065dac24"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:1d1871bba107b417142b",
+      "observation_state": "declared",
+      "path": "docs/decisions/8DION-D-0013-aoa-session-memory-mcp-codex-plane-registration.md",
+      "source_record_id": "file:docs/decisions/8dion-d-0013-aoa-session-memory-mcp-codex-plane-registration.md:7c58ae941a"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:9073df87ee115e28e0ed",
+      "observation_state": "declared",
+      "path": "docs/decisions/8DION-D-0014-aoa-decisions-mcp-codex-plane-registration.md",
+      "source_record_id": "file:docs/decisions/8dion-d-0014-aoa-decisions-mcp-codex-plane-registration.md:43eb309a11"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:47dd481126fa2ebee1bf",
+      "observation_state": "declared",
+      "path": "docs/decisions/8DION-D-0015-aoa-kag-mcp-codex-plane-registration.md",
+      "source_record_id": "file:docs/decisions/8dion-d-0015-aoa-kag-mcp-codex-plane-registration.md:77b69dc3fe"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:71114faecb2d38970c46",
+      "observation_state": "declared",
+      "path": "docs/decisions/TEMPLATE.md",
+      "source_record_id": "file:docs/decisions/template.md:874770b824"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:99132b7968273fa29e0c",
+      "observation_state": "declared",
+      "path": "docs/decisions/indexes/by-date.md",
+      "source_record_id": "file:docs/decisions/indexes/by-date.md:7f76a83a93"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:c8d4b04467180495e15d",
+      "observation_state": "declared",
+      "path": "docs/decisions/indexes/by-guard.md",
+      "source_record_id": "file:docs/decisions/indexes/by-guard.md:8ae406686a"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:5a6efd40414109bef3ed",
+      "observation_state": "declared",
+      "path": "docs/decisions/indexes/by-number.md",
+      "source_record_id": "file:docs/decisions/indexes/by-number.md:02e6940a39"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:2b834d27df2063a676ca",
+      "observation_state": "declared",
+      "path": "docs/decisions/indexes/by-owner-lane.md",
+      "source_record_id": "file:docs/decisions/indexes/by-owner-lane.md:5b132b063b"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:9c95316222f73c618a8f",
+      "observation_state": "declared",
+      "path": "docs/decisions/indexes/by-route-anchor.md",
+      "source_record_id": "file:docs/decisions/indexes/by-route-anchor.md:ca0c6ea2e6"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:716029746e7d82b873e1",
+      "observation_state": "declared",
+      "path": "docs/decisions/indexes/by-surface.md",
+      "source_record_id": "file:docs/decisions/indexes/by-surface.md:acd156903f"
+    },
+    {
+      "event_kind": "validation_receipt",
+      "event_role": "receipt",
+      "heading_ref": null,
+      "id": "event:repo:fe8eb46fb8f0ddd92169",
+      "observation_state": "observed",
+      "path": "kag/receipts/validation_receipt.json",
+      "source_record_id": "file:kag/receipts/validation_receipt.json:8e616be0cd"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:1745d928577ccf337b68",
+      "observation_state": "declared",
+      "path": "scripts/audit_agents_map.py",
+      "source_record_id": "file:scripts/audit_agents_map.py:31d337cc72"
+    },
+    {
+      "event_kind": "generation_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:e30346ff798d0f698c4a",
+      "observation_state": "declared",
+      "path": "scripts/build_public_route_map.py",
+      "source_record_id": "file:scripts/build_public_route_map.py:74a00613d4"
+    },
+    {
+      "event_kind": "generation_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:192361340cc11fed648d",
+      "observation_state": "declared",
+      "path": "scripts/build_workspace_memory_map.py",
+      "source_record_id": "file:scripts/build_workspace_memory_map.py:c9484db5a9"
+    },
+    {
+      "event_kind": "generation_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:e01b2e91249171f469a6",
+      "observation_state": "declared",
+      "path": "scripts/generate_decision_indexes.py",
+      "source_record_id": "file:scripts/generate_decision_indexes.py:9ee2698c6e"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:3ee8138f4fb2166b3610",
+      "observation_state": "declared",
+      "path": "scripts/manage_workspace_git_hooks.py",
+      "source_record_id": "file:scripts/manage_workspace_git_hooks.py:8bf0e279ec"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:28956b91b25ab48977a5",
+      "observation_state": "declared",
+      "path": "scripts/public_route_map_common.py",
+      "source_record_id": "file:scripts/public_route_map_common.py:ea1983c027"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:da2c0ae55a4efc9a86a8",
+      "observation_state": "declared",
+      "path": "scripts/recon_agents_frontier.py",
+      "source_record_id": "file:scripts/recon_agents_frontier.py:0aa27162ae"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:7f485180b48a32081fb0",
+      "observation_state": "declared",
+      "path": "scripts/run_required_check_audit.py",
+      "source_record_id": "file:scripts/run_required_check_audit.py:69b03992c5"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:0f21101207350975fdd8",
+      "observation_state": "declared",
+      "path": "scripts/smoke_abyss_machine_mcp.py",
+      "source_record_id": "file:scripts/smoke_abyss_machine_mcp.py:0b09e282d9"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:132209fa04668e42019d",
+      "observation_state": "declared",
+      "path": "scripts/smoke_aoa_decisions_mcp.py",
+      "source_record_id": "file:scripts/smoke_aoa_decisions_mcp.py:bb9ec65683"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:456f00f37780692fa6e2",
+      "observation_state": "declared",
+      "path": "scripts/smoke_aoa_evals_mcp.py",
+      "source_record_id": "file:scripts/smoke_aoa_evals_mcp.py:dff23a31b3"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:0f03ee2402827b5fbb43",
+      "observation_state": "declared",
+      "path": "scripts/smoke_aoa_kag_mcp.py",
+      "source_record_id": "file:scripts/smoke_aoa_kag_mcp.py:97a92f7f01"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:f2262b4049e45bc54eab",
+      "observation_state": "declared",
+      "path": "scripts/smoke_aoa_memo_mcp.py",
+      "source_record_id": "file:scripts/smoke_aoa_memo_mcp.py:2fa1a5d471"
+    },
+    {
+      "event_kind": "command_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:652509c041a6a949c84a",
+      "observation_state": "declared",
+      "path": "scripts/smoke_aoa_session_memory_mcp.py",
+      "source_record_id": "file:scripts/smoke_aoa_session_memory_mcp.py:cac92c9a38"
+    },
+    {
+      "event_kind": "validation_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:66e44f300f3bc7c6e12e",
+      "observation_state": "declared",
+      "path": "scripts/validate_codex_plane_regeneration.py",
+      "source_record_id": "file:scripts/validate_codex_plane_regeneration.py:a9fed08a0a"
+    },
+    {
+      "event_kind": "validation_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:09302a2a60e60169b698",
+      "observation_state": "declared",
+      "path": "scripts/validate_codex_plane_rollout_contracts.py",
+      "source_record_id": "file:scripts/validate_codex_plane_rollout_contracts.py:89818938f1"
+    },
+    {
+      "event_kind": "validation_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:a5e1d778469ed146c33d",
+      "observation_state": "declared",
+      "path": "scripts/validate_codex_rollout_campaign_cadence.py",
+      "source_record_id": "file:scripts/validate_codex_rollout_campaign_cadence.py:2f74841cc2"
+    },
+    {
+      "event_kind": "validation_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:5ac391d426375e851d3c",
+      "observation_state": "declared",
+      "path": "scripts/validate_codex_trusted_rollout_operations.py",
+      "source_record_id": "file:scripts/validate_codex_trusted_rollout_operations.py:8933a4f723"
+    },
+    {
+      "event_kind": "validation_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:403ba1f310e43552a989",
+      "observation_state": "declared",
+      "path": "scripts/validate_decision_records.py",
+      "source_record_id": "file:scripts/validate_decision_records.py:20e04d231d"
+    },
+    {
+      "event_kind": "validation_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:a3f56d5f1dd3d0994242",
+      "observation_state": "declared",
+      "path": "scripts/validate_github_required_check_contracts.py",
+      "source_record_id": "file:scripts/validate_github_required_check_contracts.py:90a4999f94"
+    },
+    {
+      "event_kind": "validation_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:832e6c4727bc16380a25",
+      "observation_state": "declared",
+      "path": "scripts/validate_nested_agents.py",
+      "source_record_id": "file:scripts/validate_nested_agents.py:5befe5bd63"
+    },
+    {
+      "event_kind": "validation_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:12b079ae307dbbabfa43",
+      "observation_state": "declared",
+      "path": "scripts/validate_public_route_map.py",
+      "source_record_id": "file:scripts/validate_public_route_map.py:b8d0d9f530"
+    },
+    {
+      "event_kind": "validation_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:dce83d581fec3127d86a",
+      "observation_state": "declared",
+      "path": "scripts/validate_workspace_memory_map.py",
+      "source_record_id": "file:scripts/validate_workspace_memory_map.py:2a925c5f53"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:6ef7c342787e757f613e",
+      "observation_state": "declared",
+      "path": "tests/test_agents_frontier_recon.py",
+      "source_record_id": "file:tests/test_agents_frontier_recon.py:0d61991856"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:79cfce2b44c30f6288c8",
+      "observation_state": "declared",
+      "path": "tests/test_agents_map_audit.py",
+      "source_record_id": "file:tests/test_agents_map_audit.py:a4bbb46d68"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:33d50a42423f004e749b",
+      "observation_state": "declared",
+      "path": "tests/test_codex_plane_regeneration.py",
+      "source_record_id": "file:tests/test_codex_plane_regeneration.py:a69e6e50a5"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:e955e9092d3639a9b5f3",
+      "observation_state": "declared",
+      "path": "tests/test_codex_plane_rollout.py",
+      "source_record_id": "file:tests/test_codex_plane_rollout.py:3151bc4c70"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:cb9621cdf0cfcc3bab76",
+      "observation_state": "declared",
+      "path": "tests/test_codex_rollout_campaign_cadence.py",
+      "source_record_id": "file:tests/test_codex_rollout_campaign_cadence.py:046c1335e0"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:f84982fc507d9f32a29f",
+      "observation_state": "declared",
+      "path": "tests/test_codex_trusted_rollout_operations.py",
+      "source_record_id": "file:tests/test_codex_trusted_rollout_operations.py:86dde11089"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:f6120acb789ff3363b1a",
+      "observation_state": "declared",
+      "path": "tests/test_current_direction_routes.py",
+      "source_record_id": "file:tests/test_current_direction_routes.py:098f12afb4"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:1ef76ec0ffc400c8d687",
+      "observation_state": "declared",
+      "path": "tests/test_decision_indexes.py",
+      "source_record_id": "file:tests/test_decision_indexes.py:b90af86566"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:0a8b6b979e0ae6db2c91",
+      "observation_state": "declared",
+      "path": "tests/test_github_required_check_contracts.py",
+      "source_record_id": "file:tests/test_github_required_check_contracts.py:3060c34d56"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:111f318fcb27eff1aa81",
+      "observation_state": "declared",
+      "path": "tests/test_public_route_map.py",
+      "source_record_id": "file:tests/test_public_route_map.py:9662e4c0ce"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:2503d922552327ca7a31",
+      "observation_state": "declared",
+      "path": "tests/test_required_check_audit.py",
+      "source_record_id": "file:tests/test_required_check_audit.py:7b4d444ad2"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:fc0af37ea64d460e22a1",
+      "observation_state": "declared",
+      "path": "tests/test_smoke_aoa_evals_mcp.py",
+      "source_record_id": "file:tests/test_smoke_aoa_evals_mcp.py:4fc342be6e"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:d6fd649c7e5325e32098",
+      "observation_state": "declared",
+      "path": "tests/test_smoke_aoa_kag_mcp.py",
+      "source_record_id": "file:tests/test_smoke_aoa_kag_mcp.py:0311a71268"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:9d7a1e572af65b8ff508",
+      "observation_state": "declared",
+      "path": "tests/test_smoke_aoa_memo_mcp.py",
+      "source_record_id": "file:tests/test_smoke_aoa_memo_mcp.py:60a05476d4"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:51f96749be371e571efe",
+      "observation_state": "declared",
+      "path": "tests/test_smoke_aoa_session_memory_mcp.py",
+      "source_record_id": "file:tests/test_smoke_aoa_session_memory_mcp.py:52daef7bb4"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:2ed53ec753697f6a460a",
+      "observation_state": "declared",
+      "path": "tests/test_system_capability_map.py",
+      "source_record_id": "file:tests/test_system_capability_map.py:9f3a0f3681"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:0eda335e7be8702fa382",
+      "observation_state": "declared",
+      "path": "tests/test_titan_codex_contexts.py",
+      "source_record_id": "file:tests/test_titan_codex_contexts.py:4dd0bbc54a"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:a482010c2eeeb04b1e14",
+      "observation_state": "declared",
+      "path": "tests/test_validate_nested_agents.py",
+      "source_record_id": "file:tests/test_validate_nested_agents.py:46cd12457c"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:207923ed5e98e80c1181",
+      "observation_state": "declared",
+      "path": "tests/test_workspace_git_hooks.py",
+      "source_record_id": "file:tests/test_workspace_git_hooks.py:1c8a5bf145"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:5853b1333cf4a89f0d54",
+      "observation_state": "declared",
+      "path": "tests/test_workspace_memory_map.py",
+      "source_record_id": "file:tests/test_workspace_memory_map.py:6a13bb2c25"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:b0702180848b52b120d0",
+      "observation_state": "declared",
+      "path": "tests/test_workspace_projection.py",
+      "source_record_id": "file:tests/test_workspace_projection.py:ffbe9116bf"
+    }
+  ],
+  "index_identity": {
+    "artifact_kind": "repository_event_index",
+    "content_digest": "331228c2d1d50048e24417ee5257557a58a2fba25b1683911d1b1a50c155103d",
+    "index_kind": "event",
+    "local_id": "index:repo-local:events",
+    "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
+  },
+  "registry_output": {
+    "consumer": "aoa-kag-mcp",
+    "resource_shape": "repo-local-event-index",
+    "stable_fields": [
+      "id",
+      "event_kind",
+      "event_role",
+      "source_record_id",
+      "path",
+      "heading_ref"
+    ]
+  },
+  "repo": {
+    "git_ref": "git-index-source-tree",
+    "name": "8Dionysus",
+    "owner_type": "workspace",
+    "root": "."
+  },
+  "schema_version": "aoa-repo-local-kag-repository-index-v1",
+  "source_index": {
+    "content_digest": "9eb6c3b2dd1f8bde23a3540a1fac9d99af55c9e4b9d90a0fd44f29ac240d44be",
+    "local_id": "index:repo-local:source-surfaces",
+    "path": "kag/indexes/source_surface_index.json"
+  },
+  "summary": {
+    "entry_count": 103,
+    "kind_counts": {
+      "command_run": 42,
+      "decision_record": 22,
+      "generation_run": 3,
+      "test_run": 23,
+      "validation_receipt": 1,
+      "validation_run": 9,
+      "workflow_run": 3
+    }
+  }
+}

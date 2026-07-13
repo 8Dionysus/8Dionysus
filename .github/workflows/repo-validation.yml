@@ -43,6 +43,8 @@ jobs:
         uses: 8Dionysus/aoa-kag/.github/actions/repo-local-kag-index@da9f50a581645b2173b99dbf771a63d447ec2fec
         with:
           repo-root: 8Dionysus
+          history-ref: ${{ github.event.pull_request.base.sha || github.event.before || format('{0}^', github.sha) }}
+          event-history-ref: ${{ github.event.pull_request.base.sha || github.event.before || format('{0}^', github.sha) }}
 
       - name: Install validator dependency
         run: python -m pip install jsonschema

@@ -72,6 +72,7 @@ KIND_BOOSTS: dict[str, int] = {
     "routing-layer": 4,
     "knowledge-substrate": 4,
     "derived-observability": 3,
+    "statistical-measurability": 3,
 }
 
 

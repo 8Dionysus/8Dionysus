@@ -30,6 +30,13 @@
       "source_class": "route_source",
       "role": "supporting",
       "authority": "authored_source"
+    },
+    {
+      "repo": "8Dionysus",
+      "path": "stats/README.md",
+      "source_class": "route_source",
+      "role": "supporting",
+      "authority": "authored_source"
     }
   ],
   "record_classes": [

@@ -87,8 +87,8 @@ KNOWN_REPOSITORIES: tuple[dict[str, str], ...] = (
     },
     {
         "name": "aoa-stats",
-        "role": "derived observability from source-owned receipts and verdicts",
-        "kind": "derived-observability",
+        "role": "shared measurement grammar, owner-local stats federation, and derived non-sovereign read models",
+        "kind": "statistical-measurability",
     },
     {
         "name": "aoa-routing",

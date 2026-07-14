@@ -49,7 +49,7 @@ Arrows mean exchange, feedback, and distillation; they do not transfer ownership
 | AoA layer | [aoa-techniques](https://github.com/8Dionysus/aoa-techniques) | Reusable engineering practice |
 | AoA layer | [aoa-skills](https://github.com/8Dionysus/aoa-skills) | Bounded execution workflows |
 | AoA layer | [aoa-evals](https://github.com/8Dionysus/aoa-evals) | Portable proof surfaces |
-| AoA layer | [aoa-stats](https://github.com/8Dionysus/aoa-stats) | Derived observability from receipts and verdicts |
+| AoA layer | [aoa-stats](https://github.com/8Dionysus/aoa-stats) | Shared measurement grammar, federated owner-local stats ports, and derived read models |
 | AoA layer | [aoa-routing](https://github.com/8Dionysus/aoa-routing) | Thin routing and dispatch across AoA surfaces |
 | AoA layer | [aoa-memo](https://github.com/8Dionysus/aoa-memo) | Provenance-aware memory and recall |
 | AoA layer | [aoa-agents](https://github.com/8Dionysus/aoa-agents) | Role contracts, posture, and handoff boundaries |
@@ -59,6 +59,10 @@ Arrows mean exchange, feedback, and distillation; they do not transfer ownership
 | Support | [8Dionysus](https://github.com/8Dionysus/8Dionysus) | Public profile and route map |
 
 ## [Start where your question begins](docs/START_HERE.md)
+
+The profile's own evidence-linked statistical questions live in
+[stats](stats/README.md). Their shared grammar and cross-owner composition
+remain owned by `aoa-stats`.
 
 ## Profile boundary
 

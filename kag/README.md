@@ -10,7 +10,7 @@ source-linked records.
 | role | local KAG provider for public profile routing and workspace memory-map orientation |
 | records | `nodes/`, `edges/`, `indexes/`, `projections/`, `receipts/` |
 | manifest | `manifest.json` |
-| source route | `README.md`, `docs/WORKSPACE_MEMORY_MAP.md`, `generated/workspace_memory_map.min.json` |
+| source route | `README.md`, `stats/README.md`, `docs/WORKSPACE_MEMORY_MAP.md`, `generated/workspace_memory_map.min.json` |
 | consumer route | `aoa-kag` registry/composition, `abyss-stack`, MCP resources |
 | owner return | `README.md` |
 

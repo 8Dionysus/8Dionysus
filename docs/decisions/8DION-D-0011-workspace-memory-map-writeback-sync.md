@@ -63,7 +63,5 @@ check.
 - Source surfaces updated: `scripts/build_workspace_memory_map.py`,
   `tests/test_workspace_memory_map.py`, `generated/workspace_memory_map.min.json`,
   and `docs/WORKSPACE_MEMORY_MAP.md`.
-- Validation: `python scripts/build_workspace_memory_map.py --workspace-root
-  /srv/AbyssOS --check`, `python scripts/validate_workspace_memory_map.py`,
-  `python -m unittest tests.test_workspace_memory_map`, and
-  `python -m unittest discover -s tests -p 'test_*.py'`.
+- The owner validation gates for workspace-map generation and repository tests
+  passed with the sync.

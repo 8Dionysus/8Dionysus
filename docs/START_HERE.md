@@ -12,7 +12,7 @@ Use the smallest route that matches the question. This page routes humans and ag
 
 ## Practice to proof route
 
-- For the practice -> execution -> proof -> observability path, move through **[aoa-techniques](https://github.com/8Dionysus/aoa-techniques)** -> **[aoa-skills](https://github.com/8Dionysus/aoa-skills)** -> **[aoa-evals](https://github.com/8Dionysus/aoa-evals)** -> **[aoa-stats](https://github.com/8Dionysus/aoa-stats)**.
+- For the practice -> execution -> proof -> statistical measurability path, move through **[aoa-techniques](https://github.com/8Dionysus/aoa-techniques)** -> **[aoa-skills](https://github.com/8Dionysus/aoa-skills)** -> **[aoa-evals](https://github.com/8Dionysus/aoa-evals)** -> **[aoa-stats](https://github.com/8Dionysus/aoa-stats)**.
 
 ## Public AoA layer routes
 
@@ -40,6 +40,8 @@ Use the smallest route that matches the question. This page routes humans and ag
 - For durable `8Dionysus` route and projection rationale, see **[decisions](decisions/README.md)**.
 - For the first Titan service-cohort route, use **[TITAN_FIRST_APPEARANCE_RUNBOOK.md](TITAN_FIRST_APPEARANCE_RUNBOOK.md)**, then follow owner truth in `aoa-agents`, runtime helpers in `aoa-sdk`, and candidate memory posture in `aoa-memo`.
 - For AGENTS coverage and next high-risk local-guidance candidates, see **[AGENTS_MAP.md](AGENTS_MAP.md)** and **[AGENTS_FRONTIER_RECON.md](AGENTS_FRONTIER_RECON.md)**.
+- For the public entry's evidence-linked local statistical question, see
+  **[stats/README.md](../stats/README.md)**.
 - For the posture and scope of this repository itself, see **[PUBLIC_ENTRY_POSTURE.md](PUBLIC_ENTRY_POSTURE.md)**.
 
 ## Boundary

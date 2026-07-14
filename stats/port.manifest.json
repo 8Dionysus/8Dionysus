@@ -1,0 +1,112 @@
+{
+  "schema_version": "aoa_stats_local_port_v1",
+  "contract_version": "1.0.0",
+  "owner_repo": "8Dionysus",
+  "status": "active",
+  "owner_boundary_ref": "docs/PUBLIC_ENTRY_POSTURE.md",
+  "central_contract_refs": [
+    "aoa-stats:stats/measurement-contract/measurement-contract.schema.json",
+    "aoa-stats:stats/measurement-contract/measurement-packet.schema.json"
+  ],
+  "evidence_posture": {
+    "live_state": "reference_only",
+    "privacy": "public",
+    "raw_content_allowed": false
+  },
+  "questions": [
+    {
+      "id": "question:known-repository-root-agents-coverage-ratio",
+      "question": "What fraction of known public repositories have an observed root AGENTS.md route in the committed live-workspace AGENTS map?",
+      "consumer_refs": [
+        "stats/README.md",
+        "docs/AGENTS_MAP.md",
+        "scripts/recon_agents_frontier.py"
+      ]
+    }
+  ],
+  "measurements": [
+    {
+      "schema_version": "aoa_stats_measurement_contract_v1",
+      "measurement_id": "8Dionysus/known-repository-root-agents-coverage-ratio",
+      "contract_version": "1.0.0",
+      "owner_repo": "8Dionysus",
+      "question_ref": "question:known-repository-root-agents-coverage-ratio",
+      "semantic_class": "statistic",
+      "statistic": "ratio",
+      "object_kind": "known-public-repository-agents-map-record",
+      "unit": {
+        "symbol": "1",
+        "quantity": "proportion"
+      },
+      "population": {
+        "subject": "known public repositories declared by the 8Dionysus AGENTS-map audit",
+        "definition": "one unique name in generated/agents_map.min.json known_repositories matched to exactly one repository record from a live-workspace audit",
+        "inclusion_rule": "every known repository remains in the denominator; a missing checkout is observed as uncovered",
+        "exclusion_rule": "extra workspace records, nested AGENTS.md files, and public-baseline lower-bound rows",
+        "sampling": "census"
+      },
+      "window": {
+        "temporality": "instant",
+        "clock": "owner_defined"
+      },
+      "dimensions": {
+        "allowed": [],
+        "prohibited": [
+          "repo",
+          "path_hint",
+          "kind",
+          "role"
+        ]
+      },
+      "aggregation": {
+        "operator": "none",
+        "across": []
+      },
+      "missingness": {
+        "states": [
+          "missing",
+          "unknown",
+          "stale"
+        ],
+        "zero_is_observation": true
+      },
+      "uncertainty": {
+        "required": false,
+        "methods": [
+          "not_applicable"
+        ]
+      },
+      "provenance": {
+        "evidence_refs_required": true,
+        "source_revision_required": true
+      },
+      "lifecycle": {
+        "status": "active",
+        "compatible_with": []
+      },
+      "privacy": {
+        "classification": "public",
+        "raw_content_allowed": false,
+        "sensitive_dimensions_allowed": false
+      },
+      "live_state": {
+        "capability": "reference_only"
+      },
+      "authority_ceiling": "Reports root AGENTS.md route-card presence for the known public repository inventory in the named committed live-workspace audit only; it does not establish guidance quality, nested coverage, repository health, owner availability, current remote state, projection parity, or onboarding quality."
+    }
+  ],
+  "exports": [
+    {
+      "measurement_id": "8Dionysus/known-repository-root-agents-coverage-ratio",
+      "posture": "reference",
+      "packet_refs": [
+        "stats/packets/known-repository-root-agents-coverage-ratio.reference.json"
+      ],
+      "evidence_refs": [
+        "generated/agents_map.min.json",
+        "schemas/agents-map.schema.json",
+        "scripts/audit_agents_map.py"
+      ]
+    }
+  ]
+}

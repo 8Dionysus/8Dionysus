@@ -40,14 +40,8 @@ Choose option 3.
 `8Dionysus` extends `generated/workspace_memory_map.min.json` and
 `docs/WORKSPACE_MEMORY_MAP.md` with writeback marker and debt routing fields.
 The checked-in map records stable marker sources such as repo-local memo
-packets and decision records with `writeback` in the filename. It also records
-the live command agents should run when they need git currentness:
-
-```bash
-python scripts/build_workspace_memory_map.py \
-  --workspace-root <workspace-root> \
-  --writeback-debt-json
-```
+packets and decision records with `writeback` in the filename. The operational
+route for obtaining the live debt readout remains in the repository guidance.
 
 The live output may report `clean`, `has_unmarked_changes`,
 `needs_first_marker`, `not_applicable`, or `unknown`. These statuses are

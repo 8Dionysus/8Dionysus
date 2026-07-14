@@ -112,6 +112,13 @@ REQUIRED_AGENTS_DOCS: dict[str, tuple[str, ...]] = {
         "local-only",
         "uncontrolled sibling mutation",
     ),
+    "stats/AGENTS.md": (
+        "public-entry statistical questions",
+        "aoa-stats",
+        "missing known repository",
+        "public-baseline",
+        "validate_local_stats_port.py",
+    ),
     "tests/AGENTS.md": (
         "temporary directories",
         "local-only",

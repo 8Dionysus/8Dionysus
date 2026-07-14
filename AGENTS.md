@@ -15,13 +15,15 @@ This repository owns:
 - public entry orientation, glossary alignment, and profile-level route help
 - selected shared-root install sources such as `AGENTS.md`, `AOA_WORKSPACE_ROOT`, `.agents/`, and `.codex/` when checked in here
 - workspace bootstrap notes, Codex-plane regeneration notes, and AGENTS map audit surfaces
+- owner-local statistical questions over public route and audit evidence
 
 It does not own:
 
 - AoA center doctrine, which belongs in `Agents-of-Abyss`
 - ToS authored meaning, which belongs in `Tree-of-Sophia`
 - runtime behavior, which belongs in `abyss-stack`
-- SDK helpers, skills, techniques, evals, routing, memory, KAG, playbooks, stats, agents, or seed canon owned by sibling repos
+- SDK helpers, skills, techniques, evals, routing, memory, KAG, playbooks,
+  shared stats grammar, agent, or seed canon owned by sibling repos
 
 ## Start here
 
@@ -66,7 +68,8 @@ needed, say so in closeout.
 - `aoa-kag`: derived provenance-aware knowledge substrates.
 - `aoa-playbooks`: recurring scenario composition, questlines, campaigns, handoffs.
 - `aoa-agents`: role contracts, handoff posture, progression and checkpoint contract surfaces.
-- `aoa-stats`: derived observability and movement summaries.
+- `aoa-stats`: shared measurement grammar, owner-local stats federation, and
+  derived non-sovereign read models.
 - `8Dionysus`: public route map, shared-root projection source, AGENTS map audit.
 
 ## Memory route
@@ -168,6 +171,7 @@ If GitHub status or merge permissions cannot be observed, stop the landing route
 ## Verify
 
 Use the smallest route-safe check for the changed surface. For AGENTS-map or workspace route changes, run one of the audit commands above and report whether it was a public-baseline or sibling-workspace pass.
+For `stats/` changes, also run `python scripts/validate_local_stats_port.py`.
 If projection, hooks, plugin, convergence, or closeout details are touched, read `docs/AGENTS_ROOT_REFERENCE.md` and run the named narrow helper there before reporting.
 For convergence checks, keep `aoa-codex-doctor`, `aoa-codex-status`, and `aoa-codex-bootstrap` discoverable as wrappers, and keep `aoa_codex_convergence_report.{json,md}` as evidence only. The rule is that convergence reports are evidence, not authority.
 

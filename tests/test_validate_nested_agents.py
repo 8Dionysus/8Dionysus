@@ -51,6 +51,7 @@ class ValidateNestedAgentsTests(unittest.TestCase):
             "quests/AGENTS.md",
             "schemas/AGENTS.md",
             "scripts/AGENTS.md",
+            "stats/AGENTS.md",
             "tests/AGENTS.md",
         }
         self.assertEqual(expected, set(validator.REQUIRED_AGENTS_DOCS))

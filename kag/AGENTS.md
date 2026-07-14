@@ -14,7 +14,7 @@ for `aoa-kag` registry, composition, and MCP consumers.
 ## Read before editing
 
 Read the root `AGENTS.md`, this card, `kag/README.md`, `kag/manifest.json`,
-`README.md`, `docs/WORKSPACE_MEMORY_MAP.md`, and
+`README.md`, `stats/README.md`, `docs/WORKSPACE_MEMORY_MAP.md`, and
 `generated/workspace_memory_map.min.json` before changing provider records.
 
 ## Boundaries

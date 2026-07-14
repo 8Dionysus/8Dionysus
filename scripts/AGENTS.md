@@ -8,6 +8,9 @@ Do not add hidden network calls, secret reads, uncontrolled sibling mutation, or
 
 When script behavior changes, update tests, schemas, generated examples, and docs that describe the command.
 
+`scripts/validate_local_stats_port.py` is a thin delegate to the shared
+`aoa-stats` contract owner. Keep local measurement meaning under `stats/`.
+
 Verify with:
 
 ```bash

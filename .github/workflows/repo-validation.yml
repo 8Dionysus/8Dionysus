@@ -34,6 +34,14 @@ jobs:
           path: aoa-sdk
           fetch-depth: 1
 
+      - name: Checkout aoa-stats contract owner
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with:
+          repository: 8Dionysus/aoa-stats
+          ref: a8da85116e1a649a2e447ebb18ec3b6c6274f22e
+          path: aoa-stats
+          fetch-depth: 1
+
       - name: Setup Python
         uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405
         with:
@@ -48,6 +56,12 @@ jobs:
 
       - name: Install validator dependency
         run: python -m pip install jsonschema
+
+      - name: Validate local stats port
+        working-directory: 8Dionysus
+        env:
+          AOA_STATS_ROOT: ${{ github.workspace }}/aoa-stats
+        run: python scripts/validate_local_stats_port.py
 
       - name: Run unit tests
         working-directory: 8Dionysus

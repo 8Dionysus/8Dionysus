@@ -43,3 +43,7 @@
 ## 2026-06-28
 
 - [8DION-D-0015 - AoA KAG MCP Codex-Plane Registration](../8DION-D-0015-aoa-kag-mcp-codex-plane-registration.md) (`docs/decisions/8DION-D-0015-aoa-kag-mcp-codex-plane-registration.md`)
+
+## 2026-07-14
+
+- [8DION-D-0016 - AoA Stats MCP Codex-Plane Cutover](../8DION-D-0016-aoa-stats-mcp-codex-plane-cutover.md) (`docs/decisions/8DION-D-0016-aoa-stats-mcp-codex-plane-cutover.md`)

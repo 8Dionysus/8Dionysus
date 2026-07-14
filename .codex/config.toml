@@ -78,8 +78,8 @@ cwd = "/srv/AbyssOS/aoa-sdk"
 
 [mcp_servers.aoa_stats]
 command = "python3"
-args = ["scripts/aoa_stats_mcp_server.py"]
-cwd = "/srv/AbyssOS/aoa-stats"
+args = [".codex/bin/aoa-stats-mcp-server.py"]
+cwd = "/srv/AbyssOS"
 
 [mcp_servers.dionysus]
 command = "python3"

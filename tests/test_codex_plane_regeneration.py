@@ -66,6 +66,8 @@ class CodexPlaneRegenerationTests(unittest.TestCase):
                 encoding="utf-8"
             ),
         )
+        self.assertIn('args = [".codex/bin/aoa-stats-mcp-server.py"]', rendered_config)
+        self.assertNotIn('args = ["scripts/aoa_stats_mcp_server.py"]', rendered_config)
         self.assertEqual(
             rendered_hooks,
             (REPO_ROOT / "config" / "codex_plane" / "examples" / "current-srv.hooks.json").read_text(

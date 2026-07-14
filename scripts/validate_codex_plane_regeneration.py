@@ -73,6 +73,9 @@ def validate_codex_plane_regeneration(
     expected_server_names = [server["name"] for server in manifest["mcp_servers"]]
     if expected_server_names != STABLE_MCP_SERVER_NAMES:
         raise ValueError("manifest must preserve the stable AoA MCP server names")
+    stats_launcher = resolved_repo_root / ".codex" / "bin" / "aoa-stats-mcp-server.py"
+    if not stats_launcher.exists():
+        raise ValueError(f"missing source-owned aoa_stats launcher: {stats_launcher}")
     memo_launcher = resolved_repo_root / ".codex" / "bin" / "aoa-memo-mcp-server.py"
     if not memo_launcher.exists():
         raise ValueError(f"missing source-owned aoa_memo launcher: {memo_launcher}")

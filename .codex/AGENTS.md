@@ -8,6 +8,13 @@ Keep projected copies secondary. Source-owned files in this repository may be ed
 
 No secrets, tokens, private hostnames, unreviewed hooks, or hidden local automation may be added here. Any mutating helper must stay bounded, documented, reversible, and route-aware.
 
+Statistical access in the Codex plane uses `aoa_stats` as a read-only access
+plane. Use it to inspect the derived catalog, central boundary references,
+owner-local `stats/` ports, and measurement-packet compatibility. Statistical
+meaning and the public read contract remain in `aoa-stats`; local questions and
+evidence remain with their owner repositories; runnable MCP service code
+remains in `abyss-stack`.
+
 Memory access in the Codex plane uses `aoa_memo` as an access plane. Use it for
 brief, search, local-port status, candidate creation, port indexing, and intake
 review when work asks for recall, continuity, preservation, compaction recovery,
@@ -63,6 +70,7 @@ Verify with:
 ```bash
 python scripts/validate_nested_agents.py
 python scripts/build_workspace_memory_map.py --check
+python /srv/AbyssOS/8Dionysus/scripts/smoke_aoa_stats_mcp.py --workspace-root /srv/AbyssOS
 python /srv/AbyssOS/8Dionysus/scripts/smoke_aoa_memo_mcp.py --workspace-root /srv/AbyssOS
 python /srv/AbyssOS/8Dionysus/scripts/smoke_aoa_session_memory_mcp.py --workspace-root /srv/AbyssOS
 python /srv/AbyssOS/8Dionysus/scripts/smoke_aoa_evals_mcp.py --workspace-root /srv/AbyssOS

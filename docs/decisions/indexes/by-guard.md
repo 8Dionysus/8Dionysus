@@ -10,6 +10,10 @@
 - [8DION-D-0014 - AoA Decisions MCP Codex-Plane Registration](../8DION-D-0014-aoa-decisions-mcp-codex-plane-registration.md) (`docs/decisions/8DION-D-0014-aoa-decisions-mcp-codex-plane-registration.md`)
 - [8DION-D-0015 - AoA KAG MCP Codex-Plane Registration](../8DION-D-0015-aoa-kag-mcp-codex-plane-registration.md) (`docs/decisions/8DION-D-0015-aoa-kag-mcp-codex-plane-registration.md`)
 
+## access-plane separation
+
+- [8DION-D-0016 - AoA Stats MCP Codex-Plane Cutover](../8DION-D-0016-aoa-stats-mcp-codex-plane-cutover.md) (`docs/decisions/8DION-D-0016-aoa-stats-mcp-codex-plane-cutover.md`)
+
 ## branch protection
 
 - [8DION-D-0002 - Repo-Family Required Check Contracts Stay Coordination-Only in 8Dionysus](../8DION-D-0002-repo-family-required-check-contracts.md) (`docs/decisions/8DION-D-0002-repo-family-required-check-contracts.md`)
@@ -125,6 +129,10 @@
 
 - [8DION-D-0011 - Workspace Memory Map Writeback Sync](../8DION-D-0011-workspace-memory-map-writeback-sync.md) (`docs/decisions/8DION-D-0011-workspace-memory-map-writeback-sync.md`)
 
+## single registration
+
+- [8DION-D-0016 - AoA Stats MCP Codex-Plane Cutover](../8DION-D-0016-aoa-stats-mcp-codex-plane-cutover.md) (`docs/decisions/8DION-D-0016-aoa-stats-mcp-codex-plane-cutover.md`)
+
 ## source-owned templates
 
 - [8DION-D-0003 - Source-Owned Repo Git Hooks](../8DION-D-0003-source-owned-repo-git-hooks.md) (`docs/decisions/8DION-D-0003-source-owned-repo-git-hooks.md`)
@@ -141,6 +149,11 @@
 - [8DION-D-0013 - AoA Session Memory MCP Codex-Plane Registration](../8DION-D-0013-aoa-session-memory-mcp-codex-plane-registration.md) (`docs/decisions/8DION-D-0013-aoa-session-memory-mcp-codex-plane-registration.md`)
 - [8DION-D-0014 - AoA Decisions MCP Codex-Plane Registration](../8DION-D-0014-aoa-decisions-mcp-codex-plane-registration.md) (`docs/decisions/8DION-D-0014-aoa-decisions-mcp-codex-plane-registration.md`)
 - [8DION-D-0015 - AoA KAG MCP Codex-Plane Registration](../8DION-D-0015-aoa-kag-mcp-codex-plane-registration.md) (`docs/decisions/8DION-D-0015-aoa-kag-mcp-codex-plane-registration.md`)
+- [8DION-D-0016 - AoA Stats MCP Codex-Plane Cutover](../8DION-D-0016-aoa-stats-mcp-codex-plane-cutover.md) (`docs/decisions/8DION-D-0016-aoa-stats-mcp-codex-plane-cutover.md`)
+
+## statistical authority boundary
+
+- [8DION-D-0016 - AoA Stats MCP Codex-Plane Cutover](../8DION-D-0016-aoa-stats-mcp-codex-plane-cutover.md) (`docs/decisions/8DION-D-0016-aoa-stats-mcp-codex-plane-cutover.md`)
 
 ## unmanaged-hook safety
 

@@ -33,8 +33,8 @@ cwd = "{root / 'aoa-sdk'}"
 
 [mcp_servers.aoa_stats]
 command = "python"
-args = ["scripts/aoa_stats_mcp_server.py"]
-cwd = "{root / 'aoa-stats'}"
+args = [".codex/bin/aoa-stats-mcp-server.py"]
+cwd = "{root}"
 
 [mcp_servers.dionysus]
 command = "python"
@@ -107,13 +107,15 @@ cwd = "{tmp_path / 'aoa-sdk'}"
     assert report["ready"] is False
 
 
-def test_optional_repo_mcp_detection(tmp_path: Path) -> None:
+def test_stats_access_plane_detection(tmp_path: Path) -> None:
     write_bootstrap_scaffold(tmp_path)
     _write(tmp_path / ".codex" / "config.toml", _minimal_config(tmp_path))
     _write(tmp_path / "aoa-sdk" / "scripts" / "aoa_workspace_mcp_server.py", "print('ok')\n")
     for name in ["architect", "coder", "reviewer", "evaluator", "memory-keeper"]:
         _write(tmp_path / ".codex" / "agents" / f"{name}.toml", _agent_toml(name))
-    _write(tmp_path / "aoa-stats" / "scripts" / "aoa_stats_mcp_server.py", "print('ok')\n")
+    _write(tmp_path / ".codex" / "bin" / "aoa-stats-mcp-server.py", "print('ok')\n")
+    _write_json(tmp_path / "aoa-stats" / "stats" / "source_home.manifest.json", {})
+    _write_json(tmp_path / "aoa-stats" / "stats" / "federation" / "owner-inventory.json", {})
     _write_json(tmp_path / "aoa-stats" / "generated" / "summary_surface_catalog.min.json", {"surfaces": []})
     _write(tmp_path / "Dionysus" / "scripts" / "dionysus_mcp_server.py", "print('ok')\n")
     _write_json(tmp_path / "Dionysus" / "generated" / "seed_route_map.min.json", {"routes": []})
@@ -122,6 +124,60 @@ def test_optional_repo_mcp_detection(tmp_path: Path) -> None:
     names_to_status = {item["name"]: item["status"] for item in report["surfaces"]}
     assert names_to_status["stats_mcp"] == "ok"
     assert names_to_status["dionysus_mcp"] == "ok"
+
+
+def test_repo_local_stats_server_no_longer_satisfies_access_plane(tmp_path: Path) -> None:
+    write_bootstrap_scaffold(tmp_path)
+    _write(
+        tmp_path / ".codex" / "config.toml",
+        f"""
+project_root_markers = ["AOA_WORKSPACE_ROOT", ".git"]
+
+[mcp_servers.aoa_workspace]
+command = "python"
+args = ["scripts/aoa_workspace_mcp_server.py"]
+cwd = "{tmp_path / 'aoa-sdk'}"
+
+[mcp_servers.aoa_stats]
+command = "python"
+args = ["scripts/aoa_stats_mcp_server.py"]
+cwd = "{tmp_path / 'aoa-stats'}"
+""",
+    )
+    _write(tmp_path / "aoa-sdk" / "scripts" / "aoa_workspace_mcp_server.py", "print('ok')\n")
+    _write(tmp_path / "aoa-stats" / "scripts" / "aoa_stats_mcp_server.py", "print('old')\n")
+    _write_json(tmp_path / "aoa-stats" / "stats" / "source_home.manifest.json", {})
+    _write_json(tmp_path / "aoa-stats" / "stats" / "federation" / "owner-inventory.json", {})
+    _write_json(tmp_path / "aoa-stats" / "generated" / "summary_surface_catalog.min.json", {"surfaces": []})
+    for name in ["architect", "coder", "reviewer", "evaluator", "memory-keeper"]:
+        _write(tmp_path / ".codex" / "agents" / f"{name}.toml", _agent_toml(name))
+
+    report = build_report(tmp_path)
+    stats = next(item for item in report["surfaces"] if item["name"] == "stats_mcp")
+    assert stats["status"] == "warn"
+    assert "stack-owned access seam is incomplete" in stats["summary"]
+
+
+def test_loopback_stats_service_satisfies_runtime_access_plane(tmp_path: Path) -> None:
+    write_bootstrap_scaffold(tmp_path)
+    _write(
+        tmp_path / ".codex" / "config.toml",
+        _minimal_config(tmp_path).replace(
+            '[mcp_servers.aoa_stats]\ncommand = "python"\nargs = [".codex/bin/aoa-stats-mcp-server.py"]\ncwd = "' + str(tmp_path) + '"',
+            '[mcp_servers.aoa_stats]\nurl = "http://127.0.0.1:5430/mcp"',
+        ),
+    )
+    _write(tmp_path / "aoa-sdk" / "scripts" / "aoa_workspace_mcp_server.py", "print('ok')\n")
+    _write_json(tmp_path / "aoa-stats" / "stats" / "source_home.manifest.json", {})
+    _write_json(tmp_path / "aoa-stats" / "stats" / "federation" / "owner-inventory.json", {})
+    _write_json(tmp_path / "aoa-stats" / "generated" / "summary_surface_catalog.min.json", {"surfaces": []})
+    for name in ["architect", "coder", "reviewer", "evaluator", "memory-keeper"]:
+        _write(tmp_path / ".codex" / "agents" / f"{name}.toml", _agent_toml(name))
+
+    report = build_report(tmp_path)
+    stats = next(item for item in report["surfaces"] if item["name"] == "stats_mcp")
+    assert stats["status"] == "ok"
+    assert "url=http://127.0.0.1:5430/mcp" in stats["evidence"]
 
 
 def test_optional_memo_mcp_detection(tmp_path: Path) -> None:

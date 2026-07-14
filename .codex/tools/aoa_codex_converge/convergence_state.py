@@ -5,6 +5,7 @@ import os
 from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Any, Mapping
+from urllib.parse import urlsplit
 
 try:
     import tomllib
@@ -153,6 +154,26 @@ def _resolve_mcp_script(
     return None, evidence
 
 
+def _is_loopback_mcp_url(value: object) -> bool:
+    if not isinstance(value, str) or not value:
+        return False
+    try:
+        parsed = urlsplit(value)
+        port = parsed.port
+    except ValueError:
+        return False
+    return (
+        parsed.scheme == "http"
+        and parsed.hostname in {"127.0.0.1", "::1", "localhost"}
+        and port is not None
+        and parsed.path == "/mcp"
+        and parsed.username is None
+        and parsed.password is None
+        and not parsed.query
+        and not parsed.fragment
+    )
+
+
 def build_report(workspace_root: Path | str) -> dict[str, Any]:
     root = _normalize_workspace_root(workspace_root)
 
@@ -166,6 +187,9 @@ def build_report(workspace_root: Path | str) -> dict[str, Any]:
     sibling_aoa_skills_dir = root / "aoa-skills" / ".agents" / "skills"
     stats_repo = root / "aoa-stats"
     stats_catalog = stats_repo / "generated" / "summary_surface_catalog.min.json"
+    stats_source_home = stats_repo / "stats" / "source_home.manifest.json"
+    stats_owner_inventory = stats_repo / "stats" / "federation" / "owner-inventory.json"
+    stats_launcher = root / ".codex" / "bin" / "aoa-stats-mcp-server.py"
     dionysus_repo = root / "Dionysus"
     dionysus_catalog = dionysus_repo / "generated" / "seed_route_map.min.json"
     memo_service = Path.home() / "src" / "abyss-stack" / "mcp" / "services" / "aoa-memo-mcp"
@@ -251,21 +275,35 @@ def build_report(workspace_root: Path | str) -> dict[str, Any]:
     stats_repo_exists = stats_repo.exists()
     stats_entry = mcp_servers.get("aoa_stats") if isinstance(mcp_servers, dict) else None
     stats_script_path, stats_evidence = _resolve_mcp_script(root, stats_entry)
+    stats_url = stats_entry.get("url") if isinstance(stats_entry, Mapping) else None
     if stats_repo_exists:
         stats_evidence.insert(0, str(stats_repo))
     if isinstance(mcp_servers, dict) and "aoa_stats" in mcp_servers:
         stats_evidence.insert(1 if stats_repo_exists else 0, "[mcp_servers.aoa_stats] in .codex/config.toml")
     if stats_script_path is not None and stats_script_path.exists():
         stats_evidence.append(str(stats_script_path))
+    if isinstance(stats_url, str) and stats_url:
+        stats_evidence.append(f"url={stats_url}")
+    if stats_source_home.exists():
+        stats_evidence.append(str(stats_source_home))
+    if stats_owner_inventory.exists():
+        stats_evidence.append(str(stats_owner_inventory))
     if stats_catalog.exists():
         stats_evidence.append(str(stats_catalog))
+    stats_source_wrapper_ok = (
+        stats_script_path is not None
+        and stats_script_path == stats_launcher.resolve()
+        and stats_script_path.exists()
+    )
+    stats_http_ok = _is_loopback_mcp_url(stats_url)
     stats_mcp_ok = (
         not stats_repo_exists
         or (
             isinstance(mcp_servers, dict)
             and "aoa_stats" in mcp_servers
-            and stats_script_path is not None
-            and stats_script_path.exists()
+            and (stats_source_wrapper_ok or stats_http_ok)
+            and stats_source_home.exists()
+            and stats_owner_inventory.exists()
             and stats_catalog.exists()
         )
     )
@@ -277,10 +315,10 @@ def build_report(workspace_root: Path | str) -> dict[str, Any]:
             summary=(
                 "aoa-stats repo not present under the workspace root."
                 if not stats_repo_exists
-                else ("aoa-stats MCP surface looks wired." if stats_mcp_ok else "aoa-stats repo exists but its MCP seam is incomplete.")
+                else ("Stack-owned aoa-stats MCP access plane looks wired." if stats_mcp_ok else "aoa-stats repo exists but its stack-owned access seam is incomplete.")
             ),
             evidence=stats_evidence,
-            next_step="Wire aoa_stats into workspace .codex/config.toml and ensure the repo-local server plus generated catalog exist.",
+            next_step="Wire aoa_stats through the shared wrapper or its authenticated loopback endpoint, and preserve the aoa-stats source home, owner inventory, and generated catalog.",
         )
     )
 

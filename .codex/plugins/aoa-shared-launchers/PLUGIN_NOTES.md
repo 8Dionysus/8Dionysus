@@ -6,6 +6,10 @@ This plugin is intentionally narrow.
 - It relies on project-scoped named MCP servers already configured in `.codex/config.toml`.
 - It does not try to move AoA owner meaning into the plugin layer.
 - It does not bundle `.mcp.json` in this first wave.
+- It treats `aoa_stats` as the read-only statistical access plane for derived
+  catalogs, owner-local ports, boundary references, and compatibility checks.
+  Statistical meaning remains in `aoa-stats`, owner-local meaning remains in
+  each source repository, and runnable service code remains in `abyss-stack`.
 - It treats `aoa_memo` as the memory access plane for brief, search, local-port
   status, candidate creation, port indexing, and reviewed-intake preparation.
   Durable memory truth still lands through `aoa-memo`.

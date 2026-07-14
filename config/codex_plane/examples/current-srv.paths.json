@@ -16,8 +16,8 @@
       "script_rel": "scripts/aoa_workspace_mcp_server.py"
     },
     "aoa_stats": {
-      "cwd": "/srv/AbyssOS/aoa-stats",
-      "script_rel": "scripts/aoa_stats_mcp_server.py"
+      "cwd": "/srv/AbyssOS",
+      "script_rel": ".codex/bin/aoa-stats-mcp-server.py"
     },
     "dionysus": {
       "cwd": "/srv/AbyssOS/Dionysus",

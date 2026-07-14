@@ -34,12 +34,14 @@ note before rerender or rollout, use `docs/COMPONENT_REFRESH_ROUTE.md`.
 It does not own:
 
 - role meaning owned by `aoa-agents`
-- MCP implementation meaning owned by `aoa-sdk`, `aoa-stats`, `Dionysus`, and
-  `abyss-stack` for stack-owned access planes such as `aoa-memo-mcp`,
-  `aoa-session-memory-mcp`, `aoa-evals-mcp`, `aoa-decisions-mcp`, and
-  `abyss-machine-mcp`; `.aoa` owns raw session evidence exposed by
-  `aoa_session_memory`, `aoa-evals` owns the proof contract exposed by
-  `aoa_evals`, `aoa-skills` owns the decision-lane route exposed through
+- MCP implementation owned by `aoa-sdk` for `aoa_workspace`, `Dionysus` for
+  `dionysus`, and `abyss-stack` for stack-owned access planes such as
+  `aoa-stats-mcp`, `aoa-memo-mcp`, `aoa-session-memory-mcp`, `aoa-evals-mcp`,
+  `aoa-kag-mcp`, `aoa-decisions-mcp`, and `abyss-machine-mcp`; `aoa-stats`
+  owns the statistical meaning exposed through `aoa_stats`, `.aoa` owns raw
+  session evidence exposed by `aoa_session_memory`, `aoa-evals` owns the proof
+  contract exposed by `aoa_evals`, `aoa-kag` owns KAG meaning exposed by
+  `aoa_kag`, `aoa-skills` owns the decision-lane route exposed through
   `aoa_decisions`, and `abyss-machine` owns the host truth exposed by
   `abyss_machine`
 - user-global Codex defaults in `~/.codex/config.toml`
@@ -79,7 +81,7 @@ The regeneration path must preserve the stable project-facing names that other
 AoA surfaces may already depend on:
 
 - project root markers: `AOA_WORKSPACE_ROOT`, `.git`
-- MCP server names: `aoa_workspace`, `aoa_stats`, `dionysus`, `aoa_memo`, `aoa_session_memory`, `aoa_evals`, `aoa_decisions`, `abyss_machine`
+- MCP server names: `aoa_workspace`, `aoa_stats`, `dionysus`, `aoa_memo`, `aoa_session_memory`, `aoa_evals`, `aoa_kag`, `aoa_decisions`, `abyss_machine`
 - hook events: `SessionStart`, `UserPromptSubmit`, `Stop`
 
 ## Relation to projection

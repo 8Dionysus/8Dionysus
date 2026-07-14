@@ -121,9 +121,9 @@
     },
     {
       "name": "aoa_stats",
-      "repo_key": "aoa-stats",
+      "repo_key": "workspace",
       "cwd_repo_rel": "",
-      "script_rel": "scripts/aoa_stats_mcp_server.py"
+      "script_rel": ".codex/bin/aoa-stats-mcp-server.py"
     },
     {
       "name": "dionysus",

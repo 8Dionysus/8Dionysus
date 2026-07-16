@@ -6,6 +6,14 @@
 
 Keep projected copies secondary. Source-owned files in this repository may be edited; installed live copies should be treated as evidence of projection drift, not authority.
 
+The generic shared-root projector manages only the source-owned subset of this
+tree. It excludes `.codex/config.toml` because live registration may be a
+deployment composition over the portable rendered source, and it excludes
+`.codex/agents/` because agent projection belongs to `aoa-agents` plus the
+deployment policy. It also excludes deploy-local `generated/` and `worktrees/`.
+Use the dedicated owner route for each excluded path; do not force parity by
+copying or pruning it through `project_workspace_root.py`.
+
 No secrets, tokens, private hostnames, unreviewed hooks, or hidden local automation may be added here. Any mutating helper must stay bounded, documented, reversible, and route-aware.
 
 Statistical access in the Codex plane uses `aoa_stats` as a read-only access

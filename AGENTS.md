@@ -13,7 +13,7 @@ It is not the constitutional center, not a runtime owner, and not a replacement 
 This repository owns:
 
 - public entry orientation, glossary alignment, and profile-level route help
-- selected shared-root install sources such as `AGENTS.md`, `AOA_WORKSPACE_ROOT`, `.agents/plugins/`, and `.codex/` when checked in here
+- selected shared-root install sources such as `AGENTS.md`, `AOA_WORKSPACE_ROOT`, `.agents/plugins/`, and the source-owned `.codex/` subset checked in here
 - workspace bootstrap notes, Codex-plane regeneration notes, and AGENTS map audit surfaces
 - one admitted repo-local procedure for diagnosing concrete workspace capability-delivery disagreements
 - owner-local statistical questions over public route and audit evidence
@@ -137,6 +137,7 @@ SDK-owned skill ingress or mutation-gate command.
 - Do not treat live projected copies at `/AGENTS.md`, `/AOA_WORKSPACE_ROOT`, `/.agents/`, or `/.codex/` as primary truth; in projection wording, do not treat the live copies as source.
 - `8Dionysus` does not project shared bundles into `<workspace-root>/.agents/skills`. Shared AoA bundles install once through the `aoa-skills` `user-default` profile; repository projections come only from admitted owner-local `skills/` homes.
 - `skills/aoa-workspace-diagnose/` is this repository's canonical local procedure; `.agents/skills/aoa-workspace-diagnose/` is its exact repo-only projection and remains excluded from workspace-root copy and prune authority.
+- The generic shared-root projector neither copies nor prunes live `.codex/config.toml` or `.codex/agents/`. Project registration follows the Codex-plane render and rollout route; role-agent projection follows `aoa-agents` and its deployment policy.
 - Keep `8Dionysus/README.md` profile-owned and GitHub-facing.
 - Treat generated or install drift as a route signal: keep the evidence narrow, route it to the owner repository, and do not promote derived reports into authority.
 - Before large AGENTS refactors, run the map audit:

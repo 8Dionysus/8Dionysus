@@ -39,6 +39,16 @@ class WorkspaceProjectionTests(unittest.TestCase):
             self.assertFalse(
                 report["projection_contract"]["workspace_codex_deploy_local_roots_managed"]
             )
+            self.assertFalse(
+                report["projection_contract"]["workspace_codex_deploy_composed_paths_managed"]
+            )
+            self.assertEqual(
+                report["projection_contract"]["workspace_codex_deploy_composed_paths"],
+                [
+                    (workspace_root / ".codex" / "config.toml").as_posix(),
+                    (workspace_root / ".codex" / "agents").as_posix(),
+                ],
+            )
             self.assertEqual(report["projection_contract"]["shared_skill_install_owner"], "aoa-skills")
             self.assertEqual(report["projection_contract"]["shared_skill_install_scope"], "user")
             self.assertIn("Do not patch the live workspace copy", report["next_step"])
@@ -50,7 +60,9 @@ class WorkspaceProjectionTests(unittest.TestCase):
             self.assertIn("AOA_WORKSPACE_ROOT", paths)
             self.assertIn(".agents/plugins/marketplace.json", paths)
             self.assertNotIn(".agents/skills/demo-skill", paths)
-            self.assertIn(".codex/config.toml", paths)
+            self.assertNotIn(".codex/config.toml", paths)
+            self.assertNotIn(".codex/agents/architect.toml", paths)
+            self.assertIn(".codex/plugins/active.txt", paths)
             self.assertNotIn(".codex/generated/report.json", paths)
             self.assertNotIn(".codex/worktrees/keep/AGENTS.md", paths)
             self.assertNotIn(".codex/tools/__pycache__/ghost.pyc", paths)
@@ -71,6 +83,11 @@ class WorkspaceProjectionTests(unittest.TestCase):
                 workspace_root / ".codex" / "worktrees" / "keep" / "AGENTS.md",
                 "# deploy-local worktree\n",
             )
+            live_config = '[mcp_servers.aoa_kag]\nurl = "http://127.0.0.1:5425/mcp"\n'
+            live_agent = "name = \"architect\"\n[features]\nplugins = false\n"
+            write_text(workspace_root / ".codex" / "config.toml", live_config)
+            write_text(workspace_root / ".codex" / "agents" / "architect.toml", live_agent)
+            write_text(workspace_root / ".codex" / "plugins" / "retired.txt", "retired\n")
 
             report = project_workspace_root(repo_root, workspace_root, execute=True, prune=True)
             self.assertTrue(report["changed"])
@@ -91,7 +108,19 @@ class WorkspaceProjectionTests(unittest.TestCase):
                 ),
                 "# workspace-owned\n",
             )
-            self.assertTrue((workspace_root / ".codex" / "config.toml").exists())
+            self.assertEqual(
+                (workspace_root / ".codex" / "config.toml").read_text(encoding="utf-8"),
+                live_config,
+            )
+            self.assertEqual(
+                (workspace_root / ".codex" / "agents" / "architect.toml").read_text(encoding="utf-8"),
+                live_agent,
+            )
+            self.assertEqual(
+                (workspace_root / ".codex" / "plugins" / "active.txt").read_text(encoding="utf-8"),
+                "active\n",
+            )
+            self.assertFalse((workspace_root / ".codex" / "plugins" / "retired.txt").exists())
             self.assertFalse((workspace_root / ".codex" / "generated" / "report.json").exists())
             self.assertEqual(
                 (workspace_root / ".codex" / "worktrees" / "keep" / "AGENTS.md").read_text(
@@ -108,6 +137,8 @@ class WorkspaceProjectionTests(unittest.TestCase):
         )
         write_text(repo_root / "AOA_WORKSPACE_ROOT", "marker\n")
         write_text(repo_root / ".codex" / "config.toml", 'project_root_markers = ["AOA_WORKSPACE_ROOT"]\n')
+        write_text(repo_root / ".codex" / "agents" / "architect.toml", 'name = "portable-architect"\n')
+        write_text(repo_root / ".codex" / "plugins" / "active.txt", "active\n")
         write_text(repo_root / ".codex" / "generated" / "report.json", "{}\n")
         write_text(repo_root / ".codex" / "worktrees" / "source-only" / "AGENTS.md", "# no projection\n")
         write_text(repo_root / ".codex" / "tools" / "__pycache__" / "ghost.pyc", "nope")

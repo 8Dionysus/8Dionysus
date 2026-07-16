@@ -25,6 +25,8 @@ class CodexPlaneValidationSummary:
     repo_root: Path
     workspace_root: Path
     profile_id: str
+    validation_scope: str
+    live_deployment_compared: bool
 
 
 def validate_codex_plane_regeneration(
@@ -99,6 +101,8 @@ def validate_codex_plane_regeneration(
         repo_root=resolved_repo_root,
         workspace_root=resolved_workspace_root,
         profile_id=str(profile.get("profile_id") or ""),
+        validation_scope="checked_in_source_render_only",
+        live_deployment_compared=False,
     )
 
 
@@ -118,6 +122,9 @@ def main(argv: list[str] | None = None) -> int:
     print(f"repo_root={summary.repo_root}")
     print(f"workspace_root={summary.workspace_root}")
     print(f"profile_id={summary.profile_id}")
+    print(f"validation_scope={summary.validation_scope}")
+    print(f"live_deployment_compared={str(summary.live_deployment_compared).lower()}")
+    print("live_deployment_route=docs/CODEX_PLANE_ROLLOUT.md")
     return 0
 
 

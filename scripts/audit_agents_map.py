@@ -67,7 +67,7 @@ KNOWN_REPOSITORIES: tuple[dict[str, str], ...] = (
     },
     {
         "name": "aoa-sdk",
-        "role": "typed workspace integration, compatibility checks, bounded activation, and controlled orchestration",
+        "role": "typed workspace integration, compatibility checks, passive skill inspection, and reviewed evidence handoff",
         "kind": "control-plane-sdk",
     },
     {

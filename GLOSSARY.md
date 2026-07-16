@@ -31,7 +31,7 @@ It combines perception, memory, voice, controlled action, and operator-facing su
 ### aoa-sdk
 A typed local-first access spine and control-plane helper layer for source-owned AoA surfaces.
 
-It provides structured reads, workspace integration, bounded activation, compatibility checks, and controlled orchestration without absorbing the charters or implementation truth owned by other repositories.
+It provides structured reads, workspace integration, compatibility checks, passive owner-scoped skill inspection, explicit user-profile bootstrap, and reviewed evidence handoff without absorbing the charters or implementation truth owned by other repositories.
 
 ### Dionysus
 A seed garden and staging surface for early forms, experiments, and growth before stronger canonization or structural separation.

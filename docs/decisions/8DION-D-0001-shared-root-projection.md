@@ -8,7 +8,7 @@
 - Route anchors: AGENTS.md, AOA_WORKSPACE_ROOT, .agents, .codex, scripts/project_workspace_root.py
 - Owner lanes: 8Dionysus, workspace root, sibling owner repos
 - Guard families: projection source truth, owner boundary, drift preview
-- Posture: accepted
+- Posture: accepted; skill-projection clause superseded by 8DION-D-0017
 
 ## Context
 
@@ -58,3 +58,10 @@ Projection details:
   repositories whose meanings these install surfaces help route into
 - the checked-in `.agents/` and `.codex/` trees are honest for the current live
   workspace deployment and must be adapted if the root path changes
+
+## Partial Supersession
+
+`8DION-D-0017` supersedes only the `.agents/skills/` clause of this decision.
+`8Dionysus` still owns the selected root guidance, marker, plugin discovery,
+and Codex-plane projection, but shared AoA bundles now install once at user
+scope and repository projections come only from admitted owner-local homes.

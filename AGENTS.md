@@ -13,7 +13,7 @@ It is not the constitutional center, not a runtime owner, and not a replacement 
 This repository owns:
 
 - public entry orientation, glossary alignment, and profile-level route help
-- selected shared-root install sources such as `AGENTS.md`, `AOA_WORKSPACE_ROOT`, `.agents/`, and `.codex/` when checked in here
+- selected shared-root install sources such as `AGENTS.md`, `AOA_WORKSPACE_ROOT`, `.agents/plugins/`, and `.codex/` when checked in here
 - workspace bootstrap notes, Codex-plane regeneration notes, and AGENTS map audit surfaces
 - owner-local statistical questions over public route and audit evidence
 
@@ -59,9 +59,9 @@ needed, say so in closeout.
 - `Dionysus`: seed garden, staging, replay, planting trace, early forms.
 - `abyss-stack`: runtime, deployment, storage, lifecycle, infrastructure posture.
 - `ATM10-Agent`: local companion behavior, perception, retrieval, KAG-in-project, safe operator automation.
-- `aoa-sdk`: typed workspace integration, discovery, compatibility, bounded activation helpers.
+- `aoa-sdk`: typed workspace integration, discovery, compatibility, passive skill inspection, and explicit user-profile bootstrap.
 - `aoa-techniques`: reusable engineering practice.
-- `aoa-skills`: bounded execution workflows.
+- `aoa-skills`: the shared capability contract and the small portable bundle family.
 - `aoa-evals`: portable proof and evaluation surfaces.
 - `aoa-routing`: navigation and dispatch hints.
 - `aoa-memo`: explicit memory and recall objects.
@@ -105,26 +105,29 @@ local memo port, or route evidence toward reviewed memory.
   and `docs/WORKSPACE_MEMORY_MAP.md` from `scripts/build_workspace_memory_map.py`
   instead of guessing which repos have local ports.
 
-## Workspace ingress and mutation gate
+## Skill inspection and mutation boundary
 
-For substantial workspace-root work, run one ingress pass once the owner repo is chosen:
-
-```bash
-aoa skills enter <repo_root> --root <workspace-root> --intent-text "<task>" --json
-```
-
-Before risky, mutating, infra, runtime, repo-config, or public-share actions, run:
+`aoa skills` is passive and exact. Use it only to inspect an owner-scoped
+installation or one known capability node:
 
 ```bash
-aoa skills guard <repo_root> --root <workspace-root> --intent-text "<task>" --mutation-surface <surface> --json
+aoa skills inspect <repo_root> --root <workspace-root> --json
+aoa skills capability <exact-node-id> --root <workspace-root> --json
 ```
 
-Use `aoa surfaces detect` only as additive read-only routing help. It does not overrule owner truth.
+Semantic skill retrieval and composition belong to `aoa-kag`; neither SDK
+inspection nor surface detection selects, activates, or executes a skill.
+Use `aoa surfaces detect` only as additive read-only routing help.
+
+Risky mutations remain governed by the nearest owner `AGENTS.md`, explicit
+host or human confirmation, and the applicable runtime boundary. There is no
+SDK-owned skill ingress or mutation-gate command.
 
 ## Projection and audit rules
 
 - When shared-root install surfaces change, edit the source-owned copy under `<workspace-root>/8Dionysus/` first, then project them into the live workspace root.
 - Do not treat live projected copies at `/AGENTS.md`, `/AOA_WORKSPACE_ROOT`, `/.agents/`, or `/.codex/` as primary truth; in projection wording, do not treat the live copies as source.
+- `8Dionysus` does not project shared bundles into `<workspace-root>/.agents/skills`. Shared AoA bundles install once through the `aoa-skills` `user-default` profile; repository projections come only from admitted owner-local `skills/` homes.
 - Keep `8Dionysus/README.md` profile-owned and GitHub-facing.
 - Treat generated or install drift as a route signal: keep the evidence narrow, route it to the owner repository, and do not promote derived reports into authority.
 - Before large AGENTS refactors, run the map audit:

@@ -15,7 +15,6 @@ Use one parent directory that keeps the public repositories as sibling checkouts
   AGENTS.md
   AOA_WORKSPACE_ROOT
   .agents/
-    skills/
     plugins/
       marketplace.json
   .codex/
@@ -64,7 +63,9 @@ Projection rules:
 - keep `README.md` profile-owned and GitHub-facing; it is not part of the shared-root install projection
 - keep personal Codex defaults in `~/.codex/config.toml`, not in the project-level `.codex/`
 - treat `<workspace-root>/AOA_WORKSPACE_ROOT` as the sibling-workspace marker for Codex and AoA tooling
-- treat `<workspace-root>/.agents/` as the workspace agent-install surface; `.agents/skills/` remains an installed projection of `aoa-skills`, while `.agents/plugins/marketplace.json` is the local plugin discovery surface
+- treat `<workspace-root>/.agents/plugins/marketplace.json` as the local plugin discovery surface; the `8Dionysus` projector neither copies nor prunes `<workspace-root>/.agents/skills/`
+- install the advertised shared AoA profile once into the host-selected user skill root, normally `${CODEX_HOME:-$HOME/.codex}/skills`; do not reproduce it at the workspace root or in every sibling repository
+- keep a sibling repository's canonical callable procedures under that owner's admitted top-level `skills/` home and derive any repo-local `.agents/skills/` projection only through its owner builder
 - treat `<workspace-root>/.codex/` as the project-level Codex install surface for hooks, agents, plugins, scripts, convergence tooling, tests, and named MCP server wiring such as `aoa_workspace`, `aoa_stats`, `dionysus`, `aoa_memo`, `aoa_session_memory`, `aoa_evals`, `aoa_kag`, `aoa_decisions`, and `abyss_machine`
 - treat the checked-in `.codex/` tree as the source-owned install surface for the current live workspace deployment; if the public workspace root changes, regenerate or adapt the path-bound wiring before projecting it
 - the checked-in `.codex/config.toml` and `.codex/hooks.json` are source-owned generated deployment artifacts for the current chosen public workspace root; if that root changes, rerender them from `config/codex_plane/runtime_manifest.v1.json` and the selected profile before projection, rather than hand-editing them as the primary change surface
@@ -76,32 +77,36 @@ Projection rules:
 Decision note:
 
 - `docs/decisions/8DION-D-0001-shared-root-projection.md`
+- `docs/decisions/8DION-D-0017-owner-scoped-skill-projections.md`
 
 ## Foundation install
 
-The safest route is to use the `aoa-sdk` bootstrap command after the sibling checkouts are already present:
+After the sibling checkouts are present, use the passive `aoa-sdk` bootstrap
+to install the exact `aoa-skills` `user-default` profile into the verified user
+skill root:
 
 ```bash
-aoa workspace bootstrap <workspace-root> --json
-aoa workspace bootstrap <workspace-root> --execute --json
+aoa workspace bootstrap <workspace-root> --profile user-default --json
+aoa workspace bootstrap <workspace-root> --profile user-default --execute --json
+aoa skills inspect <workspace-root>/8Dionysus --root <workspace-root> --json
 ```
 
-That command checks the sibling layout, installs the shared foundation into `<workspace-root>/.agents/skills`, and writes a root-level `AGENTS.md` when one is missing.
-After the sibling layout is in place, the selected shared-root install surfaces
-from `8Dionysus` may then be projected into the live workspace root.
+The command copies only the advertised shared bundle into the user root. It
+does not mutate workspace guidance, install repository profiles, or create a
+workspace-wide skill projection. The selected `8Dionysus` shared-root install
+surfaces are projected separately.
 
 Manual install remains available as the lower-level fallback:
 
-Install the shared project foundation into `<workspace-root>/.agents/skills` from `aoa-skills`:
+Install the same user profile directly from `aoa-skills`:
 
 ```bash
 python <workspace-root>/aoa-skills/scripts/install_skill_pack.py \
   --repo-root <workspace-root>/aoa-skills \
-  --profile repo-project-foundation \
-  --dest-root <workspace-root>/.agents/skills \
-  --mode symlink \
+  --profile user-default \
+  --dest-root "${CODEX_HOME:-$HOME/.codex}/skills" \
+  --mode copy \
   --execute \
-  --overwrite \
   --format json
 ```
 
@@ -110,10 +115,25 @@ Verify the result:
 ```bash
 python <workspace-root>/aoa-skills/scripts/verify_skill_pack.py \
   --repo-root <workspace-root>/aoa-skills \
-  --profile repo-project-foundation \
-  --install-root <workspace-root>/.agents/skills \
+  --profile user-default \
+  --install-root "${CODEX_HOME:-$HOME/.codex}/skills" \
   --format json
 ```
+
+The deferred shared bundles are available for explicit research and manual
+comparison, not implicit installation. A repository-scoped profile is an
+input to that repository's admitted home-skill builder; `aoa workspace
+bootstrap` intentionally refuses to install it.
+
+### Legacy workspace projection cleanup
+
+An existing `<workspace-root>/.agents/skills/` may be an older shared-profile
+copy. Do not infer that from the path alone. Compare every bundle with the
+current `aoa-skills` owner catalog and check for workspace-owned procedures
+before removal. Move the reviewed legacy directory to a temporary rollback
+location, verify prompt visibility and owner-local home skills, then delete the
+temporary copy. The `8Dionysus` projector deliberately excludes this path from
+both copy and prune operations.
 
 ## Projection sync
 
@@ -138,6 +158,7 @@ Source-first law for these projected surfaces:
 
 - if the change is real, edit the source-owned copy under `<workspace-root>/8Dionysus/` first
 - do not hand-edit `<workspace-root>/AGENTS.md`, `<workspace-root>/AOA_WORKSPACE_ROOT`, `<workspace-root>/.agents/`, or `<workspace-root>/.codex/` as if those live copies were the primary source of truth
+- treat `<workspace-root>/.agents/skills/` separately: it is excluded from this projector and must be routed to its workspace or repository owner before mutation
 - use `--check --json` to see the owner repo, source paths, projected paths, and the next-step guidance before mutation
 - after the source edit, rerun the projection with `--execute` and confirm `--check` returns clean
 - keep `8Dionysus/README.md` profile-owned and outside this projection path
@@ -214,21 +235,20 @@ installer renders their workspace-root default, preserves local overrides via
 `AOA_CHECKPOINT_WORKSPACE_ROOT` and `AOA_CHECKPOINT_AOA_BIN`, and refuses to
 overwrite unmanaged existing hooks unless `--force` is passed after review.
 
-## Session start
+## Skill inspection
 
-Use `aoa-sdk` as the control-plane entry surface for session ingress and mutation gates:
+Use `aoa-sdk` only for passive owner-scoped inspection and exact capability
+lookup:
 
 ```bash
-aoa skills enter <workspace-root> --intent-text "plan a cross-repo change" --root <workspace-root> --json
-aoa skills guard <repo-root> --intent-text "apply a risky mutation" --mutation-surface infra --root <workspace-root> --json
+aoa skills inspect <repo-root> --root <workspace-root> --json
+aoa skills capability <exact-node-id> --root <workspace-root> --json
 ```
 
-`aoa skills enter` persists one ingress report under `aoa-sdk/.aoa/skill-dispatch/`.
-`aoa skills guard` persists one pre-mutation report there too.
-When checkpoint-phase surface detection sees a real growth signal, those
-commands may also append one local checkpoint note under
-`aoa-sdk/.aoa/session-growth/current/`. Use `--no-auto-checkpoint` to suppress
-that local note or `--checkpoint-kind` to force one explicit checkpoint event.
+These commands do not select, activate, execute, or create session state for a
+skill. Use KAG for semantic retrieval and task-local composition. Risky
+mutations stay governed by the nearest owner contract plus explicit host or
+human confirmation.
 
 ## Notes
 
@@ -236,6 +256,6 @@ that local note or `--checkpoint-kind` to force one explicit checkpoint event.
 - `README.md` in `8Dionysus` remains the profile page and should not be treated as the workspace install authority surface.
 - `Dionysus` is the seed garden and staging surface in the public workspace.
 - `aoa-skills` owns the skill exports, install profiles, and validators.
-- `aoa-sdk` owns workspace discovery, typed reads, detector/dispatcher behavior, and closeout helpers.
+- `aoa-sdk` owns workspace discovery, typed reads, passive inspection, explicit user-profile bootstrap, and reviewed evidence handoff helpers.
 - `docs/COMPONENT_REFRESH_ROUTE.md` names the workspace-root route for owner-owned component drift without transferring component truth into `8Dionysus`.
 - `abyss-stack` is part of the ecosystem, but the current preferred source checkout remains separately managed. For its machine-readable path rules, see `aoa-sdk/docs/workspace-layout.md`.

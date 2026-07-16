@@ -47,3 +47,7 @@
 ## 2026-07-14
 
 - [8DION-D-0016 - AoA Stats MCP Codex-Plane Cutover](../8DION-D-0016-aoa-stats-mcp-codex-plane-cutover.md) (`docs/decisions/8DION-D-0016-aoa-stats-mcp-codex-plane-cutover.md`)
+
+## 2026-07-16
+
+- [8DION-D-0017 - Owner-Scoped Skill Projections](../8DION-D-0017-owner-scoped-skill-projections.md) (`docs/decisions/8DION-D-0017-owner-scoped-skill-projections.md`)

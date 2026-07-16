@@ -52,7 +52,13 @@ class Operation:
 SHARED_ROOT_SURFACES = (
     SurfaceSpec("agents_doc", "AGENTS.md", "AGENTS.md", "render_text"),
     SurfaceSpec("workspace_marker", "AOA_WORKSPACE_ROOT", "AOA_WORKSPACE_ROOT", "copy_file"),
-    SurfaceSpec("agent_install", ".agents", ".agents", "copy_tree"),
+    SurfaceSpec(
+        "agent_install",
+        ".agents",
+        ".agents",
+        "copy_tree",
+        exclude_roots=("skills",),
+    ),
     SurfaceSpec(
         "codex_install",
         ".codex",
@@ -120,6 +126,15 @@ def _projection_contract(repo_root: Path, workspace_root: Path, *, changed: bool
         "do_not_edit_live_workspace_copy_as_source": True,
         "profile_readme_projected": False,
         "profile_readme_note": "8Dionysus/README.md stays profile-owned and is not part of the shared-root projection.",
+        "workspace_skill_projection_managed": False,
+        "workspace_skill_projection_path": (workspace_root / ".agents" / "skills").as_posix(),
+        "shared_skill_install_owner": "aoa-skills",
+        "shared_skill_install_scope": "user",
+        "repo_skill_projection_owner": "target repository home-skill builder",
+        "skill_projection_note": (
+            "Shared AoA skills install once through the aoa-skills user-default profile. "
+            "A repository projection may contain only that repository's admitted home bundles."
+        ),
         "source_root": repo_root.as_posix(),
         "workspace_root": workspace_root.as_posix(),
         "source_paths": source_paths,
@@ -419,7 +434,7 @@ def main() -> int:
     parser.add_argument(
         "--prune",
         action="store_true",
-        help="Remove extra managed paths in the destination surfaces.",
+        help="Remove extra managed paths in destination surfaces; excluded roots such as .agents/skills remain untouched.",
     )
     parser.add_argument(
         "--json",

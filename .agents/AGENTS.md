@@ -4,7 +4,12 @@
 
 `.agents/` is a shared-root projection source and agent-facing companion surface for the public workspace entrypoint. Treat it as source-owned by `8Dionysus` only when the checked-in file lives in this repository.
 
-Do not treat projected live workspace copies as primary truth. Edit the source-owned copy here first, then project or install through the documented workspace path.
+This source owns workspace plugin discovery and local agent-install companions.
+It does not own a shared `.agents/skills/` projection. Shared AoA bundles install
+once through the `aoa-skills` `user-default` profile, while a repository may
+project only the bundles admitted from its own top-level `skills/` home.
+
+Do not treat projected live workspace copies as primary truth. Edit the source-owned copy here first, then project or install through the documented workspace path. The workspace projector excludes `.agents/skills/` from copy and prune authority.
 
 Keep this surface public-safe: no secrets, private machine paths, local-only credentials, raw transcripts, or operator-only assumptions. Route layer-specific meaning back to the owning sibling repository.
 

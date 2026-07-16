@@ -24,6 +24,7 @@
 - [8DION-D-0014 - AoA Decisions MCP Codex-Plane Registration](../8DION-D-0014-aoa-decisions-mcp-codex-plane-registration.md) (`docs/decisions/8DION-D-0014-aoa-decisions-mcp-codex-plane-registration.md`)
 - [8DION-D-0015 - AoA KAG MCP Codex-Plane Registration](../8DION-D-0015-aoa-kag-mcp-codex-plane-registration.md) (`docs/decisions/8DION-D-0015-aoa-kag-mcp-codex-plane-registration.md`)
 - [8DION-D-0016 - AoA Stats MCP Codex-Plane Cutover](../8DION-D-0016-aoa-stats-mcp-codex-plane-cutover.md) (`docs/decisions/8DION-D-0016-aoa-stats-mcp-codex-plane-cutover.md`)
+- [8DION-D-0017 - Owner-Scoped Skill Projections](../8DION-D-0017-owner-scoped-skill-projections.md) (`docs/decisions/8DION-D-0017-owner-scoped-skill-projections.md`)
 
 ## abyss-machine
 
@@ -38,6 +39,10 @@
 - [8DION-D-0014 - AoA Decisions MCP Codex-Plane Registration](../8DION-D-0014-aoa-decisions-mcp-codex-plane-registration.md) (`docs/decisions/8DION-D-0014-aoa-decisions-mcp-codex-plane-registration.md`)
 - [8DION-D-0015 - AoA KAG MCP Codex-Plane Registration](../8DION-D-0015-aoa-kag-mcp-codex-plane-registration.md) (`docs/decisions/8DION-D-0015-aoa-kag-mcp-codex-plane-registration.md`)
 - [8DION-D-0016 - AoA Stats MCP Codex-Plane Cutover](../8DION-D-0016-aoa-stats-mcp-codex-plane-cutover.md) (`docs/decisions/8DION-D-0016-aoa-stats-mcp-codex-plane-cutover.md`)
+
+## agent host
+
+- [8DION-D-0017 - Owner-Scoped Skill Projections](../8DION-D-0017-owner-scoped-skill-projections.md) (`docs/decisions/8DION-D-0017-owner-scoped-skill-projections.md`)
 
 ## aoa-evals
 
@@ -57,9 +62,14 @@
 - [8DION-D-0011 - Workspace Memory Map Writeback Sync](../8DION-D-0011-workspace-memory-map-writeback-sync.md) (`docs/decisions/8DION-D-0011-workspace-memory-map-writeback-sync.md`)
 - [8DION-D-0012 - Reviewed Memory Landing Receipts As Writeback Markers](../8DION-D-0012-reviewed-memory-landing-receipts-as-writeback-markers.md) (`docs/decisions/8DION-D-0012-reviewed-memory-landing-receipts-as-writeback-markers.md`)
 
+## aoa-sdk
+
+- [8DION-D-0017 - Owner-Scoped Skill Projections](../8DION-D-0017-owner-scoped-skill-projections.md) (`docs/decisions/8DION-D-0017-owner-scoped-skill-projections.md`)
+
 ## aoa-skills
 
 - [8DION-D-0014 - AoA Decisions MCP Codex-Plane Registration](../8DION-D-0014-aoa-decisions-mcp-codex-plane-registration.md) (`docs/decisions/8DION-D-0014-aoa-decisions-mcp-codex-plane-registration.md`)
+- [8DION-D-0017 - Owner-Scoped Skill Projections](../8DION-D-0017-owner-scoped-skill-projections.md) (`docs/decisions/8DION-D-0017-owner-scoped-skill-projections.md`)
 
 ## aoa-stats
 
@@ -85,6 +95,10 @@
 ## sibling owner repos
 
 - [8DION-D-0001 - Shared-Root Projection Lives in 8Dionysus](../8DION-D-0001-shared-root-projection.md) (`docs/decisions/8DION-D-0001-shared-root-projection.md`)
+
+## sibling repositories
+
+- [8DION-D-0017 - Owner-Scoped Skill Projections](../8DION-D-0017-owner-scoped-skill-projections.md) (`docs/decisions/8DION-D-0017-owner-scoped-skill-projections.md`)
 
 ## target owner repositories
 

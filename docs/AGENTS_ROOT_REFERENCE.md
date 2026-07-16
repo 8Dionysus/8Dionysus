@@ -11,6 +11,16 @@ Use this reference when:
 
 Do not treat this file as a competing root. If a preserved rule still actively governs a local directory, move or restate it at the smallest owner surface rather than re-bloating the root.
 
+## Supersession notice
+
+The preserved `aoa skills enter`, `aoa skills guard`, shared
+`<workspace-root>/.agents/skills`, and SDK bounded-activation passages below
+are historical and must not be executed as current guidance. They were
+superseded on July 16, 2026 by the passive SDK inspection boundary and
+owner-scoped projection model recorded in
+`docs/decisions/8DION-D-0017-owner-scoped-skill-projections.md`. Use the live
+root `AGENTS.md` and `docs/WORKSPACE_INSTALL.md` for current commands.
+
 ## Preserved root AGENTS.md from before Pack 5
 
 # AGENTS.md — <workspace-root> workspace

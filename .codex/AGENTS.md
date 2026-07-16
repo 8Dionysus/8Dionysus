@@ -65,6 +65,14 @@ If an MCP tool handle reports `Transport closed`, do not claim live MCP
 availability from registration alone. Run the service CLI or stdio smoke check,
 then restart the Codex MCP host/session before relying on live tool calls.
 
+For a concrete disagreement among owner source, repository projection, host
+scope, prompt/catalog visibility, config, stable name, transport, and owner
+service, route to `skills/aoa-workspace-diagnose`. The home skill diagnoses
+read-only; it does not replace `.codex/bin/aoa-codex-doctor`, status, bootstrap,
+or any owner repair workflow. The launcher plugin no longer owns workspace
+orientation or generic wiring diagnosis; its two remaining explicit launchers
+await separate owner-first audits.
+
 Verify with:
 
 ```bash

@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import argparse
 import json
 from pathlib import Path
 from typing import Any, Mapping
@@ -150,8 +151,20 @@ def validate_payload(payload: Mapping[str, Any]) -> None:
     )
 
 
-def main() -> int:
-    expected_payload = build_workspace_memory_map(Path(__file__).resolve().parents[2])
+def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--workspace-root",
+        type=Path,
+        default=REPO_ROOT.parent,
+        help="Sibling workspace root to validate; defaults to the parent of this checkout.",
+    )
+    return parser.parse_args(argv)
+
+
+def main(argv: list[str] | None = None) -> int:
+    args = parse_args(argv)
+    expected_payload = build_workspace_memory_map(args.workspace_root)
     current_payload = json.loads(DEFAULT_JSON_PATH.read_text(encoding="utf-8"))
     validate_payload(current_payload)
     expected_rendered = render_payload(expected_payload)

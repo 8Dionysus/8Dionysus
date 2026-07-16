@@ -289,7 +289,13 @@ def high_risk_dirs(repo_root: Path) -> tuple[list[str], list[str]]:
     return present, without_local_agents
 
 
-def scan_repo(repo_root: Path, workspace_root: Path, name: str) -> dict[str, Any]:
+def scan_repo(
+    repo_root: Path,
+    workspace_root: Path,
+    name: str,
+    *,
+    path_hint_override: str | None = None,
+) -> dict[str, Any]:
     role_record = KNOWN_REPO_BY_NAME.get(
         name, {"name": name, "role": "extra scanned repository", "kind": "extra"}
     )
@@ -324,7 +330,7 @@ def scan_repo(repo_root: Path, workspace_root: Path, name: str) -> dict[str, Any
         "kind": role_record["kind"],
         "role": role_record["role"],
         "checkout_state": "scanned",
-        "path_hint": path_hint(repo_root, workspace_root),
+        "path_hint": path_hint_override or path_hint(repo_root, workspace_root),
         "agents_md_count": len(agents_paths),
         "root_agents_present": bool(root_agents),
         "root_agents_line_count": root_lines,
@@ -547,18 +553,32 @@ def build_agents_map(
     *,
     known_repositories: Sequence[str] = KNOWN_REPO_NAMES,
     include_extra_repos: bool = True,
+    owner_repo_root: Path | None = None,
 ) -> dict[str, Any]:
     workspace_root = workspace_root.resolve()
+    owner_repo_root = owner_repo_root.resolve() if owner_repo_root else None
     known_set = set(known_repositories)
     repositories: list[dict[str, Any]] = []
     manifest_repo_paths = workspace_manifest_repo_paths(workspace_root)
 
     for name in known_repositories:
-        repo_path = repo_path_for_name(workspace_root, name, manifest_repo_paths)
+        owner_override = name == OWNER_REPO and owner_repo_root is not None
+        repo_path = (
+            owner_repo_root
+            if owner_override
+            else repo_path_for_name(workspace_root, name, manifest_repo_paths)
+        )
         if repo_path is None:
             repositories.append(missing_repo_record(name))
         else:
-            repositories.append(scan_repo(repo_path.resolve(), workspace_root, name))
+            repositories.append(
+                scan_repo(
+                    repo_path.resolve(),
+                    workspace_root,
+                    name,
+                    path_hint_override=name if owner_override else None,
+                )
+            )
 
     if include_extra_repos:
         for name, path in discover_extra_repos(workspace_root, known_set):
@@ -700,7 +720,12 @@ def write_markdown(path: Path, payload: Mapping[str, Any]) -> None:
 
 def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Audit AGENTS.md coverage across an AoA / ToS workspace.")
-    parser.add_argument("--repo-root", type=Path, default=REPO_ROOT, help="Path to the 8Dionysus repository root.")
+    parser.add_argument(
+        "--repo-root",
+        type=Path,
+        default=REPO_ROOT,
+        help="Path to the 8Dionysus owner checkout to scan; also used to infer the workspace root.",
+    )
     parser.add_argument("--workspace-root", type=Path, help="Sibling workspace root to scan. Defaults to an inferred local root.")
     parser.add_argument("--write", type=Path, help="Write compact JSON payload to this path.")
     parser.add_argument("--markdown", type=Path, help="Write markdown report to this path.")
@@ -717,7 +742,11 @@ def main(argv: Sequence[str] | None = None) -> int:
     payload = (
         build_public_baseline_map()
         if args.public_baseline
-        else build_agents_map(workspace_root, include_extra_repos=not args.no_extra_repos)
+        else build_agents_map(
+            workspace_root,
+            include_extra_repos=not args.no_extra_repos,
+            owner_repo_root=repo_root,
+        )
     )
 
     if args.write:

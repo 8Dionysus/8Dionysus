@@ -12,6 +12,35 @@ import audit_agents_map
 
 
 class AgentsMapAuditTests(unittest.TestCase):
+    def test_owner_repo_override_scans_clean_checkout_not_workspace_copy(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            workspace = root / "workspace"
+            workspace_owner = workspace / "8Dionysus"
+            clean_owner = root / "clean-owner"
+            workspace_owner.mkdir(parents=True)
+            (workspace_owner / "AGENTS.md").write_text(
+                "# AGENTS.md\nworkspace copy\n", encoding="utf-8"
+            )
+            (clean_owner / "docs").mkdir(parents=True)
+            (clean_owner / "AGENTS.md").write_text(
+                "# AGENTS.md\nclean owner\n", encoding="utf-8"
+            )
+            (clean_owner / "docs" / "AGENTS.md").write_text(
+                "# AGENTS.md\ndocs\n", encoding="utf-8"
+            )
+
+            payload = audit_agents_map.build_agents_map(
+                workspace,
+                known_repositories=("8Dionysus",),
+                include_extra_repos=False,
+                owner_repo_root=clean_owner,
+            )
+            scanned = payload["repositories"][0]
+
+            self.assertEqual(scanned["path_hint"], "8Dionysus")
+            self.assertEqual(scanned["agents_md_count"], 2)
+
     def test_live_scan_counts_nested_agents_and_validator_coverage(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             workspace = Path(tmp)

@@ -184,7 +184,8 @@ def build_report(workspace_root: Path | str) -> dict[str, Any]:
     convergence_bin_dir = root / ".codex" / "bin"
     plugin_marketplace_path = root / ".agents" / "plugins" / "marketplace.json"
     workspace_skill_dir = root / ".agents" / "skills"
-    sibling_aoa_skills_dir = root / "aoa-skills" / ".agents" / "skills"
+    shared_skill_profiles_path = root / "aoa-skills" / "config" / "skill_pack_profiles.json"
+    entry_home_manifest_path = root / "8Dionysus" / "skills" / "port.manifest.json"
     stats_repo = root / "aoa-stats"
     stats_catalog = stats_repo / "generated" / "summary_surface_catalog.min.json"
     stats_source_home = stats_repo / "stats" / "source_home.manifest.json"
@@ -203,6 +204,8 @@ def build_report(workspace_root: Path | str) -> dict[str, Any]:
 
     config = _read_toml(codex_config_path)
     marketplace = _read_json(plugin_marketplace_path)
+    shared_skill_profiles = _read_json(shared_skill_profiles_path)
+    entry_home_manifest = _read_json(entry_home_manifest_path)
     subagent_names = _collect_toml_names(agents_dir)
     mcp_servers = config.get("mcp_servers", {}) if isinstance(config, dict) else {}
     project_root_markers = config.get("project_root_markers", []) if isinstance(config, dict) else []
@@ -588,35 +591,67 @@ def build_report(workspace_root: Path | str) -> dict[str, Any]:
         )
     )
 
-    workspace_skill_exists = workspace_skill_dir.exists() and any(workspace_skill_dir.glob("*"))
-    sibling_skill_exists = sibling_aoa_skills_dir.exists() and any(sibling_aoa_skills_dir.glob("*"))
-    skill_bridge_ok = workspace_skill_exists or plugin_marketplace_ok or plugin_manifest_ok
+    workspace_skill_entries = (
+        sorted(path.name for path in workspace_skill_dir.iterdir())
+        if workspace_skill_dir.exists()
+        else []
+    )
+    profiles = (
+        shared_skill_profiles.get("profiles", {})
+        if isinstance(shared_skill_profiles, dict)
+        else {}
+    )
+    user_default = profiles.get("user-default", {}) if isinstance(profiles, dict) else {}
+    shared_profile_declared = (
+        isinstance(user_default, dict)
+        and user_default.get("scope") == "user"
+        and isinstance(user_default.get("skills"), list)
+        and bool(user_default["skills"])
+    )
+    entry_home_declared = (
+        isinstance(entry_home_manifest, dict)
+        and entry_home_manifest.get("owner_repo") == "8Dionysus"
+        and isinstance(entry_home_manifest.get("bundles"), list)
+        and bool(entry_home_manifest["bundles"])
+        and isinstance(entry_home_manifest.get("projection"), dict)
+        and entry_home_manifest["projection"].get("root") == ".agents/skills"
+    )
     skill_evidence: list[str] = []
-    if workspace_skill_exists:
-        skill_evidence.append(str(workspace_skill_dir))
-    if sibling_skill_exists:
-        skill_evidence.append(str(sibling_aoa_skills_dir))
-    if plugin_marketplace_ok:
-        skill_evidence.append("workspace-visible skills may arrive through the aoa-shared-launchers plugin")
-    if plugin_manifest_ok:
-        skill_evidence.append("local plugin source is available for installation")
-    if skill_bridge_ok:
-        skill_status = "ok"
-        skill_summary = "Workspace-visible skill bridge is present."
-    elif sibling_skill_exists:
+    if shared_profile_declared:
+        skill_evidence.append(str(shared_skill_profiles_path))
+        skill_evidence.append("aoa-skills profile=user-default scope=user")
+    if entry_home_declared:
+        skill_evidence.append(str(entry_home_manifest_path))
+    if workspace_skill_entries:
+        skill_evidence.append(f"{workspace_skill_dir}: {workspace_skill_entries!r}")
         skill_status = "warn"
-        skill_summary = "Skills appear stranded in a sibling repo without a workspace-visible bridge."
+        skill_summary = "Workspace-root .agents/skills contains entries that require explicit owner review."
+        skill_next_step = (
+            "Classify each workspace-root entry against its owner before mutation; "
+            "do not restore a shared workspace skill bridge."
+        )
+    elif shared_profile_declared and entry_home_declared:
+        skill_status = "info"
+        skill_summary = "Owner-scoped skill delivery sources are declared; live host visibility is not inferred."
+        skill_next_step = (
+            "Verify the user-default install through aoa-sdk, validate each repository home "
+            "with its pinned owner contract, and inspect a fresh prompt inventory."
+        )
     else:
         skill_status = "warn"
-        skill_summary = "No obvious workspace-visible skill bridge was found."
+        skill_summary = "Owner-scoped shared-profile or repository-home source is incomplete."
+        skill_next_step = (
+            "Restore the missing owner source or manifest; do not replace it with a "
+            "workspace-visible .agents/skills bridge."
+        )
     surfaces.append(
         SurfaceStatus(
-            name="skill_bridge",
+            name="skill_delivery_contract",
             status=skill_status,
             required=False,
             summary=skill_summary,
             evidence=skill_evidence,
-            next_step="Expose shared skills through a plugin or a workspace-visible .agents/skills bridge instead of relying on sibling-repo discovery.",
+            next_step=skill_next_step,
         )
     )
 
@@ -741,7 +776,6 @@ def write_bootstrap_scaffold(workspace_root: Path | str) -> dict[str, str]:
         root / ".codex" / "tools",
         root / ".agents",
         root / ".agents" / "plugins",
-        root / ".agents" / "skills",
     ]
     for path in directories:
         path.mkdir(parents=True, exist_ok=True)

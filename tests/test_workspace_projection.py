@@ -36,6 +36,9 @@ class WorkspaceProjectionTests(unittest.TestCase):
             self.assertTrue(report["projection_contract"]["do_not_edit_live_workspace_copy_as_source"])
             self.assertFalse(report["projection_contract"]["profile_readme_projected"])
             self.assertFalse(report["projection_contract"]["workspace_skill_projection_managed"])
+            self.assertFalse(
+                report["projection_contract"]["workspace_codex_deploy_local_roots_managed"]
+            )
             self.assertEqual(report["projection_contract"]["shared_skill_install_owner"], "aoa-skills")
             self.assertEqual(report["projection_contract"]["shared_skill_install_scope"], "user")
             self.assertIn("Do not patch the live workspace copy", report["next_step"])
@@ -49,6 +52,7 @@ class WorkspaceProjectionTests(unittest.TestCase):
             self.assertNotIn(".agents/skills/demo-skill", paths)
             self.assertIn(".codex/config.toml", paths)
             self.assertNotIn(".codex/generated/report.json", paths)
+            self.assertNotIn(".codex/worktrees/keep/AGENTS.md", paths)
             self.assertNotIn(".codex/tools/__pycache__/ghost.pyc", paths)
             json.dumps(report)
 
@@ -62,6 +66,10 @@ class WorkspaceProjectionTests(unittest.TestCase):
             write_text(
                 workspace_root / ".agents" / "skills" / "workspace-home" / "SKILL.md",
                 "# workspace-owned\n",
+            )
+            write_text(
+                workspace_root / ".codex" / "worktrees" / "keep" / "AGENTS.md",
+                "# deploy-local worktree\n",
             )
 
             report = project_workspace_root(repo_root, workspace_root, execute=True, prune=True)
@@ -85,6 +93,12 @@ class WorkspaceProjectionTests(unittest.TestCase):
             )
             self.assertTrue((workspace_root / ".codex" / "config.toml").exists())
             self.assertFalse((workspace_root / ".codex" / "generated" / "report.json").exists())
+            self.assertEqual(
+                (workspace_root / ".codex" / "worktrees" / "keep" / "AGENTS.md").read_text(
+                    encoding="utf-8"
+                ),
+                "# deploy-local worktree\n",
+            )
             self.assertFalse((workspace_root / ".codex" / "tools" / "__pycache__" / "ghost.pyc").exists())
 
     def _make_repo(self, repo_root: Path) -> None:
@@ -95,6 +109,7 @@ class WorkspaceProjectionTests(unittest.TestCase):
         write_text(repo_root / "AOA_WORKSPACE_ROOT", "marker\n")
         write_text(repo_root / ".codex" / "config.toml", 'project_root_markers = ["AOA_WORKSPACE_ROOT"]\n')
         write_text(repo_root / ".codex" / "generated" / "report.json", "{}\n")
+        write_text(repo_root / ".codex" / "worktrees" / "source-only" / "AGENTS.md", "# no projection\n")
         write_text(repo_root / ".codex" / "tools" / "__pycache__" / "ghost.pyc", "nope")
         write_text(repo_root / ".agents" / "plugins" / "marketplace.json", '{"name": "aoa-local-plugins"}\n')
         write_text(repo_root / ".agents" / "skills" / "demo-skill" / "SKILL.md", "# must not project\n")

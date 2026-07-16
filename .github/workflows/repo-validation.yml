@@ -20,6 +20,11 @@ jobs:
         with:
           path: 8Dionysus
 
+      - name: Check repository skill home
+        uses: 8Dionysus/aoa-skills/.github/actions/home-skill-port@bef949a8324fd3579569c329b9e6c74a2cacc4a5
+        with:
+          owner-root: 8Dionysus
+
       - name: Checkout Agents-of-Abyss
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with:

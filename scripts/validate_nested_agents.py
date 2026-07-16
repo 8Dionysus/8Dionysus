@@ -119,6 +119,12 @@ REQUIRED_AGENTS_DOCS: dict[str, tuple[str, ...]] = {
         "public-baseline",
         "validate_local_stats_port.py",
     ),
+    "skills/AGENTS.md": (
+        "canonical `8Dionysus/skills/` home",
+        "manual no-skill",
+        "task-local DAGs",
+        "pinned `aoa-skills`",
+    ),
     "tests/AGENTS.md": (
         "temporary directories",
         "local-only",

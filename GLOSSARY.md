@@ -98,10 +98,14 @@ The layer that stores reusable engineering practice.
 
 In the current public ecosystem, this role belongs to `aoa-techniques`. A technique is treated as a minimal reproducible unit of engineering practice.
 
-### Execution canon
-The layer that stores bounded execution workflows.
+### Shared skill and compatibility canon
+The layer that owns shared portable procedures and the common contract used by
+repository-owned skill homes.
 
-In the current public ecosystem, this role belongs to `aoa-skills`. A skill packages one or more techniques into a reviewable workflow for an agent or human. Skills are part of the discipline from which broader agency can grow, not the total meaning of agency.
+In the current public ecosystem, this role belongs to `aoa-skills` for the
+small shared bundle family, compatibility grammar, and deterministic projection
+mechanism. Repository-specific procedures remain authored, admitted, versioned,
+and retired by their owner repositories.
 
 ### Proof canon
 The layer that stores portable evaluation bundles for bounded claims.
@@ -156,9 +160,44 @@ A minimal reproducible unit of engineering practice.
 A technique should have clear intent, usage boundaries, validation posture, and adaptation notes. It is more durable than a one-off fix or isolated snippet.
 
 ### Skill
-A bounded execution workflow exposed to an agent or human.
+A selectable, progressively disclosed, versioned procedural artifact exposed to
+an agent or human.
 
-A skill usually depends on one or more techniques and packages them into an operational interface. A skill is not the same thing as an agent, a role, or a playbook.
+A skill declares when it applies, what it consumes and produces, its permitted
+effects and freedom, its procedure, verification, failure and termination
+conditions, owner, provenance, relations, and health posture. It may carry
+scripts, references, assets, or tool requirements when the procedure genuinely
+needs them. A technique may supply provenance or adaptation knowledge, but it
+is not a required parent or execution dependency.
+
+A skill is not the same thing as a fact, tool, MCP, guard, role, playbook, or
+task trace. It earns prompt-visible placement through measured value over the
+no-skill route and acceptable coexistence, not through directory symmetry.
+
+### Skill family
+A small owner-coherent set of callable bundles, internal modes, and typed
+relations that share an admission and lifecycle boundary.
+
+A family may expose one bundle while keeping several capabilities as internal
+modes. Split a mode into another prompt-visible skill only when it has its own
+trigger, ABI, composition value, and demonstrated benefit.
+
+### Capability tree
+A semantic navigation structure that reduces competition while locating
+relevant skills and internal capabilities.
+
+The tree is not required to mirror `SKILL.md` directories. One primary parent
+keeps navigation legible; typed cross-links such as `requires`, `produces`,
+`composes-with`, `alternative-to`, `conflicts-with`, and `supersedes` form the
+wider graph.
+
+### Task-local DAG
+A small execution graph assembled for one request from selected skills,
+internal capabilities, tools, data, and playbook checkpoints.
+
+The capability tree helps discovery; the DAG governs execution order through
+typed inputs and outputs. Raw DAGs remain session/runtime artifacts unless a
+stable repeated sequence earns a separate owner playbook.
 
 ### Playbook
 A scenario-shaped operational recipe that coordinates multiple surfaces.
@@ -538,7 +577,7 @@ If you want the shortest route into the ecosystem:
 - for the local-first companion application surface, go to [`ATM10-Agent`](https://github.com/8Dionysus/ATM10-Agent)
 - for typed access and workspace integration, go to [`aoa-sdk`](https://github.com/8Dionysus/aoa-sdk)
 - for reusable practice, go to [`aoa-techniques`](https://github.com/8Dionysus/aoa-techniques)
-- for bounded execution workflows, go to [`aoa-skills`](https://github.com/8Dionysus/aoa-skills)
+- for shared portable skills and the repository-home compatibility contract, go to [`aoa-skills`](https://github.com/8Dionysus/aoa-skills); for a repository-specific skill, follow its owner
 - for portable proof surfaces, go to [`aoa-evals`](https://github.com/8Dionysus/aoa-evals)
 - for shared measurement grammar, federated local stats ports, and derived read models, go to [`aoa-stats`](https://github.com/8Dionysus/aoa-stats)
 - for navigation and dispatch, go to [`aoa-routing`](https://github.com/8Dionysus/aoa-routing)

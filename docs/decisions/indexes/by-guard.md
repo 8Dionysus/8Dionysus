@@ -68,6 +68,10 @@
 
 - [8DION-D-0010 - Workspace Writeback Marker Debt Surface](../8DION-D-0010-workspace-writeback-marker-debt-surface.md) (`docs/decisions/8DION-D-0010-workspace-writeback-marker-debt-surface.md`)
 
+## manual admission
+
+- [8DION-D-0018 - Workspace Capability Diagnosis Home Skill](../8DION-D-0018-workspace-capability-diagnosis-home-skill.md) (`docs/decisions/8DION-D-0018-workspace-capability-diagnosis-home-skill.md`)
+
 ## marker taxonomy
 
 - [8DION-D-0010 - Workspace Writeback Marker Debt Surface](../8DION-D-0010-workspace-writeback-marker-debt-surface.md) (`docs/decisions/8DION-D-0010-workspace-writeback-marker-debt-surface.md`)
@@ -76,6 +80,10 @@
 ## memory authority boundary
 
 - [8DION-D-0005 - Workspace Memory Map Tracks Operational Memory Status](../8DION-D-0005-workspace-memory-map-operational-status.md) (`docs/decisions/8DION-D-0005-workspace-memory-map-operational-status.md`)
+
+## negative applicability
+
+- [8DION-D-0018 - Workspace Capability Diagnosis Home Skill](../8DION-D-0018-workspace-capability-diagnosis-home-skill.md) (`docs/decisions/8DION-D-0018-workspace-capability-diagnosis-home-skill.md`)
 
 ## no hidden activation
 
@@ -116,6 +124,10 @@
 ## read-only access plane
 
 - [8DION-D-0008 - Abyss Machine MCP Codex-Plane Registration](../8DION-D-0008-abyss-machine-mcp-codex-plane-registration.md) (`docs/decisions/8DION-D-0008-abyss-machine-mcp-codex-plane-registration.md`)
+
+## read-only diagnosis
+
+- [8DION-D-0018 - Workspace Capability Diagnosis Home Skill](../8DION-D-0018-workspace-capability-diagnosis-home-skill.md) (`docs/decisions/8DION-D-0018-workspace-capability-diagnosis-home-skill.md`)
 
 ## read-only session evidence
 
@@ -161,6 +173,10 @@
 
 - [8DION-D-0015 - AoA KAG MCP Codex-Plane Registration](../8DION-D-0015-aoa-kag-mcp-codex-plane-registration.md) (`docs/decisions/8DION-D-0015-aoa-kag-mcp-codex-plane-registration.md`)
 
+## source/projection parity
+
+- [8DION-D-0018 - Workspace Capability Diagnosis Home Skill](../8DION-D-0018-workspace-capability-diagnosis-home-skill.md) (`docs/decisions/8DION-D-0018-workspace-capability-diagnosis-home-skill.md`)
+
 ## stable MCP name
 
 - [8DION-D-0004 - AoA Memo MCP Codex-Plane Registration](../8DION-D-0004-aoa-memo-mcp-codex-plane-registration.md) (`docs/decisions/8DION-D-0004-aoa-memo-mcp-codex-plane-registration.md`)
@@ -174,6 +190,10 @@
 ## statistical authority boundary
 
 - [8DION-D-0016 - AoA Stats MCP Codex-Plane Cutover](../8DION-D-0016-aoa-stats-mcp-codex-plane-cutover.md) (`docs/decisions/8DION-D-0016-aoa-stats-mcp-codex-plane-cutover.md`)
+
+## typed delivery
+
+- [8DION-D-0018 - Workspace Capability Diagnosis Home Skill](../8DION-D-0018-workspace-capability-diagnosis-home-skill.md) (`docs/decisions/8DION-D-0018-workspace-capability-diagnosis-home-skill.md`)
 
 ## unmanaged-hook safety
 

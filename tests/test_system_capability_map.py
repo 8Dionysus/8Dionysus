@@ -40,7 +40,7 @@ class SystemCapabilityMapTests(unittest.TestCase):
         self.assertIn("campaign cadence and deployment continuity as companion notes", capability_map)
         self.assertIn("no hidden scheduler", capability_map)
 
-    def test_capability_map_tracks_launcher_and_convergence_surfaces(self) -> None:
+    def test_capability_map_tracks_home_skill_launchers_and_convergence(self) -> None:
         agents = (REPO_ROOT / "AGENTS.md").read_text(encoding="utf-8")
         capability_map = (REPO_ROOT / "docs" / "SYSTEM_CAPABILITY_MAP.md").read_text(
             encoding="utf-8"
@@ -56,10 +56,8 @@ class SystemCapabilityMapTests(unittest.TestCase):
         self.assertIn("aoa-shared-launchers", capability_map)
 
         for skill_name in (
-            "aoa-workspace-recon",
             "aoa-growth-snapshot",
             "aoa-seed-route-inspect",
-            "aoa-config-doctor",
         ):
             self.assertTrue(
                 (
@@ -73,6 +71,41 @@ class SystemCapabilityMapTests(unittest.TestCase):
                 ).is_file()
             )
             self.assertIn(skill_name, capability_map)
+
+        for retired_name in ("aoa-workspace-recon", "aoa-config-doctor"):
+            self.assertFalse(
+                (
+                    REPO_ROOT
+                    / ".codex"
+                    / "plugins"
+                    / "aoa-shared-launchers"
+                    / "skills"
+                    / retired_name
+                ).exists()
+            )
+            self.assertNotIn(retired_name, capability_map)
+
+        home_manifest = json.loads(
+            (REPO_ROOT / "skills" / "port.manifest.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        self.assertEqual(home_manifest["owner_repo"], "8Dionysus")
+        self.assertEqual(
+            [bundle["name"] for bundle in home_manifest["bundles"]],
+            ["aoa-workspace-diagnose"],
+        )
+        canonical = REPO_ROOT / "skills" / "aoa-workspace-diagnose" / "SKILL.md"
+        projection = (
+            REPO_ROOT
+            / ".agents"
+            / "skills"
+            / "aoa-workspace-diagnose"
+            / "SKILL.md"
+        )
+        self.assertTrue(canonical.is_file())
+        self.assertEqual(canonical.read_bytes(), projection.read_bytes())
+        self.assertIn("aoa-workspace-diagnose", capability_map)
 
         for wrapper_name in (
             "aoa-codex-doctor",

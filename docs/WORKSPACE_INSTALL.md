@@ -56,7 +56,7 @@ subset that is projected into the live workspace root:
 - `<workspace-root>/AGENTS.md`
 - `<workspace-root>/AOA_WORKSPACE_ROOT`
 - `<workspace-root>/.agents/`
-- `<workspace-root>/.codex/`
+- the source-owned subset under `<workspace-root>/.codex/`
 
 Those surfaces exist to make the live workspace legible and usable for Codex
 and AoA tooling. They do not make `8Dionysus` the owner of layer-specific
@@ -72,16 +72,17 @@ Projection rules:
 - keep a sibling repository's canonical callable procedures under that owner's admitted top-level `skills/` home and derive any repo-local `.agents/skills/` projection only through its owner builder
 - keep `8Dionysus/skills/aoa-workspace-diagnose/` and its exact repo projection inside the `8Dionysus` checkout; the shared-root projector must neither copy nor prune it at `<workspace-root>/.agents/skills/`
 - treat `<workspace-root>/.codex/` as the project-level Codex install surface for hooks, agents, plugins, scripts, convergence tooling, tests, and named MCP server wiring such as `aoa_workspace`, `aoa_stats`, `dionysus`, `aoa_memo`, `aoa_session_memory`, `aoa_evals`, `aoa_kag`, `aoa_decisions`, and `abyss_machine`
-- treat the checked-in `.codex/` tree as the source-owned install surface for the current live workspace deployment; if the public workspace root changes, regenerate or adapt the path-bound wiring before projecting it
-- the checked-in `.codex/config.toml` and `.codex/hooks.json` are source-owned generated deployment artifacts for the current chosen public workspace root; if that root changes, rerender them from `config/codex_plane/runtime_manifest.v1.json` and the selected profile before projection, rather than hand-editing them as the primary change surface
+- treat the checked-in `.codex/` tree as the source-owned install subset for the current workspace; the generic projector excludes deploy-composed paths named below
+- the checked-in `.codex/config.toml` and `.codex/hooks.json` are source-owned generated artifacts for the current chosen public workspace root; if that root changes, rerender them from `config/codex_plane/runtime_manifest.v1.json` and the selected profile rather than hand-editing them as the primary change surface
+- keep live `.codex/config.toml` outside generic copy and prune authority: a deployment may retain the stable names while replacing portable stdio with authenticated owner endpoints, so registration changes require the Codex-plane rollout route and live verification
+- keep live `.codex/agents/` outside generic copy and prune authority: regenerate role projection through `aoa-agents`, then install it through explicit deployment policy without erasing feature or MCP restrictions
 - live rollout evidence for the current workspace root belongs under `<workspace-root>/.codex/generated/rollout/`; keep it deploy-local and use `docs/CODEX_PLANE_ROLLOUT.md` for trust, doctor, and rollback posture
 - checked-in trusted rollout campaign history for the shared-root Codex plane belongs under `8Dionysus/generated/codex/rollout/`; keep it source-owned and use `docs/CODEX_TRUSTED_ROLLOUT_OPERATIONS.md` for campaign, drift-window, rollback-window, and summary posture
 - recurring campaign cadence windows that group multiple rollout attempts belong in `8Dionysus/examples/` and `docs/TRUSTED_ROLLOUT_CAMPAIGNS.md`; keep them source-owned, reviewable, and companion-only rather than letting them become a scheduler or a second playbook
-- keep `<workspace-root>/.codex/generated/` and
-  `<workspace-root>/.codex/worktrees/` deploy-local; generated reports, event
-  logs, worktree contents, and other runtime output are outside projector copy
-  and prune authority and must not be copied back into `8Dionysus` as source
-  truth
+- keep `<workspace-root>/.codex/config.toml`,
+  `<workspace-root>/.codex/agents/`, `<workspace-root>/.codex/generated/`, and
+  `<workspace-root>/.codex/worktrees/` outside generic projector copy and prune
+  authority; route each deploy-composed or deploy-local path to its named owner
 
 Decision note:
 
@@ -173,13 +174,19 @@ python <workspace-root>/8Dionysus/scripts/project_workspace_root.py --workspace-
 Source-first law for these projected surfaces:
 
 - if the change is real, edit the source-owned copy under `<workspace-root>/8Dionysus/` first
-- do not hand-edit `<workspace-root>/AGENTS.md`, `<workspace-root>/AOA_WORKSPACE_ROOT`, `<workspace-root>/.agents/`, or `<workspace-root>/.codex/` as if those live copies were the primary source of truth
+- do not hand-edit `<workspace-root>/AGENTS.md`,
+  `<workspace-root>/AOA_WORKSPACE_ROOT`, or managed paths below `.agents/` and
+  `.codex/` as if those live copies were primary source; for excluded
+  `.codex/config.toml` and `.codex/agents/`, use their dedicated composition
+  and owner routes
 - treat `<workspace-root>/.agents/skills/` separately: it is excluded from this projector and must be routed to its workspace or repository owner before mutation
+- treat `<workspace-root>/.codex/config.toml` and `<workspace-root>/.codex/agents/` separately: they are excluded from this projector and must preserve the live deployment composition
 - use `--check --json` to see the owner repo, source paths, projected paths, and the next-step guidance before mutation
 - after the source edit, rerun the projection with `--execute` and confirm `--check` returns clean
 - keep `8Dionysus/README.md` profile-owned and outside this projection path
 
-When the checked-in Codex plane needs a new live root, rerender it before projection:
+When the checked-in Codex plane needs a new live root, rerender its source
+artifacts before the dedicated rollout:
 
 ```bash
 python <workspace-root>/8Dionysus/scripts/render_codex_plane.py \
@@ -192,8 +199,10 @@ python <workspace-root>/8Dionysus/scripts/render_codex_plane.py \
 python <workspace-root>/8Dionysus/scripts/validate_codex_plane_regeneration.py --workspace-root <workspace-root>
 ```
 
-After rerender, treat rollout as a separate phase: capture trust, apply only as
-needed, run doctor/verify, and keep rollout receipts under
+The regeneration validator reports source-render integrity only and explicitly
+does not compare the live deployment. After rerender, treat rollout as a
+separate phase: capture trust, apply only as needed, run doctor/verify, and
+keep rollout receipts under
 `<workspace-root>/.codex/generated/rollout/` instead of treating render success
 as rollout success. See `docs/CODEX_PLANE_ROLLOUT.md`.
 

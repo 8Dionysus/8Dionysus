@@ -20,6 +20,7 @@ class SurfaceSpec:
     dest_rel: str
     mode: str
     exclude_roots: tuple[str, ...] = ()
+    exclude_paths: tuple[str, ...] = ()
     exclude_names: tuple[str, ...] = ()
     exclude_suffixes: tuple[str, ...] = ()
 
@@ -64,7 +65,8 @@ SHARED_ROOT_SURFACES = (
         ".codex",
         ".codex",
         "copy_tree",
-        exclude_roots=("generated", "worktrees"),
+        exclude_roots=("agents", "generated", "worktrees"),
+        exclude_paths=("config.toml",),
         exclude_names=("__pycache__", ".pytest_cache"),
         exclude_suffixes=(".pyc", ".pyo", ".pyd"),
     ),
@@ -136,6 +138,18 @@ def _projection_contract(repo_root: Path, workspace_root: Path, *, changed: bool
             (workspace_root / ".codex" / "generated").as_posix(),
             (workspace_root / ".codex" / "worktrees").as_posix(),
         ],
+        "workspace_codex_deploy_composed_paths_managed": False,
+        "workspace_codex_deploy_composed_paths": [
+            (workspace_root / ".codex" / "config.toml").as_posix(),
+            (workspace_root / ".codex" / "agents").as_posix(),
+        ],
+        "workspace_codex_config_owner": "8Dionysus Codex-plane renderer plus deployment rollout",
+        "workspace_codex_agents_owner": "aoa-agents Codex projection plus deployment policy",
+        "workspace_codex_deploy_composition_note": (
+            "The generic shared-root projector does not copy or prune .codex/config.toml or .codex/agents. "
+            "Render and roll out project registration through the Codex-plane route; regenerate and install "
+            "agent projections through aoa-agents while preserving deployment policy."
+        ),
         "skill_projection_note": (
             "Shared AoA skills install once through the aoa-skills user-default profile. "
             "A repository projection may contain only that repository's admitted home bundles."
@@ -305,6 +319,8 @@ def _should_exclude(surface: SurfaceSpec, rel_path: Path) -> bool:
     parts = rel_path.parts
     if parts and parts[0] in surface.exclude_roots:
         return True
+    if rel_path.as_posix() in surface.exclude_paths:
+        return True
     if any(part in surface.exclude_names for part in parts):
         return True
     return rel_path.suffix in surface.exclude_suffixes
@@ -439,7 +455,10 @@ def main() -> int:
     parser.add_argument(
         "--prune",
         action="store_true",
-        help="Remove extra managed paths in destination surfaces; excluded roots such as .agents/skills remain untouched.",
+        help=(
+            "Remove extra managed paths in destination surfaces; owner-managed paths such as "
+            ".agents/skills, .codex/config.toml, and .codex/agents remain untouched."
+        ),
     )
     parser.add_argument(
         "--json",

@@ -26,8 +26,8 @@ note before rerender or rollout, use `docs/COMPONENT_REFRESH_ROUTE.md`.
 - the source-authored shared-root install subset
 - the manifest/profile pair for the Codex plane
 - the renderer and drift validator
-- the checked-in generated `.codex/config.toml` and `.codex/hooks.json` for the
-  current chosen public root
+- the checked-in generated `.codex/config.toml` and `.codex/hooks.json` as
+  source render artifacts for the current chosen public root
 - the source templates and bounded installer for AoA-managed repo-local Git
   checkpoint hooks
 
@@ -63,6 +63,12 @@ The checked-in generated surfaces:
 remain source-owned deployment artifacts for the current live root, not the
 place where humans should manually invent path changes.
 
+That source ownership does not make the generic shared-root projector the
+live deployment composer. A deployed `.codex/config.toml` may replace portable
+stdio registrations with authenticated loopback endpoints while retaining the
+stable names. The live form is verified through rollout evidence, not by
+forcing byte parity with the source render.
+
 ## Portability law
 
 Portability here does not mean hiding paths behind magic. It means:
@@ -71,7 +77,7 @@ Portability here does not mean hiding paths behind magic. It means:
 2. keep the deployment renderable
 3. change the root in one place
 4. regenerate the checked-in deployment surfaces
-5. project them into the live workspace root
+5. roll out the rendered registration through the explicit deployment route
 
 This keeps the system legible while still allowing relocation.
 
@@ -86,11 +92,15 @@ AoA surfaces may already depend on:
 
 ## Relation to projection
 
-`project_workspace_root.py` still projects the selected shared-root surfaces
-into the live workspace root.
+`project_workspace_root.py` still projects the source-owned shared-root subset
+into the live workspace root. It deliberately excludes `.codex/config.toml`
+from copy and prune authority. It also excludes `.codex/agents/`, whose source
+projection belongs to `aoa-agents` and whose installed form may include
+deployment policy.
 
-Regeneration happens before projection whenever the checked-in `.codex/`
-deployment needs a new live root.
+Regeneration happens before the dedicated Codex-plane rollout whenever the
+checked-in source registration needs a new live root. Agent regeneration and
+installation follow the `aoa-agents` projection and refresh route.
 
 For the live deployment trail that follows rerender, use
 `docs/CODEX_PLANE_ROLLOUT.md`.
@@ -116,4 +126,10 @@ The right pattern is this:
 - update manifest/profile if needed
 - rerender
 - validate
-- project
+- compare the intended deployment composition
+- roll out and verify the live registration without routing it through the
+  generic shared-root projector
+
+`validate_codex_plane_regeneration.py` validates only the checked-in source
+render. Its output states `live_deployment_compared=false`; live transport,
+authentication, and agent restrictions require the rollout and owner routes.

@@ -30,6 +30,10 @@
 
 - [8DION-D-0014 - AoA Decisions MCP Codex-Plane Registration](../8DION-D-0014-aoa-decisions-mcp-codex-plane-registration.md) (`docs/decisions/8DION-D-0014-aoa-decisions-mcp-codex-plane-registration.md`)
 
+## deploy composition
+
+- [8DION-D-0019 - Deploy-Composed Codex Paths Stay Outside Generic Projection](../8DION-D-0019-deploy-composed-codex-paths.md) (`docs/decisions/8DION-D-0019-deploy-composed-codex-paths.md`)
+
 ## drift preview
 
 - [8DION-D-0001 - Shared-Root Projection Lives in 8Dionysus](../8DION-D-0001-shared-root-projection.md) (`docs/decisions/8DION-D-0001-shared-root-projection.md`)
@@ -96,6 +100,7 @@
 ## owner boundary
 
 - [8DION-D-0001 - Shared-Root Projection Lives in 8Dionysus](../8DION-D-0001-shared-root-projection.md) (`docs/decisions/8DION-D-0001-shared-root-projection.md`)
+- [8DION-D-0019 - Deploy-Composed Codex Paths Stay Outside Generic Projection](../8DION-D-0019-deploy-composed-codex-paths.md) (`docs/decisions/8DION-D-0019-deploy-composed-codex-paths.md`)
 
 ## owner scope
 
@@ -116,6 +121,7 @@
 ## projection source truth
 
 - [8DION-D-0001 - Shared-Root Projection Lives in 8Dionysus](../8DION-D-0001-shared-root-projection.md) (`docs/decisions/8DION-D-0001-shared-root-projection.md`)
+- [8DION-D-0019 - Deploy-Composed Codex Paths Stay Outside Generic Projection](../8DION-D-0019-deploy-composed-codex-paths.md) (`docs/decisions/8DION-D-0019-deploy-composed-codex-paths.md`)
 
 ## proof authority boundary
 
@@ -190,6 +196,10 @@
 ## statistical authority boundary
 
 - [8DION-D-0016 - AoA Stats MCP Codex-Plane Cutover](../8DION-D-0016-aoa-stats-mcp-codex-plane-cutover.md) (`docs/decisions/8DION-D-0016-aoa-stats-mcp-codex-plane-cutover.md`)
+
+## transport safety
+
+- [8DION-D-0019 - Deploy-Composed Codex Paths Stay Outside Generic Projection](../8DION-D-0019-deploy-composed-codex-paths.md) (`docs/decisions/8DION-D-0019-deploy-composed-codex-paths.md`)
 
 ## typed delivery
 

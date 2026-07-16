@@ -77,15 +77,15 @@ For a concrete disagreement among owner source, repository projection, host
 scope, prompt/catalog visibility, config, stable name, transport, and owner
 service, route to `skills/aoa-workspace-diagnose`. The home skill diagnoses
 read-only; it does not replace `.codex/bin/aoa-codex-doctor`, status, bootstrap,
-or any owner repair workflow. The launcher plugin no longer owns workspace
-orientation or generic wiring diagnosis; its two remaining explicit launchers
-await separate owner-first audits.
+or any owner repair workflow. Workspace orientation, growth comparison, and
+seed routing use owner surfaces plus KAG or task-local composition; this
+repository no longer packages a generic launcher plugin.
 
 Verify with:
 
 ```bash
 python scripts/validate_nested_agents.py
-python scripts/build_workspace_memory_map.py --check
+python scripts/build_workspace_memory_map.py --workspace-root <workspace-root> --owner-repo-root . --check
 python /srv/AbyssOS/8Dionysus/scripts/smoke_aoa_stats_mcp.py --workspace-root /srv/AbyssOS
 python /srv/AbyssOS/8Dionysus/scripts/smoke_aoa_memo_mcp.py --workspace-root /srv/AbyssOS
 python /srv/AbyssOS/8Dionysus/scripts/smoke_aoa_session_memory_mcp.py --workspace-root /srv/AbyssOS

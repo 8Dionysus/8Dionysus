@@ -13,5 +13,5 @@ Verify with:
 ```bash
 python scripts/validate_nested_agents.py
 python scripts/audit_agents_map.py --workspace-root <workspace-root> --write generated/agents_map.min.json --markdown docs/AGENTS_MAP.md
-python scripts/build_workspace_memory_map.py --workspace-root <workspace-root> --write generated/workspace_memory_map.min.json --markdown docs/WORKSPACE_MEMORY_MAP.md
+python scripts/build_workspace_memory_map.py --workspace-root <workspace-root> --owner-repo-root . --write generated/workspace_memory_map.min.json --markdown docs/WORKSPACE_MEMORY_MAP.md
 ```

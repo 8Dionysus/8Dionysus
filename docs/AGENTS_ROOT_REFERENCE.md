@@ -22,8 +22,9 @@ owner-scoped projection model recorded in
 root `AGENTS.md` and `docs/WORKSPACE_INSTALL.md` for current commands.
 
 The preserved plugin advice for generic cross-repo orientation and Codex wiring
-diagnosis is also historical. `8DION-D-0018` retired
-`aoa-workspace-recon` and `aoa-config-doctor`: use live route cards and KAG for
+diagnosis is also historical. `8DION-D-0018` moved concrete delivery diagnosis
+into the repo home; `8DION-D-0019` retired the remaining launcher candidates,
+marketplace entry, and plugin source. Use live route cards and KAG for
 orientation, the repo home `aoa-workspace-diagnose` for one concrete read-only
 delivery disagreement, and the convergence wrappers for their named tool
 operations. The historical body below remains unchanged as evidence.

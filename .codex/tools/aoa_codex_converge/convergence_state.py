@@ -20,7 +20,6 @@ EXPECTED_SUBAGENTS = [
     "evaluator",
     "memory-keeper",
 ]
-EXPECTED_PLUGIN_NAME = "aoa-shared-launchers"
 
 
 @dataclass
@@ -67,54 +66,6 @@ def _collect_toml_names(agents_dir: Path) -> list[str]:
         if isinstance(name, str) and name.strip():
             names.append(name.strip())
     return names
-
-
-def _marketplace_root(marketplace_path: Path) -> Path:
-    parts = marketplace_path.parts
-    if len(parts) >= 3 and parts[-3:] == (".agents", "plugins", "marketplace.json"):
-        return marketplace_path.parents[2]
-    return marketplace_path.parent
-
-
-def _plugin_entry(marketplace: Any, plugin_name: str) -> Mapping[str, Any] | None:
-    if not isinstance(marketplace, dict):
-        return None
-    plugins = marketplace.get("plugins", [])
-    if not isinstance(plugins, list):
-        return None
-    for item in plugins:
-        if isinstance(item, dict) and item.get("name") == plugin_name:
-            return item
-    return None
-
-
-def _resolve_plugin_root(
-    workspace_root: Path,
-    marketplace_path: Path,
-    marketplace: Any,
-    plugin_name: str,
-) -> tuple[Path | None, list[str]]:
-    evidence: list[str] = []
-    entry = _plugin_entry(marketplace, plugin_name)
-    if entry is not None:
-        evidence.append(f"marketplace.plugin={plugin_name}")
-        source = entry.get("source", {})
-        source_path = source.get("path") if isinstance(source, dict) else None
-        if isinstance(source_path, str) and source_path.startswith("./"):
-            marketplace_root = _marketplace_root(marketplace_path.resolve())
-            resolved = (marketplace_root / source_path).resolve()
-            evidence.append(f"marketplace.source.path={source_path}")
-            evidence.append(str(resolved))
-            return resolved, evidence
-
-    for candidate in (
-        workspace_root / ".codex" / "plugins" / plugin_name,
-        workspace_root / "plugins" / plugin_name,
-    ):
-        if candidate.exists():
-            evidence.append(str(candidate))
-            return candidate, evidence
-    return None, evidence
 
 
 def _resolve_mcp_script(
@@ -182,7 +133,6 @@ def build_report(workspace_root: Path | str) -> dict[str, Any]:
     agents_dir = root / ".codex" / "agents"
     convergence_scripts_dir = root / ".codex" / "scripts"
     convergence_bin_dir = root / ".codex" / "bin"
-    plugin_marketplace_path = root / ".agents" / "plugins" / "marketplace.json"
     workspace_skill_dir = root / ".agents" / "skills"
     shared_skill_profiles_path = root / "aoa-skills" / "config" / "skill_pack_profiles.json"
     entry_home_manifest_path = root / "8Dionysus" / "skills" / "port.manifest.json"
@@ -203,7 +153,6 @@ def build_report(workspace_root: Path | str) -> dict[str, Any]:
     machine_service = Path.home() / "src" / "abyss-stack" / "mcp" / "services" / "abyss-machine-mcp"
 
     config = _read_toml(codex_config_path)
-    marketplace = _read_json(plugin_marketplace_path)
     shared_skill_profiles = _read_json(shared_skill_profiles_path)
     entry_home_manifest = _read_json(entry_home_manifest_path)
     subagent_names = _collect_toml_names(agents_dir)
@@ -541,56 +490,6 @@ def build_report(workspace_root: Path | str) -> dict[str, Any]:
         )
     )
 
-    plugin_names: list[str] = []
-    if isinstance(marketplace, dict):
-        plugins = marketplace.get("plugins", [])
-        if isinstance(plugins, list):
-            for item in plugins:
-                if isinstance(item, dict):
-                    name = item.get("name")
-                    if isinstance(name, str) and name:
-                        plugin_names.append(name)
-    plugin_marketplace_ok = plugin_marketplace_path.exists() and EXPECTED_PLUGIN_NAME in plugin_names
-    plugin_marketplace_evidence = [str(plugin_marketplace_path)] if plugin_marketplace_path.exists() else []
-    plugin_marketplace_evidence.extend(f"plugin={name}" for name in plugin_names)
-    surfaces.append(
-        SurfaceStatus(
-            name="plugin_marketplace",
-            status="ok" if plugin_marketplace_ok else "warn",
-            required=False,
-            summary="Workspace marketplace exposes aoa-shared-launchers."
-            if plugin_marketplace_ok
-            else "Workspace marketplace is missing or does not expose aoa-shared-launchers.",
-            evidence=plugin_marketplace_evidence,
-            next_step="Create .agents/plugins/marketplace.json or add aoa-shared-launchers to the workspace marketplace.",
-        )
-    )
-
-    plugin_root, plugin_source_evidence = _resolve_plugin_root(
-        root,
-        plugin_marketplace_path,
-        marketplace,
-        EXPECTED_PLUGIN_NAME,
-    )
-    plugin_manifest_path = plugin_root / ".codex-plugin" / "plugin.json" if plugin_root is not None else None
-    plugin_manifest = _read_json(plugin_manifest_path) if plugin_manifest_path is not None else None
-    plugin_manifest_ok = plugin_manifest_path is not None and plugin_manifest_path.exists() and isinstance(plugin_manifest, dict)
-    if plugin_manifest_ok:
-        plugin_source_evidence.append(str(plugin_manifest_path))
-        plugin_name = plugin_manifest.get("name")
-        if isinstance(plugin_name, str) and plugin_name:
-            plugin_source_evidence.append(f"plugin.name={plugin_name}")
-    surfaces.append(
-        SurfaceStatus(
-            name="plugin_source",
-            status="ok" if plugin_manifest_ok else "warn",
-            required=False,
-            summary="Local shared plugin source exists." if plugin_manifest_ok else "Local shared plugin source is missing.",
-            evidence=plugin_source_evidence,
-            next_step="Place the aoa-shared-launchers plugin under .codex/plugins/ or point a marketplace entry at its true location.",
-        )
-    )
-
     workspace_skill_entries = (
         sorted(path.name for path in workspace_skill_dir.iterdir())
         if workspace_skill_dir.exists()
@@ -771,11 +670,9 @@ def write_bootstrap_scaffold(workspace_root: Path | str) -> dict[str, str]:
         root / ".codex" / "bin",
         root / ".codex" / "generated",
         root / ".codex" / "generated" / "codex",
-        root / ".codex" / "plugins",
         root / ".codex" / "scripts",
         root / ".codex" / "tools",
         root / ".agents",
-        root / ".agents" / "plugins",
     ]
     for path in directories:
         path.mkdir(parents=True, exist_ok=True)

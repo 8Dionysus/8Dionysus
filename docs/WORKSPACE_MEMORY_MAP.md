@@ -9,10 +9,11 @@ It is not memory authority; reviewed memory belongs to `aoa-memo`, session evide
 ```bash
 python scripts/build_workspace_memory_map.py \
   --workspace-root <workspace-root> \
+  --owner-repo-root . \
   --write generated/workspace_memory_map.min.json \
   --markdown docs/WORKSPACE_MEMORY_MAP.md
-python scripts/build_workspace_memory_map.py --check
-python scripts/validate_workspace_memory_map.py
+python scripts/build_workspace_memory_map.py --workspace-root <workspace-root> --owner-repo-root . --check
+python scripts/validate_workspace_memory_map.py --workspace-root <workspace-root> --owner-repo-root .
 ```
 
 ## Totals

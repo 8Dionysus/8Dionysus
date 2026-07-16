@@ -10,7 +10,7 @@ source-linked records.
 | role | local KAG provider for public routing, workspace memory-map orientation, and the repo-owned workspace-diagnosis capability |
 | records | `nodes/`, `edges/`, `indexes/`, `projections/`, `receipts/` |
 | manifest | `manifest.json` |
-| source route | `README.md`, `skills/README.md`, `skills/port.manifest.json`, canonical `SKILL.md`, admission decision, and workspace memory-map sources |
+| source route | `README.md`, `skills/README.md`, `skills/port.manifest.json`, canonical `SKILL.md`, admission and retirement decisions, and workspace memory-map sources |
 | consumer route | `aoa-kag` registry/composition, `abyss-stack`, MCP resources |
 | owner return | `README.md` for public routing; `skills/README.md` and canonical `SKILL.md` for the local procedure |
 

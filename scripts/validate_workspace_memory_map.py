@@ -159,12 +159,21 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         default=REPO_ROOT.parent,
         help="Sibling workspace root to validate; defaults to the parent of this checkout.",
     )
+    parser.add_argument(
+        "--owner-repo-root",
+        type=Path,
+        default=None,
+        help="Use this 8Dionysus checkout while retaining workspace-relative owner refs.",
+    )
     return parser.parse_args(argv)
 
 
 def main(argv: list[str] | None = None) -> int:
     args = parse_args(argv)
-    expected_payload = build_workspace_memory_map(args.workspace_root)
+    expected_payload = build_workspace_memory_map(
+        args.workspace_root,
+        owner_repo_root=args.owner_repo_root,
+    )
     current_payload = json.loads(DEFAULT_JSON_PATH.read_text(encoding="utf-8"))
     validate_payload(current_payload)
     expected_rendered = render_payload(expected_payload)

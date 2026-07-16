@@ -65,6 +65,13 @@
       "source_class": "skill_source",
       "role": "supporting",
       "authority": "authored_source"
+    },
+    {
+      "repo": "8Dionysus",
+      "path": "docs/decisions/8DION-D-0020-retire-unproven-launcher-plugin.md",
+      "source_class": "skill_source",
+      "role": "supporting",
+      "authority": "authored_source"
     }
   ],
   "record_classes": [

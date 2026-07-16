@@ -16,6 +16,15 @@ copying or pruning it through `project_workspace_root.py`.
 
 No secrets, tokens, private hostnames, unreviewed hooks, or hidden local automation may be added here. Any mutating helper must stay bounded, documented, reversible, and route-aware.
 
+The installed `aoa-workspace-project` launcher must reconcile the selected
+owner checkout before it plans live operations. It compares source `HEAD` with
+an already available local ref, verifies that projector-controlled and managed
+source paths are clean, and refuses before diff planning when either check
+fails. It does not fetch or claim remote freshness. Use an explicit
+`--source-root` for a clean merged checkout instead of borrowing a stale
+canonical checkout; use the direct Python entrypoint for non-mutating branch
+preview.
+
 Statistical access in the Codex plane uses `aoa_stats` as a read-only access
 plane. Use it to inspect the derived catalog, central boundary references,
 owner-local `stats/` ports, and measurement-packet compatibility. Statistical

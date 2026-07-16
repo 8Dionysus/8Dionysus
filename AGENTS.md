@@ -138,6 +138,8 @@ SDK-owned skill ingress or mutation-gate command.
 - `8Dionysus` does not project shared bundles into `<workspace-root>/.agents/skills`. Shared AoA bundles install once through the `aoa-skills` `user-default` profile; repository projections come only from admitted owner-local `skills/` homes.
 - `skills/aoa-workspace-diagnose/` is this repository's canonical local procedure; `.agents/skills/aoa-workspace-diagnose/` is its exact repo-only projection and remains excluded from workspace-root copy and prune authority.
 - The generic shared-root projector neither copies nor prunes live `.codex/config.toml` or `.codex/agents/`. Project registration follows the Codex-plane render and rollout route; role-agent projection follows `aoa-agents` and its deployment policy.
+- Treat source selection as part of projection safety. The installed launcher is local-only and never fetches; it refuses unless the selected owner checkout matches its declared local source ref and projector-controlled or managed source paths are clean. Use `--source-root <clean-current-8Dionysus-checkout>` when the canonical checkout is stale or carrying unrelated work.
+- A direct Python dry-run may inspect an unmerged branch. Live execution from a non-current source requires the explicit `--allow-noncurrent-source` override and is branch-trial evidence, not proof of owner currentness.
 - Keep `8Dionysus/README.md` profile-owned and GitHub-facing.
 - Treat generated or install drift as a route signal: keep the evidence narrow, route it to the owner repository, and do not promote derived reports into authority.
 - Before large AGENTS refactors, run the map audit:

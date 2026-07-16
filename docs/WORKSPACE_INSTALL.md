@@ -85,6 +85,7 @@ Projection rules:
 Decision note:
 
 - `docs/decisions/8DION-D-0001-shared-root-projection.md`
+- `docs/decisions/8DION-D-0021-gate-projection-on-current-owner-source.md`
 - `docs/decisions/8DION-D-0017-owner-scoped-skill-projections.md`
 - `docs/decisions/8DION-D-0018-workspace-capability-diagnosis-home-skill.md`
 - `docs/decisions/8DION-D-0020-retire-unproven-launcher-plugin.md`
@@ -162,12 +163,31 @@ shared-root surfaces from `8Dionysus` into the live workspace root:
 <workspace-root>/.codex/bin/aoa-workspace-project --execute --json
 ```
 
+The installed launcher does not fetch. Before treating `origin/main` as the
+current owner reference, refresh it through the normal Git owner workflow. The
+launcher then refuses before planning operations when the selected source HEAD
+does not match that local ref or when projector-controlled or managed source
+paths are dirty. If the canonical checkout carries unrelated work, select a
+clean merged checkout explicitly:
+
+```bash
+<workspace-root>/.codex/bin/aoa-workspace-project \
+  --source-root <clean-current-8Dionysus-checkout> \
+  --check --prune --json
+```
+
+This refusal is a source-currentness result, not ordinary projection drift. It
+must not be bypassed by interpreting a large rollback-looking operation list as
+truth. A direct Python dry-run may inspect a branch; direct live execution from
+a non-current source requires `--allow-noncurrent-source` and remains explicit
+branch-trial evidence.
+
 The direct Python entrypoint remains available:
 
 ```bash
-python <workspace-root>/8Dionysus/scripts/project_workspace_root.py --workspace-root <workspace-root> --json
-python <workspace-root>/8Dionysus/scripts/project_workspace_root.py --workspace-root <workspace-root> --check --json
-python <workspace-root>/8Dionysus/scripts/project_workspace_root.py --workspace-root <workspace-root> --execute --json
+python <selected-8Dionysus-source>/scripts/project_workspace_root.py --source-root <selected-8Dionysus-source> --workspace-root <workspace-root> --json
+python <selected-8Dionysus-source>/scripts/project_workspace_root.py --source-root <selected-8Dionysus-source> --workspace-root <workspace-root> --check --json
+python <selected-8Dionysus-source>/scripts/project_workspace_root.py --source-root <selected-8Dionysus-source> --workspace-root <workspace-root> --execute --json
 ```
 
 Source-first law for these projected surfaces:

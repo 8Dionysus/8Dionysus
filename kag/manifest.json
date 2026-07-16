@@ -72,6 +72,13 @@
       "source_class": "skill_source",
       "role": "supporting",
       "authority": "authored_source"
+    },
+    {
+      "repo": "8Dionysus",
+      "path": "docs/decisions/8DION-D-0021-gate-projection-on-current-owner-source.md",
+      "source_class": "route_source",
+      "role": "supporting",
+      "authority": "authored_source"
     }
   ],
   "record_classes": [

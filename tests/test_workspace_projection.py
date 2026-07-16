@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -9,7 +10,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 
-from project_workspace_root import project_workspace_root, render_agents_text
+from project_workspace_root import inspect_source_currentness, project_workspace_root, render_agents_text
 
 
 def write_text(path: Path, text: str) -> None:
@@ -133,6 +134,112 @@ class WorkspaceProjectionTests(unittest.TestCase):
             )
             self.assertFalse((workspace_root / ".codex" / "tools" / "__pycache__" / "ghost.pyc").exists())
 
+    def test_source_currentness_rejects_stale_or_managed_dirty_owner_source(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            repo_root = Path(temp_dir) / "8Dionysus"
+            self._make_repo(repo_root)
+            self._git(repo_root, "init", "--initial-branch=main")
+            self._git(repo_root, "config", "user.name", "Projection Test")
+            self._git(repo_root, "config", "user.email", "projection-test@example.invalid")
+            self._git(repo_root, "add", ".")
+            self._git(repo_root, "commit", "-m", "initial")
+            self._git(repo_root, "update-ref", "refs/remotes/origin/main", "HEAD")
+
+            current = inspect_source_currentness(repo_root)
+            self.assertTrue(current["current"])
+            self.assertEqual(current["managed_dirty_paths"], [])
+
+            write_text(repo_root / ".agents" / "skills" / "demo-skill" / "SKILL.md", "# local projection\n")
+            write_text(repo_root / ".codex" / "config.toml", "# deploy-composed\n")
+            write_text(repo_root / ".codex" / "agents" / "architect.toml", "# aoa-agents projection\n")
+            excluded_only = inspect_source_currentness(repo_root)
+            self.assertTrue(excluded_only["current"])
+            self.assertEqual(excluded_only["managed_dirty_paths"], [])
+
+            write_text(repo_root / "scripts" / "project_workspace_root.py", "# unreviewed projector\n")
+            dirty_control = inspect_source_currentness(repo_root)
+            self.assertFalse(dirty_control["current"])
+            self.assertEqual(
+                dirty_control["managed_dirty_paths"],
+                ["scripts/project_workspace_root.py"],
+            )
+            (repo_root / "scripts" / "project_workspace_root.py").unlink()
+
+            write_text(repo_root / ".codex" / "plugins" / "active.txt", "managed change\n")
+            managed_dirty = inspect_source_currentness(repo_root)
+            self.assertFalse(managed_dirty["current"])
+            self.assertIn("managed_source_dirty", managed_dirty["reasons"])
+            self.assertEqual(managed_dirty["managed_dirty_paths"], [".codex/plugins/active.txt"])
+
+            self._git(repo_root, "add", ".")
+            self._git(repo_root, "commit", "-m", "advance source")
+            stale_ref = inspect_source_currentness(repo_root)
+            self.assertFalse(stale_ref["current"])
+            self.assertIn("head_differs_from_source_reference", stale_ref["reasons"])
+            self.assertFalse(stale_ref["managed_source_dirty"])
+
+    def test_execute_refuses_noncurrent_source_before_mutation(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            temp_root = Path(temp_dir)
+            repo_root = temp_root / "8Dionysus"
+            workspace_root = temp_root / "workspace"
+            self._make_repo(repo_root)
+            self._git(repo_root, "init", "--initial-branch=main")
+            self._git(repo_root, "config", "user.name", "Projection Test")
+            self._git(repo_root, "config", "user.email", "projection-test@example.invalid")
+            self._git(repo_root, "add", ".")
+            self._git(repo_root, "commit", "-m", "initial")
+            self._git(repo_root, "update-ref", "refs/remotes/origin/main", "HEAD")
+
+            script = Path(__file__).resolve().parents[1] / "scripts" / "project_workspace_root.py"
+            first = subprocess.run(
+                [
+                    sys.executable,
+                    script.as_posix(),
+                    "--source-root",
+                    repo_root.as_posix(),
+                    "--workspace-root",
+                    workspace_root.as_posix(),
+                    "--execute",
+                    "--prune",
+                    "--json",
+                ],
+                check=False,
+                capture_output=True,
+                text=True,
+            )
+            self.assertEqual(first.returncode, 0, first.stderr)
+            projected_before = (workspace_root / ".codex" / "plugins" / "active.txt").read_text(
+                encoding="utf-8"
+            )
+
+            write_text(repo_root / ".codex" / "plugins" / "active.txt", "unsafe branch value\n")
+            refused = subprocess.run(
+                [
+                    sys.executable,
+                    script.as_posix(),
+                    "--source-root",
+                    repo_root.as_posix(),
+                    "--workspace-root",
+                    workspace_root.as_posix(),
+                    "--execute",
+                    "--prune",
+                    "--json",
+                ],
+                check=False,
+                capture_output=True,
+                text=True,
+            )
+            self.assertEqual(refused.returncode, 2)
+            report = json.loads(refused.stdout)
+            self.assertEqual(report["mode"], "refused")
+            self.assertEqual(report["operation_count"], 0)
+            self.assertIn("managed_source_dirty", report["source_currentness"]["reasons"])
+            self.assertEqual(
+                (workspace_root / ".codex" / "plugins" / "active.txt").read_text(encoding="utf-8"),
+                projected_before,
+            )
+
     def _make_repo(self, repo_root: Path) -> None:
         write_text(
             repo_root / "AGENTS.md",
@@ -146,6 +253,14 @@ class WorkspaceProjectionTests(unittest.TestCase):
         write_text(repo_root / ".codex" / "worktrees" / "source-only" / "AGENTS.md", "# no projection\n")
         write_text(repo_root / ".codex" / "tools" / "__pycache__" / "ghost.pyc", "nope")
         write_text(repo_root / ".agents" / "skills" / "demo-skill" / "SKILL.md", "# must not project\n")
+
+    def _git(self, repo_root: Path, *args: str) -> None:
+        subprocess.run(
+            ["git", "-C", repo_root.as_posix(), *args],
+            check=True,
+            capture_output=True,
+            text=True,
+        )
 
 
 if __name__ == "__main__":

@@ -18,6 +18,10 @@
 
 - [8DION-D-0002 - Repo-Family Required Check Contracts Stay Coordination-Only in 8Dionysus](../8DION-D-0002-repo-family-required-check-contracts.md) (`docs/decisions/8DION-D-0002-repo-family-required-check-contracts.md`)
 
+## clean-worktree source override
+
+- [8DION-D-0020 - Retire Unproven Launcher Plugin](../8DION-D-0020-retire-unproven-launcher-plugin.md) (`docs/decisions/8DION-D-0020-retire-unproven-launcher-plugin.md`)
+
 ## context budget
 
 - [8DION-D-0017 - Owner-Scoped Skill Projections](../8DION-D-0017-owner-scoped-skill-projections.md) (`docs/decisions/8DION-D-0017-owner-scoped-skill-projections.md`)
@@ -52,6 +56,10 @@
 
 - [8DION-D-0005 - Workspace Memory Map Tracks Operational Memory Status](../8DION-D-0005-workspace-memory-map-operational-status.md) (`docs/decisions/8DION-D-0005-workspace-memory-map-operational-status.md`)
 
+## held-out coexistence
+
+- [8DION-D-0020 - Retire Unproven Launcher Plugin](../8DION-D-0020-retire-unproven-launcher-plugin.md) (`docs/decisions/8DION-D-0020-retire-unproven-launcher-plugin.md`)
+
 ## hook boundary
 
 - [8DION-D-0009 - Memory Writeback Route Card](../8DION-D-0009-memory-writeback-route-card.md) (`docs/decisions/8DION-D-0009-memory-writeback-route-card.md`)
@@ -75,6 +83,10 @@
 ## manual admission
 
 - [8DION-D-0018 - Workspace Capability Diagnosis Home Skill](../8DION-D-0018-workspace-capability-diagnosis-home-skill.md) (`docs/decisions/8DION-D-0018-workspace-capability-diagnosis-home-skill.md`)
+
+## manual baseline comparison
+
+- [8DION-D-0020 - Retire Unproven Launcher Plugin](../8DION-D-0020-retire-unproven-launcher-plugin.md) (`docs/decisions/8DION-D-0020-retire-unproven-launcher-plugin.md`)
 
 ## marker taxonomy
 
@@ -105,6 +117,10 @@
 ## owner scope
 
 - [8DION-D-0017 - Owner-Scoped Skill Projections](../8DION-D-0017-owner-scoped-skill-projections.md) (`docs/decisions/8DION-D-0017-owner-scoped-skill-projections.md`)
+
+## owner-currentness
+
+- [8DION-D-0020 - Retire Unproven Launcher Plugin](../8DION-D-0020-retire-unproven-launcher-plugin.md) (`docs/decisions/8DION-D-0020-retire-unproven-launcher-plugin.md`)
 
 ## owner-routed memory
 
@@ -163,6 +179,10 @@
 
 - [8DION-D-0011 - Workspace Memory Map Writeback Sync](../8DION-D-0011-workspace-memory-map-writeback-sync.md) (`docs/decisions/8DION-D-0011-workspace-memory-map-writeback-sync.md`)
 
+## session-evidence isolation
+
+- [8DION-D-0020 - Retire Unproven Launcher Plugin](../8DION-D-0020-retire-unproven-launcher-plugin.md) (`docs/decisions/8DION-D-0020-retire-unproven-launcher-plugin.md`)
+
 ## single projection
 
 - [8DION-D-0017 - Owner-Scoped Skill Projections](../8DION-D-0017-owner-scoped-skill-projections.md) (`docs/decisions/8DION-D-0017-owner-scoped-skill-projections.md`)
@@ -182,6 +202,10 @@
 ## source/projection parity
 
 - [8DION-D-0018 - Workspace Capability Diagnosis Home Skill](../8DION-D-0018-workspace-capability-diagnosis-home-skill.md) (`docs/decisions/8DION-D-0018-workspace-capability-diagnosis-home-skill.md`)
+
+## source/projection pruning
+
+- [8DION-D-0020 - Retire Unproven Launcher Plugin](../8DION-D-0020-retire-unproven-launcher-plugin.md) (`docs/decisions/8DION-D-0020-retire-unproven-launcher-plugin.md`)
 
 ## stable MCP name
 

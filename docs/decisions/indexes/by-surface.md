@@ -6,6 +6,10 @@
 
 - [8DION-D-0019 - Deploy-Composed Codex Paths Stay Outside Generic Projection](../8DION-D-0019-deploy-composed-codex-paths.md) (`docs/decisions/8DION-D-0019-deploy-composed-codex-paths.md`)
 
+## clean-worktree generation
+
+- [8DION-D-0020 - Retire Unproven Launcher Plugin](../8DION-D-0020-retire-unproven-launcher-plugin.md) (`docs/decisions/8DION-D-0020-retire-unproven-launcher-plugin.md`)
+
 ## Codex context
 
 - [8DION-D-0017 - Owner-Scoped Skill Projections](../8DION-D-0017-owner-scoped-skill-projections.md) (`docs/decisions/8DION-D-0017-owner-scoped-skill-projections.md`)
@@ -27,6 +31,10 @@
 - [8DION-D-0014 - AoA Decisions MCP Codex-Plane Registration](../8DION-D-0014-aoa-decisions-mcp-codex-plane-registration.md) (`docs/decisions/8DION-D-0014-aoa-decisions-mcp-codex-plane-registration.md`)
 - [8DION-D-0015 - AoA KAG MCP Codex-Plane Registration](../8DION-D-0015-aoa-kag-mcp-codex-plane-registration.md) (`docs/decisions/8DION-D-0015-aoa-kag-mcp-codex-plane-registration.md`)
 - [8DION-D-0016 - AoA Stats MCP Codex-Plane Cutover](../8DION-D-0016-aoa-stats-mcp-codex-plane-cutover.md) (`docs/decisions/8DION-D-0016-aoa-stats-mcp-codex-plane-cutover.md`)
+
+## convergence diagnostics
+
+- [8DION-D-0020 - Retire Unproven Launcher Plugin](../8DION-D-0020-retire-unproven-launcher-plugin.md) (`docs/decisions/8DION-D-0020-retire-unproven-launcher-plugin.md`)
 
 ## decision route
 
@@ -92,6 +100,7 @@
 ## plugin retirement
 
 - [8DION-D-0018 - Workspace Capability Diagnosis Home Skill](../8DION-D-0018-workspace-capability-diagnosis-home-skill.md) (`docs/decisions/8DION-D-0018-workspace-capability-diagnosis-home-skill.md`)
+- [8DION-D-0020 - Retire Unproven Launcher Plugin](../8DION-D-0020-retire-unproven-launcher-plugin.md) (`docs/decisions/8DION-D-0020-retire-unproven-launcher-plugin.md`)
 
 ## proof route
 
@@ -144,6 +153,10 @@
 
 - [8DION-D-0017 - Owner-Scoped Skill Projections](../8DION-D-0017-owner-scoped-skill-projections.md) (`docs/decisions/8DION-D-0017-owner-scoped-skill-projections.md`)
 
+## skill retirement
+
+- [8DION-D-0020 - Retire Unproven Launcher Plugin](../8DION-D-0020-retire-unproven-launcher-plugin.md) (`docs/decisions/8DION-D-0020-retire-unproven-launcher-plugin.md`)
+
 ## stats route
 
 - [8DION-D-0016 - AoA Stats MCP Codex-Plane Cutover](../8DION-D-0016-aoa-stats-mcp-codex-plane-cutover.md) (`docs/decisions/8DION-D-0016-aoa-stats-mcp-codex-plane-cutover.md`)
@@ -162,6 +175,10 @@
 - [8DION-D-0010 - Workspace Writeback Marker Debt Surface](../8DION-D-0010-workspace-writeback-marker-debt-surface.md) (`docs/decisions/8DION-D-0010-workspace-writeback-marker-debt-surface.md`)
 - [8DION-D-0011 - Workspace Memory Map Writeback Sync](../8DION-D-0011-workspace-memory-map-writeback-sync.md) (`docs/decisions/8DION-D-0011-workspace-memory-map-writeback-sync.md`)
 - [8DION-D-0012 - Reviewed Memory Landing Receipts As Writeback Markers](../8DION-D-0012-reviewed-memory-landing-receipts-as-writeback-markers.md) (`docs/decisions/8DION-D-0012-reviewed-memory-landing-receipts-as-writeback-markers.md`)
+
+## workspace projection
+
+- [8DION-D-0020 - Retire Unproven Launcher Plugin](../8DION-D-0020-retire-unproven-launcher-plugin.md) (`docs/decisions/8DION-D-0020-retire-unproven-launcher-plugin.md`)
 
 ## workspace route
 

@@ -13,7 +13,7 @@ It is not the constitutional center, not a runtime owner, and not a replacement 
 This repository owns:
 
 - public entry orientation, glossary alignment, and profile-level route help
-- selected shared-root install sources such as `AGENTS.md`, `AOA_WORKSPACE_ROOT`, `.agents/plugins/`, and the source-owned `.codex/` subset checked in here
+- selected shared-root install sources such as `AGENTS.md`, `AOA_WORKSPACE_ROOT`, `.agents/`, and the source-owned `.codex/` subset checked in here
 - workspace bootstrap notes, Codex-plane regeneration notes, and AGENTS map audit surfaces
 - one admitted repo-local procedure for diagnosing concrete workspace capability-delivery disagreements
 - owner-local statistical questions over public route and audit evidence
@@ -149,8 +149,8 @@ python scripts/audit_agents_map.py --workspace-root <workspace-root> --write gen
 For workspace memory overlay status:
 
 ```bash
-python scripts/build_workspace_memory_map.py --workspace-root <workspace-root> --write generated/workspace_memory_map.min.json --markdown docs/WORKSPACE_MEMORY_MAP.md
-python scripts/validate_workspace_memory_map.py
+python scripts/build_workspace_memory_map.py --workspace-root <workspace-root> --owner-repo-root . --write generated/workspace_memory_map.min.json --markdown docs/WORKSPACE_MEMORY_MAP.md
+python scripts/validate_workspace_memory_map.py --workspace-root <workspace-root> --owner-repo-root .
 ```
 
 For public bootstrap without sibling checkouts:

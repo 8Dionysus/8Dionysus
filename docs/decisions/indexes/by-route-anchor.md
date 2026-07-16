@@ -7,6 +7,10 @@
 - [8DION-D-0001 - Shared-Root Projection Lives in 8Dionysus](../8DION-D-0001-shared-root-projection.md) (`docs/decisions/8DION-D-0001-shared-root-projection.md`)
 - [8DION-D-0017 - Owner-Scoped Skill Projections](../8DION-D-0017-owner-scoped-skill-projections.md) (`docs/decisions/8DION-D-0017-owner-scoped-skill-projections.md`)
 
+## .agents/plugins/marketplace.json
+
+- [8DION-D-0020 - Retire Unproven Launcher Plugin](../8DION-D-0020-retire-unproven-launcher-plugin.md) (`docs/decisions/8DION-D-0020-retire-unproven-launcher-plugin.md`)
+
 ## .agents/skills
 
 - [8DION-D-0017 - Owner-Scoped Skill Projections](../8DION-D-0017-owner-scoped-skill-projections.md) (`docs/decisions/8DION-D-0017-owner-scoped-skill-projections.md`)
@@ -65,6 +69,11 @@
 ## .codex/plugins/aoa-shared-launchers
 
 - [8DION-D-0018 - Workspace Capability Diagnosis Home Skill](../8DION-D-0018-workspace-capability-diagnosis-home-skill.md) (`docs/decisions/8DION-D-0018-workspace-capability-diagnosis-home-skill.md`)
+- [8DION-D-0020 - Retire Unproven Launcher Plugin](../8DION-D-0020-retire-unproven-launcher-plugin.md) (`docs/decisions/8DION-D-0020-retire-unproven-launcher-plugin.md`)
+
+## .codex/tools/aoa_codex_converge
+
+- [8DION-D-0020 - Retire Unproven Launcher Plugin](../8DION-D-0020-retire-unproven-launcher-plugin.md) (`docs/decisions/8DION-D-0020-retire-unproven-launcher-plugin.md`)
 
 ## .git/hooks
 
@@ -113,6 +122,10 @@
 
 - [8DION-D-0002 - Repo-Family Required Check Contracts Stay Coordination-Only in 8Dionysus](../8DION-D-0002-repo-family-required-check-contracts.md) (`docs/decisions/8DION-D-0002-repo-family-required-check-contracts.md`)
 
+## docs/SYSTEM_CAPABILITY_MAP.md
+
+- [8DION-D-0020 - Retire Unproven Launcher Plugin](../8DION-D-0020-retire-unproven-launcher-plugin.md) (`docs/decisions/8DION-D-0020-retire-unproven-launcher-plugin.md`)
+
 ## docs/WORKSPACE_INSTALL.md
 
 - [8DION-D-0017 - Owner-Scoped Skill Projections](../8DION-D-0017-owner-scoped-skill-projections.md) (`docs/decisions/8DION-D-0017-owner-scoped-skill-projections.md`)
@@ -154,6 +167,7 @@
 - [8DION-D-0010 - Workspace Writeback Marker Debt Surface](../8DION-D-0010-workspace-writeback-marker-debt-surface.md) (`docs/decisions/8DION-D-0010-workspace-writeback-marker-debt-surface.md`)
 - [8DION-D-0011 - Workspace Memory Map Writeback Sync](../8DION-D-0011-workspace-memory-map-writeback-sync.md) (`docs/decisions/8DION-D-0011-workspace-memory-map-writeback-sync.md`)
 - [8DION-D-0012 - Reviewed Memory Landing Receipts As Writeback Markers](../8DION-D-0012-reviewed-memory-landing-receipts-as-writeback-markers.md) (`docs/decisions/8DION-D-0012-reviewed-memory-landing-receipts-as-writeback-markers.md`)
+- [8DION-D-0020 - Retire Unproven Launcher Plugin](../8DION-D-0020-retire-unproven-launcher-plugin.md) (`docs/decisions/8DION-D-0020-retire-unproven-launcher-plugin.md`)
 
 ## scripts/manage_workspace_git_hooks.py
 

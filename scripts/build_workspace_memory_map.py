@@ -266,8 +266,14 @@ def _relative_path(path: Path, root: Path) -> str:
         return _posix(path)
 
 
-def _place_file_ref(root: Path, workspace_root: Path, relative_path: str) -> str:
-    root_ref = path_hint(root, workspace_root)
+def _place_file_ref(
+    root: Path,
+    workspace_root: Path,
+    relative_path: str,
+    *,
+    root_hint_override: str | None = None,
+) -> str:
+    root_ref = root_hint_override or path_hint(root, workspace_root)
     if root_ref in {"", "."}:
         return relative_path
     return f"{root_ref}/{relative_path}"
@@ -374,7 +380,13 @@ def _extract_writeback_decision(payload: Mapping[str, Any]) -> str:
     return ""
 
 
-def _writeback_marker_candidates(root: Path, workspace_root: Path, *, place_name: str) -> list[dict[str, str]]:
+def _writeback_marker_candidates(
+    root: Path,
+    workspace_root: Path,
+    *,
+    place_name: str,
+    root_hint_override: str | None = None,
+) -> list[dict[str, str]]:
     candidates: list[dict[str, str]] = []
     memo_root = root / "memo"
     port = parse_port_yaml(memo_root / "PORT.yaml")
@@ -395,7 +407,12 @@ def _writeback_marker_candidates(root: Path, workspace_root: Path, *, place_name
                     "marker_kind": marker_kind,
                     "decision": decision,
                     "marker_path": rel_path,
-                    "marker_ref": _place_file_ref(root, workspace_root, rel_path),
+                    "marker_ref": _place_file_ref(
+                        root,
+                        workspace_root,
+                        rel_path,
+                        root_hint_override=root_hint_override,
+                    ),
                     "source": "memo_port_packet",
                 }
             )
@@ -414,7 +431,12 @@ def _writeback_marker_candidates(root: Path, workspace_root: Path, *, place_name
                     "marker_kind": "reviewed_memory_landing_receipt",
                     "decision": "reviewed_write",
                     "marker_path": rel_path,
-                    "marker_ref": _place_file_ref(root, workspace_root, rel_path),
+                    "marker_ref": _place_file_ref(
+                        root,
+                        workspace_root,
+                        rel_path,
+                        root_hint_override=root_hint_override,
+                    ),
                     "source": "reviewed_memory_corpus",
                 }
             )
@@ -428,7 +450,12 @@ def _writeback_marker_candidates(root: Path, workspace_root: Path, *, place_name
                 "marker_kind": "workspace_memory_map_sync",
                 "decision": "no_writeback_needed",
                 "marker_path": rel_path,
-                "marker_ref": _place_file_ref(root, workspace_root, rel_path),
+                "marker_ref": _place_file_ref(
+                    root,
+                    workspace_root,
+                    rel_path,
+                    root_hint_override=root_hint_override,
+                ),
                 "source": "workspace_memory_map_sync",
             }
         )
@@ -444,7 +471,12 @@ def _writeback_marker_candidates(root: Path, workspace_root: Path, *, place_name
                         "marker_kind": "memo_operational_readout_sync",
                         "decision": "no_writeback_needed",
                         "marker_path": rel_path,
-                        "marker_ref": _place_file_ref(root, workspace_root, rel_path),
+                        "marker_ref": _place_file_ref(
+                            root,
+                            workspace_root,
+                            rel_path,
+                            root_hint_override=root_hint_override,
+                        ),
                         "source": "memo_operational_readout_sync",
                     }
                 )
@@ -460,7 +492,12 @@ def _writeback_marker_candidates(root: Path, workspace_root: Path, *, place_name
                     "marker_kind": "route_decision",
                     "decision": "route_only_debt",
                     "marker_path": rel_path,
-                    "marker_ref": _place_file_ref(root, workspace_root, rel_path),
+                    "marker_ref": _place_file_ref(
+                        root,
+                        workspace_root,
+                        rel_path,
+                        root_hint_override=root_hint_override,
+                    ),
                     "source": "decision_record",
                 }
             )
@@ -474,6 +511,7 @@ def writeback_marker_record(
     workspace_root: Path,
     memory_route_status: str,
     current_port_level: str,
+    root_hint_override: str | None = None,
 ) -> dict[str, Any]:
     if root is None or not root.is_dir():
         return {
@@ -494,7 +532,12 @@ def writeback_marker_record(
             "source": "",
         }
 
-    candidates = _writeback_marker_candidates(root, workspace_root, place_name=name)
+    candidates = _writeback_marker_candidates(
+        root,
+        workspace_root,
+        place_name=name,
+        root_hint_override=root_hint_override,
+    )
     if not candidates:
         return {
             "status": "missing",
@@ -601,7 +644,12 @@ def writeback_debt_record(
     }
 
 
-def memo_port_record(root: Path, workspace_root: Path) -> dict[str, Any]:
+def memo_port_record(
+    root: Path,
+    workspace_root: Path,
+    *,
+    root_hint_override: str | None = None,
+) -> dict[str, Any]:
     memo_root = root / "memo"
     port_yaml = memo_root / "PORT.yaml"
     port = parse_port_yaml(port_yaml)
@@ -625,7 +673,7 @@ def memo_port_record(root: Path, workspace_root: Path) -> dict[str, Any]:
     else:
         level = "none"
 
-    root_hint = path_hint(root, workspace_root)
+    root_hint = root_hint_override or path_hint(root, workspace_root)
     memo_hint = f"{root_hint}/memo" if present else ""
     packet_counts = _port_packet_counts(
         memo_root,
@@ -709,6 +757,7 @@ def place_record(
     root: Path | None,
     workspace_root: Path,
     mcp_status: Mapping[str, Any],
+    path_hint_override: str | None = None,
 ) -> dict[str, Any]:
     issues: list[str] = []
     if root is None or not root.is_dir():
@@ -718,6 +767,7 @@ def place_record(
             workspace_root=workspace_root,
             memory_route_status="missing",
             current_port_level="none",
+            root_hint_override=path_hint_override,
         )
         return {
             "name": name,
@@ -735,7 +785,11 @@ def place_record(
             "reviewed_memory_route": "aoa-memo:reviewed-intake",
             "evidence_route": ".aoa:retrieve/rehydrate/review-packet",
             "mcp": dict(mcp_status),
-            "memo_port": memo_port_record(Path("__missing__"), workspace_root),
+            "memo_port": memo_port_record(
+                Path("__missing__"),
+                workspace_root,
+                root_hint_override=path_hint_override,
+            ),
             "writeback_marker": marker,
             "writeback_debt": writeback_debt_record(
                 marker,
@@ -749,7 +803,11 @@ def place_record(
 
     root_agents_present = (root / "AGENTS.md").is_file()
     has_memory_route = _has_memory_route(root)
-    memo_port = memo_port_record(root, workspace_root)
+    memo_port = memo_port_record(
+        root,
+        workspace_root,
+        root_hint_override=path_hint_override,
+    )
     if name == "aoa-memo" and memory_role(name) == "reviewed-memory-owner":
         memo_port = {
             **memo_port,
@@ -793,6 +851,7 @@ def place_record(
         workspace_root=workspace_root,
         memory_route_status=route_status,
         current_port_level=current_level,
+        root_hint_override=path_hint_override,
     )
 
     return {
@@ -801,7 +860,7 @@ def place_record(
         "role": role,
         "place_kind": place_kind,
         "checkout_state": "scanned",
-        "path_hint": path_hint(root, workspace_root),
+        "path_hint": path_hint_override or path_hint(root, workspace_root),
         "memory_role": memory_role(name),
         "refactor_state": refactor_state(name),
         "root_agents_present": root_agents_present,
@@ -850,15 +909,25 @@ def workspace_place_records(workspace_root: Path, mcp_status: Mapping[str, Any])
     return records
 
 
-def build_workspace_memory_map(workspace_root: Path) -> dict[str, Any]:
+def build_workspace_memory_map(
+    workspace_root: Path,
+    *,
+    owner_repo_root: Path | None = None,
+) -> dict[str, Any]:
     workspace_root = workspace_root.resolve()
+    owner_repo_root = owner_repo_root.resolve() if owner_repo_root else None
     mcp_status = detect_mcp_status(workspace_root)
     manifest_repo_paths = workspace_manifest_repo_paths(workspace_root)
     places: list[dict[str, Any]] = []
 
     for repo in KNOWN_REPOSITORIES:
         name = repo["name"]
-        root = repo_path_for_name(workspace_root, name, manifest_repo_paths)
+        owner_override = name == OWNER_REPO and owner_repo_root is not None
+        root = (
+            owner_repo_root
+            if owner_override
+            else repo_path_for_name(workspace_root, name, manifest_repo_paths)
+        )
         places.append(
             place_record(
                 name=name,
@@ -868,6 +937,7 @@ def build_workspace_memory_map(workspace_root: Path) -> dict[str, Any]:
                 root=root,
                 workspace_root=workspace_root,
                 mcp_status=mcp_status,
+                path_hint_override=name if owner_override else None,
             )
         )
 
@@ -979,12 +1049,22 @@ def render_payload(payload: Mapping[str, Any]) -> str:
     return json.dumps(payload, ensure_ascii=False, sort_keys=True, separators=(",", ":")) + "\n"
 
 
-def _root_by_place_name(workspace_root: Path) -> dict[str, Path | None]:
+def _root_by_place_name(
+    workspace_root: Path,
+    *,
+    owner_repo_root: Path | None = None,
+) -> dict[str, Path | None]:
     workspace_root = workspace_root.resolve()
+    owner_repo_root = owner_repo_root.resolve() if owner_repo_root else None
     manifest_repo_paths = workspace_manifest_repo_paths(workspace_root)
     roots: dict[str, Path | None] = {}
     for repo in KNOWN_REPOSITORIES:
-        roots[repo["name"]] = repo_path_for_name(workspace_root, repo["name"], manifest_repo_paths)
+        name = repo["name"]
+        roots[name] = (
+            owner_repo_root
+            if name == OWNER_REPO and owner_repo_root is not None
+            else repo_path_for_name(workspace_root, name, manifest_repo_paths)
+        )
     for spec in EXTERNAL_PLACE_SPECS:
         roots[str(spec["name"])] = manifest_repo_paths.get(str(spec["name"])) or _resolve_external_place(
             spec,
@@ -1073,10 +1153,20 @@ def _live_writeback_debt_for_place(
     }
 
 
-def build_writeback_debt_readout(workspace_root: Path) -> dict[str, Any]:
+def build_writeback_debt_readout(
+    workspace_root: Path,
+    *,
+    owner_repo_root: Path | None = None,
+) -> dict[str, Any]:
     workspace_root = workspace_root.resolve()
-    payload = build_workspace_memory_map(workspace_root)
-    roots = _root_by_place_name(workspace_root)
+    payload = build_workspace_memory_map(
+        workspace_root,
+        owner_repo_root=owner_repo_root,
+    )
+    roots = _root_by_place_name(
+        workspace_root,
+        owner_repo_root=owner_repo_root,
+    )
     places = [
         _live_writeback_debt_for_place(place, roots.get(str(place["name"])), workspace_root)
         for place in payload["places"]
@@ -1118,10 +1208,11 @@ def render_markdown(payload: Mapping[str, Any]) -> str:
         "```bash",
         "python scripts/build_workspace_memory_map.py \\",
         "  --workspace-root <workspace-root> \\",
+        "  --owner-repo-root . \\",
         "  --write generated/workspace_memory_map.min.json \\",
         "  --markdown docs/WORKSPACE_MEMORY_MAP.md",
-        "python scripts/build_workspace_memory_map.py --check",
-        "python scripts/validate_workspace_memory_map.py",
+        "python scripts/build_workspace_memory_map.py --workspace-root <workspace-root> --owner-repo-root . --check",
+        "python scripts/validate_workspace_memory_map.py --workspace-root <workspace-root> --owner-repo-root .",
         "```",
         "",
         "## Totals",
@@ -1231,6 +1322,12 @@ def render_markdown(payload: Mapping[str, Any]) -> str:
 def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--workspace-root", type=Path, default=REPO_ROOT.parent)
+    parser.add_argument(
+        "--owner-repo-root",
+        type=Path,
+        default=None,
+        help="Use this 8Dionysus checkout while keeping workspace-relative owner refs stable.",
+    )
     parser.add_argument("--write", type=Path, default=DEFAULT_JSON_PATH)
     parser.add_argument("--markdown", type=Path, default=DEFAULT_MARKDOWN_PATH)
     parser.add_argument("--check", action="store_true")
@@ -1241,10 +1338,21 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
 def main(argv: Sequence[str] | None = None) -> int:
     args = parse_args(argv)
     if args.writeback_debt_json:
-        print(render_payload(build_writeback_debt_readout(args.workspace_root)), end="")
+        print(
+            render_payload(
+                build_writeback_debt_readout(
+                    args.workspace_root,
+                    owner_repo_root=args.owner_repo_root,
+                )
+            ),
+            end="",
+        )
         return 0
 
-    payload = build_workspace_memory_map(args.workspace_root)
+    payload = build_workspace_memory_map(
+        args.workspace_root,
+        owner_repo_root=args.owner_repo_root,
+    )
     rendered = render_payload(payload)
     markdown = render_markdown(payload)
     if args.check:

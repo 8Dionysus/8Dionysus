@@ -53,3 +53,4 @@
 - [8DION-D-0017 - Owner-Scoped Skill Projections](../8DION-D-0017-owner-scoped-skill-projections.md) (`docs/decisions/8DION-D-0017-owner-scoped-skill-projections.md`)
 - [8DION-D-0018 - Workspace Capability Diagnosis Home Skill](../8DION-D-0018-workspace-capability-diagnosis-home-skill.md) (`docs/decisions/8DION-D-0018-workspace-capability-diagnosis-home-skill.md`)
 - [8DION-D-0019 - Deploy-Composed Codex Paths Stay Outside Generic Projection](../8DION-D-0019-deploy-composed-codex-paths.md) (`docs/decisions/8DION-D-0019-deploy-composed-codex-paths.md`)
+- [8DION-D-0020 - Retire Unproven Launcher Plugin](../8DION-D-0020-retire-unproven-launcher-plugin.md) (`docs/decisions/8DION-D-0020-retire-unproven-launcher-plugin.md`)

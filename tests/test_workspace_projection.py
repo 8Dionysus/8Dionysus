@@ -58,7 +58,7 @@ class WorkspaceProjectionTests(unittest.TestCase):
             paths = {entry["dest_path"] for entry in report["operations"]}
             self.assertIn("AGENTS.md", paths)
             self.assertIn("AOA_WORKSPACE_ROOT", paths)
-            self.assertIn(".agents/plugins/marketplace.json", paths)
+            self.assertNotIn(".agents/plugins/marketplace.json", paths)
             self.assertNotIn(".agents/skills/demo-skill", paths)
             self.assertNotIn(".codex/config.toml", paths)
             self.assertNotIn(".codex/agents/architect.toml", paths)
@@ -88,6 +88,10 @@ class WorkspaceProjectionTests(unittest.TestCase):
             write_text(workspace_root / ".codex" / "config.toml", live_config)
             write_text(workspace_root / ".codex" / "agents" / "architect.toml", live_agent)
             write_text(workspace_root / ".codex" / "plugins" / "retired.txt", "retired\n")
+            write_text(
+                workspace_root / ".agents" / "plugins" / "marketplace.json",
+                '{"name": "retired-launchers"}\n',
+            )
 
             report = project_workspace_root(repo_root, workspace_root, execute=True, prune=True)
             self.assertTrue(report["changed"])
@@ -96,9 +100,8 @@ class WorkspaceProjectionTests(unittest.TestCase):
             self.assertIn("aoa-workspace-project --execute --json", report["projection_contract"]["execute_command"])
             self.assertIn("/workspace", (workspace_root / "AGENTS.md").read_text(encoding="utf-8"))
             self.assertTrue((workspace_root / "AOA_WORKSPACE_ROOT").exists())
-            self.assertEqual(
-                json.loads((workspace_root / ".agents" / "plugins" / "marketplace.json").read_text(encoding="utf-8"))["name"],
-                "aoa-local-plugins",
+            self.assertFalse(
+                (workspace_root / ".agents" / "plugins" / "marketplace.json").exists()
             )
             projected_skill = workspace_root / ".agents" / "skills" / "demo-skill"
             self.assertFalse(projected_skill.exists())
@@ -142,7 +145,6 @@ class WorkspaceProjectionTests(unittest.TestCase):
         write_text(repo_root / ".codex" / "generated" / "report.json", "{}\n")
         write_text(repo_root / ".codex" / "worktrees" / "source-only" / "AGENTS.md", "# no projection\n")
         write_text(repo_root / ".codex" / "tools" / "__pycache__" / "ghost.pyc", "nope")
-        write_text(repo_root / ".agents" / "plugins" / "marketplace.json", '{"name": "aoa-local-plugins"}\n')
         write_text(repo_root / ".agents" / "skills" / "demo-skill" / "SKILL.md", "# must not project\n")
 
 

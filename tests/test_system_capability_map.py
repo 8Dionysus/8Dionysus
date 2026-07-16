@@ -40,37 +40,21 @@ class SystemCapabilityMapTests(unittest.TestCase):
         self.assertIn("campaign cadence and deployment continuity as companion notes", capability_map)
         self.assertIn("no hidden scheduler", capability_map)
 
-    def test_capability_map_tracks_home_skill_launchers_and_convergence(self) -> None:
+    def test_capability_map_tracks_home_skill_and_retired_launchers(self) -> None:
         agents = (REPO_ROOT / "AGENTS.md").read_text(encoding="utf-8")
         capability_map = (REPO_ROOT / "docs" / "SYSTEM_CAPABILITY_MAP.md").read_text(
             encoding="utf-8"
         )
-        marketplace = json.loads(
-            (REPO_ROOT / ".agents" / "plugins" / "marketplace.json").read_text(
-                encoding="utf-8"
-            )
-        )
 
-        plugin_names = {plugin["name"] for plugin in marketplace["plugins"]}
-        self.assertIn("aoa-shared-launchers", plugin_names)
-        self.assertIn("aoa-shared-launchers", capability_map)
+        self.assertFalse((REPO_ROOT / ".agents" / "plugins" / "marketplace.json").exists())
+        self.assertFalse((REPO_ROOT / ".codex" / "plugins" / "aoa-shared-launchers").exists())
+        self.assertNotIn("aoa-shared-launchers", capability_map)
 
         for skill_name in (
             "aoa-growth-snapshot",
             "aoa-seed-route-inspect",
         ):
-            self.assertTrue(
-                (
-                    REPO_ROOT
-                    / ".codex"
-                    / "plugins"
-                    / "aoa-shared-launchers"
-                    / "skills"
-                    / skill_name
-                    / "SKILL.md"
-                ).is_file()
-            )
-            self.assertIn(skill_name, capability_map)
+            self.assertNotIn(skill_name, capability_map)
 
         for retired_name in ("aoa-workspace-recon", "aoa-config-doctor"):
             self.assertFalse(

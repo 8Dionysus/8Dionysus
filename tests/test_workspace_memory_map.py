@@ -31,6 +31,40 @@ class WorkspaceMemoryMapTests(unittest.TestCase):
 
             self.assertEqual(args.workspace_root, workspace)
 
+    def test_owner_checkout_override_keeps_workspace_relative_identity(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            temp_root = Path(tmp)
+            workspace = temp_root / "workspace"
+            canonical_owner = workspace / "8Dionysus"
+            branch_owner = temp_root / "branch-owner"
+            self._make_root(canonical_owner, with_memory_route=False)
+            self._make_root(branch_owner, with_memory_route=True)
+            write_text(branch_owner / "generated" / "workspace_memory_map.min.json", "{}\n")
+            write_text(branch_owner / "docs" / "WORKSPACE_MEMORY_MAP.md", "# map\n")
+
+            payload = build_workspace_memory_map.build_workspace_memory_map(
+                workspace,
+                owner_repo_root=branch_owner,
+            )
+            owner = next(place for place in payload["places"] if place["name"] == "8Dionysus")
+
+            self.assertEqual(owner["path_hint"], "8Dionysus")
+            self.assertEqual(owner["memory_route_status"], "root_memory_route")
+            self.assertEqual(
+                owner["writeback_marker"]["marker_ref"],
+                "8Dionysus/generated/workspace_memory_map.min.json",
+            )
+
+            args = validate_workspace_memory_map.parse_args(
+                [
+                    "--workspace-root",
+                    str(workspace),
+                    "--owner-repo-root",
+                    str(branch_owner),
+                ]
+            )
+            self.assertEqual(args.owner_repo_root, branch_owner)
+
     def test_route_only_and_full_port_classification(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             workspace = Path(tmp)

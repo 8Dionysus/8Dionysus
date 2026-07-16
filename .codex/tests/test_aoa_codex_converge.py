@@ -51,15 +51,6 @@ developer_instructions = "test"
 """
 
 
-def _plugin_manifest() -> dict[str, object]:
-    return {
-        "name": "aoa-shared-launchers",
-        "version": "0.2.0",
-        "description": "test plugin",
-        "skills": "./skills/",
-    }
-
-
 def _write_owner_scoped_skill_sources(root: Path) -> None:
     _write_json(
         root / "aoa-skills" / "config" / "skill_pack_profiles.json",
@@ -318,36 +309,17 @@ cwd = "{tmp_path}"
     assert names_to_status["machine_mcp"] == "ok"
 
 
-def test_plugin_marketplace_path_can_point_into_dot_codex(tmp_path: Path) -> None:
+def test_report_does_not_require_retired_launcher_plugin(tmp_path: Path) -> None:
     write_bootstrap_scaffold(tmp_path)
     _write(tmp_path / ".codex" / "config.toml", _minimal_config(tmp_path))
     _write(tmp_path / "aoa-sdk" / "scripts" / "aoa_workspace_mcp_server.py", "print('ok')\n")
     for name in ["architect", "coder", "reviewer", "evaluator", "memory-keeper"]:
         _write(tmp_path / ".codex" / "agents" / f"{name}.toml", _agent_toml(name))
-    _write_json(
-        tmp_path / ".agents" / "plugins" / "marketplace.json",
-        {
-            "name": "aoa-local-plugins",
-            "plugins": [
-                {
-                    "name": "aoa-shared-launchers",
-                    "source": {
-                        "source": "local",
-                        "path": "./.codex/plugins/aoa-shared-launchers",
-                    },
-                }
-            ],
-        },
-    )
-    _write_json(
-        tmp_path / ".codex" / "plugins" / "aoa-shared-launchers" / ".codex-plugin" / "plugin.json",
-        _plugin_manifest(),
-    )
 
     report = build_report(tmp_path)
-    names_to_status = {item["name"]: item["status"] for item in report["surfaces"]}
-    assert names_to_status["plugin_marketplace"] == "ok"
-    assert names_to_status["plugin_source"] == "ok"
+    surface_names = {item["name"] for item in report["surfaces"]}
+    assert "plugin_marketplace" not in surface_names
+    assert "plugin_source" not in surface_names
 
 
 def test_owner_scoped_skill_delivery_does_not_claim_live_visibility(tmp_path: Path) -> None:

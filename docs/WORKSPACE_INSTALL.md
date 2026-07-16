@@ -16,8 +16,6 @@ Use one parent directory that keeps the public repositories as sibling checkouts
   AGENTS.md
   AOA_WORKSPACE_ROOT
   .agents/
-    plugins/
-      marketplace.json
   .codex/
     config.toml
     hooks.json
@@ -67,7 +65,7 @@ Projection rules:
 - keep `README.md` profile-owned and GitHub-facing; it is not part of the shared-root install projection
 - keep personal Codex defaults in `~/.codex/config.toml`, not in the project-level `.codex/`
 - treat `<workspace-root>/AOA_WORKSPACE_ROOT` as the sibling-workspace marker for Codex and AoA tooling
-- treat `<workspace-root>/.agents/plugins/marketplace.json` as the local plugin discovery surface; the `8Dionysus` projector neither copies nor prunes `<workspace-root>/.agents/skills/`
+- keep the workspace plugin marketplace absent while no owner-approved plugin exists; projection with pruning removes the retired launcher marketplace and source, while the projector neither copies nor prunes `<workspace-root>/.agents/skills/`
 - install the advertised shared AoA profile once into the host-selected user skill root, normally `${CODEX_HOME:-$HOME/.codex}/skills`; do not reproduce it at the workspace root or in every sibling repository
 - keep a sibling repository's canonical callable procedures under that owner's admitted top-level `skills/` home and derive any repo-local `.agents/skills/` projection only through its owner builder
 - keep `8Dionysus/skills/aoa-workspace-diagnose/` and its exact repo projection inside the `8Dionysus` checkout; the shared-root projector must neither copy nor prune it at `<workspace-root>/.agents/skills/`
@@ -89,6 +87,7 @@ Decision note:
 - `docs/decisions/8DION-D-0001-shared-root-projection.md`
 - `docs/decisions/8DION-D-0017-owner-scoped-skill-projections.md`
 - `docs/decisions/8DION-D-0018-workspace-capability-diagnosis-home-skill.md`
+- `docs/decisions/8DION-D-0020-retire-unproven-launcher-plugin.md`
 
 ## Foundation install
 

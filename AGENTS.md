@@ -15,6 +15,7 @@ This repository owns:
 - public entry orientation, glossary alignment, and profile-level route help
 - selected shared-root install sources such as `AGENTS.md`, `AOA_WORKSPACE_ROOT`, `.agents/plugins/`, and `.codex/` when checked in here
 - workspace bootstrap notes, Codex-plane regeneration notes, and AGENTS map audit surfaces
+- one admitted repo-local procedure for diagnosing concrete workspace capability-delivery disagreements
 - owner-local statistical questions over public route and audit evidence
 
 It does not own:
@@ -22,8 +23,9 @@ It does not own:
 - AoA center doctrine, which belongs in `Agents-of-Abyss`
 - ToS authored meaning, which belongs in `Tree-of-Sophia`
 - runtime behavior, which belongs in `abyss-stack`
-- SDK helpers, skills, techniques, evals, routing, memory, KAG, playbooks,
-  shared stats grammar, agent, or seed canon owned by sibling repos
+- SDK helpers, shared skills, sibling home skills, techniques, evals, routing,
+  memory, KAG, playbooks, shared stats grammar, agent, or seed canon owned by
+  sibling repos
 
 ## Start here
 
@@ -61,7 +63,7 @@ needed, say so in closeout.
 - `ATM10-Agent`: local companion behavior, perception, retrieval, KAG-in-project, safe operator automation.
 - `aoa-sdk`: typed workspace integration, discovery, compatibility, passive skill inspection, and explicit user-profile bootstrap.
 - `aoa-techniques`: reusable engineering practice.
-- `aoa-skills`: the shared capability contract and the small portable bundle family.
+- `aoa-skills`: the shared portable bundle family and common owner-home compatibility contract.
 - `aoa-evals`: portable proof and evaluation surfaces.
 - `aoa-routing`: navigation and dispatch hints.
 - `aoa-memo`: explicit memory and recall objects.
@@ -70,7 +72,7 @@ needed, say so in closeout.
 - `aoa-agents`: role contracts, handoff posture, progression and checkpoint contract surfaces.
 - `aoa-stats`: shared measurement grammar, owner-local stats federation, and
   derived non-sovereign read models.
-- `8Dionysus`: public route map, shared-root projection source, AGENTS map audit.
+- `8Dionysus`: public route map, shared-root projection source, AGENTS map audit, and concrete workspace-delivery diagnosis.
 
 ## Memory route
 
@@ -119,6 +121,12 @@ Semantic skill retrieval and composition belong to `aoa-kag`; neither SDK
 inspection nor surface detection selects, activates, or executes a skill.
 Use `aoa surfaces detect` only as additive read-only routing help.
 
+For one concrete mismatch among skill, MCP, or tool source, projection,
+consumer scope, prompt/catalog visibility, configuration, transport, and owner
+service, use the repo-local `aoa-workspace-diagnose` home skill. General
+orientation remains in this route card and KAG. Diagnosis is read-only and does
+not authorize repair, install, restart, or configuration mutation.
+
 Risky mutations remain governed by the nearest owner `AGENTS.md`, explicit
 host or human confirmation, and the applicable runtime boundary. There is no
 SDK-owned skill ingress or mutation-gate command.
@@ -128,6 +136,7 @@ SDK-owned skill ingress or mutation-gate command.
 - When shared-root install surfaces change, edit the source-owned copy under `<workspace-root>/8Dionysus/` first, then project them into the live workspace root.
 - Do not treat live projected copies at `/AGENTS.md`, `/AOA_WORKSPACE_ROOT`, `/.agents/`, or `/.codex/` as primary truth; in projection wording, do not treat the live copies as source.
 - `8Dionysus` does not project shared bundles into `<workspace-root>/.agents/skills`. Shared AoA bundles install once through the `aoa-skills` `user-default` profile; repository projections come only from admitted owner-local `skills/` homes.
+- `skills/aoa-workspace-diagnose/` is this repository's canonical local procedure; `.agents/skills/aoa-workspace-diagnose/` is its exact repo-only projection and remains excluded from workspace-root copy and prune authority.
 - Keep `8Dionysus/README.md` profile-owned and GitHub-facing.
 - Treat generated or install drift as a route signal: keep the evidence narrow, route it to the owner repository, and do not promote derived reports into authority.
 - Before large AGENTS refactors, run the map audit:

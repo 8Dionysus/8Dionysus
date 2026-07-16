@@ -10,9 +10,14 @@ Use the smallest route that matches the question. This page routes humans and ag
 - For the local-first companion surface, go to **[ATM10-Agent](https://github.com/8Dionysus/ATM10-Agent)**.
 - For typed access and workspace integration, go to **[aoa-sdk](https://github.com/8Dionysus/aoa-sdk)**.
 
-## Practice to proof route
+## Practice, capability, proof, and measurement routes
 
-- For the practice -> execution -> proof -> statistical measurability path, move through **[aoa-techniques](https://github.com/8Dionysus/aoa-techniques)** -> **[aoa-skills](https://github.com/8Dionysus/aoa-skills)** -> **[aoa-evals](https://github.com/8Dionysus/aoa-evals)** -> **[aoa-stats](https://github.com/8Dionysus/aoa-stats)**.
+- For reusable engineering practice, go to **[aoa-techniques](https://github.com/8Dionysus/aoa-techniques)**.
+- For shared portable skills and the common repository-home contract, go to **[aoa-skills](https://github.com/8Dionysus/aoa-skills)**; repository-specific skills remain with their owners.
+- For bounded proof, go to **[aoa-evals](https://github.com/8Dionysus/aoa-evals)**; for shared measurement grammar and federated owner-local questions, go to **[aoa-stats](https://github.com/8Dionysus/aoa-stats)**.
+
+These layers may compose when a real task needs them. A technique is not a
+required parent or execution dependency of a skill.
 
 ## Public AoA layer routes
 
@@ -32,6 +37,7 @@ Use the smallest route that matches the question. This page routes humans and ag
 - For a compact shared vocabulary, see **[GLOSSARY.md](../GLOSSARY.md)**.
 - For the compact planted capability map, see **[SYSTEM_CAPABILITY_MAP.md](SYSTEM_CAPABILITY_MAP.md)**.
 - For the sibling-workspace layout and shared install route, see **[WORKSPACE_INSTALL.md](WORKSPACE_INSTALL.md)**.
+- For one concrete missing or drifting skill, MCP, or tool from inside this repository, use the admitted **[`aoa-workspace-diagnose`](../skills/aoa-workspace-diagnose/SKILL.md)** home skill; use route cards and KAG for general orientation.
 - For the source-owned Codex-plane manifest, rerender, and drift-check route, see **[CODEX_PLANE_REGENERATION.md](CODEX_PLANE_REGENERATION.md)**.
 - For owner-routed component drift at the shared workspace root, see **[COMPONENT_REFRESH_ROUTE.md](COMPONENT_REFRESH_ROUTE.md)**.
 - For live Codex-plane trust, rollout, doctor, and rollback posture after rerender, see **[CODEX_PLANE_ROLLOUT.md](CODEX_PLANE_ROLLOUT.md)**.

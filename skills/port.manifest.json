@@ -1,0 +1,25 @@
+{
+  "schema_version": "aoa_skill_home_port_v1",
+  "contract_ref": "aoa-skills:schemas/skill-home-port.schema.json",
+  "owner_repo": "8Dionysus",
+  "owner_ref": "AGENTS.md",
+  "bundles": [
+    {
+      "name": "aoa-workspace-diagnose",
+      "path": "skills/aoa-workspace-diagnose",
+      "version": "0.1.0",
+      "lifecycle": "admitted",
+      "visibility": "advertised",
+      "admission_ref": "docs/decisions/8DION-D-0018-workspace-capability-diagnosis-home-skill.md"
+    }
+  ],
+  "projection": {
+    "runtime": "codex",
+    "scope": "repo",
+    "root": ".agents/skills",
+    "mode": "generated-copy",
+    "skills": [
+      "aoa-workspace-diagnose"
+    ]
+  }
+}

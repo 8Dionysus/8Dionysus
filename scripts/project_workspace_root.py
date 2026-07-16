@@ -64,7 +64,7 @@ SHARED_ROOT_SURFACES = (
         ".codex",
         ".codex",
         "copy_tree",
-        exclude_roots=("generated",),
+        exclude_roots=("generated", "worktrees"),
         exclude_names=("__pycache__", ".pytest_cache"),
         exclude_suffixes=(".pyc", ".pyo", ".pyd"),
     ),
@@ -131,6 +131,11 @@ def _projection_contract(repo_root: Path, workspace_root: Path, *, changed: bool
         "shared_skill_install_owner": "aoa-skills",
         "shared_skill_install_scope": "user",
         "repo_skill_projection_owner": "target repository home-skill builder",
+        "workspace_codex_deploy_local_roots_managed": False,
+        "workspace_codex_deploy_local_roots": [
+            (workspace_root / ".codex" / "generated").as_posix(),
+            (workspace_root / ".codex" / "worktrees").as_posix(),
+        ],
         "skill_projection_note": (
             "Shared AoA skills install once through the aoa-skills user-default profile. "
             "A repository projection may contain only that repository's admitted home bundles."

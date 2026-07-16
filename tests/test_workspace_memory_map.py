@@ -21,6 +21,16 @@ def write_text(path: Path, text: str) -> None:
 
 
 class WorkspaceMemoryMapTests(unittest.TestCase):
+    def test_validator_accepts_explicit_workspace_root(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            workspace = Path(tmp)
+
+            args = validate_workspace_memory_map.parse_args(
+                ["--workspace-root", str(workspace)]
+            )
+
+            self.assertEqual(args.workspace_root, workspace)
+
     def test_route_only_and_full_port_classification(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             workspace = Path(tmp)

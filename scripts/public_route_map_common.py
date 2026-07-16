@@ -121,7 +121,8 @@ def parse_public_entry_posture_rows(text: str) -> list[dict[str, str]]:
     return rows
 
 
-def build_payload() -> dict[str, object]:
+def build_payload(*, workspace_root: Path | None = None) -> dict[str, object]:
+    workspace_root = (workspace_root or WORKSPACE_ROOT).resolve()
     rows = parse_public_entry_posture_rows(PUBLIC_ENTRY_POSTURE_PATH.read_text(encoding="utf-8"))
     if len(rows) != len(ROUTE_METADATA_BY_NEED):
         raise ValueError("PUBLIC_ENTRY_POSTURE.md must publish exactly three onboarding rows")
@@ -142,10 +143,22 @@ def build_payload() -> dict[str, object]:
                 f"need '{need}' must keep canonical home '{expected_repo}', got '{canonical_repo}'"
             )
         metadata = ROUTE_METADATA_BY_NEED[need]
-        validate_low_context_repo_ref(metadata["capsule_ref"], f"route:{metadata['route_id']}.capsule_ref")
-        validate_low_context_repo_ref(metadata["authority_ref"], f"route:{metadata['route_id']}.authority_ref")
+        validate_low_context_repo_ref(
+            metadata["capsule_ref"],
+            f"route:{metadata['route_id']}.capsule_ref",
+            workspace_root=workspace_root,
+        )
+        validate_low_context_repo_ref(
+            metadata["authority_ref"],
+            f"route:{metadata['route_id']}.authority_ref",
+            workspace_root=workspace_root,
+        )
         for ref in metadata["verification_refs"]:
-            validate_low_context_repo_ref(ref, f"route:{metadata['route_id']}.verification_refs")
+            validate_low_context_repo_ref(
+                ref,
+                f"route:{metadata['route_id']}.verification_refs",
+                workspace_root=workspace_root,
+            )
         routes.append(
             {
                 "route_id": metadata["route_id"],
@@ -181,23 +194,29 @@ def resolve_local_ref(value: str) -> Path:
     return target_path
 
 
-def resolve_repo_ref(value: str) -> Path:
+def resolve_repo_ref(value: str, *, workspace_root: Path | None = None) -> Path:
     repo_name, separator, relative_path = value.partition(":")
     if separator != ":" or not repo_name or not relative_path:
         raise ValueError(f"invalid repo-qualified ref '{value}'")
-    repo_root = REPO_ROOT if repo_name == "8Dionysus" else WORKSPACE_ROOT / repo_name
+    sibling_root = (workspace_root or WORKSPACE_ROOT).resolve()
+    repo_root = REPO_ROOT if repo_name == "8Dionysus" else sibling_root / repo_name
     target_path = repo_root / relative_path
     if not target_path.exists():
         raise ValueError(f"missing ref target '{value}'")
     return target_path
 
 
-def validate_low_context_repo_ref(value: str, location: str) -> Path:
+def validate_low_context_repo_ref(
+    value: str,
+    location: str,
+    *,
+    workspace_root: Path | None = None,
+) -> Path:
     _, _, relative_path = value.partition(":")
     for prefix in FORBIDDEN_LOW_CONTEXT_PREFIXES:
         if relative_path.startswith(prefix):
             raise ValueError(f"{location} must not point to implementation path '{value}'")
-    return resolve_repo_ref(value)
+    return resolve_repo_ref(value, workspace_root=workspace_root)
 
 
 def load_schema() -> dict[str, object]:

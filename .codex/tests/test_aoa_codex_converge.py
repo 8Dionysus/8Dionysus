@@ -54,10 +54,35 @@ developer_instructions = "test"
 def _plugin_manifest() -> dict[str, object]:
     return {
         "name": "aoa-shared-launchers",
-        "version": "0.1.0",
+        "version": "0.2.0",
         "description": "test plugin",
         "skills": "./skills/",
     }
+
+
+def _write_owner_scoped_skill_sources(root: Path) -> None:
+    _write_json(
+        root / "aoa-skills" / "config" / "skill_pack_profiles.json",
+        {
+            "schema_version": 2,
+            "profiles": {
+                "user-default": {
+                    "scope": "user",
+                    "install_mode": "copy",
+                    "skills": ["aoa-decision"],
+                }
+            },
+        },
+    )
+    _write_json(
+        root / "8Dionysus" / "skills" / "port.manifest.json",
+        {
+            "schema_version": "aoa_skill_home_port_v1",
+            "owner_repo": "8Dionysus",
+            "bundles": [{"name": "aoa-workspace-diagnose"}],
+            "projection": {"root": ".agents/skills"},
+        },
+    )
 
 
 def test_write_bootstrap_scaffold_creates_core_paths(tmp_path: Path) -> None:
@@ -323,11 +348,21 @@ def test_plugin_marketplace_path_can_point_into_dot_codex(tmp_path: Path) -> Non
     names_to_status = {item["name"]: item["status"] for item in report["surfaces"]}
     assert names_to_status["plugin_marketplace"] == "ok"
     assert names_to_status["plugin_source"] == "ok"
-    assert names_to_status["skill_bridge"] == "ok"
 
 
-def test_warn_for_stranded_sibling_skills(tmp_path: Path) -> None:
+def test_owner_scoped_skill_delivery_does_not_claim_live_visibility(tmp_path: Path) -> None:
     write_bootstrap_scaffold(tmp_path)
+    _write_owner_scoped_skill_sources(tmp_path)
+
+    report = build_report(tmp_path)
+    item = next(s for s in report["surfaces"] if s["name"] == "skill_delivery_contract")
+    assert item["status"] == "info"
+    assert "live host visibility is not inferred" in item["summary"]
+
+
+def test_warn_for_workspace_root_skill_entries(tmp_path: Path) -> None:
+    write_bootstrap_scaffold(tmp_path)
+    _write_owner_scoped_skill_sources(tmp_path)
     _write(
         tmp_path / ".codex" / "config.toml",
         f"""
@@ -343,14 +378,15 @@ cwd = "{tmp_path / 'aoa-sdk'}"
     for name in ["architect", "coder", "reviewer", "evaluator", "memory-keeper"]:
         _write(tmp_path / ".codex" / "agents" / f"{name}.toml", _agent_toml(name))
     _write(
-        tmp_path / "aoa-skills" / ".agents" / "skills" / "dummy" / "SKILL.md",
+        tmp_path / ".agents" / "skills" / "legacy-shared" / "SKILL.md",
         "---\nname: dummy\ndescription: dummy\n---\n",
     )
 
     report = build_report(tmp_path)
-    item = next(s for s in report["surfaces"] if s["name"] == "skill_bridge")
+    item = next(s for s in report["surfaces"] if s["name"] == "skill_delivery_contract")
     assert item["status"] == "warn"
-    assert "stranded" in item["summary"]
+    assert "owner review" in item["summary"]
+    assert "do not restore a shared workspace skill bridge" in item["next_step"]
 
 
 def test_markdown_renderer_mentions_counts(tmp_path: Path) -> None:

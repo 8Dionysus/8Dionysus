@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -13,8 +14,27 @@ from public_route_map_common import SURFACE_PAYLOAD, build_payload, parse_public
 
 
 class PublicRouteMapTests(unittest.TestCase):
+    def setUp(self) -> None:
+        temporary = tempfile.TemporaryDirectory()
+        self.addCleanup(temporary.cleanup)
+        self.workspace_root = Path(temporary.name)
+        refs = (
+            "Agents-of-Abyss/generated/center_entry_map.min.json",
+            "Agents-of-Abyss/generated/ecosystem_registry.min.json",
+            "Agents-of-Abyss/generated/federation_supporting_inventory.min.json",
+            "Agents-of-Abyss/CHARTER.md",
+            "aoa-sdk/generated/workspace_control_plane.min.json",
+            "aoa-sdk/docs/boundaries.md",
+            "aoa-sdk/docs/workspace-layout.md",
+            "aoa-sdk/docs/versioning.md",
+        )
+        for relative in refs:
+            path = self.workspace_root / relative
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text("fixture\n", encoding="utf-8")
+
     def test_build_payload_stays_orientation_only(self) -> None:
-        payload = build_payload()
+        payload = build_payload(workspace_root=self.workspace_root)
 
         self.assertEqual(payload["schema_version"], "8dionysus_public_route_map_v2")
         self.assertEqual(payload["schema_ref"], "schemas/public-route-map.schema.json")
@@ -44,7 +64,7 @@ class PublicRouteMapTests(unittest.TestCase):
         self.assertEqual(by_need["profile-only route or glossary correction"], "8Dionysus")
 
     def test_workspace_route_uses_sdk_capsule_surface(self) -> None:
-        payload = build_payload()
+        payload = build_payload(workspace_root=self.workspace_root)
         workspace_route = next(
             route for route in payload["routes"] if route["route_id"] == "workspace-bootstrap"
         )
@@ -64,7 +84,7 @@ class PublicRouteMapTests(unittest.TestCase):
         )
 
     def test_ecosystem_route_uses_center_entry_capsule(self) -> None:
-        payload = build_payload()
+        payload = build_payload(workspace_root=self.workspace_root)
         ecosystem_route = next(
             route for route in payload["routes"] if route["route_id"] == "ecosystem-understanding"
         )
@@ -105,7 +125,7 @@ class PublicRouteMapTests(unittest.TestCase):
         )
 
     def test_profile_route_uses_start_here_surface(self) -> None:
-        payload = build_payload()
+        payload = build_payload(workspace_root=self.workspace_root)
         profile_route = next(
             route for route in payload["routes"] if route["route_id"] == "profile-correction"
         )
@@ -116,7 +136,7 @@ class PublicRouteMapTests(unittest.TestCase):
         self.assertIn("docs/START_HERE.md", posture)
 
     def test_payload_is_json_serializable(self) -> None:
-        payload = build_payload()
+        payload = build_payload(workspace_root=self.workspace_root)
         rendered = json.dumps(payload, separators=(",", ":"))
 
         self.assertIn("orientation_surface", rendered)

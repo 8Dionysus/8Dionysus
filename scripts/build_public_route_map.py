@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+from pathlib import Path
 
 from public_route_map_common import PUBLIC_ROUTE_MAP_PATH, build_payload, render_payload
 
@@ -15,12 +16,20 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Verify the generated file matches the canonical rebuild instead of rewriting it.",
     )
+    parser.add_argument(
+        "--workspace-root",
+        type=Path,
+        help=(
+            "Sibling workspace root used to resolve owner-qualified refs. "
+            "Defaults to the parent of this checkout."
+        ),
+    )
     return parser.parse_args()
 
 
 def main() -> int:
     args = parse_args()
-    payload = build_payload()
+    payload = build_payload(workspace_root=args.workspace_root)
     rendered = render_payload(payload)
     PUBLIC_ROUTE_MAP_PATH.parent.mkdir(parents=True, exist_ok=True)
     if args.check:

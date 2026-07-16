@@ -3,7 +3,9 @@
 
 from __future__ import annotations
 
+import argparse
 import json
+from pathlib import Path
 
 from public_route_map_common import (
     SURFACE_PAYLOAD,
@@ -16,8 +18,22 @@ from public_route_map_common import (
 )
 
 
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--workspace-root",
+        type=Path,
+        help=(
+            "Sibling workspace root used to resolve owner-qualified refs. "
+            "Defaults to the parent of this checkout."
+        ),
+    )
+    return parser.parse_args()
+
+
 def main() -> int:
-    expected_payload = build_payload()
+    args = parse_args()
+    expected_payload = build_payload(workspace_root=args.workspace_root)
     current_payload = json.loads(PUBLIC_ROUTE_MAP_PATH.read_text(encoding="utf-8"))
     validate_payload_schema(current_payload)
     if current_payload != expected_payload:
@@ -50,15 +66,27 @@ def main() -> int:
             value = route.get(key)
             if not value:
                 raise SystemExit(f"generated/public_route_map.min.json is missing route field '{key}'")
-        validate_low_context_repo_ref(route["capsule_ref"], f"route:{route['route_id']}.capsule_ref")
-        validate_low_context_repo_ref(route["authority_ref"], f"route:{route['route_id']}.authority_ref")
+        validate_low_context_repo_ref(
+            route["capsule_ref"],
+            f"route:{route['route_id']}.capsule_ref",
+            workspace_root=args.workspace_root,
+        )
+        validate_low_context_repo_ref(
+            route["authority_ref"],
+            f"route:{route['route_id']}.authority_ref",
+            workspace_root=args.workspace_root,
+        )
         verification_refs = route["verification_refs"]
         if not isinstance(verification_refs, list) or not verification_refs:
             raise SystemExit("generated/public_route_map.min.json verification_refs must be a non-empty list")
         for ref in verification_refs:
             if not isinstance(ref, str) or not ref.strip():
                 raise SystemExit("generated/public_route_map.min.json verification_refs must contain strings")
-            validate_low_context_repo_ref(ref, f"route:{route['route_id']}.verification_refs")
+            validate_low_context_repo_ref(
+                ref,
+                f"route:{route['route_id']}.verification_refs",
+                workspace_root=args.workspace_root,
+            )
 
     print("[ok] validated generated/public_route_map.min.json")
     return 0

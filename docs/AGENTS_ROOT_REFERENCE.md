@@ -21,6 +21,13 @@ owner-scoped projection model recorded in
 `docs/decisions/8DION-D-0017-owner-scoped-skill-projections.md`. Use the live
 root `AGENTS.md` and `docs/WORKSPACE_INSTALL.md` for current commands.
 
+The preserved plugin advice for generic cross-repo orientation and Codex wiring
+diagnosis is also historical. `8DION-D-0018` retired
+`aoa-workspace-recon` and `aoa-config-doctor`: use live route cards and KAG for
+orientation, the repo home `aoa-workspace-diagnose` for one concrete read-only
+delivery disagreement, and the convergence wrappers for their named tool
+operations. The historical body below remains unchanged as evidence.
+
 ## Preserved root AGENTS.md from before Pack 5
 
 # AGENTS.md — <workspace-root> workspace

@@ -211,6 +211,7 @@ Projection edit law:
 - when a shared-root install surface needs a real change, edit the source-owned copy under `<workspace-root>/8Dionysus/` first and then project it into the live workspace root
 - do not treat the live copies at `<workspace-root>/AGENTS.md`, `<workspace-root>/AOA_WORKSPACE_ROOT`, `<workspace-root>/.agents/`, or `<workspace-root>/.codex/` as the primary source of truth
 - preview or verify that drift with `<workspace-root>/.codex/bin/aoa-workspace-project --check --json`, then apply with `--execute`
+- the installed launcher never fetches and must refuse before planning when its selected owner checkout differs from the declared local source ref or has dirty projector-controlled or managed source paths; select a clean merged checkout with `--source-root` instead of projecting from stale owner state
 - keep `<workspace-root>/8Dionysus/README.md` profile-owned and GitHub-facing; it is not part of the shared-root projection contract
 
 ## AGENTS map audit

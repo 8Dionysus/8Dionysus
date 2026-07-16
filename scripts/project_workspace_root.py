@@ -5,6 +5,7 @@ import json
 import os
 import shutil
 import stat
+import subprocess
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -72,6 +73,8 @@ SHARED_ROOT_SURFACES = (
     ),
 )
 
+PROJECTION_CONTROL_PATHS = ("scripts/project_workspace_root.py",)
+
 
 def render_agents_text(source_text: str, workspace_root: Path) -> str:
     return source_text.replace(WORKSPACE_ROOT_PLACEHOLDER, workspace_root.as_posix())
@@ -83,9 +86,11 @@ def project_workspace_root(
     *,
     execute: bool = False,
     prune: bool = False,
+    source_ref: str = "origin/main",
 ) -> dict[str, object]:
     repo_root = repo_root.resolve()
     workspace_root = workspace_root.resolve()
+    source_currentness = inspect_source_currentness(repo_root, source_ref)
     operations = _build_operations(repo_root, workspace_root, prune=prune)
     if execute:
         for operation in operations:
@@ -102,10 +107,122 @@ def project_workspace_root(
         "changed": bool(summary),
         "surface_count": len(SHARED_ROOT_SURFACES),
         "managed_surfaces": [surface.dest_rel for surface in SHARED_ROOT_SURFACES],
+        "source_currentness": source_currentness,
         "projection_contract": projection_contract,
         "next_step": projection_contract["next_step"],
         "operation_count": len(summary),
         "operations": summary,
+    }
+
+
+def inspect_source_currentness(repo_root: Path, source_ref: str = "origin/main") -> dict[str, object]:
+    """Describe whether the selected owner checkout is safe for live projection.
+
+    This is intentionally local-only: it compares the checked-out commit with an
+    already available Git reference and checks dirty paths only inside surfaces
+    managed by this projector. It never fetches, resets, or mutates the source.
+    """
+
+    repo_root = repo_root.resolve()
+    head = _git_text(repo_root, "rev-parse", "HEAD")
+    reference_commit = _git_text(repo_root, "rev-parse", "--verify", f"{source_ref}^{{commit}}")
+    git_repo = head is not None
+    managed_dirty_paths = _managed_dirty_paths(repo_root) if git_repo else []
+    reasons: list[str] = []
+
+    if not git_repo:
+        reasons.append("not_git_worktree")
+    if reference_commit is None:
+        reasons.append("source_reference_unavailable")
+    elif head != reference_commit:
+        reasons.append("head_differs_from_source_reference")
+    if managed_dirty_paths:
+        reasons.append("managed_source_dirty")
+
+    return {
+        "git_repo": git_repo,
+        "source_ref": source_ref,
+        "reference_scope": "local_git_ref",
+        "network_refresh_performed": False,
+        "head_commit": head,
+        "reference_commit": reference_commit,
+        "head_matches_reference": bool(head and reference_commit and head == reference_commit),
+        "managed_source_dirty": bool(managed_dirty_paths),
+        "managed_dirty_paths": managed_dirty_paths,
+        "current": not reasons,
+        "reasons": reasons,
+    }
+
+
+def _git_text(repo_root: Path, *args: str) -> str | None:
+    result = subprocess.run(
+        ["git", "-C", repo_root.as_posix(), *args],
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    if result.returncode != 0:
+        return None
+    value = result.stdout.strip()
+    return value or None
+
+
+def _managed_dirty_paths(repo_root: Path) -> list[str]:
+    tracked = _git_lines(repo_root, "diff", "--name-only", "HEAD", "--")
+    untracked = _git_lines(repo_root, "ls-files", "--others", "--exclude-standard", "--")
+    return sorted({path for path in (*tracked, *untracked) if _is_managed_source_path(path)})
+
+
+def _git_lines(repo_root: Path, *args: str) -> list[str]:
+    result = subprocess.run(
+        ["git", "-C", repo_root.as_posix(), *args],
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    if result.returncode != 0:
+        return []
+    return [line for line in result.stdout.splitlines() if line]
+
+
+def _is_managed_source_path(relative_path: str) -> bool:
+    if relative_path in PROJECTION_CONTROL_PATHS:
+        return True
+    path = Path(relative_path)
+    for surface in SHARED_ROOT_SURFACES:
+        source_root = Path(surface.source_rel)
+        if surface.mode != "copy_tree":
+            if path == source_root:
+                return True
+            continue
+        try:
+            nested = path.relative_to(source_root)
+        except ValueError:
+            continue
+        if nested == Path("."):
+            return True
+        return not _should_exclude(surface, nested)
+    return False
+
+
+def _source_refusal_report(
+    repo_root: Path,
+    workspace_root: Path,
+    source_currentness: dict[str, object],
+) -> dict[str, object]:
+    return {
+        "repo_root": repo_root.as_posix(),
+        "owner_repo": "8Dionysus",
+        "workspace_root": workspace_root.as_posix(),
+        "mode": "refused",
+        "changed": False,
+        "operation_count": 0,
+        "operations": [],
+        "source_currentness": source_currentness,
+        "next_step": (
+            "Select a clean 8Dionysus checkout whose HEAD matches the declared source reference, "
+            "or reconcile the owner checkout before preview, check, or execution."
+        ),
     }
 
 
@@ -421,6 +538,11 @@ def _format_text_report(report: dict[str, object]) -> str:
         f"operation_count: {report['operation_count']}",
         f"owner_repo: {report['owner_repo']}",
     ]
+    currentness = report.get("source_currentness")
+    if isinstance(currentness, dict):
+        lines.append(f"source_current: {currentness.get('current', False)}")
+        if currentness.get("reasons"):
+            lines.append(f"source_currentness_reasons: {', '.join(currentness['reasons'])}")
     for operation in report["operations"]:
         path = operation["dest_path"]
         reason = operation["reason"]
@@ -435,6 +557,27 @@ def _format_text_report(report: dict[str, object]) -> str:
 def main() -> int:
     parser = argparse.ArgumentParser(
         description="Project the selected 8Dionysus shared-root install surfaces into a live workspace root.",
+    )
+    parser.add_argument(
+        "--source-root",
+        type=Path,
+        default=REPO_ROOT,
+        help="8Dionysus owner checkout to project from. Defaults to the checkout containing this script.",
+    )
+    parser.add_argument(
+        "--source-ref",
+        default="origin/main",
+        help="Local Git reference that the source HEAD must match when current-source enforcement is enabled.",
+    )
+    parser.add_argument(
+        "--require-current-source",
+        action="store_true",
+        help="Refuse before planning operations unless source HEAD matches --source-ref and managed source paths are clean.",
+    )
+    parser.add_argument(
+        "--allow-noncurrent-source",
+        action="store_true",
+        help="Explicitly allow execution from a source that does not match --source-ref. Intended only for reviewed branch trials.",
     )
     parser.add_argument(
         "--workspace-root",
@@ -469,8 +612,28 @@ def main() -> int:
 
     if args.execute and args.check:
         parser.error("--execute and --check cannot be used together")
+    if args.require_current_source and args.allow_noncurrent_source:
+        parser.error("--require-current-source and --allow-noncurrent-source cannot be used together")
 
-    report = project_workspace_root(REPO_ROOT, args.workspace_root, execute=args.execute, prune=args.prune)
+    source_root = args.source_root.resolve()
+    workspace_root = args.workspace_root.resolve()
+    source_currentness = inspect_source_currentness(source_root, args.source_ref)
+    current_source_required = args.require_current_source or (args.execute and not args.allow_noncurrent_source)
+    if current_source_required and not source_currentness["current"]:
+        report = _source_refusal_report(source_root, workspace_root, source_currentness)
+        if args.json:
+            print(json.dumps(report, indent=2))
+        else:
+            print(_format_text_report(report))
+        return 2
+
+    report = project_workspace_root(
+        source_root,
+        workspace_root,
+        execute=args.execute,
+        prune=args.prune,
+        source_ref=args.source_ref,
+    )
 
     if args.json:
         print(json.dumps(report, indent=2))

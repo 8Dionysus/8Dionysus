@@ -70,6 +70,9 @@ nickname_candidates = ["Delta"]
 # - aoa_kag
 # - aoa_decisions
 # - abyss_machine
+# - aoa_4pda_connector
+# - aoa_telegram_connector
+# - aoa_discord_connector
 
 [mcp_servers.aoa_workspace]
 command = "python3"
@@ -114,4 +117,19 @@ cwd = "/srv/AbyssOS"
 [mcp_servers.abyss_machine]
 command = "python3"
 args = [".codex/bin/abyss-machine-mcp-server.py"]
+cwd = "/srv/AbyssOS"
+
+[mcp_servers.aoa_4pda_connector]
+command = "python3"
+args = [".codex/bin/aoa-4pda-connector-mcp-server.py"]
+cwd = "/srv/AbyssOS"
+
+[mcp_servers.aoa_telegram_connector]
+command = "python3"
+args = [".codex/bin/aoa-telegram-connector-mcp-server.py"]
+cwd = "/srv/AbyssOS"
+
+[mcp_servers.aoa_discord_connector]
+command = "python3"
+args = [".codex/bin/aoa-discord-connector-mcp-server.py"]
 cwd = "/srv/AbyssOS"

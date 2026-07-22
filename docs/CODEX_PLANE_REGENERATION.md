@@ -37,7 +37,9 @@ It does not own:
 - MCP implementation owned by `aoa-sdk` for `aoa_workspace`, `Dionysus` for
   `dionysus`, and `abyss-stack` for stack-owned access planes such as
   `aoa-stats-mcp`, `aoa-memo-mcp`, `aoa-session-memory-mcp`, `aoa-evals-mcp`,
-  `aoa-kag-mcp`, `aoa-decisions-mcp`, and `abyss-machine-mcp`; `aoa-stats`
+  `aoa-kag-mcp`, `aoa-decisions-mcp`, `abyss-machine-mcp`,
+  `aoa-4pda-connector-mcp`, `aoa-telegram-connector-mcp`, and
+  `aoa-discord-connector-mcp`; `aoa-stats`
   owns the statistical meaning exposed through `aoa_stats`, `.aoa` owns raw
   session evidence exposed by `aoa_session_memory`, `aoa-evals` owns the proof
   contract exposed by `aoa_evals`, `aoa-kag` owns KAG meaning exposed by
@@ -87,7 +89,7 @@ The regeneration path must preserve the stable project-facing names that other
 AoA surfaces may already depend on:
 
 - project root markers: `AOA_WORKSPACE_ROOT`, `.git`
-- MCP server names: `aoa_workspace`, `aoa_stats`, `dionysus`, `aoa_memo`, `aoa_session_memory`, `aoa_evals`, `aoa_kag`, `aoa_decisions`, `abyss_machine`
+- MCP server names: `aoa_workspace`, `aoa_stats`, `dionysus`, `aoa_memo`, `aoa_session_memory`, `aoa_evals`, `aoa_kag`, `aoa_decisions`, `abyss_machine`, `aoa_4pda_connector`, `aoa_telegram_connector`, `aoa_discord_connector`
 - hook events: `SessionStart`, `UserPromptSubmit`, `Stop`
 
 ## Relation to projection

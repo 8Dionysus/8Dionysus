@@ -17,6 +17,9 @@ STABLE_MCP_SERVER_NAMES = [
     "aoa_kag",
     "aoa_decisions",
     "abyss_machine",
+    "aoa_4pda_connector",
+    "aoa_telegram_connector",
+    "aoa_discord_connector",
 ]
 
 
@@ -96,6 +99,17 @@ def validate_codex_plane_regeneration(
     machine_launcher = resolved_repo_root / ".codex" / "bin" / "abyss-machine-mcp-server.py"
     if not machine_launcher.exists():
         raise ValueError(f"missing source-owned abyss_machine launcher: {machine_launcher}")
+    for connector_name in ("4pda", "telegram", "discord"):
+        connector_launcher = (
+            resolved_repo_root
+            / ".codex"
+            / "bin"
+            / f"aoa-{connector_name}-connector-mcp-server.py"
+        )
+        if not connector_launcher.exists():
+            raise ValueError(
+                f"missing source-owned aoa_{connector_name}_connector launcher: {connector_launcher}"
+            )
 
     return CodexPlaneValidationSummary(
         repo_root=resolved_repo_root,

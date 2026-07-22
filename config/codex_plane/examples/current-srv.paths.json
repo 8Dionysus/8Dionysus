@@ -46,6 +46,18 @@
     "abyss_machine": {
       "cwd": "/srv/AbyssOS",
       "script_rel": ".codex/bin/abyss-machine-mcp-server.py"
+    },
+    "aoa_4pda_connector": {
+      "cwd": "/srv/AbyssOS",
+      "script_rel": ".codex/bin/aoa-4pda-connector-mcp-server.py"
+    },
+    "aoa_telegram_connector": {
+      "cwd": "/srv/AbyssOS",
+      "script_rel": ".codex/bin/aoa-telegram-connector-mcp-server.py"
+    },
+    "aoa_discord_connector": {
+      "cwd": "/srv/AbyssOS",
+      "script_rel": ".codex/bin/aoa-discord-connector-mcp-server.py"
     }
   },
   "hooks": {

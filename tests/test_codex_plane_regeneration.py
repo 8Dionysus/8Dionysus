@@ -25,6 +25,24 @@ def write_text(path: Path, text: str) -> None:
 
 
 class CodexPlaneRegenerationTests(unittest.TestCase):
+    def test_runtime_manifest_registers_connector_launchers(self) -> None:
+        manifest = render_codex_plane.load_json_object(
+            REPO_ROOT / "config" / "codex_plane" / "runtime_manifest.v1.json"
+        )
+        by_name = {server["name"]: server for server in manifest["mcp_servers"]}
+        expected = {
+            "aoa_4pda_connector": "aoa-4pda-connector-mcp-server.py",
+            "aoa_telegram_connector": "aoa-telegram-connector-mcp-server.py",
+            "aoa_discord_connector": "aoa-discord-connector-mcp-server.py",
+        }
+
+        for name, launcher_name in expected.items():
+            server = by_name[name]
+            self.assertEqual(server["repo_key"], "workspace")
+            self.assertEqual(server["script_rel"], f".codex/bin/{launcher_name}")
+            self.assertNotIn("transport", server)
+            self.assertTrue((REPO_ROOT / server["script_rel"]).is_file())
+
     def test_renderer_matches_checked_in_current_srv_examples(self) -> None:
         manifest = render_codex_plane.load_json_object(
             REPO_ROOT / "config" / "codex_plane" / "runtime_manifest.v1.json"
@@ -68,6 +86,12 @@ class CodexPlaneRegenerationTests(unittest.TestCase):
         )
         self.assertIn('args = [".codex/bin/aoa-stats-mcp-server.py"]', rendered_config)
         self.assertNotIn('args = ["scripts/aoa_stats_mcp_server.py"]', rendered_config)
+        for launcher_name in (
+            "aoa-4pda-connector-mcp-server.py",
+            "aoa-telegram-connector-mcp-server.py",
+            "aoa-discord-connector-mcp-server.py",
+        ):
+            self.assertIn(f'args = [".codex/bin/{launcher_name}"]', rendered_config)
         self.assertEqual(
             rendered_hooks,
             (REPO_ROOT / "config" / "codex_plane" / "examples" / "current-srv.hooks.json").read_text(

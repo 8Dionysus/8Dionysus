@@ -78,6 +78,14 @@ non-mutating route preflight. Host facts, policy, mutation authority, and
 change-ledger truth remain in `abyss-machine`; MCP does not run arbitrary shell,
 privileged commands, repair, cleanup, service lifecycle, or process mutation.
 
+External connector evidence uses the stable Codex-plane handles
+`aoa_4pda_connector`, `aoa_telegram_connector`, and
+`aoa_discord_connector`. The checked-in launchers resolve the stack-owned MCP
+packages without moving source policy, packet truth, credentials, or generated
+storage out of the corresponding connector owner repositories. Authenticated
+loopback HTTP remains a deploy-composed live transport; the checked-in source
+registration stays portable stdio.
+
 If an MCP tool handle reports `Transport closed`, do not claim live MCP
 availability from registration alone. Run the service CLI or stdio smoke check,
 then restart the Codex MCP host/session before relying on live tool calls.

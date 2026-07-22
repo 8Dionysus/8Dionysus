@@ -166,6 +166,24 @@
       "repo_key": "workspace",
       "cwd_repo_rel": "",
       "script_rel": ".codex/bin/abyss-machine-mcp-server.py"
+    },
+    {
+      "name": "aoa_4pda_connector",
+      "repo_key": "workspace",
+      "cwd_repo_rel": "",
+      "script_rel": ".codex/bin/aoa-4pda-connector-mcp-server.py"
+    },
+    {
+      "name": "aoa_telegram_connector",
+      "repo_key": "workspace",
+      "cwd_repo_rel": "",
+      "script_rel": ".codex/bin/aoa-telegram-connector-mcp-server.py"
+    },
+    {
+      "name": "aoa_discord_connector",
+      "repo_key": "workspace",
+      "cwd_repo_rel": "",
+      "script_rel": ".codex/bin/aoa-discord-connector-mcp-server.py"
     }
   ],
   "hooks": {

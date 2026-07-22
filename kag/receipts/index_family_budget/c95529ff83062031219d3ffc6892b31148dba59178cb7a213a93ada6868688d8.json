@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 3386423,
+  "allowed_tracked_bytes": 3977329,
+  "approved_by": "repository-owner",
+  "base_ref": "8c547f73e55d62b5eaac0ee116cd4dbadff03fc7",
+  "changed_generated_bytes": 3386423,
+  "changed_generated_files": 262,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "c95529ff83062031219d3ffc6892b31148dba59178cb7a213a93ada6868688d8",
+  "reason": "Regenerate the portable KAG family for connector MCP launchers, stable registrations, validation, documentation, and the accepted owner decision.",
+  "repo": "8Dionysus",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "generated_delta",
+  "tracked_bytes": 3977329,
+  "tracked_bytes_max": 5242880
+}

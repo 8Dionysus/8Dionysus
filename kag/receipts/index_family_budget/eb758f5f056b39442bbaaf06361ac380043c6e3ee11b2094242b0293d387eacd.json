@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 3498613,
+  "allowed_tracked_bytes": 4011699,
+  "approved_by": "repository-owner",
+  "base_ref": "39cdef104d54d570e7eb4f689ebcd48b2cc6a658",
+  "changed_generated_bytes": 3498613,
+  "changed_generated_files": 270,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "eb758f5f056b39442bbaaf06361ac380043c6e3ee11b2094242b0293d387eacd",
+  "reason": "Retire obsolete Dionysus workspace routes across public docs, Codex configuration, tests, and derived maps; deterministic source reclassification reshards the portable corpus.",
+  "repo": "8Dionysus",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "generated_delta",
+  "tracked_bytes": 4011699,
+  "tracked_bytes_max": 5242880
+}

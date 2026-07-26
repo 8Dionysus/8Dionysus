@@ -27,9 +27,9 @@ required parent or execution dependency of a skill.
 - For recurring operations, scenario composition, and campaign-shaped routes, go to **[aoa-playbooks](https://github.com/8Dionysus/aoa-playbooks)**.
 - For derived knowledge structures and retrieval-ready substrates, go to **[aoa-kag](https://github.com/8Dionysus/aoa-kag)**.
 
-## Supporting and staging routes
+## Supporting routes
 
-- For the seed garden and staging surface, go to **[Dionysus](https://github.com/8Dionysus/Dionysus)**.
+- For voice-first interview protocols and evidence-grounded personal portrait formats, go to **[Dionysus](https://github.com/8Dionysus/Dionysus)**.
 - For the public route map and profile surface, stay in **[8Dionysus](https://github.com/8Dionysus/8Dionysus)**.
 
 ## Local orientation and shared-root routes

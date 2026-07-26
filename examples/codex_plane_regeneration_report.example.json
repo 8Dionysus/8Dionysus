@@ -23,7 +23,6 @@
   "stable_names": {
     "aoa_workspace": true,
     "aoa_stats": true,
-    "dionysus": true,
     "aoa_memo": true,
     "aoa_session_memory": true,
     "aoa_evals": true,

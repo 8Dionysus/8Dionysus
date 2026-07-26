@@ -35,11 +35,6 @@ cwd = "{root / 'aoa-sdk'}"
 command = "python"
 args = [".codex/bin/aoa-stats-mcp-server.py"]
 cwd = "{root}"
-
-[mcp_servers.dionysus]
-command = "python"
-args = ["scripts/dionysus_mcp_server.py"]
-cwd = "{root / 'Dionysus'}"
 """
 
 
@@ -133,13 +128,10 @@ def test_stats_access_plane_detection(tmp_path: Path) -> None:
     _write_json(tmp_path / "aoa-stats" / "stats" / "source_home.manifest.json", {})
     _write_json(tmp_path / "aoa-stats" / "stats" / "federation" / "owner-inventory.json", {})
     _write_json(tmp_path / "aoa-stats" / "generated" / "summary_surface_catalog.min.json", {"surfaces": []})
-    _write(tmp_path / "Dionysus" / "scripts" / "dionysus_mcp_server.py", "print('ok')\n")
-    _write_json(tmp_path / "Dionysus" / "generated" / "seed_route_map.min.json", {"routes": []})
 
     report = build_report(tmp_path)
     names_to_status = {item["name"]: item["status"] for item in report["surfaces"]}
     assert names_to_status["stats_mcp"] == "ok"
-    assert names_to_status["dionysus_mcp"] == "ok"
 
 
 def test_repo_local_stats_server_no_longer_satisfies_access_plane(tmp_path: Path) -> None:

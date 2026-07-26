@@ -63,7 +63,6 @@ nickname_candidates = ["Delta"]
 # Keep these server names stable if skill↔MCP wiring depends on them:
 # - aoa_workspace
 # - aoa_stats
-# - dionysus
 # - aoa_memo
 # - aoa_session_memory
 # - aoa_evals
@@ -83,11 +82,6 @@ cwd = "/srv/AbyssOS/aoa-sdk"
 command = "python3"
 args = [".codex/bin/aoa-stats-mcp-server.py"]
 cwd = "/srv/AbyssOS"
-
-[mcp_servers.dionysus]
-command = "python3"
-args = ["scripts/dionysus_mcp_server.py"]
-cwd = "/srv/AbyssOS/Dionysus"
 
 [mcp_servers.aoa_memo]
 command = "python3"

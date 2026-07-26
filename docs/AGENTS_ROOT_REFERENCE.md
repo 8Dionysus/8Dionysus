@@ -98,7 +98,8 @@ When choosing a primary `repo_root`, route by the question being asked:
 - `aoa-agents` for role contracts and handoff posture
 - `aoa-playbooks` for recurring scenario composition, questlines, and campaign-shaped routes
 - `aoa-kag` for derived provenance-aware knowledge substrates
-- `Dionysus` for seed-garden experiments, staging, and early forms
+- `Dionysus` for voice-first interview protocols and evidence-grounded,
+  human-reviewed personal portrait formats
 - `8Dionysus` for public routing, glossary alignment, and profile-level orientation
 
 If the task is truly cross-repo and no single owner repo is primary yet, use `<workspace-root>` as the temporary `repo_root` only until the owning layer becomes clear.
@@ -202,7 +203,8 @@ Remember:
 - `<workspace-root>/.codex/generated/` remains workspace-local runtime output and must not be mistaken for the source-owned install surface
 - `<workspace-root>/8Dionysus` is the public profile and route map
 - `<workspace-root>/8Dionysus/config/codex_plane/` is the source-owned regeneration surface for the checked-in `.codex/config.toml` and `.codex/hooks.json`
-- `<workspace-root>/Dionysus` is the seed garden and staging surface
+- `<workspace-root>/Dionysus` is the conversational personal portrait protocol
+  surface
 - source repositories live as sibling checkouts under `<workspace-root>`
 - `abyss-stack` is part of the ecosystem, but its preferred source checkout may still live outside `<workspace-root>`; respect `aoa-sdk` workspace discovery and overrides
 
@@ -248,10 +250,9 @@ python scripts/recon_agents_frontier.py \
 
 ## Skill ↔ MCP route discipline
 
-- Prefer AoA skills whose generated `.agents/skills/*/agents/openai.yaml` or documented wiring examples declare named MCP dependencies when the route is sibling-workspace orientation, derived stats observability, Dionysus seed routing, or memory access
+- Prefer AoA skills whose generated `.agents/skills/*/agents/openai.yaml` or documented wiring examples declare named MCP dependencies when the route is sibling-workspace orientation, derived stats observability, or memory access
 - Treat `aoa_workspace` as the first orientation surface when owner-fit is unclear
 - Treat `aoa_stats` as derived observability only. Do not let it overrule owner truth or bounded eval verdicts
-- Treat `dionysus` as seed-garden and planting-lineage context. Do not mistake staging notes for final owner doctrine
 - Treat `aoa_memo` as the memory access plane. It can brief, search, and create candidates, but durable memory truth still lands through `aoa-memo`
 - Treat `aoa_session_memory` as the session-evidence access plane. It can search `.aoa`, trace route maps, build retrieval/evidence packets, and check freshness, but raw transcript and reviewed distillation truth stay in `.aoa`
 - Treat `aoa_evals` as the bounded proof access plane. It can select, inspect,
@@ -288,7 +289,6 @@ workspace:
 
 - `aoa_workspace`
 - `aoa_stats`
-- `dionysus`
 - `aoa_memo`
 - `aoa_session_memory`
 - `aoa_evals`
@@ -299,7 +299,6 @@ Boundary rules:
 - the plugin is a launcher layer, not an owning layer
 - the plugin install path is workspace-local packaging, not owner-repo truth
 - `aoa_stats` remains derived
-- `Dionysus` remains staging and route context
 - `aoa_memo` remains an access plane over reviewed memory, session evidence, and local ports
 - `aoa_session_memory` remains an access plane over `.aoa` raw refs, route maps, and freshness diagnostics
 - `aoa_evals` remains an access plane over bounded proof readers, not a verdict engine

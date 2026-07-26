@@ -69,7 +69,7 @@ Projection rules:
 - install the advertised shared AoA profile once into the host-selected user skill root, normally `${CODEX_HOME:-$HOME/.codex}/skills`; do not reproduce it at the workspace root or in every sibling repository
 - keep a sibling repository's canonical callable procedures under that owner's admitted top-level `skills/` home and derive any repo-local `.agents/skills/` projection only through its owner builder
 - keep `8Dionysus/skills/aoa-workspace-diagnose/` and its exact repo projection inside the `8Dionysus` checkout; the shared-root projector must neither copy nor prune it at `<workspace-root>/.agents/skills/`
-- treat `<workspace-root>/.codex/` as the project-level Codex install surface for hooks, agents, plugins, scripts, convergence tooling, tests, and named MCP server wiring such as `aoa_workspace`, `aoa_stats`, `dionysus`, `aoa_memo`, `aoa_session_memory`, `aoa_evals`, `aoa_kag`, `aoa_decisions`, `abyss_machine`, `aoa_4pda_connector`, `aoa_telegram_connector`, and `aoa_discord_connector`
+- treat `<workspace-root>/.codex/` as the project-level Codex install surface for hooks, agents, plugins, scripts, convergence tooling, tests, and named MCP server wiring such as `aoa_workspace`, `aoa_stats`, `aoa_memo`, `aoa_session_memory`, `aoa_evals`, `aoa_kag`, `aoa_decisions`, `abyss_machine`, `aoa_4pda_connector`, `aoa_telegram_connector`, and `aoa_discord_connector`
 - treat the checked-in `.codex/` tree as the source-owned install subset for the current workspace; the generic projector excludes deploy-composed paths named below
 - the checked-in `.codex/config.toml` and `.codex/hooks.json` are source-owned generated artifacts for the current chosen public workspace root; if that root changes, rerender them from `config/codex_plane/runtime_manifest.v1.json` and the selected profile rather than hand-editing them as the primary change surface
 - keep live `.codex/config.toml` outside generic copy and prune authority: a deployment may retain the stable names while replacing portable stdio with authenticated owner endpoints, so registration changes require the Codex-plane rollout route and live verification
@@ -305,7 +305,8 @@ owner-authorized workflow.
 
 - `8Dionysus` owns the source copies for the selected shared-root install surfaces it projects into the live workspace root.
 - `README.md` in `8Dionysus` remains the profile page and should not be treated as the workspace install authority surface.
-- `Dionysus` is the seed garden and staging surface in the public workspace.
+- `Dionysus` owns voice-first interview protocols and evidence-grounded,
+  human-reviewed personal portrait formats.
 - `aoa-skills` owns shared portable skill exports, install profiles, the common
   home-port grammar, and its structural validators. Each admitted repository
   owns its local skill meaning and lifecycle.

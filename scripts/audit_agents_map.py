@@ -62,8 +62,8 @@ KNOWN_REPOSITORIES: tuple[dict[str, str], ...] = (
     },
     {
         "name": "Dionysus",
-        "role": "seed-garden experiments, staging, and early forms",
-        "kind": "seed-garden",
+        "role": "voice-first interview protocols, evidence-grounded claims, human review, and purpose-bounded personal portrait projections",
+        "kind": "personal-portrait-protocol",
     },
     {
         "name": "aoa-sdk",
@@ -165,6 +165,10 @@ SKIP_DIR_NAMES: frozenset[str] = frozenset(
     }
 )
 
+REPO_SKIP_DIR_NAMES: dict[str, frozenset[str]] = {
+    "Dionysus": frozenset({"legacy"}),
+}
+
 PUBLIC_BASELINE_COUNTS: dict[str, int] = {
     "known_public_repositories": 16,
     "root_agents_observed_lower_bound": 16,
@@ -206,13 +210,14 @@ def line_count(text: str) -> int:
     return text.count("\n") + (0 if text.endswith("\n") else 1)
 
 
-def should_skip(path: Path) -> bool:
-    return any(part in SKIP_DIR_NAMES for part in path.parts)
+def should_skip(path: Path, skip_dir_names: frozenset[str] = SKIP_DIR_NAMES) -> bool:
+    return any(part in skip_dir_names for part in path.parts)
 
 
-def iter_agents_files(repo_root: Path) -> list[Path]:
+def iter_agents_files(repo_root: Path, repo_name: str) -> list[Path]:
     if not repo_root.is_dir():
         return []
+    skip_dir_names = SKIP_DIR_NAMES | REPO_SKIP_DIR_NAMES.get(repo_name, frozenset())
     found: list[Path] = []
     for current_root, dirs, files in os.walk(repo_root):
         current = Path(current_root)
@@ -220,7 +225,8 @@ def iter_agents_files(repo_root: Path) -> list[Path]:
         dirs[:] = [
             name
             for name in dirs
-            if name not in SKIP_DIR_NAMES and not should_skip(relative_current / name)
+            if name not in skip_dir_names
+            and not should_skip(relative_current / name, skip_dir_names)
         ]
         if "AGENTS.md" in files:
             found.append(current / "AGENTS.md")
@@ -299,7 +305,7 @@ def scan_repo(
     role_record = KNOWN_REPO_BY_NAME.get(
         name, {"name": name, "role": "extra scanned repository", "kind": "extra"}
     )
-    agents_paths = iter_agents_files(repo_root)
+    agents_paths = iter_agents_files(repo_root, name)
     agents_by_rel = {relpath(path, repo_root): path for path in agents_paths}
     root_agents = agents_by_rel.get("AGENTS.md")
     nested_agents = [rel for rel in sorted(agents_by_rel) if rel != "AGENTS.md"]

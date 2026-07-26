@@ -34,8 +34,8 @@ note before rerender or rollout, use `docs/COMPONENT_REFRESH_ROUTE.md`.
 It does not own:
 
 - role meaning owned by `aoa-agents`
-- MCP implementation owned by `aoa-sdk` for `aoa_workspace`, `Dionysus` for
-  `dionysus`, and `abyss-stack` for stack-owned access planes such as
+- MCP implementation owned by `aoa-sdk` for `aoa_workspace` and `abyss-stack`
+  for stack-owned access planes such as
   `aoa-stats-mcp`, `aoa-memo-mcp`, `aoa-session-memory-mcp`, `aoa-evals-mcp`,
   `aoa-kag-mcp`, `aoa-decisions-mcp`, `abyss-machine-mcp`,
   `aoa-4pda-connector-mcp`, `aoa-telegram-connector-mcp`, and
@@ -89,7 +89,7 @@ The regeneration path must preserve the stable project-facing names that other
 AoA surfaces may already depend on:
 
 - project root markers: `AOA_WORKSPACE_ROOT`, `.git`
-- MCP server names: `aoa_workspace`, `aoa_stats`, `dionysus`, `aoa_memo`, `aoa_session_memory`, `aoa_evals`, `aoa_kag`, `aoa_decisions`, `abyss_machine`, `aoa_4pda_connector`, `aoa_telegram_connector`, `aoa_discord_connector`
+- MCP server names: `aoa_workspace`, `aoa_stats`, `aoa_memo`, `aoa_session_memory`, `aoa_evals`, `aoa_kag`, `aoa_decisions`, `abyss_machine`, `aoa_4pda_connector`, `aoa_telegram_connector`, `aoa_discord_connector`
 - hook events: `SessionStart`, `UserPromptSubmit`, `Stop`
 
 ## Relation to projection

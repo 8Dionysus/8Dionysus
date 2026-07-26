@@ -34,7 +34,8 @@ A typed local-first access spine and control-plane helper layer for source-owned
 It provides structured reads, workspace integration, compatibility checks, passive owner-scoped skill inspection, explicit user-profile bootstrap, and reviewed evidence handoff without absorbing the charters or implementation truth owned by other repositories.
 
 ### Dionysus
-A seed garden and staging surface for early forms, experiments, and growth before stronger canonization or structural separation.
+A voice-first laboratory for evidence-grounded interview protocols,
+human-reviewed claims, and purpose-bounded personal portrait projections.
 
 ### 8Dionysus
 The public route map and glossary surface for the ecosystem.

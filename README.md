@@ -55,7 +55,7 @@ Arrows mean exchange, feedback, and distillation; they do not transfer ownership
 | AoA layer | [aoa-agents](https://github.com/8Dionysus/aoa-agents) | Role contracts, posture, and handoff boundaries |
 | AoA layer | [aoa-playbooks](https://github.com/8Dionysus/aoa-playbooks) | Recurring operations and scenario composition |
 | AoA layer | [aoa-kag](https://github.com/8Dionysus/aoa-kag) | Derived knowledge structures and retrieval-ready substrates |
-| Support | [Dionysus](https://github.com/8Dionysus/Dionysus) | Seed garden and staging surface |
+| Support | [Dionysus](https://github.com/8Dionysus/Dionysus) | Voice-first, evidence-grounded personal portrait protocols |
 | Support | [8Dionysus](https://github.com/8Dionysus/8Dionysus) | Public profile, route map, and its repo-local workspace-delivery diagnosis |
 
 ## [Start where your question begins](docs/START_HERE.md)

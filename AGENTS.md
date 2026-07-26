@@ -58,7 +58,7 @@ needed, say so in closeout.
 
 - `Agents-of-Abyss`: ecosystem identity, charter, layer map, federation rules, program direction.
 - `Tree-of-Sophia`: source-linked knowledge, texts, concepts, lineages, interpretation architecture.
-- `Dionysus`: seed garden, staging, replay, planting trace, early forms.
+- `Dionysus`: voice-first interview protocols, evidence-grounded claims, human review, and purpose-bounded personal portrait projections.
 - `abyss-stack`: runtime, deployment, storage, lifecycle, infrastructure posture.
 - `ATM10-Agent`: local companion behavior, perception, retrieval, KAG-in-project, safe operator automation.
 - `aoa-sdk`: typed workspace integration, discovery, compatibility, passive skill inspection, and explicit user-profile bootstrap.

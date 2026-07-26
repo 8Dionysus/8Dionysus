@@ -36,7 +36,8 @@ class SystemCapabilityMapTests(unittest.TestCase):
         self.assertIn("aoa_stats", capability_map)
         self.assertIn("aoa-stats-mcp", capability_map)
         self.assertIn("statistical meaning exposed through `aoa_stats`", capability_map)
-        self.assertIn("dionysus", capability_map)
+        self.assertNotIn("`dionysus`", capability_map)
+        self.assertIn("personal portrait claims evidence-grounded", capability_map)
         self.assertIn("campaign cadence and deployment continuity as companion notes", capability_map)
         self.assertIn("no hidden scheduler", capability_map)
 

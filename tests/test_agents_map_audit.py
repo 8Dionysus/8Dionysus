@@ -73,6 +73,33 @@ class AgentsMapAuditTests(unittest.TestCase):
             self.assertIn("scripts", scanned["high_risk_dirs_without_agents"])
             self.assertEqual(scanned["unvalidated_nested_agents"], [])
 
+    def test_dionysus_legacy_archive_is_not_scanned_as_active_guidance(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            workspace = Path(tmp)
+            repo = workspace / "Dionysus"
+            (repo / "legacy" / "nested").mkdir(parents=True)
+            (repo / "AGENTS.md").write_text("# AGENTS.md\nactive\n", encoding="utf-8")
+            (repo / "legacy" / "AGENTS.md").write_text(
+                "# AGENTS.md\narchived\n", encoding="utf-8"
+            )
+            (repo / "legacy" / "nested" / "AGENTS.md").write_text(
+                "# AGENTS.md\narchived nested\n", encoding="utf-8"
+            )
+
+            payload = audit_agents_map.build_agents_map(
+                workspace,
+                known_repositories=("Dionysus",),
+                include_extra_repos=False,
+            )
+            scanned = payload["repositories"][0]
+
+            self.assertEqual(scanned["agents_md_count"], 1)
+            self.assertEqual(scanned["nested_agents_count"], 0)
+            self.assertEqual(
+                scanned["kind"],
+                "personal-portrait-protocol",
+            )
+
     def test_validator_extraction_accepts_pack1_variable_name(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             workspace = Path(tmp)

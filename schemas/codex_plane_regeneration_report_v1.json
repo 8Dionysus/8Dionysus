@@ -84,7 +84,6 @@
       "required": [
         "aoa_workspace",
         "aoa_stats",
-        "dionysus",
         "aoa_memo",
         "aoa_session_memory",
         "aoa_evals",
@@ -96,9 +95,6 @@
           "type": "boolean"
         },
         "aoa_stats": {
-          "type": "boolean"
-        },
-        "dionysus": {
           "type": "boolean"
         },
         "aoa_memo": {

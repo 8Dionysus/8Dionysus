@@ -10,7 +10,6 @@ import render_codex_plane
 STABLE_MCP_SERVER_NAMES = [
     "aoa_workspace",
     "aoa_stats",
-    "dionysus",
     "aoa_memo",
     "aoa_session_memory",
     "aoa_evals",

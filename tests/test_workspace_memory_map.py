@@ -76,6 +76,7 @@ class WorkspaceMemoryMapTests(unittest.TestCase):
             self._make_root(workspace / "Agents-of-Abyss", with_memory_route=True)
             self._make_full_port(workspace / "Agents-of-Abyss" / "memo", "Agents-of-Abyss")
             self._make_root(workspace / "Tree-of-Sophia", with_memory_route=True)
+            self._make_root(workspace / "Dionysus", with_memory_route=True)
             self._make_root(workspace / "aoa-memo", with_memory_route=True)
             self._make_root(workspace / ".aoa", with_memory_route=False)
 
@@ -91,6 +92,7 @@ class WorkspaceMemoryMapTests(unittest.TestCase):
             self.assertIn("validate-port --repo Agents-of-Abyss", by_name["Agents-of-Abyss"]["validation_command"])
             self.assertEqual(by_name["Tree-of-Sophia"]["recommended_port_level"], "full_port")
             self.assertIn("recommended full memo port not yet present", by_name["Tree-of-Sophia"]["issues"])
+            self.assertEqual(by_name["Dionysus"]["recommended_port_level"], "route_only")
             self.assertEqual(by_name["aoa-memo"]["memory_role"], "reviewed-memory-owner")
             self.assertEqual(by_name[".aoa"]["memory_role"], "session-evidence-kernel")
             self.assertEqual(by_name[".aoa"]["memory_route_status"], "session_evidence_route")

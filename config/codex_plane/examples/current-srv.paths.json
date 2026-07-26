@@ -7,7 +7,6 @@
     "workspace": "/srv/AbyssOS",
     "aoa-sdk": "/srv/AbyssOS/aoa-sdk",
     "aoa-stats": "/srv/AbyssOS/aoa-stats",
-    "Dionysus": "/srv/AbyssOS/Dionysus",
     "8Dionysus": "/srv/AbyssOS/8Dionysus"
   },
   "mcp_servers": {
@@ -18,10 +17,6 @@
     "aoa_stats": {
       "cwd": "/srv/AbyssOS",
       "script_rel": ".codex/bin/aoa-stats-mcp-server.py"
-    },
-    "dionysus": {
-      "cwd": "/srv/AbyssOS/Dionysus",
-      "script_rel": "scripts/dionysus_mcp_server.py"
     },
     "aoa_memo": {
       "cwd": "/srv/AbyssOS",

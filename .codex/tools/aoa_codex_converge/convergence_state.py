@@ -141,8 +141,6 @@ def build_report(workspace_root: Path | str) -> dict[str, Any]:
     stats_source_home = stats_repo / "stats" / "source_home.manifest.json"
     stats_owner_inventory = stats_repo / "stats" / "federation" / "owner-inventory.json"
     stats_launcher = root / ".codex" / "bin" / "aoa-stats-mcp-server.py"
-    dionysus_repo = root / "Dionysus"
-    dionysus_catalog = dionysus_repo / "generated" / "seed_route_map.min.json"
     memo_service = Path.home() / "src" / "abyss-stack" / "mcp" / "services" / "aoa-memo-mcp"
     session_memory_service = Path.home() / "src" / "abyss-stack" / "mcp" / "services" / "aoa-session-memory-mcp"
     evals_repo = root / "aoa-evals"
@@ -271,45 +269,6 @@ def build_report(workspace_root: Path | str) -> dict[str, Any]:
             ),
             evidence=stats_evidence,
             next_step="Wire aoa_stats through the shared wrapper or its authenticated loopback endpoint, and preserve the aoa-stats source home, owner inventory, and generated catalog.",
-        )
-    )
-
-    dionysus_repo_exists = dionysus_repo.exists()
-    dionysus_entry = mcp_servers.get("dionysus") if isinstance(mcp_servers, dict) else None
-    dionysus_script_path, dionysus_evidence = _resolve_mcp_script(root, dionysus_entry)
-    if dionysus_repo_exists:
-        dionysus_evidence.insert(0, str(dionysus_repo))
-    if isinstance(mcp_servers, dict) and "dionysus" in mcp_servers:
-        dionysus_evidence.insert(
-            1 if dionysus_repo_exists else 0,
-            "[mcp_servers.dionysus] in .codex/config.toml",
-        )
-    if dionysus_script_path is not None and dionysus_script_path.exists():
-        dionysus_evidence.append(str(dionysus_script_path))
-    if dionysus_catalog.exists():
-        dionysus_evidence.append(str(dionysus_catalog))
-    dionysus_mcp_ok = (
-        not dionysus_repo_exists
-        or (
-            isinstance(mcp_servers, dict)
-            and "dionysus" in mcp_servers
-            and dionysus_script_path is not None
-            and dionysus_script_path.exists()
-            and dionysus_catalog.exists()
-        )
-    )
-    surfaces.append(
-        SurfaceStatus(
-            name="dionysus_mcp",
-            status="info" if not dionysus_repo_exists else ("ok" if dionysus_mcp_ok else "warn"),
-            required=False,
-            summary=(
-                "Dionysus repo not present under the workspace root."
-                if not dionysus_repo_exists
-                else ("Dionysus MCP surface looks wired." if dionysus_mcp_ok else "Dionysus repo exists but its MCP seam is incomplete.")
-            ),
-            evidence=dionysus_evidence,
-            next_step="Wire dionysus into workspace .codex/config.toml and ensure the repo-local server plus generated seed route map exist.",
         )
     )
 

@@ -18,24 +18,24 @@ python scripts/validate_workspace_memory_map.py --workspace-root <workspace-root
 
 ## Totals
 
-- `full_ports`: 10
+- `full_ports`: 8
 - `landed_exports`: 3
-- `local_candidates`: 50
-- `memory_routes`: 19
-- `pending_candidates`: 50
+- `local_candidates`: 49
+- `memory_routes`: 18
+- `pending_candidates`: 49
 - `pending_exports`: 1
 - `places_listed`: 20
 - `places_scanned`: 20
-- `places_with_issues`: 1
+- `places_with_issues`: 2
 - `ready_exports`: 0
-- `recommended_full_ports_missing`: 0
-- `root_memory_routes`: 18
-- `route_only`: 10
+- `recommended_full_ports_missing`: 1
+- `root_memory_routes`: 17
+- `route_only`: 11
 - `session_evidence_routes`: 1
-- `writeback_live_checks`: 8
-- `writeback_markers`: 8
+- `writeback_live_checks`: 7
+- `writeback_markers`: 7
 - `writeback_needs_first_marker`: 12
-- `writeback_not_applicable`: 0
+- `writeback_not_applicable`: 1
 - `writeback_unknown`: 0
 
 ## Access Plane
@@ -75,10 +75,10 @@ python scripts/build_workspace_memory_map.py \
 | Tree-of-Sophia | `needs_first_marker` | missing | `` | inspect the owner repo and local memo port; record a bounded candidate/export only for meaningful landed work, otherwise record an explicit no-writeback marker |
 | abyss-stack | `live_check_required` | ~/src/abyss-stack/memo/receipts/20260526T021627Z.export-abyss-stack-20260526t021621z-aoa-memo-mcp.forwarding-receipt.json | `write_candidate` | run live writeback debt check before closeout |
 | ATM10-Agent | `needs_first_marker` | missing | `` | inspect the owner repo route; record a route-only marker only when there is meaningful landed work or an explicit no-writeback baseline |
-| Dionysus | `needs_first_marker` | missing | `` | inspect the owner repo and local memo port; record a bounded candidate/export only for meaningful landed work, otherwise record an explicit no-writeback marker |
+| Dionysus | `needs_first_marker` | missing | `` | inspect the owner repo route; record a route-only marker only when there is meaningful landed work or an explicit no-writeback baseline |
 | aoa-sdk | `needs_first_marker` | missing | `` | inspect the owner repo route; record a route-only marker only when there is meaningful landed work or an explicit no-writeback baseline |
 | aoa-techniques | `live_check_required` | aoa-techniques/memo/candidates/20260531T055724Z.100a16b9.aoa-techniques-decisions-now-use-canonical-aoa-t.candidate.json | `write_candidate` | run live writeback debt check before closeout |
-| aoa-skills | `live_check_required` | aoa-skills/memo/candidates/20260531T042137Z.c62df052.aoa-skills-decisions-now-use-canonical-aoa-sk-d.candidate.json | `write_candidate` | run live writeback debt check before closeout |
+| aoa-skills | `not_applicable` | not_applicable | `` | add a memory route before writeback tracking |
 | aoa-evals | `live_check_required` | aoa-evals/docs/decisions/AOA-EV-D-0113-aoa-memo-writeback-decision-quality-eval.md | `route_only_debt` | run live writeback debt check before closeout |
 | aoa-stats | `needs_first_marker` | missing | `` | inspect the owner repo route; record a route-only marker only when there is meaningful landed work or an explicit no-writeback baseline |
 | aoa-routing | `needs_first_marker` | missing | `` | inspect the owner repo route; record a route-only marker only when there is meaningful landed work or an explicit no-writeback baseline |
@@ -100,10 +100,10 @@ python scripts/build_workspace_memory_map.py \
 | Tree-of-Sophia | local-memory-port-candidate | `full_port` | `full_port` | missing | 0 | 0 | 0 | 0 | `PYTHONPATH="${AOA_ABYSS_STACK_ROOT:-$HOME/src/abyss-stack}/mcp/services/aoa-memo-mcp/src" python -m aoa_memo_mcp.cli validate-port --repo Tree-of-Sophia` | missing root Memory route |
 | abyss-stack | mcp-access-plane-owner | `full_port` | `full_port` | local_port_route | 4 | 1 | 0 | 3 | `PYTHONPATH="${AOA_ABYSS_STACK_ROOT:-$HOME/src/abyss-stack}/mcp/services/aoa-memo-mcp/src" python -m aoa_memo_mcp.cli validate-port --repo abyss-stack` | ok |
 | ATM10-Agent | workspace-memory-route | `route_only` | `route_only` | root_memory_route | 0 | 0 | 0 | 0 | `python scripts/build_workspace_memory_map.py --check` | ok |
-| Dionysus | local-memory-port-candidate | `full_port` | `full_port` | local_port_route | 0 | 0 | 0 | 0 | `PYTHONPATH="${AOA_ABYSS_STACK_ROOT:-$HOME/src/abyss-stack}/mcp/services/aoa-memo-mcp/src" python -m aoa_memo_mcp.cli validate-port --repo Dionysus` | ok |
+| Dionysus | workspace-memory-route | `route_only` | `route_only` | root_memory_route | 0 | 0 | 0 | 0 | `python scripts/build_workspace_memory_map.py --check` | ok |
 | aoa-sdk | workspace-memory-route | `route_only` | `route_only` | root_memory_route | 0 | 0 | 0 | 0 | `python scripts/build_workspace_memory_map.py --check` | ok |
 | aoa-techniques | local-memory-port-candidate | `full_port` | `full_port` | local_port_route | 1 | 0 | 0 | 0 | `PYTHONPATH="${AOA_ABYSS_STACK_ROOT:-$HOME/src/abyss-stack}/mcp/services/aoa-memo-mcp/src" python -m aoa_memo_mcp.cli validate-port --repo aoa-techniques` | ok |
-| aoa-skills | local-memory-port-candidate | `full_port` | `full_port` | local_port_route | 1 | 0 | 0 | 0 | `PYTHONPATH="${AOA_ABYSS_STACK_ROOT:-$HOME/src/abyss-stack}/mcp/services/aoa-memo-mcp/src" python -m aoa_memo_mcp.cli validate-port --repo aoa-skills` | ok |
+| aoa-skills | local-memory-port-candidate | `none` | `full_port` | missing | 0 | 0 | 0 | 0 | `python scripts/build_workspace_memory_map.py --check` | missing root Memory route, recommended full memo port not yet present |
 | aoa-evals | workspace-memory-route | `full_port` | `route_only` | local_port_route | 0 | 0 | 0 | 0 | `PYTHONPATH="${AOA_ABYSS_STACK_ROOT:-$HOME/src/abyss-stack}/mcp/services/aoa-memo-mcp/src" python -m aoa_memo_mcp.cli validate-port --repo aoa-evals` | ok |
 | aoa-stats | workspace-memory-route | `route_only` | `route_only` | root_memory_route | 0 | 0 | 0 | 0 | `python scripts/build_workspace_memory_map.py --check` | ok |
 | aoa-routing | workspace-memory-route | `route_only` | `route_only` | root_memory_route | 0 | 0 | 0 | 0 | `python scripts/build_workspace_memory_map.py --check` | ok |

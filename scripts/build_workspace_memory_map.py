@@ -82,7 +82,6 @@ FULL_PORT_RECOMMENDED = frozenset(
     {
         "Agents-of-Abyss",
         "Tree-of-Sophia",
-        "Dionysus",
         "abyss-stack",
         "abyss-machine",
         "aoa-agents",
@@ -96,6 +95,7 @@ ROUTE_ONLY_RECOMMENDED = frozenset(
     {
         "8Dionysus",
         "ATM10-Agent",
+        "Dionysus",
         "aoa-evals",
         "aoa-kag",
         "aoa-memo",

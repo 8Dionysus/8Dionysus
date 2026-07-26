@@ -21,7 +21,6 @@
   "mcp_server_names_expected": [
     "aoa_workspace",
     "aoa_stats",
-    "dionysus",
     "aoa_memo",
     "aoa_session_memory",
     "aoa_evals",
@@ -31,7 +30,6 @@
   "mcp_server_names_detected": [
     "aoa_workspace",
     "aoa_stats",
-    "dionysus",
     "aoa_memo",
     "aoa_session_memory",
     "aoa_evals",

@@ -125,11 +125,10 @@ class CodexPlaneRegenerationTests(unittest.TestCase):
                     "project_root_markers": ["AOA_WORKSPACE_ROOT", ".git"],
                     "features": {"hooks": True},
                     "agents": {"max_threads": 1, "max_depth": 1, "job_max_runtime_seconds": 60, "roles": []},
-                    "repos": {"aoa-sdk": "aoa-sdk", "aoa-stats": "aoa-stats", "Dionysus": "Dionysus"},
+                    "repos": {"aoa-sdk": "aoa-sdk", "aoa-stats": "aoa-stats"},
                     "mcp_servers": [
                         {"name": "aoa_workspace", "repo_key": "aoa-sdk", "script_rel": "scripts/aoa_workspace_mcp_server.py"},
                         {"name": "aoa_stats", "repo_key": "aoa-stats", "script_rel": "scripts/aoa_stats_mcp_server.py"},
-                        {"name": "dionysus", "repo_key": "Dionysus", "script_rel": "scripts/dionysus_mcp_server.py"},
                     ],
                     "hooks": {
                         "Stop": [

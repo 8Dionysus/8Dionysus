@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 3757133,
+  "allowed_tracked_bytes": 4194575,
+  "approved_by": "repository-owner",
+  "base_ref": "419b35990c41b995bcf3d8be210f244f97fcdddf",
+  "changed_generated_bytes": 3757133,
+  "changed_generated_files": 270,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "0c190fac234ca3e9092b8faa8868372fa884a7883f51a02813c2431a1e025aeb",
+  "reason": "Index the reviewed deny-by-default Codex organ fabric consumer surface with the repository-pinned CI generator.",
+  "repo": "8Dionysus",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "generated_delta",
+  "tracked_bytes": 4194575,
+  "tracked_bytes_max": 5242880
+}

@@ -1,0 +1,772 @@
+{
+  "schema_version": "8dionysus_codex_organ_fabric_manifest_v1",
+  "updated_at": "2026-07-26T23:54:12Z",
+  "production_protocol": "2025-11-25",
+  "consumer": {
+    "product": "codex-cli",
+    "observed_version": "0.145.0",
+    "configuration_scope": "global_plus_trusted_project",
+    "dynamic_reload_posture": "new_process_required",
+    "catalog_refresh_posture": "reobserve_after_registration_or_schema_change"
+  },
+  "owner_boundaries": {
+    "projection_owner": "8Dionysus",
+    "registry_owner": "aoa-sdk",
+    "runtime_owner": "abyss-stack",
+    "apply_authority": "operator"
+  },
+  "catalog_policy": {
+    "always_loaded_full_catalog_forbidden": true,
+    "profile_selection_required": true,
+    "max_registrations_per_profile": 6,
+    "max_enabled_tools_per_profile": 64,
+    "legacy_baseline": {
+      "captured_at": "2026-07-25T20:04:06Z",
+      "active_server_count": 10,
+      "active_tool_count": 118,
+      "active_tool_catalog_bytes": 74098,
+      "source_ref": "artifact://os-abyss-mcp-r1-baseline-20260725/r1-baseline-dossier.json",
+      "source_digest": "sha256:1caab18801716c002647f32f3c6d48fd6770d6ed2c1cdfe05832c1b698b59553"
+    }
+  },
+  "profiles": {
+    "core-read": {
+      "description": "Compact KAG, stats, and decision navigation.",
+      "allowed_policy_families": [
+        "read"
+      ]
+    },
+    "runtime-read": {
+      "description": "Stack and machine diagnostics without runtime effects.",
+      "allowed_policy_families": [
+        "read"
+      ]
+    },
+    "memory-read": {
+      "description": "Durable-memory access and session-evidence retrieval without writes.",
+      "allowed_policy_families": [
+        "read"
+      ]
+    },
+    "proof-read": {
+      "description": "Bounded eval discovery and candidate shaping without proof acceptance.",
+      "allowed_policy_families": [
+        "read"
+      ]
+    },
+    "corpus-read": {
+      "description": "Tree of Sophia authored-corpus resources and bounded graph reads.",
+      "allowed_policy_families": [
+        "read"
+      ]
+    },
+    "connectors-read": {
+      "description": "Local connector evidence only; no provider network or external effects.",
+      "allowed_policy_families": [
+        "read"
+      ]
+    },
+    "candidate": {
+      "description": "Explicit candidate-only contours with per-tool prompts.",
+      "allowed_policy_families": [
+        "candidate"
+      ]
+    }
+  },
+  "registrations": [
+    {
+      "registration_name": "aoa_decisions",
+      "organ_id": "aoa-decisions",
+      "policy_family": "read",
+      "effect_ceiling": "derive",
+      "registry_state": "shadow",
+      "registry_record_ref": "registry://aoa-decisions/read",
+      "source_service_ref": "abyss-stack/mcp/services/aoa-decisions-mcp/",
+      "url": "http://127.0.0.1:5420/mcp",
+      "bearer_token_env_var": "AOA_DECISIONS_MCP_READ_BEARER_TOKEN",
+      "credential_class": "aoa-decisions-mcp-read",
+      "protocol_versions": [
+        "2025-11-25"
+      ],
+      "profiles": [
+        "core-read"
+      ],
+      "enabled_tools": [
+        "aoa_decisions_status",
+        "aoa_decisions_search",
+        "aoa_decisions_packet",
+        "aoa_decisions_decision",
+        "aoa_decisions_owner_surface"
+      ],
+      "startup_timeout_sec": 20,
+      "tool_timeout_sec": 60,
+      "required": false,
+      "default_tools_approval_mode": "writes",
+      "expected_schema_digest": null,
+      "receipts": {
+        "admission": null,
+        "consumer_schema": null,
+        "canary": null,
+        "owner_acceptance": null,
+        "rollback": null
+      },
+      "rollback_route": "owner://aoa-decisions/rollback/shadow"
+    },
+    {
+      "registration_name": "aoa_kag",
+      "organ_id": "aoa-kag",
+      "policy_family": "read",
+      "effect_ceiling": "derive",
+      "registry_state": "shadow",
+      "registry_record_ref": "registry://aoa-kag/read",
+      "source_service_ref": "abyss-stack/mcp/services/aoa-kag-mcp/",
+      "url": "http://127.0.0.1:5425/mcp",
+      "bearer_token_env_var": "AOA_KAG_MCP_READ_BEARER_TOKEN",
+      "credential_class": "aoa-kag-mcp-read",
+      "protocol_versions": [
+        "2025-11-25"
+      ],
+      "profiles": [
+        "core-read"
+      ],
+      "enabled_tools": [
+        "kag_discover",
+        "kag_search",
+        "kag_read",
+        "kag_traverse",
+        "kag_explain"
+      ],
+      "startup_timeout_sec": 20,
+      "tool_timeout_sec": 90,
+      "required": false,
+      "default_tools_approval_mode": "writes",
+      "expected_schema_digest": null,
+      "receipts": {
+        "admission": null,
+        "consumer_schema": null,
+        "canary": null,
+        "owner_acceptance": null,
+        "rollback": null
+      },
+      "rollback_route": "owner://aoa-kag/rollback/shadow"
+    },
+    {
+      "registration_name": "aoa_stats",
+      "organ_id": "aoa-stats",
+      "policy_family": "read",
+      "effect_ceiling": "derive",
+      "registry_state": "shadow",
+      "registry_record_ref": "registry://aoa-stats/read",
+      "source_service_ref": "abyss-stack/mcp/services/aoa-stats-mcp/",
+      "url": "http://127.0.0.1:5430/mcp",
+      "bearer_token_env_var": "AOA_STATS_MCP_READ_BEARER_TOKEN",
+      "credential_class": "aoa-stats-mcp-read",
+      "protocol_versions": [
+        "2025-11-25"
+      ],
+      "profiles": [
+        "core-read"
+      ],
+      "enabled_tools": [
+        "stats_catalog",
+        "stats_boundary_rules",
+        "stats_surface_read",
+        "stats_owner_port_read",
+        "stats_packet_check"
+      ],
+      "startup_timeout_sec": 20,
+      "tool_timeout_sec": 60,
+      "required": false,
+      "default_tools_approval_mode": "writes",
+      "expected_schema_digest": null,
+      "receipts": {
+        "admission": null,
+        "consumer_schema": null,
+        "canary": null,
+        "owner_acceptance": null,
+        "rollback": null
+      },
+      "rollback_route": "owner://aoa-stats/rollback/shadow"
+    },
+    {
+      "registration_name": "abyss_machine",
+      "organ_id": "abyss-machine",
+      "policy_family": "read",
+      "effect_ceiling": "observe",
+      "registry_state": "shadow",
+      "registry_record_ref": "registry://abyss-machine/read",
+      "source_service_ref": "abyss-stack/mcp/services/abyss-machine-mcp/",
+      "url": "http://127.0.0.1:5423/mcp",
+      "bearer_token_env_var": "ABYSS_MACHINE_MCP_READ_BEARER_TOKEN",
+      "credential_class": "abyss-machine-mcp-read",
+      "protocol_versions": [
+        "2025-11-25"
+      ],
+      "profiles": [
+        "runtime-read"
+      ],
+      "enabled_tools": [
+        "abyss_machine_brief",
+        "abyss_machine_route",
+        "abyss_machine_context_packet",
+        "abyss_machine_evidence_map"
+      ],
+      "startup_timeout_sec": 20,
+      "tool_timeout_sec": 90,
+      "required": false,
+      "default_tools_approval_mode": "writes",
+      "expected_schema_digest": null,
+      "receipts": {
+        "admission": null,
+        "consumer_schema": null,
+        "canary": null,
+        "owner_acceptance": null,
+        "rollback": null
+      },
+      "rollback_route": "owner://abyss-machine/rollback/shadow"
+    },
+    {
+      "registration_name": "abyss_stack_read",
+      "organ_id": "abyss-stack",
+      "policy_family": "read",
+      "effect_ceiling": "observe",
+      "registry_state": "shadow",
+      "registry_record_ref": "registry://abyss-stack/read",
+      "source_service_ref": "abyss-stack/mcp/services/abyss-stack-mcp/",
+      "url": "http://127.0.0.1:5431/mcp",
+      "bearer_token_env_var": "ABYSS_STACK_MCP_READ_BEARER_TOKEN",
+      "credential_class": "abyss-stack-mcp-read",
+      "protocol_versions": [
+        "2025-11-25"
+      ],
+      "profiles": [
+        "runtime-read"
+      ],
+      "enabled_tools": [
+        "stack_runtime_catalog",
+        "stack_runtime_inspect"
+      ],
+      "startup_timeout_sec": 30,
+      "tool_timeout_sec": 90,
+      "required": false,
+      "default_tools_approval_mode": "writes",
+      "expected_schema_digest": null,
+      "receipts": {
+        "admission": null,
+        "consumer_schema": null,
+        "canary": null,
+        "owner_acceptance": null,
+        "rollback": null
+      },
+      "rollback_route": "owner://abyss-stack/rollback/read-shadow"
+    },
+    {
+      "registration_name": "aoa_memo",
+      "organ_id": "aoa-memo",
+      "policy_family": "read",
+      "effect_ceiling": "validate",
+      "registry_state": "shadow",
+      "registry_record_ref": "registry://aoa-memo/read",
+      "source_service_ref": "abyss-stack/mcp/services/aoa-memo-mcp/",
+      "url": "http://127.0.0.1:5421/mcp",
+      "bearer_token_env_var": "AOA_MEMO_MCP_READ_BEARER_TOKEN",
+      "credential_class": "aoa-memo-mcp-read",
+      "protocol_versions": [
+        "2025-11-25"
+      ],
+      "profiles": [
+        "memory-read"
+      ],
+      "enabled_tools": [
+        "aoa_memo_brief",
+        "aoa_memo_search",
+        "aoa_memo_validate_candidate",
+        "aoa_memo_build_port_index",
+        "aoa_memo_validate_port",
+        "aoa_memo_pending_exports",
+        "aoa_memo_landing_plan"
+      ],
+      "startup_timeout_sec": 20,
+      "tool_timeout_sec": 90,
+      "required": false,
+      "default_tools_approval_mode": "writes",
+      "expected_schema_digest": null,
+      "receipts": {
+        "admission": null,
+        "consumer_schema": null,
+        "canary": null,
+        "owner_acceptance": null,
+        "rollback": null
+      },
+      "rollback_route": "owner://aoa-memo/rollback/read-shadow"
+    },
+    {
+      "registration_name": "aoa_session_memory",
+      "organ_id": "aoa-session-memory",
+      "policy_family": "read",
+      "effect_ceiling": "derive",
+      "registry_state": "shadow",
+      "registry_record_ref": "registry://aoa-session-memory/read",
+      "source_service_ref": "abyss-stack/mcp/services/aoa-session-memory-mcp/",
+      "url": "http://127.0.0.1:5422/mcp",
+      "bearer_token_env_var": "AOA_SESSION_MEMORY_MCP_READ_BEARER_TOKEN",
+      "credential_class": "aoa-session-memory-mcp-read",
+      "protocol_versions": [
+        "2025-11-25"
+      ],
+      "profiles": [
+        "memory-read"
+      ],
+      "enabled_tools": [
+        "aoa_session_memory_status",
+        "aoa_session_search",
+        "aoa_session_route",
+        "aoa_session_brief",
+        "aoa_session_retrieve",
+        "aoa_session_evidence_packet",
+        "aoa_session_freshness_check",
+        "aoa_session_entity_dossier",
+        "aoa_session_entity_usage_chain",
+        "aoa_session_transport_preflight"
+      ],
+      "startup_timeout_sec": 30,
+      "tool_timeout_sec": 180,
+      "required": false,
+      "default_tools_approval_mode": "writes",
+      "expected_schema_digest": null,
+      "receipts": {
+        "admission": null,
+        "consumer_schema": null,
+        "canary": null,
+        "owner_acceptance": null,
+        "rollback": null
+      },
+      "rollback_route": "owner://aoa-session-memory/rollback/shadow"
+    },
+    {
+      "registration_name": "aoa_evals",
+      "organ_id": "aoa-evals",
+      "policy_family": "read",
+      "effect_ceiling": "validate",
+      "registry_state": "shadow",
+      "registry_record_ref": "registry://aoa-evals/read",
+      "source_service_ref": "abyss-stack/mcp/services/aoa-evals-mcp/",
+      "url": "http://127.0.0.1:5424/mcp",
+      "bearer_token_env_var": "AOA_EVALS_MCP_READ_BEARER_TOKEN",
+      "credential_class": "aoa-evals-mcp-read",
+      "protocol_versions": [
+        "2025-11-25"
+      ],
+      "profiles": [
+        "proof-read"
+      ],
+      "enabled_tools": [
+        "aoa_evals_select",
+        "aoa_evals_find_or_propose",
+        "aoa_evals_inspect",
+        "aoa_evals_expand",
+        "aoa_evals_comparison",
+        "aoa_evals_runtime_status",
+        "aoa_evals_validate_evidence_candidate",
+        "aoa_evals_report_skeleton"
+      ],
+      "startup_timeout_sec": 20,
+      "tool_timeout_sec": 120,
+      "required": false,
+      "default_tools_approval_mode": "writes",
+      "expected_schema_digest": null,
+      "receipts": {
+        "admission": null,
+        "consumer_schema": null,
+        "canary": null,
+        "owner_acceptance": null,
+        "rollback": null
+      },
+      "rollback_route": "owner://aoa-evals/rollback/read-shadow"
+    },
+    {
+      "registration_name": "tos_corpus",
+      "organ_id": "Tree-of-Sophia",
+      "policy_family": "read",
+      "effect_ceiling": "derive",
+      "registry_state": "suspended",
+      "registry_record_ref": "registry://Tree-of-Sophia/read",
+      "source_service_ref": "abyss-stack/mcp/services/tos-corpus-mcp/",
+      "url": "http://127.0.0.1:5429/mcp",
+      "bearer_token_env_var": "TOS_CORPUS_MCP_READ_BEARER_TOKEN",
+      "credential_class": "tos-corpus-mcp-read",
+      "protocol_versions": [
+        "2025-11-25"
+      ],
+      "profiles": [
+        "corpus-read"
+      ],
+      "enabled_tools": [
+        "tos_corpus_status",
+        "tos_corpus_search",
+        "tos_corpus_summary",
+        "tos_corpus_resources",
+        "tos_corpus_node",
+        "tos_corpus_relation_pack",
+        "tos_corpus_graph_view",
+        "tos_philosophy_graph_packet"
+      ],
+      "startup_timeout_sec": 30,
+      "tool_timeout_sec": 180,
+      "required": false,
+      "default_tools_approval_mode": "writes",
+      "expected_schema_digest": null,
+      "receipts": {
+        "admission": null,
+        "consumer_schema": null,
+        "canary": null,
+        "owner_acceptance": null,
+        "rollback": null
+      },
+      "rollback_route": "owner://Tree-of-Sophia/rollback/suspended"
+    },
+    {
+      "registration_name": "aoa_4pda_connector",
+      "organ_id": "aoa-4pda-connector",
+      "policy_family": "read",
+      "effect_ceiling": "derive",
+      "registry_state": "shadow",
+      "registry_record_ref": "registry://aoa-4pda-connector/read",
+      "source_service_ref": "abyss-stack/mcp/services/aoa-4pda-connector-mcp/",
+      "url": "http://127.0.0.1:5426/mcp",
+      "bearer_token_env_var": "AOA_4PDA_CONNECTOR_MCP_READ_BEARER_TOKEN",
+      "credential_class": "aoa-4pda-connector-mcp-read",
+      "protocol_versions": [
+        "2025-11-25"
+      ],
+      "profiles": [
+        "connectors-read"
+      ],
+      "enabled_tools": [
+        "aoa_4pda_connector_status",
+        "aoa_4pda_connector_source_route",
+        "aoa_4pda_connector_query_graph",
+        "aoa_4pda_connector_query_hybrid",
+        "aoa_4pda_connector_answer"
+      ],
+      "startup_timeout_sec": 20,
+      "tool_timeout_sec": 90,
+      "required": false,
+      "default_tools_approval_mode": "writes",
+      "expected_schema_digest": null,
+      "receipts": {
+        "admission": null,
+        "consumer_schema": null,
+        "canary": null,
+        "owner_acceptance": null,
+        "rollback": null
+      },
+      "rollback_route": "owner://aoa-4pda-connector/rollback/shadow"
+    },
+    {
+      "registration_name": "aoa_telegram_connector",
+      "organ_id": "aoa-telegram-connector",
+      "policy_family": "read",
+      "effect_ceiling": "derive",
+      "registry_state": "shadow",
+      "registry_record_ref": "registry://aoa-telegram-connector/read",
+      "source_service_ref": "abyss-stack/mcp/services/aoa-telegram-connector-mcp/",
+      "url": "http://127.0.0.1:5427/mcp",
+      "bearer_token_env_var": "AOA_TELEGRAM_CONNECTOR_MCP_READ_BEARER_TOKEN",
+      "credential_class": "aoa-telegram-connector-mcp-read",
+      "protocol_versions": [
+        "2025-11-25"
+      ],
+      "profiles": [
+        "connectors-read"
+      ],
+      "enabled_tools": [
+        "aoa_telegram_connector_status",
+        "aoa_telegram_connector_source_route",
+        "aoa_telegram_connector_query_graph",
+        "aoa_telegram_connector_answer"
+      ],
+      "startup_timeout_sec": 20,
+      "tool_timeout_sec": 90,
+      "required": false,
+      "default_tools_approval_mode": "writes",
+      "expected_schema_digest": null,
+      "receipts": {
+        "admission": null,
+        "consumer_schema": null,
+        "canary": null,
+        "owner_acceptance": null,
+        "rollback": null
+      },
+      "rollback_route": "owner://aoa-telegram-connector/rollback/shadow"
+    },
+    {
+      "registration_name": "aoa_discord_connector",
+      "organ_id": "aoa-discord-connector",
+      "policy_family": "read",
+      "effect_ceiling": "derive",
+      "registry_state": "shadow",
+      "registry_record_ref": "registry://aoa-discord-connector/read",
+      "source_service_ref": "abyss-stack/mcp/services/aoa-discord-connector-mcp/",
+      "url": "http://127.0.0.1:5428/mcp",
+      "bearer_token_env_var": "AOA_DISCORD_CONNECTOR_MCP_READ_BEARER_TOKEN",
+      "credential_class": "aoa-discord-connector-mcp-read",
+      "protocol_versions": [
+        "2025-11-25"
+      ],
+      "profiles": [
+        "connectors-read"
+      ],
+      "enabled_tools": [
+        "aoa_discord_connector_status",
+        "aoa_discord_connector_source_route",
+        "aoa_discord_connector_query_graph",
+        "aoa_discord_connector_answer"
+      ],
+      "startup_timeout_sec": 20,
+      "tool_timeout_sec": 90,
+      "required": false,
+      "default_tools_approval_mode": "writes",
+      "expected_schema_digest": null,
+      "receipts": {
+        "admission": null,
+        "consumer_schema": null,
+        "canary": null,
+        "owner_acceptance": null,
+        "rollback": null
+      },
+      "rollback_route": "owner://aoa-discord-connector/rollback/shadow"
+    },
+    {
+      "registration_name": "aoa_course_connector",
+      "organ_id": "aoa-course-connector",
+      "policy_family": "read",
+      "effect_ceiling": "derive",
+      "registry_state": "shadow",
+      "registry_record_ref": "registry://aoa-course-connector/read",
+      "source_service_ref": "abyss-stack/mcp/services/aoa-course-connector-mcp/",
+      "url": "http://127.0.0.1:5436/mcp",
+      "bearer_token_env_var": "AOA_COURSE_CONNECTOR_MCP_READ_BEARER_TOKEN",
+      "credential_class": "aoa-course-connector-mcp-read",
+      "protocol_versions": [
+        "2025-11-25"
+      ],
+      "profiles": [
+        "connectors-read"
+      ],
+      "enabled_tools": [
+        "aoa_course_connector_status",
+        "aoa_course_connector_list_sources",
+        "aoa_course_connector_source_route",
+        "aoa_course_connector_lesson_context",
+        "aoa_course_connector_graph_neighbors",
+        "aoa_course_connector_freshness_report",
+        "aoa_course_connector_evidence_report",
+        "aoa_course_connector_source_answer",
+        "aoa_course_connector_sources_answer"
+      ],
+      "startup_timeout_sec": 20,
+      "tool_timeout_sec": 120,
+      "required": false,
+      "default_tools_approval_mode": "writes",
+      "expected_schema_digest": null,
+      "receipts": {
+        "admission": null,
+        "consumer_schema": null,
+        "canary": null,
+        "owner_acceptance": null,
+        "rollback": null
+      },
+      "rollback_route": "owner://aoa-course-connector/rollback/shadow"
+    },
+    {
+      "registration_name": "aoa_stackoverflow_connector",
+      "organ_id": "aoa-stackoverflow-connector",
+      "policy_family": "read",
+      "effect_ceiling": "derive",
+      "registry_state": "shadow",
+      "registry_record_ref": "registry://aoa-stackoverflow-connector/read",
+      "source_service_ref": "abyss-stack/mcp/services/aoa-stackoverflow-connector-mcp/",
+      "url": "http://127.0.0.1:5437/mcp",
+      "bearer_token_env_var": "AOA_STACKOVERFLOW_CONNECTOR_MCP_READ_BEARER_TOKEN",
+      "credential_class": "aoa-stackoverflow-connector-mcp-read",
+      "protocol_versions": [
+        "2025-11-25"
+      ],
+      "profiles": [
+        "connectors-read"
+      ],
+      "enabled_tools": [
+        "aoa_stackoverflow_connector_status",
+        "aoa_stackoverflow_connector_source_route",
+        "aoa_stackoverflow_connector_query_graph",
+        "aoa_stackoverflow_connector_answer"
+      ],
+      "startup_timeout_sec": 20,
+      "tool_timeout_sec": 90,
+      "required": false,
+      "default_tools_approval_mode": "writes",
+      "expected_schema_digest": null,
+      "receipts": {
+        "admission": null,
+        "consumer_schema": null,
+        "canary": null,
+        "owner_acceptance": null,
+        "rollback": null
+      },
+      "rollback_route": "owner://aoa-stackoverflow-connector/rollback/shadow"
+    },
+    {
+      "registration_name": "aoa_xda_connector",
+      "organ_id": "aoa-xda-connector",
+      "policy_family": "read",
+      "effect_ceiling": "derive",
+      "registry_state": "shadow",
+      "registry_record_ref": "registry://aoa-xda-connector/read",
+      "source_service_ref": "abyss-stack/mcp/services/aoa-xda-connector-mcp/",
+      "url": "http://127.0.0.1:5438/mcp",
+      "bearer_token_env_var": "AOA_XDA_CONNECTOR_MCP_READ_BEARER_TOKEN",
+      "credential_class": "aoa-xda-connector-mcp-read",
+      "protocol_versions": [
+        "2025-11-25"
+      ],
+      "profiles": [
+        "connectors-read"
+      ],
+      "enabled_tools": [
+        "aoa_xda_connector_status",
+        "aoa_xda_connector_source_route",
+        "aoa_xda_connector_query_graph",
+        "aoa_xda_connector_answer"
+      ],
+      "startup_timeout_sec": 20,
+      "tool_timeout_sec": 90,
+      "required": false,
+      "default_tools_approval_mode": "writes",
+      "expected_schema_digest": null,
+      "receipts": {
+        "admission": null,
+        "consumer_schema": null,
+        "canary": null,
+        "owner_acceptance": null,
+        "rollback": null
+      },
+      "rollback_route": "owner://aoa-xda-connector/rollback/shadow"
+    },
+    {
+      "registration_name": "abyss_stack_candidate",
+      "organ_id": "abyss-stack",
+      "policy_family": "candidate",
+      "effect_ceiling": "prepare_candidate",
+      "registry_state": "shadow",
+      "registry_record_ref": "registry://abyss-stack/candidate",
+      "source_service_ref": "abyss-stack/mcp/services/abyss-stack-mcp/",
+      "url": "http://127.0.0.1:5433/mcp",
+      "bearer_token_env_var": "ABYSS_STACK_MCP_CANDIDATE_BEARER_TOKEN",
+      "credential_class": "abyss-stack-mcp-candidate",
+      "protocol_versions": [
+        "2025-11-25"
+      ],
+      "profiles": [
+        "candidate"
+      ],
+      "enabled_tools": [
+        "stack_prepare_runtime_plan"
+      ],
+      "startup_timeout_sec": 30,
+      "tool_timeout_sec": 90,
+      "required": false,
+      "default_tools_approval_mode": "prompt",
+      "expected_schema_digest": null,
+      "receipts": {
+        "admission": null,
+        "consumer_schema": null,
+        "canary": null,
+        "owner_acceptance": null,
+        "rollback": null
+      },
+      "rollback_route": "owner://abyss-stack/rollback/candidate-shadow"
+    },
+    {
+      "registration_name": "aoa_memo_candidate",
+      "organ_id": "aoa-memo",
+      "policy_family": "candidate",
+      "effect_ceiling": "prepare_candidate",
+      "registry_state": "shadow",
+      "registry_record_ref": "registry://aoa-memo/candidate",
+      "source_service_ref": "abyss-stack/mcp/services/aoa-memo-mcp/",
+      "url": "http://127.0.0.1:5434/mcp",
+      "bearer_token_env_var": "AOA_MEMO_MCP_CANDIDATE_BEARER_TOKEN",
+      "credential_class": "aoa-memo-mcp-candidate",
+      "protocol_versions": [
+        "2025-11-25"
+      ],
+      "profiles": [
+        "candidate"
+      ],
+      "enabled_tools": [
+        "aoa_memo_create_candidate",
+        "aoa_memo_write_port_index",
+        "aoa_memo_prepare_intake_packet",
+        "aoa_memo_review_intake"
+      ],
+      "startup_timeout_sec": 20,
+      "tool_timeout_sec": 120,
+      "required": false,
+      "default_tools_approval_mode": "prompt",
+      "expected_schema_digest": null,
+      "receipts": {
+        "admission": null,
+        "consumer_schema": null,
+        "canary": null,
+        "owner_acceptance": null,
+        "rollback": null
+      },
+      "rollback_route": "owner://aoa-memo/rollback/candidate-shadow"
+    },
+    {
+      "registration_name": "aoa_evals_candidate",
+      "organ_id": "aoa-evals",
+      "policy_family": "candidate",
+      "effect_ceiling": "prepare_candidate",
+      "registry_state": "shadow",
+      "registry_record_ref": "registry://aoa-evals/candidate",
+      "source_service_ref": "abyss-stack/mcp/services/aoa-evals-mcp/",
+      "url": "http://127.0.0.1:5435/mcp",
+      "bearer_token_env_var": "AOA_EVALS_MCP_CANDIDATE_BEARER_TOKEN",
+      "credential_class": "aoa-evals-mcp-candidate",
+      "protocol_versions": [
+        "2025-11-25"
+      ],
+      "profiles": [
+        "candidate"
+      ],
+      "enabled_tools": [
+        "aoa_evals_write_local_intake",
+        "aoa_evals_write_local_suite_note",
+        "aoa_evals_write_local_report_note"
+      ],
+      "startup_timeout_sec": 20,
+      "tool_timeout_sec": 120,
+      "required": false,
+      "default_tools_approval_mode": "prompt",
+      "expected_schema_digest": null,
+      "receipts": {
+        "admission": null,
+        "consumer_schema": null,
+        "canary": null,
+        "owner_acceptance": null,
+        "rollback": null
+      },
+      "rollback_route": "owner://aoa-evals/rollback/candidate-shadow"
+    }
+  ],
+  "claim_limits": [
+    "A source registration manifest does not admit an organ.",
+    "A rendered TOML fragment does not change global or project Codex configuration.",
+    "A configured registration does not prove process, endpoint, authentication, schema, call, freshness, acceptance, or rollback.",
+    "A running Codex process does not hot-adopt a changed catalog unless an exact reload receipt proves it.",
+    "Tool approval metadata is consumer policy, not server-side authorization.",
+    "A read profile cannot admit a candidate or effect contour."
+  ]
+}

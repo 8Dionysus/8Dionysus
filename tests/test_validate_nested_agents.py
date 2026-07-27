@@ -39,6 +39,7 @@ class ValidateNestedAgentsTests(unittest.TestCase):
             ".codex/AGENTS.md",
             ".github/AGENTS.md",
             "config/AGENTS.md",
+            "config/codex_plane/organ_fabric/AGENTS.md",
             "docs/AGENTS.md",
             "docs/decisions/AGENTS.md",
             "evals/AGENTS.md",

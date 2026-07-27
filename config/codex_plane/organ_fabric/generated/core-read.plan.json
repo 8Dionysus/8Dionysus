@@ -1,0 +1,168 @@
+{
+  "schema_version": "8dionysus_codex_organ_fabric_plan_v1",
+  "profile": "core-read",
+  "generated_at": "2026-07-26T23:54:12Z",
+  "manifest_digest": "sha256:09e51061ae512b3a78e02e66b1833abb77bf120b7003022223e42f014fec6bbe",
+  "observation_digest": "sha256:5015ea3de7830249b7c2dce14731bae34ec515dd772ec2a9e45291a346342732",
+  "selected_registration_count": 3,
+  "selected_tool_count": 15,
+  "rendered_registration_count": 0,
+  "mutation_allowed": false,
+  "fresh_client_required": true,
+  "actions": [
+    {
+      "registration_name": "aoa_decisions",
+      "action": "retain_legacy_until_replacement_gates",
+      "reason_codes": [
+        "not_admitted_for_selected_profile",
+        "legacy_shared_bearer_observed"
+      ]
+    },
+    {
+      "registration_name": "aoa_kag",
+      "action": "retain_legacy_until_replacement_gates",
+      "reason_codes": [
+        "not_admitted_for_selected_profile",
+        "legacy_shared_bearer_observed"
+      ]
+    },
+    {
+      "registration_name": "aoa_stats",
+      "action": "withhold",
+      "reason_codes": [
+        "admission_gates_incomplete"
+      ]
+    },
+    {
+      "registration_name": "abyss_machine",
+      "action": "retain_legacy_until_replacement_gates",
+      "reason_codes": [
+        "not_admitted_for_selected_profile",
+        "legacy_shared_bearer_observed",
+        "outside_selected_profile"
+      ]
+    },
+    {
+      "registration_name": "abyss_stack_read",
+      "action": "withhold",
+      "reason_codes": [
+        "outside_selected_profile"
+      ]
+    },
+    {
+      "registration_name": "aoa_memo",
+      "action": "retain_legacy_until_replacement_gates",
+      "reason_codes": [
+        "not_admitted_for_selected_profile",
+        "legacy_shared_bearer_observed",
+        "outside_selected_profile"
+      ]
+    },
+    {
+      "registration_name": "aoa_session_memory",
+      "action": "retain_legacy_until_replacement_gates",
+      "reason_codes": [
+        "not_admitted_for_selected_profile",
+        "legacy_shared_bearer_observed",
+        "outside_selected_profile"
+      ]
+    },
+    {
+      "registration_name": "aoa_evals",
+      "action": "retain_legacy_until_replacement_gates",
+      "reason_codes": [
+        "not_admitted_for_selected_profile",
+        "legacy_shared_bearer_observed",
+        "outside_selected_profile"
+      ]
+    },
+    {
+      "registration_name": "tos_corpus",
+      "action": "withhold",
+      "reason_codes": [
+        "registry_state_suspended"
+      ]
+    },
+    {
+      "registration_name": "aoa_4pda_connector",
+      "action": "retain_legacy_until_replacement_gates",
+      "reason_codes": [
+        "not_admitted_for_selected_profile",
+        "legacy_shared_bearer_observed",
+        "outside_selected_profile"
+      ]
+    },
+    {
+      "registration_name": "aoa_telegram_connector",
+      "action": "retain_legacy_until_replacement_gates",
+      "reason_codes": [
+        "not_admitted_for_selected_profile",
+        "legacy_shared_bearer_observed",
+        "outside_selected_profile"
+      ]
+    },
+    {
+      "registration_name": "aoa_discord_connector",
+      "action": "retain_legacy_until_replacement_gates",
+      "reason_codes": [
+        "not_admitted_for_selected_profile",
+        "legacy_shared_bearer_observed",
+        "outside_selected_profile"
+      ]
+    },
+    {
+      "registration_name": "aoa_course_connector",
+      "action": "withhold",
+      "reason_codes": [
+        "outside_selected_profile"
+      ]
+    },
+    {
+      "registration_name": "aoa_stackoverflow_connector",
+      "action": "withhold",
+      "reason_codes": [
+        "outside_selected_profile"
+      ]
+    },
+    {
+      "registration_name": "aoa_xda_connector",
+      "action": "withhold",
+      "reason_codes": [
+        "outside_selected_profile"
+      ]
+    },
+    {
+      "registration_name": "abyss_stack_candidate",
+      "action": "withhold",
+      "reason_codes": [
+        "outside_selected_profile"
+      ]
+    },
+    {
+      "registration_name": "aoa_memo_candidate",
+      "action": "withhold",
+      "reason_codes": [
+        "outside_selected_profile"
+      ]
+    },
+    {
+      "registration_name": "aoa_evals_candidate",
+      "action": "withhold",
+      "reason_codes": [
+        "outside_selected_profile"
+      ]
+    }
+  ],
+  "blockers": [
+    "aoa_decisions: missing registry_admission, consumer_schema_digest, admission_receipt, consumer_schema_receipt, canary_receipt, owner_acceptance_receipt, rollback_receipt",
+    "aoa_kag: missing registry_admission, consumer_schema_digest, admission_receipt, consumer_schema_receipt, canary_receipt, owner_acceptance_receipt, rollback_receipt",
+    "aoa_stats: missing registry_admission, consumer_schema_digest, admission_receipt, consumer_schema_receipt, canary_receipt, owner_acceptance_receipt, rollback_receipt"
+  ],
+  "claim_limits": [
+    "This plan is derived source evidence and does not mutate Codex configuration.",
+    "A rendered registration still requires an operator-controlled apply.",
+    "A fresh Codex process and post-registration schema observation are required.",
+    "Registration does not prove endpoint, authentication, grounded calls, or owner acceptance."
+  ],
+  "plan_digest": "sha256:aad328463066de6f6ebc430d0d4d8349f865668656e94c282e6ccea0e02090fd"
+}

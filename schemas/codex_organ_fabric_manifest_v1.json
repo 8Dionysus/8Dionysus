@@ -1,0 +1,385 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://8dionysus.local/schemas/codex_organ_fabric_manifest_v1.json",
+  "title": "8Dionysus Codex organ-fabric consumer manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "updated_at",
+    "production_protocol",
+    "consumer",
+    "owner_boundaries",
+    "catalog_policy",
+    "profiles",
+    "registrations",
+    "claim_limits"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "8dionysus_codex_organ_fabric_manifest_v1"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "production_protocol": {
+      "const": "2025-11-25"
+    },
+    "consumer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "product",
+        "observed_version",
+        "configuration_scope",
+        "dynamic_reload_posture",
+        "catalog_refresh_posture"
+      ],
+      "properties": {
+        "product": {
+          "const": "codex-cli"
+        },
+        "observed_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "configuration_scope": {
+          "const": "global_plus_trusted_project"
+        },
+        "dynamic_reload_posture": {
+          "const": "new_process_required"
+        },
+        "catalog_refresh_posture": {
+          "const": "reobserve_after_registration_or_schema_change"
+        }
+      }
+    },
+    "owner_boundaries": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "projection_owner",
+        "registry_owner",
+        "runtime_owner",
+        "apply_authority"
+      ],
+      "properties": {
+        "projection_owner": {
+          "const": "8Dionysus"
+        },
+        "registry_owner": {
+          "const": "aoa-sdk"
+        },
+        "runtime_owner": {
+          "const": "abyss-stack"
+        },
+        "apply_authority": {
+          "const": "operator"
+        }
+      }
+    },
+    "catalog_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "always_loaded_full_catalog_forbidden",
+        "profile_selection_required",
+        "max_registrations_per_profile",
+        "max_enabled_tools_per_profile",
+        "legacy_baseline"
+      ],
+      "properties": {
+        "always_loaded_full_catalog_forbidden": {
+          "const": true
+        },
+        "profile_selection_required": {
+          "const": true
+        },
+        "max_registrations_per_profile": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 8
+        },
+        "max_enabled_tools_per_profile": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 64
+        },
+        "legacy_baseline": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "captured_at",
+            "active_server_count",
+            "active_tool_count",
+            "active_tool_catalog_bytes",
+            "source_ref",
+            "source_digest"
+          ],
+          "properties": {
+            "captured_at": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "active_server_count": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "active_tool_count": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "active_tool_catalog_bytes": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "source_ref": {
+              "type": "string",
+              "minLength": 1
+            },
+            "source_digest": {
+              "type": "string",
+              "pattern": "^sha256:[0-9a-f]{64}$"
+            }
+          }
+        }
+      }
+    },
+    "profiles": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "description",
+          "allowed_policy_families"
+        ],
+        "properties": {
+          "description": {
+            "type": "string",
+            "minLength": 1
+          },
+          "allowed_policy_families": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "enum": [
+                "read",
+                "candidate"
+              ]
+            },
+            "uniqueItems": true
+          }
+        }
+      }
+    },
+    "registrations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/registration"
+      }
+    },
+    "claim_limits": {
+      "type": "array",
+      "minItems": 4,
+      "items": {
+        "type": "string",
+        "minLength": 3
+      }
+    }
+  },
+  "$defs": {
+    "receiptSet": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "admission",
+        "consumer_schema",
+        "canary",
+        "owner_acceptance",
+        "rollback"
+      ],
+      "properties": {
+        "admission": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "consumer_schema": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "canary": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "owner_acceptance": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "rollback": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "registration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "registration_name",
+        "organ_id",
+        "policy_family",
+        "effect_ceiling",
+        "registry_state",
+        "registry_record_ref",
+        "source_service_ref",
+        "url",
+        "bearer_token_env_var",
+        "credential_class",
+        "protocol_versions",
+        "profiles",
+        "enabled_tools",
+        "startup_timeout_sec",
+        "tool_timeout_sec",
+        "required",
+        "default_tools_approval_mode",
+        "expected_schema_digest",
+        "receipts",
+        "rollback_route"
+      ],
+      "properties": {
+        "registration_name": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "organ_id": {
+          "type": "string",
+          "minLength": 2
+        },
+        "policy_family": {
+          "enum": [
+            "read",
+            "candidate"
+          ]
+        },
+        "effect_ceiling": {
+          "enum": [
+            "observe",
+            "derive",
+            "validate",
+            "prepare_candidate"
+          ]
+        },
+        "registry_state": {
+          "enum": [
+            "shadow",
+            "admitted",
+            "suspended",
+            "deprecated",
+            "retired"
+          ]
+        },
+        "registry_record_ref": {
+          "type": "string",
+          "minLength": 3
+        },
+        "source_service_ref": {
+          "type": "string",
+          "pattern": "^abyss-stack/mcp/services/[a-z0-9-]+/$"
+        },
+        "url": {
+          "type": "string",
+          "pattern": "^http://127\\.0\\.0\\.1:[0-9]{4,5}/mcp$"
+        },
+        "bearer_token_env_var": {
+          "type": "string",
+          "pattern": "^[A-Z][A-Z0-9_]*$"
+        },
+        "credential_class": {
+          "type": "string",
+          "minLength": 3
+        },
+        "protocol_versions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+          },
+          "uniqueItems": true
+        },
+        "profiles": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "enabled_tools": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$"
+          },
+          "uniqueItems": true
+        },
+        "startup_timeout_sec": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 120
+        },
+        "tool_timeout_sec": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 300
+        },
+        "required": {
+          "const": false
+        },
+        "default_tools_approval_mode": {
+          "enum": [
+            "writes",
+            "prompt"
+          ]
+        },
+        "expected_schema_digest": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "receipts": {
+          "$ref": "#/$defs/receiptSet"
+        },
+        "removal_receipt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 3
+        },
+        "rollback_route": {
+          "type": "string",
+          "minLength": 3
+        }
+      }
+    }
+  }
+}

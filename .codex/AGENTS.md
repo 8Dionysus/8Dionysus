@@ -14,6 +14,14 @@ deployment policy. It also excludes deploy-local `generated/` and `worktrees/`.
 Use the dedicated owner route for each excluded path; do not force parity by
 copying or pruning it through `project_workspace_root.py`.
 
+The future OS Abyss organ-fabric consumer projection lives under
+`config/codex_plane/organ_fabric/`. It is profile-scoped and deny-by-default:
+only an entirely admitted profile with exact consumer-schema, canary, owner
+acceptance, and rollback receipts may render. The renderer emits a review
+fragment only and has no live apply authority. Keep the legacy stable-name
+render intact until the explicit rollout proves replacement and consumer-zero.
+See `docs/CODEX_ORGAN_FABRIC_CONSUMER.md`.
+
 No secrets, tokens, private hostnames, unreviewed hooks, or hidden local automation may be added here. Any mutating helper must stay bounded, documented, reversible, and route-aware.
 
 The installed `aoa-workspace-project` launcher must reconcile the selected
@@ -102,6 +110,8 @@ Verify with:
 
 ```bash
 python scripts/validate_nested_agents.py
+python scripts/render_codex_organ_fabric.py --check
+python scripts/validate_codex_organ_fabric.py
 python scripts/build_workspace_memory_map.py --workspace-root <workspace-root> --owner-repo-root . --check
 python /srv/AbyssOS/8Dionysus/scripts/smoke_aoa_stats_mcp.py --workspace-root /srv/AbyssOS
 python /srv/AbyssOS/8Dionysus/scripts/smoke_aoa_memo_mcp.py --workspace-root /srv/AbyssOS

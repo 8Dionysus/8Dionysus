@@ -40,6 +40,7 @@ MEMORY_ROUTE_MARKERS = (
 )
 
 PORT_LEVELS = ("none", "route_only", "stub_port", "full_port", "mature_port")
+NO_PORT_RECOMMENDED = frozenset({"aoa-routing"})
 MEMORY_ROUTE_STATUSES = (
     "missing",
     "root_memory_route",
@@ -99,7 +100,6 @@ ROUTE_ONLY_RECOMMENDED = frozenset(
         "aoa-evals",
         "aoa-kag",
         "aoa-memo",
-        "aoa-routing",
         "aoa-sdk",
         "aoa-stats",
         ".agents",
@@ -110,6 +110,7 @@ ROUTE_ONLY_RECOMMENDED = frozenset(
 
 MEMORY_ROLE_BY_NAME = {
     "aoa-memo": "reviewed-memory-owner",
+    "aoa-routing": "deprecated-routing-predecessor",
     ".aoa": "session-evidence-kernel",
     "abyss-stack": "mcp-access-plane-owner",
     "abyss-machine": "host-local-memory-port",
@@ -121,6 +122,7 @@ REFACTOR_STATE_BY_NAME = {
     "aoa-memo": "active-memory-authority",
     "aoa-skills": "reference-topology",
     "aoa-techniques": "reference-topology",
+    "aoa-routing": "deprecated-maintenance-predecessor",
     "abyss-stack": "pilot-access-plane",
     "abyss-machine": "pilot-host-plane",
     ".aoa": "session-memory-kernel",
@@ -513,6 +515,15 @@ def writeback_marker_record(
     current_port_level: str,
     root_hint_override: str | None = None,
 ) -> dict[str, Any]:
+    if name in NO_PORT_RECOMMENDED:
+        return {
+            "status": "not_applicable",
+            "decision": "",
+            "marker_kind": "",
+            "marker_ref": "",
+            "marker_path": "",
+            "source": "",
+        }
     if root is None or not root.is_dir():
         return {
             "status": "unknown",
@@ -705,6 +716,8 @@ def mcp_cli_command(args: str) -> str:
 
 
 def recommended_port_level(name: str) -> str:
+    if name in NO_PORT_RECOMMENDED:
+        return "none"
     if name in FULL_PORT_RECOMMENDED:
         return "full_port"
     if name in ROUTE_ONLY_RECOMMENDED:

@@ -45,18 +45,21 @@ Arrows mean exchange, feedback, and distillation; they do not transfer ownership
 | Core | [Agents-of-Abyss](https://github.com/8Dionysus/Agents-of-Abyss) | Ecosystem identity, layer map, federation rules, and program direction |
 | Core | [abyss-stack](https://github.com/8Dionysus/abyss-stack) | Local-first runtime, deployment, storage, and lifecycle services |
 | Core | [ATM10-Agent](https://github.com/8Dionysus/ATM10-Agent) | Operator companion: perception, memory, safe automation, voice, and action surfaces |
-| Core | [aoa-sdk](https://github.com/8Dionysus/aoa-sdk) | Typed local-first access spine for workspace integration and controlled orchestration |
+| Core | [aoa-sdk](https://github.com/8Dionysus/aoa-sdk) | Typed local-first access spine, canonical routing and dispatch, workspace integration, and controlled orchestration |
 | AoA layer | [aoa-techniques](https://github.com/8Dionysus/aoa-techniques) | Reusable engineering practice |
 | AoA layer | [aoa-skills](https://github.com/8Dionysus/aoa-skills) | Shared portable skills and the common owner-home compatibility contract |
 | AoA layer | [aoa-evals](https://github.com/8Dionysus/aoa-evals) | Portable proof surfaces |
 | AoA layer | [aoa-stats](https://github.com/8Dionysus/aoa-stats) | Shared measurement grammar, federated owner-local stats ports, and derived read models |
-| AoA layer | [aoa-routing](https://github.com/8Dionysus/aoa-routing) | Thin routing and dispatch across AoA surfaces |
 | AoA layer | [aoa-memo](https://github.com/8Dionysus/aoa-memo) | Provenance-aware memory and recall |
 | AoA layer | [aoa-agents](https://github.com/8Dionysus/aoa-agents) | Role contracts, posture, and handoff boundaries |
 | AoA layer | [aoa-playbooks](https://github.com/8Dionysus/aoa-playbooks) | Recurring operations and scenario composition |
 | AoA layer | [aoa-kag](https://github.com/8Dionysus/aoa-kag) | Derived knowledge structures and retrieval-ready substrates |
 | Support | [Dionysus](https://github.com/8Dionysus/Dionysus) | Voice-first, evidence-grounded personal portrait protocols |
 | Support | [8Dionysus](https://github.com/8Dionysus/8Dionysus) | Public profile, route map, and its repo-local workspace-delivery diagnosis |
+
+`aoa-routing` is a deprecated maintenance-only predecessor retained for
+reversible history and rollback review. It is not a current public route, and
+archive remains a separate operator decision.
 
 ## [Start where your question begins](docs/START_HERE.md)
 

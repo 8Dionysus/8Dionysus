@@ -67,7 +67,7 @@ KNOWN_REPOSITORIES: tuple[dict[str, str], ...] = (
     },
     {
         "name": "aoa-sdk",
-        "role": "typed workspace integration, compatibility checks, passive skill inspection, and reviewed evidence handoff",
+        "role": "typed workspace integration, canonical routing and dispatch, compatibility checks, passive skill inspection, and reviewed evidence handoff",
         "kind": "control-plane-sdk",
     },
     {
@@ -92,8 +92,8 @@ KNOWN_REPOSITORIES: tuple[dict[str, str], ...] = (
     },
     {
         "name": "aoa-routing",
-        "role": "navigation, typing, dispatch hints, and derived cross-repo entry surfaces",
-        "kind": "routing-layer",
+        "role": "deprecated maintenance-only routing predecessor retained for reversible history and rollback review",
+        "kind": "deprecated-routing-predecessor",
     },
     {
         "name": "aoa-memo",

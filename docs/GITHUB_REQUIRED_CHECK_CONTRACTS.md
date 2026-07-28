@@ -40,13 +40,18 @@ These three files are the bounded coordination surface:
 
 - `repo-validation`: `8Dionysus`, `Agents-of-Abyss`, `Dionysus`,
   `Tree-of-Sophia`, `aoa-agents`, `aoa-evals`, `aoa-kag`, `aoa-memo`,
-  `aoa-playbooks`, `aoa-routing`, `aoa-sdk`, `aoa-stats`, `aoa-techniques`
+  `aoa-playbooks`, `aoa-sdk`, `aoa-stats`, `aoa-techniques`
   all require `Repo Validation`
 - `ATM10-Agent`: requires `test` and `smoke`
 - `abyss-stack`: requires `Repo Validation` and `validate-windows-host-bridge`
 - `aoa-skills`: requires `Repo Validation` and `build-validate`
 - `abyss-stack_old`: intentionally stays outside this contract and must be
   reviewed manually before any tightening or cleanup work
+
+The deprecated `aoa-routing` predecessor is outside the active repo-family
+check inventory after succession. This contract change neither archives the
+repository nor changes its branch protection; both remain separately
+operator-controlled.
 
 ## Validation routes
 

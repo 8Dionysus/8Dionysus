@@ -21,6 +21,16 @@ def write_text(path: Path, text: str) -> None:
 
 
 class WorkspaceMemoryMapTests(unittest.TestCase):
+    def test_deprecated_routing_predecessor_has_no_active_port_recommendation(self) -> None:
+        self.assertEqual(
+            build_workspace_memory_map.recommended_port_level("aoa-routing"),
+            "none",
+        )
+        self.assertEqual(
+            build_workspace_memory_map.memory_role("aoa-routing"),
+            "deprecated-routing-predecessor",
+        )
+
     def test_validator_accepts_explicit_workspace_root(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             workspace = Path(tmp)

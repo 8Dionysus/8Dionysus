@@ -63,6 +63,21 @@ class PublicRouteMapTests(unittest.TestCase):
         )
         self.assertEqual(by_need["profile-only route or glossary correction"], "8Dionysus")
 
+    def test_public_orientation_routes_navigation_and_dispatch_to_sdk(self) -> None:
+        root = Path(__file__).resolve().parents[1]
+        surfaces = (
+            root / "README.md",
+            root / "AGENTS.md",
+            root / "GLOSSARY.md",
+            root / "docs" / "START_HERE.md",
+            root / "docs" / "AGENTS_ROOT_REFERENCE.md",
+        )
+        text = "\n".join(path.read_text(encoding="utf-8") for path in surfaces)
+
+        self.assertNotIn("github.com/8Dionysus/aoa-routing", text)
+        self.assertIn("canonical routing and dispatch", text)
+        self.assertIn("deprecated `aoa-routing` predecessor", text)
+
     def test_workspace_route_uses_sdk_capsule_surface(self) -> None:
         payload = build_payload(workspace_root=self.workspace_root)
         workspace_route = next(

@@ -33,12 +33,16 @@ Use one parent directory that keeps the public repositories as sibling checkouts
   aoa-kag/
   aoa-memo/
   aoa-playbooks/
-  aoa-routing/
   aoa-sdk/
   aoa-skills/
   aoa-stats/
   aoa-techniques/
 ```
+
+An `aoa-routing/` sibling may remain beside this canonical shape only as a
+deprecated maintenance checkout for reversible history and rollback review.
+No active workspace route requires it, and archive remains a separate operator
+decision.
 
 `8Dionysus` stays the public profile and route map.
 It is part of the workspace, but it does not replace the source repositories.

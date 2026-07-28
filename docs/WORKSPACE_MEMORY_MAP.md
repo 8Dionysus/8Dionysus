@@ -22,6 +22,7 @@ python scripts/validate_workspace_memory_map.py --workspace-root <workspace-root
 - `landed_exports`: 3
 - `local_candidates`: 49
 - `memory_routes`: 18
+- `optional_checkouts_missing`: 0
 - `pending_candidates`: 49
 - `pending_exports`: 1
 - `places_listed`: 20
@@ -29,6 +30,7 @@ python scripts/validate_workspace_memory_map.py --workspace-root <workspace-root
 - `places_with_issues`: 2
 - `ready_exports`: 0
 - `recommended_full_ports_missing`: 1
+- `required_checkouts_missing`: 0
 - `root_memory_routes`: 17
 - `route_only`: 11
 - `session_evidence_routes`: 1

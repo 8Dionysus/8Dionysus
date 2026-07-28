@@ -35,18 +35,19 @@ For reading guidance, see [AGENTS_FRONTIER_RECON](AGENTS_FRONTIER_RECON.md).
 
 ## Current totals
 
-- `agents_md_files`: 2838
+- `agents_md_files`: 2839
 - `high_risk_dirs_without_agents`: 22
 - `known_repositories`: 16
 - `known_repositories_missing`: 0
 - `long_root_agents`: 5
 - `missing_required_agents`: 0
-- `nested_agents_files`: 2816
+- `nested_agents_files`: 2817
+- `optional_repositories_missing`: 0
 - `repos_with_issues`: 15
 - `repositories_listed`: 22
 - `repositories_scanned`: 22
 - `root_agents_present`: 22
-- `unvalidated_nested_agents`: 2571
+- `unvalidated_nested_agents`: 2572
 - `validator_required_agents`: 245
 - `validators_present`: 13
 
@@ -71,7 +72,7 @@ For reading guidance, see [AGENTS_FRONTIER_RECON](AGENTS_FRONTIER_RECON.md).
 | `aoa-playbooks` | `scanned` | 38 | 37 | True | one or more AGENTS.md files do not start with '# AGENTS.md' |
 | `aoa-kag` | `scanned` | 961 | 960 | True | one or more AGENTS.md files do not start with '# AGENTS.md'; root AGENTS.md is long (300 lines; threshold 240) |
 | `.agents` | `scanned` | 1 | 0 | False |  |
-| `.aoa` | `scanned` | 739 | 738 | False | nested AGENTS.md files exist without scripts/validate_nested_agents.py; one or more AGENTS.md files do not start with '# AGENTS.md' |
+| `.aoa` | `scanned` | 740 | 739 | False | nested AGENTS.md files exist without scripts/validate_nested_agents.py; one or more AGENTS.md files do not start with '# AGENTS.md' |
 | `.codex` | `scanned` | 218 | 217 | False | nested AGENTS.md files exist without scripts/validate_nested_agents.py; one or more AGENTS.md files do not start with '# AGENTS.md' |
 | `abyss-machine` | `scanned` | 59 | 58 | False | nested AGENTS.md files exist without scripts/validate_nested_agents.py; one or more AGENTS.md files do not start with '# AGENTS.md' |
 | `abyss-stack-source` | `scanned` | 52 | 51 | True | one or more AGENTS.md files do not start with '# AGENTS.md'; root AGENTS.md is long (324 lines; threshold 240) |
@@ -80,6 +81,7 @@ For reading guidance, see [AGENTS_FRONTIER_RECON](AGENTS_FRONTIER_RECON.md).
 ## How to read the signals
 
 - `missing` means the known public repository was not found under the selected workspace root.
+- `checkout_requirement: optional` means an absent retained predecessor is valid and does not create an audit issue.
 - `unvalidated_nested_agents` means a nested `AGENTS.md` exists but is not declared by `scripts/validate_nested_agents.py`.
 - `high_risk_dirs_without_agents` marks common contract, generated, test, runtime, or source directories without a direct local instruction file.
 - `long_root_agents` marks roots that may be ready for slimming after local instructions are pushed down-tree.

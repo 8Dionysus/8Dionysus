@@ -21,6 +21,21 @@ def write_text(path: Path, text: str) -> None:
 
 
 class WorkspaceMemoryMapTests(unittest.TestCase):
+    def test_missing_deprecated_routing_checkout_is_optional(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            payload = build_workspace_memory_map.build_workspace_memory_map(Path(tmp))
+            routing = next(
+                place for place in payload["places"] if place["name"] == "aoa-routing"
+            )
+
+            self.assertEqual(routing["checkout_state"], "missing")
+            self.assertEqual(routing["checkout_requirement"], "optional")
+            self.assertEqual(routing["issues"], [])
+            self.assertEqual(routing["writeback_marker"]["status"], "not_applicable")
+            self.assertEqual(routing["writeback_debt"]["status"], "not_applicable")
+            self.assertEqual(payload["totals"]["optional_checkouts_missing"], 1)
+            validate_workspace_memory_map.validate_payload(payload)
+
     def test_deprecated_routing_predecessor_has_no_active_port_recommendation(self) -> None:
         self.assertEqual(
             build_workspace_memory_map.recommended_port_level("aoa-routing"),

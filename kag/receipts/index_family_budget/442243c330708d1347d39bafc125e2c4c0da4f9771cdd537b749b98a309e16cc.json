@@ -8,7 +8,7 @@
   "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
   "default_limit_bytes": 1048576,
   "head_family_digest": "442243c330708d1347d39bafc125e2c4c0da4f9771cdd537b749b98a309e16cc",
-  "reason": "refresh portable family for public routing succession decision",
+  "reason": "Refresh owner-local KAG projections after making the retained aoa-routing predecessor checkout explicitly optional in workspace audit contracts.",
   "repo": "8Dionysus",
   "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
   "scope": "generated_delta",

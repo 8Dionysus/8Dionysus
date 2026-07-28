@@ -15,6 +15,7 @@ from typing import Any, Mapping, Sequence
 
 from audit_agents_map import (
     KNOWN_REPOSITORIES,
+    checkout_requirement,
     expand_manifest_path,
     path_hint,
     read_text,
@@ -768,20 +769,33 @@ def place_record(
     path_hint_override: str | None = None,
 ) -> dict[str, Any]:
     issues: list[str] = []
+    requirement = checkout_requirement(name)
     if root is None or not root.is_dir():
-        marker = writeback_marker_record(
-            name=name,
-            root=root,
-            workspace_root=workspace_root,
-            memory_route_status="missing",
-            current_port_level="none",
-            root_hint_override=path_hint_override,
+        marker = (
+            {
+                "status": "not_applicable",
+                "decision": "",
+                "marker_kind": "",
+                "marker_ref": "",
+                "marker_path": "",
+                "source": "",
+            }
+            if requirement == "optional"
+            else writeback_marker_record(
+                name=name,
+                root=root,
+                workspace_root=workspace_root,
+                memory_route_status="missing",
+                current_port_level="none",
+                root_hint_override=path_hint_override,
+            )
         )
         return {
             "name": name,
             "kind": kind,
             "role": role,
             "place_kind": place_kind,
+            "checkout_requirement": requirement,
             "checkout_state": "missing",
             "path_hint": name,
             "memory_role": memory_role(name),
@@ -806,7 +820,7 @@ def place_record(
                 current_port_level="none",
             ),
             "validation_command": "python scripts/build_workspace_memory_map.py --check",
-            "issues": ["place root not found"],
+            "issues": [] if requirement == "optional" else ["place root not found"],
         }
 
     root_agents_present = (root / "AGENTS.md").is_file()
@@ -867,6 +881,7 @@ def place_record(
         "kind": kind,
         "role": role,
         "place_kind": place_kind,
+        "checkout_requirement": requirement,
         "checkout_state": "scanned",
         "path_hint": path_hint_override or path_hint(root, workspace_root),
         "memory_role": memory_role(name),
@@ -968,6 +983,18 @@ def build_workspace_memory_map(
     totals = {
         "places_listed": len(places),
         "places_scanned": sum(1 for place in places if place["checkout_state"] == "scanned"),
+        "required_checkouts_missing": sum(
+            1
+            for place in places
+            if place["checkout_state"] == "missing"
+            and place["checkout_requirement"] == "required"
+        ),
+        "optional_checkouts_missing": sum(
+            1
+            for place in places
+            if place["checkout_state"] == "missing"
+            and place["checkout_requirement"] == "optional"
+        ),
         "memory_routes": sum(1 for place in places if place["memory_route_status"] != "missing"),
         "root_memory_routes": sum(
             1

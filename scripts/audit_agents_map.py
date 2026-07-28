@@ -119,6 +119,7 @@ KNOWN_REPOSITORIES: tuple[dict[str, str], ...] = (
 
 KNOWN_REPO_NAMES: tuple[str, ...] = tuple(repo["name"] for repo in KNOWN_REPOSITORIES)
 KNOWN_REPO_BY_NAME: dict[str, dict[str, str]] = {repo["name"]: repo for repo in KNOWN_REPOSITORIES}
+OPTIONAL_REPO_NAMES: frozenset[str] = frozenset({"aoa-routing"})
 
 HIGH_RISK_DIRECTORIES: tuple[str, ...] = (
     ".agents",
@@ -335,6 +336,7 @@ def scan_repo(
         "name": name,
         "kind": role_record["kind"],
         "role": role_record["role"],
+        "checkout_requirement": checkout_requirement(name),
         "checkout_state": "scanned",
         "path_hint": path_hint_override or path_hint(repo_root, workspace_root),
         "agents_md_count": len(agents_paths),
@@ -356,10 +358,12 @@ def scan_repo(
 
 def missing_repo_record(name: str) -> dict[str, Any]:
     role_record = KNOWN_REPO_BY_NAME[name]
+    requirement = checkout_requirement(name)
     return {
         "name": name,
         "kind": role_record["kind"],
         "role": role_record["role"],
+        "checkout_requirement": requirement,
         "checkout_state": "missing",
         "path_hint": name,
         "agents_md_count": 0,
@@ -375,8 +379,16 @@ def missing_repo_record(name: str) -> dict[str, Any]:
         "high_risk_dirs_present": [],
         "high_risk_dirs_without_agents": [],
         "agents_files": [],
-        "issues": ["known repository checkout not found under workspace root"],
+        "issues": (
+            []
+            if requirement == "optional"
+            else ["known repository checkout not found under workspace root"]
+        ),
     }
+
+
+def checkout_requirement(name: str) -> str:
+    return "optional" if name in OPTIONAL_REPO_NAMES else "required"
 
 
 def infer_workspace_root(repo_root: Path) -> Path:
@@ -540,7 +552,22 @@ def summarize(repositories: Sequence[Mapping[str, Any]]) -> dict[str, int]:
         "known_repositories": len(KNOWN_REPOSITORIES),
         "repositories_listed": len(repositories),
         "repositories_scanned": len(scanned),
-        "known_repositories_missing": len([repo for repo in missing if repo["name"] in KNOWN_REPO_BY_NAME]),
+        "known_repositories_missing": len(
+            [
+                repo
+                for repo in missing
+                if repo["name"] in KNOWN_REPO_BY_NAME
+                and repo.get("checkout_requirement", "required") == "required"
+            ]
+        ),
+        "optional_repositories_missing": len(
+            [
+                repo
+                for repo in missing
+                if repo["name"] in KNOWN_REPO_BY_NAME
+                and repo.get("checkout_requirement") == "optional"
+            ]
+        ),
         "agents_md_files": sum(int(repo["agents_md_count"]) for repo in scanned),
         "root_agents_present": sum(1 for repo in scanned if repo["root_agents_present"]),
         "nested_agents_files": sum(int(repo["nested_agents_count"]) for repo in scanned),
@@ -611,6 +638,7 @@ def build_public_baseline_map() -> dict[str, Any]:
             "name": repo["name"],
             "kind": repo["kind"],
             "role": repo["role"],
+            "checkout_requirement": checkout_requirement(repo["name"]),
             "checkout_state": "public-baseline",
         }
         for repo in KNOWN_REPOSITORIES
@@ -700,6 +728,7 @@ def render_markdown(payload: Mapping[str, Any]) -> str:
             "## How to read the signals",
             "",
             "- `missing` means the known public repository was not found under the selected workspace root.",
+            "- `checkout_requirement: optional` means an absent retained predecessor is valid and does not create an audit issue.",
             "- `unvalidated_nested_agents` means a nested `AGENTS.md` exists but is not declared by `scripts/validate_nested_agents.py`.",
             "- `high_risk_dirs_without_agents` marks common contract, generated, test, runtime, or source directories without a direct local instruction file.",
             "- `long_root_agents` marks roots that may be ready for slimming after local instructions are pushed down-tree.",

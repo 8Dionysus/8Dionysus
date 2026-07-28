@@ -116,7 +116,7 @@
       "name": "aoa_workspace",
       "repo_key": "aoa-sdk",
       "cwd_repo_rel": "",
-      "script_rel": "scripts/aoa_workspace_mcp_server.py"
+      "script_rel": "mechanics/codex-projection/parts/workspace-mcp-server/scripts/aoa_workspace_mcp_server.py"
     },
     {
       "name": "aoa_stats",

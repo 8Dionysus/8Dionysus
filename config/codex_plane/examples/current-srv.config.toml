@@ -75,7 +75,7 @@ nickname_candidates = ["Delta"]
 
 [mcp_servers.aoa_workspace]
 command = "python3"
-args = ["scripts/aoa_workspace_mcp_server.py"]
+args = ["mechanics/codex-projection/parts/workspace-mcp-server/scripts/aoa_workspace_mcp_server.py"]
 cwd = "/srv/AbyssOS/aoa-sdk"
 
 [mcp_servers.aoa_stats]

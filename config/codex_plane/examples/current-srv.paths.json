@@ -12,7 +12,7 @@
   "mcp_servers": {
     "aoa_workspace": {
       "cwd": "/srv/AbyssOS/aoa-sdk",
-      "script_rel": "scripts/aoa_workspace_mcp_server.py"
+      "script_rel": "mechanics/codex-projection/parts/workspace-mcp-server/scripts/aoa_workspace_mcp_server.py"
     },
     "aoa_stats": {
       "cwd": "/srv/AbyssOS",

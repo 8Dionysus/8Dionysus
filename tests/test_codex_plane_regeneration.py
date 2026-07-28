@@ -25,6 +25,25 @@ def write_text(path: Path, text: str) -> None:
 
 
 class CodexPlaneRegenerationTests(unittest.TestCase):
+    def test_runtime_manifest_uses_canonical_aoa_workspace_server(self) -> None:
+        manifest = render_codex_plane.load_json_object(
+            REPO_ROOT / "config" / "codex_plane" / "runtime_manifest.v1.json"
+        )
+        by_name = {server["name"]: server for server in manifest["mcp_servers"]}
+
+        self.assertEqual(
+            by_name["aoa_workspace"],
+            {
+                "name": "aoa_workspace",
+                "repo_key": "aoa-sdk",
+                "cwd_repo_rel": "",
+                "script_rel": (
+                    "mechanics/codex-projection/parts/workspace-mcp-server/"
+                    "scripts/aoa_workspace_mcp_server.py"
+                ),
+            },
+        )
+
     def test_runtime_manifest_registers_connector_launchers(self) -> None:
         manifest = render_codex_plane.load_json_object(
             REPO_ROOT / "config" / "codex_plane" / "runtime_manifest.v1.json"
@@ -128,7 +147,14 @@ class CodexPlaneRegenerationTests(unittest.TestCase):
                     "agents": {"max_threads": 1, "max_depth": 1, "job_max_runtime_seconds": 60, "roles": []},
                     "repos": {"aoa-sdk": "aoa-sdk", "aoa-stats": "aoa-stats"},
                     "mcp_servers": [
-                        {"name": "aoa_workspace", "repo_key": "aoa-sdk", "script_rel": "scripts/aoa_workspace_mcp_server.py"},
+                        {
+                            "name": "aoa_workspace",
+                            "repo_key": "aoa-sdk",
+                            "script_rel": (
+                                "mechanics/codex-projection/parts/workspace-mcp-server/"
+                                "scripts/aoa_workspace_mcp_server.py"
+                            ),
+                        },
                         {"name": "aoa_stats", "repo_key": "aoa-stats", "script_rel": "scripts/aoa_stats_mcp_server.py"},
                     ],
                     "hooks": {

@@ -525,6 +525,16 @@ def writeback_marker_record(
             "source": "",
         }
 
+    if memory_route_status == "missing" and current_port_level == "none":
+        return {
+            "status": "not_applicable",
+            "decision": "",
+            "marker_kind": "",
+            "marker_ref": "",
+            "marker_path": "",
+            "source": "",
+        }
+
     candidates = _writeback_marker_candidates(
         root,
         workspace_root,
@@ -537,15 +547,6 @@ def writeback_marker_record(
             key=lambda item: _marker_candidate_sort_key(root, item),
         )[-1]
         return {"status": "present", **latest}
-    if memory_route_status == "missing" and current_port_level == "none":
-        return {
-            "status": "not_applicable",
-            "decision": "",
-            "marker_kind": "",
-            "marker_ref": "",
-            "marker_path": "",
-            "source": "",
-        }
     return {
         "status": "missing",
         "decision": "",

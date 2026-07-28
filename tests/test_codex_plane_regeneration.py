@@ -25,6 +25,15 @@ def write_text(path: Path, text: str) -> None:
 
 
 class CodexPlaneRegenerationTests(unittest.TestCase):
+    def test_active_review_agents_use_sdk_routing_owner_projection(self) -> None:
+        for agent_name in ("reviewer", "evaluator"):
+            text = (REPO_ROOT / ".codex" / "agents" / f"{agent_name}.toml").read_text(
+                encoding="utf-8"
+            )
+
+            self.assertIn("aoa-sdk routing control plane", text)
+            self.assertNotIn("routing policy owned by aoa-routing", text)
+
     def test_runtime_manifest_uses_canonical_aoa_workspace_server(self) -> None:
         manifest = render_codex_plane.load_json_object(
             REPO_ROOT / "config" / "codex_plane" / "runtime_manifest.v1.json"

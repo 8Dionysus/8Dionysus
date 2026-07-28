@@ -58,6 +58,25 @@ class WorkspaceMemoryMapTests(unittest.TestCase):
             self.assertEqual(routing["writeback_debt"]["status"], "live_check_required")
             validate_workspace_memory_map.validate_payload(payload)
 
+    def test_historical_writeback_file_does_not_activate_unrouted_repo(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            workspace = Path(tmp)
+            root = workspace / "aoa-sdk"
+            self._make_root(root, with_memory_route=False)
+            write_text(
+                root / "docs" / "decisions" / "AOA-SDK-D-9999-writeback.md",
+                "# Historical writeback\n",
+            )
+
+            payload = build_workspace_memory_map.build_workspace_memory_map(workspace)
+            sdk = next(place for place in payload["places"] if place["name"] == "aoa-sdk")
+
+            self.assertEqual(sdk["memory_route_status"], "missing")
+            self.assertEqual(sdk["current_port_level"], "none")
+            self.assertEqual(sdk["writeback_marker"]["status"], "not_applicable")
+            self.assertEqual(sdk["writeback_debt"]["status"], "not_applicable")
+            validate_workspace_memory_map.validate_payload(payload)
+
     def test_validator_accepts_explicit_workspace_root(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             workspace = Path(tmp)

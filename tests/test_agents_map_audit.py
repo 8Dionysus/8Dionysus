@@ -6,12 +6,35 @@ import unittest
 from pathlib import Path
 import sys
 
+from jsonschema import Draft202012Validator
+
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 
 import audit_agents_map
 
 
 class AgentsMapAuditTests(unittest.TestCase):
+    def test_v1_schema_accepts_payload_without_additive_checkout_requirement(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            payload = audit_agents_map.build_agents_map(
+                Path(tmp),
+                known_repositories=("aoa-routing",),
+                include_extra_repos=False,
+            )
+            payload["repositories"][0].pop("checkout_requirement")
+            schema = json.loads(
+                (
+                    Path(__file__).resolve().parents[1]
+                    / "schemas"
+                    / "agents-map.schema.json"
+                ).read_text(encoding="utf-8")
+            )
+
+            self.assertEqual(
+                list(Draft202012Validator(schema).iter_errors(payload)),
+                [],
+            )
+
     def test_missing_deprecated_routing_checkout_is_optional(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             payload = audit_agents_map.build_agents_map(

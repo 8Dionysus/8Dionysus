@@ -21,6 +21,13 @@ def write_text(path: Path, text: str) -> None:
 
 
 class WorkspaceMemoryMapTests(unittest.TestCase):
+    def test_v1_schema_accepts_payload_without_additive_checkout_requirement(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            payload = build_workspace_memory_map.build_workspace_memory_map(Path(tmp))
+            payload["places"][0].pop("checkout_requirement")
+
+            validate_workspace_memory_map.validate_payload_schema(payload)
+
     def test_missing_deprecated_routing_checkout_is_optional(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             payload = build_workspace_memory_map.build_workspace_memory_map(Path(tmp))

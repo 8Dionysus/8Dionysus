@@ -233,7 +233,6 @@
           "kind",
           "role",
           "place_kind",
-          "checkout_requirement",
           "checkout_state",
           "path_hint",
           "memory_role",

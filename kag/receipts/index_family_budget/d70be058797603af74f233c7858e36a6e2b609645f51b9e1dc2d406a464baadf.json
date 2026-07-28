@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 3744275,
+  "allowed_tracked_bytes": 4264359,
+  "approved_by": "repository-owner",
+  "base_ref": "b2bfd59ae789d165fc275f1bb84751f6fc7e7496",
+  "changed_generated_bytes": 3744275,
+  "changed_generated_files": 270,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "d70be058797603af74f233c7858e36a6e2b609645f51b9e1dc2d406a464baadf",
+  "reason": "Refresh portable KAG family after preserving v1 map-schema compatibility.",
+  "repo": "8Dionysus",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "generated_delta",
+  "tracked_bytes": 4264359,
+  "tracked_bytes_max": 5242880
+}

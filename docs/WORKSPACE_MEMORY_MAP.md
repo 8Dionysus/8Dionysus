@@ -32,10 +32,10 @@ python scripts/validate_workspace_memory_map.py --workspace-root <workspace-root
 - `root_memory_routes`: 17
 - `route_only`: 11
 - `session_evidence_routes`: 1
-- `writeback_live_checks`: 7
-- `writeback_markers`: 7
-- `writeback_needs_first_marker`: 11
-- `writeback_not_applicable`: 2
+- `writeback_live_checks`: 8
+- `writeback_markers`: 8
+- `writeback_needs_first_marker`: 12
+- `writeback_not_applicable`: 0
 - `writeback_unknown`: 0
 
 ## Access Plane
@@ -78,10 +78,10 @@ python scripts/build_workspace_memory_map.py \
 | Dionysus | `needs_first_marker` | missing | `` | inspect the owner repo route; record a route-only marker only when there is meaningful landed work or an explicit no-writeback baseline |
 | aoa-sdk | `needs_first_marker` | missing | `` | inspect the owner repo route; record a route-only marker only when there is meaningful landed work or an explicit no-writeback baseline |
 | aoa-techniques | `live_check_required` | aoa-techniques/memo/candidates/20260531T055724Z.100a16b9.aoa-techniques-decisions-now-use-canonical-aoa-t.candidate.json | `write_candidate` | run live writeback debt check before closeout |
-| aoa-skills | `not_applicable` | not_applicable | `` | add a memory route before writeback tracking |
+| aoa-skills | `live_check_required` | aoa-skills/docs/decisions/AOA-SK-D-0026-memo-writeback-skill-owner-boundary.md | `route_only_debt` | run live writeback debt check before closeout |
 | aoa-evals | `live_check_required` | aoa-evals/docs/decisions/AOA-EV-D-0113-aoa-memo-writeback-decision-quality-eval.md | `route_only_debt` | run live writeback debt check before closeout |
 | aoa-stats | `needs_first_marker` | missing | `` | inspect the owner repo route; record a route-only marker only when there is meaningful landed work or an explicit no-writeback baseline |
-| aoa-routing | `not_applicable` | not_applicable | `` | add a memory route before writeback tracking |
+| aoa-routing | `needs_first_marker` | missing | `` | inspect the owner repo route; record a route-only marker only when there is meaningful landed work or an explicit no-writeback baseline |
 | aoa-memo | `live_check_required` | aoa-memo/generated/memory/workspace_memo_port_status.min.json | `no_writeback_needed` | run live writeback debt check before closeout |
 | aoa-agents | `live_check_required` | aoa-agents/memo/candidates/20260531T064523Z.93125574.aoa-agents-root-documentation-now-uses-compact-r.candidate.json | `write_candidate` | run live writeback debt check before closeout |
 | aoa-playbooks | `live_check_required` | aoa-playbooks/memo/candidates/20260526T015747Z.1df6959b.aoa-playbooks-treats-playbook-memory-fields-as-c.candidate.json | `write_candidate` | run live writeback debt check before closeout |

@@ -31,6 +31,33 @@ class WorkspaceMemoryMapTests(unittest.TestCase):
             "deprecated-routing-predecessor",
         )
 
+    def test_deprecated_routing_predecessor_still_tracks_writeback_markers(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            workspace = Path(tmp)
+            root = workspace / "aoa-routing"
+            self._make_root(root, with_memory_route=True)
+
+            payload = build_workspace_memory_map.build_workspace_memory_map(workspace)
+            by_name = {place["name"]: place for place in payload["places"]}
+            routing = by_name["aoa-routing"]
+
+            self.assertEqual(routing["recommended_port_level"], "none")
+            self.assertEqual(routing["writeback_marker"]["status"], "missing")
+            self.assertEqual(routing["writeback_debt"]["status"], "needs_first_marker")
+
+            write_text(
+                root / "docs" / "decisions" / "AOA-ROUT-D-9999-writeback.md",
+                "# Routing writeback\n",
+            )
+            payload = build_workspace_memory_map.build_workspace_memory_map(workspace)
+            routing = next(
+                place for place in payload["places"] if place["name"] == "aoa-routing"
+            )
+
+            self.assertEqual(routing["writeback_marker"]["status"], "present")
+            self.assertEqual(routing["writeback_debt"]["status"], "live_check_required")
+            validate_workspace_memory_map.validate_payload(payload)
+
     def test_validator_accepts_explicit_workspace_root(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             workspace = Path(tmp)

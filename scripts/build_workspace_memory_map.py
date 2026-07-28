@@ -515,27 +515,9 @@ def writeback_marker_record(
     current_port_level: str,
     root_hint_override: str | None = None,
 ) -> dict[str, Any]:
-    if name in NO_PORT_RECOMMENDED:
-        return {
-            "status": "not_applicable",
-            "decision": "",
-            "marker_kind": "",
-            "marker_ref": "",
-            "marker_path": "",
-            "source": "",
-        }
     if root is None or not root.is_dir():
         return {
             "status": "unknown",
-            "decision": "",
-            "marker_kind": "",
-            "marker_ref": "",
-            "marker_path": "",
-            "source": "",
-        }
-    if memory_route_status == "missing" and current_port_level == "none":
-        return {
-            "status": "not_applicable",
             "decision": "",
             "marker_kind": "",
             "marker_ref": "",
@@ -549,17 +531,29 @@ def writeback_marker_record(
         place_name=name,
         root_hint_override=root_hint_override,
     )
-    if not candidates:
+    if candidates:
+        latest = sorted(
+            candidates,
+            key=lambda item: _marker_candidate_sort_key(root, item),
+        )[-1]
+        return {"status": "present", **latest}
+    if memory_route_status == "missing" and current_port_level == "none":
         return {
-            "status": "missing",
+            "status": "not_applicable",
             "decision": "",
             "marker_kind": "",
             "marker_ref": "",
             "marker_path": "",
             "source": "",
         }
-    latest = sorted(candidates, key=lambda item: _marker_candidate_sort_key(root, item))[-1]
-    return {"status": "present", **latest}
+    return {
+        "status": "missing",
+        "decision": "",
+        "marker_kind": "",
+        "marker_ref": "",
+        "marker_path": "",
+        "source": "",
+    }
 
 
 def _marker_candidate_sort_key(root: Path, marker: Mapping[str, str]) -> tuple[int, int, str, str]:

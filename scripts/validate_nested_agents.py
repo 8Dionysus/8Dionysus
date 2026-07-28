@@ -40,6 +40,12 @@ REQUIRED_AGENTS_DOCS: dict[str, tuple[str, ...]] = {
         "environment assumptions",
         "audit_agents_map.py",
     ),
+    "config/codex_plane/organ_fabric/AGENTS.md": (
+        "source-owned Codex consumer projection",
+        "Deny by default",
+        "Credential values never appear here",
+        "fresh client process",
+    ),
     "docs/AGENTS.md": (
         "public orientation",
         "nearest `AGENTS.md`",

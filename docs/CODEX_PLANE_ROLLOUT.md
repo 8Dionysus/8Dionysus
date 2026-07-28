@@ -43,6 +43,13 @@ The rollout cycle stays explicit:
 6. rollback decision
 7. stats refresh
 
+An organ-fabric registration also follows the profile and receipt gates in
+[CODEX_ORGAN_FABRIC_CONSUMER.md](CODEX_ORGAN_FABRIC_CONSUMER.md). Its rendered
+TOML is a reviewed input to this cycle, never an automatic apply. A fresh Codex
+process, exact schema re-observation, grounded canaries, and consumer-zero
+evidence for any removed legacy registration extend rather than replace the
+phases above.
+
 Render is not rollout completion. A successful rerender only proves that the
 checked-in deployment artifacts were recomputed from the source-owned
 manifest/profile pair.

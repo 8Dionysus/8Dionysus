@@ -36,6 +36,11 @@
 ## Codex plane
 
 - [8DION-D-0023 - Dionysus Conversational Portrait Route](../8DION-D-0023-dionysus-conversational-portrait-route.md) (`docs/decisions/8DION-D-0023-dionysus-conversational-portrait-route.md`)
+- [8DION-D-0024 - Deny-by-Default Organ-Fabric Consumer Projection](../8DION-D-0024-deny-by-default-organ-fabric-consumer-projection.md) (`docs/decisions/8DION-D-0024-deny-by-default-organ-fabric-consumer-projection.md`)
+
+## consumer registration
+
+- [8DION-D-0024 - Deny-by-Default Organ-Fabric Consumer Projection](../8DION-D-0024-deny-by-default-organ-fabric-consumer-projection.md) (`docs/decisions/8DION-D-0024-deny-by-default-organ-fabric-consumer-projection.md`)
 
 ## convergence diagnostics
 
@@ -85,6 +90,10 @@
 - [8DION-D-0015 - AoA KAG MCP Codex-Plane Registration](../8DION-D-0015-aoa-kag-mcp-codex-plane-registration.md) (`docs/decisions/8DION-D-0015-aoa-kag-mcp-codex-plane-registration.md`)
 - [8DION-D-0016 - AoA Stats MCP Codex-Plane Cutover](../8DION-D-0016-aoa-stats-mcp-codex-plane-cutover.md) (`docs/decisions/8DION-D-0016-aoa-stats-mcp-codex-plane-cutover.md`)
 - [8DION-D-0022 - Connector MCP Codex-Plane Registration](../8DION-D-0022-connector-mcp-codex-plane-registration.md) (`docs/decisions/8DION-D-0022-connector-mcp-codex-plane-registration.md`)
+
+## MCP organ fabric
+
+- [8DION-D-0024 - Deny-by-Default Organ-Fabric Consumer Projection](../8DION-D-0024-deny-by-default-organ-fabric-consumer-projection.md) (`docs/decisions/8DION-D-0024-deny-by-default-organ-fabric-consumer-projection.md`)
 
 ## memory port rollout
 

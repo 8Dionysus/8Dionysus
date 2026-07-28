@@ -57,6 +57,17 @@ The primary edit surface for path-bound Codex deployment is:
 - `config/codex_plane/runtime_manifest.v1.json`
 - `config/codex_plane/profiles/*.json`
 
+The future HTTP organ-fabric consumer has a separate, receipt-gated source
+surface:
+
+- `config/codex_plane/organ_fabric/codex_consumer_manifest.v1.json`
+- `config/codex_plane/organ_fabric/current_consumer_observation.public.json`
+
+It is rendered with `scripts/render_codex_organ_fabric.py` and governed by
+`docs/CODEX_ORGAN_FABRIC_CONSUMER.md`. It does not replace the portable source
+registration until the integrated rollout closes its registry, runtime,
+consumer-schema, owner-acceptance, and rollback gates.
+
 The checked-in generated surfaces:
 
 - `.codex/config.toml`
@@ -135,3 +146,6 @@ The right pattern is this:
 `validate_codex_plane_regeneration.py` validates only the checked-in source
 render. Its output states `live_deployment_compared=false`; live transport,
 authentication, and agent restrictions require the rollout and owner routes.
+`validate_codex_organ_fabric.py` adds source validation for the fail-closed
+future consumer projection without treating it as part of the existing stable
+portable registration.

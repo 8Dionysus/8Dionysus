@@ -39,6 +39,10 @@
 
 - [8DION-D-0002 - Repo-Family Required Check Contracts Stay Coordination-Only in 8Dionysus](../8DION-D-0002-repo-family-required-check-contracts.md) (`docs/decisions/8DION-D-0002-repo-family-required-check-contracts.md`)
 
+## credential separation
+
+- [8DION-D-0024 - Deny-by-Default Organ-Fabric Consumer Projection](../8DION-D-0024-deny-by-default-organ-fabric-consumer-projection.md) (`docs/decisions/8DION-D-0024-deny-by-default-organ-fabric-consumer-projection.md`)
+
 ## current owner boundary
 
 - [8DION-D-0023 - Dionysus Conversational Portrait Route](../8DION-D-0023-dionysus-conversational-portrait-route.md) (`docs/decisions/8DION-D-0023-dionysus-conversational-portrait-route.md`)
@@ -46,6 +50,10 @@
 ## decision graph freshness
 
 - [8DION-D-0014 - AoA Decisions MCP Codex-Plane Registration](../8DION-D-0014-aoa-decisions-mcp-codex-plane-registration.md) (`docs/decisions/8DION-D-0014-aoa-decisions-mcp-codex-plane-registration.md`)
+
+## deny by default
+
+- [8DION-D-0024 - Deny-by-Default Organ-Fabric Consumer Projection](../8DION-D-0024-deny-by-default-organ-fabric-consumer-projection.md) (`docs/decisions/8DION-D-0024-deny-by-default-organ-fabric-consumer-projection.md`)
 
 ## deploy composition
 
@@ -167,6 +175,10 @@
 
 - [8DION-D-0006 - System Local Memo Port Rollout](../8DION-D-0006-system-local-memo-port-rollout.md) (`docs/decisions/8DION-D-0006-system-local-memo-port-rollout.md`)
 
+## profile budget
+
+- [8DION-D-0024 - Deny-by-Default Organ-Fabric Consumer Projection](../8DION-D-0024-deny-by-default-organ-fabric-consumer-projection.md) (`docs/decisions/8DION-D-0024-deny-by-default-organ-fabric-consumer-projection.md`)
+
 ## projection drift
 
 - [8DION-D-0004 - AoA Memo MCP Codex-Plane Registration](../8DION-D-0004-aoa-memo-mcp-codex-plane-registration.md) (`docs/decisions/8DION-D-0004-aoa-memo-mcp-codex-plane-registration.md`)
@@ -192,6 +204,10 @@
 
 - [8DION-D-0013 - AoA Session Memory MCP Codex-Plane Registration](../8DION-D-0013-aoa-session-memory-mcp-codex-plane-registration.md) (`docs/decisions/8DION-D-0013-aoa-session-memory-mcp-codex-plane-registration.md`)
 
+## receipt admission
+
+- [8DION-D-0024 - Deny-by-Default Organ-Fabric Consumer Projection](../8DION-D-0024-deny-by-default-organ-fabric-consumer-projection.md) (`docs/decisions/8DION-D-0024-deny-by-default-organ-fabric-consumer-projection.md`)
+
 ## refusal before planning
 
 - [8DION-D-0021 - Gate Projection on Current Owner Source](../8DION-D-0021-gate-projection-on-current-owner-source.md) (`docs/decisions/8DION-D-0021-gate-projection-on-current-owner-source.md`)
@@ -207,6 +223,10 @@
 ## reviewed receipt marker
 
 - [8DION-D-0012 - Reviewed Memory Landing Receipts As Writeback Markers](../8DION-D-0012-reviewed-memory-landing-receipts-as-writeback-markers.md) (`docs/decisions/8DION-D-0012-reviewed-memory-landing-receipts-as-writeback-markers.md`)
+
+## rollback
+
+- [8DION-D-0024 - Deny-by-Default Organ-Fabric Consumer Projection](../8DION-D-0024-deny-by-default-organ-fabric-consumer-projection.md) (`docs/decisions/8DION-D-0024-deny-by-default-organ-fabric-consumer-projection.md`)
 
 ## root move repair
 

@@ -1,0 +1,179 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://8dionysus.local/schemas/codex_organ_fabric_observation_v1.json",
+  "title": "Public-safe Codex MCP consumer observation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "observation_id",
+    "observed_at",
+    "expires_at",
+    "consumer_version",
+    "global_config",
+    "project_config",
+    "effective_registrations",
+    "schema_reobservation",
+    "secrets_included",
+    "claim_limits"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "8dionysus_codex_organ_fabric_observation_v1"
+    },
+    "observation_id": {
+      "type": "string",
+      "minLength": 3
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "expires_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "consumer_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "global_config": {
+      "$ref": "#/$defs/configLayer"
+    },
+    "project_config": {
+      "$ref": "#/$defs/configLayer"
+    },
+    "effective_registrations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/observedRegistration"
+      }
+    },
+    "schema_reobservation": {
+      "enum": [
+        "not_run",
+        "partial",
+        "complete"
+      ]
+    },
+    "secrets_included": {
+      "const": false
+    },
+    "claim_limits": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "string",
+        "minLength": 3
+      }
+    }
+  },
+  "$defs": {
+    "configLayer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path_label",
+        "exists",
+        "registration_names",
+        "self_contained_auth",
+        "explicit_allowlists",
+        "explicit_timeouts"
+      ],
+      "properties": {
+        "path_label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "exists": {
+          "type": "boolean"
+        },
+        "registration_names": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "self_contained_auth": {
+          "type": "boolean"
+        },
+        "explicit_allowlists": {
+          "type": "boolean"
+        },
+        "explicit_timeouts": {
+          "type": "boolean"
+        }
+      }
+    },
+    "observedRegistration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "registration_name",
+        "url",
+        "bearer_token_env_var",
+        "enabled_tools",
+        "startup_timeout_sec",
+        "tool_timeout_sec",
+        "schema_digest",
+        "source_layers"
+      ],
+      "properties": {
+        "registration_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "url": {
+          "type": "string",
+          "pattern": "^http://127\\.0\\.0\\.1:[0-9]{4,5}/mcp$"
+        },
+        "bearer_token_env_var": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "enabled_tools": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "startup_timeout_sec": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "tool_timeout_sec": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "schema_digest": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "source_layers": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "enum": [
+              "global",
+              "project"
+            ]
+          },
+          "uniqueItems": true
+        }
+      }
+    }
+  }
+}

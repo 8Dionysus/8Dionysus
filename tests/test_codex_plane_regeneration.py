@@ -113,6 +113,7 @@ class CodexPlaneRegenerationTests(unittest.TestCase):
         self.assertEqual(summary.profile_id, "linux-python3")
         self.assertEqual(summary.validation_scope, "checked_in_source_render_only")
         self.assertFalse(summary.live_deployment_compared)
+        self.assertTrue(summary.organ_fabric_source_checked)
 
     def test_validator_detects_render_drift(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:

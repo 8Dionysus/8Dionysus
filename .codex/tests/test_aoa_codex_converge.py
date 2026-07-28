@@ -28,7 +28,7 @@ project_root_markers = ["AOA_WORKSPACE_ROOT", ".git"]
 
 [mcp_servers.aoa_workspace]
 command = "python"
-args = ["scripts/aoa_workspace_mcp_server.py"]
+args = ["mechanics/codex-projection/parts/workspace-mcp-server/scripts/aoa_workspace_mcp_server.py"]
 cwd = "{root / 'aoa-sdk'}"
 
 [mcp_servers.aoa_stats]
@@ -83,7 +83,7 @@ def test_write_bootstrap_scaffold_creates_core_paths(tmp_path: Path) -> None:
 def test_ready_report_when_required_seams_exist(tmp_path: Path) -> None:
     write_bootstrap_scaffold(tmp_path)
     _write(tmp_path / ".codex" / "config.toml", _minimal_config(tmp_path))
-    _write(tmp_path / "aoa-sdk" / "scripts" / "aoa_workspace_mcp_server.py", "print('ok')\n")
+    _write(tmp_path / "aoa-sdk" / "mechanics" / "codex-projection" / "parts" / "workspace-mcp-server" / "scripts" / "aoa_workspace_mcp_server.py", "print('ok')\n")
     for name in ["architect", "coder", "reviewer", "evaluator", "memory-keeper"]:
         _write(tmp_path / ".codex" / "agents" / f"{name}.toml", _agent_toml(name))
 
@@ -104,11 +104,11 @@ project_root_markers = [".git"]
 
 [mcp_servers.aoa_workspace]
 command = "python"
-args = ["scripts/aoa_workspace_mcp_server.py"]
+args = ["mechanics/codex-projection/parts/workspace-mcp-server/scripts/aoa_workspace_mcp_server.py"]
 cwd = "{tmp_path / 'aoa-sdk'}"
 """,
     )
-    _write(tmp_path / "aoa-sdk" / "scripts" / "aoa_workspace_mcp_server.py", "print('ok')\n")
+    _write(tmp_path / "aoa-sdk" / "mechanics" / "codex-projection" / "parts" / "workspace-mcp-server" / "scripts" / "aoa_workspace_mcp_server.py", "print('ok')\n")
     for name in ["architect", "coder", "reviewer", "evaluator", "memory-keeper"]:
         _write(tmp_path / ".codex" / "agents" / f"{name}.toml", _agent_toml(name))
 
@@ -121,7 +121,7 @@ cwd = "{tmp_path / 'aoa-sdk'}"
 def test_stats_access_plane_detection(tmp_path: Path) -> None:
     write_bootstrap_scaffold(tmp_path)
     _write(tmp_path / ".codex" / "config.toml", _minimal_config(tmp_path))
-    _write(tmp_path / "aoa-sdk" / "scripts" / "aoa_workspace_mcp_server.py", "print('ok')\n")
+    _write(tmp_path / "aoa-sdk" / "mechanics" / "codex-projection" / "parts" / "workspace-mcp-server" / "scripts" / "aoa_workspace_mcp_server.py", "print('ok')\n")
     for name in ["architect", "coder", "reviewer", "evaluator", "memory-keeper"]:
         _write(tmp_path / ".codex" / "agents" / f"{name}.toml", _agent_toml(name))
     _write(tmp_path / ".codex" / "bin" / "aoa-stats-mcp-server.py", "print('ok')\n")
@@ -143,7 +143,7 @@ project_root_markers = ["AOA_WORKSPACE_ROOT", ".git"]
 
 [mcp_servers.aoa_workspace]
 command = "python"
-args = ["scripts/aoa_workspace_mcp_server.py"]
+args = ["mechanics/codex-projection/parts/workspace-mcp-server/scripts/aoa_workspace_mcp_server.py"]
 cwd = "{tmp_path / 'aoa-sdk'}"
 
 [mcp_servers.aoa_stats]
@@ -152,7 +152,7 @@ args = ["scripts/aoa_stats_mcp_server.py"]
 cwd = "{tmp_path / 'aoa-stats'}"
 """,
     )
-    _write(tmp_path / "aoa-sdk" / "scripts" / "aoa_workspace_mcp_server.py", "print('ok')\n")
+    _write(tmp_path / "aoa-sdk" / "mechanics" / "codex-projection" / "parts" / "workspace-mcp-server" / "scripts" / "aoa_workspace_mcp_server.py", "print('ok')\n")
     _write(tmp_path / "aoa-stats" / "scripts" / "aoa_stats_mcp_server.py", "print('old')\n")
     _write_json(tmp_path / "aoa-stats" / "stats" / "source_home.manifest.json", {})
     _write_json(tmp_path / "aoa-stats" / "stats" / "federation" / "owner-inventory.json", {})
@@ -175,7 +175,7 @@ def test_loopback_stats_service_satisfies_runtime_access_plane(tmp_path: Path) -
             '[mcp_servers.aoa_stats]\nurl = "http://127.0.0.1:5430/mcp"',
         ),
     )
-    _write(tmp_path / "aoa-sdk" / "scripts" / "aoa_workspace_mcp_server.py", "print('ok')\n")
+    _write(tmp_path / "aoa-sdk" / "mechanics" / "codex-projection" / "parts" / "workspace-mcp-server" / "scripts" / "aoa_workspace_mcp_server.py", "print('ok')\n")
     _write_json(tmp_path / "aoa-stats" / "stats" / "source_home.manifest.json", {})
     _write_json(tmp_path / "aoa-stats" / "stats" / "federation" / "owner-inventory.json", {})
     _write_json(tmp_path / "aoa-stats" / "generated" / "summary_surface_catalog.min.json", {"surfaces": []})
@@ -200,7 +200,7 @@ args = [".codex/bin/aoa-memo-mcp-server.py"]
 cwd = "{tmp_path}"
 """,
     )
-    _write(tmp_path / "aoa-sdk" / "scripts" / "aoa_workspace_mcp_server.py", "print('ok')\n")
+    _write(tmp_path / "aoa-sdk" / "mechanics" / "codex-projection" / "parts" / "workspace-mcp-server" / "scripts" / "aoa_workspace_mcp_server.py", "print('ok')\n")
     _write(tmp_path / ".codex" / "bin" / "aoa-memo-mcp-server.py", "print('ok')\n")
     for name in ["architect", "coder", "reviewer", "evaluator", "memory-keeper"]:
         _write(tmp_path / ".codex" / "agents" / f"{name}.toml", _agent_toml(name))
@@ -222,7 +222,7 @@ args = [".codex/bin/aoa-session-memory-mcp-server.py"]
 cwd = "{tmp_path}"
 """,
     )
-    _write(tmp_path / "aoa-sdk" / "scripts" / "aoa_workspace_mcp_server.py", "print('ok')\n")
+    _write(tmp_path / "aoa-sdk" / "mechanics" / "codex-projection" / "parts" / "workspace-mcp-server" / "scripts" / "aoa_workspace_mcp_server.py", "print('ok')\n")
     _write(tmp_path / ".codex" / "bin" / "aoa-session-memory-mcp-server.py", "print('ok')\n")
     _write(tmp_path / ".aoa" / "AGENTS.md", "# .aoa route\n")
     for name in ["architect", "coder", "reviewer", "evaluator", "memory-keeper"]:
@@ -245,7 +245,7 @@ args = [".codex/bin/aoa-evals-mcp-server.py"]
 cwd = "{tmp_path}"
 """,
     )
-    _write(tmp_path / "aoa-sdk" / "scripts" / "aoa_workspace_mcp_server.py", "print('ok')\n")
+    _write(tmp_path / "aoa-sdk" / "mechanics" / "codex-projection" / "parts" / "workspace-mcp-server" / "scripts" / "aoa_workspace_mcp_server.py", "print('ok')\n")
     _write(tmp_path / ".codex" / "bin" / "aoa-evals-mcp-server.py", "print('ok')\n")
     _write_json(tmp_path / "aoa-evals" / "generated" / "eval_catalog.min.json", {"evals": []})
     _write(tmp_path / "aoa-evals" / "docs" / "architecture" / "AOA_EVALS_MCP_CONTRACT.md", "# Contract\n")
@@ -269,7 +269,7 @@ args = [".codex/bin/aoa-decisions-mcp-server.py"]
 cwd = "{tmp_path}"
 """,
     )
-    _write(tmp_path / "aoa-sdk" / "scripts" / "aoa_workspace_mcp_server.py", "print('ok')\n")
+    _write(tmp_path / "aoa-sdk" / "mechanics" / "codex-projection" / "parts" / "workspace-mcp-server" / "scripts" / "aoa_workspace_mcp_server.py", "print('ok')\n")
     _write(tmp_path / ".codex" / "bin" / "aoa-decisions-mcp-server.py", "print('ok')\n")
     for name in ["architect", "coder", "reviewer", "evaluator", "memory-keeper"]:
         _write(tmp_path / ".codex" / "agents" / f"{name}.toml", _agent_toml(name))
@@ -291,7 +291,7 @@ args = [".codex/bin/abyss-machine-mcp-server.py"]
 cwd = "{tmp_path}"
 """,
     )
-    _write(tmp_path / "aoa-sdk" / "scripts" / "aoa_workspace_mcp_server.py", "print('ok')\n")
+    _write(tmp_path / "aoa-sdk" / "mechanics" / "codex-projection" / "parts" / "workspace-mcp-server" / "scripts" / "aoa_workspace_mcp_server.py", "print('ok')\n")
     _write(tmp_path / ".codex" / "bin" / "abyss-machine-mcp-server.py", "print('ok')\n")
     for name in ["architect", "coder", "reviewer", "evaluator", "memory-keeper"]:
         _write(tmp_path / ".codex" / "agents" / f"{name}.toml", _agent_toml(name))
@@ -304,7 +304,7 @@ cwd = "{tmp_path}"
 def test_report_does_not_require_retired_launcher_plugin(tmp_path: Path) -> None:
     write_bootstrap_scaffold(tmp_path)
     _write(tmp_path / ".codex" / "config.toml", _minimal_config(tmp_path))
-    _write(tmp_path / "aoa-sdk" / "scripts" / "aoa_workspace_mcp_server.py", "print('ok')\n")
+    _write(tmp_path / "aoa-sdk" / "mechanics" / "codex-projection" / "parts" / "workspace-mcp-server" / "scripts" / "aoa_workspace_mcp_server.py", "print('ok')\n")
     for name in ["architect", "coder", "reviewer", "evaluator", "memory-keeper"]:
         _write(tmp_path / ".codex" / "agents" / f"{name}.toml", _agent_toml(name))
 
@@ -334,11 +334,11 @@ project_root_markers = ["AOA_WORKSPACE_ROOT", ".git"]
 
 [mcp_servers.aoa_workspace]
 command = "python"
-args = ["scripts/aoa_workspace_mcp_server.py"]
+args = ["mechanics/codex-projection/parts/workspace-mcp-server/scripts/aoa_workspace_mcp_server.py"]
 cwd = "{tmp_path / 'aoa-sdk'}"
 """,
     )
-    _write(tmp_path / "aoa-sdk" / "scripts" / "aoa_workspace_mcp_server.py", "print('ok')\n")
+    _write(tmp_path / "aoa-sdk" / "mechanics" / "codex-projection" / "parts" / "workspace-mcp-server" / "scripts" / "aoa_workspace_mcp_server.py", "print('ok')\n")
     for name in ["architect", "coder", "reviewer", "evaluator", "memory-keeper"]:
         _write(tmp_path / ".codex" / "agents" / f"{name}.toml", _agent_toml(name))
     _write(

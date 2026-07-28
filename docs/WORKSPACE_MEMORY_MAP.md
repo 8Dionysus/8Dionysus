@@ -22,6 +22,7 @@ python scripts/validate_workspace_memory_map.py --workspace-root <workspace-root
 - `landed_exports`: 3
 - `local_candidates`: 49
 - `memory_routes`: 18
+- `optional_checkouts_missing`: 0
 - `pending_candidates`: 49
 - `pending_exports`: 1
 - `places_listed`: 20
@@ -29,6 +30,7 @@ python scripts/validate_workspace_memory_map.py --workspace-root <workspace-root
 - `places_with_issues`: 2
 - `ready_exports`: 0
 - `recommended_full_ports_missing`: 1
+- `required_checkouts_missing`: 0
 - `root_memory_routes`: 17
 - `route_only`: 11
 - `session_evidence_routes`: 1
@@ -106,7 +108,7 @@ python scripts/build_workspace_memory_map.py \
 | aoa-skills | local-memory-port-candidate | `none` | `full_port` | missing | 0 | 0 | 0 | 0 | `python scripts/build_workspace_memory_map.py --check` | missing root Memory route, recommended full memo port not yet present |
 | aoa-evals | workspace-memory-route | `full_port` | `route_only` | local_port_route | 0 | 0 | 0 | 0 | `PYTHONPATH="${AOA_ABYSS_STACK_ROOT:-$HOME/src/abyss-stack}/mcp/services/aoa-memo-mcp/src" python -m aoa_memo_mcp.cli validate-port --repo aoa-evals` | ok |
 | aoa-stats | workspace-memory-route | `route_only` | `route_only` | root_memory_route | 0 | 0 | 0 | 0 | `python scripts/build_workspace_memory_map.py --check` | ok |
-| aoa-routing | workspace-memory-route | `route_only` | `route_only` | root_memory_route | 0 | 0 | 0 | 0 | `python scripts/build_workspace_memory_map.py --check` | ok |
+| aoa-routing | deprecated-routing-predecessor | `route_only` | `none` | root_memory_route | 0 | 0 | 0 | 0 | `python scripts/build_workspace_memory_map.py --check` | ok |
 | aoa-memo | reviewed-memory-owner | `route_only` | `route_only` | root_memory_route | 0 | 0 | 0 | 0 | `python scripts/build_workspace_memory_map.py --check` | ok |
 | aoa-agents | local-memory-port-candidate | `full_port` | `full_port` | local_port_route | 43 | 0 | 0 | 0 | `PYTHONPATH="${AOA_ABYSS_STACK_ROOT:-$HOME/src/abyss-stack}/mcp/services/aoa-memo-mcp/src" python -m aoa_memo_mcp.cli validate-port --repo aoa-agents` | ok |
 | aoa-playbooks | local-memory-port-candidate | `full_port` | `full_port` | local_port_route | 1 | 0 | 0 | 0 | `PYTHONPATH="${AOA_ABYSS_STACK_ROOT:-$HOME/src/abyss-stack}/mcp/services/aoa-memo-mcp/src" python -m aoa_memo_mcp.cli validate-port --repo aoa-playbooks` | ok |

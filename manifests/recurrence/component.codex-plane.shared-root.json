@@ -45,14 +45,14 @@
     {
       "kind": "routes_via",
       "target": "generated/return_navigation_hints.min.json",
-      "target_repo": "aoa-routing",
+      "target_repo": "aoa-sdk",
       "required": true,
       "suggested_action": "reroute",
       "suggested_commands": [
-        "python scripts/build_router.py",
-        "python scripts/validate_router.py"
+        "python -m aoa_sdk.control_plane.routing.producer --generated-dir <review-output>",
+        "python -m aoa_sdk.control_plane.routing.producer --generated-dir <review-output> --check"
       ],
-      "notes": "refresh bounded return hints after shared-root Codex plane change"
+      "notes": "refresh SDK-owned bounded return hints in a non-publishing review output after shared-root Codex plane change"
     },
     {
       "kind": "summarized_by",

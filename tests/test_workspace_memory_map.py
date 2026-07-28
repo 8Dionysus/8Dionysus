@@ -21,6 +21,84 @@ def write_text(path: Path, text: str) -> None:
 
 
 class WorkspaceMemoryMapTests(unittest.TestCase):
+    def test_v1_schema_accepts_payload_without_additive_checkout_requirement(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            payload = build_workspace_memory_map.build_workspace_memory_map(Path(tmp))
+            payload["places"][0].pop("checkout_requirement")
+
+            validate_workspace_memory_map.validate_payload_schema(payload)
+
+    def test_missing_deprecated_routing_checkout_is_optional(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            payload = build_workspace_memory_map.build_workspace_memory_map(Path(tmp))
+            routing = next(
+                place for place in payload["places"] if place["name"] == "aoa-routing"
+            )
+
+            self.assertEqual(routing["checkout_state"], "missing")
+            self.assertEqual(routing["checkout_requirement"], "optional")
+            self.assertEqual(routing["issues"], [])
+            self.assertEqual(routing["writeback_marker"]["status"], "not_applicable")
+            self.assertEqual(routing["writeback_debt"]["status"], "not_applicable")
+            self.assertEqual(payload["totals"]["optional_checkouts_missing"], 1)
+            validate_workspace_memory_map.validate_payload(payload)
+
+    def test_deprecated_routing_predecessor_has_no_active_port_recommendation(self) -> None:
+        self.assertEqual(
+            build_workspace_memory_map.recommended_port_level("aoa-routing"),
+            "none",
+        )
+        self.assertEqual(
+            build_workspace_memory_map.memory_role("aoa-routing"),
+            "deprecated-routing-predecessor",
+        )
+
+    def test_deprecated_routing_predecessor_still_tracks_writeback_markers(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            workspace = Path(tmp)
+            root = workspace / "aoa-routing"
+            self._make_root(root, with_memory_route=True)
+
+            payload = build_workspace_memory_map.build_workspace_memory_map(workspace)
+            by_name = {place["name"]: place for place in payload["places"]}
+            routing = by_name["aoa-routing"]
+
+            self.assertEqual(routing["recommended_port_level"], "none")
+            self.assertEqual(routing["writeback_marker"]["status"], "missing")
+            self.assertEqual(routing["writeback_debt"]["status"], "needs_first_marker")
+
+            write_text(
+                root / "docs" / "decisions" / "AOA-ROUT-D-9999-writeback.md",
+                "# Routing writeback\n",
+            )
+            payload = build_workspace_memory_map.build_workspace_memory_map(workspace)
+            routing = next(
+                place for place in payload["places"] if place["name"] == "aoa-routing"
+            )
+
+            self.assertEqual(routing["writeback_marker"]["status"], "present")
+            self.assertEqual(routing["writeback_debt"]["status"], "live_check_required")
+            validate_workspace_memory_map.validate_payload(payload)
+
+    def test_historical_writeback_file_does_not_activate_unrouted_repo(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            workspace = Path(tmp)
+            root = workspace / "aoa-sdk"
+            self._make_root(root, with_memory_route=False)
+            write_text(
+                root / "docs" / "decisions" / "AOA-SDK-D-9999-writeback.md",
+                "# Historical writeback\n",
+            )
+
+            payload = build_workspace_memory_map.build_workspace_memory_map(workspace)
+            sdk = next(place for place in payload["places"] if place["name"] == "aoa-sdk")
+
+            self.assertEqual(sdk["memory_route_status"], "missing")
+            self.assertEqual(sdk["current_port_level"], "none")
+            self.assertEqual(sdk["writeback_marker"]["status"], "not_applicable")
+            self.assertEqual(sdk["writeback_debt"]["status"], "not_applicable")
+            validate_workspace_memory_map.validate_payload(payload)
+
     def test_validator_accepts_explicit_workspace_root(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             workspace = Path(tmp)

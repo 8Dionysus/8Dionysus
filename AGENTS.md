@@ -61,11 +61,12 @@ needed, say so in closeout.
 - `Dionysus`: voice-first interview protocols, evidence-grounded claims, human review, and purpose-bounded personal portrait projections.
 - `abyss-stack`: runtime, deployment, storage, lifecycle, infrastructure posture.
 - `ATM10-Agent`: local companion behavior, perception, retrieval, KAG-in-project, safe operator automation.
-- `aoa-sdk`: typed workspace integration, discovery, compatibility, passive skill inspection, and explicit user-profile bootstrap.
+- `aoa-sdk`: typed workspace integration, canonical routing and dispatch,
+  discovery, compatibility, passive skill inspection, and explicit
+  user-profile bootstrap.
 - `aoa-techniques`: reusable engineering practice.
 - `aoa-skills`: the shared portable bundle family and common owner-home compatibility contract.
 - `aoa-evals`: portable proof and evaluation surfaces.
-- `aoa-routing`: navigation and dispatch hints.
 - `aoa-memo`: explicit memory and recall objects.
 - `aoa-kag`: derived provenance-aware knowledge substrates.
 - `aoa-playbooks`: recurring scenario composition, questlines, campaigns, handoffs.
@@ -73,6 +74,10 @@ needed, say so in closeout.
 - `aoa-stats`: shared measurement grammar, owner-local stats federation, and
   derived non-sovereign read models.
 - `8Dionysus`: public route map, shared-root projection source, AGENTS map audit, and concrete workspace-delivery diagnosis.
+
+`aoa-routing` is the deprecated maintenance-only predecessor. Keep it visible
+only for reversible history and rollback review until a separate operator
+decision authorizes archive; do not route new navigation or dispatch work there.
 
 ## Memory route
 

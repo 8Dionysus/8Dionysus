@@ -15,6 +15,7 @@ from typing import Any, Mapping, Sequence
 
 from audit_agents_map import (
     KNOWN_REPOSITORIES,
+    checkout_requirement,
     expand_manifest_path,
     path_hint,
     read_text,
@@ -40,6 +41,7 @@ MEMORY_ROUTE_MARKERS = (
 )
 
 PORT_LEVELS = ("none", "route_only", "stub_port", "full_port", "mature_port")
+NO_PORT_RECOMMENDED = frozenset({"aoa-routing"})
 MEMORY_ROUTE_STATUSES = (
     "missing",
     "root_memory_route",
@@ -99,7 +101,6 @@ ROUTE_ONLY_RECOMMENDED = frozenset(
         "aoa-evals",
         "aoa-kag",
         "aoa-memo",
-        "aoa-routing",
         "aoa-sdk",
         "aoa-stats",
         ".agents",
@@ -110,6 +111,7 @@ ROUTE_ONLY_RECOMMENDED = frozenset(
 
 MEMORY_ROLE_BY_NAME = {
     "aoa-memo": "reviewed-memory-owner",
+    "aoa-routing": "deprecated-routing-predecessor",
     ".aoa": "session-evidence-kernel",
     "abyss-stack": "mcp-access-plane-owner",
     "abyss-machine": "host-local-memory-port",
@@ -121,6 +123,7 @@ REFACTOR_STATE_BY_NAME = {
     "aoa-memo": "active-memory-authority",
     "aoa-skills": "reference-topology",
     "aoa-techniques": "reference-topology",
+    "aoa-routing": "deprecated-maintenance-predecessor",
     "abyss-stack": "pilot-access-plane",
     "abyss-machine": "pilot-host-plane",
     ".aoa": "session-memory-kernel",
@@ -522,6 +525,7 @@ def writeback_marker_record(
             "marker_path": "",
             "source": "",
         }
+
     if memory_route_status == "missing" and current_port_level == "none":
         return {
             "status": "not_applicable",
@@ -538,17 +542,20 @@ def writeback_marker_record(
         place_name=name,
         root_hint_override=root_hint_override,
     )
-    if not candidates:
-        return {
-            "status": "missing",
-            "decision": "",
-            "marker_kind": "",
-            "marker_ref": "",
-            "marker_path": "",
-            "source": "",
-        }
-    latest = sorted(candidates, key=lambda item: _marker_candidate_sort_key(root, item))[-1]
-    return {"status": "present", **latest}
+    if candidates:
+        latest = sorted(
+            candidates,
+            key=lambda item: _marker_candidate_sort_key(root, item),
+        )[-1]
+        return {"status": "present", **latest}
+    return {
+        "status": "missing",
+        "decision": "",
+        "marker_kind": "",
+        "marker_ref": "",
+        "marker_path": "",
+        "source": "",
+    }
 
 
 def _marker_candidate_sort_key(root: Path, marker: Mapping[str, str]) -> tuple[int, int, str, str]:
@@ -705,6 +712,8 @@ def mcp_cli_command(args: str) -> str:
 
 
 def recommended_port_level(name: str) -> str:
+    if name in NO_PORT_RECOMMENDED:
+        return "none"
     if name in FULL_PORT_RECOMMENDED:
         return "full_port"
     if name in ROUTE_ONLY_RECOMMENDED:
@@ -760,20 +769,33 @@ def place_record(
     path_hint_override: str | None = None,
 ) -> dict[str, Any]:
     issues: list[str] = []
+    requirement = checkout_requirement(name)
     if root is None or not root.is_dir():
-        marker = writeback_marker_record(
-            name=name,
-            root=root,
-            workspace_root=workspace_root,
-            memory_route_status="missing",
-            current_port_level="none",
-            root_hint_override=path_hint_override,
+        marker = (
+            {
+                "status": "not_applicable",
+                "decision": "",
+                "marker_kind": "",
+                "marker_ref": "",
+                "marker_path": "",
+                "source": "",
+            }
+            if requirement == "optional"
+            else writeback_marker_record(
+                name=name,
+                root=root,
+                workspace_root=workspace_root,
+                memory_route_status="missing",
+                current_port_level="none",
+                root_hint_override=path_hint_override,
+            )
         )
         return {
             "name": name,
             "kind": kind,
             "role": role,
             "place_kind": place_kind,
+            "checkout_requirement": requirement,
             "checkout_state": "missing",
             "path_hint": name,
             "memory_role": memory_role(name),
@@ -798,7 +820,7 @@ def place_record(
                 current_port_level="none",
             ),
             "validation_command": "python scripts/build_workspace_memory_map.py --check",
-            "issues": ["place root not found"],
+            "issues": [] if requirement == "optional" else ["place root not found"],
         }
 
     root_agents_present = (root / "AGENTS.md").is_file()
@@ -859,6 +881,7 @@ def place_record(
         "kind": kind,
         "role": role,
         "place_kind": place_kind,
+        "checkout_requirement": requirement,
         "checkout_state": "scanned",
         "path_hint": path_hint_override or path_hint(root, workspace_root),
         "memory_role": memory_role(name),
@@ -960,6 +983,18 @@ def build_workspace_memory_map(
     totals = {
         "places_listed": len(places),
         "places_scanned": sum(1 for place in places if place["checkout_state"] == "scanned"),
+        "required_checkouts_missing": sum(
+            1
+            for place in places
+            if place["checkout_state"] == "missing"
+            and place["checkout_requirement"] == "required"
+        ),
+        "optional_checkouts_missing": sum(
+            1
+            for place in places
+            if place["checkout_state"] == "missing"
+            and place["checkout_requirement"] == "optional"
+        ),
         "memory_routes": sum(1 for place in places if place["memory_route_status"] != "missing"),
         "root_memory_routes": sum(
             1

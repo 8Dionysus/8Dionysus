@@ -30,7 +30,10 @@ class GitHubRequiredCheckContractTests(unittest.TestCase):
         self.assertEqual(contract["tracked_branch"], "main")
         self.assertEqual(contract["authority_scope"], "coordination-only")
         repos = contract["repos"]
-        self.assertEqual(len(repos), 17)
+        self.assertEqual(len(repos), 16)
+        repo_names = {entry["repo"] for entry in repos}
+        self.assertIn("8Dionysus/aoa-sdk", repo_names)
+        self.assertNotIn("8Dionysus/aoa-routing", repo_names)
 
     def test_contract_docs_and_decision_note_stay_cross_linked(self) -> None:
         doc = (REPO_ROOT / "docs" / "GITHUB_REQUIRED_CHECK_CONTRACTS.md").read_text(

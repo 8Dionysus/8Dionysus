@@ -80,6 +80,12 @@
           "role": {
             "type": "string"
           },
+          "checkout_requirement": {
+            "enum": [
+              "required",
+              "optional"
+            ]
+          },
           "checkout_state": {
             "enum": [
               "scanned",

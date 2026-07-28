@@ -88,12 +88,12 @@ When choosing a primary `repo_root`, route by the question being asked:
 - `Tree-of-Sophia` for source-linked knowledge, texts, concepts, lineages, and interpretive architecture
 - `abyss-stack` for runtime, deployment, storage, and infrastructure posture
 - `ATM10-Agent` for local-first companion behavior, perception, memory, voice, and safe automation surfaces
-- `aoa-sdk` for typed workspace integration, compatibility checks, bounded activation, and controlled orchestration
+- `aoa-sdk` for typed workspace integration, canonical routing and dispatch,
+  compatibility checks, bounded activation, and controlled orchestration
 - `aoa-techniques` for reusable engineering practice
 - `aoa-skills` for bounded execution workflows
 - `aoa-evals` for portable proof and evaluation surfaces
 - `aoa-stats` for derived observability
-- `aoa-routing` for navigation and dispatch
 - `aoa-memo` for explicit memory and recall
 - `aoa-agents` for role contracts and handoff posture
 - `aoa-playbooks` for recurring scenario composition, questlines, and campaign-shaped routes
@@ -101,6 +101,10 @@ When choosing a primary `repo_root`, route by the question being asked:
 - `Dionysus` for voice-first interview protocols and evidence-grounded,
   human-reviewed personal portrait formats
 - `8Dionysus` for public routing, glossary alignment, and profile-level orientation
+
+The deprecated `aoa-routing` predecessor is not an active route. Preserve it
+only for maintenance, reversible history, and rollback review until a separate
+operator archive decision.
 
 If the task is truly cross-repo and no single owner repo is primary yet, use `<workspace-root>` as the temporary `repo_root` only until the owning layer becomes clear.
 

@@ -8,7 +8,8 @@ Use the smallest route that matches the question. This page routes humans and ag
 - For the ecosystem center, constitutional map, and federation rules, start with **[Agents-of-Abyss](https://github.com/8Dionysus/Agents-of-Abyss)**.
 - For the runtime underneath the system, go to **[abyss-stack](https://github.com/8Dionysus/abyss-stack)**.
 - For the local-first companion surface, go to **[ATM10-Agent](https://github.com/8Dionysus/ATM10-Agent)**.
-- For typed access and workspace integration, go to **[aoa-sdk](https://github.com/8Dionysus/aoa-sdk)**.
+- For typed access, canonical routing and dispatch, and workspace integration,
+  go to **[aoa-sdk](https://github.com/8Dionysus/aoa-sdk)**.
 
 ## Practice, capability, proof, and measurement routes
 
@@ -21,11 +22,14 @@ required parent or execution dependency of a skill.
 
 ## Public AoA layer routes
 
-- For thin routing and dispatch across AoA surfaces, go to **[aoa-routing](https://github.com/8Dionysus/aoa-routing)**.
 - For provenance-aware memory and recall, go to **[aoa-memo](https://github.com/8Dionysus/aoa-memo)**.
 - For role contracts, posture, and handoff boundaries, go to **[aoa-agents](https://github.com/8Dionysus/aoa-agents)**.
 - For recurring operations, scenario composition, and campaign-shaped routes, go to **[aoa-playbooks](https://github.com/8Dionysus/aoa-playbooks)**.
 - For derived knowledge structures and retrieval-ready substrates, go to **[aoa-kag](https://github.com/8Dionysus/aoa-kag)**.
+
+The deprecated `aoa-routing` predecessor is retained only for reversible
+history and rollback review. New navigation and dispatch work routes through
+`aoa-sdk`; archive still requires a separate operator decision.
 
 ## Supporting routes
 

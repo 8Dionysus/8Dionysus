@@ -58,6 +58,20 @@ class CodexPlaneRolloutTests(unittest.TestCase):
         self.assertIn(".codex/config.toml", component_refresh)
         self.assertIn("route the evidence to the owner repo", component_refresh)
 
+        manifest = load_json("manifests/recurrence/component.codex-plane.shared-root.json")
+        routing_edge = next(
+            edge
+            for edge in manifest["consumer_edges"]
+            if edge["kind"] == "routes_via"
+        )
+        self.assertEqual(routing_edge["target_repo"], "aoa-sdk")
+        self.assertTrue(
+            all(
+                "aoa_sdk.control_plane.routing.producer" in command
+                for command in routing_edge["suggested_commands"]
+            )
+        )
+
     def test_shared_root_projection_stays_source_first(self) -> None:
         agents = (REPO_ROOT / "AGENTS.md").read_text(encoding="utf-8")
         install = (REPO_ROOT / "docs" / "WORKSPACE_INSTALL.md").read_text(encoding="utf-8")

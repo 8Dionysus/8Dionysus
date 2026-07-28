@@ -204,23 +204,6 @@
       ]
     },
     {
-      "repo": "8Dionysus/aoa-routing",
-      "family": "repo-validation",
-      "protection_expected": true,
-      "required_status_checks": [
-        "Repo Validation"
-      ],
-      "workflow_checks": [
-        {
-          "path": ".github/workflows/repo-validation.yml",
-          "expected_workflow_name": "Repo Validation",
-          "required_job_names": [
-            "Repo Validation"
-          ]
-        }
-      ]
-    },
-    {
       "repo": "8Dionysus/aoa-sdk",
       "family": "repo-validation",
       "protection_expected": true,

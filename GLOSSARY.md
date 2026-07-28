@@ -55,7 +55,7 @@ This profile repository is an orientation surface.
 ### Coordination surface
 A repository that helps humans or systems navigate across layers without owning all primary meaning itself.
 
-`Agents-of-Abyss`, `aoa-routing`, and this profile repository all have coordination roles at different levels and with different scope.
+`Agents-of-Abyss`, `aoa-sdk`, and this profile repository all have coordination roles at different levels and with different scope.
 
 ### Layer
 A distinct functional surface in the ecosystem with its own role, boundaries, and ownership.
@@ -126,7 +126,10 @@ owner meaning.
 ### Navigation layer
 The layer that helps models and humans decide where to go next.
 
-In the current public ecosystem, this role belongs to `aoa-routing`. It should own navigation and dispatch surfaces, not the primary meaning of other repositories.
+In the current public ecosystem, this role belongs to `aoa-sdk`. It owns the
+canonical typed routing and dispatch surfaces without owning the primary
+meaning of other repositories. The deprecated `aoa-routing` predecessor
+retains only reversible history and maintenance evidence.
 
 ### Memory layer
 The layer that owns explicit memory and recall surfaces.
@@ -576,12 +579,11 @@ If you want the shortest route into the ecosystem:
 - for the knowledge world and source-first architecture of thought, start with [`Tree-of-Sophia`](https://github.com/8Dionysus/Tree-of-Sophia)
 - for the runtime body beneath AoA and ToS, go to [`abyss-stack`](https://github.com/8Dionysus/abyss-stack)
 - for the local-first companion application surface, go to [`ATM10-Agent`](https://github.com/8Dionysus/ATM10-Agent)
-- for typed access and workspace integration, go to [`aoa-sdk`](https://github.com/8Dionysus/aoa-sdk)
+- for typed access, navigation and dispatch, and workspace integration, go to [`aoa-sdk`](https://github.com/8Dionysus/aoa-sdk)
 - for reusable practice, go to [`aoa-techniques`](https://github.com/8Dionysus/aoa-techniques)
 - for shared portable skills and the repository-home compatibility contract, go to [`aoa-skills`](https://github.com/8Dionysus/aoa-skills); for a repository-specific skill, follow its owner
 - for portable proof surfaces, go to [`aoa-evals`](https://github.com/8Dionysus/aoa-evals)
 - for shared measurement grammar, federated local stats ports, and derived read models, go to [`aoa-stats`](https://github.com/8Dionysus/aoa-stats)
-- for navigation and dispatch, go to [`aoa-routing`](https://github.com/8Dionysus/aoa-routing)
 - for memory and recall, go to [`aoa-memo`](https://github.com/8Dionysus/aoa-memo)
 - for explicit agent roles, go to [`aoa-agents`](https://github.com/8Dionysus/aoa-agents)
 - for recurring scenario recipes, go to [`aoa-playbooks`](https://github.com/8Dionysus/aoa-playbooks)

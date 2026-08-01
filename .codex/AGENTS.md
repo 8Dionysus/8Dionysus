@@ -14,13 +14,25 @@ deployment policy. It also excludes deploy-local `generated/` and `worktrees/`.
 Use the dedicated owner route for each excluded path; do not force parity by
 copying or pruning it through `project_workspace_root.py`.
 
-The future OS Abyss organ-fabric consumer projection lives under
+The checked-in project config intentionally emits no MCP server tables because
+Codex composes global and project tables additively. Portable stdio fields under
+the same stable names as deploy-composed HTTP fields make the complete config
+invalid before a client starts. Stable names and launcher sources remain in the
+runtime manifest; registration belongs to the explicit rollout below.
+
+The OS Abyss organ-fabric consumer projection lives under
 `config/codex_plane/organ_fabric/`. It is profile-scoped and deny-by-default:
 only an entirely admitted profile with exact consumer-schema, canary, owner
 acceptance, and rollback receipts may render. The renderer emits a review
 fragment only and has no live apply authority. Keep the legacy stable-name
 render intact until the explicit rollout proves replacement and consumer-zero.
 See `docs/CODEX_ORGAN_FABRIC_CONSUMER.md`.
+
+The checked-in `tos-corpus-mcp-server.py` wrapper is only a source-owned
+runtime projection route to the stack package. Its presence is not admission:
+`tos_corpus` must remain absent from the portable stable runtime manifest while
+the Tree of Sophia contour is suspended or lacks the complete organ-fabric
+receipt set. Only the deny-by-default organ-fabric rollout may register it.
 
 No secrets, tokens, private hostnames, unreviewed hooks, or hidden local automation may be added here. Any mutating helper must stay bounded, documented, reversible, and route-aware.
 

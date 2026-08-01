@@ -84,27 +84,50 @@ def render_config_toml(
                 "",
             ]
         )
+    registration_mode = profile.get(
+        "project_mcp_registration_mode",
+        "portable_stdio",
+    )
+    if registration_mode not in {
+        "portable_stdio",
+        "defer_to_explicit_rollout",
+    }:
+        raise ValueError(
+            "project_mcp_registration_mode must be portable_stdio or "
+            "defer_to_explicit_rollout"
+        )
     lines.append("# Keep these server names stable if skill↔MCP wiring depends on them:")
     for server in manifest["mcp_servers"]:
         lines.append(f"# - {server['name']}")
     lines.append("")
-    for server in manifest["mcp_servers"]:
-        cwd = repo_path(
-            workspace_root,
-            manifest,
-            server["repo_key"],
-            server.get("cwd_repo_rel", ""),
-        )
-        args = list(profile.get("python_prefix_args", [])) + [server["script_rel"]]
+    if registration_mode == "defer_to_explicit_rollout":
         lines.extend(
             [
-                f"[mcp_servers.{server['name']}]",
-                f"command = {format_toml_value(profile['python_command'])}",
-                f"args = {format_toml_value(args)}",
-                f"cwd = {format_toml_value(cwd.as_posix())}",
+                "# MCP registrations are intentionally absent from this project layer.",
+                "# Codex merges global and project server tables field-by-field; emitting",
+                "# portable stdio entries here would collide with deploy-composed HTTP",
+                "# entries under the same stable names. Use the explicit organ-fabric rollout.",
                 "",
             ]
         )
+    else:
+        for server in manifest["mcp_servers"]:
+            cwd = repo_path(
+                workspace_root,
+                manifest,
+                server["repo_key"],
+                server.get("cwd_repo_rel", ""),
+            )
+            args = list(profile.get("python_prefix_args", [])) + [server["script_rel"]]
+            lines.extend(
+                [
+                    f"[mcp_servers.{server['name']}]",
+                    f"command = {format_toml_value(profile['python_command'])}",
+                    f"args = {format_toml_value(args)}",
+                    f"cwd = {format_toml_value(cwd.as_posix())}",
+                    "",
+                ]
+            )
     return "\n".join(lines).rstrip() + "\n"
 
 

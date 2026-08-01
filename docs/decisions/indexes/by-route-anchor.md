@@ -71,6 +71,10 @@
 
 - [8DION-D-0021 - Gate Projection on Current Owner Source](../8DION-D-0021-gate-projection-on-current-owner-source.md) (`docs/decisions/8DION-D-0021-gate-projection-on-current-owner-source.md`)
 
+## .codex/bin/tos-corpus-mcp-server.py
+
+- [8DION-D-0026 - Project the Tree of Sophia Runtime Wrapper Without Default Registration](../8DION-D-0026-project-tos-runtime-wrapper-without-default-registration.md) (`docs/decisions/8DION-D-0026-project-tos-runtime-wrapper-without-default-registration.md`)
+
 ## .codex/config.toml
 
 - [8DION-D-0004 - AoA Memo MCP Codex-Plane Registration](../8DION-D-0004-aoa-memo-mcp-codex-plane-registration.md) (`docs/decisions/8DION-D-0004-aoa-memo-mcp-codex-plane-registration.md`)
@@ -82,6 +86,7 @@
 - [8DION-D-0016 - AoA Stats MCP Codex-Plane Cutover](../8DION-D-0016-aoa-stats-mcp-codex-plane-cutover.md) (`docs/decisions/8DION-D-0016-aoa-stats-mcp-codex-plane-cutover.md`)
 - [8DION-D-0019 - Deploy-Composed Codex Paths Stay Outside Generic Projection](../8DION-D-0019-deploy-composed-codex-paths.md) (`docs/decisions/8DION-D-0019-deploy-composed-codex-paths.md`)
 - [8DION-D-0022 - Connector MCP Codex-Plane Registration](../8DION-D-0022-connector-mcp-codex-plane-registration.md) (`docs/decisions/8DION-D-0022-connector-mcp-codex-plane-registration.md`)
+- [8DION-D-0027 - Defer Project MCP Registration to Explicit Rollout](../8DION-D-0027-defer-project-mcp-registration-to-explicit-rollout.md) (`docs/decisions/8DION-D-0027-defer-project-mcp-registration-to-explicit-rollout.md`)
 
 ## .codex/plugins/aoa-shared-launchers
 
@@ -118,6 +123,11 @@
 ## config/codex_plane/organ_fabric/codex_consumer_manifest.v1.json
 
 - [8DION-D-0024 - Deny-by-Default Organ-Fabric Consumer Projection](../8DION-D-0024-deny-by-default-organ-fabric-consumer-projection.md) (`docs/decisions/8DION-D-0024-deny-by-default-organ-fabric-consumer-projection.md`)
+- [8DION-D-0026 - Project the Tree of Sophia Runtime Wrapper Without Default Registration](../8DION-D-0026-project-tos-runtime-wrapper-without-default-registration.md) (`docs/decisions/8DION-D-0026-project-tos-runtime-wrapper-without-default-registration.md`)
+
+## config/codex_plane/profiles/linux-python3.json
+
+- [8DION-D-0027 - Defer Project MCP Registration to Explicit Rollout](../8DION-D-0027-defer-project-mcp-registration-to-explicit-rollout.md) (`docs/decisions/8DION-D-0027-defer-project-mcp-registration-to-explicit-rollout.md`)
 
 ## config/codex_plane/runtime_manifest.v1.json
 
@@ -130,6 +140,7 @@
 - [8DION-D-0016 - AoA Stats MCP Codex-Plane Cutover](../8DION-D-0016-aoa-stats-mcp-codex-plane-cutover.md) (`docs/decisions/8DION-D-0016-aoa-stats-mcp-codex-plane-cutover.md`)
 - [8DION-D-0022 - Connector MCP Codex-Plane Registration](../8DION-D-0022-connector-mcp-codex-plane-registration.md) (`docs/decisions/8DION-D-0022-connector-mcp-codex-plane-registration.md`)
 - [8DION-D-0023 - Dionysus Conversational Portrait Route](../8DION-D-0023-dionysus-conversational-portrait-route.md) (`docs/decisions/8DION-D-0023-dionysus-conversational-portrait-route.md`)
+- [8DION-D-0027 - Defer Project MCP Registration to Explicit Rollout](../8DION-D-0027-defer-project-mcp-registration-to-explicit-rollout.md) (`docs/decisions/8DION-D-0027-defer-project-mcp-registration-to-explicit-rollout.md`)
 
 ## config/git_hooks
 
@@ -231,6 +242,10 @@
 
 - [8DION-D-0024 - Deny-by-Default Organ-Fabric Consumer Projection](../8DION-D-0024-deny-by-default-organ-fabric-consumer-projection.md) (`docs/decisions/8DION-D-0024-deny-by-default-organ-fabric-consumer-projection.md`)
 
+## scripts/render_codex_plane.py
+
+- [8DION-D-0027 - Defer Project MCP Registration to Explicit Rollout](../8DION-D-0027-defer-project-mcp-registration-to-explicit-rollout.md) (`docs/decisions/8DION-D-0027-defer-project-mcp-registration-to-explicit-rollout.md`)
+
 ## scripts/run_required_check_audit.py
 
 - [8DION-D-0002 - Repo-Family Required Check Contracts Stay Coordination-Only in 8Dionysus](../8DION-D-0002-repo-family-required-check-contracts.md) (`docs/decisions/8DION-D-0002-repo-family-required-check-contracts.md`)
@@ -246,6 +261,10 @@
 ## scripts/smoke_aoa_stats_mcp.py
 
 - [8DION-D-0016 - AoA Stats MCP Codex-Plane Cutover](../8DION-D-0016-aoa-stats-mcp-codex-plane-cutover.md) (`docs/decisions/8DION-D-0016-aoa-stats-mcp-codex-plane-cutover.md`)
+
+## scripts/validate_codex_plane_regeneration.py
+
+- [8DION-D-0026 - Project the Tree of Sophia Runtime Wrapper Without Default Registration](../8DION-D-0026-project-tos-runtime-wrapper-without-default-registration.md) (`docs/decisions/8DION-D-0026-project-tos-runtime-wrapper-without-default-registration.md`)
 
 ## scripts/validate_github_required_check_contracts.py
 

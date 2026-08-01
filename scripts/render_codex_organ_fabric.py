@@ -3,8 +3,8 @@
 
 This renderer is deliberately source-only. It has no apply mode, never reads
 credential values, and emits no registration until the entire selected profile
-has registry admission plus consumer-schema, canary, owner-acceptance, and
-rollback receipts.
+has registry admission plus consumer-schema, central-proof, canary,
+owner-acceptance, and rollback receipts.
 """
 from __future__ import annotations
 
@@ -40,6 +40,7 @@ DEFAULT_OUTPUT_DIR = REPO_ROOT / "config" / "codex_plane" / "organ_fabric" / "ge
 ADMISSION_RECEIPT_KEYS = (
     "admission",
     "consumer_schema",
+    "central_proof",
     "canary",
     "owner_acceptance",
     "rollback",
@@ -129,7 +130,7 @@ def validate_manifest(manifest: Mapping[str, Any]) -> None:
             if registration["effect_ceiling"] != "prepare_candidate":
                 raise ValueError(f"{name}: candidate contour has an invalid effect ceiling")
         if registration["registry_state"] == "admitted" and not admission_ready(registration):
-            raise ValueError(f"{name}: admitted state is missing schema or five required receipts")
+            raise ValueError(f"{name}: admitted state is missing schema or six required receipts")
         for profile_name in registration["profiles"]:
             if profile_name not in profiles:
                 raise ValueError(f"{name}: unknown profile {profile_name}")

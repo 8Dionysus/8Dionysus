@@ -45,12 +45,44 @@ MCP is the access plane across these owners. It is not a replacement owner.
 - `config/codex_plane/organ_fabric/current_consumer_observation.public.json`
 - `scripts/render_codex_organ_fabric.py`
 - `scripts/validate_codex_organ_fabric.py`
+- `scripts/observe_codex_organ_fabric.py`
 - `schemas/codex_organ_fabric_*_v1.json`
+- `schemas/codex_consumer_registration_receipt_v1.json`
 - `config/codex_plane/organ_fabric/generated/core-read.target.toml`
 - `config/codex_plane/organ_fabric/generated/core-read.plan.json`
 
 The observation is public-safe. It records configuration shape, never bearer
 values.
+
+For one exact live registration, `observe_codex_organ_fabric.py` starts a fresh
+Codex app-server client, reads the full MCP inventory that client initialized,
+and emits a content-addressed consumer receipt to an operator-selected output
+directory. It reads the public registration shape through `codex mcp get`; it
+does not read bearer values or edit configuration. An optional direct tool call
+uses an ephemeral Codex thread and records only argument and result digests.
+
+```bash
+python scripts/observe_codex_organ_fabric.py \
+  --registration aoa_kag \
+  --protocol-version 2025-11-25 \
+  --call-tool kag_discover \
+  --call-arguments '{"detail":"compact","owner":"aoa-kag"}' \
+  --output-dir <private-receipt-root> \
+  --organ-id aoa-kag \
+  --overlay-output <private-overlay-fragment>
+```
+
+The protocol version is an explicit runtime binding because Codex app-server
+currently exposes the initialized tools, resources, templates, server info,
+and auth class but not the negotiated MCP protocol field. Central proof must
+therefore cross-check the receipt's canonical schema digest against runtime
+canary evidence for that exact protocol. The receipt alone is neither central
+proof nor owner acceptance.
+
+When both overlay flags are present, the issuer also writes a mode-`0600`
+`abyss_stack_runtime_evidence_overlay_v1` fragment containing only the exact
+consumer observation. `abyss-stack` may compose and carry that fragment, but
+does not become its issuer.
 
 ## Profiles instead of one catalog
 
@@ -79,9 +111,11 @@ A selected registration renders only when all of these are present:
 2. expected consumer schema digest;
 3. registry admission receipt;
 4. fresh consumer-schema observation receipt;
-5. runtime canary receipt;
-6. organ-owner acceptance receipt;
-7. rollback receipt.
+5. central proof receipt bound to the exact source, deploy, process, schema,
+   consumer registration, and canary;
+6. runtime canary receipt;
+7. organ-owner acceptance receipt;
+8. rollback receipt.
 
 The whole selected profile must pass. A partially admitted profile renders
 zero registrations, preventing a plausible-looking partial config from
@@ -111,15 +145,24 @@ permission to edit user-global or project Codex configuration.
 
 ## Current source posture
 
-The current checked-in candidate is intentionally pre-admission:
+The current checked-in candidate is intentionally pre-admission. The original
+shared-bearer baseline remains in catalog policy as historical comparison, but
+the manifest and public observation now record the owner-scoped Codex 0.146.0
+contour. The runtime-read profile includes the bounded
+`stack_orchestration_inspect` read surface, but its live audit defect and source
+fix remain rollout evidence rather than admission:
 
 - 18 source registrations;
-- nine observed legacy registrations retained;
-- nine absent targets withheld;
+- ten observed owner-scoped registrations retained pending admission;
+- eight absent targets withheld;
 - zero rendered registrations;
 - zero admitted schema digests or receipts;
 - no authorized mutation;
 - `tos_corpus` suspended.
+
+The `aoa_kag` observation includes the full consumer schema digest and links to
+a separate content-addressed live receipt outside source control. That receipt
+does not by itself change the source manifest's shadow state.
 
 This is a complete source contract and an incomplete rollout. It must not be
 reported as live migration.
@@ -131,6 +174,7 @@ python scripts/render_codex_organ_fabric.py
 python scripts/render_codex_organ_fabric.py --check
 python scripts/validate_codex_organ_fabric.py
 python -m unittest tests.test_codex_organ_fabric
+python -m unittest tests.test_observe_codex_organ_fabric
 ```
 
 The output is a TOML fragment for review. It is not a replacement for
@@ -151,8 +195,9 @@ must:
 8. record owner acceptance or roll back;
 9. prove consumer-zero before removing superseded legacy routes.
 
-Codex MCP configuration fields in this source were checked against the current
-official configuration reference for Codex CLI 0.145.0 on 2026-07-26.
+Codex MCP configuration fields in this source were exercised with Codex CLI
+0.146.0 on 2026-08-01; the previous official-reference pass was for 0.145.0 on
+2026-07-26.
 Because Codex and MCP evolve quickly, the consumer fields and fresh-process
 posture must be reverified immediately before live rollout.
 

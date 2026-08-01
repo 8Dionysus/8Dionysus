@@ -1,9 +1,9 @@
 {
   "schema_version": "8dionysus_codex_organ_fabric_plan_v1",
   "profile": "core-read",
-  "generated_at": "2026-07-26T23:54:12Z",
-  "manifest_digest": "sha256:09e51061ae512b3a78e02e66b1833abb77bf120b7003022223e42f014fec6bbe",
-  "observation_digest": "sha256:5015ea3de7830249b7c2dce14731bae34ec515dd772ec2a9e45291a346342732",
+  "generated_at": "2026-08-01T07:46:00Z",
+  "manifest_digest": "sha256:172760765aded25714916ade73d56dfd8adfa702d80cf364a2c54a0eab8def19",
+  "observation_digest": "sha256:9b8f17d5a932f3d74b1e5c4f7133f69a0fbb88dd36d6f117a02897bf35719f6d",
   "selected_registration_count": 3,
   "selected_tool_count": 15,
   "rendered_registration_count": 0,
@@ -14,23 +14,21 @@
       "registration_name": "aoa_decisions",
       "action": "retain_legacy_until_replacement_gates",
       "reason_codes": [
-        "not_admitted_for_selected_profile",
-        "legacy_shared_bearer_observed"
+        "not_admitted_for_selected_profile"
       ]
     },
     {
       "registration_name": "aoa_kag",
       "action": "retain_legacy_until_replacement_gates",
       "reason_codes": [
-        "not_admitted_for_selected_profile",
-        "legacy_shared_bearer_observed"
+        "not_admitted_for_selected_profile"
       ]
     },
     {
       "registration_name": "aoa_stats",
-      "action": "withhold",
+      "action": "retain_legacy_until_replacement_gates",
       "reason_codes": [
-        "admission_gates_incomplete"
+        "not_admitted_for_selected_profile"
       ]
     },
     {
@@ -38,7 +36,6 @@
       "action": "retain_legacy_until_replacement_gates",
       "reason_codes": [
         "not_admitted_for_selected_profile",
-        "legacy_shared_bearer_observed",
         "outside_selected_profile"
       ]
     },
@@ -54,7 +51,6 @@
       "action": "retain_legacy_until_replacement_gates",
       "reason_codes": [
         "not_admitted_for_selected_profile",
-        "legacy_shared_bearer_observed",
         "outside_selected_profile"
       ]
     },
@@ -63,7 +59,6 @@
       "action": "retain_legacy_until_replacement_gates",
       "reason_codes": [
         "not_admitted_for_selected_profile",
-        "legacy_shared_bearer_observed",
         "outside_selected_profile"
       ]
     },
@@ -72,7 +67,6 @@
       "action": "retain_legacy_until_replacement_gates",
       "reason_codes": [
         "not_admitted_for_selected_profile",
-        "legacy_shared_bearer_observed",
         "outside_selected_profile"
       ]
     },
@@ -88,7 +82,6 @@
       "action": "retain_legacy_until_replacement_gates",
       "reason_codes": [
         "not_admitted_for_selected_profile",
-        "legacy_shared_bearer_observed",
         "outside_selected_profile"
       ]
     },
@@ -97,7 +90,6 @@
       "action": "retain_legacy_until_replacement_gates",
       "reason_codes": [
         "not_admitted_for_selected_profile",
-        "legacy_shared_bearer_observed",
         "outside_selected_profile"
       ]
     },
@@ -106,7 +98,6 @@
       "action": "retain_legacy_until_replacement_gates",
       "reason_codes": [
         "not_admitted_for_selected_profile",
-        "legacy_shared_bearer_observed",
         "outside_selected_profile"
       ]
     },
@@ -154,9 +145,9 @@
     }
   ],
   "blockers": [
-    "aoa_decisions: missing registry_admission, consumer_schema_digest, admission_receipt, consumer_schema_receipt, canary_receipt, owner_acceptance_receipt, rollback_receipt",
-    "aoa_kag: missing registry_admission, consumer_schema_digest, admission_receipt, consumer_schema_receipt, canary_receipt, owner_acceptance_receipt, rollback_receipt",
-    "aoa_stats: missing registry_admission, consumer_schema_digest, admission_receipt, consumer_schema_receipt, canary_receipt, owner_acceptance_receipt, rollback_receipt"
+    "aoa_decisions: missing registry_admission, consumer_schema_digest, admission_receipt, consumer_schema_receipt, central_proof_receipt, canary_receipt, owner_acceptance_receipt, rollback_receipt",
+    "aoa_kag: missing registry_admission, consumer_schema_digest, admission_receipt, consumer_schema_receipt, central_proof_receipt, canary_receipt, owner_acceptance_receipt, rollback_receipt",
+    "aoa_stats: missing registry_admission, consumer_schema_digest, admission_receipt, consumer_schema_receipt, central_proof_receipt, canary_receipt, owner_acceptance_receipt, rollback_receipt"
   ],
   "claim_limits": [
     "This plan is derived source evidence and does not mutate Codex configuration.",
@@ -164,5 +155,5 @@
     "A fresh Codex process and post-registration schema observation are required.",
     "Registration does not prove endpoint, authentication, grounded calls, or owner acceptance."
   ],
-  "plan_digest": "sha256:aad328463066de6f6ebc430d0d4d8349f865668656e94c282e6ccea0e02090fd"
+  "plan_digest": "sha256:57858e71959c3c138ce436801197bb1dc0f34815658c0e73a2b5520c13baab78"
 }

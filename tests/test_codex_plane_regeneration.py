@@ -71,6 +71,31 @@ class CodexPlaneRegenerationTests(unittest.TestCase):
             self.assertNotIn("transport", server)
             self.assertTrue((REPO_ROOT / server["script_rel"]).is_file())
 
+    def test_tos_launcher_remains_an_unregistered_organ_fabric_projection(self) -> None:
+        runtime_manifest = render_codex_plane.load_json_object(
+            REPO_ROOT / "config" / "codex_plane" / "runtime_manifest.v1.json"
+        )
+        stable_names = {server["name"] for server in runtime_manifest["mcp_servers"]}
+        self.assertNotIn("tos_corpus", stable_names)
+        self.assertTrue((REPO_ROOT / ".codex" / "bin" / "tos-corpus-mcp-server.py").is_file())
+
+        organ_manifest = render_codex_plane.load_json_object(
+            REPO_ROOT
+            / "config"
+            / "codex_plane"
+            / "organ_fabric"
+            / "codex_consumer_manifest.v1.json"
+        )
+        tos = next(
+            item
+            for item in organ_manifest["registrations"]
+            if item["registration_name"] == "tos_corpus"
+        )
+        self.assertEqual(tos["organ_id"], "Tree-of-Sophia")
+        self.assertEqual(tos["registry_state"], "suspended")
+        self.assertFalse(tos["required"])
+        self.assertTrue(all(value is None for value in tos["receipts"].values()))
+
     def test_renderer_matches_checked_in_current_srv_examples(self) -> None:
         manifest = render_codex_plane.load_json_object(
             REPO_ROOT / "config" / "codex_plane" / "runtime_manifest.v1.json"
@@ -112,14 +137,17 @@ class CodexPlaneRegenerationTests(unittest.TestCase):
                 encoding="utf-8"
             ),
         )
-        self.assertIn('args = [".codex/bin/aoa-stats-mcp-server.py"]', rendered_config)
-        self.assertNotIn('args = ["scripts/aoa_stats_mcp_server.py"]', rendered_config)
+        self.assertNotIn("[mcp_servers.", rendered_config)
+        self.assertIn(
+            "MCP registrations are intentionally absent from this project layer",
+            rendered_config,
+        )
         for launcher_name in (
             "aoa-4pda-connector-mcp-server.py",
             "aoa-telegram-connector-mcp-server.py",
             "aoa-discord-connector-mcp-server.py",
         ):
-            self.assertIn(f'args = [".codex/bin/{launcher_name}"]', rendered_config)
+            self.assertTrue((REPO_ROOT / ".codex" / "bin" / launcher_name).is_file())
         self.assertEqual(
             rendered_hooks,
             (REPO_ROOT / "config" / "codex_plane" / "examples" / "current-srv.hooks.json").read_text(
@@ -179,7 +207,12 @@ class CodexPlaneRegenerationTests(unittest.TestCase):
             )
             write_json(
                 root / "config" / "codex_plane" / "profiles" / "linux-python3.json",
-                {"profile_id": "linux-python3", "python_command": "python3", "python_prefix_args": []},
+                {
+                    "profile_id": "linux-python3",
+                    "python_command": "python3",
+                    "python_prefix_args": [],
+                    "project_mcp_registration_mode": "defer_to_explicit_rollout",
+                },
             )
             write_text(root / ".codex" / "config.toml", "drifted\n")
             write_text(root / ".codex" / "hooks.json", "{}\n")

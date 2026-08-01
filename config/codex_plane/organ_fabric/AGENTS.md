@@ -15,8 +15,8 @@ runtime, credentials, domain meaning, proof, or acceptance.
 
 - Deny by default: `shadow`, `suspended`, `deprecated`, and `retired` entries
   never render as active registrations.
-- An admitted entry needs exact admission, consumer-schema, canary, owner
-  acceptance, and rollback receipts.
+- An admitted entry needs exact admission, consumer-schema, central-proof,
+  canary, owner-acceptance, and rollback receipts.
 - Credential values never appear here; only public environment-variable names
   and credential classes are allowed.
 - The full owner catalog is never an always-loaded profile. Each render names

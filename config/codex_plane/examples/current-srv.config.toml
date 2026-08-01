@@ -73,57 +73,7 @@ nickname_candidates = ["Delta"]
 # - aoa_telegram_connector
 # - aoa_discord_connector
 
-[mcp_servers.aoa_workspace]
-command = "python3"
-args = ["mechanics/codex-projection/parts/workspace-mcp-server/scripts/aoa_workspace_mcp_server.py"]
-cwd = "/srv/AbyssOS/aoa-sdk"
-
-[mcp_servers.aoa_stats]
-command = "python3"
-args = [".codex/bin/aoa-stats-mcp-server.py"]
-cwd = "/srv/AbyssOS"
-
-[mcp_servers.aoa_memo]
-command = "python3"
-args = [".codex/bin/aoa-memo-mcp-server.py"]
-cwd = "/srv/AbyssOS"
-
-[mcp_servers.aoa_session_memory]
-command = "python3"
-args = [".codex/bin/aoa-session-memory-mcp-server.py"]
-cwd = "/srv/AbyssOS"
-
-[mcp_servers.aoa_evals]
-command = "python3"
-args = [".codex/bin/aoa-evals-mcp-server.py"]
-cwd = "/srv/AbyssOS"
-
-[mcp_servers.aoa_kag]
-command = "python3"
-args = [".codex/bin/aoa-kag-mcp-server.py"]
-cwd = "/srv/AbyssOS"
-
-[mcp_servers.aoa_decisions]
-command = "python3"
-args = [".codex/bin/aoa-decisions-mcp-server.py"]
-cwd = "/srv/AbyssOS"
-
-[mcp_servers.abyss_machine]
-command = "python3"
-args = [".codex/bin/abyss-machine-mcp-server.py"]
-cwd = "/srv/AbyssOS"
-
-[mcp_servers.aoa_4pda_connector]
-command = "python3"
-args = [".codex/bin/aoa-4pda-connector-mcp-server.py"]
-cwd = "/srv/AbyssOS"
-
-[mcp_servers.aoa_telegram_connector]
-command = "python3"
-args = [".codex/bin/aoa-telegram-connector-mcp-server.py"]
-cwd = "/srv/AbyssOS"
-
-[mcp_servers.aoa_discord_connector]
-command = "python3"
-args = [".codex/bin/aoa-discord-connector-mcp-server.py"]
-cwd = "/srv/AbyssOS"
+# MCP registrations are intentionally absent from this project layer.
+# Codex merges global and project server tables field-by-field; emitting
+# portable stdio entries here would collide with deploy-composed HTTP
+# entries under the same stable names. Use the explicit organ-fabric rollout.

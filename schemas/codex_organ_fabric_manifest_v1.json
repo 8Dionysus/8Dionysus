@@ -198,6 +198,7 @@
       "required": [
         "admission",
         "consumer_schema",
+        "central_proof",
         "canary",
         "owner_acceptance",
         "rollback"
@@ -210,6 +211,12 @@
           ]
         },
         "consumer_schema": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "central_proof": {
           "type": [
             "string",
             "null"

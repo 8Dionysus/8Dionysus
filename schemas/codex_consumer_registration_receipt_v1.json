@@ -1,0 +1,142 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://8dionysus.local/schemas/codex_consumer_registration_receipt_v1.json",
+  "title": "Codex MCP consumer registration receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "issuer_owner",
+    "consumer_id",
+    "consumer_version",
+    "app_server_protocol",
+    "observed_at",
+    "expires_at",
+    "registration",
+    "schema_observation",
+    "call_observation",
+    "secrets_included",
+    "claim_limits",
+    "registration_ref",
+    "receipt_digest"
+  ],
+  "properties": {
+    "schema_version": {"const": "8dionysus_codex_consumer_registration_receipt_v1"},
+    "issuer_owner": {"const": "8Dionysus"},
+    "consumer_id": {"const": "codex"},
+    "consumer_version": {"type": "string", "minLength": 1},
+    "app_server_protocol": {"const": "v2"},
+    "observed_at": {"type": "string", "format": "date-time"},
+    "expires_at": {"type": "string", "format": "date-time"},
+    "registration": {"$ref": "#/$defs/registration"},
+    "schema_observation": {"$ref": "#/$defs/schemaObservation"},
+    "call_observation": {
+      "oneOf": [
+        {"type": "null"},
+        {"$ref": "#/$defs/callObservation"}
+      ]
+    },
+    "secrets_included": {"const": false},
+    "claim_limits": {
+      "type": "array",
+      "minItems": 5,
+      "items": {"type": "string", "minLength": 3}
+    },
+    "registration_ref": {
+      "type": "string",
+      "pattern": "^consumer-registration://8Dionysus/codex/[A-Za-z0-9._-]+/[0-9a-f]{64}$"
+    },
+    "receipt_digest": {"$ref": "#/$defs/digest"}
+  },
+  "$defs": {
+    "digest": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "nullableStringArray": {
+      "type": ["array", "null"],
+      "items": {"type": "string"},
+      "uniqueItems": true
+    },
+    "nullablePositiveInteger": {"type": ["integer", "null"], "minimum": 1},
+    "registration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "registration_name",
+        "enabled",
+        "transport_type",
+        "url",
+        "bearer_token_env_var",
+        "enabled_tools",
+        "disabled_tools",
+        "startup_timeout_sec",
+        "tool_timeout_sec",
+        "auth_status",
+        "server_info"
+      ],
+      "properties": {
+        "registration_name": {"type": "string", "pattern": "^[A-Za-z0-9._-]+$"},
+        "enabled": {"const": true},
+        "transport_type": {"const": "streamable_http"},
+        "url": {"type": "string", "pattern": "^http://127\\.0\\.0\\.1:[0-9]{4,5}/mcp$"},
+        "bearer_token_env_var": {"type": "string", "pattern": "^[A-Z][A-Z0-9_]+$"},
+        "enabled_tools": {"$ref": "#/$defs/nullableStringArray"},
+        "disabled_tools": {"$ref": "#/$defs/nullableStringArray"},
+        "startup_timeout_sec": {"$ref": "#/$defs/nullablePositiveInteger"},
+        "tool_timeout_sec": {"$ref": "#/$defs/nullablePositiveInteger"},
+        "auth_status": {"enum": ["bearerToken", "oAuth", "unsupported", "notLoggedIn"]},
+        "server_info": {
+          "type": ["object", "null"],
+          "additionalProperties": true
+        }
+      }
+    },
+    "schemaObservation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "method",
+        "detail",
+        "protocol_versions",
+        "protocol_basis",
+        "schema_digest",
+        "tool_count",
+        "tool_names",
+        "resource_count",
+        "resource_uris",
+        "resource_template_count",
+        "resource_template_uris",
+        "prompt_count"
+      ],
+      "properties": {
+        "method": {"const": "mcpServerStatus/list"},
+        "detail": {"const": "full"},
+        "protocol_versions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "string", "minLength": 1},
+          "uniqueItems": true
+        },
+        "protocol_basis": {"const": "explicit_runtime_protocol_bound_into_observed_inventory"},
+        "schema_digest": {"$ref": "#/$defs/digest"},
+        "tool_count": {"type": "integer", "minimum": 0},
+        "tool_names": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "resource_count": {"type": "integer", "minimum": 0},
+        "resource_uris": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "resource_template_count": {"type": "integer", "minimum": 0},
+        "resource_template_uris": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "prompt_count": {"const": 0}
+      }
+    },
+    "callObservation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tool_name", "arguments_digest", "result_digest", "is_error", "content_item_count"],
+      "properties": {
+        "tool_name": {"type": "string", "minLength": 1},
+        "arguments_digest": {"$ref": "#/$defs/digest"},
+        "result_digest": {"$ref": "#/$defs/digest"},
+        "is_error": {"const": false},
+        "content_item_count": {"type": "integer", "minimum": 0}
+      }
+    }
+  }
+}

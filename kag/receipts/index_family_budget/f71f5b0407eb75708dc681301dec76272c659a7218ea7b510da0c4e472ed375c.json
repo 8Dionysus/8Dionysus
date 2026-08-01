@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 3929128,
+  "allowed_tracked_bytes": 4371518,
+  "approved_by": "repository-owner",
+  "base_ref": "aa67908a137a9c9631a439f266d32a8918c7213c",
+  "changed_generated_bytes": 3929128,
+  "changed_generated_files": 270,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "f71f5b0407eb75708dc681301dec76272c659a7218ea7b510da0c4e472ed375c",
+  "reason": "Codex organ-fabric consumer profiles, planning, registration, and live-observation evidence add reviewed consumer source; this receipt admits only the measured portable-family growth for PR #137.",
+  "repo": "8Dionysus",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "generated_delta",
+  "tracked_bytes": 4371518,
+  "tracked_bytes_max": 5242880
+}

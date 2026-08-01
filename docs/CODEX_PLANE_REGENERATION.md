@@ -27,7 +27,8 @@ note before rerender or rollout, use `docs/COMPONENT_REFRESH_ROUTE.md`.
 - the manifest/profile pair for the Codex plane
 - the renderer and drift validator
 - the checked-in generated `.codex/config.toml` and `.codex/hooks.json` as
-  source render artifacts for the current chosen public root
+  source render artifacts for the current chosen public root; the project
+  config deliberately contains no MCP server tables
 - the source templates and bounded installer for AoA-managed repo-local Git
   checkpoint hooks
 
@@ -38,6 +39,7 @@ It does not own:
   for stack-owned access planes such as
   `aoa-stats-mcp`, `aoa-memo-mcp`, `aoa-session-memory-mcp`, `aoa-evals-mcp`,
   `aoa-kag-mcp`, `aoa-decisions-mcp`, `abyss-machine-mcp`,
+  `tos-corpus-mcp`,
   `aoa-4pda-connector-mcp`, `aoa-telegram-connector-mcp`, and
   `aoa-discord-connector-mcp`; `aoa-stats`
   owns the statistical meaning exposed through `aoa_stats`, `.aoa` owns raw
@@ -45,7 +47,8 @@ It does not own:
   contract exposed by `aoa_evals`, `aoa-kag` owns KAG meaning exposed by
   `aoa_kag`, `aoa-skills` owns the decision-lane route exposed through
   `aoa_decisions`, and `abyss-machine` owns the host truth exposed by
-  `abyss_machine`
+  `abyss_machine`; Tree of Sophia owns corpus meaning exposed by any admitted
+  `tos_corpus` contour
 - user-global Codex defaults in `~/.codex/config.toml`
 - unmanaged custom hooks already present in a checkout's private `.git/hooks/`
   directory
@@ -68,6 +71,12 @@ It is rendered with `scripts/render_codex_organ_fabric.py` and governed by
 registration until the integrated rollout closes its registry, runtime,
 consumer-schema, owner-acceptance, and rollback gates.
 
+The source tree may carry a wrapper for an organ before admission so the
+stack-owned runtime package has one portable projection route. In particular,
+`tos-corpus-mcp-server.py` does not add `tos_corpus` to the stable names below:
+the contour remains suspended and unregistered until the organ-fabric receipt
+gates pass.
+
 The checked-in generated surfaces:
 
 - `.codex/config.toml`
@@ -75,6 +84,13 @@ The checked-in generated surfaces:
 
 remain source-owned deployment artifacts for the current live root, not the
 place where humans should manually invent path changes.
+
+Codex merges user-global and trusted-project MCP tables field-by-field. A
+portable project `command` combined with a deploy-composed global `url` under
+the same stable name is an invalid transport shape. The current project render
+therefore retains stable-name and launcher inventory in the manifest but emits
+no `[mcp_servers.*]` tables. MCP registration is composed only through the
+explicit organ-fabric rollout or another isolated operator-selected scope.
 
 That source ownership does not make the generic shared-root projector the
 live deployment composer. A deployed `.codex/config.toml` may replace portable
@@ -100,7 +116,7 @@ The regeneration path must preserve the stable project-facing names that other
 AoA surfaces may already depend on:
 
 - project root markers: `AOA_WORKSPACE_ROOT`, `.git`
-- MCP server names: `aoa_workspace`, `aoa_stats`, `aoa_memo`, `aoa_session_memory`, `aoa_evals`, `aoa_kag`, `aoa_decisions`, `abyss_machine`, `aoa_4pda_connector`, `aoa_telegram_connector`, `aoa_discord_connector`
+- MCP server inventory names: `aoa_workspace`, `aoa_stats`, `aoa_memo`, `aoa_session_memory`, `aoa_evals`, `aoa_kag`, `aoa_decisions`, `abyss_machine`, `aoa_4pda_connector`, `aoa_telegram_connector`, `aoa_discord_connector`; these are not automatically emitted into the project layer
 - hook events: `SessionStart`, `UserPromptSubmit`, `Stop`
 
 ## Relation to projection

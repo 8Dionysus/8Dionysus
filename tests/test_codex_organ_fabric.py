@@ -50,6 +50,7 @@ def admit(item: dict[str, object]) -> None:
     item["receipts"] = {
         "admission": "receipt://registry/admission",
         "consumer_schema": "receipt://codex/schema",
+        "central_proof": "receipt://aoa-evals/central-proof",
         "canary": "receipt://runtime/canary",
         "owner_acceptance": "receipt://owner/acceptance",
         "rollback": "receipt://operator/rollback",
@@ -84,8 +85,8 @@ class CodexOrganFabricTests(unittest.TestCase):
         self.assertFalse(first_plan["mutation_allowed"])
         self.assertNotIn("[mcp_servers.", first_toml)
         actions = [item["action"] for item in first_plan["actions"]]
-        self.assertEqual(actions.count("retain_legacy_until_replacement_gates"), 9)
-        self.assertEqual(actions.count("withhold"), 9)
+        self.assertEqual(actions.count("retain_legacy_until_replacement_gates"), 10)
+        self.assertEqual(actions.count("withhold"), 8)
         self.assertEqual(validate(REPO_ROOT)["rendered_registrations"], 0)
 
     def test_fully_admitted_kag_profile_renders_exact_consumer_policy(self) -> None:
@@ -116,7 +117,7 @@ class CodexOrganFabricTests(unittest.TestCase):
         admit(item)
         item["receipts"]["owner_acceptance"] = None  # type: ignore[index]
 
-        with self.assertRaisesRegex(ValueError, "missing schema or five required receipts"):
+        with self.assertRaisesRegex(ValueError, "missing schema or six required receipts"):
             organ_fabric.validate_manifest(manifest)
 
     def test_candidate_profile_renders_per_tool_prompts(self) -> None:
@@ -161,7 +162,7 @@ class CodexOrganFabricTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "registration budget exceeded"):
             organ_fabric.validate_manifest(manifest)
 
-    def test_legacy_registration_is_retained_until_replacement_gates(self) -> None:
+    def test_observed_shadow_registration_is_retained_until_admission(self) -> None:
         manifest, observation = load_inputs()
         plan = organ_fabric.build_plan(manifest, observation, "core-read")
         kag_action = next(
@@ -169,7 +170,7 @@ class CodexOrganFabricTests(unittest.TestCase):
         )
 
         self.assertEqual(kag_action["action"], "retain_legacy_until_replacement_gates")
-        self.assertIn("legacy_shared_bearer_observed", kag_action["reason_codes"])
+        self.assertEqual(kag_action["reason_codes"], ["not_admitted_for_selected_profile"])
 
     def test_suspended_registration_requires_removal_receipt(self) -> None:
         manifest, observation = load_inputs()

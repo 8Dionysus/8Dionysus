@@ -2,6 +2,7 @@
   "profile_id": "linux-python3",
   "python_command": "python3",
   "python_prefix_args": [],
+  "project_mcp_registration_mode": "defer_to_explicit_rollout",
   "render_examples": {
     "workspace_root": "/srv/AbyssOS"
   }

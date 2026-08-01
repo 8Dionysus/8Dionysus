@@ -47,8 +47,8 @@ def validate(repo_root: Path) -> dict[str, object]:
 
     action_counts = Counter(action["action"] for action in plan["actions"])
     if action_counts != {
-        "retain_legacy_until_replacement_gates": 9,
-        "withhold": 9,
+        "retain_legacy_until_replacement_gates": 10,
+        "withhold": 8,
     }:
         raise ValueError(f"unexpected current action distribution: {dict(action_counts)}")
 
@@ -81,18 +81,35 @@ def validate(repo_root: Path) -> dict[str, object]:
     if tos["registry_state"] != "suspended":
         raise ValueError("Tree of Sophia corpus contour must remain suspended")
     observed = observation["effective_registrations"]
-    if len(observed) != 9:
-        raise ValueError("public observation must retain the nine effective legacy registrations")
-    if any(
-        item["bearer_token_env_var"] != organ_fabric.LEGACY_SHARED_BEARER_ENV
-        for item in observed
+    if len(observed) != 10:
+        raise ValueError("public observation must contain ten owner-scoped organ registrations")
+    observed_by_name = {item["registration_name"]: item for item in observed}
+    if set(observed_by_name) != {
+        "abyss_machine",
+        "aoa_4pda_connector",
+        "aoa_decisions",
+        "aoa_discord_connector",
+        "aoa_evals",
+        "aoa_kag",
+        "aoa_memo",
+        "aoa_session_memory",
+        "aoa_stats",
+        "aoa_telegram_connector",
+    }:
+        raise ValueError("public observation owner-scoped registration set drift")
+    for item in observed:
+        if item["bearer_token_env_var"] == organ_fabric.LEGACY_SHARED_BEARER_ENV:
+            raise ValueError("public observation regressed to the shared legacy bearer")
+    kag = observed_by_name["aoa_kag"]
+    if kag["schema_digest"] != (
+        "sha256:f873485d8aa3a0b8871e64e24a0da7a1b0ea2ca4af1e7f9fc09d0fb3f457f844"
     ):
-        raise ValueError("legacy observation no longer matches the captured shared-auth baseline")
+        raise ValueError("aoa_kag consumer schema observation drift")
 
     return {
         "profile": plan["profile"],
         "registrations_in_manifest": len(registrations),
-        "observed_legacy_registrations": len(observed),
+        "observed_owner_scoped_registrations": len(observed),
         "rendered_registrations": plan["rendered_registration_count"],
         "mutation_allowed": plan["mutation_allowed"],
         "plan_digest": plan["plan_digest"],

@@ -1,9 +1,9 @@
 {
   "schema_version": "8dionysus_codex_organ_fabric_observation_v1",
-  "observation_id": "codex-consumer-prechange-20260726",
-  "observed_at": "2026-07-26T23:54:12Z",
-  "expires_at": "2026-07-27T23:54:12Z",
-  "consumer_version": "0.145.0",
+  "observation_id": "codex-consumer-owner-scoped-20260801",
+  "observed_at": "2026-08-01T02:41:59Z",
+  "expires_at": "2026-08-02T02:41:59Z",
+  "consumer_version": "0.146.0",
   "global_config": {
     "path_label": "$CODEX_HOME/config.toml",
     "exists": true,
@@ -16,6 +16,7 @@
       "aoa_kag",
       "aoa_memo",
       "aoa_session_memory",
+      "aoa_stats",
       "aoa_telegram_connector"
     ],
     "self_contained_auth": true,
@@ -43,124 +44,111 @@
     {
       "registration_name": "aoa_decisions",
       "url": "http://127.0.0.1:5420/mcp",
-      "bearer_token_env_var": "AOA_MCP_HTTP_BEARER_TOKEN",
+      "bearer_token_env_var": "AOA_DECISIONS_MCP_READ_BEARER_TOKEN",
       "enabled_tools": null,
       "startup_timeout_sec": null,
       "tool_timeout_sec": null,
       "schema_digest": null,
-      "source_layers": [
-        "global",
-        "project"
-      ]
+      "source_layers": ["global", "project"]
     },
     {
       "registration_name": "aoa_memo",
       "url": "http://127.0.0.1:5421/mcp",
-      "bearer_token_env_var": "AOA_MCP_HTTP_BEARER_TOKEN",
+      "bearer_token_env_var": "AOA_MEMO_MCP_READ_BEARER_TOKEN",
       "enabled_tools": null,
       "startup_timeout_sec": null,
       "tool_timeout_sec": null,
       "schema_digest": null,
-      "source_layers": [
-        "global",
-        "project"
-      ]
+      "source_layers": ["global", "project"]
     },
     {
       "registration_name": "aoa_session_memory",
       "url": "http://127.0.0.1:5422/mcp",
-      "bearer_token_env_var": "AOA_MCP_HTTP_BEARER_TOKEN",
+      "bearer_token_env_var": "AOA_SESSION_MEMORY_MCP_READ_BEARER_TOKEN",
       "enabled_tools": null,
       "startup_timeout_sec": null,
       "tool_timeout_sec": null,
       "schema_digest": null,
-      "source_layers": [
-        "global",
-        "project"
-      ]
+      "source_layers": ["global", "project"]
     },
     {
       "registration_name": "abyss_machine",
       "url": "http://127.0.0.1:5423/mcp",
-      "bearer_token_env_var": "AOA_MCP_HTTP_BEARER_TOKEN",
+      "bearer_token_env_var": "ABYSS_MACHINE_MCP_READ_BEARER_TOKEN",
       "enabled_tools": null,
       "startup_timeout_sec": null,
       "tool_timeout_sec": null,
       "schema_digest": null,
-      "source_layers": [
-        "global",
-        "project"
-      ]
+      "source_layers": ["global", "project"]
     },
     {
       "registration_name": "aoa_evals",
       "url": "http://127.0.0.1:5424/mcp",
-      "bearer_token_env_var": "AOA_MCP_HTTP_BEARER_TOKEN",
+      "bearer_token_env_var": "AOA_EVALS_MCP_READ_BEARER_TOKEN",
       "enabled_tools": null,
       "startup_timeout_sec": null,
       "tool_timeout_sec": null,
       "schema_digest": null,
-      "source_layers": [
-        "global",
-        "project"
-      ]
+      "source_layers": ["global", "project"]
     },
     {
       "registration_name": "aoa_kag",
       "url": "http://127.0.0.1:5425/mcp",
-      "bearer_token_env_var": "AOA_MCP_HTTP_BEARER_TOKEN",
+      "bearer_token_env_var": "AOA_KAG_MCP_READ_BEARER_TOKEN",
       "enabled_tools": null,
       "startup_timeout_sec": null,
       "tool_timeout_sec": null,
-      "schema_digest": null,
-      "source_layers": [
-        "global",
-        "project"
-      ]
+      "schema_digest": "sha256:f873485d8aa3a0b8871e64e24a0da7a1b0ea2ca4af1e7f9fc09d0fb3f457f844",
+      "source_layers": ["global", "project"]
     },
     {
       "registration_name": "aoa_4pda_connector",
       "url": "http://127.0.0.1:5426/mcp",
-      "bearer_token_env_var": "AOA_MCP_HTTP_BEARER_TOKEN",
+      "bearer_token_env_var": "AOA_4PDA_CONNECTOR_MCP_READ_BEARER_TOKEN",
       "enabled_tools": null,
       "startup_timeout_sec": null,
       "tool_timeout_sec": null,
       "schema_digest": null,
-      "source_layers": [
-        "global"
-      ]
+      "source_layers": ["global"]
     },
     {
       "registration_name": "aoa_telegram_connector",
       "url": "http://127.0.0.1:5427/mcp",
-      "bearer_token_env_var": "AOA_MCP_HTTP_BEARER_TOKEN",
+      "bearer_token_env_var": "AOA_TELEGRAM_CONNECTOR_MCP_READ_BEARER_TOKEN",
       "enabled_tools": null,
       "startup_timeout_sec": null,
       "tool_timeout_sec": null,
       "schema_digest": null,
-      "source_layers": [
-        "global"
-      ]
+      "source_layers": ["global"]
     },
     {
       "registration_name": "aoa_discord_connector",
       "url": "http://127.0.0.1:5428/mcp",
-      "bearer_token_env_var": "AOA_MCP_HTTP_BEARER_TOKEN",
+      "bearer_token_env_var": "AOA_DISCORD_CONNECTOR_MCP_READ_BEARER_TOKEN",
       "enabled_tools": null,
       "startup_timeout_sec": null,
       "tool_timeout_sec": null,
       "schema_digest": null,
-      "source_layers": [
-        "global"
-      ]
+      "source_layers": ["global"]
+    },
+    {
+      "registration_name": "aoa_stats",
+      "url": "http://127.0.0.1:5430/mcp",
+      "bearer_token_env_var": "AOA_STATS_MCP_READ_BEARER_TOKEN",
+      "enabled_tools": null,
+      "startup_timeout_sec": null,
+      "tool_timeout_sec": null,
+      "schema_digest": null,
+      "source_layers": ["global", "project"]
     }
   ],
-  "schema_reobservation": "not_run",
+  "schema_reobservation": "partial",
   "secrets_included": false,
   "claim_limits": [
-    "This public observation records configuration shape, not credential values.",
-    "Effective registration listing does not prove endpoint or tool readiness.",
-    "No current schema digest, grounded call, freshness, acceptance, or rollback receipt is claimed.",
-    "The project layer depends on global composition and is not self-contained."
+    "This public observation records configuration shape and environment-variable names, not credential values.",
+    "The effective list covers the ten owner-scoped loopback organ registrations, not unrelated plugin or external MCP registrations.",
+    "Only aoa_kag has a fresh full schema digest and successful direct-call receipt in this capture.",
+    "Registration and schema visibility do not prove registry admission, central proof, owner acceptance, or rollback.",
+    "The project layer remains compositional and is not a self-contained credential source."
   ]
 }

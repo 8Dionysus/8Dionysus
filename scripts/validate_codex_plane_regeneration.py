@@ -79,6 +79,14 @@ def validate_codex_plane_regeneration(
     expected_server_names = [server["name"] for server in manifest["mcp_servers"]]
     if expected_server_names != STABLE_MCP_SERVER_NAMES:
         raise ValueError("manifest must preserve the stable AoA MCP server names")
+    if profile.get("project_mcp_registration_mode") != "defer_to_explicit_rollout":
+        raise ValueError(
+            "checked-in project MCP registrations must defer to the explicit rollout"
+        )
+    if "[mcp_servers." in actual_config:
+        raise ValueError(
+            "checked-in project config must not collide with deploy-composed registrations"
+        )
     stats_launcher = resolved_repo_root / ".codex" / "bin" / "aoa-stats-mcp-server.py"
     if not stats_launcher.exists():
         raise ValueError(f"missing source-owned aoa_stats launcher: {stats_launcher}")
@@ -100,6 +108,9 @@ def validate_codex_plane_regeneration(
     machine_launcher = resolved_repo_root / ".codex" / "bin" / "abyss-machine-mcp-server.py"
     if not machine_launcher.exists():
         raise ValueError(f"missing source-owned abyss_machine launcher: {machine_launcher}")
+    tos_launcher = resolved_repo_root / ".codex" / "bin" / "tos-corpus-mcp-server.py"
+    if not tos_launcher.exists():
+        raise ValueError(f"missing source-owned tos_corpus projection launcher: {tos_launcher}")
     for connector_name in ("4pda", "telegram", "discord"):
         connector_launcher = (
             resolved_repo_root

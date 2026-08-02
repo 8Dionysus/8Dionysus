@@ -52,7 +52,10 @@ MCP is the access plane across these owners. It is not a replacement owner.
 - `config/codex_plane/organ_fabric/generated/core-read.plan.json`
 
 The observation is public-safe. It records configuration shape, never bearer
-values.
+values. Each exact consumer receipt also records canonical observed inventory,
+tool-schema, resource-catalog, and resource-template byte counts. Those are
+context-economy measurements for the observed client surface, not proof that
+every byte was inserted into one model prompt.
 
 For one exact live registration, `observe_codex_organ_fabric.py` starts a fresh
 Codex app-server client, reads the full MCP inventory that client initialized,
@@ -102,6 +105,14 @@ Every profile is capped at six registrations and 64 enabled tools. The full
 catalog is forbidden as an always-loaded profile. Read and candidate contours
 use different registration names, URLs, credential classes, environment
 variables, and approval policy.
+
+For `aoa-session-memory`, the admitted consumer shape enables only six
+argument-bearing query, retrieval, and freshness tools. Exact known-session
+briefs, manifests, indexes, and rehydration packets remain MCP resource
+templates, so the consumer opens them on demand instead of loading broad tool
+schemas or whole indexes into every task context. Its durable credential class
+is `session-memory-read`; the longer bearer environment variable and systemd
+credential names are delivery bindings, not policy identities.
 
 ## Admission gate
 
@@ -163,6 +174,12 @@ fix remain rollout evidence rather than admission:
 The `aoa_kag` observation includes the full consumer schema digest and links to
 a separate content-addressed live receipt outside source control. That receipt
 does not by itself change the source manifest's shadow state.
+
+The stack read and candidate registrations bind the runtime-owned credential
+classes `abyss-stack-read` and `abyss-stack-candidate`. Their environment
+variable names remain consumer wiring only; adding `-mcp-` to the credential
+class would create identity drift from the stack runtime catalog and private
+registry rather than a stronger isolation boundary.
 
 This is a complete source contract and an incomplete rollout. It must not be
 reported as live migration.

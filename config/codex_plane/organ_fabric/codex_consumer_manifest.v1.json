@@ -1,6 +1,6 @@
 {
   "schema_version": "8dionysus_codex_organ_fabric_manifest_v1",
-  "updated_at": "2026-08-01T07:46:00Z",
+  "updated_at": "2026-08-02T00:51:23Z",
   "production_protocol": "2025-11-25",
   "consumer": {
     "product": "codex-cli",
@@ -239,7 +239,7 @@
       "source_service_ref": "abyss-stack/mcp/services/abyss-stack-mcp/",
       "url": "http://127.0.0.1:5431/mcp",
       "bearer_token_env_var": "ABYSS_STACK_MCP_READ_BEARER_TOKEN",
-      "credential_class": "abyss-stack-mcp-read",
+      "credential_class": "abyss-stack-read",
       "protocol_versions": [
         "2025-11-25"
       ],
@@ -317,7 +317,7 @@
       "source_service_ref": "abyss-stack/mcp/services/aoa-session-memory-mcp/",
       "url": "http://127.0.0.1:5422/mcp",
       "bearer_token_env_var": "AOA_SESSION_MEMORY_MCP_READ_BEARER_TOKEN",
-      "credential_class": "aoa-session-memory-mcp-read",
+      "credential_class": "session-memory-read",
       "protocol_versions": [
         "2025-11-25"
       ],
@@ -325,16 +325,12 @@
         "memory-read"
       ],
       "enabled_tools": [
-        "aoa_session_memory_status",
+        "aoa_session_literal_query_plan",
         "aoa_session_search",
-        "aoa_session_route",
-        "aoa_session_brief",
         "aoa_session_retrieve",
         "aoa_session_evidence_packet",
         "aoa_session_freshness_check",
-        "aoa_session_entity_dossier",
-        "aoa_session_entity_usage_chain",
-        "aoa_session_transport_preflight"
+        "aoa_session_entity_usage_chain"
       ],
       "startup_timeout_sec": 30,
       "tool_timeout_sec": 180,
@@ -679,7 +675,7 @@
       "source_service_ref": "abyss-stack/mcp/services/abyss-stack-mcp/",
       "url": "http://127.0.0.1:5433/mcp",
       "bearer_token_env_var": "ABYSS_STACK_MCP_CANDIDATE_BEARER_TOKEN",
-      "credential_class": "abyss-stack-mcp-candidate",
+      "credential_class": "abyss-stack-candidate",
       "protocol_versions": [
         "2025-11-25"
       ],

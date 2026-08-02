@@ -89,6 +89,18 @@ class CodexOrganFabricTests(unittest.TestCase):
         self.assertEqual(actions.count("withhold"), 8)
         self.assertEqual(validate(REPO_ROOT)["rendered_registrations"], 0)
 
+    def test_stack_contours_bind_runtime_owned_credential_classes(self) -> None:
+        manifest, _ = load_inputs()
+
+        self.assertEqual(
+            registration(manifest, "abyss_stack_read")["credential_class"],
+            "abyss-stack-read",
+        )
+        self.assertEqual(
+            registration(manifest, "abyss_stack_candidate")["credential_class"],
+            "abyss-stack-candidate",
+        )
+
     def test_fully_admitted_kag_profile_renders_exact_consumer_policy(self) -> None:
         manifest, observation = load_inputs()
         item = select_only(manifest, "aoa_kag", "kag-only", "read")

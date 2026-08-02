@@ -1,8 +1,8 @@
 {
   "schema_version": "8dionysus_codex_organ_fabric_plan_v1",
   "profile": "core-read",
-  "generated_at": "2026-08-01T07:46:00Z",
-  "manifest_digest": "sha256:172760765aded25714916ade73d56dfd8adfa702d80cf364a2c54a0eab8def19",
+  "generated_at": "2026-08-02T00:51:23Z",
+  "manifest_digest": "sha256:872b2449e6fd96e7138449d0d28e61f78618853b2154a83b8e44e8df8f25946a",
   "observation_digest": "sha256:9b8f17d5a932f3d74b1e5c4f7133f69a0fbb88dd36d6f117a02897bf35719f6d",
   "selected_registration_count": 3,
   "selected_tool_count": 15,
@@ -155,5 +155,5 @@
     "A fresh Codex process and post-registration schema observation are required.",
     "Registration does not prove endpoint, authentication, grounded calls, or owner acceptance."
   ],
-  "plan_digest": "sha256:57858e71959c3c138ce436801197bb1dc0f34815658c0e73a2b5520c13baab78"
+  "plan_digest": "sha256:2be6ae01f920eea8a4cd1b5d528fcee15bf7ab268e1138d35f6421665fe3f1b1"
 }

@@ -316,11 +316,17 @@ def build_receipt(
             "protocol_versions": [protocol_version],
             "protocol_basis": "explicit_runtime_protocol_bound_into_observed_inventory",
             "schema_digest": schema_digest,
+            "observed_inventory_bytes": len(canonical_json_bytes(inventory)),
             "tool_count": len(tools),
+            "tool_schema_bytes": len(canonical_json_bytes(tools)),
             "tool_names": [item["name"] for item in tools],
             "resource_count": len(resources),
+            "resource_catalog_bytes": len(canonical_json_bytes(resources)),
             "resource_uris": [item["uri"] for item in resources],
             "resource_template_count": len(templates),
+            "resource_template_catalog_bytes": len(
+                canonical_json_bytes(templates)
+            ),
             "resource_template_uris": [item["uriTemplate"] for item in templates],
             "prompt_count": 0,
         },

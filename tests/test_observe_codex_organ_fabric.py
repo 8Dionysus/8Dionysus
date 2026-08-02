@@ -10,7 +10,7 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO_ROOT / "scripts"))
 
-import observe_codex_organ_fabric as observer
+import observe_codex_organ_fabric as observer  # noqa: E402
 
 
 def registration() -> dict[str, object]:
@@ -87,6 +87,16 @@ class ObserveCodexOrganFabricTests(unittest.TestCase):
         self.assertNotIn("Bearer ", serialized)
         self.assertNotIn("example-secret-value", serialized)
         self.assertIn("AOA_KAG_MCP_READ_BEARER_TOKEN", serialized)
+        observation = receipt["schema_observation"]
+        inventory = observer.canonical_inventory(status(), "2025-11-25")
+        self.assertEqual(
+            observation["observed_inventory_bytes"],
+            len(observer.canonical_json_bytes(inventory)),
+        )
+        self.assertEqual(
+            observation["tool_schema_bytes"],
+            len(observer.canonical_json_bytes(inventory["tools"])),
+        )
         self.assertTrue(receipt["registration_ref"].endswith(receipt["registration_ref"].split("/")[-1]))
         observer.validate_receipt(receipt)
 

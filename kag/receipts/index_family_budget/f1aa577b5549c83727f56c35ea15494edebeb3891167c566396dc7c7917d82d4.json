@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 913637,
+  "allowed_tracked_bytes": 4379058,
+  "approved_by": "repository-owner",
+  "base_ref": "0c1ee440ae585dd5439d1e644793ba7275e4384c",
+  "changed_generated_bytes": 913637,
+  "changed_generated_files": 39,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "f1aa577b5549c83727f56c35ea15494edebeb3891167c566396dc7c7917d82d4",
+  "reason": "Refresh the portable family after projecting owner-scoped MCP organ profiles for Codex consumers; this receipt admits only the measured generated delta and does not raise standing budgets.",
+  "repo": "8Dionysus",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "generated_delta",
+  "tracked_bytes": 4379058,
+  "tracked_bytes_max": 5242880
+}

@@ -36,6 +36,19 @@ These three files are the bounded coordination surface:
 - cross-repo release policy beyond the named check contract
 - runtime or infrastructure guarantees that remain owner-repo work
 
+## Shared KAG component
+
+Where a covered repository consumes the shared `aoa-kag` action, its
+`Repo Validation` check runs a dependency-free incremental drift sentinel
+first. A clean exact candidate then fans out, with a bounded default of two
+workers, across full parity, owner-family contract validation, and compatibility
+assembly. These are the existing canonical KAG commands arranged as a DAG; no
+proof lane is removed.
+
+That green component is bounded owner-family KAG proof. It does not replace the
+repository's source or release checks, the central OS-wide provider audit,
+runtime evidence, or the final landing verdict.
+
 ## Current families
 
 - `repo-validation`: `8Dionysus`, `Agents-of-Abyss`, `Dionysus`,

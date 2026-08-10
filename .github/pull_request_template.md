@@ -8,6 +8,7 @@
 
 ## Validation
 <!-- List only checks that actually ran. If none, say Not run. -->
+<!-- For KAG-consuming changes, distinguish the shared sentinel/full owner-family DAG from repository source/release checks and any OS-wide or runtime proof. -->
 - ...
 
 ## Boundary / Direction Impact

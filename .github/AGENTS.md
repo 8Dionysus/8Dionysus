@@ -14,6 +14,13 @@ Do not encode sibling-repo doctrine, private workspace assumptions, or hidden re
 Keep `.github/CODEOWNERS`, PR templates, and workflow names aligned with the root route card.
 `Repo Validation` is the landing check expected by the root GitHub landing workflow. If that check is added, renamed, or its meaning changes, update the root route, PR expectations, and this file in the same change.
 
+For the shared KAG action, green means that the dependency-free incremental
+sentinel ran before dependency setup and that the exact stable candidate then
+passed full parity, family-contract validation, and compatibility assembly in
+the bounded two-worker DAG. This is owner-family KAG proof only: the repository's
+source/release checks and any OS-wide, runtime, or final landing proof remain
+separate requirements.
+
 When workflow or repository-policy files change, report:
 
 - GitHub surface touched

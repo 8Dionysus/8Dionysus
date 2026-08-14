@@ -8,7 +8,7 @@ This repository is the public entry point to that ecosystem. It is a map for hum
 
 ## The arc
 
-Bounded agents are not the destination here. They are the first discipline: explicit limits, reviewable workflows, source-owned surfaces, and operational clarity.
+Bounded agents are the first discipline: explicit limits, reviewable workflows, source-owned surfaces, and operational clarity.
 
 The longer arc is toward self-agents: agents with continuity, memory, reflective revision, and the ability to reshape tactics without severing provenance, legibility, or human judgment.
 
@@ -16,13 +16,6 @@ The longer arc is toward self-agents: agents with continuity, memory, reflective
 
 - [**Tree of Sophia (ToS)**](https://github.com/8Dionysus/Tree-of-Sophia) is a living, source-first architecture for philosophy and world thought. It grows works, witnesses, concepts, contexts, lineages, and reviewed relations into a tree whose branches can return to their roots. Its first golden growth kernel is *Thus Spoke Zarathustra*, carried through five years of reading, listening, recitation, memorization, love, war, death, suffering, and joy.
 - **[Agents of Abyss (AoA)](https://github.com/8Dionysus/Agents-of-Abyss)** cultivates layered agency that can orient, revise itself, and grow beyond task execution without collapsing into opacity.
-
-## Toward self-agency
-
-- agents that accumulate continuity instead of resetting per task
-- agents that can revise methods, not only execute procedures
-- agents that form durable memory, orientation, and style across time
-- systems where self-agency grows inside explicit boundaries instead of bypassing them
 
 ## How the ecosystem fits together
 

@@ -23,8 +23,6 @@ The longer arc is toward self-agents: agents with continuity, memory, reflective
   <img src="profile/abyss_os_papyrus_tree_v15.svg" alt="AbyssOS papyrus reciprocal ecosystem tree showing Tree of Sophia, Agents of Abyss, AoA repositories, products, runtime, and public entry." width="100%">
 </p>
 
-Arrows mean exchange, feedback, and distillation; they do not transfer ownership.
-
 ### Repository map
 
 An orientation map, grouped by the pressure each surface owns.

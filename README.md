@@ -82,16 +82,6 @@ command hierarchy.
 
 ## [Start where your question begins](docs/START_HERE.md)
 
-The profile's own evidence-linked statistical questions live in
-[stats](stats/README.md). Their shared grammar and cross-owner composition
-remain owned by `aoa-stats`.
-
-## Profile boundary
-
-| This profile owns | Source-owned repositories own |
-|---|---|
-| public orientation<br>short role descriptions<br>ecosystem routing<br>profile-level onboarding | charters and doctrine<br>validators and CI<br>release semantics<br>implementation truth<br>layer-specific guarantees |
-
 ## Stack
 
 - **Systems**: Fedora, Windows 11, WSL2, rootless Podman

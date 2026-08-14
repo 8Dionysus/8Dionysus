@@ -14,13 +14,8 @@ The longer arc is toward self-agents: agents with continuity, memory, reflective
 
 ## Two long-horizon directions
 
-- **[Tree of Sophia (ToS)](https://github.com/8Dionysus/Tree-of-Sophia)** cultivates source-linked knowledge, context, lineage, and conceptual depth.
+- [**Tree of Sophia (ToS)**](https://github.com/8Dionysus/Tree-of-Sophia) is a living, source-first architecture for philosophy and world thought. It grows works, witnesses, concepts, contexts, lineages, and reviewed relations into a tree whose branches can return to their roots. Its first golden growth kernel is *Thus Spoke Zarathustra*, carried through five years of reading, listening, recitation, memorization, love, war, death, suffering, and joy.
 - **[Agents of Abyss (AoA)](https://github.com/8Dionysus/Agents-of-Abyss)** cultivates layered agency that can orient, revise itself, and grow beyond task execution without collapsing into opacity.
-
-Together they form a shared wager:
-
-- knowledge should deepen without losing provenance
-- agency should expand without losing legibility
 
 ## Toward self-agency
 
@@ -39,8 +34,7 @@ Arrows mean exchange, feedback, and distillation; they do not transfer ownership
 
 ### Repository map
 
-Grouped by the pressure each surface owns; this is an orientation map, not a
-command hierarchy.
+An orientation map, grouped by the pressure each surface owns.
 
 #### Foundations
 

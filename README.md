@@ -32,7 +32,7 @@ Together they form a shared wager:
 ## How the ecosystem fits together
 
 <p align="center">
-  <img src="profile/abyss_os_papyrus_tree_v14.svg" alt="Abyss OS papyrus reciprocal ecosystem tree showing Tree of Sophia, Agents of Abyss, AoA layers, Dionysus, abyss-stack, 8Dionysus, and ATM10-Agent." width="100%">
+  <img src="profile/abyss_os_papyrus_tree_v15.svg" alt="AbyssOS papyrus reciprocal ecosystem tree showing Tree of Sophia, Agents of Abyss, AoA repositories, products, runtime, and public entry." width="100%">
 </p>
 
 Arrows mean exchange, feedback, and distillation; they do not transfer ownership.

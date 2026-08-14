@@ -39,27 +39,46 @@ Arrows mean exchange, feedback, and distillation; they do not transfer ownership
 
 ### Repository map
 
-| Band | Surface | Owns |
-|---|---|---|
-| Core | [Tree-of-Sophia](https://github.com/8Dionysus/Tree-of-Sophia) | Source-linked knowledge, context, lineage, and synthesis |
-| Core | [Agents-of-Abyss](https://github.com/8Dionysus/Agents-of-Abyss) | Ecosystem identity, layer map, federation rules, and program direction |
-| Core | [abyss-stack](https://github.com/8Dionysus/abyss-stack) | Local-first runtime, deployment, storage, and lifecycle services |
-| Core | [ATM10-Agent](https://github.com/8Dionysus/ATM10-Agent) | Operator companion: perception, memory, safe automation, voice, and action surfaces |
-| Core | [aoa-sdk](https://github.com/8Dionysus/aoa-sdk) | Typed local-first access spine, canonical routing and dispatch, workspace integration, and controlled orchestration |
-| AoA layer | [aoa-techniques](https://github.com/8Dionysus/aoa-techniques) | Reusable engineering practice |
-| AoA layer | [aoa-skills](https://github.com/8Dionysus/aoa-skills) | Shared portable skills and the common owner-home compatibility contract |
-| AoA layer | [aoa-evals](https://github.com/8Dionysus/aoa-evals) | Portable proof surfaces |
-| AoA layer | [aoa-stats](https://github.com/8Dionysus/aoa-stats) | Shared measurement grammar, federated owner-local stats ports, and derived read models |
-| AoA layer | [aoa-memo](https://github.com/8Dionysus/aoa-memo) | Provenance-aware memory and recall |
-| AoA layer | [aoa-agents](https://github.com/8Dionysus/aoa-agents) | Role contracts, posture, and handoff boundaries |
-| AoA layer | [aoa-playbooks](https://github.com/8Dionysus/aoa-playbooks) | Recurring operations and scenario composition |
-| AoA layer | [aoa-kag](https://github.com/8Dionysus/aoa-kag) | Derived knowledge structures and retrieval-ready substrates |
-| Support | [Dionysus](https://github.com/8Dionysus/Dionysus) | Voice-first, evidence-grounded personal portrait protocols |
-| Support | [8Dionysus](https://github.com/8Dionysus/8Dionysus) | Public profile, route map, and its repo-local workspace-delivery diagnosis |
+Grouped by the pressure each surface owns; this is an orientation map, not a
+command hierarchy.
 
-`aoa-routing` is a deprecated maintenance-only predecessor retained for
-reversible history and rollback review. It is not a current public route, and
-archive remains a separate operator decision.
+#### Foundations
+
+- **[Tree-of-Sophia](https://github.com/8Dionysus/Tree-of-Sophia)** — source-first philosophical tree of works, concepts, lineages, contexts, and reviewed relations.
+- **[Agents-of-Abyss](https://github.com/8Dionysus/Agents-of-Abyss)** — constitutional center for federation identity, ownership boundaries, ecosystem law, and program direction.
+
+#### Agency and control
+
+- **[aoa-sdk](https://github.com/8Dionysus/aoa-sdk)** — typed discovery, compatibility, routing, handoff, and control-plane handles.
+- **[aoa-agents](https://github.com/8Dionysus/aoa-agents)** — role and persona contracts, authority limits, and handoff boundaries.
+- **[aoa-models](https://github.com/8Dionysus/aoa-models)** — exact model identities and realizations, configuration-scoped claims, lifecycle, and fit projections.
+
+#### Knowledge, intake, and memory
+
+- **[aoa-connectors](https://github.com/8Dionysus?tab=repositories&q=connector)** — policy- and permission-gated external evidence interfaces with local normalization, retrieval, graphs, and source-backed answer packets.
+- **[aoa-kag](https://github.com/8Dionysus/aoa-kag)** — source-linked derived knowledge structures and graph-ready or retrieval-ready projections.
+- **[aoa-memo](https://github.com/8Dionysus/aoa-memo)** — reviewed, temporal, source-aware durable memory and recall.
+- **[aoa-session-memory](https://github.com/8Dionysus/aoa-session-memory)** — evidence-linked preservation, inspection, and recovery of long agent-session history.
+
+#### Practice and proof
+
+- **[aoa-techniques](https://github.com/8Dionysus/aoa-techniques)** — atomic, reusable engineering practices for agents and humans.
+- **[aoa-skills](https://github.com/8Dionysus/aoa-skills)** — semantic capability discovery, portable skill bundles, and composition contracts.
+- **[aoa-playbooks](https://github.com/8Dionysus/aoa-playbooks)** — recurring scenarios coordinating multiple skills, surfaces, handoffs, and fallbacks.
+- **[aoa-evals](https://github.com/8Dionysus/aoa-evals)** — bounded proof surfaces with cases, verdict logic, evidence, and explicit limits.
+- **[aoa-stats](https://github.com/8Dionysus/aoa-stats)** — shared statistical grammar, federated owner-local measurement, and deterministic read models.
+
+#### Runtime and products
+
+- **[abyss-stack](https://github.com/8Dionysus/abyss-stack)** — portable runtime infrastructure, deployment, services, storage, lifecycle, and recovery.
+- **[abyss-machine](https://github.com/8Dionysus/abyss-machine)** — portable host-machine organ for machine facts, intake, bootstrap, service surfaces, and validation.
+- **[ATM10-Agent](https://github.com/8Dionysus/ATM10-Agent)** — installable local-first companion for ATM10 with deterministic perception, memory, planning, and bounded action or voice.
+- **[aoa-editing](https://github.com/8Dionysus/aoa-editing)** — inspectable local-first video co-editor with reversible proposals, human review, rendering, QC, and editable export.
+
+#### Human and public entry
+
+- **[Dionysus](https://github.com/8Dionysus/Dionysus)** — open protocols and schemas for evidence-linked, human-reviewed portraits built through interviews over time.
+- **[8Dionysus](https://github.com/8Dionysus/8Dionysus)** — public profile, ecosystem route map, profile-level statistics, and workspace-delivery diagnosis.
 
 ## [Start where your question begins](docs/START_HERE.md)
 

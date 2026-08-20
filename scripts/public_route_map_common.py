@@ -13,7 +13,7 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 WORKSPACE_ROOT = REPO_ROOT.parent
 PUBLIC_ENTRY_POSTURE_PATH = REPO_ROOT / "docs" / "PUBLIC_ENTRY_POSTURE.md"
 PUBLIC_ROUTE_MAP_PATH = REPO_ROOT / "generated" / "public_route_map.min.json"
-SCHEMA_REF = "schemas/public-route-map.schema.json"
+SCHEMA_REF = "schemas/public-route-map-v3.schema.json"
 VALIDATION_REFS = (
     "scripts/build_public_route_map.py",
     "scripts/validate_public_route_map.py",

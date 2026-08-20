@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://8dionysus/schemas/public-route-map.schema.json",
+  "$id": "https://8dionysus/schemas/public-route-map-v3.schema.json",
   "title": "8Dionysus public route map",
   "type": "object",
   "additionalProperties": false,
@@ -16,10 +16,10 @@
   ],
   "properties": {
     "schema_version": {
-      "const": "8dionysus_public_route_map_v2"
+      "const": "8dionysus_public_route_map_v3"
     },
     "schema_ref": {
-      "const": "schemas/public-route-map.schema.json"
+      "const": "schemas/public-route-map-v3.schema.json"
     },
     "owner_repo": {
       "const": "8Dionysus"
@@ -45,8 +45,8 @@
     },
     "routes": {
       "type": "array",
-      "minItems": 3,
-      "maxItems": 3,
+      "minItems": 4,
+      "maxItems": 4,
       "items": {
         "$ref": "#/$defs/route"
       }

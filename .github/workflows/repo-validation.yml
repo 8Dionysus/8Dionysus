@@ -39,6 +39,14 @@ jobs:
           path: aoa-sdk
           fetch-depth: 1
 
+      - name: Checkout aoa-dashboard
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with:
+          repository: 8Dionysus/aoa-dashboard
+          ref: 5988ec70d6fee05a5c40eb2a6117fffca8562bb7
+          path: aoa-dashboard
+          fetch-depth: 1
+
       - name: Checkout aoa-stats contract owner
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with:

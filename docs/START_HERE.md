@@ -16,6 +16,8 @@ Use the smallest route that matches the question. This page routes humans and ag
 - For reusable engineering practice, go to **[aoa-techniques](https://github.com/8Dionysus/aoa-techniques)**.
 - For shared portable skills and the common repository-home contract, go to **[aoa-skills](https://github.com/8Dionysus/aoa-skills)**; repository-specific skills remain with their owners.
 - For bounded proof, go to **[aoa-evals](https://github.com/8Dionysus/aoa-evals)**; for shared measurement grammar and federated owner-local questions, go to **[aoa-stats](https://github.com/8Dionysus/aoa-stats)**.
+- For the owner-bounded Goal Space/operator projection, provenance, freshness,
+  and missingness route, go to **[aoa-dashboard](https://github.com/8Dionysus/aoa-dashboard)**.
 
 These layers may compose when a real task needs them. A technique is not a
 required parent or execution dependency of a skill.

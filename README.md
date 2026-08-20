@@ -52,6 +52,7 @@ An orientation map, grouped by the pressure each surface owns.
 - **[aoa-playbooks](https://github.com/8Dionysus/aoa-playbooks)** — recurring scenarios coordinating multiple skills, surfaces, handoffs, and fallbacks.
 - **[aoa-evals](https://github.com/8Dionysus/aoa-evals)** — bounded proof surfaces with cases, verdict logic, evidence, and explicit limits.
 - **[aoa-stats](https://github.com/8Dionysus/aoa-stats)** — shared statistical grammar, federated owner-local measurement, and deterministic read models.
+- **[aoa-dashboard](https://github.com/8Dionysus/aoa-dashboard)** — owner-bounded Goal Space/operator projections with explicit provenance, freshness, missingness, and non-executing annotations.
 
 #### Runtime and products
 

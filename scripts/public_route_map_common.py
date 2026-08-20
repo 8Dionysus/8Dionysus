@@ -52,6 +52,16 @@ ROUTE_METADATA_BY_NEED = {
             "8Dionysus:docs/CODEX_PLANE_REGENERATION.md",
         ],
     },
+    "Goal Space/operator projection": {
+        "route_id": "goal-space-dashboard",
+        "capsule_ref": "aoa-dashboard:contracts/organ_contract.json",
+        "authority_ref": "aoa-dashboard:docs/ORGAN_CONTRACT.md",
+        "verification_refs": [
+            "aoa-dashboard:docs/ADMISSION.md",
+            "Agents-of-Abyss:generated/ecosystem_registry.min.json",
+            "aoa-sdk:docs/workspace-layout.md",
+        ],
+    },
     "profile-only route or glossary correction": {
         "route_id": "profile-correction",
         "capsule_ref": "8Dionysus:GLOSSARY.md",
@@ -67,6 +77,7 @@ ROUTE_METADATA_BY_NEED = {
 EXPECTED_CANONICAL_REPOS = {
     "ecosystem understanding": "Agents-of-Abyss",
     "local workspace bootstrap and typed control-plane use": "aoa-sdk",
+    "Goal Space/operator projection": "aoa-dashboard",
     "profile-only route or glossary correction": "8Dionysus",
 }
 
@@ -125,7 +136,9 @@ def build_payload(*, workspace_root: Path | None = None) -> dict[str, object]:
     workspace_root = (workspace_root or WORKSPACE_ROOT).resolve()
     rows = parse_public_entry_posture_rows(PUBLIC_ENTRY_POSTURE_PATH.read_text(encoding="utf-8"))
     if len(rows) != len(ROUTE_METADATA_BY_NEED):
-        raise ValueError("PUBLIC_ENTRY_POSTURE.md must publish exactly three onboarding rows")
+        raise ValueError(
+            "PUBLIC_ENTRY_POSTURE.md must publish exactly the declared onboarding rows"
+        )
 
     routes: list[dict[str, object]] = []
     seen_needs: set[str] = set()

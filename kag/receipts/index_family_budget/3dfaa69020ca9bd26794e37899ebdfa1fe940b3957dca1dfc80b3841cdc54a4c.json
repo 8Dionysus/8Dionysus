@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 1888999,
+  "allowed_tracked_bytes": 4409326,
+  "approved_by": "repository-owner",
+  "base_ref": "649b52aeefafda41c1c2ecca561b7a6412d0954b",
+  "changed_generated_bytes": 1888999,
+  "changed_generated_files": 116,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "3dfaa69020ca9bd26794e37899ebdfa1fe940b3957dca1dfc80b3841cdc54a4c",
+  "reason": "Add the bounded aoa-dashboard public route with a pinned source checkout in profile CI and refresh the digest-bound portable family.",
+  "repo": "8Dionysus",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "generated_delta",
+  "tracked_bytes": 4409326,
+  "tracked_bytes_max": 5242880
+}

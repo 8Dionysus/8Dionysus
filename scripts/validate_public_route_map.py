@@ -50,7 +50,9 @@ def main() -> int:
 
     routes = current_payload.get("routes")
     if not isinstance(routes, list) or len(routes) != len(ROUTE_METADATA_BY_NEED):
-        raise SystemExit("generated/public_route_map.min.json must publish exactly three public routes")
+        raise SystemExit(
+            "generated/public_route_map.min.json must publish exactly the declared public routes"
+        )
 
     for route in routes:
         if not isinstance(route, dict):

@@ -64,6 +64,9 @@ needed, say so in closeout.
 - `aoa-sdk`: typed workspace integration, canonical routing and dispatch,
   discovery, compatibility, passive skill inspection, and explicit
   user-profile bootstrap.
+- `aoa-dashboard`: owner-bounded Goal Space/operator projections,
+  provenance/freshness/missingness, correlation, actor activity, and
+  non-executing annotations or deferred action intents.
 - `aoa-techniques`: reusable engineering practice.
 - `aoa-skills`: the shared portable bundle family and common owner-home compatibility contract.
 - `aoa-evals`: portable proof and evaluation surfaces.

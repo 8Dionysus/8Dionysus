@@ -27,6 +27,9 @@ class PublicRouteMapTests(unittest.TestCase):
             "aoa-sdk/docs/boundaries.md",
             "aoa-sdk/docs/workspace-layout.md",
             "aoa-sdk/docs/versioning.md",
+            "aoa-dashboard/contracts/organ_contract.json",
+            "aoa-dashboard/docs/ORGAN_CONTRACT.md",
+            "aoa-dashboard/docs/ADMISSION.md",
         )
         for relative in refs:
             path = self.workspace_root / relative
@@ -36,8 +39,8 @@ class PublicRouteMapTests(unittest.TestCase):
     def test_build_payload_stays_orientation_only(self) -> None:
         payload = build_payload(workspace_root=self.workspace_root)
 
-        self.assertEqual(payload["schema_version"], "8dionysus_public_route_map_v2")
-        self.assertEqual(payload["schema_ref"], "schemas/public-route-map.schema.json")
+        self.assertEqual(payload["schema_version"], "8dionysus_public_route_map_v3")
+        self.assertEqual(payload["schema_ref"], "schemas/public-route-map-v3.schema.json")
         self.assertEqual(payload["owner_repo"], "8Dionysus")
         self.assertEqual(payload["surface_kind"], "orientation_surface")
         self.assertEqual(payload["authority_ref"], SURFACE_PAYLOAD["authority_ref"])
@@ -47,6 +50,7 @@ class PublicRouteMapTests(unittest.TestCase):
             [
                 "ecosystem-understanding",
                 "workspace-bootstrap",
+                "goal-space-dashboard",
                 "profile-correction",
             ],
         )
@@ -61,6 +65,7 @@ class PublicRouteMapTests(unittest.TestCase):
             by_need["local workspace bootstrap and typed control-plane use"],
             "aoa-sdk",
         )
+        self.assertEqual(by_need["Goal Space/operator projection"], "aoa-dashboard")
         self.assertEqual(by_need["profile-only route or glossary correction"], "8Dionysus")
 
     def test_public_orientation_routes_navigation_and_dispatch_to_sdk(self) -> None:

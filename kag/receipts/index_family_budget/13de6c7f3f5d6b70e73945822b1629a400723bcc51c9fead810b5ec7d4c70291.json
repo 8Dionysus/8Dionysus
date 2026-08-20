@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 2068734,
+  "allowed_tracked_bytes": 4418087,
+  "approved_by": "repository-owner",
+  "base_ref": "649b52aeefafda41c1c2ecca561b7a6412d0954b",
+  "changed_generated_bytes": 2068734,
+  "changed_generated_files": 136,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "13de6c7f3f5d6b70e73945822b1629a400723bcc51c9fead810b5ec7d4c70291",
+  "reason": "D1 profile route-map v2 compatibility schema and v3 dashboard route contract",
+  "repo": "8Dionysus",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "generated_delta",
+  "tracked_bytes": 4418087,
+  "tracked_bytes_max": 5242880
+}

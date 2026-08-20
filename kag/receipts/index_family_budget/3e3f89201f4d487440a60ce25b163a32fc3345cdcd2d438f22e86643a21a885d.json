@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 2020763,
+  "allowed_tracked_bytes": 4410592,
+  "approved_by": "repository-owner",
+  "base_ref": "649b52aeefafda41c1c2ecca561b7a6412d0954b",
+  "changed_generated_bytes": 2020763,
+  "changed_generated_files": 128,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "3e3f89201f4d487440a60ce25b163a32fc3345cdcd2d438f22e86643a21a885d",
+  "reason": "D1 public route map compatibility version and primary dashboard orientation cards",
+  "repo": "8Dionysus",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "generated_delta",
+  "tracked_bytes": 4410592,
+  "tracked_bytes_max": 5242880
+}

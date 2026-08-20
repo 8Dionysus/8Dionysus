@@ -39,7 +39,7 @@ class PublicRouteMapTests(unittest.TestCase):
     def test_build_payload_stays_orientation_only(self) -> None:
         payload = build_payload(workspace_root=self.workspace_root)
 
-        self.assertEqual(payload["schema_version"], "8dionysus_public_route_map_v2")
+        self.assertEqual(payload["schema_version"], "8dionysus_public_route_map_v3")
         self.assertEqual(payload["schema_ref"], "schemas/public-route-map.schema.json")
         self.assertEqual(payload["owner_repo"], "8Dionysus")
         self.assertEqual(payload["surface_kind"], "orientation_surface")

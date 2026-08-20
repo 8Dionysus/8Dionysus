@@ -22,7 +22,7 @@ VALIDATION_REFS = (
 FORBIDDEN_LOW_CONTEXT_PREFIXES = ("src/", "scripts/")
 
 SURFACE_PAYLOAD = {
-    "schema_version": "8dionysus_public_route_map_v2",
+    "schema_version": "8dionysus_public_route_map_v3",
     "schema_ref": SCHEMA_REF,
     "owner_repo": "8Dionysus",
     "surface_kind": "orientation_surface",

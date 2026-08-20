@@ -580,6 +580,9 @@ If you want the shortest route into the ecosystem:
 - for the runtime body beneath AoA and ToS, go to [`abyss-stack`](https://github.com/8Dionysus/abyss-stack)
 - for the local-first companion application surface, go to [`ATM10-Agent`](https://github.com/8Dionysus/ATM10-Agent)
 - for typed access, navigation and dispatch, and workspace integration, go to [`aoa-sdk`](https://github.com/8Dionysus/aoa-sdk)
+- for the owner-bounded Goal Space/operator projection and its provenance,
+  freshness, missingness, correlation, and activity surface, go to
+  [`aoa-dashboard`](https://github.com/8Dionysus/aoa-dashboard)
 - for reusable practice, go to [`aoa-techniques`](https://github.com/8Dionysus/aoa-techniques)
 - for shared portable skills and the repository-home compatibility contract, go to [`aoa-skills`](https://github.com/8Dionysus/aoa-skills); for a repository-specific skill, follow its owner
 - for portable proof surfaces, go to [`aoa-evals`](https://github.com/8Dionysus/aoa-evals)

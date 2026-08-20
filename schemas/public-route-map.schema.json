@@ -16,7 +16,7 @@
   ],
   "properties": {
     "schema_version": {
-      "const": "8dionysus_public_route_map_v2"
+      "const": "8dionysus_public_route_map_v3"
     },
     "schema_ref": {
       "const": "schemas/public-route-map.schema.json"

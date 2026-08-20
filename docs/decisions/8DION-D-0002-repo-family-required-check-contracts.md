@@ -67,3 +67,19 @@ gate for `8Dionysus` pull requests.
   implementation authority over linked repos
 - branch protection drift still requires authenticated live inspection and does
   not become fake certainty inside unauthenticated CI
+
+## Maintenance note (2026-08-20)
+
+The coordination contract's `ATM10-Agent` workflow label was refreshed after
+live owner-source verification. The owner repository's
+`.github/workflows/pytest.yml` is currently named `Windows package` (merged PR
+#104, `e3b408d1988fc83d14d51c959151c7880aea0b96`), while its required jobs
+remain `test` and `smoke`. The contract therefore tracks the current workflow
+name without changing the owner repository's check semantics or claiming
+ownership of its implementation.
+
+The `Dionysus` workflow path was also refreshed after live owner-source
+verification: its active protected-main workflow is now
+`.github/workflows/repo-validation.yml`, with workflow and job name `Repo
+Validation`. The former `validate-seed-surfaces.yml` path no longer exists on
+the owner repository.

@@ -51,11 +51,15 @@
   "index_kind": "inventory",
   "indexed_record_classes": [
     "node",
-    "edge"
+    "edge",
+    "projection",
+    "receipt"
   ],
   "source_record_ids": [
     "node:profile:workspace-memory-map",
     "node:profile:public-route",
-    "edge:profile:source-returns-to-owner"
+    "edge:profile:source-returns-to-owner",
+    "projection:mcp:profile-source-return",
+    "receipt:validation:profile-provider"
   ]
 }

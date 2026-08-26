@@ -105,6 +105,10 @@
     {
       "route": "python scripts/validate_workspace_memory_map.py",
       "lane": "owner-local"
+    },
+    {
+      "route": "aoa-kag:scripts/validate_kag.py",
+      "lane": "local-kag"
     }
   ],
   "consumer_routes": [

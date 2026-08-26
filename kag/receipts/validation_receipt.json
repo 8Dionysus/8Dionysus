@@ -39,8 +39,8 @@
     "surface": "scripts/build_workspace_memory_map.py"
   },
   "validator": {
-    "route": "python scripts/validate_workspace_memory_map.py",
-    "lane": "owner-local"
+    "route": "aoa-kag:scripts/validate_kag.py",
+    "lane": "local-kag"
   },
   "storage_posture": {
     "git_surface": "receipt",

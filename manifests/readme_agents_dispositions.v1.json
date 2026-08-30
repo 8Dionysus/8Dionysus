@@ -2390,6 +2390,1230 @@
         "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:tests/AGENTS.md"
       ],
       "note": "Already a compact local owner contract with task-conditioned reads and no mandatory README dependency; retained as the inherited instruction surface."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": ".github/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:.github/AGENTS.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:DESIGN.AGENTS.md"
+      ],
+      "note": "Unconditional ancestor and README fan-out was replaced with task-conditioned owner routes while the nearest local boundary, stop lines, and proportional validation remain inherited."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:AGENTS.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:DESIGN.AGENTS.md"
+      ],
+      "note": "The root card now routes by task instead of requiring the public README and every owner surface; repository identity, authority, stop lines, and release law remain local."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:README.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0003-root-design-spine.md"
+      ],
+      "note": "Root public and contributor entrypoint retained; it is now loaded on demand instead of being inherited through AGENTS."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "Spark/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:Spark/AGENTS.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:DESIGN.AGENTS.md"
+      ],
+      "note": "Unconditional ancestor and README fan-out was replaced with task-conditioned owner routes while the nearest local boundary, stop lines, and proportional validation remain inherited."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "config/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:config/AGENTS.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:DESIGN.AGENTS.md"
+      ],
+      "note": "Unconditional ancestor and README fan-out was replaced with task-conditioned owner routes while the nearest local boundary, stop lines, and proportional validation remain inherited."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "docs/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/README.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0003-root-design-spine.md"
+      ],
+      "note": "Distinct human or public navigation retained; the nearest AGENTS card carries agent-facing law."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "docs/artifact-bundles/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/artifact-bundles/README.md"
+      ],
+      "note": "Public artifact-bundle navigation retained as a human trust route, distinct from agent mutation guidance."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "docs/decisions/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AGENTS.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:DESIGN.AGENTS.md"
+      ],
+      "note": "Unconditional ancestor and README fan-out was replaced with task-conditioned owner routes while the nearest local boundary, stop lines, and proportional validation remain inherited."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "docs/decisions/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/README.md"
+      ],
+      "note": "Human decision navigation retained separately from authored rationale and agent-facing mutation law."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "docs/decisions/indexes/README.md",
+      "review_state": "reviewed",
+      "disposition": "generate-from-owner-source",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/indexes/README.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:scripts/generate_decision_indexes.py",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AGENTS.md"
+      ],
+      "note": "Generated decision-index navigation is retained as a README-shaped human lookup surface; scripts/generate_decision_indexes.py remains its owner and parity guard."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "evals/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:evals/AGENTS.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:DESIGN.AGENTS.md"
+      ],
+      "note": "Unconditional ancestor and README fan-out was replaced with task-conditioned owner routes while the nearest local boundary, stop lines, and proportional validation remain inherited."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "evals/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:evals/README.md"
+      ],
+      "note": "Human eval-port topology or source skeleton retained; evals/AGENTS.md carries the local agent contract."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "evals/intake/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:evals/intake/README.md"
+      ],
+      "note": "Human eval-port topology or source skeleton retained; evals/AGENTS.md carries the local agent contract."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "evals/reports/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:evals/reports/README.md"
+      ],
+      "note": "Human eval-port topology or source skeleton retained; evals/AGENTS.md carries the local agent contract."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "evals/suites/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:evals/suites/README.md"
+      ],
+      "note": "Human eval-port topology or source skeleton retained; evals/AGENTS.md carries the local agent contract."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "examples/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:examples/AGENTS.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:DESIGN.AGENTS.md"
+      ],
+      "note": "Unconditional ancestor and README fan-out was replaced with task-conditioned owner routes while the nearest local boundary, stop lines, and proportional validation remain inherited."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "generated/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:generated/AGENTS.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:DESIGN.AGENTS.md"
+      ],
+      "note": "Unconditional ancestor and README fan-out was replaced with task-conditioned owner routes while the nearest local boundary, stop lines, and proportional validation remain inherited."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "kag/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:kag/AGENTS.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:DESIGN.AGENTS.md",
+        "aoa-playbooks@17b6031ca8d2e3fe4ffe1eedd4ee8dcf124ffcb1:kag/indexes/index_family.manifest.json"
+      ],
+      "note": "Unconditional ancestor and README fan-out was replaced with task-conditioned owner routes while the nearest local boundary, stop lines, and proportional validation remain inherited."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "kag/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:kag/README.md"
+      ],
+      "note": "Public KAG provider and owner-return navigation retained; kag/AGENTS.md carries the mutation boundary."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/AGENTS.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:DESIGN.AGENTS.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md"
+      ],
+      "note": "Unconditional ancestor and README fan-out was replaced with task-conditioned owner routes while the nearest local boundary, stop lines, and proportional validation remain inherited."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/README.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0017-compact-mechanics-package-tier.md"
+      ],
+      "note": "Public or source package topology and validator-visible entrypoint retained; the nearest AGENTS card carries agent law, so transfer or deletion would blur the owner boundary."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/activation/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/activation/AGENTS.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:DESIGN.AGENTS.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md"
+      ],
+      "note": "Unconditional ancestor and README fan-out was replaced with task-conditioned owner routes while the nearest local boundary, stop lines, and proportional validation remain inherited."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/activation/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/activation/README.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0017-compact-mechanics-package-tier.md"
+      ],
+      "note": "Public or source package topology and validator-visible entrypoint retained; the nearest AGENTS card carries agent law, so transfer or deletion would blur the owner boundary."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/activation/legacy/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/activation/legacy/README.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0017-compact-mechanics-package-tier.md"
+      ],
+      "note": "Package-local provenance and former-path navigation retained under accepted mechanics entrypoint decisions; it is not inherited agent context."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/activation/parts/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/activation/parts/AGENTS.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:DESIGN.AGENTS.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md"
+      ],
+      "note": "Unconditional ancestor and README fan-out was replaced with task-conditioned owner routes while the nearest local boundary, stop lines, and proportional validation remain inherited."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/activation/parts/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/activation/parts/README.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0017-compact-mechanics-package-tier.md"
+      ],
+      "note": "Public or source package topology and validator-visible entrypoint retained; the nearest AGENTS card carries agent law, so transfer or deletion would blur the owner boundary."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/activation/parts/activation-surface/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/activation/parts/activation-surface/README.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0017-compact-mechanics-package-tier.md"
+      ],
+      "note": "Public or source package topology and validator-visible entrypoint retained; the nearest AGENTS card carries agent law, so transfer or deletion would blur the owner boundary."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/agon/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/agon/AGENTS.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:DESIGN.AGENTS.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md"
+      ],
+      "note": "Unconditional ancestor and README fan-out was replaced with task-conditioned owner routes while the nearest local boundary, stop lines, and proportional validation remain inherited."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/agon/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/agon/README.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0017-compact-mechanics-package-tier.md"
+      ],
+      "note": "Public or source package topology and validator-visible entrypoint retained; the nearest AGENTS card carries agent law, so transfer or deletion would blur the owner boundary."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/agon/legacy/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/agon/legacy/README.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0017-compact-mechanics-package-tier.md"
+      ],
+      "note": "Package-local provenance and former-path navigation retained under accepted mechanics entrypoint decisions; it is not inherited agent context."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/agon/parts/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/agon/parts/AGENTS.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:DESIGN.AGENTS.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md"
+      ],
+      "note": "Already a compact nearest-scope owner delta with no mandatory README dependency; retained as inherited agent guidance."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/agon/parts/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/agon/parts/README.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0017-compact-mechanics-package-tier.md"
+      ],
+      "note": "Public or source package topology and validator-visible entrypoint retained; the nearest AGENTS card carries agent law, so transfer or deletion would blur the owner boundary."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/agon/parts/adoption/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/agon/parts/adoption/README.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0017-compact-mechanics-package-tier.md"
+      ],
+      "note": "Public or source package topology and validator-visible entrypoint retained; the nearest AGENTS card carries agent law, so transfer or deletion would blur the owner boundary."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/agon/parts/campaign-playbooks/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/agon/parts/campaign-playbooks/README.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0017-compact-mechanics-package-tier.md"
+      ],
+      "note": "Public or source package topology and validator-visible entrypoint retained; the nearest AGENTS card carries agent law, so transfer or deletion would blur the owner boundary."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/agon/parts/recurrence-adapter/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/agon/parts/recurrence-adapter/README.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0017-compact-mechanics-package-tier.md"
+      ],
+      "note": "Public or source package topology and validator-visible entrypoint retained; the nearest AGENTS card carries agent law, so transfer or deletion would blur the owner boundary."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/agon/parts/trial-kernel-bindings/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/agon/parts/trial-kernel-bindings/README.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0017-compact-mechanics-package-tier.md"
+      ],
+      "note": "Public or source package topology and validator-visible entrypoint retained; the nearest AGENTS card carries agent law, so transfer or deletion would blur the owner boundary."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/agon/parts/trial-playbooks/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/agon/parts/trial-playbooks/README.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0017-compact-mechanics-package-tier.md"
+      ],
+      "note": "Public or source package topology and validator-visible entrypoint retained; the nearest AGENTS card carries agent law, so transfer or deletion would blur the owner boundary."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/antifragility/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/antifragility/AGENTS.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:DESIGN.AGENTS.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md"
+      ],
+      "note": "Unconditional ancestor and README fan-out was replaced with task-conditioned owner routes while the nearest local boundary, stop lines, and proportional validation remain inherited."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/antifragility/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/antifragility/README.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0017-compact-mechanics-package-tier.md"
+      ],
+      "note": "Public or source package topology and validator-visible entrypoint retained; the nearest AGENTS card carries agent law, so transfer or deletion would blur the owner boundary."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/antifragility/legacy/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/antifragility/legacy/README.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0017-compact-mechanics-package-tier.md"
+      ],
+      "note": "Package-local provenance and former-path navigation retained under accepted mechanics entrypoint decisions; it is not inherited agent context."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/antifragility/parts/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/antifragility/parts/AGENTS.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:DESIGN.AGENTS.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md"
+      ],
+      "note": "Already a compact nearest-scope owner delta with no mandatory README dependency; retained as inherited agent guidance."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/antifragility/parts/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/antifragility/parts/README.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0017-compact-mechanics-package-tier.md"
+      ],
+      "note": "Public or source package topology and validator-visible entrypoint retained; the nearest AGENTS card carries agent law, so transfer or deletion would blur the owner boundary."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/antifragility/parts/reentry-gates/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/antifragility/parts/reentry-gates/README.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0017-compact-mechanics-package-tier.md"
+      ],
+      "note": "Public or source package topology and validator-visible entrypoint retained; the nearest AGENTS card carries agent law, so transfer or deletion would blur the owner boundary."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/antifragility/parts/runtime-chaos-wave1/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/antifragility/parts/runtime-chaos-wave1/README.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0017-compact-mechanics-package-tier.md"
+      ],
+      "note": "Public or source package topology and validator-visible entrypoint retained; the nearest AGENTS card carries agent law, so transfer or deletion would blur the owner boundary."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/antifragility/parts/stress-harvest/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/antifragility/parts/stress-harvest/README.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0017-compact-mechanics-package-tier.md"
+      ],
+      "note": "Public or source package topology and validator-visible entrypoint retained; the nearest AGENTS card carries agent law, so transfer or deletion would blur the owner boundary."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/antifragility/parts/stress-lanes/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/antifragility/parts/stress-lanes/README.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0017-compact-mechanics-package-tier.md"
+      ],
+      "note": "Public or source package topology and validator-visible entrypoint retained; the nearest AGENTS card carries agent law, so transfer or deletion would blur the owner boundary."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/antifragility/parts/via-negativa/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/antifragility/parts/via-negativa/README.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0017-compact-mechanics-package-tier.md"
+      ],
+      "note": "Public or source package topology and validator-visible entrypoint retained; the nearest AGENTS card carries agent law, so transfer or deletion would blur the owner boundary."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/boundary-bridge/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/boundary-bridge/AGENTS.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:DESIGN.AGENTS.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md"
+      ],
+      "note": "Already a compact nearest-scope owner delta with no mandatory README dependency; retained as inherited agent guidance."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/boundary-bridge/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/boundary-bridge/README.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0017-compact-mechanics-package-tier.md"
+      ],
+      "note": "Public or source package topology and validator-visible entrypoint retained; the nearest AGENTS card carries agent law, so transfer or deletion would blur the owner boundary."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/boundary-bridge/legacy/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/boundary-bridge/legacy/README.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0017-compact-mechanics-package-tier.md"
+      ],
+      "note": "Package-local provenance and former-path navigation retained under accepted mechanics entrypoint decisions; it is not inherited agent context."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/boundary-bridge/parts/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/boundary-bridge/parts/README.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0017-compact-mechanics-package-tier.md"
+      ],
+      "note": "Public or source package topology and validator-visible entrypoint retained; the nearest AGENTS card carries agent law, so transfer or deletion would blur the owner boundary."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/boundary-bridge/parts/handoff-drill/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/boundary-bridge/parts/handoff-drill/README.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0017-compact-mechanics-package-tier.md"
+      ],
+      "note": "Public or source package topology and validator-visible entrypoint retained; the nearest AGENTS card carries agent law, so transfer or deletion would blur the owner boundary."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/boundary-bridge/parts/orchestrator-alignment/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/boundary-bridge/parts/orchestrator-alignment/README.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0017-compact-mechanics-package-tier.md"
+      ],
+      "note": "Public or source package topology and validator-visible entrypoint retained; the nearest AGENTS card carries agent law, so transfer or deletion would blur the owner boundary."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/checkpoint/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/checkpoint/AGENTS.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:DESIGN.AGENTS.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md"
+      ],
+      "note": "Unconditional ancestor and README fan-out was replaced with task-conditioned owner routes while the nearest local boundary, stop lines, and proportional validation remain inherited."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/checkpoint/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/checkpoint/README.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0017-compact-mechanics-package-tier.md"
+      ],
+      "note": "Public or source package topology and validator-visible entrypoint retained; the nearest AGENTS card carries agent law, so transfer or deletion would blur the owner boundary."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/experience/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/experience/AGENTS.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:DESIGN.AGENTS.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md"
+      ],
+      "note": "Unconditional ancestor and README fan-out was replaced with task-conditioned owner routes while the nearest local boundary, stop lines, and proportional validation remain inherited."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/experience/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/experience/README.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0017-compact-mechanics-package-tier.md"
+      ],
+      "note": "Public or source package topology and validator-visible entrypoint retained; the nearest AGENTS card carries agent law, so transfer or deletion would blur the owner boundary."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/federation-closure/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/federation-closure/AGENTS.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:DESIGN.AGENTS.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md"
+      ],
+      "note": "Unconditional ancestor and README fan-out was replaced with task-conditioned owner routes while the nearest local boundary, stop lines, and proportional validation remain inherited."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/federation-closure/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/federation-closure/README.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0017-compact-mechanics-package-tier.md"
+      ],
+      "note": "Public or source package topology and validator-visible entrypoint retained; the nearest AGENTS card carries agent law, so transfer or deletion would blur the owner boundary."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/federation-closure/legacy/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/federation-closure/legacy/README.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0017-compact-mechanics-package-tier.md"
+      ],
+      "note": "Package-local provenance and former-path navigation retained under accepted mechanics entrypoint decisions; it is not inherited agent context."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/federation-closure/parts/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/federation-closure/parts/AGENTS.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:DESIGN.AGENTS.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md"
+      ],
+      "note": "Unconditional ancestor and README fan-out was replaced with task-conditioned owner routes while the nearest local boundary, stop lines, and proportional validation remain inherited."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/federation-closure/parts/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/federation-closure/parts/README.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0017-compact-mechanics-package-tier.md"
+      ],
+      "note": "Public or source package topology and validator-visible entrypoint retained; the nearest AGENTS card carries agent law, so transfer or deletion would blur the owner boundary."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/federation-closure/parts/federation-surfaces/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/federation-closure/parts/federation-surfaces/README.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0017-compact-mechanics-package-tier.md"
+      ],
+      "note": "Public or source package topology and validator-visible entrypoint retained; the nearest AGENTS card carries agent law, so transfer or deletion would blur the owner boundary."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/portfolio-governance/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/portfolio-governance/AGENTS.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:DESIGN.AGENTS.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md"
+      ],
+      "note": "Unconditional ancestor and README fan-out was replaced with task-conditioned owner routes while the nearest local boundary, stop lines, and proportional validation remain inherited."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/portfolio-governance/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/portfolio-governance/README.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0017-compact-mechanics-package-tier.md"
+      ],
+      "note": "Public or source package topology and validator-visible entrypoint retained; the nearest AGENTS card carries agent law, so transfer or deletion would blur the owner boundary."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/questbook/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/questbook/AGENTS.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:DESIGN.AGENTS.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md"
+      ],
+      "note": "Unconditional ancestor and README fan-out was replaced with task-conditioned owner routes while the nearest local boundary, stop lines, and proportional validation remain inherited."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/questbook/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/questbook/README.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0017-compact-mechanics-package-tier.md"
+      ],
+      "note": "Public or source package topology and validator-visible entrypoint retained; the nearest AGENTS card carries agent law, so transfer or deletion would blur the owner boundary."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/real-run-harvest/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/real-run-harvest/AGENTS.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:DESIGN.AGENTS.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md"
+      ],
+      "note": "Unconditional ancestor and README fan-out was replaced with task-conditioned owner routes while the nearest local boundary, stop lines, and proportional validation remain inherited."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/real-run-harvest/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/real-run-harvest/README.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0017-compact-mechanics-package-tier.md"
+      ],
+      "note": "Public or source package topology and validator-visible entrypoint retained; the nearest AGENTS card carries agent law, so transfer or deletion would blur the owner boundary."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/real-run-harvest/parts/reviewed-run-source-store/docs/real-runs/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/real-run-harvest/parts/reviewed-run-source-store/docs/real-runs/README.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0017-compact-mechanics-package-tier.md"
+      ],
+      "note": "Public or source package topology and validator-visible entrypoint retained; the nearest AGENTS card carries agent law, so transfer or deletion would blur the owner boundary."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/recurrence/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/recurrence/AGENTS.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:DESIGN.AGENTS.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md"
+      ],
+      "note": "Unconditional ancestor and README fan-out was replaced with task-conditioned owner routes while the nearest local boundary, stop lines, and proportional validation remain inherited."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/recurrence/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/recurrence/README.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0017-compact-mechanics-package-tier.md"
+      ],
+      "note": "Public or source package topology and validator-visible entrypoint retained; the nearest AGENTS card carries agent law, so transfer or deletion would blur the owner boundary."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/release-support/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/release-support/AGENTS.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:DESIGN.AGENTS.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md"
+      ],
+      "note": "Unconditional ancestor and README fan-out was replaced with task-conditioned owner routes while the nearest local boundary, stop lines, and proportional validation remain inherited."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/release-support/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/release-support/README.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0017-compact-mechanics-package-tier.md"
+      ],
+      "note": "Public or source package topology and validator-visible entrypoint retained; the nearest AGENTS card carries agent law, so transfer or deletion would blur the owner boundary."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/review-gate/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/review-gate/AGENTS.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:DESIGN.AGENTS.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md"
+      ],
+      "note": "Unconditional ancestor and README fan-out was replaced with task-conditioned owner routes while the nearest local boundary, stop lines, and proportional validation remain inherited."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/review-gate/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/review-gate/README.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0017-compact-mechanics-package-tier.md"
+      ],
+      "note": "Public or source package topology and validator-visible entrypoint retained; the nearest AGENTS card carries agent law, so transfer or deletion would blur the owner boundary."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/review-gate/legacy/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/review-gate/legacy/README.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0017-compact-mechanics-package-tier.md"
+      ],
+      "note": "Package-local provenance and former-path navigation retained under accepted mechanics entrypoint decisions; it is not inherited agent context."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/review-gate/parts/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/review-gate/parts/AGENTS.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:DESIGN.AGENTS.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md"
+      ],
+      "note": "Already a compact nearest-scope owner delta with no mandatory README dependency; retained as inherited agent guidance."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/review-gate/parts/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/review-gate/parts/README.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0017-compact-mechanics-package-tier.md"
+      ],
+      "note": "Public or source package topology and validator-visible entrypoint retained; the nearest AGENTS card carries agent law, so transfer or deletion would blur the owner boundary."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/review-gate/parts/decision-replay-audit/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/review-gate/parts/decision-replay-audit/README.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0017-compact-mechanics-package-tier.md"
+      ],
+      "note": "Public or source package topology and validator-visible entrypoint retained; the nearest AGENTS card carries agent law, so transfer or deletion would blur the owner boundary."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/review-gate/parts/landing-governance/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/review-gate/parts/landing-governance/README.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0017-compact-mechanics-package-tier.md"
+      ],
+      "note": "Public or source package topology and validator-visible entrypoint retained; the nearest AGENTS card carries agent law, so transfer or deletion would blur the owner boundary."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/review-gate/parts/phase-alpha-readiness/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/review-gate/parts/phase-alpha-readiness/README.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0017-compact-mechanics-package-tier.md"
+      ],
+      "note": "Public or source package topology and validator-visible entrypoint retained; the nearest AGENTS card carries agent law, so transfer or deletion would blur the owner boundary."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/review-gate/parts/review-intake/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/review-gate/parts/review-intake/README.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0017-compact-mechanics-package-tier.md"
+      ],
+      "note": "Public or source package topology and validator-visible entrypoint retained; the nearest AGENTS card carries agent law, so transfer or deletion would blur the owner boundary."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/review-gate/parts/review-packet-contracts/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/review-gate/parts/review-packet-contracts/README.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0017-compact-mechanics-package-tier.md"
+      ],
+      "note": "Public or source package topology and validator-visible entrypoint retained; the nearest AGENTS card carries agent law, so transfer or deletion would blur the owner boundary."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/review-gate/parts/review-status/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/review-gate/parts/review-status/README.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0017-compact-mechanics-package-tier.md"
+      ],
+      "note": "Public or source package topology and validator-visible entrypoint retained; the nearest AGENTS card carries agent law, so transfer or deletion would blur the owner boundary."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/rpg/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/rpg/AGENTS.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:DESIGN.AGENTS.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md"
+      ],
+      "note": "Unconditional ancestor and README fan-out was replaced with task-conditioned owner routes while the nearest local boundary, stop lines, and proportional validation remain inherited."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/rpg/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/rpg/README.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0017-compact-mechanics-package-tier.md"
+      ],
+      "note": "Public or source package topology and validator-visible entrypoint retained; the nearest AGENTS card carries agent law, so transfer or deletion would blur the owner boundary."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/scenario-composition/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/scenario-composition/AGENTS.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:DESIGN.AGENTS.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md"
+      ],
+      "note": "Unconditional ancestor and README fan-out was replaced with task-conditioned owner routes while the nearest local boundary, stop lines, and proportional validation remain inherited."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/scenario-composition/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/scenario-composition/README.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0017-compact-mechanics-package-tier.md"
+      ],
+      "note": "Public or source package topology and validator-visible entrypoint retained; the nearest AGENTS card carries agent law, so transfer or deletion would blur the owner boundary."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/scenario-composition/legacy/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/scenario-composition/legacy/README.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0017-compact-mechanics-package-tier.md"
+      ],
+      "note": "Package-local provenance and former-path navigation retained under accepted mechanics entrypoint decisions; it is not inherited agent context."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/scenario-composition/parts/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/scenario-composition/parts/AGENTS.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:DESIGN.AGENTS.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md"
+      ],
+      "note": "Unconditional ancestor and README fan-out was replaced with task-conditioned owner routes while the nearest local boundary, stop lines, and proportional validation remain inherited."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/scenario-composition/parts/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/scenario-composition/parts/README.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0017-compact-mechanics-package-tier.md"
+      ],
+      "note": "Public or source package topology and validator-visible entrypoint retained; the nearest AGENTS card carries agent law, so transfer or deletion would blur the owner boundary."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/scenario-composition/parts/composition-surfaces/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/scenario-composition/parts/composition-surfaces/README.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0017-compact-mechanics-package-tier.md"
+      ],
+      "note": "Public or source package topology and validator-visible entrypoint retained; the nearest AGENTS card carries agent law, so transfer or deletion would blur the owner boundary."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/scenario-composition/parts/plan-contours/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/scenario-composition/parts/plan-contours/README.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0017-compact-mechanics-package-tier.md"
+      ],
+      "note": "Public or source package topology and validator-visible entrypoint retained; the nearest AGENTS card carries agent law, so transfer or deletion would blur the owner boundary."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/titan/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/titan/AGENTS.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:DESIGN.AGENTS.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md"
+      ],
+      "note": "Unconditional ancestor and README fan-out was replaced with task-conditioned owner routes while the nearest local boundary, stop lines, and proportional validation remain inherited."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "mechanics/titan/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:mechanics/titan/README.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0014-collapse-mechanics-root-entrypoints.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:docs/decisions/AOA-PB-D-0017-compact-mechanics-package-tier.md"
+      ],
+      "note": "Public or source package topology and validator-visible entrypoint retained; the nearest AGENTS card carries agent law, so transfer or deletion would blur the owner boundary."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "memo/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:memo/AGENTS.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:DESIGN.AGENTS.md"
+      ],
+      "note": "Unconditional ancestor and README fan-out was replaced with task-conditioned owner routes while the nearest local boundary, stop lines, and proportional validation remain inherited."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "memo/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:memo/README.md"
+      ],
+      "note": "Human memo-port orientation retained; memo/AGENTS.md carries the local agent contract."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "playbooks/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:playbooks/AGENTS.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:DESIGN.AGENTS.md"
+      ],
+      "note": "Unconditional ancestor and README fan-out was replaced with task-conditioned owner routes while the nearest local boundary, stop lines, and proportional validation remain inherited."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "playbooks/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:playbooks/README.md"
+      ],
+      "note": "Human source-home and authored-bundle navigation retained; playbooks/AGENTS.md carries agent law."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "schemas/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:schemas/AGENTS.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:DESIGN.AGENTS.md"
+      ],
+      "note": "Unconditional ancestor and README fan-out was replaced with task-conditioned owner routes while the nearest local boundary, stop lines, and proportional validation remain inherited."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "scripts/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:scripts/AGENTS.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:DESIGN.AGENTS.md"
+      ],
+      "note": "Unconditional ancestor and README fan-out was replaced with task-conditioned owner routes while the nearest local boundary, stop lines, and proportional validation remain inherited."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "stats/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:stats/AGENTS.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:DESIGN.AGENTS.md"
+      ],
+      "note": "Unconditional ancestor and README fan-out was replaced with task-conditioned owner routes while the nearest local boundary, stop lines, and proportional validation remain inherited."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "stats/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:stats/README.md"
+      ],
+      "note": "Human stats-port orientation retained; stats/AGENTS.md and the manifest carry agent and machine contracts."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "tests/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:tests/AGENTS.md",
+        "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:DESIGN.AGENTS.md"
+      ],
+      "note": "Unconditional ancestor and README fan-out was replaced with task-conditioned owner routes while the nearest local boundary, stop lines, and proportional validation remain inherited."
     }
   ]
 }

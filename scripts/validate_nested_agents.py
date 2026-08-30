@@ -11,6 +11,7 @@ from __future__ import annotations
 import argparse
 from dataclasses import dataclass
 from pathlib import Path
+import re
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 REPOSITORY_NAME = "8Dionysus"
@@ -142,6 +143,7 @@ REQUIRED_AGENTS_DOCS: dict[str, tuple[str, ...]] = {
 ADVISORY_AGENT_DIRS: tuple[str, ...] = ()
 HEADING_PREFIXES = ("# AGENTS.md", "# AGENTS")
 IGNORED_DIRS = {".git", ".venv", "__pycache__", ".pytest_cache", ".mypy_cache"}
+ROOT_REREAD_RE = re.compile(r"\bread (?:the )?root `agents\.md`", re.IGNORECASE)
 
 
 @dataclass(frozen=True)
@@ -212,6 +214,10 @@ def validate(
         if not _has_agents_heading(text):
             issues.append(f"{rel_path}: missing AGENTS heading")
         normalized = _normalize(text)
+        if ROOT_REREAD_RE.search(text):
+            issues.append(
+                f"{rel_path}: repeats the inherited root-read instruction instead of a local delta"
+            )
         for snippet in snippets:
             if _normalize(snippet) not in normalized:
                 issues.append(f"{rel_path}: missing required snippet {snippet!r}")

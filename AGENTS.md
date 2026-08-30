@@ -27,12 +27,19 @@ It does not own:
   memory, KAG, playbooks, shared stats grammar, agent, or seed canon owned by
   sibling repos
 
-## Start here
+## Conditional routes
 
-1. Choose the primary owner repository before editing.
-2. Read `README.md`, `docs/START_HERE.md`, `GLOSSARY.md`, `docs/PUBLIC_ENTRY_POSTURE.md`, and the target repository `README.md` plus `AGENTS.md`.
-3. For workspace bootstrap or projection work, also read `docs/WORKSPACE_INSTALL.md`, `docs/CODEX_PLANE_REGENERATION.md`, and the relevant `.agents/` or `.codex/` source surface.
-4. For historical detail preserved from the pre-slim root, read `docs/AGENTS_ROOT_REFERENCE.md`.
+Choose the primary owner before editing; do not preload the documentation set.
+
+- public/profile orientation: `README.md`, then `docs/START_HERE.md`
+- repository posture or glossary work: `docs/PUBLIC_ENTRY_POSTURE.md` or
+  `GLOSSARY.md`
+- concrete owner work: target source plus its nearest `AGENTS.md`; target
+  `README.md` only when human use or topology is relevant
+- workspace bootstrap or projection: `docs/WORKSPACE_INSTALL.md`,
+  `docs/CODEX_PLANE_REGENERATION.md`, then the affected `.agents/` or
+  `.codex/` source
+- historical depth: `docs/AGENTS_ROOT_REFERENCE.md`
 
 
 ## AGENTS stack law
@@ -84,50 +91,31 @@ decision authorizes archive; do not route new navigation or dispatch work there.
 
 ## Memory route
 
-Use `aoa_memo` when a workspace task asks to recall, continue, preserve, compare
-with past work, recover after compaction, create a memory candidate, inspect a
-local memo port, or route evidence toward reviewed memory.
-
-- Need session evidence for a stable agent-process anchor such as a skill, MCP,
-  hook, tool, path, goal, or recurring failure: use `aoa_session_memory` to
-  search `.aoa`, trace route maps, build retrieval/evidence packets, and check
-  freshness before drawing conclusions.
-- Do not treat `aoa_session_memory` as memory writeback, repair, reindex,
-  distillation, or promotion authority. It is a read-only route over `.aoa`
-  refs; raw transcript and reviewed session-memory authority remain in `.aoa`.
-- After a meaningful landing, run a memory writeback check before closeout.
-  Meaningful includes changes to owner boundaries, route law, MCP or service
-  contracts, eval or proof surfaces, release posture, workflows, decisions,
-  topology, public contracts, or important failures and fixes.
-- Prefer `aoa-memo-writeback` for the judgment-heavy path: inspect the
-  diff/PR/commits and session evidence, decide whether the event is
-  memory-worthy, then create a local candidate/export or an explicit
-  no-writeback closeout.
-- Need continuity or context: call `aoa_memo_brief` for the owning repository
-  and current intent.
-- Need to preserve new memory: write through that repository's `memo/` port when
-  it exists, then validate and index the port.
-- Need durable reviewed memory: export reviewed intake to `aoa-memo`; the shared
-  root and MCP plane do not land durable memo truth directly.
-- Need owner truth: follow the owning repository first; memo carries recall,
-  provenance, local candidates, and reviewed handoff.
-- Need workspace memory status: regenerate `generated/workspace_memory_map.min.json`
-  and `docs/WORKSPACE_MEMORY_MAP.md` from `scripts/build_workspace_memory_map.py`
-  instead of guessing which repos have local ports.
+- Use `aoa_memo` for continuity, recall, preservation, local-port status, or
+  reviewed memory handoff; owner source remains stronger than memory.
+- Use `aoa_session_memory` only for read-only evidence about a stable
+  skill, MCP, hook, tool, path, goal, or recurring failure. It does not own
+  writeback, repair, reindex, distillation, or promotion; raw authority remains
+  in `.aoa`.
+- After a meaningful landing, use `aoa-memo-writeback` to decide between one
+  reviewed candidate/export and an explicit no-write result. Durable reviewed
+  memory lands through `aoa-memo`, not the shared root or MCP plane.
+- Use `generated/workspace_memory_map.min.json` and
+  `docs/WORKSPACE_MEMORY_MAP.md` for port/status routing; regenerate them
+  through `scripts/build_workspace_memory_map.py` rather than guessing.
 
 ## Skill inspection and mutation boundary
 
-`aoa skills` is passive and exact. Use it only to inspect an owner-scoped
-installation or one known capability node:
+`aoa skills` is passive and exact:
 
 ```bash
 aoa skills inspect <repo_root> --root <workspace-root> --json
 aoa skills capability <exact-node-id> --root <workspace-root> --json
 ```
 
-Semantic skill retrieval and composition belong to `aoa-kag`; neither SDK
-inspection nor surface detection selects, activates, or executes a skill.
-Use `aoa surfaces detect` only as additive read-only routing help.
+Semantic skill retrieval and composition belong to `aoa-kag`; SDK inspection
+and `aoa surfaces detect` remain read-only and never select, activate, or
+execute a skill.
 
 For one concrete mismatch among skill, MCP, or tool source, projection,
 consumer scope, prompt/catalog visibility, configuration, transport, and owner
@@ -135,61 +123,48 @@ service, use the repo-local `aoa-workspace-diagnose` home skill. General
 orientation remains in this route card and KAG. Diagnosis is read-only and does
 not authorize repair, install, restart, or configuration mutation.
 
-Risky mutations remain governed by the nearest owner `AGENTS.md`, explicit
-host or human confirmation, and the applicable runtime boundary. There is no
-SDK-owned skill ingress or mutation-gate command.
+Risky mutation requires the nearest owner contract, applicable runtime
+boundary, and explicit host or human confirmation. There is no SDK-owned skill
+ingress or mutation-gate command.
 
 ## Projection and audit rules
 
-- When shared-root install surfaces change, edit the source-owned copy under `<workspace-root>/8Dionysus/` first, then project them into the live workspace root.
-- Do not treat live projected copies at `/AGENTS.md`, `/AOA_WORKSPACE_ROOT`, `/.agents/`, or `/.codex/` as primary truth; in projection wording, do not treat the live copies as source.
-- `8Dionysus` does not project shared bundles into `<workspace-root>/.agents/skills`. Shared AoA bundles install once through the `aoa-skills` `user-default` profile; repository projections come only from admitted owner-local `skills/` homes.
-- `skills/aoa-workspace-diagnose/` is this repository's canonical local procedure; `.agents/skills/aoa-workspace-diagnose/` is its exact repo-only projection and remains excluded from workspace-root copy and prune authority.
-- The generic shared-root projector neither copies nor prunes live `.codex/config.toml` or `.codex/agents/`. Project registration follows the Codex-plane render and rollout route; role-agent projection follows `aoa-agents` and its deployment policy.
-- Treat source selection as part of projection safety. The installed launcher is local-only and never fetches; it refuses unless the selected owner checkout matches its declared local source ref and projector-controlled or managed source paths are clean. Use `--source-root <clean-current-8Dionysus-checkout>` when the canonical checkout is stale or carrying unrelated work.
-- A direct Python dry-run may inspect an unmerged branch. Live execution from a non-current source requires the explicit `--allow-noncurrent-source` override and is branch-trial evidence, not proof of owner currentness.
-- Keep `8Dionysus/README.md` profile-owned and GitHub-facing.
-- Treat generated or install drift as a route signal: keep the evidence narrow, route it to the owner repository, and do not promote derived reports into authority.
-- Before large AGENTS refactors, run the map audit:
+Follow `docs/WORKSPACE_INSTALL.md` for projection and
+`docs/CODEX_PLANE_REGENERATION.md` for Codex render/rollout. Hard boundaries:
+
+- edit the source-owned copy under `<workspace-root>/8Dionysus/` first; do not treat the live copies as source
+- keep `README.md` profile-owned and GitHub-facing, outside shared-root projection
+- do not copy or prune `<workspace-root>/.agents/skills/`; shared bundles
+  install through `aoa-skills`, and repo projections come from admitted local
+  `skills/` homes
+- keep live `.codex/config.toml` and `.codex/agents/` outside the generic
+  projector; registration and role projection use their dedicated owner routes
+- use a clean current owner checkout; the launcher does not fetch and must
+  refuse a stale or dirty managed source
+- treat non-current live execution as explicit branch-trial evidence, never
+  owner-current proof
+- keep generated or install drift narrow and route it to the owner repo
+
+Before a broad AGENTS refactor, run:
 
 ```bash
 python scripts/audit_agents_map.py --workspace-root <workspace-root> --write generated/agents_map.min.json --markdown docs/AGENTS_MAP.md
 ```
 
-For workspace memory overlay status:
-
-```bash
-python scripts/build_workspace_memory_map.py --workspace-root <workspace-root> --owner-repo-root . --write generated/workspace_memory_map.min.json --markdown docs/WORKSPACE_MEMORY_MAP.md
-python scripts/validate_workspace_memory_map.py --workspace-root <workspace-root> --owner-repo-root .
-```
-
-For public bootstrap without sibling checkouts:
+For a public baseline without sibling checkouts:
 
 ```bash
 python scripts/audit_agents_map.py --public-baseline --write generated/agents_map.min.json --markdown docs/AGENTS_MAP.md
 ```
 
-After local `AGENTS.md` coverage changes, refresh the frontier report:
-
-```bash
-python scripts/recon_agents_frontier.py --map generated/agents_map.min.json --write generated/agents_frontier_recon.min.json --markdown generated/agents_frontier_recon.md
-```
-
 ## GitHub landing workflow
 
-Root `AGENTS.md` owns the repository-wide branch, PR, CI, and merge route.
-`.github/AGENTS.md` owns the GitHub-native files that support it.
-
-When the user asks to commit, push, and merge in this repository, use this route:
-
-1. Start from a branch based on the current `origin/main`. If the worktree is already dirty, inventory it first and carry forward only the intended diff.
-2. Commit the intended change with a message that names the changed surface.
-3. Push the branch and open a pull request that states changed surfaces, validation run, skipped checks, and remaining risk.
-4. Wait for GitHub `Repo Validation` and any required GitHub checks. In a KAG-consuming repository, the shared KAG portion means that a dependency-free incremental drift sentinel ran first, then the exact stable candidate passed full parity, family-contract validation, and compatibility assembly through the bounded two-worker DAG. It does not replace repository source/release checks, OS-wide provider proof, runtime proof, or the landing verdict. If a check fails, fix the branch and wait for the new result.
-5. Merge through GitHub after green validation. Use squash unless repository settings report a different required method; report the method that landed.
-6. Return to `main`, fast-forward from `origin/main`, and confirm the worktree is clean before closeout.
-
-If GitHub status or merge permissions cannot be observed, stop the landing route and report the exact blocker instead of guessing.
+Root owns the repository-wide merge stop-line; `.github/AGENTS.md` owns
+GitHub-native details. Start from current `origin/main`, inventory dirty state,
+and keep only the intended diff. A PR must name changed surfaces, validation,
+skips, and risk. Merge only after `Repo Validation` and all required checks
+are observed green, then fast-forward local `main` and confirm it is clean.
+If status or permission cannot be observed, stop instead of guessing.
 
 ## Verify
 

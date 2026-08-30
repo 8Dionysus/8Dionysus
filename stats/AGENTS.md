@@ -12,13 +12,19 @@ This directory owns statistical questions whose meaning belongs to the public
 entry and workspace-audit surfaces. Shared measurement grammar and cross-owner
 composition remain owned by `aoa-stats`.
 
-## Read before editing
+## Route
 
-1. Root `AGENTS.md`, `README.md`, and `docs/PUBLIC_ENTRY_POSTURE.md`.
-2. `stats/README.md` and `stats/port.manifest.json`.
-3. `generated/agents_map.min.json`, `schemas/agents-map.schema.json`, and
-   `scripts/audit_agents_map.py`.
-4. The central measurement and packet contracts under `aoa-stats/stats/`.
+Root `AGENTS.md` supplies repository boundaries. Start with
+`stats/port.manifest.json`, the touched packet, and its evidence. Open only
+the matching route:
+
+- public measurement explanation: `stats/README.md`
+- entrypoint denominator or owner-route change: root `README.md` and
+  `docs/PUBLIC_ENTRY_POSTURE.md`
+- AGENTS-map algorithm or contract:
+  `generated/agents_map.min.json`, `schemas/agents-map.schema.json`, and
+  `scripts/audit_agents_map.py`
+- shared measurement or packet contract: `aoa-stats/stats/`
 
 ## Boundaries
 

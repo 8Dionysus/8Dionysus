@@ -30,6 +30,20 @@ class ReadmeAgentsCorpusTests(unittest.TestCase):
 
         self.assertEqual(list(Draft202012Validator(schema).iter_errors(payload)), [])
 
+    def test_checked_in_routes_keep_readmes_on_demand(self) -> None:
+        root = Path(__file__).resolve().parents[1]
+
+        result = readme_agents_corpus.scan_repository_corpus(root, "8Dionysus", {})
+
+        self.assertEqual(
+            result["readme_agents_summary"]["agents_files_declaring_mandatory_readme"],
+            0,
+        )
+        self.assertEqual(
+            result["readme_agents_summary"]["declared_mandatory_readme_bytes"],
+            0,
+        )
+
     def test_chain_pair_read_fanout_and_review_overlay(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             repo = Path(tmp)

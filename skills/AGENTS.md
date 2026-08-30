@@ -11,11 +11,13 @@ workspace-delivery lane. The current canonical source is
 `skills/aoa-workspace-diagnose/SKILL.md`; its `.agents/skills/` copy is a
 generated repository projection and never source truth.
 
-## Read before editing
+## Route
 
-Read root `AGENTS.md`, `skills/README.md`, the target `SKILL.md`, the admission
-decision named by `port.manifest.json`, `docs/WORKSPACE_INSTALL.md`, and the
-current `aoa-skills` home-port contract.
+Root `AGENTS.md` supplies repository boundaries. Start with the target
+`SKILL.md` and `port.manifest.json`. Open `skills/README.md` for home
+catalog or visibility, the named decision for admission rationale,
+`docs/WORKSPACE_INSTALL.md` for projection, and the `aoa-skills` home-port
+contract for parity work.
 
 ## Boundaries
 

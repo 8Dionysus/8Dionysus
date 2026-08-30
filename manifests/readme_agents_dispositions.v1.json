@@ -3614,6 +3614,1146 @@
         "aoa-playbooks@b9d120b880fd3d9b3694c23b90e948f052ff2a9d:DESIGN.AGENTS.md"
       ],
       "note": "Unconditional ancestor and README fan-out was replaced with task-conditioned owner routes while the nearest local boundary, stop lines, and proportional validation remain inherited."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": ".github/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:.github/AGENTS.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:AGENTS.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "README.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:README.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "config-templates/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:config-templates/AGENTS.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "config-templates/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:config-templates/README.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "config-templates/etc/abyss-machine/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:config-templates/etc/abyss-machine/AGENTS.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "config-templates/etc/abyss-machine/ai/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:config-templates/etc/abyss-machine/ai/AGENTS.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "config-templates/etc/abyss-machine/cooling/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:config-templates/etc/abyss-machine/cooling/AGENTS.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "config-templates/etc/abyss-machine/decisions/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:config-templates/etc/abyss-machine/decisions/AGENTS.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "config-templates/etc/abyss-machine/decisions/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:config-templates/etc/abyss-machine/decisions/README.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "config-templates/etc/abyss-machine/dictation/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:config-templates/etc/abyss-machine/dictation/AGENTS.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "config-templates/etc/abyss-machine/hooks.d/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:config-templates/etc/abyss-machine/hooks.d/AGENTS.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "config-templates/etc/abyss-machine/hooks.d/post_cache_cleanup.d/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:config-templates/etc/abyss-machine/hooks.d/post_cache_cleanup.d/AGENTS.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "config-templates/etc/abyss-machine/hooks.d/post_large_write.d/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:config-templates/etc/abyss-machine/hooks.d/post_large_write.d/AGENTS.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "config-templates/etc/abyss-machine/hooks.d/post_podman_migration.d/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:config-templates/etc/abyss-machine/hooks.d/post_podman_migration.d/AGENTS.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "config-templates/etc/abyss-machine/hooks.d/post_runtime_create.d/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:config-templates/etc/abyss-machine/hooks.d/post_runtime_create.d/AGENTS.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "config-templates/etc/abyss-machine/hooks.d/pre_cache_cleanup.d/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:config-templates/etc/abyss-machine/hooks.d/pre_cache_cleanup.d/AGENTS.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "config-templates/etc/abyss-machine/hooks.d/pre_large_write.d/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:config-templates/etc/abyss-machine/hooks.d/pre_large_write.d/AGENTS.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "config-templates/etc/abyss-machine/hooks.d/pre_podman_migration.d/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:config-templates/etc/abyss-machine/hooks.d/pre_podman_migration.d/AGENTS.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "config-templates/etc/abyss-machine/hooks.d/pre_runtime_create.d/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:config-templates/etc/abyss-machine/hooks.d/pre_runtime_create.d/AGENTS.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "config-templates/etc/abyss-machine/hooks.d/process_snapshot.d/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:config-templates/etc/abyss-machine/hooks.d/process_snapshot.d/AGENTS.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "config-templates/etc/abyss-machine/hooks.d/stack-bridge/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:config-templates/etc/abyss-machine/hooks.d/stack-bridge/AGENTS.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "config-templates/etc/abyss-machine/nervous/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:config-templates/etc/abyss-machine/nervous/AGENTS.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "config-templates/etc/abyss-machine/observability/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:config-templates/etc/abyss-machine/observability/AGENTS.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "docs/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:docs/AGENTS.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "docs/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:docs/README.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "docs/host/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:docs/host/README.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "docs/install/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:docs/install/README.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "docs/operations/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:docs/operations/README.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "docs/profiles/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:docs/profiles/README.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "docs/publication/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:docs/publication/README.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "docs/testing/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:docs/testing/README.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "docs/validation/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:docs/validation/README.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "env/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:env/AGENTS.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "env/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:env/README.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "generated/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:generated/AGENTS.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "generated/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:generated/README.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "kag/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:kag/AGENTS.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "kag/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:kag/README.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "manifests/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:manifests/AGENTS.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "manifests/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:manifests/README.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "manifests/artifact_bundles/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:manifests/artifact_bundles/README.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "mechanics/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:mechanics/AGENTS.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "mechanics/README.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:mechanics/README.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "mechanics/code-intelligence/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:mechanics/code-intelligence/AGENTS.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "mechanics/code-intelligence/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:mechanics/code-intelligence/README.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "mechanics/code-intelligence/docs/README.md",
+      "review_state": "reviewed",
+      "disposition": "delete-obsolete-placeholder",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:mechanics/code-intelligence/docs/README.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "mechanics/code-intelligence/parts/README.md",
+      "review_state": "reviewed",
+      "disposition": "delete-obsolete-placeholder",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:mechanics/code-intelligence/parts/README.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "mechanics/config-projection/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:mechanics/config-projection/AGENTS.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "mechanics/config-projection/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:mechanics/config-projection/README.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "mechanics/config-projection/docs/README.md",
+      "review_state": "reviewed",
+      "disposition": "delete-obsolete-placeholder",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:mechanics/config-projection/docs/README.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "mechanics/config-projection/parts/README.md",
+      "review_state": "reviewed",
+      "disposition": "delete-obsolete-placeholder",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:mechanics/config-projection/parts/README.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "mechanics/diagnostic-spine/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:mechanics/diagnostic-spine/AGENTS.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "mechanics/diagnostic-spine/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:mechanics/diagnostic-spine/README.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "mechanics/diagnostic-spine/docs/README.md",
+      "review_state": "reviewed",
+      "disposition": "delete-obsolete-placeholder",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:mechanics/diagnostic-spine/docs/README.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "mechanics/diagnostic-spine/parts/README.md",
+      "review_state": "reviewed",
+      "disposition": "delete-obsolete-placeholder",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:mechanics/diagnostic-spine/parts/README.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "mechanics/host-facts/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:mechanics/host-facts/AGENTS.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "mechanics/host-facts/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:mechanics/host-facts/README.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "mechanics/host-facts/docs/README.md",
+      "review_state": "reviewed",
+      "disposition": "delete-obsolete-placeholder",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:mechanics/host-facts/docs/README.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "mechanics/host-facts/parts/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:mechanics/host-facts/parts/README.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "mechanics/host-facts/parts/owner-census-broker/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:mechanics/host-facts/parts/owner-census-broker/README.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "mechanics/host-lifecycle/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:mechanics/host-lifecycle/AGENTS.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "mechanics/host-lifecycle/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:mechanics/host-lifecycle/README.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "mechanics/host-lifecycle/docs/README.md",
+      "review_state": "reviewed",
+      "disposition": "delete-obsolete-placeholder",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:mechanics/host-lifecycle/docs/README.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "mechanics/host-lifecycle/parts/README.md",
+      "review_state": "reviewed",
+      "disposition": "delete-obsolete-placeholder",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:mechanics/host-lifecycle/parts/README.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "mechanics/local-ai-runtime/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:mechanics/local-ai-runtime/AGENTS.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "mechanics/local-ai-runtime/README.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:mechanics/local-ai-runtime/README.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "mechanics/local-ai-runtime/docs/README.md",
+      "review_state": "reviewed",
+      "disposition": "delete-obsolete-placeholder",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:mechanics/local-ai-runtime/docs/README.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "mechanics/local-ai-runtime/parts/README.md",
+      "review_state": "reviewed",
+      "disposition": "delete-obsolete-placeholder",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:mechanics/local-ai-runtime/parts/README.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "mechanics/nervous-local/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:mechanics/nervous-local/AGENTS.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "mechanics/nervous-local/README.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:mechanics/nervous-local/README.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "mechanics/nervous-local/docs/README.md",
+      "review_state": "reviewed",
+      "disposition": "delete-obsolete-placeholder",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:mechanics/nervous-local/docs/README.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "mechanics/nervous-local/parts/README.md",
+      "review_state": "reviewed",
+      "disposition": "delete-obsolete-placeholder",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:mechanics/nervous-local/parts/README.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "mechanics/storage-routing/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:mechanics/storage-routing/AGENTS.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "mechanics/storage-routing/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:mechanics/storage-routing/README.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "mechanics/storage-routing/docs/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:mechanics/storage-routing/docs/README.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "mechanics/storage-routing/parts/README.md",
+      "review_state": "reviewed",
+      "disposition": "delete-obsolete-placeholder",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:mechanics/storage-routing/parts/README.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "mechanics/typing-intake/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:mechanics/typing-intake/AGENTS.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "mechanics/typing-intake/README.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:mechanics/typing-intake/README.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "mechanics/typing-intake/docs/README.md",
+      "review_state": "reviewed",
+      "disposition": "delete-obsolete-placeholder",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:mechanics/typing-intake/docs/README.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "mechanics/typing-intake/parts/README.md",
+      "review_state": "reviewed",
+      "disposition": "delete-obsolete-placeholder",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:mechanics/typing-intake/parts/README.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "schemas/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:schemas/AGENTS.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "schemas/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:schemas/README.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "scripts/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:scripts/AGENTS.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "scripts/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:scripts/README.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "scripts/validators/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:scripts/validators/AGENTS.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "scripts/validators/README.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:scripts/validators/README.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "skills/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:skills/AGENTS.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "skills/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:skills/README.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "stats/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:stats/AGENTS.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "stats/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:stats/README.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "systemd/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:systemd/AGENTS.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "systemd/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:systemd/README.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "tests/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:tests/AGENTS.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "tests/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:tests/README.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "tests/host_contract/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:tests/host_contract/AGENTS.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "tests/host_contract/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:tests/host_contract/README.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "tests/host_contract/contract/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:tests/host_contract/contract/AGENTS.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "tests/host_contract/fixtures/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:tests/host_contract/fixtures/AGENTS.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "tests/host_contract/live/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:tests/host_contract/live/AGENTS.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "tests/host_contract/regression/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:tests/host_contract/regression/AGENTS.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "tests/host_contract/safety/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:tests/host_contract/safety/AGENTS.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "tools/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:tools/AGENTS.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "tools/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:tools/README.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "tools/ai/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:tools/ai/AGENTS.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "tools/ai/llm/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:tools/ai/llm/AGENTS.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "tools/ai/rerankers/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:tools/ai/rerankers/AGENTS.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "tools/ai/tts/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:tools/ai/tts/AGENTS.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "tools/nervous/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:tools/nervous/AGENTS.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "tools/nervous/browser-capture/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:tools/nervous/browser-capture/AGENTS.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "tools/testing/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:tools/testing/AGENTS.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "tools/topology/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:tools/topology/AGENTS.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "tools/typing/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:tools/typing/AGENTS.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "tools/typing/firefox-extension/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "abyss-machine@98dcf8b2115fd5ab5252b2278ddfcde4e0d68a1e:tools/typing/firefox-extension/AGENTS.md"
+      ],
+      "note": "Mechanical classification from the exact base/source corpus comparison."
     }
   ]
 }

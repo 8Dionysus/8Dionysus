@@ -3,5 +3,567 @@
   "schema_version": "8dionysus_readme_agents_dispositions_v1",
   "owner_repo": "8Dionysus",
   "posture": "integration-ledger-only; sibling dispositions require owner evidence",
-  "records": []
+  "records": [
+    {
+      "repository": "aoa-dashboard",
+      "path": ".github/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-dashboard@bbb70660eeb5859cd1a911cd97f69cadebe778ad:.github/AGENTS.md",
+        "aoa-dashboard@bbb70660eeb5859cd1a911cd97f69cadebe778ad:docs/RELEASE_POSTURE.md"
+      ],
+      "note": "Short GitHub-local validation and review delta; no human overview is duplicated."
+    },
+    {
+      "repository": "aoa-dashboard",
+      "path": "AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-dashboard@bbb70660eeb5859cd1a911cd97f69cadebe778ad:AGENTS.md",
+        "aoa-dashboard@bbb70660eeb5859cd1a911cd97f69cadebe778ad:docs/ORGAN_CONTRACT.md"
+      ],
+      "note": "Compact root owner boundary and fail-closed local guidance."
+    },
+    {
+      "repository": "aoa-dashboard",
+      "path": "README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-dashboard@bbb70660eeb5859cd1a911cd97f69cadebe778ad:README.md",
+        "aoa-dashboard@bbb70660eeb5859cd1a911cd97f69cadebe778ad:docs/ORGAN_CONTRACT.md"
+      ],
+      "note": "Root human and public entrypoint with run, desktop, validation, and admission routes."
+    },
+    {
+      "repository": "aoa-dashboard",
+      "path": "contracts/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-dashboard@bbb70660eeb5859cd1a911cd97f69cadebe778ad:contracts/README.md",
+        "aoa-dashboard@bbb70660eeb5859cd1a911cd97f69cadebe778ad:contracts/organ_contract.json"
+      ],
+      "note": "Human contract catalog; machine schemas remain the stronger shape authority."
+    },
+    {
+      "repository": "aoa-models",
+      "path": "AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-models@ff9a81070de49aa28e727e65920a5d94bb9ae9f4:AGENTS.md",
+        "aoa-models@6b3346fb899e633277839f2b7bf3fdf6e2427d83:README.md",
+        "aoa-models@6b3346fb899e633277839f2b7bf3fdf6e2427d83:DIRECTION.md"
+      ],
+      "note": "Owner law remains local; universal README reading became an on-demand human-map route. Full owner validation and 50 tests passed."
+    },
+    {
+      "repository": "aoa-models",
+      "path": "README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-models@6b3346fb899e633277839f2b7bf3fdf6e2427d83:README.md",
+        "aoa-models@6b3346fb899e633277839f2b7bf3fdf6e2427d83:DIRECTION.md"
+      ],
+      "note": "Distinct human and public model-owner overview, object contour, source map, and usage route."
+    },
+    {
+      "repository": "aoa-models",
+      "path": "docs/decisions/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-models@6b3346fb899e633277839f2b7bf3fdf6e2427d83:docs/decisions/AGENTS.md",
+        "aoa-models@6b3346fb899e633277839f2b7bf3fdf6e2427d83:scripts/generate_decision_index.py"
+      ],
+      "note": "Nearest authored-versus-generated decision law and exact builder route."
+    },
+    {
+      "repository": "aoa-models",
+      "path": "docs/decisions/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-models@6b3346fb899e633277839f2b7bf3fdf6e2427d83:docs/decisions/README.md",
+        "aoa-models@6b3346fb899e633277839f2b7bf3fdf6e2427d83:docs/decisions/TEMPLATE.md"
+      ],
+      "note": "Small human rationale entrypoint distinct from the local mutation law."
+    },
+    {
+      "repository": "aoa-models",
+      "path": "research-intake/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-models@6b3346fb899e633277839f2b7bf3fdf6e2427d83:research-intake/README.md",
+        "aoa-models@6b3346fb899e633277839f2b7bf3fdf6e2427d83:docs/RESEARCH_INTAKE.md"
+      ],
+      "note": "Human pre-canon corpus index and bounded capture route; not automatic agent context."
+    },
+    {
+      "repository": "Dionysus",
+      "path": "AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Dionysus@02ed96f83ca3cd22d0c95023ac948bf75b42185a:AGENTS.md"
+      ]
+    },
+    {
+      "repository": "Dionysus",
+      "path": "README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Dionysus@02ed96f83ca3cd22d0c95023ac948bf75b42185a:README.md"
+      ]
+    },
+    {
+      "repository": "Dionysus",
+      "path": "instruments/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Dionysus@02ed96f83ca3cd22d0c95023ac948bf75b42185a:instruments/AGENTS.md"
+      ]
+    },
+    {
+      "repository": "Dionysus",
+      "path": "instruments/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Dionysus@02ed96f83ca3cd22d0c95023ac948bf75b42185a:instruments/README.md"
+      ]
+    },
+    {
+      "repository": "Dionysus",
+      "path": "interviews/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Dionysus@02ed96f83ca3cd22d0c95023ac948bf75b42185a:interviews/README.md"
+      ]
+    },
+    {
+      "repository": "Dionysus",
+      "path": "legacy/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "Dionysus@300a948df7c81f5aa1018022e4bdc469c0ac2038:legacy/AGENTS.md",
+        "Dionysus@02ed96f83ca3cd22d0c95023ac948bf75b42185a:legacy/README.md"
+      ],
+      "note": "Archive-wide README reading is now conditional; targeted archaeology routes directly through manifest, seed, report, and current owner."
+    },
+    {
+      "repository": "Dionysus",
+      "path": "legacy/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Dionysus@02ed96f83ca3cd22d0c95023ac948bf75b42185a:legacy/README.md"
+      ]
+    },
+    {
+      "repository": "Dionysus",
+      "path": "legacy/archive/seed_pack_2026-03-22/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Dionysus@02ed96f83ca3cd22d0c95023ac948bf75b42185a:legacy/archive/seed_pack_2026-03-22/README.md"
+      ]
+    },
+    {
+      "repository": "Dionysus",
+      "path": "legacy/archive/seed_pack_2026-03-24_kag-frontier/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Dionysus@02ed96f83ca3cd22d0c95023ac948bf75b42185a:legacy/archive/seed_pack_2026-03-24_kag-frontier/README.md"
+      ]
+    },
+    {
+      "repository": "Dionysus",
+      "path": "legacy/archive/seed_post_wave/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Dionysus@02ed96f83ca3cd22d0c95023ac948bf75b42185a:legacy/archive/seed_post_wave/README.md"
+      ]
+    },
+    {
+      "repository": "Dionysus",
+      "path": "legacy/seed_notes/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Dionysus@02ed96f83ca3cd22d0c95023ac948bf75b42185a:legacy/seed_notes/README.md"
+      ]
+    },
+    {
+      "repository": "Dionysus",
+      "path": "legacy/seed_notes/exploratory/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Dionysus@02ed96f83ca3cd22d0c95023ac948bf75b42185a:legacy/seed_notes/exploratory/README.md"
+      ]
+    },
+    {
+      "repository": "Dionysus",
+      "path": "legacy/seed_staging/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Dionysus@02ed96f83ca3cd22d0c95023ac948bf75b42185a:legacy/seed_staging/README.md"
+      ]
+    },
+    {
+      "repository": "Dionysus",
+      "path": "legacy/seed_staging/audit/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Dionysus@02ed96f83ca3cd22d0c95023ac948bf75b42185a:legacy/seed_staging/audit/README.md"
+      ]
+    },
+    {
+      "repository": "Dionysus",
+      "path": "legacy/seed_staging/donor/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Dionysus@02ed96f83ca3cd22d0c95023ac948bf75b42185a:legacy/seed_staging/donor/README.md"
+      ]
+    },
+    {
+      "repository": "Dionysus",
+      "path": "legacy/seed_staging/future/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Dionysus@02ed96f83ca3cd22d0c95023ac948bf75b42185a:legacy/seed_staging/future/README.md"
+      ]
+    },
+    {
+      "repository": "Dionysus",
+      "path": "legacy/seed_staging/questbook/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Dionysus@02ed96f83ca3cd22d0c95023ac948bf75b42185a:legacy/seed_staging/questbook/README.md"
+      ]
+    },
+    {
+      "repository": "Dionysus",
+      "path": "legacy/seed_staging/root_docs/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Dionysus@02ed96f83ca3cd22d0c95023ac948bf75b42185a:legacy/seed_staging/root_docs/README.md"
+      ]
+    },
+    {
+      "repository": "Dionysus",
+      "path": "legacy/seed_staging/rpg/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Dionysus@02ed96f83ca3cd22d0c95023ac948bf75b42185a:legacy/seed_staging/rpg/README.md"
+      ]
+    },
+    {
+      "repository": "Dionysus",
+      "path": "portrait/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Dionysus@02ed96f83ca3cd22d0c95023ac948bf75b42185a:portrait/README.md"
+      ]
+    },
+    {
+      "repository": "Dionysus",
+      "path": "vault/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Dionysus@02ed96f83ca3cd22d0c95023ac948bf75b42185a:vault/README.md"
+      ]
+    },
+    {
+      "repository": "Dionysus",
+      "path": "web/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Dionysus@02ed96f83ca3cd22d0c95023ac948bf75b42185a:web/AGENTS.md"
+      ]
+    },
+    {
+      "repository": "Dionysus",
+      "path": "web/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Dionysus@02ed96f83ca3cd22d0c95023ac948bf75b42185a:web/README.md"
+      ]
+    },
+    {
+      "repository": "ATM10-Agent",
+      "path": ".github/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "ATM10-Agent@90f70d028dcc3eb9b5de481fe349026b1341f621:.github/AGENTS.md"
+      ],
+      "note": "GitHub-local law remains; the redundant imperative to reread inherited root guidance was removed."
+    },
+    {
+      "repository": "ATM10-Agent",
+      "path": "AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "ATM10-Agent@90f70d028dcc3eb9b5de481fe349026b1341f621:AGENTS.md",
+        "ATM10-Agent@e3b408d1988fc83d14d51c959151c7880aea0b96:README.md"
+      ],
+      "note": "The universal nine-document reading order became task-conditional routing while repository identity, owner boundaries, stop-lines, landing law, and validation stayed inherited."
+    },
+    {
+      "repository": "ATM10-Agent",
+      "path": "README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "ATM10-Agent@e3b408d1988fc83d14d51c959151c7880aea0b96:README.md",
+        "ATM10-Agent@e3b408d1988fc83d14d51c959151c7880aea0b96:MANIFEST.md"
+      ],
+      "note": "Root human and public product entrypoint; current claim authority remains in MANIFEST.md."
+    },
+    {
+      "repository": "ATM10-Agent",
+      "path": "Spark/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "ATM10-Agent@90f70d028dcc3eb9b5de481fe349026b1341f621:Spark/AGENTS.md"
+      ],
+      "note": "Fast-loop local delta retained and aligned with root conditional route choice."
+    },
+    {
+      "repository": "ATM10-Agent",
+      "path": "docs/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "ATM10-Agent@90f70d028dcc3eb9b5de481fe349026b1341f621:docs/AGENTS.md"
+      ],
+      "note": "Public-doc owner rules remain as a local delta without an imperative inherited-root reread."
+    },
+    {
+      "repository": "ATM10-Agent",
+      "path": "docs/autonomy/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "ATM10-Agent@e3b408d1988fc83d14d51c959151c7880aea0b96:docs/autonomy/README.md",
+        "ATM10-Agent@e3b408d1988fc83d14d51c959151c7880aea0b96:docs/autonomy/dependency-ledger.json"
+      ],
+      "note": "Source-owned human transition contract with architecture, dependency law, gates, and evidence limits."
+    },
+    {
+      "repository": "ATM10-Agent",
+      "path": "docs/decisions/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "ATM10-Agent@90f70d028dcc3eb9b5de481fe349026b1341f621:docs/decisions/AGENTS.md",
+        "ATM10-Agent@e3b408d1988fc83d14d51c959151c7880aea0b96:scripts/generate_decision_indexes.py"
+      ],
+      "note": "Decision mutation law and exact validation remain; inherited-root reread became a declarative local-delta relationship."
+    },
+    {
+      "repository": "ATM10-Agent",
+      "path": "docs/decisions/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "ATM10-Agent@e3b408d1988fc83d14d51c959151c7880aea0b96:docs/decisions/README.md",
+        "ATM10-Agent@e3b408d1988fc83d14d51c959151c7880aea0b96:docs/decisions/TEMPLATE.md"
+      ],
+      "note": "Human durable-rationale entrypoint and generated-index chooser, distinct from decision mutation law."
+    },
+    {
+      "repository": "ATM10-Agent",
+      "path": "docs/decisions/indexes/README.md",
+      "review_state": "reviewed",
+      "disposition": "generate-from-owner-source",
+      "owner_evidence": [
+        "ATM10-Agent@e3b408d1988fc83d14d51c959151c7880aea0b96:docs/decisions/indexes/README.md",
+        "ATM10-Agent@e3b408d1988fc83d14d51c959151c7880aea0b96:scripts/generate_decision_indexes.py"
+      ],
+      "note": "Tracked generated lookup view; decision metadata and generator remain stronger than this README."
+    },
+    {
+      "repository": "ATM10-Agent",
+      "path": "docs/intake/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "ATM10-Agent@e3b408d1988fc83d14d51c959151c7880aea0b96:docs/intake/README.md",
+        "ATM10-Agent@e3b408d1988fc83d14d51c959151c7880aea0b96:docs/intake/donor-ledger.json"
+      ],
+      "note": "Human donor-intake authority map, provenance route, claim limit, and stop-line."
+    },
+    {
+      "repository": "ATM10-Agent",
+      "path": "evals/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "ATM10-Agent@90f70d028dcc3eb9b5de481fe349026b1341f621:evals/AGENTS.md",
+        "ATM10-Agent@e3b408d1988fc83d14d51c959151c7880aea0b96:evals/manifest.json"
+      ],
+      "note": "The eval owner delta now starts from manifest and nearest surface; README is conditional on public topology, route, or status work."
+    },
+    {
+      "repository": "ATM10-Agent",
+      "path": "evals/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "ATM10-Agent@e3b408d1988fc83d14d51c959151c7880aea0b96:evals/README.md",
+        "ATM10-Agent@e3b408d1988fc83d14d51c959151c7880aea0b96:evals/manifest.json"
+      ],
+      "note": "Human eval-lane topology, evidence semantics, and current bounded status; no longer mandatory for every local edit."
+    },
+    {
+      "repository": "ATM10-Agent",
+      "path": "evals/intake/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "ATM10-Agent@e3b408d1988fc83d14d51c959151c7880aea0b96:evals/intake/README.md"
+      ],
+      "note": "Intentional empty-state and placement contract for public-safe eval proposals."
+    },
+    {
+      "repository": "ATM10-Agent",
+      "path": "evals/reports/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "ATM10-Agent@e3b408d1988fc83d14d51c959151c7880aea0b96:evals/reports/README.md"
+      ],
+      "note": "Intentional empty-state and evidence-limit contract for local reports."
+    },
+    {
+      "repository": "ATM10-Agent",
+      "path": "evals/suites/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "ATM10-Agent@e3b408d1988fc83d14d51c959151c7880aea0b96:evals/suites/README.md",
+        "ATM10-Agent@e3b408d1988fc83d14d51c959151c7880aea0b96:evals/suites/companion-core.json"
+      ],
+      "note": "Local suite placement and executable-test routing contract."
+    },
+    {
+      "repository": "ATM10-Agent",
+      "path": "examples/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "ATM10-Agent@90f70d028dcc3eb9b5de481fe349026b1341f621:examples/AGENTS.md"
+      ],
+      "note": "Sanitized-example local law retained without an imperative inherited-root reread."
+    },
+    {
+      "repository": "ATM10-Agent",
+      "path": "schemas/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "ATM10-Agent@90f70d028dcc3eb9b5de481fe349026b1341f621:schemas/AGENTS.md"
+      ],
+      "note": "Schema owner and validation delta retained without an imperative inherited-root reread."
+    },
+    {
+      "repository": "ATM10-Agent",
+      "path": "scripts/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "ATM10-Agent@90f70d028dcc3eb9b5de481fe349026b1341f621:scripts/AGENTS.md",
+        "ATM10-Agent@90f70d028dcc3eb9b5de481fe349026b1341f621:scripts/validate_nested_agents.py"
+      ],
+      "note": "Maintainer-tool delta remains; the validator now rejects regression to redundant root-reread imperatives."
+    },
+    {
+      "repository": "ATM10-Agent",
+      "path": "src/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "ATM10-Agent@90f70d028dcc3eb9b5de481fe349026b1341f621:src/AGENTS.md"
+      ],
+      "note": "Package-level routing and local contract remain as an inherited delta."
+    },
+    {
+      "repository": "ATM10-Agent",
+      "path": "src/atm10_agent/agent_core/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "ATM10-Agent@90f70d028dcc3eb9b5de481fe349026b1341f621:src/atm10_agent/agent_core/AGENTS.md"
+      ],
+      "note": "Runtime-core local risk and checks remain without a redundant root-reread instruction."
+    },
+    {
+      "repository": "ATM10-Agent",
+      "path": "src/atm10_agent/hybrid/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "ATM10-Agent@90f70d028dcc3eb9b5de481fe349026b1341f621:src/atm10_agent/hybrid/AGENTS.md"
+      ],
+      "note": "Hybrid planner local risk and checks remain without a redundant root-reread instruction."
+    },
+    {
+      "repository": "ATM10-Agent",
+      "path": "src/atm10_agent/kag/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "ATM10-Agent@90f70d028dcc3eb9b5de481fe349026b1341f621:src/atm10_agent/kag/AGENTS.md"
+      ],
+      "note": "Project-KAG local risk and checks remain without a redundant root-reread instruction."
+    },
+    {
+      "repository": "ATM10-Agent",
+      "path": "src/atm10_agent/rag/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "ATM10-Agent@90f70d028dcc3eb9b5de481fe349026b1341f621:src/atm10_agent/rag/AGENTS.md"
+      ],
+      "note": "Retrieval local risk and checks remain without a redundant root-reread instruction."
+    },
+    {
+      "repository": "ATM10-Agent",
+      "path": "tests/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "ATM10-Agent@90f70d028dcc3eb9b5de481fe349026b1341f621:tests/AGENTS.md",
+        "ATM10-Agent@90f70d028dcc3eb9b5de481fe349026b1341f621:tests/test_nested_agents_docs.py"
+      ],
+      "note": "Test-surface local contract remains; regression coverage now protects declarative inheritance and forbids the redundant imperative."
+    }
+  ]
 }

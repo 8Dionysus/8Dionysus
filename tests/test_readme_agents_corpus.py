@@ -104,6 +104,31 @@ class ReadmeAgentsCorpusTests(unittest.TestCase):
             self.assertFalse(draft["tracked"])
             self.assertEqual(draft["worktree_status"], "??")
 
+    def test_reading_order_section_marks_bare_readme_item_mandatory(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            (repo / "AGENTS.md").write_text(
+                "# AGENTS.md\n\n## Reading order\n\n1. `README.md`\n",
+                encoding="utf-8",
+            )
+            (repo / "README.md").write_text("# Human route\n", encoding="utf-8")
+
+            result = readme_agents_corpus.scan_repository_corpus(repo, "fixture", {})
+            root_agents = next(
+                record
+                for record in result["agents_files"]
+                if record["path"] == "AGENTS.md"
+            )
+
+            self.assertEqual(
+                root_agents["mandatory_resolved_readme_references"],
+                ["README.md"],
+            )
+            self.assertEqual(
+                result["readme_agents_summary"]["declared_mandatory_readme_bytes"],
+                len("# Human route\n".encode()),
+            )
+
     def test_disposition_loader_requires_owner_evidence(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             path = Path(tmp) / "dispositions.json"

@@ -62,6 +62,12 @@ NEGATED_READ_RE = re.compile(
     r"\b(do\s+not|don't|not\s+required|optional|не\s+(?:читать|нужно|требуется))\b",
     re.IGNORECASE,
 )
+MARKDOWN_HEADING_RE = re.compile(r"^(?P<marks>#{1,6})\s+(?P<title>.+?)\s*$")
+MANDATORY_READ_SECTION_RE = re.compile(
+    r"\b(read\s+before(?:\s+editing|\s+changing)?|reading\s+order|read\s+first|"
+    r"required\s+reading|порядок\s+чтения|прочитать\s+перед|сначала\s+прочитать)\b",
+    re.IGNORECASE,
+)
 
 
 def _run_git(repo_root: Path, args: Sequence[str]) -> subprocess.CompletedProcess[bytes]:
@@ -242,11 +248,23 @@ def _extract_references(source: str, text: str, known_paths: set[str]) -> dict[s
     mandatory_resolved_readmes: set[str] = set()
     unresolved_readmes: set[str] = set()
     outbound_docs: set[str] = set()
+    mandatory_section_level: int | None = None
     for line_number, line in enumerate(text.splitlines(), start=1):
+        heading = MARKDOWN_HEADING_RE.match(line.strip())
+        if heading:
+            level = len(heading.group("marks"))
+            if mandatory_section_level is not None and level <= mandatory_section_level:
+                mandatory_section_level = None
+            title = heading.group("title")
+            if MANDATORY_READ_SECTION_RE.search(title) and not NEGATED_READ_RE.search(title):
+                mandatory_section_level = level
         readme_tokens = [match.group("path") for match in README_TOKEN_RE.finditer(line)]
         if readme_tokens:
             readme_lines.append(line_number)
-            mandatory = bool(MANDATORY_READ_RE.search(line)) and not NEGATED_READ_RE.search(line)
+            mandatory = (
+                bool(MANDATORY_READ_RE.search(line))
+                or mandatory_section_level is not None
+            ) and not NEGATED_READ_RE.search(line)
             if mandatory:
                 mandatory_lines.append(line_number)
             for token in readme_tokens:

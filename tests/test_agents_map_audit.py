@@ -319,6 +319,53 @@ class AgentsMapAuditTests(unittest.TestCase):
             self.assertEqual(scanned["missing_required_agents"], ["docs/AGENTS.md"])
             self.assertEqual(scanned["unvalidated_nested_agents"], ["skills/AGENTS.md"])
 
+    def test_deleted_placeholder_disposition_accepts_absence_only_for_delete(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            workspace = Path(tmp) / "workspace"
+            repo = workspace / "8Dionysus"
+            repo.mkdir(parents=True)
+            (repo / "AGENTS.md").write_text("# AGENTS.md\nroot\n", encoding="utf-8")
+            dispositions = Path(tmp) / "dispositions.json"
+            dispositions.write_text(
+                json.dumps(
+                    {
+                        "schema_version": "8dionysus_readme_agents_dispositions_v1",
+                        "records": [
+                            {
+                                "repository": "8Dionysus",
+                                "path": "obsolete/README.md",
+                                "review_state": "reviewed",
+                                "disposition": "delete-obsolete-placeholder",
+                                "owner_evidence": ["owner:obsolete/README.md"],
+                            },
+                            {
+                                "repository": "8Dionysus",
+                                "path": "expected/README.md",
+                                "review_state": "reviewed",
+                                "disposition": "keep",
+                                "owner_evidence": ["owner:expected/README.md"],
+                            },
+                        ],
+                    }
+                ),
+                encoding="utf-8",
+            )
+
+            payload = audit_agents_map.build_agents_map(
+                workspace,
+                known_repositories=("8Dionysus",),
+                include_extra_repos=False,
+                disposition_manifest_path=dispositions,
+            )
+
+            self.assertEqual(
+                payload["disposition_issues"],
+                [
+                    "disposition target is absent from current corpus: "
+                    "8Dionysus:expected/README.md"
+                ],
+            )
+
     def test_public_baseline_is_stable_and_json_serializable(self) -> None:
         payload = audit_agents_map.build_public_baseline_map()
         rendered = json.dumps(payload, ensure_ascii=False, sort_keys=True, separators=(",", ":"))

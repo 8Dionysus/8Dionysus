@@ -728,10 +728,16 @@ def build_agents_map(
         ("@workspace-root", record["path"])
         for record in shared_root.get("files", [])
     )
-    disposition_issues.extend(
-        f"disposition target is absent from current corpus: {repository}:{path}"
-        for repository, path in sorted(set(dispositions) - observed_disposition_keys)
-    )
+    for repository, path in sorted(set(dispositions) - observed_disposition_keys):
+        record = dispositions[(repository, path)]
+        expected_absence = (
+            record.get("review_state") == "reviewed"
+            and record.get("disposition") == "delete-obsolete-placeholder"
+        )
+        if not expected_absence:
+            disposition_issues.append(
+                f"disposition target is absent from current corpus: {repository}:{path}"
+            )
     totals = summarize(repositories)
     totals.update(summarize_workspace_corpus(repositories, shared_root))
 

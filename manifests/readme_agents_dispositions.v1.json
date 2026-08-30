@@ -923,6 +923,540 @@
         "8Dionysus@b8845dd16262fa86ca0c8cbcedd5f59e994948a9:tests/test_validate_nested_agents.py"
       ],
       "note": "Test-surface scope and validation delta remain; new regression coverage protects conditional routing."
+    },
+    {
+      "repository": "aoa-skills",
+      "path": ".agents/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-skills@0ef938dc8a36f354e9e6c1889aaa6630c293e0d1:.agents/AGENTS.md"
+      ],
+      "note": "Redundant ancestor rereads were removed; local owner sources and overview routes are task-conditioned."
+    },
+    {
+      "repository": "aoa-skills",
+      "path": ".github/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-skills@0ef938dc8a36f354e9e6c1889aaa6630c293e0d1:.github/AGENTS.md",
+        "aoa-skills@0ef938dc8a36f354e9e6c1889aaa6630c293e0d1:DESIGN.AGENTS.md"
+      ],
+      "note": "Redundant ancestor rereads were removed; local owner sources and overview routes are task-conditioned."
+    },
+    {
+      "repository": "aoa-skills",
+      "path": "AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-skills@0ef938dc8a36f354e9e6c1889aaa6630c293e0d1:AGENTS.md",
+        "aoa-skills@0ef938dc8a36f354e9e6c1889aaa6630c293e0d1:DESIGN.AGENTS.md",
+        "aoa-skills@0ef938dc8a36f354e9e6c1889aaa6630c293e0d1:docs/decisions/AOA-SK-D-0020-root-design-agent-surfaces.md"
+      ],
+      "note": "Root owner law remains; repository routes and overview README files are now task-conditioned under the accepted root/design/agent split."
+    },
+    {
+      "repository": "aoa-skills",
+      "path": "capabilities/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-skills@0ef938dc8a36f354e9e6c1889aaa6630c293e0d1:capabilities/AGENTS.md"
+      ],
+      "note": "Redundant ancestor rereads were removed; local owner sources and overview routes are task-conditioned."
+    },
+    {
+      "repository": "aoa-skills",
+      "path": "config/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-skills@0ef938dc8a36f354e9e6c1889aaa6630c293e0d1:config/AGENTS.md"
+      ],
+      "note": "Redundant ancestor rereads were removed; local owner sources and overview routes are task-conditioned."
+    },
+    {
+      "repository": "aoa-skills",
+      "path": "docs/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-skills@0ef938dc8a36f354e9e6c1889aaa6630c293e0d1:docs/AGENTS.md"
+      ],
+      "note": "Redundant ancestor rereads were removed; local owner sources and overview routes are task-conditioned."
+    },
+    {
+      "repository": "aoa-skills",
+      "path": "docs/decisions/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-skills@0ef938dc8a36f354e9e6c1889aaa6630c293e0d1:docs/decisions/AGENTS.md"
+      ],
+      "note": "Redundant ancestor rereads were removed; local owner sources and overview routes are task-conditioned."
+    },
+    {
+      "repository": "aoa-skills",
+      "path": "docs/reviews/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-skills@0ef938dc8a36f354e9e6c1889aaa6630c293e0d1:docs/reviews/AGENTS.md"
+      ],
+      "note": "Redundant ancestor rereads were removed; local owner sources and overview routes are task-conditioned."
+    },
+    {
+      "repository": "aoa-skills",
+      "path": "evals/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-skills@0ef938dc8a36f354e9e6c1889aaa6630c293e0d1:evals/AGENTS.md"
+      ],
+      "note": "Redundant ancestor rereads were removed; local owner sources and overview routes are task-conditioned."
+    },
+    {
+      "repository": "aoa-skills",
+      "path": "generated/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-skills@0ef938dc8a36f354e9e6c1889aaa6630c293e0d1:generated/AGENTS.md"
+      ],
+      "note": "Redundant ancestor rereads were removed; local owner sources and overview routes are task-conditioned."
+    },
+    {
+      "repository": "aoa-skills",
+      "path": "kag/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-skills@0ef938dc8a36f354e9e6c1889aaa6630c293e0d1:kag/AGENTS.md",
+        "aoa-skills@1379c1819c409c705edaabf11bb5fb26541ffce0:kag/indexes/index_family.manifest.json"
+      ],
+      "note": "Provider boundaries remain; broad topology and owner README reads are now on demand, with the portable family refreshed from source."
+    },
+    {
+      "repository": "aoa-skills",
+      "path": "mechanics/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-skills@0ef938dc8a36f354e9e6c1889aaa6630c293e0d1:mechanics/AGENTS.md"
+      ],
+      "note": "Redundant ancestor rereads were removed; local owner sources and overview routes are task-conditioned."
+    },
+    {
+      "repository": "aoa-skills",
+      "path": "mechanics/agon/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-skills@0ef938dc8a36f354e9e6c1889aaa6630c293e0d1:mechanics/agon/AGENTS.md"
+      ],
+      "note": "Redundant ancestor rereads were removed; local owner sources and overview routes are task-conditioned."
+    },
+    {
+      "repository": "aoa-skills",
+      "path": "mechanics/questbook/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-skills@0ef938dc8a36f354e9e6c1889aaa6630c293e0d1:mechanics/questbook/AGENTS.md"
+      ],
+      "note": "Redundant ancestor rereads were removed; local owner sources and overview routes are task-conditioned."
+    },
+    {
+      "repository": "aoa-skills",
+      "path": "mechanics/release-support/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-skills@0ef938dc8a36f354e9e6c1889aaa6630c293e0d1:mechanics/release-support/AGENTS.md"
+      ],
+      "note": "Redundant ancestor rereads were removed; local owner sources and overview routes are task-conditioned."
+    },
+    {
+      "repository": "aoa-skills",
+      "path": "quests/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-skills@0ef938dc8a36f354e9e6c1889aaa6630c293e0d1:quests/AGENTS.md"
+      ],
+      "note": "Redundant ancestor rereads were removed; local owner sources and overview routes are task-conditioned."
+    },
+    {
+      "repository": "aoa-skills",
+      "path": "schemas/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-skills@0ef938dc8a36f354e9e6c1889aaa6630c293e0d1:schemas/AGENTS.md"
+      ],
+      "note": "Redundant ancestor rereads were removed; local owner sources and overview routes are task-conditioned."
+    },
+    {
+      "repository": "aoa-skills",
+      "path": "scripts/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-skills@0ef938dc8a36f354e9e6c1889aaa6630c293e0d1:scripts/AGENTS.md",
+        "aoa-skills@0ef938dc8a36f354e9e6c1889aaa6630c293e0d1:scripts/validation/validate_agents_design.py"
+      ],
+      "note": "Script-owner delta remains; the design validator now rejects explicit rereads of inherited ancestor cards."
+    },
+    {
+      "repository": "aoa-skills",
+      "path": "skills/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-skills@0ef938dc8a36f354e9e6c1889aaa6630c293e0d1:skills/AGENTS.md"
+      ],
+      "note": "Redundant ancestor rereads were removed; local owner sources and overview routes are task-conditioned."
+    },
+    {
+      "repository": "aoa-skills",
+      "path": "skills/core/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-skills@0ef938dc8a36f354e9e6c1889aaa6630c293e0d1:skills/core/AGENTS.md"
+      ],
+      "note": "Redundant ancestor rereads were removed; local owner sources and overview routes are task-conditioned."
+    },
+    {
+      "repository": "aoa-skills",
+      "path": "skills/core/engineering/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-skills@0ef938dc8a36f354e9e6c1889aaa6630c293e0d1:skills/core/engineering/AGENTS.md"
+      ],
+      "note": "Redundant ancestor rereads were removed; local owner sources and overview routes are task-conditioned."
+    },
+    {
+      "repository": "aoa-skills",
+      "path": "skills/core/session-growth/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-skills@0ef938dc8a36f354e9e6c1889aaa6630c293e0d1:skills/core/session-growth/AGENTS.md"
+      ],
+      "note": "Redundant ancestor rereads were removed; local owner sources and overview routes are task-conditioned."
+    },
+    {
+      "repository": "aoa-skills",
+      "path": "skills/core/stewardship/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-skills@0ef938dc8a36f354e9e6c1889aaa6630c293e0d1:skills/core/stewardship/AGENTS.md"
+      ],
+      "note": "Redundant ancestor rereads were removed; local owner sources and overview routes are task-conditioned."
+    },
+    {
+      "repository": "aoa-skills",
+      "path": "templates/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-skills@0ef938dc8a36f354e9e6c1889aaa6630c293e0d1:templates/AGENTS.md"
+      ],
+      "note": "Redundant ancestor rereads were removed; local owner sources and overview routes are task-conditioned."
+    },
+    {
+      "repository": "aoa-skills",
+      "path": "tests/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-skills@0ef938dc8a36f354e9e6c1889aaa6630c293e0d1:tests/AGENTS.md",
+        "aoa-skills@0ef938dc8a36f354e9e6c1889aaa6630c293e0d1:tests/test_validation_lanes.py"
+      ],
+      "note": "Test-owner delta remains; focused coverage protects implicit ancestor inheritance and avoids a DESIGN.AGENTS.md false positive."
+    },
+    {
+      "repository": "aoa-skills",
+      "path": "README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-skills@aa8351a4de12b4a224c90799d1b29217ecfaaba2:README.md"
+      ],
+      "note": "Root human and public entrypoint; retained and no longer a universal agent prerequisite."
+    },
+    {
+      "repository": "aoa-skills",
+      "path": "capabilities/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-skills@aa8351a4de12b4a224c90799d1b29217ecfaaba2:capabilities/README.md"
+      ],
+      "note": "Human semantic-tree, graph, and source-split explanation; opened for topology work."
+    },
+    {
+      "repository": "aoa-skills",
+      "path": "config/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-skills@aa8351a4de12b4a224c90799d1b29217ecfaaba2:config/README.md"
+      ],
+      "note": "Small human catalog of machine policy inputs and their owners."
+    },
+    {
+      "repository": "aoa-skills",
+      "path": "docs/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-skills@aa8351a4de12b4a224c90799d1b29217ecfaaba2:docs/README.md"
+      ],
+      "note": "Human documentation map distinct from inherited documentation law."
+    },
+    {
+      "repository": "aoa-skills",
+      "path": "docs/decisions/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-skills@aa8351a4de12b4a224c90799d1b29217ecfaaba2:docs/decisions/README.md"
+      ],
+      "note": "Human durable-rationale entrypoint and lookup guide."
+    },
+    {
+      "repository": "aoa-skills",
+      "path": "docs/reviews/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-skills@aa8351a4de12b4a224c90799d1b29217ecfaaba2:docs/reviews/README.md"
+      ],
+      "note": "Human lifecycle-review index and admitted-current-state explanation."
+    },
+    {
+      "repository": "aoa-skills",
+      "path": "docs/validation/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-skills@aa8351a4de12b4a224c90799d1b29217ecfaaba2:docs/validation/README.md"
+      ],
+      "note": "Root-linked human validation topology map."
+    },
+    {
+      "repository": "aoa-skills",
+      "path": "evals/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-skills@aa8351a4de12b4a224c90799d1b29217ecfaaba2:evals/README.md"
+      ],
+      "note": "Human manual-first eval-port topology and admission boundary."
+    },
+    {
+      "repository": "aoa-skills",
+      "path": "evals/intake/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-skills@aa8351a4de12b4a224c90799d1b29217ecfaaba2:evals/intake/README.md"
+      ],
+      "note": "Intentional empty-state and placement contract for eval intake."
+    },
+    {
+      "repository": "aoa-skills",
+      "path": "evals/reports/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-skills@aa8351a4de12b4a224c90799d1b29217ecfaaba2:evals/reports/README.md"
+      ],
+      "note": "Intentional empty-state and authority ceiling for durable reports."
+    },
+    {
+      "repository": "aoa-skills",
+      "path": "evals/runners/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-skills@aa8351a4de12b4a224c90799d1b29217ecfaaba2:evals/runners/README.md"
+      ],
+      "note": "Intentional empty-state and admission rule for durable runners."
+    },
+    {
+      "repository": "aoa-skills",
+      "path": "evals/suites/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-skills@aa8351a4de12b4a224c90799d1b29217ecfaaba2:evals/suites/README.md"
+      ],
+      "note": "Intentional empty-state and admission rule for durable suites."
+    },
+    {
+      "repository": "aoa-skills",
+      "path": "generated/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-skills@aa8351a4de12b4a224c90799d1b29217ecfaaba2:generated/README.md"
+      ],
+      "note": "Human map from generated projections back to their sources and builders."
+    },
+    {
+      "repository": "aoa-skills",
+      "path": "kag/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-skills@aa8351a4de12b4a224c90799d1b29217ecfaaba2:kag/README.md",
+        "aoa-skills@1379c1819c409c705edaabf11bb5fb26541ffce0:kag/manifest.json"
+      ],
+      "note": "Human provider topology, record classes, and owner-return map."
+    },
+    {
+      "repository": "aoa-skills",
+      "path": "mechanics/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-skills@aa8351a4de12b4a224c90799d1b29217ecfaaba2:mechanics/README.md"
+      ],
+      "note": "Human map of the three surviving owner-local mechanics."
+    },
+    {
+      "repository": "aoa-skills",
+      "path": "mechanics/agon/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-skills@aa8351a4de12b4a224c90799d1b29217ecfaaba2:mechanics/agon/README.md"
+      ],
+      "note": "Human comparison of the two requested-only candidate families."
+    },
+    {
+      "repository": "aoa-skills",
+      "path": "mechanics/agon/parts/epistemic-candidate-boundary/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-skills@aa8351a4de12b4a224c90799d1b29217ecfaaba2:mechanics/agon/parts/epistemic-candidate-boundary/README.md"
+      ],
+      "note": "Human candidate-family purpose and forbidden-effect summary."
+    },
+    {
+      "repository": "aoa-skills",
+      "path": "mechanics/agon/parts/workflow-candidate-bridge/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-skills@aa8351a4de12b4a224c90799d1b29217ecfaaba2:mechanics/agon/parts/workflow-candidate-bridge/README.md"
+      ],
+      "note": "Human candidate-family purpose and callability boundary."
+    },
+    {
+      "repository": "aoa-skills",
+      "path": "mechanics/questbook/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-skills@aa8351a4de12b4a224c90799d1b29217ecfaaba2:mechanics/questbook/README.md"
+      ],
+      "note": "Human Questbook admission and source-to-projection contract."
+    },
+    {
+      "repository": "aoa-skills",
+      "path": "mechanics/release-support/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-skills@aa8351a4de12b4a224c90799d1b29217ecfaaba2:mechanics/release-support/README.md"
+      ],
+      "note": "Human source-to-portable handoff, profile, and installation boundary."
+    },
+    {
+      "repository": "aoa-skills",
+      "path": "quests/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-skills@aa8351a4de12b4a224c90799d1b29217ecfaaba2:quests/README.md"
+      ],
+      "note": "Human quest-source topology and admission boundary."
+    },
+    {
+      "repository": "aoa-skills",
+      "path": "schemas/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-skills@aa8351a4de12b4a224c90799d1b29217ecfaaba2:schemas/README.md"
+      ],
+      "note": "Human schema catalog; individual schemas remain machine authority for shape."
+    },
+    {
+      "repository": "aoa-skills",
+      "path": "skills/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-skills@aa8351a4de12b4a224c90799d1b29217ecfaaba2:skills/README.md"
+      ],
+      "note": "Human callable-bundle catalog, promotion threshold, and projection topology."
+    },
+    {
+      "repository": "aoa-skills",
+      "path": "docs/decisions/indexes/README.md",
+      "review_state": "reviewed",
+      "disposition": "generate-from-owner-source",
+      "owner_evidence": [
+        "aoa-skills@1379c1819c409c705edaabf11bb5fb26541ffce0:docs/decisions/indexes/README.md",
+        "aoa-skills@1379c1819c409c705edaabf11bb5fb26541ffce0:scripts/decisions/generate_decision_indexes.py"
+      ],
+      "note": "Tracked generated lookup view; decision metadata and builder remain the stronger source."
+    },
+    {
+      "repository": "aoa-skills",
+      "path": "mechanics/agon/parts/epistemic-candidate-boundary/config/README.md",
+      "review_state": "reviewed",
+      "disposition": "delete-obsolete-placeholder",
+      "owner_evidence": [
+        "aoa-skills@aa8351a4de12b4a224c90799d1b29217ecfaaba2:mechanics/agon/parts/epistemic-candidate-boundary/config/README.md",
+        "aoa-skills@0ef938dc8a36f354e9e6c1889aaa6630c293e0d1:mechanics/agon/AGENTS.md",
+        "aoa-skills@0ef938dc8a36f354e9e6c1889aaa6630c293e0d1:mechanics/agon/parts/epistemic-candidate-boundary/config/agon_epistemic_capability_candidates.seed.json"
+      ],
+      "note": "Unlinked one-file label duplicated the seed/builder source law already owned by the Agon card and machine source."
+    },
+    {
+      "repository": "aoa-skills",
+      "path": "mechanics/agon/parts/workflow-candidate-bridge/config/README.md",
+      "review_state": "reviewed",
+      "disposition": "delete-obsolete-placeholder",
+      "owner_evidence": [
+        "aoa-skills@aa8351a4de12b4a224c90799d1b29217ecfaaba2:mechanics/agon/parts/workflow-candidate-bridge/config/README.md",
+        "aoa-skills@0ef938dc8a36f354e9e6c1889aaa6630c293e0d1:mechanics/agon/AGENTS.md",
+        "aoa-skills@0ef938dc8a36f354e9e6c1889aaa6630c293e0d1:mechanics/agon/parts/workflow-candidate-bridge/config/agon_capability_binding_candidates.seed.json"
+      ],
+      "note": "Unlinked one-file label duplicated the seed/builder source law already owned by the Agon card and machine source."
+    },
+    {
+      "repository": "aoa-skills",
+      "path": "mechanics/release-support/manifests/README.md",
+      "review_state": "reviewed",
+      "disposition": "delete-obsolete-placeholder",
+      "owner_evidence": [
+        "aoa-skills@aa8351a4de12b4a224c90799d1b29217ecfaaba2:mechanics/release-support/manifests/README.md",
+        "aoa-skills@0ef938dc8a36f354e9e6c1889aaa6630c293e0d1:mechanics/release-support/AGENTS.md",
+        "aoa-skills@0ef938dc8a36f354e9e6c1889aaa6630c293e0d1:mechanics/release-support/manifests/release_manifest.bundle.json"
+      ],
+      "note": "Unlinked one-file label repeated owner, verifier, registry, and admission data carried by the machine manifest and parent card."
     }
   ]
 }

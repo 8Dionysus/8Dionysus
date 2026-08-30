@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://8dionysus.dev/schemas/readme-agents-dispositions.schema.json",
+  "title": "README and AGENTS owner-review overlay",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "owner_repo",
+    "posture",
+    "records"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "8dionysus_readme_agents_dispositions_v1"
+    },
+    "owner_repo": {
+      "const": "8Dionysus"
+    },
+    "posture": {
+      "type": "string",
+      "minLength": 1
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "repository",
+          "path",
+          "review_state",
+          "disposition",
+          "owner_evidence"
+        ],
+        "properties": {
+          "repository": {
+            "type": "string",
+            "minLength": 1
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "review_state": {
+            "enum": ["reviewed", "blocked"]
+          },
+          "disposition": {
+            "type": ["string", "null"],
+            "enum": [
+              "keep",
+              "slim-rewrite",
+              "merge-into-parent-agents",
+              "merge-into-parent-readme",
+              "move-to-owner-source",
+              "generate-from-owner-source",
+              "delete-obsolete-placeholder",
+              null
+            ]
+          },
+          "owner_evidence": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "note": {
+            "type": ["string", "null"]
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "review_state": {
+                  "const": "reviewed"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "disposition": {
+                  "type": "string"
+                },
+                "owner_evidence": {
+                  "minItems": 1
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "review_state": {
+                  "const": "blocked"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "disposition": {
+                  "const": null
+                }
+              }
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

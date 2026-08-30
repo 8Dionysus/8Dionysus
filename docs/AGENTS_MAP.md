@@ -1,6 +1,6 @@
 # AGENTS map
 
-This map is the audit surface for `AGENTS.md` coverage across the AoA / ToS workspace.
+This map is the audit and owner-review surface for the tracked `README.md` / `AGENTS.md` corpus across the AoA / ToS workspace.
 It is not repository doctrine and it does not replace the nearest `AGENTS.md` rule.
 
 ## How to regenerate
@@ -10,6 +10,17 @@ For a live sibling-workspace scan:
 ```bash
 python scripts/audit_agents_map.py \
   --workspace-root <workspace-root> \
+  --write generated/agents_map.min.json \
+  --markdown docs/AGENTS_MAP.md
+```
+
+For a merge-bound baseline, scan an isolated matrix of clean owner worktrees and disable workspace-manifest redirection:
+
+```bash
+python scripts/audit_agents_map.py \
+  --workspace-root <clean-worktree-matrix> \
+  --repo-root <clean-worktree-matrix>/8Dionysus \
+  --no-extra-repos --ignore-workspace-manifest \
   --write generated/agents_map.min.json \
   --markdown docs/AGENTS_MAP.md
 ```
@@ -35,53 +46,103 @@ For reading guidance, see [AGENTS_FRONTIER_RECON](AGENTS_FRONTIER_RECON.md).
 
 ## Current totals
 
-- `agents_md_files`: 2839
-- `high_risk_dirs_without_agents`: 22
-- `known_repositories`: 16
+- `agents_files_declaring_mandatory_readme`: 192
+- `agents_files_referencing_readme`: 483
+- `agents_md_files`: 797
+- `agents_only_directories`: 257
+- `archive_document_files`: 293
+- `authored_unique_chains_over_budget`: 7
+- `blocked_files`: 0
+- `chain_max_bytes`: 40883
+- `chain_p50_bytes`: 18240
+- `chain_p95_bytes`: 30341
+- `chain_scopes`: 2146
+- `chain_scopes_over_budget`: 29
+- `declared_mandatory_readme_bytes`: 519926
+- `excluded_unique_chains_over_budget`: 0
+- `fixture_document_files`: 38
+- `generated_document_files`: 27
+- `high_risk_dirs_without_agents`: 29
+- `known_repositories`: 20
 - `known_repositories_missing`: 0
-- `long_root_agents`: 5
+- `long_root_agents`: 4
+- `mechanics_document_files`: 1677
 - `missing_required_agents`: 0
-- `nested_agents_files`: 2817
-- `optional_repositories_missing`: 0
-- `repos_with_issues`: 15
-- `repositories_listed`: 22
-- `repositories_scanned`: 22
-- `root_agents_present`: 22
-- `unvalidated_nested_agents`: 2572
-- `validator_required_agents`: 245
-- `validators_present`: 13
+- `nested_agents_files`: 778
+- `optional_repositories_missing`: 1
+- `paired_directories`: 625
+- `readme_only_directories`: 1264
+- `repos_with_issues`: 13
+- `repositories_listed`: 20
+- `repositories_scanned`: 19
+- `review_items_total`: 2773
+- `review_items_unreviewed`: 2773
+- `reviewed_files`: 0
+- `root_agents_present`: 19
+- `root_document_files`: 38
+- `shared_root_blocked_files`: 0
+- `shared_root_files`: 2
+- `shared_root_files_in_owner_parity`: 0
+- `shared_root_reviewed_files`: 0
+- `shared_root_unreviewed_files`: 2
+- `tracked_agents_bytes`: 1854656
+- `tracked_agents_files`: 882
+- `tracked_document_bytes`: 5604716
+- `tracked_document_files`: 2771
+- `tracked_readme_bytes`: 3750060
+- `tracked_readme_files`: 1889
+- `unique_agents_chains`: 882
+- `unique_chain_max_bytes`: 40883
+- `unique_chain_p50_bytes`: 16908
+- `unique_chain_p95_bytes`: 28780
+- `unique_chains_over_budget`: 7
+- `unreviewed_files`: 2771
+- `untracked_document_candidates`: 0
+- `unvalidated_nested_agents`: 580
+- `validator_required_agents`: 202
+- `validators_present`: 11
+- `vendor_document_files`: 0
 
 ## Repository coverage
 
-| Repository | State | AGENTS.md | Nested | Validator | Issues |
-|---|---:|---:|---:|---:|---|
-| `8Dionysus` | `scanned` | 21 | 20 | True |  |
-| `Agents-of-Abyss` | `scanned` | 65 | 64 | False | nested AGENTS.md files exist without scripts/validate_nested_agents.py; root AGENTS.md is long (246 lines; threshold 240) |
-| `Tree-of-Sophia` | `scanned` | 54 | 53 | True |  |
-| `abyss-stack` | `scanned` | 47 | 46 | True | one or more AGENTS.md files do not start with '# AGENTS.md'; root AGENTS.md is long (310 lines; threshold 240) |
-| `ATM10-Agent` | `scanned` | 15 | 14 | True |  |
-| `Dionysus` | `scanned` | 1 | 0 | False | one or more AGENTS.md files do not start with '# AGENTS.md' |
-| `aoa-sdk` | `scanned` | 50 | 49 | True |  |
-| `aoa-techniques` | `scanned` | 94 | 93 | True |  |
-| `aoa-skills` | `scanned` | 25 | 24 | False | nested AGENTS.md files exist without scripts/validate_nested_agents.py |
-| `aoa-evals` | `scanned` | 89 | 88 | True |  |
-| `aoa-stats` | `scanned` | 45 | 44 | True | root AGENTS.md is long (276 lines; threshold 240) |
-| `aoa-routing` | `scanned` | 51 | 50 | True | one or more AGENTS.md files do not start with '# AGENTS.md' |
-| `aoa-memo` | `scanned` | 118 | 117 | False | nested AGENTS.md files exist without scripts/validate_nested_agents.py |
-| `aoa-agents` | `scanned` | 64 | 63 | True | one or more AGENTS.md files do not start with '# AGENTS.md' |
-| `aoa-playbooks` | `scanned` | 38 | 37 | True | one or more AGENTS.md files do not start with '# AGENTS.md' |
-| `aoa-kag` | `scanned` | 961 | 960 | True | one or more AGENTS.md files do not start with '# AGENTS.md'; root AGENTS.md is long (300 lines; threshold 240) |
-| `.agents` | `scanned` | 1 | 0 | False |  |
-| `.aoa` | `scanned` | 740 | 739 | False | nested AGENTS.md files exist without scripts/validate_nested_agents.py; one or more AGENTS.md files do not start with '# AGENTS.md' |
-| `.codex` | `scanned` | 218 | 217 | False | nested AGENTS.md files exist without scripts/validate_nested_agents.py; one or more AGENTS.md files do not start with '# AGENTS.md' |
-| `abyss-machine` | `scanned` | 59 | 58 | False | nested AGENTS.md files exist without scripts/validate_nested_agents.py; one or more AGENTS.md files do not start with '# AGENTS.md' |
-| `abyss-stack-source` | `scanned` | 52 | 51 | True | one or more AGENTS.md files do not start with '# AGENTS.md'; root AGENTS.md is long (324 lines; threshold 240) |
-| `connectors` | `scanned` | 31 | 30 | False | nested AGENTS.md files exist without scripts/validate_nested_agents.py; one or more AGENTS.md files do not start with '# AGENTS.md' |
+| Repository | State | AGENTS corpus/active | README | Pairs | Unique chain p95/max | Over 32 KiB authored/excluded | Reviewed/unreviewed | Issues |
+|---|---:|---:|---:|---:|---:|---:|---:|---|
+| `8Dionysus` | `scanned` | 21/21 | 13 | 6 | 15745/22005 | 0/0 | 0/34 |  |
+| `Agents-of-Abyss` | `scanned` | 65/57 | 221 | 56 | 34037/40883 | 5/0 | 0/286 | nested AGENTS.md files exist without scripts/validate_nested_agents.py; root AGENTS.md is long (246 lines; threshold 240) |
+| `Tree-of-Sophia` | `scanned` | 55/55 | 213 | 32 | 20852/21741 | 0/0 | 0/268 |  |
+| `abyss-stack` | `scanned` | 59/55 | 168 | 56 | 30620/34907 | 2/0 | 0/227 | one or more AGENTS.md files do not start with '# AGENTS.md'; root AGENTS.md is long (324 lines; threshold 240) |
+| `abyss-machine` | `scanned` | 60/60 | 54 | 27 | 17378/20962 | 0/0 | 0/114 | nested AGENTS.md files exist without scripts/validate_nested_agents.py; one or more AGENTS.md files do not start with '# AGENTS.md' |
+| `ATM10-Agent` | `scanned` | 15/15 | 9 | 3 | 9541/9541 | 0/0 | 0/24 |  |
+| `Dionysus` | `scanned` | 4/3 | 19 | 4 | 4537/4537 | 0/0 | 0/23 | nested AGENTS.md files exist without scripts/validate_nested_agents.py; one or more AGENTS.md files do not start with '# AGENTS.md' |
+| `aoa-sdk` | `scanned` | 50/46 | 137 | 42 | 19485/20642 | 0/0 | 0/187 |  |
+| `aoa-dashboard` | `scanned` | 2/2 | 2 | 1 | 1427/1427 | 0/0 | 0/4 | nested AGENTS.md files exist without scripts/validate_nested_agents.py; one or more AGENTS.md files do not start with '# AGENTS.md' |
+| `aoa-techniques` | `scanned` | 94/77 | 169 | 64 | 28100/29280 | 0/0 | 0/263 |  |
+| `aoa-skills` | `scanned` | 25/25 | 27 | 16 | 6445/7116 | 0/0 | 0/52 | nested AGENTS.md files exist without scripts/validate_nested_agents.py |
+| `aoa-evals` | `scanned` | 90/71 | 191 | 81 | 25723/27870 | 0/0 | 0/281 |  |
+| `aoa-stats` | `scanned` | 45/44 | 85 | 36 | 20378/21007 | 0/0 | 0/130 | root AGENTS.md is long (276 lines; threshold 240) |
+| `aoa-routing` | `missing` | 0/0 | 0 | 0 | / | / | 0/0 |  |
+| `aoa-memo` | `scanned` | 118/103 | 164 | 68 | 23014/24287 | 0/0 | 0/282 | nested AGENTS.md files exist without scripts/validate_nested_agents.py |
+| `aoa-session-memory` | `scanned` | 15/15 | 66 | 8 | 9525/9525 | 0/0 | 0/81 | nested AGENTS.md files exist without scripts/validate_nested_agents.py; one or more AGENTS.md files do not start with '# AGENTS.md' |
+| `aoa-agents` | `scanned` | 66/54 | 209 | 54 | 18565/20281 | 0/0 | 0/275 | one or more AGENTS.md files do not start with '# AGENTS.md' |
+| `aoa-models` | `scanned` | 2/2 | 3 | 2 | 4443/4443 | 0/0 | 0/5 | nested AGENTS.md files exist without scripts/validate_nested_agents.py; one or more AGENTS.md files do not start with '# AGENTS.md' |
+| `aoa-playbooks` | `scanned` | 38/38 | 67 | 30 | 13310/14665 | 0/0 | 0/105 | one or more AGENTS.md files do not start with '# AGENTS.md' |
+| `aoa-kag` | `scanned` | 58/54 | 72 | 39 | 19721/19740 | 0/0 | 0/130 | one or more AGENTS.md files do not start with '# AGENTS.md'; root AGENTS.md is long (305 lines; threshold 240) |
+
+## Shared-root projection posture
+
+| File | Declared projection | Owner parity | Review |
+|---|---:|---:|---|
+| `AGENTS.md` | True | False | `unreviewed` |
+| `README.md` | False | False | `unreviewed` |
 
 ## How to read the signals
 
 - `missing` means the known public repository was not found under the selected workspace root.
 - `checkout_requirement: optional` means an absent retained predecessor is valid and does not create an audit issue.
+- Corpus counts use Git-tracked `README.md` and `AGENTS.md`; untracked documents are candidates, not canonical corpus members.
+- `chain_scopes` measures unique document directories; `unique_agents_chains` collapses directories that inherit the same AGENTS path signature.
+- Chain percentiles use the nearest-rank method; the repository table reports unique chain signatures.
+- Dispositions remain `unreviewed` until an owner-evidenced record is added to the integration manifest.
 - `unvalidated_nested_agents` means a nested `AGENTS.md` exists but is not declared by `scripts/validate_nested_agents.py`.
 - `high_risk_dirs_without_agents` marks common contract, generated, test, runtime, or source directories without a direct local instruction file.
 - `long_root_agents` marks roots that may be ready for slimming after local instructions are pushed down-tree.

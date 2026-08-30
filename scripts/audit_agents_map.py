@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Build an AGENTS.md coverage map for the AoA / ToS workspace.
+"""Build the README/AGENTS coverage and review map for the AoA / ToS workspace.
 
 The script is intentionally local-only: it does not call GitHub, MCP servers,
 network APIs, or workspace launchers. It scans checked-out repositories and
-turns the current AGENTS.md surface into a compact, reviewable map.
+turns the current tracked README/AGENTS corpus into a compact, reviewable map.
 """
 from __future__ import annotations
 
@@ -13,6 +13,14 @@ import json
 import os
 from pathlib import Path
 from typing import Any, Mapping, Sequence
+
+from readme_agents_corpus import (
+    AGENTS_CHAIN_BUDGET_BYTES,
+    load_dispositions,
+    scan_repository_corpus,
+    scan_shared_root,
+    summarize_workspace_corpus,
+)
 
 try:
     import tomllib as _tomllib
@@ -28,9 +36,10 @@ else:
     TOML_DECODE_ERRORS = (ValueError, SyntaxError)
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-SCHEMA_VERSION = "8dionysus_agents_map_v1"
+SCHEMA_VERSION = "8dionysus_agents_map_v2"
 SCHEMA_REF = "schemas/agents-map.schema.json"
 OWNER_REPO = "8Dionysus"
+DEFAULT_DISPOSITIONS_PATH = REPO_ROOT / "manifests" / "readme_agents_dispositions.v1.json"
 ROOT_AGENTS_LONG_LINE_THRESHOLD = 240
 REQUIRED_AGENTS_VARIABLES = frozenset({"REQUIRED_AGENTS", "REQUIRED_AGENTS_DOCS"})
 
@@ -56,6 +65,11 @@ KNOWN_REPOSITORIES: tuple[dict[str, str], ...] = (
         "kind": "runtime-infrastructure",
     },
     {
+        "name": "abyss-machine",
+        "role": "portable host-machine facts, intake, bootstrap, service surfaces, and validation",
+        "kind": "host-machine-organ",
+    },
+    {
         "name": "ATM10-Agent",
         "role": "local-first companion behavior, perception, memory, voice, and safe automation surfaces",
         "kind": "operator-companion",
@@ -69,6 +83,11 @@ KNOWN_REPOSITORIES: tuple[dict[str, str], ...] = (
         "name": "aoa-sdk",
         "role": "typed workspace integration, canonical routing and dispatch, compatibility checks, passive skill inspection, and reviewed evidence handoff",
         "kind": "control-plane-sdk",
+    },
+    {
+        "name": "aoa-dashboard",
+        "role": "owner-bounded Goal Space and operator projections with explicit provenance, freshness, missingness, and non-executing action intents",
+        "kind": "goal-space-projection",
     },
     {
         "name": "aoa-techniques",
@@ -101,9 +120,19 @@ KNOWN_REPOSITORIES: tuple[dict[str, str], ...] = (
         "kind": "memory-layer",
     },
     {
+        "name": "aoa-session-memory",
+        "role": "evidence-linked preservation, inspection, and recovery of long agent-session history",
+        "kind": "session-memory-layer",
+    },
+    {
         "name": "aoa-agents",
         "role": "role contracts, profiles, handoff posture, memory posture, and evaluation posture",
         "kind": "agent-role-layer",
+    },
+    {
+        "name": "aoa-models",
+        "role": "exact model identities and realizations, configuration-scoped claims, lifecycle, and fit projections",
+        "kind": "model-canon",
     },
     {
         "name": "aoa-playbooks",
@@ -171,8 +200,10 @@ REPO_SKIP_DIR_NAMES: dict[str, frozenset[str]] = {
 }
 
 PUBLIC_BASELINE_COUNTS: dict[str, int] = {
-    "known_public_repositories": 16,
-    "root_agents_observed_lower_bound": 16,
+    "known_public_repositories": 20,
+    "required_repository_checkouts": 19,
+    "optional_repository_checkouts": 1,
+    "root_agents_observed_lower_bound": 19,
     "validator_declared_nested_agents_lower_bound": 59,
     "additional_nested_agents_observed_lower_bound": 11,
     "agents_md_observed_lower_bound": 86,
@@ -302,11 +333,20 @@ def scan_repo(
     name: str,
     *,
     path_hint_override: str | None = None,
+    dispositions: Mapping[tuple[str, str], Mapping[str, Any]] | None = None,
 ) -> dict[str, Any]:
     role_record = KNOWN_REPO_BY_NAME.get(
         name, {"name": name, "role": "extra scanned repository", "kind": "extra"}
     )
-    agents_paths = iter_agents_files(repo_root, name)
+    corpus = scan_repository_corpus(repo_root, name, dispositions or {})
+    tracked_agents_records = [
+        record
+        for record in corpus["agents_files"]
+        if record["tracked"]
+        and record["exists_in_worktree"]
+        and not record["scope_flags"]["archive"]
+    ]
+    agents_paths = [repo_root / record["path"] for record in tracked_agents_records]
     agents_by_rel = {relpath(path, repo_root): path for path in agents_paths}
     root_agents = agents_by_rel.get("AGENTS.md")
     nested_agents = [rel for rel in sorted(agents_by_rel) if rel != "AGENTS.md"]
@@ -317,7 +357,7 @@ def scan_repo(
     unvalidated_nested = [relative for relative in nested_agents if relative not in required_set]
     present_risk_dirs, risk_dirs_without_agents = high_risk_dirs(repo_root)
 
-    records = [agents_file_record(path, repo_root) for path in agents_paths]
+    records = corpus["agents_files"]
     issues: list[str] = []
     if not root_agents:
         issues.append("missing root AGENTS.md")
@@ -325,7 +365,11 @@ def scan_repo(
         issues.append("nested AGENTS.md files exist without scripts/validate_nested_agents.py")
     if missing_required:
         issues.append("validator-required nested AGENTS.md files are missing")
-    if any(not record["heading_ok"] for record in records):
+    if any(
+        not record["heading_ok"]
+        for record in records
+        if record["tracked"] and record["exists_in_worktree"]
+    ):
         issues.append("one or more AGENTS.md files do not start with '# AGENTS.md'")
 
     root_lines = line_count(read_text(root_agents)) if root_agents else 0
@@ -339,7 +383,11 @@ def scan_repo(
         "checkout_requirement": checkout_requirement(name),
         "checkout_state": "scanned",
         "path_hint": path_hint_override or path_hint(repo_root, workspace_root),
-        "agents_md_count": len(agents_paths),
+        "corpus_source": corpus["corpus_source"],
+        "git_snapshot": corpus["git_snapshot"],
+        "readme_agents_summary": corpus["readme_agents_summary"],
+        "agents_md_count": len(tracked_agents_records),
+        "readme_md_count": corpus["readme_agents_summary"]["tracked_readme_files"],
         "root_agents_present": bool(root_agents),
         "root_agents_line_count": root_lines,
         "long_root_agents": root_lines > ROOT_AGENTS_LONG_LINE_THRESHOLD,
@@ -352,6 +400,7 @@ def scan_repo(
         "high_risk_dirs_present": present_risk_dirs,
         "high_risk_dirs_without_agents": risk_dirs_without_agents,
         "agents_files": records,
+        "readme_files": corpus["readme_files"],
         "issues": sorted(set(issues)),
     }
 
@@ -366,7 +415,37 @@ def missing_repo_record(name: str) -> dict[str, Any]:
         "checkout_requirement": requirement,
         "checkout_state": "missing",
         "path_hint": name,
+        "corpus_source": "unavailable",
+        "git_snapshot": {
+            "git_available": False,
+            "remote_currentness": "unavailable",
+        },
+        "readme_agents_summary": {
+            "tracked_document_files": 0,
+            "tracked_agents_files": 0,
+            "tracked_readme_files": 0,
+            "tracked_document_bytes": 0,
+            "tracked_agents_bytes": 0,
+            "tracked_readme_bytes": 0,
+            "untracked_document_candidates": 0,
+            "paired_directories": 0,
+            "readme_only_directories": 0,
+            "agents_only_directories": 0,
+            "chain_scopes": 0,
+            "chain_p50_bytes": 0,
+            "chain_p95_bytes": 0,
+            "chain_max_bytes": 0,
+            "chain_scopes_over_budget": 0,
+            "agents_files_referencing_readme": 0,
+            "agents_files_declaring_mandatory_readme": 0,
+            "declared_mandatory_readme_bytes": 0,
+            "reviewed_files": 0,
+            "blocked_files": 0,
+            "unreviewed_files": 0,
+            "disposition_counts": {},
+        },
         "agents_md_count": 0,
+        "readme_md_count": 0,
         "root_agents_present": False,
         "root_agents_line_count": 0,
         "long_root_agents": False,
@@ -379,6 +458,7 @@ def missing_repo_record(name: str) -> dict[str, Any]:
         "high_risk_dirs_present": [],
         "high_risk_dirs_without_agents": [],
         "agents_files": [],
+        "readme_files": [],
         "issues": (
             []
             if requirement == "optional"
@@ -587,12 +667,17 @@ def build_agents_map(
     known_repositories: Sequence[str] = KNOWN_REPO_NAMES,
     include_extra_repos: bool = True,
     owner_repo_root: Path | None = None,
+    disposition_manifest_path: Path | None = DEFAULT_DISPOSITIONS_PATH,
+    use_workspace_manifest: bool = True,
 ) -> dict[str, Any]:
     workspace_root = workspace_root.resolve()
     owner_repo_root = owner_repo_root.resolve() if owner_repo_root else None
     known_set = set(known_repositories)
     repositories: list[dict[str, Any]] = []
-    manifest_repo_paths = workspace_manifest_repo_paths(workspace_root)
+    manifest_repo_paths = (
+        workspace_manifest_repo_paths(workspace_root) if use_workspace_manifest else {}
+    )
+    dispositions, disposition_issues = load_dispositions(disposition_manifest_path)
 
     for name in known_repositories:
         owner_override = name == OWNER_REPO and owner_repo_root is not None
@@ -610,12 +695,45 @@ def build_agents_map(
                     workspace_root,
                     name,
                     path_hint_override=name if owner_override else None,
+                    dispositions=dispositions,
                 )
             )
 
     if include_extra_repos:
         for name, path in discover_extra_repos(workspace_root, known_set):
-            repositories.append(scan_repo(path.resolve(), workspace_root, name))
+            repositories.append(
+                scan_repo(
+                    path.resolve(),
+                    workspace_root,
+                    name,
+                    dispositions=dispositions,
+                )
+            )
+
+    resolved_owner_root = owner_repo_root or repo_path_for_name(
+        workspace_root, OWNER_REPO, manifest_repo_paths
+    )
+    shared_root = (
+        scan_shared_root(workspace_root, resolved_owner_root, dispositions)
+        if resolved_owner_root is not None
+        else {"files": []}
+    )
+    observed_disposition_keys = {
+        (repo["name"], record["path"])
+        for repo in repositories
+        if repo.get("checkout_state") == "scanned"
+        for record in [*repo.get("agents_files", []), *repo.get("readme_files", [])]
+    }
+    observed_disposition_keys.update(
+        ("@workspace-root", record["path"])
+        for record in shared_root.get("files", [])
+    )
+    disposition_issues.extend(
+        f"disposition target is absent from current corpus: {repository}:{path}"
+        for repository, path in sorted(set(dispositions) - observed_disposition_keys)
+    )
+    totals = summarize(repositories)
+    totals.update(summarize_workspace_corpus(repositories, shared_root))
 
     return {
         "schema_version": SCHEMA_VERSION,
@@ -625,9 +743,25 @@ def build_agents_map(
         "generated_by": "scripts/audit_agents_map.py",
         "audit_mode": "live-workspace",
         "workspace_root_hint": "workspace-relative; no absolute paths are stored",
+        "corpus_contract": {
+            "canonical_scope": "git-tracked README.md and AGENTS.md in known owner repositories",
+            "untracked_posture": "reported separately as candidates",
+            "chain_budget_bytes": AGENTS_CHAIN_BUDGET_BYTES,
+            "chain_percentile_method": "nearest-rank over unique document-directory scopes",
+            "remote_currentness": "not claimed; refs are local snapshots until owner refresh",
+            "disposition_authority": "owner evidence; this integration ledger does not decide sibling meaning",
+            "workspace_manifest_used": use_workspace_manifest,
+        },
+        "disposition_manifest": (
+            "manifests/readme_agents_dispositions.v1.json"
+            if disposition_manifest_path is not None
+            else None
+        ),
+        "disposition_issues": disposition_issues,
         "known_repositories": list(known_repositories),
         "high_risk_directory_kinds": list(HIGH_RISK_DIRECTORIES),
-        "totals": summarize(repositories),
+        "totals": totals,
+        "shared_root": shared_root,
         "repositories": repositories,
     }
 
@@ -665,7 +799,7 @@ def render_markdown(payload: Mapping[str, Any]) -> str:
     lines: list[str] = [
         "# AGENTS map",
         "",
-        "This map is the audit surface for `AGENTS.md` coverage across the AoA / ToS workspace.",
+        "This map is the audit and owner-review surface for the tracked `README.md` / `AGENTS.md` corpus across the AoA / ToS workspace.",
         "It is not repository doctrine and it does not replace the nearest `AGENTS.md` rule.",
         "",
         "## How to regenerate",
@@ -675,6 +809,17 @@ def render_markdown(payload: Mapping[str, Any]) -> str:
         "```bash",
         "python scripts/audit_agents_map.py \\",
         "  --workspace-root <workspace-root> \\",
+        "  --write generated/agents_map.min.json \\",
+        "  --markdown docs/AGENTS_MAP.md",
+        "```",
+        "",
+        "For a merge-bound baseline, scan an isolated matrix of clean owner worktrees and disable workspace-manifest redirection:",
+        "",
+        "```bash",
+        "python scripts/audit_agents_map.py \\",
+        "  --workspace-root <clean-worktree-matrix> \\",
+        "  --repo-root <clean-worktree-matrix>/8Dionysus \\",
+        "  --no-extra-repos --ignore-workspace-manifest \\",
         "  --write generated/agents_map.min.json \\",
         "  --markdown docs/AGENTS_MAP.md",
         "```",
@@ -704,24 +849,60 @@ def render_markdown(payload: Mapping[str, Any]) -> str:
     for key in sorted(totals):
         lines.append(f"- `{key}`: {totals[key]}")
     lines.extend(["", "## Repository coverage", ""])
-    lines.append("| Repository | State | AGENTS.md | Nested | Validator | Issues |")
-    lines.append("|---|---:|---:|---:|---:|---|")
+    lines.append(
+        "| Repository | State | AGENTS corpus/active | README | Pairs | Unique chain p95/max | Over 32 KiB authored/excluded | Reviewed/unreviewed | Issues |"
+    )
+    lines.append("|---|---:|---:|---:|---:|---:|---:|---:|---|")
     for repo in repositories:
         state = repo.get("checkout_state", "unknown")
         agents_count = repo.get("agents_md_count", "")
-        nested_count = repo.get("nested_agents_count", "")
-        validator = repo.get("validator_present", "")
+        readme_count = repo.get("readme_md_count", "")
+        summary = repo.get("readme_agents_summary", {})
+        agents_corpus_count = summary.get("tracked_agents_files", agents_count)
+        pairs = summary.get("paired_directories", "")
+        p95 = summary.get("unique_chain_p95_bytes", "")
+        maximum = summary.get("unique_chain_max_bytes", "")
+        over_budget_authored = summary.get("authored_unique_chains_over_budget", "")
+        over_budget_excluded = summary.get("excluded_unique_chains_over_budget", "")
+        reviewed = summary.get("reviewed_files", "")
+        unreviewed = summary.get("unreviewed_files", "")
         issues = repo.get("issues", [])
         if state == "public-baseline":
             agents_count = ""
-            nested_count = ""
-            validator = ""
+            agents_corpus_count = ""
+            readme_count = ""
+            pairs = ""
+            p95 = ""
+            maximum = ""
+            over_budget_authored = ""
+            over_budget_excluded = ""
+            reviewed = ""
+            unreviewed = ""
             issue_text = "baseline only"
         else:
             issue_text = "; ".join(issues) if issues else ""
         lines.append(
-            f"| `{repo['name']}` | `{state}` | {agents_count} | {nested_count} | {validator} | {issue_text} |"
+            f"| `{repo['name']}` | `{state}` | {agents_corpus_count}/{agents_count} | {readme_count} | {pairs} | "
+            f"{p95}/{maximum} | {over_budget_authored}/{over_budget_excluded} | "
+            f"{reviewed}/{unreviewed} | {issue_text} |"
         )
+    shared_root = payload.get("shared_root", {})
+    if shared_root.get("files"):
+        lines.extend(
+            [
+                "",
+                "## Shared-root projection posture",
+                "",
+                "| File | Declared projection | Owner parity | Review |",
+                "|---|---:|---:|---|",
+            ]
+        )
+        for record in shared_root["files"]:
+            review = record.get("review", {}).get("review_state", "unreviewed")
+            lines.append(
+                f"| `{record['path']}` | {record['declared_projection_surface']} | "
+                f"{record['owner_parity']} | `{review}` |"
+            )
     lines.extend(
         [
             "",
@@ -729,6 +910,10 @@ def render_markdown(payload: Mapping[str, Any]) -> str:
             "",
             "- `missing` means the known public repository was not found under the selected workspace root.",
             "- `checkout_requirement: optional` means an absent retained predecessor is valid and does not create an audit issue.",
+            "- Corpus counts use Git-tracked `README.md` and `AGENTS.md`; untracked documents are candidates, not canonical corpus members.",
+            "- `chain_scopes` measures unique document directories; `unique_agents_chains` collapses directories that inherit the same AGENTS path signature.",
+            "- Chain percentiles use the nearest-rank method; the repository table reports unique chain signatures.",
+            "- Dispositions remain `unreviewed` until an owner-evidenced record is added to the integration manifest.",
             "- `unvalidated_nested_agents` means a nested `AGENTS.md` exists but is not declared by `scripts/validate_nested_agents.py`.",
             "- `high_risk_dirs_without_agents` marks common contract, generated, test, runtime, or source directories without a direct local instruction file.",
             "- `long_root_agents` marks roots that may be ready for slimming after local instructions are pushed down-tree.",
@@ -754,7 +939,7 @@ def write_markdown(path: Path, payload: Mapping[str, Any]) -> None:
 
 
 def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Audit AGENTS.md coverage across an AoA / ToS workspace.")
+    parser = argparse.ArgumentParser(description="Audit README/AGENTS coverage across an AoA / ToS workspace.")
     parser.add_argument(
         "--repo-root",
         type=Path,
@@ -764,8 +949,19 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--workspace-root", type=Path, help="Sibling workspace root to scan. Defaults to an inferred local root.")
     parser.add_argument("--write", type=Path, help="Write compact JSON payload to this path.")
     parser.add_argument("--markdown", type=Path, help="Write markdown report to this path.")
+    parser.add_argument(
+        "--dispositions",
+        type=Path,
+        default=DEFAULT_DISPOSITIONS_PATH,
+        help="Owner-evidenced README/AGENTS disposition overlay.",
+    )
     parser.add_argument("--public-baseline", action="store_true", help="Emit the public bootstrap baseline instead of scanning local checkouts.")
     parser.add_argument("--no-extra-repos", action="store_true", help="Only list known public repositories; do not add extra sibling checkouts.")
+    parser.add_argument(
+        "--ignore-workspace-manifest",
+        action="store_true",
+        help="Resolve repository names only beneath --workspace-root (useful for an isolated clean-worktree matrix).",
+    )
     parser.add_argument("--pretty", action="store_true", help="Print pretty JSON instead of compact JSON.")
     return parser.parse_args(argv)
 
@@ -781,6 +977,8 @@ def main(argv: Sequence[str] | None = None) -> int:
             workspace_root,
             include_extra_repos=not args.no_extra_repos,
             owner_repo_root=repo_root,
+            disposition_manifest_path=args.dispositions,
+            use_workspace_manifest=not args.ignore_workspace_manifest,
         )
     )
 

@@ -1,0 +1,7 @@
+{
+  "$schema": "../schemas/readme-agents-dispositions.schema.json",
+  "schema_version": "8dionysus_readme_agents_dispositions_v1",
+  "owner_repo": "8Dionysus",
+  "posture": "integration-ledger-only; sibling dispositions require owner evidence",
+  "records": []
+}

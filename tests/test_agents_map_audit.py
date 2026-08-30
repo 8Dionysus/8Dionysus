@@ -14,7 +14,27 @@ import audit_agents_map
 
 
 class AgentsMapAuditTests(unittest.TestCase):
-    def test_v1_schema_accepts_payload_without_additive_checkout_requirement(self) -> None:
+    def test_checked_in_v2_map_matches_schema_and_is_path_redacted(self) -> None:
+        root = Path(__file__).resolve().parents[1]
+        rendered = (root / "generated" / "agents_map.min.json").read_text(
+            encoding="utf-8"
+        )
+        payload = json.loads(rendered)
+        schema = json.loads(
+            (root / "schemas" / "agents-map.schema.json").read_text(encoding="utf-8")
+        )
+
+        self.assertEqual(list(Draft202012Validator(schema).iter_errors(payload)), [])
+        self.assertNotIn("/home/", rendered)
+        self.assertNotIn("/srv/", rendered)
+        self.assertEqual(payload["schema_version"], "8dionysus_agents_map_v2")
+        self.assertEqual(
+            payload["totals"]["review_items_total"],
+            payload["totals"]["tracked_document_files"]
+            + payload["totals"]["shared_root_files"],
+        )
+
+    def test_v2_schema_accepts_payload_without_additive_checkout_requirement(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             payload = audit_agents_map.build_agents_map(
                 Path(tmp),
@@ -206,6 +226,34 @@ class AgentsMapAuditTests(unittest.TestCase):
             self.assertNotEqual(scanned["path_hint"], "abyss-stack")
             self.assertNotIn(str(root), scanned["path_hint"])
 
+    def test_isolated_matrix_can_ignore_workspace_manifest(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            workspace = root / "workspace"
+            source = root / "source" / "abyss-stack"
+            matrix = workspace / "abyss-stack"
+            sdk_manifest = workspace / "aoa-sdk" / ".aoa"
+            source.mkdir(parents=True)
+            matrix.mkdir(parents=True)
+            sdk_manifest.mkdir(parents=True)
+            (source / "AGENTS.md").write_text("# AGENTS.md\nsource\n", encoding="utf-8")
+            (matrix / "AGENTS.md").write_text("# AGENTS.md\nmatrix\n", encoding="utf-8")
+            (sdk_manifest / "workspace.toml").write_text(
+                f'\n[repos.abyss-stack]\npreferred = ["{source}"]\n',
+                encoding="utf-8",
+            )
+
+            payload = audit_agents_map.build_agents_map(
+                workspace,
+                known_repositories=("abyss-stack",),
+                include_extra_repos=False,
+                use_workspace_manifest=False,
+            )
+            scanned = payload["repositories"][0]
+
+            self.assertEqual(scanned["path_hint"], "abyss-stack")
+            self.assertTrue(scanned["root_agents_present"])
+
     def test_workspace_manifest_limited_toml_fallback_supports_preferred_paths(self) -> None:
         original_tomllib = audit_agents_map._tomllib
         audit_agents_map._tomllib = None
@@ -276,8 +324,12 @@ class AgentsMapAuditTests(unittest.TestCase):
         rendered = json.dumps(payload, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
 
         self.assertEqual(payload["audit_mode"], "public-baseline")
-        self.assertEqual(payload["totals"]["known_public_repositories"], 16)
+        self.assertEqual(payload["totals"]["known_public_repositories"], 20)
         self.assertIn("Agents-of-Abyss", payload["known_repositories"])
+        self.assertIn("abyss-machine", payload["known_repositories"])
+        self.assertIn("aoa-dashboard", payload["known_repositories"])
+        self.assertIn("aoa-models", payload["known_repositories"])
+        self.assertIn("aoa-session-memory", payload["known_repositories"])
         self.assertIn("agents_map_public_baseline", rendered)
         self.assertNotIn("/mnt/", rendered)
 

@@ -17,7 +17,7 @@
   ],
   "properties": {
     "schema_version": {
-      "const": "8dionysus_agents_map_v1"
+      "const": "8dionysus_agents_map_v2"
     },
     "schema_ref": {
       "const": "schemas/agents-map.schema.json"
@@ -39,6 +39,21 @@
         "live-workspace",
         "public-baseline"
       ]
+    },
+    "corpus_contract": {
+      "type": "object"
+    },
+    "disposition_manifest": {
+      "type": ["string", "null"]
+    },
+    "disposition_issues": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "shared_root": {
+      "type": "object"
     },
     "known_repositories": {
       "type": "array",
@@ -97,6 +112,10 @@
             "type": "integer",
             "minimum": 0
           },
+          "readme_md_count": {
+            "type": "integer",
+            "minimum": 0
+          },
           "root_agents_present": {
             "type": "boolean"
           },
@@ -106,6 +125,24 @@
           },
           "validator_present": {
             "type": "boolean"
+          },
+          "git_snapshot": {
+            "type": "object"
+          },
+          "readme_agents_summary": {
+            "type": "object"
+          },
+          "agents_files": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "readme_files": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
           },
           "issues": {
             "type": "array",

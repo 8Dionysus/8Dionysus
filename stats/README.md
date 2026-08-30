@@ -9,13 +9,18 @@ organ.
 
 | Measurement | Question | Reference value |
 | --- | --- | --- |
-| `8Dionysus/known-repository-root-agents-coverage-ratio` | What fraction of known public repositories have an observed root `AGENTS.md` route in the committed live-workspace map? | `16 / 16` at evidence revision `4506bf51ae8c0b1ee8f87d3c7740b3224b75544b` |
+| `8Dionysus/known-repository-root-agents-coverage-ratio` | What fraction of known public repositories have an observed root `AGENTS.md` route in the committed live-workspace map? | `19 / 20` at evidence blob `b12d2194498197a4b714ce7d4db01bb2e12d48a2` |
 
 The denominator is every name in the map's `known_repositories` inventory.
 A known repository whose checkout is missing remains in the denominator as
 uncovered. Extra workspace records are excluded. A synthetic
 `public-baseline` map, duplicate record, incomplete population, or malformed
 root-presence field makes the measurement unknown rather than zero.
+
+The one uncovered record is the optional, deprecated `aoa-routing` predecessor.
+Its absence is valid workspace posture and is not a repository-health failure;
+it remains in this measurement because the established population includes
+every owner record named by the map.
 
 ## Evidence posture
 

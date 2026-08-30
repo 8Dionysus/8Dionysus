@@ -1457,6 +1457,939 @@
         "aoa-skills@0ef938dc8a36f354e9e6c1889aaa6630c293e0d1:mechanics/release-support/manifests/release_manifest.bundle.json"
       ],
       "note": "Unlinked one-file label repeated owner, verifier, registry, and admission data carried by the machine manifest and parent card."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:AGENTS.md",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:DESIGN.AGENTS.md",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:docs/decisions/AOA-SM-D-0018-owner-capability-home-and-skill-evidence-lifecycle.md"
+      ],
+      "note": "Root owner law already uses progressive disclosure under AOA-SM-D-0018 and remains the inherited instruction surface."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:README.md",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:DESIGN.AGENTS.md"
+      ],
+      "note": "Root human entrypoint remains the public repository overview, setup, and navigation surface; it is not ambient agent law."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "capabilities/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:capabilities/AGENTS.md",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:docs/decisions/AOA-SM-D-0018-owner-capability-home-and-skill-evidence-lifecycle.md"
+      ],
+      "note": "Already a compact local owner contract with task-conditioned reads and no mandatory README dependency; retained as the inherited instruction surface."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "capabilities/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:capabilities/README.md",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:docs/decisions/AOA-SM-D-0018-owner-capability-home-and-skill-evidence-lifecycle.md"
+      ],
+      "note": "Capability model and portability overview remains human-facing technical documentation; capabilities/AGENTS.md carries local execution constraints."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "config/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:config/AGENTS.md"
+      ],
+      "note": "Already a compact local owner contract with task-conditioned reads and no mandatory README dependency; retained as the inherited instruction surface."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "docs/decisions/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-session-memory@eeaee8d2c290fabb7a9c5e298bdfe727f0061a6d:docs/decisions/AGENTS.md",
+        "aoa-session-memory@eeaee8d2c290fabb7a9c5e298bdfe727f0061a6d:docs/decisions/AOA-SM-D-0018-owner-capability-home-and-skill-evidence-lifecycle.md"
+      ],
+      "note": "Unconditional ancestor and README rereads were removed; the card now keeps its local owner boundary and exposes deeper sources only when the task needs them."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "docs/decisions/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:docs/decisions/README.md"
+      ],
+      "note": "Human decision-log orientation is retained on demand; docs/decisions/AGENTS.md carries the local agent behavior."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "docs/decisions/indexes/README.md",
+      "review_state": "reviewed",
+      "disposition": "generate-from-owner-source",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:docs/decisions/indexes/README.md",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:scripts/generate_decision_indexes.py",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:docs/decisions/README.md"
+      ],
+      "note": "Generated decision index is retained as an on-demand read model and must be regenerated from the owner script rather than folded into AGENTS."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "evals/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:evals/AGENTS.md"
+      ],
+      "note": "Already a compact local owner contract with task-conditioned reads and no mandatory README dependency; retained as the inherited instruction surface."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "evals/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:evals/README.md"
+      ],
+      "note": "Human eval or evidence-lifecycle documentation is retained on demand; it does not become ambient agent instruction or proof authority."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "evals/intake/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:evals/intake/README.md"
+      ],
+      "note": "Human eval or evidence-lifecycle documentation is retained on demand; it does not become ambient agent instruction or proof authority."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "evals/reports/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:evals/reports/README.md"
+      ],
+      "note": "Human eval or evidence-lifecycle documentation is retained on demand; it does not become ambient agent instruction or proof authority."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "evals/suites/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:evals/suites/README.md"
+      ],
+      "note": "Human eval or evidence-lifecycle documentation is retained on demand; it does not become ambient agent instruction or proof authority."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "examples/synthetic/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:examples/synthetic/README.md"
+      ],
+      "note": "Synthetic fixture explanation remains beside the example for human and test consumers; it is not agent-wide policy."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "hooks/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:hooks/AGENTS.md"
+      ],
+      "note": "Already a compact local owner contract with task-conditioned reads and no mandatory README dependency; retained as the inherited instruction surface."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "hooks/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:hooks/README.md"
+      ],
+      "note": "Hook and lifecycle overview remains on-demand operator documentation; hooks/AGENTS.md carries the local stop lines."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "kag/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-session-memory@eeaee8d2c290fabb7a9c5e298bdfe727f0061a6d:kag/AGENTS.md",
+        "aoa-session-memory@eeaee8d2c290fabb7a9c5e298bdfe727f0061a6d:docs/decisions/AOA-SM-D-0018-owner-capability-home-and-skill-evidence-lifecycle.md",
+        "aoa-session-memory@6e1e12ac74b9ed2af7fc2d853987e8670da99928:kag/indexes/index_family.manifest.json"
+      ],
+      "note": "Unconditional ancestor and README rereads were removed; the card now keeps its local owner boundary and exposes deeper sources only when the task needs them."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "kag/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:kag/README.md"
+      ],
+      "note": "KAG format, navigation, and source/generated-boundary documentation remains an on-demand human surface; kag/AGENTS.md carries agent procedure."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "manifests/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:manifests/AGENTS.md"
+      ],
+      "note": "Already a compact local owner contract with task-conditioned reads and no mandatory README dependency; retained as the inherited instruction surface."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "maps/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-session-memory@eeaee8d2c290fabb7a9c5e298bdfe727f0061a6d:maps/AGENTS.md",
+        "aoa-session-memory@eeaee8d2c290fabb7a9c5e298bdfe727f0061a6d:docs/decisions/AOA-SM-D-0018-owner-capability-home-and-skill-evidence-lifecycle.md"
+      ],
+      "note": "Unconditional ancestor and README rereads were removed; the card now keeps its local owner boundary and exposes deeper sources only when the task needs them."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "maps/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:maps/README.md"
+      ],
+      "note": "Human atlas overview and source/generated boundary remain public navigation; maps/AGENTS.md carries the executable agent contract."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "maps/by-access-boundary/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:maps/by-access-boundary/README.md",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:config/atlas-policy.json",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:tests/test_session_memory.py"
+      ],
+      "note": "Source-owned atlas axis label required by the atlas policy; generated entries and indexes remain a separate layer, so moving this source skeleton into AGENTS would blur authority."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "maps/by-agent-event/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:maps/by-agent-event/README.md",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:config/atlas-policy.json",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:tests/test_session_memory.py"
+      ],
+      "note": "Source-owned atlas axis label required by the atlas policy; generated entries and indexes remain a separate layer, so moving this source skeleton into AGENTS would blur authority."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "maps/by-agent/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:maps/by-agent/README.md",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:config/atlas-policy.json",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:tests/test_session_memory.py"
+      ],
+      "note": "Source-owned atlas axis label required by the atlas policy; generated entries and indexes remain a separate layer, so moving this source skeleton into AGENTS would blur authority."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "maps/by-api/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:maps/by-api/README.md",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:config/atlas-policy.json",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:tests/test_session_memory.py"
+      ],
+      "note": "Source-owned atlas axis label required by the atlas policy; generated entries and indexes remain a separate layer, so moving this source skeleton into AGENTS would blur authority."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "maps/by-authority-surface/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:maps/by-authority-surface/README.md",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:config/atlas-policy.json",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:tests/test_session_memory.py"
+      ],
+      "note": "Source-owned atlas axis label required by the atlas policy; generated entries and indexes remain a separate layer, so moving this source skeleton into AGENTS would blur authority."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "maps/by-confidence/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:maps/by-confidence/README.md",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:config/atlas-policy.json",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:tests/test_session_memory.py"
+      ],
+      "note": "Source-owned atlas axis label required by the atlas policy; generated entries and indexes remain a separate layer, so moving this source skeleton into AGENTS would blur authority."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "maps/by-conversation-act/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:maps/by-conversation-act/README.md",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:config/atlas-policy.json",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:tests/test_session_memory.py"
+      ],
+      "note": "Source-owned atlas axis label required by the atlas policy; generated entries and indexes remain a separate layer, so moving this source skeleton into AGENTS would blur authority."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "maps/by-correlation/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:maps/by-correlation/README.md",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:config/atlas-policy.json",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:tests/test_session_memory.py"
+      ],
+      "note": "Source-owned atlas axis label required by the atlas policy; generated entries and indexes remain a separate layer, so moving this source skeleton into AGENTS would blur authority."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "maps/by-delivery-state/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:maps/by-delivery-state/README.md",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:config/atlas-policy.json",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:tests/test_session_memory.py"
+      ],
+      "note": "Source-owned atlas axis label required by the atlas policy; generated entries and indexes remain a separate layer, so moving this source skeleton into AGENTS would blur authority."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "maps/by-entity/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:maps/by-entity/README.md",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:config/atlas-policy.json",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:tests/test_session_memory.py"
+      ],
+      "note": "Source-owned atlas axis label required by the atlas policy; generated entries and indexes remain a separate layer, so moving this source skeleton into AGENTS would blur authority."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "maps/by-eval/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:maps/by-eval/README.md",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:config/atlas-policy.json",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:tests/test_session_memory.py"
+      ],
+      "note": "Source-owned atlas axis label required by the atlas policy; generated entries and indexes remain a separate layer, so moving this source skeleton into AGENTS would blur authority."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "maps/by-evidence-provenance/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:maps/by-evidence-provenance/README.md",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:config/atlas-policy.json",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:tests/test_session_memory.py"
+      ],
+      "note": "Source-owned atlas axis label required by the atlas policy; generated entries and indexes remain a separate layer, so moving this source skeleton into AGENTS would blur authority."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "maps/by-external-snapshot/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:maps/by-external-snapshot/README.md",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:config/atlas-policy.json",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:tests/test_session_memory.py"
+      ],
+      "note": "Source-owned atlas axis label required by the atlas policy; generated entries and indexes remain a separate layer, so moving this source skeleton into AGENTS would blur authority."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "maps/by-failure-mode/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:maps/by-failure-mode/README.md",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:config/atlas-policy.json",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:tests/test_session_memory.py"
+      ],
+      "note": "Source-owned atlas axis label required by the atlas policy; generated entries and indexes remain a separate layer, so moving this source skeleton into AGENTS would blur authority."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "maps/by-freshness/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:maps/by-freshness/README.md",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:config/atlas-policy.json",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:tests/test_session_memory.py"
+      ],
+      "note": "Source-owned atlas axis label required by the atlas policy; generated entries and indexes remain a separate layer, so moving this source skeleton into AGENTS would blur authority."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "maps/by-git/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:maps/by-git/README.md",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:config/atlas-policy.json",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:tests/test_session_memory.py"
+      ],
+      "note": "Source-owned atlas axis label required by the atlas policy; generated entries and indexes remain a separate layer, so moving this source skeleton into AGENTS would blur authority."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "maps/by-goal/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:maps/by-goal/README.md",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:config/atlas-policy.json",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:tests/test_session_memory.py"
+      ],
+      "note": "Source-owned atlas axis label required by the atlas policy; generated entries and indexes remain a separate layer, so moving this source skeleton into AGENTS would blur authority."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "maps/by-graph/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:maps/by-graph/README.md",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:config/atlas-policy.json",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:tests/test_session_memory.py"
+      ],
+      "note": "Source-owned atlas axis label required by the atlas policy; generated entries and indexes remain a separate layer, so moving this source skeleton into AGENTS would blur authority."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "maps/by-hook-health/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:maps/by-hook-health/README.md",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:config/atlas-policy.json",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:tests/test_session_memory.py"
+      ],
+      "note": "Source-owned atlas axis label required by the atlas policy; generated entries and indexes remain a separate layer, so moving this source skeleton into AGENTS would blur authority."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "maps/by-hook/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:maps/by-hook/README.md",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:config/atlas-policy.json",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:tests/test_session_memory.py"
+      ],
+      "note": "Source-owned atlas axis label required by the atlas policy; generated entries and indexes remain a separate layer, so moving this source skeleton into AGENTS would blur authority."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "maps/by-index-health/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:maps/by-index-health/README.md",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:config/atlas-policy.json",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:tests/test_session_memory.py"
+      ],
+      "note": "Source-owned atlas axis label required by the atlas policy; generated entries and indexes remain a separate layer, so moving this source skeleton into AGENTS would blur authority."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "maps/by-mcp/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:maps/by-mcp/README.md",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:config/atlas-policy.json",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:tests/test_session_memory.py"
+      ],
+      "note": "Source-owned atlas axis label required by the atlas policy; generated entries and indexes remain a separate layer, so moving this source skeleton into AGENTS would blur authority."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "maps/by-mechanic/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:maps/by-mechanic/README.md",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:config/atlas-policy.json",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:tests/test_session_memory.py"
+      ],
+      "note": "Source-owned atlas axis label required by the atlas policy; generated entries and indexes remain a separate layer, so moving this source skeleton into AGENTS would blur authority."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "maps/by-memory-entity/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:maps/by-memory-entity/README.md",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:config/atlas-policy.json",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:tests/test_session_memory.py"
+      ],
+      "note": "Source-owned atlas axis label required by the atlas policy; generated entries and indexes remain a separate layer, so moving this source skeleton into AGENTS would blur authority."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "maps/by-memory-surface/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:maps/by-memory-surface/README.md",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:config/atlas-policy.json",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:tests/test_session_memory.py"
+      ],
+      "note": "Source-owned atlas axis label required by the atlas policy; generated entries and indexes remain a separate layer, so moving this source skeleton into AGENTS would blur authority."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "maps/by-mutation-surface/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:maps/by-mutation-surface/README.md",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:config/atlas-policy.json",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:tests/test_session_memory.py"
+      ],
+      "note": "Source-owned atlas axis label required by the atlas policy; generated entries and indexes remain a separate layer, so moving this source skeleton into AGENTS would blur authority."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "maps/by-open-thread/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:maps/by-open-thread/README.md",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:config/atlas-policy.json",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:tests/test_session_memory.py"
+      ],
+      "note": "Source-owned atlas axis label required by the atlas policy; generated entries and indexes remain a separate layer, so moving this source skeleton into AGENTS would blur authority."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "maps/by-operator-preference/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:maps/by-operator-preference/README.md",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:config/atlas-policy.json",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:tests/test_session_memory.py"
+      ],
+      "note": "Source-owned atlas axis label required by the atlas policy; generated entries and indexes remain a separate layer, so moving this source skeleton into AGENTS would blur authority."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "maps/by-operator-request/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:maps/by-operator-request/README.md",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:config/atlas-policy.json",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:tests/test_session_memory.py"
+      ],
+      "note": "Source-owned atlas axis label required by the atlas policy; generated entries and indexes remain a separate layer, so moving this source skeleton into AGENTS would blur authority."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "maps/by-owner-route/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:maps/by-owner-route/README.md",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:config/atlas-policy.json",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:tests/test_session_memory.py"
+      ],
+      "note": "Source-owned atlas axis label required by the atlas policy; generated entries and indexes remain a separate layer, so moving this source skeleton into AGENTS would blur authority."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "maps/by-path/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:maps/by-path/README.md",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:config/atlas-policy.json",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:tests/test_session_memory.py"
+      ],
+      "note": "Source-owned atlas axis label required by the atlas policy; generated entries and indexes remain a separate layer, so moving this source skeleton into AGENTS would blur authority."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "maps/by-phase-topic/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:maps/by-phase-topic/README.md",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:config/atlas-policy.json",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:tests/test_session_memory.py"
+      ],
+      "note": "Source-owned atlas axis label required by the atlas policy; generated entries and indexes remain a separate layer, so moving this source skeleton into AGENTS would blur authority."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "maps/by-playbook/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:maps/by-playbook/README.md",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:config/atlas-policy.json",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:tests/test_session_memory.py"
+      ],
+      "note": "Source-owned atlas axis label required by the atlas policy; generated entries and indexes remain a separate layer, so moving this source skeleton into AGENTS would blur authority."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "maps/by-plugin/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:maps/by-plugin/README.md",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:config/atlas-policy.json",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:tests/test_session_memory.py"
+      ],
+      "note": "Source-owned atlas axis label required by the atlas policy; generated entries and indexes remain a separate layer, so moving this source skeleton into AGENTS would blur authority."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "maps/by-promotion-candidate/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:maps/by-promotion-candidate/README.md",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:config/atlas-policy.json",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:tests/test_session_memory.py"
+      ],
+      "note": "Source-owned atlas axis label required by the atlas policy; generated entries and indexes remain a separate layer, so moving this source skeleton into AGENTS would blur authority."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "maps/by-repo-family/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:maps/by-repo-family/README.md",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:config/atlas-policy.json",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:tests/test_session_memory.py"
+      ],
+      "note": "Source-owned atlas axis label required by the atlas policy; generated entries and indexes remain a separate layer, so moving this source skeleton into AGENTS would blur authority."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "maps/by-resource-profile/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:maps/by-resource-profile/README.md",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:config/atlas-policy.json",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:tests/test_session_memory.py"
+      ],
+      "note": "Source-owned atlas axis label required by the atlas policy; generated entries and indexes remain a separate layer, so moving this source skeleton into AGENTS would blur authority."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "maps/by-review-state/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:maps/by-review-state/README.md",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:config/atlas-policy.json",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:tests/test_session_memory.py"
+      ],
+      "note": "Source-owned atlas axis label required by the atlas policy; generated entries and indexes remain a separate layer, so moving this source skeleton into AGENTS would blur authority."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "maps/by-risk/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:maps/by-risk/README.md",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:config/atlas-policy.json",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:tests/test_session_memory.py"
+      ],
+      "note": "Source-owned atlas axis label required by the atlas policy; generated entries and indexes remain a separate layer, so moving this source skeleton into AGENTS would blur authority."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "maps/by-route-next-action/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:maps/by-route-next-action/README.md",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:config/atlas-policy.json",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:tests/test_session_memory.py"
+      ],
+      "note": "Source-owned atlas axis label required by the atlas policy; generated entries and indexes remain a separate layer, so moving this source skeleton into AGENTS would blur authority."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "maps/by-runtime-environment/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:maps/by-runtime-environment/README.md",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:config/atlas-policy.json",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:tests/test_session_memory.py"
+      ],
+      "note": "Source-owned atlas axis label required by the atlas policy; generated entries and indexes remain a separate layer, so moving this source skeleton into AGENTS would blur authority."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "maps/by-scope-contract/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:maps/by-scope-contract/README.md",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:config/atlas-policy.json",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:tests/test_session_memory.py"
+      ],
+      "note": "Source-owned atlas axis label required by the atlas policy; generated entries and indexes remain a separate layer, so moving this source skeleton into AGENTS would blur authority."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "maps/by-script/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:maps/by-script/README.md",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:config/atlas-policy.json",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:tests/test_session_memory.py"
+      ],
+      "note": "Source-owned atlas axis label required by the atlas policy; generated entries and indexes remain a separate layer, so moving this source skeleton into AGENTS would blur authority."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "maps/by-session-act/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:maps/by-session-act/README.md",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:config/atlas-policy.json",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:tests/test_session_memory.py"
+      ],
+      "note": "Source-owned atlas axis label required by the atlas policy; generated entries and indexes remain a separate layer, so moving this source skeleton into AGENTS would blur authority."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "maps/by-skill/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:maps/by-skill/README.md",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:config/atlas-policy.json",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:tests/test_session_memory.py"
+      ],
+      "note": "Source-owned atlas axis label required by the atlas policy; generated entries and indexes remain a separate layer, so moving this source skeleton into AGENTS would blur authority."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "maps/by-technique/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:maps/by-technique/README.md",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:config/atlas-policy.json",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:tests/test_session_memory.py"
+      ],
+      "note": "Source-owned atlas axis label required by the atlas policy; generated entries and indexes remain a separate layer, so moving this source skeleton into AGENTS would blur authority."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "maps/by-test/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:maps/by-test/README.md",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:config/atlas-policy.json",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:tests/test_session_memory.py"
+      ],
+      "note": "Source-owned atlas axis label required by the atlas policy; generated entries and indexes remain a separate layer, so moving this source skeleton into AGENTS would blur authority."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "maps/by-time/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:maps/by-time/README.md",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:config/atlas-policy.json",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:tests/test_session_memory.py"
+      ],
+      "note": "Source-owned atlas axis label required by the atlas policy; generated entries and indexes remain a separate layer, so moving this source skeleton into AGENTS would blur authority."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "maps/by-tool/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:maps/by-tool/README.md",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:config/atlas-policy.json",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:tests/test_session_memory.py"
+      ],
+      "note": "Source-owned atlas axis label required by the atlas policy; generated entries and indexes remain a separate layer, so moving this source skeleton into AGENTS would blur authority."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "maps/by-validator/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:maps/by-validator/README.md",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:config/atlas-policy.json",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:tests/test_session_memory.py"
+      ],
+      "note": "Source-owned atlas axis label required by the atlas policy; generated entries and indexes remain a separate layer, so moving this source skeleton into AGENTS would blur authority."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "maps/by-verification-state/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:maps/by-verification-state/README.md",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:config/atlas-policy.json",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:tests/test_session_memory.py"
+      ],
+      "note": "Source-owned atlas axis label required by the atlas policy; generated entries and indexes remain a separate layer, so moving this source skeleton into AGENTS would blur authority."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "maps/by-work-context/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:maps/by-work-context/README.md",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:config/atlas-policy.json",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:tests/test_session_memory.py"
+      ],
+      "note": "Source-owned atlas axis label required by the atlas policy; generated entries and indexes remain a separate layer, so moving this source skeleton into AGENTS would blur authority."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "packages/aoa-session-memory-mcp/README.md",
+      "review_state": "reviewed",
+      "disposition": "generate-from-owner-source",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:packages/aoa-session-memory-mcp/README.md",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:packages/aoa-session-memory-mcp/PROJECTION.md",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:packages/aoa-session-memory-mcp/package.manifest.json",
+        "abyss-stack@b74dd28143f120398a44b3b0a5bc6f75aa26a6d5:mcp/services/aoa-session-memory-mcp/README.md",
+        "abyss-stack@b74dd28143f120398a44b3b0a5bc6f75aa26a6d5:docs/decisions/ABYSS-STACK-D-0084-routing-mirror-provenance-readiness.md"
+      ],
+      "note": "Public package and API documentation is a deterministic one-way projection from abyss-stack; it stays a README and is refreshed through the owner exporter."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "schemas/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:schemas/AGENTS.md"
+      ],
+      "note": "Already a compact local owner contract with task-conditioned reads and no mandatory README dependency; retained as the inherited instruction surface."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "scripts/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:scripts/AGENTS.md"
+      ],
+      "note": "Already a compact local owner contract with task-conditioned reads and no mandatory README dependency; retained as the inherited instruction surface."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "sessions/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "generate-from-owner-source",
+      "owner_evidence": [
+        "aoa-session-memory@eeaee8d2c290fabb7a9c5e298bdfe727f0061a6d:sessions/AGENTS.md",
+        "aoa-session-memory@eeaee8d2c290fabb7a9c5e298bdfe727f0061a6d:scripts/aoa_session_memory.py",
+        "aoa-session-memory@eeaee8d2c290fabb7a9c5e298bdfe727f0061a6d:tests/test_session_memory.py"
+      ],
+      "note": "Generated session-shard route card is retained because agents need its stop lines; its source is scripts/aoa_session_memory.py and generator parity is guarded."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "skills/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:skills/AGENTS.md",
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:docs/decisions/AOA-SM-D-0018-owner-capability-home-and-skill-evidence-lifecycle.md"
+      ],
+      "note": "Already a compact local owner contract with task-conditioned reads and no mandatory README dependency; retained as the inherited instruction surface."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "stats/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "aoa-session-memory@eeaee8d2c290fabb7a9c5e298bdfe727f0061a6d:stats/AGENTS.md",
+        "aoa-session-memory@eeaee8d2c290fabb7a9c5e298bdfe727f0061a6d:docs/decisions/AOA-SM-D-0018-owner-capability-home-and-skill-evidence-lifecycle.md"
+      ],
+      "note": "Unconditional ancestor and README rereads were removed; the card now keeps its local owner boundary and exposes deeper sources only when the task needs them."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "stats/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:stats/README.md"
+      ],
+      "note": "Stats read-model overview remains human-facing documentation; stats/AGENTS.md carries the local agent contract."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "tests/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@b7e31451b113415a8725c4ed7c2bfba75d20f1f3:tests/AGENTS.md"
+      ],
+      "note": "Already a compact local owner contract with task-conditioned reads and no mandatory README dependency; retained as the inherited instruction surface."
     }
   ]
 }

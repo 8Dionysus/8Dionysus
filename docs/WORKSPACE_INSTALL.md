@@ -55,6 +55,8 @@ projection. Neither path is a workspace-root projection source.
 `8Dionysus` is also the source-owned home for a small shared-root install
 subset that is projected into the live workspace root:
 
+- `<workspace-root>/README.md`, rendered from the dedicated
+  `docs/WORKSPACE_ROOT_ENTRY.md` human-entry source
 - `<workspace-root>/AGENTS.md`
 - `<workspace-root>/AOA_WORKSPACE_ROOT`
 - `<workspace-root>/.agents/`
@@ -66,7 +68,9 @@ runtime, charter, or implementation truth.
 
 Projection rules:
 
-- keep `README.md` profile-owned and GitHub-facing; it is not part of the shared-root install projection
+- keep the repository `README.md` profile-owned and GitHub-facing; project the
+  separate `docs/WORKSPACE_ROOT_ENTRY.md` source as the live workspace-root
+  `README.md`
 - keep personal Codex defaults in `~/.codex/config.toml`, not in the project-level `.codex/`
 - treat `<workspace-root>/AOA_WORKSPACE_ROOT` as the sibling-workspace marker for Codex and AoA tooling
 - keep the workspace plugin marketplace absent while no owner-approved plugin exists; projection with pruning removes the retired launcher marketplace and source, while the projector neither copies nor prunes `<workspace-root>/.agents/skills/`
@@ -198,7 +202,7 @@ python <selected-8Dionysus-source>/scripts/project_workspace_root.py --source-ro
 Source-first law for these projected surfaces:
 
 - if the change is real, edit the source-owned copy under `<workspace-root>/8Dionysus/` first
-- do not hand-edit `<workspace-root>/AGENTS.md`,
+- do not hand-edit `<workspace-root>/README.md`, `<workspace-root>/AGENTS.md`,
   `<workspace-root>/AOA_WORKSPACE_ROOT`, or managed paths below `.agents/` and
   `.codex/` as if those live copies were primary source; for excluded
   `.codex/config.toml` and `.codex/agents/`, use their dedicated composition
@@ -207,7 +211,8 @@ Source-first law for these projected surfaces:
 - treat `<workspace-root>/.codex/config.toml` and `<workspace-root>/.codex/agents/` separately: they are excluded from this projector and must preserve the live deployment composition
 - use `--check --json` to see the owner repo, source paths, projected paths, and the next-step guidance before mutation
 - after the source edit, rerun the projection with `--execute` and confirm `--check` returns clean
-- keep `8Dionysus/README.md` profile-owned and outside this projection path
+- keep `8Dionysus/README.md` profile-owned and outside this projection path;
+  the root human entry comes from `8Dionysus/docs/WORKSPACE_ROOT_ENTRY.md`
 
 When the checked-in Codex plane needs a new live root, rerender its source
 artifacts before the dedicated rollout:
@@ -252,7 +257,8 @@ Behavior:
 - `--check` exits nonzero when drift exists
 - `--execute` applies the projection
 - `--prune` may be added when you want managed extra paths removed too
-- `AGENTS.md` is rendered by replacing `<workspace-root>` with the target live root
+- `README.md` and `AGENTS.md` are rendered from their distinct owner sources by
+  replacing `<workspace-root>` with the target live root
 
 ## Repo-local Git hooks
 

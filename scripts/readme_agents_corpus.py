@@ -17,6 +17,10 @@ from typing import Any, Mapping, Sequence
 
 
 DOCUMENT_NAMES = frozenset({"AGENTS.md", "README.md"})
+SHARED_ROOT_OWNER_PATHS = {
+    "AGENTS.md": "AGENTS.md",
+    "README.md": "docs/WORKSPACE_ROOT_ENTRY.md",
+}
 AGENTS_CHAIN_BUDGET_BYTES = 32 * 1024
 DISPOSITIONS_SCHEMA_VERSION = "8dionysus_readme_agents_dispositions_v1"
 DISPOSITIONS = frozenset(
@@ -525,9 +529,9 @@ def scan_shared_root(
     dispositions: Mapping[tuple[str, str], Mapping[str, Any]],
 ) -> dict[str, Any]:
     records: list[dict[str, Any]] = []
-    for name in ("AGENTS.md", "README.md"):
+    for name, owner_relative in SHARED_ROOT_OWNER_PATHS.items():
         live_path = workspace_root / name
-        owner_path = owner_repo_root / name
+        owner_path = owner_repo_root / owner_relative
         if not live_path.is_file():
             continue
         live = live_path.read_bytes()
@@ -539,10 +543,10 @@ def scan_shared_root(
                 "tracked": False,
                 "bytes": len(live),
                 "sha256": hashlib.sha256(live).hexdigest(),
-                "owner_path": f"8Dionysus/{name}",
+                "owner_path": f"8Dionysus/{owner_relative}",
                 "owner_sha256": hashlib.sha256(owner).hexdigest() if owner else None,
                 "owner_parity": bool(owner) and live == owner,
-                "declared_projection_surface": name == "AGENTS.md",
+                "declared_projection_surface": True,
                 "review": _review_record("@workspace-root", name, dispositions),
             }
         )

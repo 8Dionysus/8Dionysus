@@ -36,6 +36,7 @@ class WorkspaceProjectionTests(unittest.TestCase):
             self.assertTrue(report["projection_contract"]["edit_source_first"])
             self.assertTrue(report["projection_contract"]["do_not_edit_live_workspace_copy_as_source"])
             self.assertFalse(report["projection_contract"]["profile_readme_projected"])
+            self.assertTrue(report["projection_contract"]["workspace_readme_projected"])
             self.assertFalse(report["projection_contract"]["workspace_skill_projection_managed"])
             self.assertFalse(
                 report["projection_contract"]["workspace_codex_deploy_local_roots_managed"]
@@ -57,6 +58,7 @@ class WorkspaceProjectionTests(unittest.TestCase):
             self.assertIn((workspace_root / "AGENTS.md").as_posix(), report["projection_contract"]["projected_paths"])
 
             paths = {entry["dest_path"] for entry in report["operations"]}
+            self.assertIn("README.md", paths)
             self.assertIn("AGENTS.md", paths)
             self.assertIn("AOA_WORKSPACE_ROOT", paths)
             self.assertNotIn(".agents/plugins/marketplace.json", paths)
@@ -100,6 +102,10 @@ class WorkspaceProjectionTests(unittest.TestCase):
             self.assertTrue(report["projection_contract"]["apply_via_projection"])
             self.assertIn("aoa-workspace-project --execute --json", report["projection_contract"]["execute_command"])
             self.assertIn("/workspace", (workspace_root / "AGENTS.md").read_text(encoding="utf-8"))
+            self.assertEqual(
+                (workspace_root / "README.md").read_text(encoding="utf-8"),
+                f"# Workspace {workspace_root.as_posix()}\n",
+            )
             self.assertTrue((workspace_root / "AOA_WORKSPACE_ROOT").exists())
             self.assertFalse(
                 (workspace_root / ".agents" / "plugins" / "marketplace.json").exists()
@@ -241,6 +247,11 @@ class WorkspaceProjectionTests(unittest.TestCase):
             )
 
     def _make_repo(self, repo_root: Path) -> None:
+        write_text(repo_root / "README.md", "# Public profile\n")
+        write_text(
+            repo_root / "docs" / "WORKSPACE_ROOT_ENTRY.md",
+            "# Workspace <workspace-root>\n",
+        )
         write_text(
             repo_root / "AGENTS.md",
             "# AGENTS.md — <workspace-root> workspace\n\nUse <workspace-root>/.codex/config.toml\n",

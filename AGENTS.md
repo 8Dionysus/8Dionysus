@@ -13,7 +13,9 @@ It is not the constitutional center, not a runtime owner, and not a replacement 
 This repository owns:
 
 - public entry orientation, glossary alignment, and profile-level route help
-- selected shared-root install sources such as `AGENTS.md`, `AOA_WORKSPACE_ROOT`, `.agents/`, and the source-owned `.codex/` subset checked in here
+- selected shared-root install sources such as `AGENTS.md`, the dedicated
+  `docs/WORKSPACE_ROOT_ENTRY.md` human entry, `AOA_WORKSPACE_ROOT`, `.agents/`,
+  and the source-owned `.codex/` subset checked in here
 - workspace bootstrap notes, Codex-plane regeneration notes, and AGENTS map audit surfaces
 - one admitted repo-local procedure for diagnosing concrete workspace capability-delivery disagreements
 - owner-local statistical questions over public route and audit evidence
@@ -32,6 +34,7 @@ It does not own:
 Choose the primary owner before editing; do not preload the documentation set.
 
 - public/profile orientation: `README.md`, then `docs/START_HERE.md`
+- live workspace-root human orientation: `docs/WORKSPACE_ROOT_ENTRY.md`
 - repository posture or glossary work: `docs/PUBLIC_ENTRY_POSTURE.md` or
   `GLOSSARY.md`
 - concrete owner work: target source plus its nearest `AGENTS.md`; target
@@ -133,7 +136,9 @@ Follow `docs/WORKSPACE_INSTALL.md` for projection and
 `docs/CODEX_PLANE_REGENERATION.md` for Codex render/rollout. Hard boundaries:
 
 - edit the source-owned copy under `<workspace-root>/8Dionysus/` first; do not treat the live copies as source
-- keep `README.md` profile-owned and GitHub-facing, outside shared-root projection
+- keep the repository `README.md` profile-owned and GitHub-facing, outside
+  shared-root projection; project `docs/WORKSPACE_ROOT_ENTRY.md` separately as
+  `<workspace-root>/README.md`
 - do not copy or prune `<workspace-root>/.agents/skills/`; shared bundles
   install through `aoa-skills`, and repo projections come from admitted local
   `skills/` homes

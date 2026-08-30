@@ -43,6 +43,8 @@ history and rollback review. New navigation and dispatch work routes through
 - For a compact shared vocabulary, see **[GLOSSARY.md](../GLOSSARY.md)**.
 - For the compact planted capability map, see **[SYSTEM_CAPABILITY_MAP.md](SYSTEM_CAPABILITY_MAP.md)**.
 - For the sibling-workspace layout and shared install route, see **[WORKSPACE_INSTALL.md](WORKSPACE_INSTALL.md)**.
+- For the authored source of the live workspace-root human entrypoint, see
+  **[WORKSPACE_ROOT_ENTRY.md](WORKSPACE_ROOT_ENTRY.md)**.
 - For one concrete missing or drifting skill, MCP, or tool from inside this repository, use the admitted **[`aoa-workspace-diagnose`](../skills/aoa-workspace-diagnose/SKILL.md)** home skill; use route cards and KAG for general orientation.
 - For the source-owned Codex-plane manifest, rerender, and drift-check route, see **[CODEX_PLANE_REGENERATION.md](CODEX_PLANE_REGENERATION.md)**.
 - For owner-routed component drift at the shared workspace root, see **[COMPONENT_REFRESH_ROUTE.md](COMPONENT_REFRESH_ROUTE.md)**.

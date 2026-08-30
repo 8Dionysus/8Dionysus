@@ -192,23 +192,32 @@ class ReadmeAgentsCorpusTests(unittest.TestCase):
             self.assertEqual(records, {})
             self.assertIn("reviewed record lacks owner_evidence", issues[0])
 
-    def test_shared_root_distinguishes_declared_projection_from_readme(self) -> None:
+    def test_shared_root_uses_distinct_sources_for_readme_and_agents(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             workspace = root / "workspace"
             owner = root / "owner"
             workspace.mkdir()
             owner.mkdir()
-            for name, content in (("AGENTS.md", "agents\n"), ("README.md", "readme\n")):
-                (workspace / name).write_text(content, encoding="utf-8")
-                (owner / name).write_text(content, encoding="utf-8")
+            (workspace / "AGENTS.md").write_text("agents\n", encoding="utf-8")
+            (workspace / "README.md").write_text("workspace readme\n", encoding="utf-8")
+            (owner / "AGENTS.md").write_text("agents\n", encoding="utf-8")
+            (owner / "README.md").write_text("public profile\n", encoding="utf-8")
+            (owner / "docs").mkdir()
+            (owner / "docs" / "WORKSPACE_ROOT_ENTRY.md").write_text(
+                "workspace readme\n", encoding="utf-8"
+            )
 
             result = readme_agents_corpus.scan_shared_root(workspace, owner, {})
             records = {record["path"]: record for record in result["files"]}
 
             self.assertTrue(records["AGENTS.md"]["declared_projection_surface"])
-            self.assertFalse(records["README.md"]["declared_projection_surface"])
+            self.assertTrue(records["README.md"]["declared_projection_surface"])
             self.assertTrue(records["README.md"]["owner_parity"])
+            self.assertEqual(
+                records["README.md"]["owner_path"],
+                "8Dionysus/docs/WORKSPACE_ROOT_ENTRY.md",
+            )
 
 
 if __name__ == "__main__":

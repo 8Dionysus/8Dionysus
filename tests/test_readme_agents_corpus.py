@@ -143,6 +143,29 @@ class ReadmeAgentsCorpusTests(unittest.TestCase):
                 len("# Human route\n".encode()),
             )
 
+    def test_readme_content_requirement_is_not_a_read_requirement(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            (repo / "AGENTS.md").write_text(
+                "# AGENTS.md\n\n## Index contract\n\n"
+                "`README.md` is the durable index. It must carry owner links.\n",
+                encoding="utf-8",
+            )
+            (repo / "README.md").write_text("# Human route\n", encoding="utf-8")
+
+            result = readme_agents_corpus.scan_repository_corpus(repo, "fixture", {})
+            root_agents = next(
+                record
+                for record in result["agents_files"]
+                if record["path"] == "AGENTS.md"
+            )
+
+            self.assertEqual(root_agents["mandatory_resolved_readme_references"], [])
+            self.assertEqual(
+                result["readme_agents_summary"]["declared_mandatory_readme_bytes"],
+                0,
+            )
+
     def test_disposition_loader_requires_owner_evidence(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             path = Path(tmp) / "dispositions.json"

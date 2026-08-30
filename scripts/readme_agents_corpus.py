@@ -55,7 +55,7 @@ DOC_LINK_RE = re.compile(
     r"\[[^\]]*\]\((?P<link>[^)]+(?:README|AGENTS)\.md(?:#[^)]*)?)\)"
 )
 MANDATORY_READ_RE = re.compile(
-    r"\b(read|must|require(?:d)?|before|start\s+here|прочит\w*|сначала|изуч\w*)\b",
+    r"\b(read|before|start\s+here|прочит\w*|сначала|изуч\w*)\b",
     re.IGNORECASE,
 )
 NEGATED_READ_RE = re.compile(

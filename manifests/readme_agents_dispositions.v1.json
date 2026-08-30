@@ -624,10 +624,11 @@
       "review_state": "reviewed",
       "disposition": "slim-rewrite",
       "owner_evidence": [
-        "8Dionysus@b8845dd16262fa86ca0c8cbcedd5f59e994948a9:AGENTS.md",
-        "8Dionysus@0802b49d096fd8e0f3ee59212264ecf50e561455:docs/decisions/8DION-D-0028-audit-readme-and-agents-as-distinct-owner-surfaces.md"
+        "8Dionysus@2847945c53f71517c1faa5416a7690853965e709:AGENTS.md",
+        "8Dionysus@2847945c53f71517c1faa5416a7690853965e709:docs/decisions/8DION-D-0028-audit-readme-and-agents-as-distinct-owner-surfaces.md",
+        "8Dionysus@2847945c53f71517c1faa5416a7690853965e709:docs/decisions/8DION-D-0029-project-a-dedicated-workspace-root-readme.md"
       ],
-      "note": "Repository law and stop-lines remain inherited; human maps and supporting documents are now opened only when the task needs their surface."
+      "note": "Repository law and stop-lines remain inherited; human maps and the distinct workspace-root README source are opened only when their surfaces are needed."
     },
     {
       "repository": "8Dionysus",
@@ -923,6 +924,28 @@
         "8Dionysus@b8845dd16262fa86ca0c8cbcedd5f59e994948a9:tests/test_validate_nested_agents.py"
       ],
       "note": "Test-surface scope and validation delta remain; new regression coverage protects conditional routing."
+    },
+    {
+      "repository": "@workspace-root",
+      "path": "AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "generate-from-owner-source",
+      "owner_evidence": [
+        "8Dionysus@2847945c53f71517c1faa5416a7690853965e709:AGENTS.md",
+        "8Dionysus@2847945c53f71517c1faa5416a7690853965e709:docs/decisions/8DION-D-0001-shared-root-projection.md"
+      ],
+      "note": "Retained agent route card projected from the reviewed 8Dionysus owner source; the live workspace copy is derived, not canonical."
+    },
+    {
+      "repository": "@workspace-root",
+      "path": "README.md",
+      "review_state": "reviewed",
+      "disposition": "generate-from-owner-source",
+      "owner_evidence": [
+        "8Dionysus@2847945c53f71517c1faa5416a7690853965e709:docs/WORKSPACE_ROOT_ENTRY.md",
+        "8Dionysus@2847945c53f71517c1faa5416a7690853965e709:docs/decisions/8DION-D-0029-project-a-dedicated-workspace-root-readme.md"
+      ],
+      "note": "Retained human and operator entrypoint with a distinct reproducible source; it remains on demand and outside automatic AGENTS context."
     },
     {
       "repository": "aoa-skills",

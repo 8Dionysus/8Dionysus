@@ -564,6 +564,365 @@
         "ATM10-Agent@90f70d028dcc3eb9b5de481fe349026b1341f621:tests/test_nested_agents_docs.py"
       ],
       "note": "Test-surface local contract remains; regression coverage now protects declarative inheritance and forbids the redundant imperative."
+    },
+    {
+      "repository": "8Dionysus",
+      "path": ".agents/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "8Dionysus@d6239243ce9d1f845da3ce8fdd2c7a5598ee3a8d:.agents/AGENTS.md"
+      ],
+      "note": "Compact local boundary for the shared agent-organ projection; it adds a real directory-specific delta."
+    },
+    {
+      "repository": "8Dionysus",
+      "path": ".codex/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "8Dionysus@b8845dd16262fa86ca0c8cbcedd5f59e994948a9:.codex/AGENTS.md",
+        "8Dionysus@d6239243ce9d1f845da3ce8fdd2c7a5598ee3a8d:config/codex_plane/organ_fabric/codex_consumer_manifest.v1.json"
+      ],
+      "note": "The Codex projection/source boundary, stop-lines, and focused validators remain; unconditional supporting-document reads became task-conditioned routes."
+    },
+    {
+      "repository": "8Dionysus",
+      "path": ".codex/agents/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "8Dionysus@d6239243ce9d1f845da3ce8fdd2c7a5598ee3a8d:.codex/agents/README.md",
+        "8Dionysus@d6239243ce9d1f845da3ce8fdd2c7a5598ee3a8d:config/codex_plane/organ_fabric/codex_consumer_manifest.v1.json"
+      ],
+      "note": "Human installation and generated-projection boundary; it is not inherited agent context."
+    },
+    {
+      "repository": "8Dionysus",
+      "path": ".codex/plugins/README.md",
+      "review_state": "reviewed",
+      "disposition": "delete-obsolete-placeholder",
+      "owner_evidence": [
+        "8Dionysus@d6239243ce9d1f845da3ce8fdd2c7a5598ee3a8d:.codex/plugins/README.md",
+        "8Dionysus@b8845dd16262fa86ca0c8cbcedd5f59e994948a9:docs/decisions/8DION-D-0020-retire-unproven-launcher-plugin.md"
+      ],
+      "note": "The directory held no plugin, manifest, or executable surface; D-0020 explicitly rejects an empty marketplace or plugin shell."
+    },
+    {
+      "repository": "8Dionysus",
+      "path": ".github/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "8Dionysus@b8845dd16262fa86ca0c8cbcedd5f59e994948a9:.github/AGENTS.md"
+      ],
+      "note": "GitHub-local validation and review delta remains without an imperative reread of the already inherited root card."
+    },
+    {
+      "repository": "8Dionysus",
+      "path": "AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "8Dionysus@b8845dd16262fa86ca0c8cbcedd5f59e994948a9:AGENTS.md",
+        "8Dionysus@0802b49d096fd8e0f3ee59212264ecf50e561455:docs/decisions/8DION-D-0028-audit-readme-and-agents-as-distinct-owner-surfaces.md"
+      ],
+      "note": "Repository law and stop-lines remain inherited; human maps and supporting documents are now opened only when the task needs their surface."
+    },
+    {
+      "repository": "8Dionysus",
+      "path": "README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "8Dionysus@d6239243ce9d1f845da3ce8fdd2c7a5598ee3a8d:README.md",
+        "8Dionysus@0802b49d096fd8e0f3ee59212264ecf50e561455:docs/decisions/8DION-D-0028-audit-readme-and-agents-as-distinct-owner-surfaces.md"
+      ],
+      "note": "Root human and public ecosystem entrypoint; retained by default and no longer mandatory prompt context for every task."
+    },
+    {
+      "repository": "8Dionysus",
+      "path": "config/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "8Dionysus@d6239243ce9d1f845da3ce8fdd2c7a5598ee3a8d:config/AGENTS.md"
+      ],
+      "note": "Small configuration-specific source/projection and validation boundary."
+    },
+    {
+      "repository": "8Dionysus",
+      "path": "config/codex_plane/organ_fabric/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "8Dionysus@d6239243ce9d1f845da3ce8fdd2c7a5598ee3a8d:config/codex_plane/organ_fabric/AGENTS.md",
+        "8Dionysus@d6239243ce9d1f845da3ce8fdd2c7a5598ee3a8d:config/codex_plane/organ_fabric/codex_consumer_manifest.v1.json"
+      ],
+      "note": "Nearest source-owner card for generated Codex organ-fabric projections."
+    },
+    {
+      "repository": "8Dionysus",
+      "path": "docs/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "8Dionysus@d6239243ce9d1f845da3ce8fdd2c7a5598ee3a8d:docs/AGENTS.md"
+      ],
+      "note": "Compact authored-versus-generated documentation boundary and public-safety delta."
+    },
+    {
+      "repository": "8Dionysus",
+      "path": "docs/decisions/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "8Dionysus@d6239243ce9d1f845da3ce8fdd2c7a5598ee3a8d:docs/decisions/AGENTS.md",
+        "8Dionysus@d6239243ce9d1f845da3ce8fdd2c7a5598ee3a8d:scripts/generate_decision_indexes.py"
+      ],
+      "note": "Nearest decision-record mutation law, metadata contract, and generated-index route."
+    },
+    {
+      "repository": "8Dionysus",
+      "path": "docs/decisions/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "8Dionysus@d6239243ce9d1f845da3ce8fdd2c7a5598ee3a8d:docs/decisions/README.md",
+        "8Dionysus@d6239243ce9d1f845da3ce8fdd2c7a5598ee3a8d:docs/decisions/TEMPLATE.md"
+      ],
+      "note": "Human durable-rationale entrypoint distinct from the local authoring contract."
+    },
+    {
+      "repository": "8Dionysus",
+      "path": "docs/decisions/indexes/README.md",
+      "review_state": "reviewed",
+      "disposition": "generate-from-owner-source",
+      "owner_evidence": [
+        "8Dionysus@68425a9091e55bbeacc9ae10e6d2880dbc980342:docs/decisions/indexes/README.md",
+        "8Dionysus@68425a9091e55bbeacc9ae10e6d2880dbc980342:scripts/generate_decision_indexes.py"
+      ],
+      "note": "Tracked generated lookup view; decision records and their builder remain the stronger source."
+    },
+    {
+      "repository": "8Dionysus",
+      "path": "evals/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "8Dionysus@b8845dd16262fa86ca0c8cbcedd5f59e994948a9:evals/AGENTS.md",
+        "8Dionysus@d6239243ce9d1f845da3ce8fdd2c7a5598ee3a8d:evals/PORT.yaml"
+      ],
+      "note": "Eval owner, evidence limits, and validator route remain; README is now conditional on topology or public-status work."
+    },
+    {
+      "repository": "8Dionysus",
+      "path": "evals/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "8Dionysus@d6239243ce9d1f845da3ce8fdd2c7a5598ee3a8d:evals/README.md",
+        "8Dionysus@d6239243ce9d1f845da3ce8fdd2c7a5598ee3a8d:evals/PORT.yaml"
+      ],
+      "note": "Human eval topology, evidence semantics, and owner-return map; no longer an unconditional agent read."
+    },
+    {
+      "repository": "8Dionysus",
+      "path": "evals/intake/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "8Dionysus@d6239243ce9d1f845da3ce8fdd2c7a5598ee3a8d:evals/intake/README.md"
+      ],
+      "note": "Intentional empty-state and placement contract for public-safe eval proposals."
+    },
+    {
+      "repository": "8Dionysus",
+      "path": "evals/reports/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "8Dionysus@d6239243ce9d1f845da3ce8fdd2c7a5598ee3a8d:evals/reports/README.md"
+      ],
+      "note": "Intentional local-report empty-state with an explicit non-proof boundary."
+    },
+    {
+      "repository": "8Dionysus",
+      "path": "evals/suites/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "8Dionysus@d6239243ce9d1f845da3ce8fdd2c7a5598ee3a8d:evals/suites/README.md"
+      ],
+      "note": "Suite placement, portability, and executable-test routing contract."
+    },
+    {
+      "repository": "8Dionysus",
+      "path": "examples/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "8Dionysus@d6239243ce9d1f845da3ce8fdd2c7a5598ee3a8d:examples/AGENTS.md"
+      ],
+      "note": "Concise sanitized-example law and nearest validation delta."
+    },
+    {
+      "repository": "8Dionysus",
+      "path": "examples/recurrence/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "8Dionysus@d6239243ce9d1f845da3ce8fdd2c7a5598ee3a8d:examples/recurrence/README.md"
+      ],
+      "note": "Human recurrence-example map and payload-limit explanation."
+    },
+    {
+      "repository": "8Dionysus",
+      "path": "generated/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "8Dionysus@d6239243ce9d1f845da3ce8fdd2c7a5598ee3a8d:generated/AGENTS.md"
+      ],
+      "note": "Short generated-surface mutation prohibition and source-return boundary."
+    },
+    {
+      "repository": "8Dionysus",
+      "path": "kag/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "8Dionysus@b8845dd16262fa86ca0c8cbcedd5f59e994948a9:kag/AGENTS.md",
+        "8Dionysus@68425a9091e55bbeacc9ae10e6d2880dbc980342:kag/indexes/index_family.manifest.json"
+      ],
+      "note": "Provider owner/boundary/validation card remains; human topology and memory-map documents are task-conditioned routes."
+    },
+    {
+      "repository": "8Dionysus",
+      "path": "kag/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "8Dionysus@68425a9091e55bbeacc9ae10e6d2880dbc980342:kag/README.md",
+        "8Dionysus@68425a9091e55bbeacc9ae10e6d2880dbc980342:kag/manifest.json"
+      ],
+      "note": "Human provider topology, record classes, and consumer/owner-return map; not universal prompt context."
+    },
+    {
+      "repository": "8Dionysus",
+      "path": "manifests/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "8Dionysus@d6239243ce9d1f845da3ce8fdd2c7a5598ee3a8d:manifests/AGENTS.md"
+      ],
+      "note": "Compact coordination-manifest authority limit and source-routing law."
+    },
+    {
+      "repository": "8Dionysus",
+      "path": "manifests/recurrence/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "8Dionysus@d6239243ce9d1f845da3ce8fdd2c7a5598ee3a8d:manifests/recurrence/AGENTS.md"
+      ],
+      "note": "Nearest recurrence-hint non-authority and payload-validation boundary."
+    },
+    {
+      "repository": "8Dionysus",
+      "path": "profile/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "8Dionysus@d6239243ce9d1f845da3ce8fdd2c7a5598ee3a8d:profile/AGENTS.md"
+      ],
+      "note": "Profile-specific public-safety and validation delta."
+    },
+    {
+      "repository": "8Dionysus",
+      "path": "quests/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "8Dionysus@d6239243ce9d1f845da3ce8fdd2c7a5598ee3a8d:quests/AGENTS.md"
+      ],
+      "note": "Quest projection is explicitly non-authoritative and returns lifecycle meaning to its owner."
+    },
+    {
+      "repository": "8Dionysus",
+      "path": "schemas/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "8Dionysus@d6239243ce9d1f845da3ce8fdd2c7a5598ee3a8d:schemas/AGENTS.md"
+      ],
+      "note": "Small schema-source and compatibility-validation contract."
+    },
+    {
+      "repository": "8Dionysus",
+      "path": "scripts/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "8Dionysus@b8845dd16262fa86ca0c8cbcedd5f59e994948a9:scripts/AGENTS.md",
+        "8Dionysus@b8845dd16262fa86ca0c8cbcedd5f59e994948a9:scripts/validate_nested_agents.py"
+      ],
+      "note": "Maintainer-script invariants and validation routes remain; regression coverage now rejects redundant root-reread imperatives."
+    },
+    {
+      "repository": "8Dionysus",
+      "path": "skills/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "8Dionysus@b8845dd16262fa86ca0c8cbcedd5f59e994948a9:skills/AGENTS.md",
+        "8Dionysus@d6239243ce9d1f845da3ce8fdd2c7a5598ee3a8d:skills/port.manifest.json"
+      ],
+      "note": "Skill-source ownership, projection stop-line, and validators remain; README is conditional on catalog or install-route work."
+    },
+    {
+      "repository": "8Dionysus",
+      "path": "skills/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "8Dionysus@d6239243ce9d1f845da3ce8fdd2c7a5598ee3a8d:skills/README.md",
+        "8Dionysus@d6239243ce9d1f845da3ce8fdd2c7a5598ee3a8d:skills/port.manifest.json"
+      ],
+      "note": "Human skill catalog and installation/source-return map, separate from inherited mutation law."
+    },
+    {
+      "repository": "8Dionysus",
+      "path": "stats/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "slim-rewrite",
+      "owner_evidence": [
+        "8Dionysus@b8845dd16262fa86ca0c8cbcedd5f59e994948a9:stats/AGENTS.md",
+        "8Dionysus@d6239243ce9d1f845da3ce8fdd2c7a5598ee3a8d:stats/port.manifest.json"
+      ],
+      "note": "Stats-port ownership, evidence limits, and validation remain; README is conditional on human topology or metric-meaning work."
+    },
+    {
+      "repository": "8Dionysus",
+      "path": "stats/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "8Dionysus@d6239243ce9d1f845da3ce8fdd2c7a5598ee3a8d:stats/README.md",
+        "8Dionysus@d6239243ce9d1f845da3ce8fdd2c7a5598ee3a8d:stats/port.manifest.json"
+      ],
+      "note": "Human metric topology and owner-return map; no longer an unconditional agent read."
+    },
+    {
+      "repository": "8Dionysus",
+      "path": "tests/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "8Dionysus@b8845dd16262fa86ca0c8cbcedd5f59e994948a9:tests/AGENTS.md",
+        "8Dionysus@b8845dd16262fa86ca0c8cbcedd5f59e994948a9:tests/test_validate_nested_agents.py"
+      ],
+      "note": "Test-surface scope and validation delta remain; new regression coverage protects conditional routing."
     }
   ]
 }

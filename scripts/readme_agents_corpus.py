@@ -247,6 +247,14 @@ def _scope_flags(relative: str) -> dict[str, bool]:
     }
 
 
+def has_level_one_heading(text: str) -> bool:
+    """Accept an owner-specific H1 title without requiring one literal label."""
+
+    first_nonempty = next((line.strip() for line in text.splitlines() if line.strip()), "")
+    heading = MARKDOWN_HEADING_RE.match(first_nonempty)
+    return bool(heading and len(heading.group("marks")) == 1)
+
+
 def _resolve_relative_reference(source: str, raw_target: str) -> str | None:
     target = raw_target.split("#", 1)[0].strip()
     if not target or "://" in target or target.startswith("/"):
@@ -557,7 +565,7 @@ def scan_repository_corpus(
                 "bytes": len(raw),
                 "sha256": hashlib.sha256(raw).hexdigest(),
                 "heading_ok": (
-                    text.lstrip().startswith("# AGENTS.md")
+                    has_level_one_heading(text)
                     if PurePosixPath(relative).name == "AGENTS.md"
                     else None
                 ),

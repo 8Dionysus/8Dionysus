@@ -16,6 +16,7 @@ from typing import Any, Mapping, Sequence
 
 from readme_agents_corpus import (
     AGENTS_CHAIN_BUDGET_BYTES,
+    has_level_one_heading,
     load_dispositions,
     scan_repository_corpus,
     scan_shared_root,
@@ -319,7 +320,7 @@ def agents_file_record(path: Path, repo_root: Path) -> dict[str, Any]:
     return {
         "path": posix(relative),
         "scope": "." if parent == "." else parent,
-        "heading_ok": text.lstrip().startswith("# AGENTS.md"),
+        "heading_ok": has_level_one_heading(text),
         "lines": line_count(text),
         "bytes": path.stat().st_size,
     }
@@ -381,7 +382,7 @@ def scan_repo(
         for record in records
         if record["tracked"] and record["exists_in_worktree"]
     ):
-        issues.append("one or more AGENTS.md files do not start with '# AGENTS.md'")
+        issues.append("one or more AGENTS.md files do not start with a level-one heading")
 
     root_lines = line_count(read_text(root_agents)) if root_agents else 0
     if root_lines > ROOT_AGENTS_LONG_LINE_THRESHOLD:

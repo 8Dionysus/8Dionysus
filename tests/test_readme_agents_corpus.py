@@ -15,6 +15,14 @@ import readme_agents_corpus
 
 
 class ReadmeAgentsCorpusTests(unittest.TestCase):
+    def test_owner_specific_level_one_agents_heading_is_valid(self) -> None:
+        self.assertTrue(
+            readme_agents_corpus.has_level_one_heading("# Runtime Agent Route\n")
+        )
+        self.assertFalse(
+            readme_agents_corpus.has_level_one_heading("## Runtime Agent Route\n")
+        )
+
     def test_checked_in_disposition_manifest_matches_schema(self) -> None:
         root = Path(__file__).resolve().parents[1]
         payload = json.loads(

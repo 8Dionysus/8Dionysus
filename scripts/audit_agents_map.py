@@ -386,6 +386,13 @@ def scan_repo(
     root_lines = line_count(read_text(root_agents)) if root_agents else 0
     if root_lines > ROOT_AGENTS_LONG_LINE_THRESHOLD:
         issues.append(f"root AGENTS.md is long ({root_lines} lines; threshold {ROOT_AGENTS_LONG_LINE_THRESHOLD})")
+    repeated_groups = corpus["readme_agents_summary"][
+        "authored_repeated_long_agents_block_groups"
+    ]
+    if repeated_groups:
+        issues.append(
+            f"authored AGENTS.md corpus has {repeated_groups} repeated long prose block group(s)"
+        )
 
     return {
         "name": name,
@@ -397,6 +404,7 @@ def scan_repo(
         "corpus_source": corpus["corpus_source"],
         "git_snapshot": corpus["git_snapshot"],
         "readme_agents_summary": corpus["readme_agents_summary"],
+        "repeated_long_agents_blocks": corpus["repeated_long_agents_blocks"],
         "agents_md_count": len(tracked_agents_records),
         "readme_md_count": corpus["readme_agents_summary"]["tracked_readme_files"],
         "root_agents_present": bool(root_agents),
@@ -447,6 +455,11 @@ def missing_repo_record(name: str) -> dict[str, Any]:
             "chain_p95_bytes": 0,
             "chain_max_bytes": 0,
             "chain_scopes_over_budget": 0,
+            "repeated_long_agents_block_groups": 0,
+            "authored_repeated_long_agents_block_groups": 0,
+            "excluded_repeated_long_agents_block_groups": 0,
+            "repeated_long_agents_block_instances": 0,
+            "repeated_long_agents_normalized_redundant_bytes": 0,
             "agents_files_referencing_readme": 0,
             "agents_files_declaring_mandatory_readme": 0,
             "declared_mandatory_readme_bytes": 0,
@@ -470,6 +483,7 @@ def missing_repo_record(name: str) -> dict[str, Any]:
         "high_risk_dirs_without_agents": [],
         "agents_files": [],
         "readme_files": [],
+        "repeated_long_agents_blocks": [],
         "issues": (
             []
             if requirement == "optional"
@@ -765,6 +779,7 @@ def build_agents_map(
             "untracked_posture": "reported separately as candidates",
             "chain_budget_bytes": AGENTS_CHAIN_BUDGET_BYTES,
             "chain_percentile_method": "nearest-rank over unique document-directory scopes",
+            "repeated_agents_block_threshold": "exact normalized prose, at least 180 bytes in at least 4 tracked AGENTS.md files; fenced examples excluded",
             "remote_currentness": "not claimed; refs are local snapshots until owner refresh",
             "disposition_authority": "owner evidence; this integration ledger does not decide sibling meaning",
             "workspace_manifest_used": use_workspace_manifest,
@@ -867,9 +882,9 @@ def render_markdown(payload: Mapping[str, Any]) -> str:
         lines.append(f"- `{key}`: {totals[key]}")
     lines.extend(["", "## Repository coverage", ""])
     lines.append(
-        "| Repository | State | AGENTS corpus/active | README | Pairs | Unique chain p95/max | Over 32 KiB authored/excluded | Reviewed/unreviewed | Issues |"
+        "| Repository | State | AGENTS corpus/active | README | Pairs | Unique chain p95/max | Over 32 KiB authored/excluded | Repeated long blocks/redundant bytes | Reviewed/unreviewed | Issues |"
     )
-    lines.append("|---|---:|---:|---:|---:|---:|---:|---:|---|")
+    lines.append("|---|---:|---:|---:|---:|---:|---:|---:|---:|---|")
     for repo in repositories:
         state = repo.get("checkout_state", "unknown")
         agents_count = repo.get("agents_md_count", "")
@@ -881,6 +896,10 @@ def render_markdown(payload: Mapping[str, Any]) -> str:
         maximum = summary.get("unique_chain_max_bytes", "")
         over_budget_authored = summary.get("authored_unique_chains_over_budget", "")
         over_budget_excluded = summary.get("excluded_unique_chains_over_budget", "")
+        repeated_groups = summary.get("authored_repeated_long_agents_block_groups", "")
+        repeated_bytes = summary.get(
+            "repeated_long_agents_normalized_redundant_bytes", ""
+        )
         reviewed = summary.get("reviewed_files", "")
         unreviewed = summary.get("unreviewed_files", "")
         issues = repo.get("issues", [])
@@ -893,6 +912,8 @@ def render_markdown(payload: Mapping[str, Any]) -> str:
             maximum = ""
             over_budget_authored = ""
             over_budget_excluded = ""
+            repeated_groups = ""
+            repeated_bytes = ""
             reviewed = ""
             unreviewed = ""
             issue_text = "baseline only"
@@ -901,6 +922,7 @@ def render_markdown(payload: Mapping[str, Any]) -> str:
         lines.append(
             f"| `{repo['name']}` | `{state}` | {agents_corpus_count}/{agents_count} | {readme_count} | {pairs} | "
             f"{p95}/{maximum} | {over_budget_authored}/{over_budget_excluded} | "
+            f"{repeated_groups}/{repeated_bytes} | "
             f"{reviewed}/{unreviewed} | {issue_text} |"
         )
     shared_root = payload.get("shared_root", {})
@@ -930,6 +952,7 @@ def render_markdown(payload: Mapping[str, Any]) -> str:
             "- Corpus counts use Git-tracked `README.md` and `AGENTS.md`; untracked documents are candidates, not canonical corpus members.",
             "- `chain_scopes` measures unique document directories; `unique_agents_chains` collapses directories that inherit the same AGENTS path signature.",
             "- Chain percentiles use the nearest-rank method; the repository table reports unique chain signatures.",
+            "- `Repeated long blocks` counts exact normalized prose blocks of at least 180 bytes appearing in at least four tracked `AGENTS.md` files; fenced examples are excluded and redundant bytes count copies beyond the first.",
             "- Dispositions remain `unreviewed` until an owner-evidenced record is added to the integration manifest.",
             "- `unvalidated_nested_agents` means a nested `AGENTS.md` exists but is not declared by `scripts/validate_nested_agents.py`.",
             "- `high_risk_dirs_without_agents` marks common contract, generated, test, runtime, or source directories without a direct local instruction file.",

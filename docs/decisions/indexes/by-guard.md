@@ -106,6 +106,10 @@
 
 - [8DION-D-0021 - Gate Projection on Current Owner Source](../8DION-D-0021-gate-projection-on-current-owner-source.md) (`docs/decisions/8DION-D-0021-gate-projection-on-current-owner-source.md`)
 
+## fenced-example exclusion
+
+- [8DION-D-0031 - Measure Repeated Prompt-Visible AGENTS Blocks](../8DION-D-0031-measure-repeated-prompt-visible-agents-blocks.md) (`docs/decisions/8DION-D-0031-measure-repeated-prompt-visible-agents-blocks.md`)
+
 ## generated map marker
 
 - [8DION-D-0011 - Workspace Memory Map Writeback Sync](../8DION-D-0011-workspace-memory-map-writeback-sync.md) (`docs/decisions/8DION-D-0011-workspace-memory-map-writeback-sync.md`)
@@ -133,6 +137,10 @@
 ## human navigation
 
 - [8DION-D-0029 - Project a Dedicated Workspace-Root README](../8DION-D-0029-project-a-dedicated-workspace-root-readme.md) (`docs/decisions/8DION-D-0029-project-a-dedicated-workspace-root-readme.md`)
+
+## inherited context
+
+- [8DION-D-0031 - Measure Repeated Prompt-Visible AGENTS Blocks](../8DION-D-0031-measure-repeated-prompt-visible-agents-blocks.md) (`docs/decisions/8DION-D-0031-measure-repeated-prompt-visible-agents-blocks.md`)
 
 ## judgment-heavy writeback
 
@@ -213,6 +221,10 @@
 
 - [8DION-D-0029 - Project a Dedicated Workspace-Root README](../8DION-D-0029-project-a-dedicated-workspace-root-readme.md) (`docs/decisions/8DION-D-0029-project-a-dedicated-workspace-root-readme.md`)
 
+## owner review
+
+- [8DION-D-0031 - Measure Repeated Prompt-Visible AGENTS Blocks](../8DION-D-0031-measure-repeated-prompt-visible-agents-blocks.md) (`docs/decisions/8DION-D-0031-measure-repeated-prompt-visible-agents-blocks.md`)
+
 ## owner scope
 
 - [8DION-D-0017 - Owner-Scoped Skill Projections](../8DION-D-0017-owner-scoped-skill-projections.md) (`docs/decisions/8DION-D-0017-owner-scoped-skill-projections.md`)
@@ -285,6 +297,10 @@
 ## refusal before planning
 
 - [8DION-D-0021 - Gate Projection on Current Owner Source](../8DION-D-0021-gate-projection-on-current-owner-source.md) (`docs/decisions/8DION-D-0021-gate-projection-on-current-owner-source.md`)
+
+## repeated prose
+
+- [8DION-D-0031 - Measure Repeated Prompt-Visible AGENTS Blocks](../8DION-D-0031-measure-repeated-prompt-visible-agents-blocks.md) (`docs/decisions/8DION-D-0031-measure-repeated-prompt-visible-agents-blocks.md`)
 
 ## reviewed intake boundary
 

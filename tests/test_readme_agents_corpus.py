@@ -166,6 +166,31 @@ class ReadmeAgentsCorpusTests(unittest.TestCase):
                 0,
             )
 
+    def test_conditional_readme_route_is_not_an_unconditional_read(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            (repo / "AGENTS.md").write_text(
+                "# AGENTS.md\n\n## Read before editing\n\n"
+                "Open `README.md` only when its human explanation is relevant.\n\n"
+                "Root orientation remains in `README.md`; none is mandatory merely "
+                "because it is nearby.\n",
+                encoding="utf-8",
+            )
+            (repo / "README.md").write_text("# Human route\n", encoding="utf-8")
+
+            result = readme_agents_corpus.scan_repository_corpus(repo, "fixture", {})
+            root_agents = next(
+                record
+                for record in result["agents_files"]
+                if record["path"] == "AGENTS.md"
+            )
+
+            self.assertEqual(root_agents["mandatory_readme_reference_lines"], [])
+            self.assertEqual(
+                result["readme_agents_summary"]["agents_files_declaring_mandatory_readme"],
+                0,
+            )
+
     def test_disposition_loader_requires_owner_evidence(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             path = Path(tmp) / "dispositions.json"
@@ -191,6 +216,37 @@ class ReadmeAgentsCorpusTests(unittest.TestCase):
 
             self.assertEqual(records, {})
             self.assertIn("reviewed record lacks owner_evidence", issues[0])
+
+    def test_repeated_long_agents_blocks_are_measured_outside_fences(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            shared = "Shared inherited routing law " + ("owner-delta " * 18)
+            for relative in ["AGENTS.md", "a/AGENTS.md", "b/AGENTS.md", "c/AGENTS.md"]:
+                path = repo / relative
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_text(f"# AGENTS.md\n\n{shared}\n", encoding="utf-8")
+            for relative in ["d/AGENTS.md", "e/AGENTS.md", "f/AGENTS.md", "g/AGENTS.md"]:
+                path = repo / relative
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_text(
+                    f"# AGENTS.md\n\n```text\n{shared}\n```\n", encoding="utf-8"
+                )
+
+            result = readme_agents_corpus.scan_repository_corpus(repo, "fixture", {})
+            summary = result["readme_agents_summary"]
+            block = result["repeated_long_agents_blocks"][0]
+
+            self.assertEqual(summary["repeated_long_agents_block_groups"], 1)
+            self.assertEqual(summary["authored_repeated_long_agents_block_groups"], 1)
+            self.assertEqual(summary["repeated_long_agents_block_instances"], 4)
+            self.assertEqual(
+                block["paths"],
+                ["AGENTS.md", "a/AGENTS.md", "b/AGENTS.md", "c/AGENTS.md"],
+            )
+            self.assertEqual(
+                block["normalized_redundant_bytes"],
+                block["normalized_bytes"] * 3,
+            )
 
     def test_shared_root_uses_distinct_sources_for_readme_and_agents(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:

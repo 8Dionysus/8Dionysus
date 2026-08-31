@@ -22,6 +22,8 @@ SHARED_ROOT_OWNER_PATHS = {
     "README.md": "docs/WORKSPACE_ROOT_ENTRY.md",
 }
 AGENTS_CHAIN_BUDGET_BYTES = 32 * 1024
+REPEATED_AGENTS_BLOCK_MIN_BYTES = 180
+REPEATED_AGENTS_BLOCK_MIN_FILES = 4
 DISPOSITIONS_SCHEMA_VERSION = "8dionysus_readme_agents_dispositions_v1"
 DISPOSITIONS = frozenset(
     {
@@ -59,19 +61,29 @@ DOC_LINK_RE = re.compile(
     r"\[[^\]]*\]\((?P<link>[^)]+(?:README|AGENTS)\.md(?:#[^)]*)?)\)"
 )
 MANDATORY_READ_RE = re.compile(
-    r"\b(read|before|start\s+here|прочит\w*|сначала|изуч\w*)\b",
+    r"\b(read|open|consult|before|start\s+(?:here|from)|прочит\w*|сначала|изуч\w*)\b",
     re.IGNORECASE,
 )
 NEGATED_READ_RE = re.compile(
-    r"\b(do\s+not|don't|not\s+required|optional|не\s+(?:читать|нужно|требуется))\b",
+    r"\b(do\s+not|don't|not\s+(?:mandatory|required)|none\s+is\s+mandatory|optional|"
+    r"does\s+not\s+require|не\s+(?:читать|нужно|требуется))\b",
     re.IGNORECASE,
 )
+CONDITIONAL_READ_RE = re.compile(
+    r"\b(?:only\s+(?:when|if)|if\b|on[- ]demand|as\s+needed|"
+    r"only\s+the\s+route\s+needed|"
+    r"(?:read|open|consult)\b.{0,160}\bfor\b|"
+    r"when\b.{0,180}\b(?:relevant|needed|required|material))\b",
+    re.IGNORECASE,
+)
+MARKDOWN_LIST_ITEM_RE = re.compile(r"^\s*(?:[-*+]\s+|\d+[.)]\s+)")
 MARKDOWN_HEADING_RE = re.compile(r"^(?P<marks>#{1,6})\s+(?P<title>.+?)\s*$")
 MANDATORY_READ_SECTION_RE = re.compile(
     r"\b(read\s+before(?:\s+editing|\s+changing)?|reading\s+order|read\s+first|"
     r"required\s+reading|порядок\s+чтения|прочитать\s+перед|сначала\s+прочитать)\b",
     re.IGNORECASE,
 )
+FENCE_START_RE = re.compile(r"^(?P<marker>`{3,}|~{3,})")
 
 
 def _run_git(repo_root: Path, args: Sequence[str]) -> subprocess.CompletedProcess[bytes]:
@@ -253,7 +265,47 @@ def _extract_references(source: str, text: str, known_paths: set[str]) -> dict[s
     unresolved_readmes: set[str] = set()
     outbound_docs: set[str] = set()
     mandatory_section_level: int | None = None
-    for line_number, line in enumerate(text.splitlines(), start=1):
+    lines = text.splitlines()
+    paragraph_context: dict[int, str] = {}
+    paragraph_lines: list[tuple[int, str]] = []
+    paragraph_kind: str | None = None
+
+    def flush_paragraph() -> None:
+        nonlocal paragraph_kind
+        if not paragraph_lines:
+            return
+        context = " ".join(line.strip() for _, line in paragraph_lines)
+        for number, _ in paragraph_lines:
+            paragraph_context[number] = context
+        paragraph_lines.clear()
+        paragraph_kind = None
+
+    for line_number, line in enumerate(lines, start=1):
+        stripped = line.strip()
+        if not stripped or MARKDOWN_HEADING_RE.match(stripped):
+            flush_paragraph()
+            continue
+        line_kind = (
+            "list"
+            if MARKDOWN_LIST_ITEM_RE.match(line)
+            else "table"
+            if stripped.startswith("|")
+            else "prose"
+        )
+        if paragraph_lines and (
+            line_kind in {"list", "table"}
+            or (
+                paragraph_kind in {"list", "table"}
+                and not line[:1].isspace()
+            )
+        ):
+            flush_paragraph()
+        paragraph_lines.append((line_number, line))
+        if paragraph_kind is None:
+            paragraph_kind = line_kind
+    flush_paragraph()
+
+    for line_number, line in enumerate(lines, start=1):
         heading = MARKDOWN_HEADING_RE.match(line.strip())
         if heading:
             level = len(heading.group("marks"))
@@ -265,10 +317,19 @@ def _extract_references(source: str, text: str, known_paths: set[str]) -> dict[s
         readme_tokens = [match.group("path") for match in README_TOKEN_RE.finditer(line)]
         if readme_tokens:
             readme_lines.append(line_number)
+            context = paragraph_context.get(line_number, line)
+            conditional = bool(
+                CONDITIONAL_READ_RE.search(context)
+                or NEGATED_READ_RE.search(context)
+            )
+            explicit_directive = bool(MANDATORY_READ_RE.search(context))
+            section_list_item = (
+                mandatory_section_level is not None
+                and bool(MARKDOWN_LIST_ITEM_RE.match(line))
+            )
             mandatory = (
-                bool(MANDATORY_READ_RE.search(line))
-                or mandatory_section_level is not None
-            ) and not NEGATED_READ_RE.search(line)
+                explicit_directive or section_list_item
+            ) and not conditional
             if mandatory:
                 mandatory_lines.append(line_number)
             for token in readme_tokens:
@@ -308,6 +369,107 @@ def _nearest_rank(values: Sequence[int], percentile: float) -> int:
     ordered = sorted(values)
     index = max(0, math.ceil(percentile * len(ordered)) - 1)
     return ordered[index]
+
+
+def _agents_prose_blocks(text: str) -> list[str]:
+    """Return normalized prompt-visible prose blocks outside fenced examples."""
+
+    blocks: list[str] = []
+    current: list[str] = []
+    fence_marker: str | None = None
+
+    def flush() -> None:
+        if not current:
+            return
+        normalized = " ".join(current)
+        if normalized:
+            blocks.append(normalized)
+        current.clear()
+
+    for raw_line in text.splitlines():
+        line = raw_line.strip()
+        fence = FENCE_START_RE.match(line)
+        if fence:
+            marker = fence.group("marker")
+            if fence_marker is None:
+                flush()
+                fence_marker = marker[0]
+            elif marker[0] == fence_marker:
+                fence_marker = None
+            continue
+        if fence_marker is not None:
+            continue
+        if not line:
+            flush()
+            continue
+        if MARKDOWN_HEADING_RE.match(line):
+            flush()
+            continue
+        current.append(line)
+    flush()
+    return blocks
+
+
+def _repeated_agents_blocks(records: Sequence[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Describe exact long prose blocks repeated across several tracked cards."""
+
+    occurrences: dict[str, dict[str, Any]] = {}
+    for record in records:
+        if record["document_kind"] != "agents" or not record["tracked"]:
+            continue
+        unique_blocks = set(_agents_prose_blocks(record["_text"]))
+        for block in unique_blocks:
+            block_bytes = len(block.encode("utf-8"))
+            if block_bytes < REPEATED_AGENTS_BLOCK_MIN_BYTES:
+                continue
+            fingerprint = hashlib.sha256(block.encode("utf-8")).hexdigest()
+            group = occurrences.setdefault(
+                fingerprint,
+                {
+                    "fingerprint": fingerprint,
+                    "normalized_bytes": block_bytes,
+                    "paths": [],
+                },
+            )
+            group["paths"].append(record["path"])
+
+    record_by_path = {record["path"]: record for record in records}
+    groups: list[dict[str, Any]] = []
+    for group in occurrences.values():
+        paths = sorted(group["paths"])
+        if len(paths) < REPEATED_AGENTS_BLOCK_MIN_FILES:
+            continue
+        excluded = all(
+            any(
+                record_by_path[path]["scope_flags"][name]
+                for name in ("generated", "vendor", "fixture", "archive")
+            )
+            for path in paths
+        )
+        normalized_bytes = int(group["normalized_bytes"])
+        groups.append(
+            {
+                "fingerprint": group["fingerprint"],
+                "normalized_bytes": normalized_bytes,
+                "occurrences": len(paths),
+                "normalized_redundant_bytes": normalized_bytes * (len(paths) - 1),
+                "scope": "excluded" if excluded else "authored",
+                "paths": paths,
+            }
+        )
+        for path in paths:
+            record_by_path[path].setdefault(
+                "repeated_long_agents_block_fingerprints", []
+            ).append(group["fingerprint"])
+
+    return sorted(
+        groups,
+        key=lambda group: (
+            -int(group["occurrences"]),
+            -int(group["normalized_bytes"]),
+            str(group["fingerprint"]),
+        ),
+    )
 
 
 def _review_record(
@@ -424,6 +586,11 @@ def scan_repository_corpus(
                 "review": _review_record(repository, record["path"], dispositions),
             }
         )
+
+    repeated_agents_blocks = _repeated_agents_blocks(raw_records)
+    for record in raw_records:
+        if record["document_kind"] == "agents":
+            record.setdefault("repeated_long_agents_block_fingerprints", [])
         record.pop("_text")
 
     tracked = [record for record in raw_records if record["tracked"]]
@@ -503,6 +670,19 @@ def scan_repository_corpus(
         "declared_mandatory_readme_bytes": sum(
             record["declared_mandatory_readme_bytes"] for record in tracked_agents
         ),
+        "repeated_long_agents_block_groups": len(repeated_agents_blocks),
+        "authored_repeated_long_agents_block_groups": sum(
+            group["scope"] == "authored" for group in repeated_agents_blocks
+        ),
+        "excluded_repeated_long_agents_block_groups": sum(
+            group["scope"] == "excluded" for group in repeated_agents_blocks
+        ),
+        "repeated_long_agents_block_instances": sum(
+            group["occurrences"] for group in repeated_agents_blocks
+        ),
+        "repeated_long_agents_normalized_redundant_bytes": sum(
+            group["normalized_redundant_bytes"] for group in repeated_agents_blocks
+        ),
         "reviewed_files": reviews.count("reviewed"),
         "blocked_files": reviews.count("blocked"),
         "unreviewed_files": reviews.count("unreviewed"),
@@ -512,6 +692,7 @@ def scan_repository_corpus(
         "corpus_source": corpus_source,
         "git_snapshot": snapshot,
         "readme_agents_summary": summary,
+        "repeated_long_agents_blocks": repeated_agents_blocks,
         "agents_files": sorted(
             [record for record in raw_records if record["document_kind"] == "agents"],
             key=lambda record: record["path"],
@@ -632,6 +813,21 @@ def summarize_workspace_corpus(
         ),
         "declared_mandatory_readme_bytes": sum(
             item["declared_mandatory_readme_bytes"] for item in summaries
+        ),
+        "repeated_long_agents_block_groups": sum(
+            item["repeated_long_agents_block_groups"] for item in summaries
+        ),
+        "authored_repeated_long_agents_block_groups": sum(
+            item["authored_repeated_long_agents_block_groups"] for item in summaries
+        ),
+        "excluded_repeated_long_agents_block_groups": sum(
+            item["excluded_repeated_long_agents_block_groups"] for item in summaries
+        ),
+        "repeated_long_agents_block_instances": sum(
+            item["repeated_long_agents_block_instances"] for item in summaries
+        ),
+        "repeated_long_agents_normalized_redundant_bytes": sum(
+            item["repeated_long_agents_normalized_redundant_bytes"] for item in summaries
         ),
         "reviewed_files": tracked_reviewed,
         "blocked_files": tracked_blocked,

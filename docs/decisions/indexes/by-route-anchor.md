@@ -154,6 +154,7 @@
 ## docs/AGENTS_MAP.md
 
 - [8DION-D-0028 - Audit README and AGENTS as Distinct Owner Surfaces](../8DION-D-0028-audit-readme-and-agents-as-distinct-owner-surfaces.md) (`docs/decisions/8DION-D-0028-audit-readme-and-agents-as-distinct-owner-surfaces.md`)
+- [8DION-D-0031 - Measure Repeated Prompt-Visible AGENTS Blocks](../8DION-D-0031-measure-repeated-prompt-visible-agents-blocks.md) (`docs/decisions/8DION-D-0031-measure-repeated-prompt-visible-agents-blocks.md`)
 
 ## docs/CODEX_ORGAN_FABRIC_CONSUMER.md
 
@@ -241,6 +242,7 @@
 
 - [8DION-D-0028 - Audit README and AGENTS as Distinct Owner Surfaces](../8DION-D-0028-audit-readme-and-agents-as-distinct-owner-surfaces.md) (`docs/decisions/8DION-D-0028-audit-readme-and-agents-as-distinct-owner-surfaces.md`)
 - [8DION-D-0030 - Admit aoa-agon to the Workspace Owner Audit](../8DION-D-0030-admit-aoa-agon-to-workspace-owner-audit.md) (`docs/decisions/8DION-D-0030-admit-aoa-agon-to-workspace-owner-audit.md`)
+- [8DION-D-0031 - Measure Repeated Prompt-Visible AGENTS Blocks](../8DION-D-0031-measure-repeated-prompt-visible-agents-blocks.md) (`docs/decisions/8DION-D-0031-measure-repeated-prompt-visible-agents-blocks.md`)
 
 ## scripts/build_workspace_memory_map.py
 
@@ -266,6 +268,7 @@
 
 - [8DION-D-0028 - Audit README and AGENTS as Distinct Owner Surfaces](../8DION-D-0028-audit-readme-and-agents-as-distinct-owner-surfaces.md) (`docs/decisions/8DION-D-0028-audit-readme-and-agents-as-distinct-owner-surfaces.md`)
 - [8DION-D-0029 - Project a Dedicated Workspace-Root README](../8DION-D-0029-project-a-dedicated-workspace-root-readme.md) (`docs/decisions/8DION-D-0029-project-a-dedicated-workspace-root-readme.md`)
+- [8DION-D-0031 - Measure Repeated Prompt-Visible AGENTS Blocks](../8DION-D-0031-measure-repeated-prompt-visible-agents-blocks.md) (`docs/decisions/8DION-D-0031-measure-repeated-prompt-visible-agents-blocks.md`)
 
 ## scripts/render_codex_organ_fabric.py
 

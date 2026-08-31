@@ -191,6 +191,85 @@ class ReadmeAgentsCorpusTests(unittest.TestCase):
                 0,
             )
 
+    def test_read_model_noun_is_not_a_read_directive(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            (repo / "AGENTS.md").write_text(
+                "# AGENTS.md\n\n"
+                "`README.md` is a human entrypoint. Generated summaries are read "
+                "models; neither overrides its owner.\n",
+                encoding="utf-8",
+            )
+            (repo / "README.md").write_text("# Human route\n", encoding="utf-8")
+
+            result = readme_agents_corpus.scan_repository_corpus(repo, "fixture", {})
+            root_agents = next(
+                record
+                for record in result["agents_files"]
+                if record["path"] == "AGENTS.md"
+            )
+
+            self.assertEqual(root_agents["mandatory_readme_reference_lines"], [])
+
+    def test_neighboring_sentence_does_not_make_readme_mandatory(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            (repo / "AGENTS.md").write_text(
+                "# AGENTS.md\n\n"
+                "Use `DESIGN.md` before changing durable topology. `README.md` "
+                "is the public atlas for contributors.\n",
+                encoding="utf-8",
+            )
+            (repo / "README.md").write_text("# Human route\n", encoding="utf-8")
+
+            result = readme_agents_corpus.scan_repository_corpus(repo, "fixture", {})
+            root_agents = next(
+                record
+                for record in result["agents_files"]
+                if record["path"] == "AGENTS.md"
+            )
+
+            self.assertEqual(root_agents["mandatory_readme_reference_lines"], [])
+
+    def test_when_route_is_conditional(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            (repo / "AGENTS.md").write_text(
+                "# AGENTS.md\n\n"
+                "Use `README.md` when public package topology moves.\n",
+                encoding="utf-8",
+            )
+            (repo / "README.md").write_text("# Human route\n", encoding="utf-8")
+
+            result = readme_agents_corpus.scan_repository_corpus(repo, "fixture", {})
+            root_agents = next(
+                record
+                for record in result["agents_files"]
+                if record["path"] == "AGENTS.md"
+            )
+
+            self.assertEqual(root_agents["mandatory_readme_reference_lines"], [])
+
+    def test_fenced_readme_argument_is_not_a_read_directive(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            (repo / "AGENTS.md").write_text(
+                "# AGENTS.md\n\n```bash\n"
+                "tool --evidence-ref README.md --claim 'review before landing'\n"
+                "```\n",
+                encoding="utf-8",
+            )
+            (repo / "README.md").write_text("# Human route\n", encoding="utf-8")
+
+            result = readme_agents_corpus.scan_repository_corpus(repo, "fixture", {})
+            root_agents = next(
+                record
+                for record in result["agents_files"]
+                if record["path"] == "AGENTS.md"
+            )
+
+            self.assertEqual(root_agents["mandatory_readme_reference_lines"], [])
+
     def test_disposition_loader_requires_owner_evidence(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             path = Path(tmp) / "dispositions.json"

@@ -61,7 +61,8 @@ DOC_LINK_RE = re.compile(
     r"\[[^\]]*\]\((?P<link>[^)]+(?:README|AGENTS)\.md(?:#[^)]*)?)\)"
 )
 MANDATORY_READ_RE = re.compile(
-    r"\b(read|open|consult|before|start\s+(?:here|from)|прочит\w*|сначала|изуч\w*)\b",
+    r"\b(read(?!\s+models?\b)|open|consult|before|start\s+(?:here|from)|"
+    r"прочит\w*|сначала|изуч\w*)\b",
     re.IGNORECASE,
 )
 NEGATED_READ_RE = re.compile(
@@ -70,9 +71,9 @@ NEGATED_READ_RE = re.compile(
     re.IGNORECASE,
 )
 CONDITIONAL_READ_RE = re.compile(
-    r"\b(?:only\s+(?:when|if)|if\b|on[- ]demand|as\s+needed|"
+    r"\b(?:only\s+(?:when|if)|if\b|when\b|on[- ]demand|as\s+needed|"
     r"only\s+the\s+route\s+needed|"
-    r"(?:read|open|consult)\b.{0,160}\bfor\b|"
+    r"(?:read|open|consult|use)\b.{0,160}\bfor\b|"
     r"when\b.{0,180}\b(?:relevant|needed|required|material))\b",
     re.IGNORECASE,
 )
@@ -269,6 +270,8 @@ def _extract_references(source: str, text: str, known_paths: set[str]) -> dict[s
     paragraph_context: dict[int, str] = {}
     paragraph_lines: list[tuple[int, str]] = []
     paragraph_kind: str | None = None
+    fenced_lines: set[int] = set()
+    fence_marker: str | None = None
 
     def flush_paragraph() -> None:
         nonlocal paragraph_kind
@@ -282,6 +285,19 @@ def _extract_references(source: str, text: str, known_paths: set[str]) -> dict[s
 
     for line_number, line in enumerate(lines, start=1):
         stripped = line.strip()
+        fence = FENCE_START_RE.match(stripped)
+        if fence:
+            flush_paragraph()
+            marker = fence.group("marker")
+            if fence_marker is None:
+                fence_marker = marker[0]
+            elif marker[0] == fence_marker:
+                fence_marker = None
+            fenced_lines.add(line_number)
+            continue
+        if fence_marker is not None:
+            fenced_lines.add(line_number)
+            continue
         if not stripped or MARKDOWN_HEADING_RE.match(stripped):
             flush_paragraph()
             continue
@@ -306,7 +322,11 @@ def _extract_references(source: str, text: str, known_paths: set[str]) -> dict[s
     flush_paragraph()
 
     for line_number, line in enumerate(lines, start=1):
-        heading = MARKDOWN_HEADING_RE.match(line.strip())
+        heading = (
+            None
+            if line_number in fenced_lines
+            else MARKDOWN_HEADING_RE.match(line.strip())
+        )
         if heading:
             level = len(heading.group("marks"))
             if mandatory_section_level is not None and level <= mandatory_section_level:
@@ -317,7 +337,14 @@ def _extract_references(source: str, text: str, known_paths: set[str]) -> dict[s
         readme_tokens = [match.group("path") for match in README_TOKEN_RE.finditer(line)]
         if readme_tokens:
             readme_lines.append(line_number)
-            context = paragraph_context.get(line_number, line)
+            paragraph = paragraph_context.get(line_number, line)
+            sentences = re.split(r"(?<=[.!?])\s+", paragraph)
+            matching_sentences = [
+                sentence
+                for sentence in sentences
+                if any(token in sentence for token in readme_tokens)
+            ]
+            context = " ".join(matching_sentences) or line
             conditional = bool(
                 CONDITIONAL_READ_RE.search(context)
                 or NEGATED_READ_RE.search(context)
@@ -329,7 +356,7 @@ def _extract_references(source: str, text: str, known_paths: set[str]) -> dict[s
             )
             mandatory = (
                 explicit_directive or section_list_item
-            ) and not conditional
+            ) and not conditional and line_number not in fenced_lines
             if mandatory:
                 mandatory_lines.append(line_number)
             for token in readme_tokens:

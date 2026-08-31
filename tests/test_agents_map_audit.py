@@ -377,6 +377,8 @@ class AgentsMapAuditTests(unittest.TestCase):
         self.assertIn("aoa-dashboard", payload["known_repositories"])
         self.assertIn("aoa-models", payload["known_repositories"])
         self.assertIn("aoa-session-memory", payload["known_repositories"])
+        self.assertIn("aoa-agon", audit_agents_map.KNOWN_REPO_NAMES)
+        self.assertNotIn("aoa-agon", payload["known_repositories"])
         self.assertIn("agents_map_public_baseline", rendered)
         self.assertNotIn("/mnt/", rendered)
 

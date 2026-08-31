@@ -84,6 +84,8 @@ needed, say so in closeout.
 - `aoa-kag`: derived provenance-aware knowledge substrates.
 - `aoa-playbooks`: recurring scenario composition, questlines, campaigns, handoffs.
 - `aoa-agents`: role contracts, handoff posture, progression and checkpoint contract surfaces.
+- `aoa-agon`: governed model-formation lineage, candidate causality, material
+  governance, and scoped lineage-continuation decisions.
 - `aoa-stats`: shared measurement grammar, owner-local stats federation, and
   derived non-sovereign read models.
 - `8Dionysus`: public route map, shared-root projection source, AGENTS map audit, and concrete workspace-delivery diagnosis.

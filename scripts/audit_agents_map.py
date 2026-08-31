@@ -135,6 +135,11 @@ KNOWN_REPOSITORIES: tuple[dict[str, str], ...] = (
         "kind": "model-canon",
     },
     {
+        "name": "aoa-agon",
+        "role": "governed model-formation lineage, candidate causality, material governance, and scoped lineage continuation",
+        "kind": "model-formation-lineage",
+    },
+    {
         "name": "aoa-playbooks",
         "role": "recurring operations, scenario composition, handoffs, fallback paths, and validation posture",
         "kind": "scenario-composition",
@@ -149,6 +154,12 @@ KNOWN_REPOSITORIES: tuple[dict[str, str], ...] = (
 KNOWN_REPO_NAMES: tuple[str, ...] = tuple(repo["name"] for repo in KNOWN_REPOSITORIES)
 KNOWN_REPO_BY_NAME: dict[str, dict[str, str]] = {repo["name"]: repo for repo in KNOWN_REPOSITORIES}
 OPTIONAL_REPO_NAMES: frozenset[str] = frozenset({"aoa-routing"})
+PUBLIC_BASELINE_REPOSITORIES: tuple[dict[str, str], ...] = tuple(
+    repo for repo in KNOWN_REPOSITORIES if repo["name"] != "aoa-agon"
+)
+PUBLIC_BASELINE_REPO_NAMES: tuple[str, ...] = tuple(
+    repo["name"] for repo in PUBLIC_BASELINE_REPOSITORIES
+)
 
 HIGH_RISK_DIRECTORIES: tuple[str, ...] = (
     ".agents",
@@ -781,7 +792,7 @@ def build_public_baseline_map() -> dict[str, Any]:
             "checkout_requirement": checkout_requirement(repo["name"]),
             "checkout_state": "public-baseline",
         }
-        for repo in KNOWN_REPOSITORIES
+        for repo in PUBLIC_BASELINE_REPOSITORIES
     ]
     return {
         "schema_version": SCHEMA_VERSION,
@@ -792,7 +803,7 @@ def build_public_baseline_map() -> dict[str, Any]:
         "audit_mode": "public-baseline",
         "baseline_date": "2026-04-24",
         "baseline_note": "Public lower-bound seed. Run live-workspace mode from the sibling checkout root for exact local counts.",
-        "known_repositories": list(KNOWN_REPO_NAMES),
+        "known_repositories": list(PUBLIC_BASELINE_REPO_NAMES),
         "high_risk_directory_kinds": list(HIGH_RISK_DIRECTORIES),
         "totals": dict(PUBLIC_BASELINE_COUNTS),
         "repositories": repositories,

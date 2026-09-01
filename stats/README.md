@@ -9,7 +9,7 @@ organ.
 
 | Measurement | Question | Reference value |
 | --- | --- | --- |
-| `8Dionysus/known-repository-root-agents-coverage-ratio` | What fraction of known public repositories have an observed root `AGENTS.md` route in the committed live-workspace map? | `20 / 21` at evidence blob `641f4500484c4af023c7ac7f899b7be7965a2d73` |
+| `8Dionysus/known-repository-root-agents-coverage-ratio` | What fraction of known public repositories have an observed root `AGENTS.md` route in the committed live-workspace map? | `20 / 21`; the reference packet binds the exact evidence blob |
 
 The denominator is every name in the map's `known_repositories` inventory.
 A known repository whose checkout is missing remains in the denominator as
@@ -26,7 +26,9 @@ every owner record named by the map.
 
 The packet is a public reference snapshot derived from the already committed
 `generated/agents_map.min.json`. It is not a live workspace scan and does not
-carry paths, raw guidance, or session state.
+carry paths, raw guidance, or session state. The packet, rather than this
+README, carries the exact map-blob identity so regenerating the README/AGENTS
+corpus cannot create a self-referential evidence cycle.
 
 ## Authority
 

@@ -92,9 +92,9 @@ For reading guidance, see [AGENTS_FRONTIER_RECON](AGENTS_FRONTIER_RECON.md).
 - `shared_root_unreviewed_files`: 0
 - `tracked_agents_bytes`: 1467879
 - `tracked_agents_files`: 883
-- `tracked_document_bytes`: 5118564
+- `tracked_document_bytes`: 5118719
 - `tracked_document_files`: 2732
-- `tracked_readme_bytes`: 3650685
+- `tracked_readme_bytes`: 3650840
 - `tracked_readme_files`: 1849
 - `unique_agents_chains`: 883
 - `unique_chain_max_bytes`: 25189

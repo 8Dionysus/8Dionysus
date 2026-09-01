@@ -9,7 +9,7 @@ organ.
 
 | Measurement | Question | Reference value |
 | --- | --- | --- |
-| `8Dionysus/known-repository-root-agents-coverage-ratio` | What fraction of known public repositories have an observed root `AGENTS.md` route in the committed live-workspace map? | `19 / 20` at evidence blob `b12d2194498197a4b714ce7d4db01bb2e12d48a2` |
+| `8Dionysus/known-repository-root-agents-coverage-ratio` | What fraction of known public repositories have an observed root `AGENTS.md` route in the committed live-workspace map? | `20 / 21` at evidence blob `641f4500484c4af023c7ac7f899b7be7965a2d73` |
 
 The denominator is every name in the map's `known_repositories` inventory.
 A known repository whose checkout is missing remains in the denominator as

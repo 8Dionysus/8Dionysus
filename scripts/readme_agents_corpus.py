@@ -15,6 +15,8 @@ import subprocess
 from pathlib import Path, PurePosixPath
 from typing import Any, Mapping, Sequence
 
+from project_workspace_root import render_agents_text
+
 
 DOCUMENT_NAMES = frozenset({"AGENTS.md", "README.md"})
 SHARED_ROOT_OWNER_PATHS = {
@@ -751,7 +753,13 @@ def scan_shared_root(
         if not live_path.is_file():
             continue
         live = live_path.read_bytes()
-        owner = owner_path.read_bytes() if owner_path.is_file() else b""
+        owner = (
+            render_agents_text(owner_path.read_text(encoding="utf-8"), workspace_root).encode(
+                "utf-8"
+            )
+            if owner_path.is_file()
+            else b""
+        )
         records.append(
             {
                 "path": name,

@@ -362,6 +362,36 @@ class ReadmeAgentsCorpusTests(unittest.TestCase):
                 "8Dionysus/docs/WORKSPACE_ROOT_ENTRY.md",
             )
 
+    def test_shared_root_compares_rendered_owner_surfaces(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            workspace = root / "workspace"
+            owner = root / "owner"
+            workspace.mkdir()
+            (owner / "docs").mkdir(parents=True)
+            rendered_root = workspace.as_posix()
+            (workspace / "AGENTS.md").write_text(
+                f"agents at {rendered_root}\n", encoding="utf-8"
+            )
+            (workspace / "README.md").write_text(
+                f"workspace at {rendered_root}\n", encoding="utf-8"
+            )
+            (owner / "AGENTS.md").write_text(
+                "agents at <workspace-root>\n", encoding="utf-8"
+            )
+            (owner / "docs" / "WORKSPACE_ROOT_ENTRY.md").write_text(
+                "workspace at <workspace-root>\n", encoding="utf-8"
+            )
+
+            result = readme_agents_corpus.scan_shared_root(workspace, owner, {})
+            records = {record["path"]: record for record in result["files"]}
+
+            self.assertTrue(records["AGENTS.md"]["owner_parity"])
+            self.assertTrue(records["README.md"]["owner_parity"])
+            self.assertEqual(
+                records["AGENTS.md"]["sha256"], records["AGENTS.md"]["owner_sha256"]
+            )
+
 
 if __name__ == "__main__":
     unittest.main()

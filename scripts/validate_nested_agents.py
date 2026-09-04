@@ -21,13 +21,16 @@ REQUIRED_AGENTS_DOCS: dict[str, tuple[str, ...]] = {
         "shared-root projection source",
         "projected live workspace copies",
         "public-safe",
-        "audit_agents_map.py",
+        "[VALIDATION](../VALIDATION.md)",
+        "#agents-map-and-workspace-audit",
     ),
     ".codex/AGENTS.md": (
         "Codex-plane projection",
         "Source-owned files",
         "No secrets",
-        "audit_agents_map.py",
+        "[VALIDATION](../VALIDATION.md)",
+        "#codex-plane",
+        "#agents-map-and-workspace-audit",
     ),
     ".github/AGENTS.md": (
         "public platform-facing automation",

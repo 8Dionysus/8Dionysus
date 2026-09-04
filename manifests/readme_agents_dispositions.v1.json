@@ -32357,6 +32357,171 @@
         "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:access/AGENTS.md"
       ],
       "note": "Human install, contract, or optional-integration entrypoint retained as an on-demand owner surface, not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/candidate-intake/zarathustra/concept-workbench-v1/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@f81eea6dcad2a08136b95e262fe06c68fc16ba92:ToS/candidate-intake/zarathustra/concept-workbench-v1/README.md",
+        "Tree-of-Sophia@f81eea6dcad2a08136b95e262fe06c68fc16ba92:ToS/candidate-intake/AGENTS.md"
+      ],
+      "note": "Source-aware candidate-workbench contract retained as an on-demand dossier map; it is not inherited agent guidance or accepted concept authority."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/candidate-intake/zarathustra/dta-antonovsky-morphology-themes-v1/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@f81eea6dcad2a08136b95e262fe06c68fc16ba92:ToS/candidate-intake/zarathustra/dta-antonovsky-morphology-themes-v1/README.md",
+        "Tree-of-Sophia@f81eea6dcad2a08136b95e262fe06c68fc16ba92:ToS/candidate-intake/AGENTS.md"
+      ],
+      "note": "Candidate-corpus meaning and authority ceiling require a human on-demand packet; executable procedure remains subordinate to its builders and tests."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/candidate-intake/zarathustra/eternal-return-concept-candidate-v1/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@f81eea6dcad2a08136b95e262fe06c68fc16ba92:ToS/candidate-intake/zarathustra/eternal-return-concept-candidate-v1/README.md",
+        "Tree-of-Sophia@f81eea6dcad2a08136b95e262fe06c68fc16ba92:ToS/candidate-intake/AGENTS.md"
+      ],
+      "note": "The semantic dossier and its non-acceptance boundary are durable human-facing context, not content suitable for an inherited route card."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/candidate-intake/zarathustra/eternal-return-concept-candidate-v1/review-preparation-v1/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@f81eea6dcad2a08136b95e262fe06c68fc16ba92:ToS/candidate-intake/zarathustra/eternal-return-concept-candidate-v1/review-preparation-v1/README.md",
+        "Tree-of-Sophia@f81eea6dcad2a08136b95e262fe06c68fc16ba92:ToS/candidate-intake/AGENTS.md"
+      ],
+      "note": "Review-preparation scope and claim ceilings remain an on-demand evidence map; the page does not enter automatic agent context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/source-witnesses/works/friedrich-nietzsche/also-sprach-zarathustra/alignments/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@f81eea6dcad2a08136b95e262fe06c68fc16ba92:ToS/source-witnesses/works/friedrich-nietzsche/also-sprach-zarathustra/alignments/README.md",
+        "Tree-of-Sophia@f81eea6dcad2a08136b95e262fe06c68fc16ba92:ToS/source-witnesses/AGENTS.md"
+      ],
+      "note": "Alignment topology and its authority ceiling are a human navigation layer over source-bound packets, not inherited guidance."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/source-witnesses/works/friedrich-nietzsche/also-sprach-zarathustra/alignments/translation/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@f81eea6dcad2a08136b95e262fe06c68fc16ba92:ToS/source-witnesses/works/friedrich-nietzsche/also-sprach-zarathustra/alignments/translation/README.md",
+        "Tree-of-Sophia@f81eea6dcad2a08136b95e262fe06c68fc16ba92:ToS/source-witnesses/AGENTS.md"
+      ],
+      "note": "Translation-alignment orientation preserves source scope and exclusions on demand without adding inherited prompt cost."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/source-witnesses/works/friedrich-nietzsche/also-sprach-zarathustra/alignments/translation/dta-first-editions-to-antonovsky-1911-paragraph-v1/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@f81eea6dcad2a08136b95e262fe06c68fc16ba92:ToS/source-witnesses/works/friedrich-nietzsche/also-sprach-zarathustra/alignments/translation/dta-first-editions-to-antonovsky-1911-paragraph-v1/README.md",
+        "Tree-of-Sophia@f81eea6dcad2a08136b95e262fe06c68fc16ba92:ToS/source-witnesses/AGENTS.md"
+      ],
+      "note": "The detailed source-bound alignment packet is retained for human audit and return-to-source work; it is not a route card."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/source-witnesses/works/friedrich-nietzsche/also-sprach-zarathustra/lexical-indexes/dta-antonovsky-parallel-candidates-v1/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@f81eea6dcad2a08136b95e262fe06c68fc16ba92:ToS/source-witnesses/works/friedrich-nietzsche/also-sprach-zarathustra/lexical-indexes/dta-antonovsky-parallel-candidates-v1/README.md",
+        "Tree-of-Sophia@f81eea6dcad2a08136b95e262fe06c68fc16ba92:ToS/source-witnesses/AGENTS.md"
+      ],
+      "note": "Lexical-candidate interpretation limits and rebuild orientation remain an on-demand packet; public procedure does not become mandatory preload."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/source-witnesses/works/friedrich-nietzsche/also-sprach-zarathustra/technical-markup/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@f81eea6dcad2a08136b95e262fe06c68fc16ba92:ToS/source-witnesses/works/friedrich-nietzsche/also-sprach-zarathustra/technical-markup/README.md",
+        "Tree-of-Sophia@f81eea6dcad2a08136b95e262fe06c68fc16ba92:ToS/source-witnesses/AGENTS.md"
+      ],
+      "note": "The witness-local technical-route comparison is a human atlas with explicit authority ceilings, not inherited agent policy."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/source-witnesses/works/friedrich-nietzsche/also-sprach-zarathustra/technical-markup/antonovsky-1911-pdf-layout-v1/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@f81eea6dcad2a08136b95e262fe06c68fc16ba92:ToS/source-witnesses/works/friedrich-nietzsche/also-sprach-zarathustra/technical-markup/antonovsky-1911-pdf-layout-v1/README.md",
+        "Tree-of-Sophia@f81eea6dcad2a08136b95e262fe06c68fc16ba92:ToS/source-witnesses/AGENTS.md"
+      ],
+      "note": "The layout-observation packet documents a concrete witness layer and its limitations for on-demand audit, not global agent behavior."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/source-witnesses/works/friedrich-nietzsche/also-sprach-zarathustra/technical-markup/antonovsky-1911-structural-paragraph-v2/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@f81eea6dcad2a08136b95e262fe06c68fc16ba92:ToS/source-witnesses/works/friedrich-nietzsche/also-sprach-zarathustra/technical-markup/antonovsky-1911-structural-paragraph-v2/README.md",
+        "Tree-of-Sophia@f81eea6dcad2a08136b95e262fe06c68fc16ba92:ToS/source-witnesses/AGENTS.md"
+      ],
+      "note": "The complete technical-spine census and source authority ceiling belong in an inspectable packet, not in inherited context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/source-witnesses/works/friedrich-nietzsche/also-sprach-zarathustra/technical-markup/dta-first-editions-parts-1-4-v1/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@f81eea6dcad2a08136b95e262fe06c68fc16ba92:ToS/source-witnesses/works/friedrich-nietzsche/also-sprach-zarathustra/technical-markup/dta-first-editions-parts-1-4-v1/README.md",
+        "Tree-of-Sophia@f81eea6dcad2a08136b95e262fe06c68fc16ba92:ToS/source-witnesses/AGENTS.md"
+      ],
+      "note": "The German witness technical-spine contract is retained for source audit and reconstruction; it remains outside automatic AGENTS loading."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "access/deploy/cloudflare-tunnel/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@f81eea6dcad2a08136b95e262fe06c68fc16ba92:access/deploy/cloudflare-tunnel/README.md",
+        "Tree-of-Sophia@f81eea6dcad2a08136b95e262fe06c68fc16ba92:access/AGENTS.md"
+      ],
+      "note": "Temporary tunnel deployment remains an operator-facing on-demand runbook with explicit secret and authority boundaries."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "access/deploy/cloudflare-worker/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@f81eea6dcad2a08136b95e262fe06c68fc16ba92:access/deploy/cloudflare-worker/README.md",
+        "Tree-of-Sophia@f81eea6dcad2a08136b95e262fe06c68fc16ba92:access/AGENTS.md"
+      ],
+      "note": "Production edge deployment and generated-read-model boundaries require a human runbook; they are not inherited agent context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "access/e2e/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@f81eea6dcad2a08136b95e262fe06c68fc16ba92:access/e2e/README.md",
+        "Tree-of-Sophia@f81eea6dcad2a08136b95e262fe06c68fc16ba92:access/AGENTS.md"
+      ],
+      "note": "The browser E2E surface is an on-demand human test map that routes exact execution to the validation lane and states its proof ceiling."
     }
   ]
 }

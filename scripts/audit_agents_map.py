@@ -902,7 +902,9 @@ def build_agents_map(
         record = dispositions[(repository, path)]
         expected_absence = (
             record.get("review_state") == "reviewed"
-            and record.get("disposition") == "delete-obsolete-placeholder"
+            and record.get("disposition") in {
+                "delete-obsolete-placeholder", "retire-to-git-history"
+            }
         )
         if not expected_absence:
             disposition_issues.append(

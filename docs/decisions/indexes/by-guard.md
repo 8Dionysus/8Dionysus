@@ -146,6 +146,10 @@
 
 - [8DION-D-0020 - Retire Unproven Launcher Plugin](../8DION-D-0020-retire-unproven-launcher-plugin.md) (`docs/decisions/8DION-D-0020-retire-unproven-launcher-plugin.md`)
 
+## historical recovery
+
+- [8DION-D-0035 - Distinguish Historical Retirement in the Corpus Audit](../8DION-D-0035-distinguish-historical-retirement-in-corpus-audit.md) (`docs/decisions/8DION-D-0035-distinguish-historical-retirement-in-corpus-audit.md`)
+
 ## hook boundary
 
 - [8DION-D-0009 - Memory Writeback Route Card](../8DION-D-0009-memory-writeback-route-card.md) (`docs/decisions/8DION-D-0009-memory-writeback-route-card.md`)
@@ -234,6 +238,7 @@
 ## owner evidence
 
 - [8DION-D-0028 - Audit README and AGENTS as Distinct Owner Surfaces](../8DION-D-0028-audit-readme-and-agents-as-distinct-owner-surfaces.md) (`docs/decisions/8DION-D-0028-audit-readme-and-agents-as-distinct-owner-surfaces.md`)
+- [8DION-D-0035 - Distinguish Historical Retirement in the Corpus Audit](../8DION-D-0035-distinguish-historical-retirement-in-corpus-audit.md) (`docs/decisions/8DION-D-0035-distinguish-historical-retirement-in-corpus-audit.md`)
 
 ## owner identity
 

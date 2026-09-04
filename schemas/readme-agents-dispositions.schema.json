@@ -56,6 +56,7 @@
               "move-to-owner-source",
               "generate-from-owner-source",
               "delete-obsolete-placeholder",
+              "retire-to-git-history",
               null
             ]
           },

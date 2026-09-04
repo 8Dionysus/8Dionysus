@@ -37,6 +37,7 @@ DISPOSITIONS = frozenset(
         "move-to-owner-source",
         "generate-from-owner-source",
         "delete-obsolete-placeholder",
+        "retire-to-git-history",
     }
 )
 REVIEW_STATES = frozenset({"reviewed", "blocked"})
@@ -284,6 +285,17 @@ def load_dispositions(path: Path | None) -> tuple[dict[tuple[str, str], dict[str
         if state == "reviewed" and not evidence:
             issues.append(f"{repository}:{document_path} reviewed record lacks owner_evidence")
             continue
+        if disposition == "retire-to-git-history":
+            source_pattern = rf"{re.escape(repository)}@[0-9a-f]{{40}}:{re.escape(document_path)}"
+            decision_pattern = rf"{re.escape(repository)}@[0-9a-f]{{40}}:docs/decisions/[^/]+\.md"
+            if not (
+                any(re.fullmatch(source_pattern, value) for value in evidence)
+                and any(re.fullmatch(decision_pattern, value) for value in evidence)
+            ):
+                issues.append(
+                    f"{repository}:{document_path} history retirement requires exact owner source and decision refs"
+                )
+                continue
         if not isinstance(fenced_blocks, list):
             issues.append(f"{repository}:{document_path} has invalid fenced_blocks")
             continue

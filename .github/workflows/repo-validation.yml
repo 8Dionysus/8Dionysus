@@ -61,7 +61,7 @@ jobs:
           python-version: "3.12"
 
       - name: Check repo-local KAG index family
-        uses: 8Dionysus/aoa-kag/.github/actions/repo-local-kag-index@1266d99bb6a0fc16d94fe22f3f8bf8f1cd796d09
+        uses: 8Dionysus/aoa-kag/.github/actions/repo-local-kag-index@14ee1e33e43749d23c557b3ef526eca7edb36196
         with:
           repo-root: 8Dionysus
           history-ref: ${{ github.event.pull_request.base.sha || github.event.before || format('{0}^', github.sha) }}

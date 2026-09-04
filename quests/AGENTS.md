@@ -8,9 +8,4 @@ Every quest marker should remain evidence-linked, reversible, and routed to the 
 
 If a quest becomes a recurring operational scenario, move it toward `aoa-playbooks`; if it becomes a role or progression contract, route it to `aoa-agents`; if it becomes proof, route it to `aoa-evals`.
 
-Verify with:
-
-```bash
-python scripts/validate_nested_agents.py
-python scripts/audit_agents_map.py --workspace-root <workspace-root> --write generated/agents_map.min.json --markdown docs/AGENTS_MAP.md
-```
+Run the applicable root routes in `../VALIDATION.md#agents-map-and-workspace-audit`.

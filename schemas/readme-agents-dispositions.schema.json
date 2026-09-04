@@ -68,6 +68,36 @@
           },
           "note": {
             "type": ["string", "null"]
+          },
+          "fenced_blocks": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["sha256", "classification", "reason"],
+              "properties": {
+                "sha256": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                },
+                "classification": {
+                  "enum": [
+                    "agent-card-template",
+                    "conceptual-sequence",
+                    "decision-record-heading-template",
+                    "diagram-example",
+                    "filename-template",
+                    "operating-contract-template",
+                    "source-code-example",
+                    "structured-data-example"
+                  ]
+                },
+                "reason": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "additionalProperties": false
+            }
           }
         },
         "allOf": [

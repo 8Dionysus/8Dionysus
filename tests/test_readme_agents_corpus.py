@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import hashlib
 import json
 import subprocess
 import tempfile
@@ -333,6 +334,323 @@ class ReadmeAgentsCorpusTests(unittest.TestCase):
             self.assertEqual(
                 block["normalized_redundant_bytes"],
                 block["normalized_bytes"] * 3,
+            )
+
+    def test_validation_command_ownership_and_doc_overlaps_are_measured(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            command = "python scripts/validate_routes.py --check"
+            (repo / "local").mkdir()
+            (repo / "generated").mkdir()
+            (repo / "AGENTS.md").write_text(
+                f"# AGENTS.md\n\n```bash\n{command}\n```\n", encoding="utf-8"
+            )
+            (repo / "README.md").write_text(
+                f"# Human route\n\n```bash\n{command}\n```\n", encoding="utf-8"
+            )
+            for relative in (
+                "VALIDATION.md",
+                "local/VALIDATION.md",
+                "generated/VALIDATION.md",
+            ):
+                (repo / relative).write_text(
+                    f"# Validation\n\n```bash\n{command}\n```\n", encoding="utf-8"
+                )
+
+            result = readme_agents_corpus.scan_repository_corpus(
+                repo, "fixture", {}
+            )
+            summary = result["readme_agents_summary"]
+
+            self.assertEqual(summary["tracked_validation_files"], 3)
+            self.assertEqual(summary["active_authored_validation_files"], 2)
+            self.assertEqual(summary["active_authored_validation_invocations"], 2)
+            self.assertEqual(summary["active_authored_unique_validation_invocations"], 1)
+            self.assertEqual(summary["duplicate_validation_command_groups"], 1)
+            self.assertEqual(summary["duplicate_validation_command_occurrences"], 1)
+            self.assertEqual(summary["agents_validation_command_overlap_groups"], 1)
+            self.assertEqual(summary["readme_validation_command_overlap_groups"], 1)
+            self.assertEqual(
+                result["duplicate_validation_commands"][0]["command"], command
+            )
+            self.assertEqual(
+                [
+                    location["path"]
+                    for location in result["duplicate_validation_commands"][0][
+                        "locations"
+                    ]
+                ],
+                ["VALIDATION.md", "local/VALIDATION.md"],
+            )
+
+    def test_validation_command_ownership_is_not_hidden_by_text_fences(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            command = "python scripts/validate_routes.py --check"
+            (repo / "local").mkdir()
+            (repo / "VALIDATION.md").write_text(
+                f"# Validation\n\n```text\n{command}\n```\n", encoding="utf-8"
+            )
+            (repo / "local" / "VALIDATION.md").write_text(
+                f"# Validation\n\n```\n{command}\n```\n", encoding="utf-8"
+            )
+
+            result = readme_agents_corpus.scan_repository_corpus(
+                repo, "fixture", {}
+            )
+            summary = result["readme_agents_summary"]
+
+            self.assertEqual(summary["active_authored_validation_invocations"], 2)
+            self.assertEqual(summary["active_authored_unique_validation_invocations"], 1)
+            self.assertEqual(summary["duplicate_validation_command_groups"], 1)
+            self.assertEqual(
+                result["duplicate_validation_commands"][0]["command"], command
+            )
+
+    def test_multiline_environment_prefix_keeps_distinct_command_identity(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            (repo / "VALIDATION.md").write_text(
+                """# Validation
+
+```bash
+python -m pytest -q tests/test_route.py
+ROUTE_CONTOUR=internal_effect \\
+  python -m pytest -q tests/test_route.py
+```
+""",
+                encoding="utf-8",
+            )
+
+            result = readme_agents_corpus.scan_repository_corpus(
+                repo, "fixture", {}
+            )
+            summary = result["readme_agents_summary"]
+
+            self.assertEqual(summary["active_authored_validation_invocations"], 2)
+            self.assertEqual(
+                summary["active_authored_unique_validation_invocations"], 2
+            )
+            self.assertEqual(summary["duplicate_validation_command_groups"], 0)
+
+    def test_runtime_session_validation_is_counted_but_not_authored(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            command = "python scripts/validate_routes.py --check"
+            (repo / ".aoa" / "live_receipts").mkdir(parents=True)
+            (repo / "VALIDATION.md").write_text(
+                f"# Validation\n\n```bash\n{command}\n```\n", encoding="utf-8"
+            )
+            (repo / ".aoa" / "live_receipts" / "VALIDATION.md").write_text(
+                f"# Runtime receipt\n\n```bash\n{command}\n```\n", encoding="utf-8"
+            )
+
+            result = readme_agents_corpus.scan_repository_corpus(
+                repo, "fixture", {}
+            )
+            summary = result["readme_agents_summary"]
+
+            self.assertEqual(summary["tracked_validation_files"], 2)
+            self.assertEqual(summary["active_authored_validation_files"], 1)
+            self.assertEqual(summary["active_authored_validation_invocations"], 1)
+            self.assertEqual(summary["duplicate_validation_command_groups"], 0)
+
+    def test_validation_owner_and_route_only_file_metrics_are_measured(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            (repo / "local").mkdir()
+            owner_text = """# Validation
+
+```bash
+python scripts/validate_routes.py --check
+```
+"""
+            route_text = "# Validation\n\nUse [the owner](../VALIDATION.md).\n"
+            (repo / "VALIDATION.md").write_text(owner_text, encoding="utf-8")
+            (repo / "local" / "VALIDATION.md").write_text(
+                route_text, encoding="utf-8"
+            )
+
+            result = readme_agents_corpus.scan_repository_corpus(
+                repo, "fixture", {}
+            )
+            summary = result["readme_agents_summary"]
+
+            self.assertEqual(summary["active_authored_validation_files"], 2)
+            self.assertEqual(
+                summary["active_authored_validation_bytes"],
+                len(owner_text.encode("utf-8")) + len(route_text.encode("utf-8")),
+            )
+            self.assertEqual(
+                summary["active_authored_validation_command_owner_files"], 1
+            )
+            self.assertEqual(
+                summary["active_authored_validation_route_only_files"], 1
+            )
+
+    def test_route_only_claim_conflicts_with_owned_command(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            (repo / "VALIDATION.md").write_text(
+                """# Validation
+
+This surface owns no distinct executable procedure.
+
+```bash
+python scripts/validate_routes.py --check
+```
+""",
+                encoding="utf-8",
+            )
+
+            result = readme_agents_corpus.scan_repository_corpus(
+                repo, "fixture", {}
+            )
+
+            self.assertEqual(
+                result["readme_agents_summary"][
+                    "validation_route_only_claim_conflicts"
+                ],
+                1,
+            )
+            self.assertEqual(
+                result["validation_route_only_claim_conflicts"],
+                [
+                    {
+                        "path": "VALIDATION.md",
+                        "claim_lines": [3],
+                        "executable_invocations": 1,
+                    }
+                ],
+            )
+
+    def test_agents_fences_require_content_addressed_classification(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            block = "# AGENTS.md\n\n## Applies to"
+            digest = hashlib.sha256(block.encode("utf-8")).hexdigest()
+            (repo / "AGENTS.md").write_text(
+                f"# Agent route\n\n```markdown\n{block}\n```\n",
+                encoding="utf-8",
+            )
+            dispositions = {
+                ("fixture", "AGENTS.md"): {
+                    "review_state": "reviewed",
+                    "disposition": "keep",
+                    "owner_evidence": ["fixture:AGENTS.md"],
+                    "fenced_blocks": [
+                        {
+                            "sha256": digest,
+                            "classification": "agent-card-template",
+                            "reason": "Documents the child-card shape without executable procedure.",
+                        }
+                    ],
+                }
+            }
+
+            classified = readme_agents_corpus.scan_repository_corpus(
+                repo, "fixture", dispositions
+            )
+            summary = classified["readme_agents_summary"]
+            self.assertEqual(summary["active_authored_agents_fenced_blocks"], 1)
+            self.assertEqual(
+                summary["active_authored_agents_classified_fenced_blocks"], 1
+            )
+            self.assertEqual(
+                summary["active_authored_agents_unclassified_fenced_blocks"], 0
+            )
+            self.assertEqual(
+                summary["active_authored_agents_fenced_executable_invocations"], 0
+            )
+
+            unclassified = readme_agents_corpus.scan_repository_corpus(
+                repo, "fixture", {}
+            )
+            self.assertEqual(
+                unclassified["readme_agents_summary"][
+                    "active_authored_agents_unclassified_fenced_blocks"
+                ],
+                1,
+            )
+
+    def test_design_agents_are_reviewed_without_entering_inherited_chain(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            block = "# AGENTS.md\n\n## Applies to\n\n## Role"
+            digest = hashlib.sha256(block.encode("utf-8")).hexdigest()
+            (repo / "AGENTS.md").write_text("# Root route\n", encoding="utf-8")
+            (repo / "README.md").write_text("# Human route\n", encoding="utf-8")
+            (repo / "DESIGN.AGENTS.md").write_text(
+                f"# Agent design\n\n```markdown\n{block}\n```\n",
+                encoding="utf-8",
+            )
+            dispositions = {
+                ("fixture", "DESIGN.AGENTS.md"): {
+                    "review_state": "reviewed",
+                    "disposition": "keep",
+                    "owner_evidence": ["fixture:DESIGN.AGENTS.md"],
+                    "fenced_blocks": [
+                        {
+                            "sha256": digest,
+                            "classification": "agent-card-template",
+                            "reason": "The design surface shows card shape without becoming inherited guidance.",
+                        }
+                    ],
+                }
+            }
+
+            result = readme_agents_corpus.scan_repository_corpus(
+                repo, "fixture", dispositions
+            )
+            summary = result["readme_agents_summary"]
+
+            self.assertEqual(summary["tracked_agents_files"], 1)
+            self.assertEqual(summary["tracked_readme_files"], 1)
+            self.assertEqual(summary["tracked_design_agents_files"], 1)
+            self.assertEqual(summary["active_authored_agents_fenced_blocks"], 0)
+            self.assertEqual(
+                summary["active_authored_design_agents_classified_fenced_blocks"],
+                1,
+            )
+            self.assertEqual(summary["reviewed_files"], 1)
+            self.assertEqual(
+                result["design_agents_files"][0]["review"]["review_state"],
+                "reviewed",
+            )
+            self.assertEqual(
+                result["agents_files"][0]["agents_chain_bytes"],
+                len("# Root route\n".encode("utf-8")),
+            )
+
+    def test_readme_reference_lines_are_classified_by_read_pressure(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            (repo / "README.md").write_text("# Human route\n", encoding="utf-8")
+            (repo / "AGENTS.md").write_text(
+                """# Agent route
+
+Read README.md before changing anything.
+
+Read README.md only when the public entry surface changes.
+
+README.md is the human entrypoint.
+""",
+                encoding="utf-8",
+            )
+
+            result = readme_agents_corpus.scan_repository_corpus(
+                repo, "fixture", {}
+            )
+            summary = result["readme_agents_summary"]
+            self.assertEqual(summary["agents_readme_reference_lines"], 3)
+            self.assertEqual(
+                summary["agents_files_declaring_mandatory_readme"], 1
+            )
+            self.assertEqual(
+                summary["agents_conditional_readme_reference_lines"], 1
+            )
+            self.assertEqual(
+                summary["agents_navigational_readme_reference_lines"], 1
             )
 
     def test_shared_root_uses_distinct_sources_for_readme_and_agents(self) -> None:

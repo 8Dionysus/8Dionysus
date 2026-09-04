@@ -144,6 +144,36 @@
               "type": "object"
             }
           },
+          "design_agents_files": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "validation_files": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "duplicate_validation_commands": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "agents_validation_command_overlaps": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "readme_validation_command_overlaps": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
           "issues": {
             "type": "array",
             "items": {

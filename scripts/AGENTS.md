@@ -11,10 +11,5 @@ When script behavior changes, update tests, schemas, generated examples, and doc
 `scripts/validate_local_stats_port.py` is a thin delegate to the shared
 `aoa-stats` contract owner. Keep local measurement meaning under `stats/`.
 
-Verify with:
-
-```bash
-python scripts/validate_nested_agents.py
-python scripts/build_workspace_memory_map.py --workspace-root <workspace-root> --owner-repo-root . --check
-python -m unittest discover -s tests
-```
+Run the relevant root routes in `../VALIDATION.md` for nested-agent,
+workspace-memory, and repository checks.

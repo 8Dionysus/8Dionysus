@@ -31,6 +31,7 @@ class AgentsMapAuditTests(unittest.TestCase):
         self.assertEqual(
             payload["totals"]["review_items_total"],
             payload["totals"]["tracked_document_files"]
+            + payload["totals"]["tracked_design_agents_files"]
             + payload["totals"]["shared_root_files"],
         )
 

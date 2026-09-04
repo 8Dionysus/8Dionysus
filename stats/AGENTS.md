@@ -43,10 +43,7 @@ the matching route:
 
 Inspect the committed evidence and reference packet first, then run:
 
-```bash
-python scripts/validate_local_stats_port.py
-python -m unittest discover -s tests -p 'test_local_stats_port.py'
-```
+Run `VALIDATION.md` in this directory for `validate_local_stats_port.py`.
 
 Use the root route for repository-wide validation.
 

@@ -394,6 +394,73 @@ def scan_repo(
         issues.append(
             f"authored AGENTS.md corpus has {repeated_groups} repeated long prose block group(s)"
         )
+    duplicate_commands = corpus["readme_agents_summary"][
+        "duplicate_validation_command_groups"
+    ]
+    if duplicate_commands:
+        issues.append(
+            f"active authored VALIDATION.md corpus has {duplicate_commands} exact duplicate command group(s)"
+        )
+    agents_command_overlaps = corpus["readme_agents_summary"][
+        "agents_validation_command_overlap_groups"
+    ]
+    if agents_command_overlaps:
+        issues.append(
+            f"active AGENTS.md corpus repeats {agents_command_overlaps} validation command group(s)"
+        )
+    route_only_claim_conflicts = corpus["readme_agents_summary"][
+        "validation_route_only_claim_conflicts"
+    ]
+    if route_only_claim_conflicts:
+        issues.append(
+            "active VALIDATION.md corpus has "
+            f"{route_only_claim_conflicts} route-only ownership claim(s) in files that contain executable commands"
+        )
+    unclassified_fences = corpus["readme_agents_summary"][
+        "active_authored_agents_unclassified_fenced_blocks"
+    ]
+    if unclassified_fences:
+        issues.append(
+            f"active AGENTS.md corpus has {unclassified_fences} unclassified fenced block(s)"
+        )
+    fenced_executables = corpus["readme_agents_summary"][
+        "active_authored_agents_fenced_executable_invocations"
+    ]
+    if fenced_executables:
+        issues.append(
+            f"active AGENTS.md fences retain {fenced_executables} executable invocation(s)"
+        )
+    stale_fences = corpus["readme_agents_summary"][
+        "stale_agents_fenced_block_classifications"
+    ]
+    if stale_fences:
+        issues.append(
+            f"AGENTS fence ledger has {stale_fences} stale classification(s)"
+        )
+    unclassified_design_fences = corpus["readme_agents_summary"][
+        "active_authored_design_agents_unclassified_fenced_blocks"
+    ]
+    if unclassified_design_fences:
+        issues.append(
+            "active DESIGN.AGENTS.md corpus has "
+            f"{unclassified_design_fences} unclassified fenced block(s)"
+        )
+    design_fenced_executables = corpus["readme_agents_summary"][
+        "active_authored_design_agents_fenced_executable_invocations"
+    ]
+    if design_fenced_executables:
+        issues.append(
+            "active DESIGN.AGENTS.md fences retain "
+            f"{design_fenced_executables} executable invocation(s)"
+        )
+    stale_design_fences = corpus["readme_agents_summary"][
+        "stale_design_agents_fenced_block_classifications"
+    ]
+    if stale_design_fences:
+        issues.append(
+            "DESIGN.AGENTS fence ledger has "
+            f"{stale_design_fences} stale classification(s)"
+        )
 
     return {
         "name": name,
@@ -406,6 +473,17 @@ def scan_repo(
         "git_snapshot": corpus["git_snapshot"],
         "readme_agents_summary": corpus["readme_agents_summary"],
         "repeated_long_agents_blocks": corpus["repeated_long_agents_blocks"],
+        "validation_files": corpus["validation_files"],
+        "duplicate_validation_commands": corpus["duplicate_validation_commands"],
+        "agents_validation_command_overlaps": corpus[
+            "agents_validation_command_overlaps"
+        ],
+        "readme_validation_command_overlaps": corpus[
+            "readme_validation_command_overlaps"
+        ],
+        "validation_route_only_claim_conflicts": corpus[
+            "validation_route_only_claim_conflicts"
+        ],
         "agents_md_count": len(tracked_agents_records),
         "readme_md_count": corpus["readme_agents_summary"]["tracked_readme_files"],
         "root_agents_present": bool(root_agents),
@@ -421,6 +499,7 @@ def scan_repo(
         "high_risk_dirs_without_agents": risk_dirs_without_agents,
         "agents_files": records,
         "readme_files": corpus["readme_files"],
+        "design_agents_files": corpus["design_agents_files"],
         "issues": sorted(set(issues)),
     }
 
@@ -447,6 +526,9 @@ def missing_repo_record(name: str) -> dict[str, Any]:
             "tracked_document_bytes": 0,
             "tracked_agents_bytes": 0,
             "tracked_readme_bytes": 0,
+            "tracked_design_agents_files": 0,
+            "tracked_design_agents_bytes": 0,
+            "untracked_design_agents_candidates": 0,
             "untracked_document_candidates": 0,
             "paired_directories": 0,
             "readme_only_directories": 0,
@@ -461,9 +543,36 @@ def missing_repo_record(name: str) -> dict[str, Any]:
             "excluded_repeated_long_agents_block_groups": 0,
             "repeated_long_agents_block_instances": 0,
             "repeated_long_agents_normalized_redundant_bytes": 0,
+            "tracked_validation_files": 0,
+            "untracked_validation_candidates": 0,
+            "active_authored_validation_files": 0,
+            "active_authored_validation_bytes": 0,
+            "active_authored_validation_command_owner_files": 0,
+            "active_authored_validation_route_only_files": 0,
+            "active_authored_validation_invocations": 0,
+            "active_authored_unique_validation_invocations": 0,
+            "duplicate_validation_command_groups": 0,
+            "duplicate_validation_command_occurrences": 0,
+            "agents_validation_command_overlap_groups": 0,
+            "readme_validation_command_overlap_groups": 0,
+            "validation_route_only_claim_conflicts": 0,
             "agents_files_referencing_readme": 0,
             "agents_files_declaring_mandatory_readme": 0,
             "declared_mandatory_readme_bytes": 0,
+            "agents_readme_reference_lines": 0,
+            "agents_conditional_readme_reference_lines": 0,
+            "agents_navigational_readme_reference_lines": 0,
+            "agents_fenced_example_readme_reference_lines": 0,
+            "active_authored_agents_fenced_blocks": 0,
+            "active_authored_agents_classified_fenced_blocks": 0,
+            "active_authored_agents_unclassified_fenced_blocks": 0,
+            "active_authored_agents_fenced_executable_invocations": 0,
+            "stale_agents_fenced_block_classifications": 0,
+            "active_authored_design_agents_fenced_blocks": 0,
+            "active_authored_design_agents_classified_fenced_blocks": 0,
+            "active_authored_design_agents_unclassified_fenced_blocks": 0,
+            "active_authored_design_agents_fenced_executable_invocations": 0,
+            "stale_design_agents_fenced_block_classifications": 0,
             "reviewed_files": 0,
             "blocked_files": 0,
             "unreviewed_files": 0,
@@ -484,7 +593,13 @@ def missing_repo_record(name: str) -> dict[str, Any]:
         "high_risk_dirs_without_agents": [],
         "agents_files": [],
         "readme_files": [],
+        "design_agents_files": [],
+        "validation_files": [],
         "repeated_long_agents_blocks": [],
+        "duplicate_validation_commands": [],
+        "agents_validation_command_overlaps": [],
+        "readme_validation_command_overlaps": [],
+        "validation_route_only_claim_conflicts": [],
         "issues": (
             []
             if requirement == "optional"
@@ -748,7 +863,11 @@ def build_agents_map(
         (repo["name"], record["path"])
         for repo in repositories
         if repo.get("checkout_state") == "scanned"
-        for record in [*repo.get("agents_files", []), *repo.get("readme_files", [])]
+        for record in [
+            *repo.get("agents_files", []),
+            *repo.get("readme_files", []),
+            *repo.get("design_agents_files", []),
+        ]
     }
     observed_disposition_keys.update(
         ("@workspace-root", record["path"])
@@ -776,11 +895,13 @@ def build_agents_map(
         "audit_mode": "live-workspace",
         "workspace_root_hint": "workspace-relative; no absolute paths are stored",
         "corpus_contract": {
-            "canonical_scope": "git-tracked README.md and AGENTS.md in known owner repositories",
+            "canonical_scope": "git-tracked README.md and AGENTS.md in known owner repositories; tracked DESIGN.AGENTS.md is audited separately as an on-demand related design surface and excluded from inherited-chain bytes",
             "untracked_posture": "reported separately as candidates",
             "chain_budget_bytes": AGENTS_CHAIN_BUDGET_BYTES,
             "chain_percentile_method": "nearest-rank over unique document-directory scopes",
             "repeated_agents_block_threshold": "exact normalized prose, at least 180 bytes in at least 4 tracked AGENTS.md files; fenced examples excluded",
+            "validation_command_ownership": "one exact executable invocation per active authored human owner inside each repository; other validation surfaces route by link, lane, runner, or manifest key",
+            "validation_command_exclusions": "generated, vendor, fixture, and archive validation surfaces; README overlap is reported for owner review",
             "remote_currentness": "not claimed; refs are local snapshots until owner refresh",
             "disposition_authority": "owner evidence; this integration ledger does not decide sibling meaning",
             "workspace_manifest_used": use_workspace_manifest,
@@ -883,15 +1004,18 @@ def render_markdown(payload: Mapping[str, Any]) -> str:
         lines.append(f"- `{key}`: {totals[key]}")
     lines.extend(["", "## Repository coverage", ""])
     lines.append(
-        "| Repository | State | AGENTS corpus/active | README | Pairs | Unique chain p95/max | Over 32 KiB authored/excluded | Repeated long blocks/redundant bytes | Reviewed/unreviewed | Issues |"
+        "| Repository | State | AGENTS corpus/active | README | VALIDATION files/cmds/duplicates | Pairs | Unique chain p95/max | Over 32 KiB authored/excluded | Repeated long blocks/redundant bytes | Reviewed/unreviewed | Issues |"
     )
-    lines.append("|---|---:|---:|---:|---:|---:|---:|---:|---:|---|")
+    lines.append("|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|")
     for repo in repositories:
         state = repo.get("checkout_state", "unknown")
         agents_count = repo.get("agents_md_count", "")
         readme_count = repo.get("readme_md_count", "")
         summary = repo.get("readme_agents_summary", {})
         agents_corpus_count = summary.get("tracked_agents_files", agents_count)
+        validation_files = summary.get("active_authored_validation_files", "")
+        validation_commands = summary.get("active_authored_validation_invocations", "")
+        validation_duplicates = summary.get("duplicate_validation_command_groups", "")
         pairs = summary.get("paired_directories", "")
         p95 = summary.get("unique_chain_p95_bytes", "")
         maximum = summary.get("unique_chain_max_bytes", "")
@@ -908,6 +1032,9 @@ def render_markdown(payload: Mapping[str, Any]) -> str:
             agents_count = ""
             agents_corpus_count = ""
             readme_count = ""
+            validation_files = ""
+            validation_commands = ""
+            validation_duplicates = ""
             pairs = ""
             p95 = ""
             maximum = ""
@@ -921,7 +1048,8 @@ def render_markdown(payload: Mapping[str, Any]) -> str:
         else:
             issue_text = "; ".join(issues) if issues else ""
         lines.append(
-            f"| `{repo['name']}` | `{state}` | {agents_corpus_count}/{agents_count} | {readme_count} | {pairs} | "
+            f"| `{repo['name']}` | `{state}` | {agents_corpus_count}/{agents_count} | {readme_count} | "
+            f"{validation_files}/{validation_commands}/{validation_duplicates} | {pairs} | "
             f"{p95}/{maximum} | {over_budget_authored}/{over_budget_excluded} | "
             f"{repeated_groups}/{repeated_bytes} | "
             f"{reviewed}/{unreviewed} | {issue_text} |"
@@ -951,9 +1079,12 @@ def render_markdown(payload: Mapping[str, Any]) -> str:
             "- `missing` means the known public repository was not found under the selected workspace root.",
             "- `checkout_requirement: optional` means an absent retained predecessor is valid and does not create an audit issue.",
             "- Corpus counts use Git-tracked `README.md` and `AGENTS.md`; untracked documents are candidates, not canonical corpus members.",
+            "- `tracked_design_agents_files` counts the related on-demand `DESIGN.AGENTS.md` corpus separately; these files require review and fenced-block classification but do not inflate inherited AGENTS-chain bytes.",
             "- `chain_scopes` measures unique document directories; `unique_agents_chains` collapses directories that inherit the same AGENTS path signature.",
             "- Chain percentiles use the nearest-rank method; the repository table reports unique chain signatures.",
             "- `Repeated long blocks` counts exact normalized prose blocks of at least 180 bytes appearing in at least four tracked `AGENTS.md` files; fenced examples are excluded and redundant bytes count copies beyond the first.",
+            "- `VALIDATION files/cmds/duplicates` counts active authored on-demand files, normalized shell invocations, and exact command groups with more than one human owner inside one repository. Generated, vendor, fixture, and archive surfaces are excluded.",
+            "- `readme_validation_command_overlap_groups` is a review signal: a public usage example may be valid, but required validation should route to its one procedure owner.",
             "- Dispositions remain `unreviewed` until an owner-evidenced record is added to the integration manifest.",
             "- `unvalidated_nested_agents` means a nested `AGENTS.md` exists but is not declared by `scripts/validate_nested_agents.py`.",
             "- `high_risk_dirs_without_agents` marks common contract, generated, test, runtime, or source directories without a direct local instruction file.",

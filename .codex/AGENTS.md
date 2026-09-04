@@ -88,13 +88,9 @@ repair, install, restart, or configuration mutation.
 
 Run only the checks matching the changed surface:
 
-```bash
-python scripts/validate_nested_agents.py
-python scripts/render_codex_organ_fabric.py --check
-python scripts/validate_codex_organ_fabric.py
-python scripts/build_workspace_memory_map.py --workspace-root <workspace-root> --owner-repo-root . --check
-python scripts/audit_agents_map.py --workspace-root <workspace-root> --write generated/agents_map.min.json --markdown docs/AGENTS_MAP.md
-```
+Run the relevant on-demand route in the repository [VALIDATION](../VALIDATION.md):
+`#codex-plane` for organ-fabric and memory-map projection, and
+`#agents-map-and-workspace-audit` for the AGENTS-map audit.
 
 For a changed MCP wrapper or registration, run its matching
 `scripts/smoke_*_mcp.py` check. Do not run every access-plane smoke test for an

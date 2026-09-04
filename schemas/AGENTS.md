@@ -8,11 +8,5 @@ Keep `$schema`, required fields, enums, and compatibility expectations explicit.
 
 Schemas here describe entrypoint-owned surfaces. They do not define sibling repo semantics unless the owner repo explicitly imports that contract.
 
-Verify with:
-
-```bash
-python scripts/validate_nested_agents.py
-python -m unittest discover -s tests
-python scripts/validate_workspace_memory_map.py
-python scripts/audit_agents_map.py --workspace-root <workspace-root> --write generated/agents_map.min.json --markdown docs/AGENTS_MAP.md
-```
+Run the relevant root routes in `../VALIDATION.md` for map, memory-map, and
+repository checks, including `unittest discover`.

@@ -139,6 +139,13 @@
         "8Dionysus@06f40eb9b7880607a495c5b69e64d81c1150adfe:docs/decisions/AGENTS.md",
         "8Dionysus@06f40eb9b7880607a495c5b69e64d81c1150adfe:docs/AGENTS.md"
       ],
+      "fenced_blocks": [
+        {
+          "sha256": "cefedc72831d4795f259b2a94d2e5907422ef300cb0e66e15cf16f97488ec363",
+          "classification": "filename-template",
+          "reason": "The block names the decision-record filename shape and contains no executable procedure."
+        }
+      ],
       "note": "Nearest decision-record mutation law, metadata contract, and generated-index route."
     },
     {
@@ -7185,6 +7192,18 @@
         "abyss-machine@66c725b93c9d2d70aef9bf99c640feb1b96dd9f0:config-templates/etc/abyss-machine/decisions/AGENTS.md",
         "abyss-machine@66c725b93c9d2d70aef9bf99c640feb1b96dd9f0:config-templates/etc/abyss-machine/AGENTS.md"
       ],
+      "fenced_blocks": [
+        {
+          "sha256": "d1bae1525c67aaea4c8f8b24144ea4ee75cc3ff561f826bece13597244316407",
+          "classification": "filename-template",
+          "reason": "The block names the host decision-record filename shape and contains no executable procedure."
+        },
+        {
+          "sha256": "6df13c4fcb1be6a9d64eba216d2e75430e23026b9ec84a688e5a5360de58eb7b",
+          "classification": "decision-record-heading-template",
+          "reason": "The block shows the matching record heading shape and contains no executable procedure."
+        }
+      ],
       "note": "Mechanical classification from the exact base/source corpus comparison."
     },
     {
@@ -8653,6 +8672,13 @@
       "owner_evidence": [
         "abyss-stack@656c7f4212eb3ee52ee04c42cb13bbda9c67c5b2:docs/decisions/AGENTS.md",
         "abyss-stack@656c7f4212eb3ee52ee04c42cb13bbda9c67c5b2:docs/AGENTS.md"
+      ],
+      "fenced_blocks": [
+        {
+          "sha256": "010c4b16c12ca285861cea980617ff26d30c0e9d431dfd490834a7460406daaa",
+          "classification": "filename-template",
+          "reason": "The block names the repository decision-record filename shape and contains no executable procedure."
+        }
       ],
       "note": "Current owner agents changed against the available owner branch base; scoped for slim rewrite."
     },
@@ -30992,6 +31018,1345 @@
         "aoa-techniques@95a5cd0215769b5cff6f719be648da2003b02b3c:AGENTS.md"
       ],
       "note": "Current owner agents changed against the available owner branch base; scoped for slim rewrite."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "DESIGN.AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@44061592304b5baf1e97e3fceb03a14b60cd5fb3:DESIGN.AGENTS.md",
+        "abyss-machine@44061592304b5baf1e97e3fceb03a14b60cd5fb3:AGENTS.md"
+      ],
+      "note": "On-demand agent-surface design rationale; it remains outside inherited AGENTS-chain context."
+    },
+    {
+      "repository": "abyss-machine",
+      "path": "config-templates/etc/abyss-machine/DESIGN.AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-machine@44061592304b5baf1e97e3fceb03a14b60cd5fb3:config-templates/etc/abyss-machine/DESIGN.AGENTS.md",
+        "abyss-machine@44061592304b5baf1e97e3fceb03a14b60cd5fb3:config-templates/etc/abyss-machine/AGENTS.md"
+      ],
+      "fenced_blocks": [
+        {
+          "sha256": "d78d03ed5483d7dd30cd75474b58004b32078cb20705a288531cfcf40135228b",
+          "classification": "agent-card-template",
+          "reason": "The block shows the intended inherited card headings and contains no executable procedure."
+        },
+        {
+          "sha256": "ded35606c205cd72ff16bfbbdeca94cfb0cbbf09c4607e6741e97b26296fbb65",
+          "classification": "operating-contract-template",
+          "reason": "The block shows an empty operating-contract field shape and contains no executable procedure."
+        }
+      ],
+      "note": "On-demand rendered host design contract; its templates define shape without becoming executable guidance."
+    },
+    {
+      "repository": "abyss-stack",
+      "path": "DESIGN.AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "abyss-stack@1d6008cb7b289f326e53d8ae46ae8eb8b4aa2e49:DESIGN.AGENTS.md",
+        "abyss-stack@1d6008cb7b289f326e53d8ae46ae8eb8b4aa2e49:AGENTS.md"
+      ],
+      "fenced_blocks": [
+        {
+          "sha256": "2f2d9b4afe5d208fdd86a57ce647de3fa58f016015724d1cfe2b917340e3ed9a",
+          "classification": "agent-card-template",
+          "reason": "The block defines the canonical card headings and contains no executable procedure."
+        }
+      ],
+      "note": "On-demand runtime agent-mesh design; it remains separate from inherited route cards."
+    },
+    {
+      "repository": "Agents-of-Abyss",
+      "path": "DESIGN.AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Agents-of-Abyss@e2d17e3db9768899e5c823912acf54de2da012da:DESIGN.AGENTS.md",
+        "Agents-of-Abyss@e2d17e3db9768899e5c823912acf54de2da012da:AGENTS.md"
+      ],
+      "fenced_blocks": [
+        {
+          "sha256": "2f2d9b4afe5d208fdd86a57ce647de3fa58f016015724d1cfe2b917340e3ed9a",
+          "classification": "agent-card-template",
+          "reason": "The block defines the portable canonical card headings and contains no executable procedure."
+        }
+      ],
+      "note": "Canonical on-demand design form for agent-facing surfaces; not an inherited card or prompt library."
+    },
+    {
+      "repository": "aoa-agents",
+      "path": "DESIGN.AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-agents@f8488fdc45c5617fa519cdc755fd858eeb1e8d29:DESIGN.AGENTS.md",
+        "aoa-agents@f8488fdc45c5617fa519cdc755fd858eeb1e8d29:AGENTS.md"
+      ],
+      "note": "Compact on-demand repository design route, distinct from inherited AGENTS guidance."
+    },
+    {
+      "repository": "aoa-evals",
+      "path": "DESIGN.AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-evals@a5986b14e428debc672e6d780ab9cc6f71b13eee:DESIGN.AGENTS.md",
+        "aoa-evals@a5986b14e428debc672e6d780ab9cc6f71b13eee:AGENTS.md"
+      ],
+      "fenced_blocks": [
+        {
+          "sha256": "2f2d9b4afe5d208fdd86a57ce647de3fa58f016015724d1cfe2b917340e3ed9a",
+          "classification": "agent-card-template",
+          "reason": "The block defines the canonical card headings and contains no executable procedure."
+        }
+      ],
+      "note": "On-demand proof-layer agent-surface design; excluded from inherited chain bytes."
+    },
+    {
+      "repository": "aoa-kag",
+      "path": "DESIGN.AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-kag@14b06c276fd02a54362f9734d6bca7a09b1b1e5e:DESIGN.AGENTS.md",
+        "aoa-kag@14b06c276fd02a54362f9734d6bca7a09b1b1e5e:AGENTS.md"
+      ],
+      "fenced_blocks": [
+        {
+          "sha256": "2f2d9b4afe5d208fdd86a57ce647de3fa58f016015724d1cfe2b917340e3ed9a",
+          "classification": "agent-card-template",
+          "reason": "The block defines the canonical card headings and contains no executable procedure."
+        }
+      ],
+      "note": "On-demand knowledge-graph agent-surface design; excluded from inherited chain bytes."
+    },
+    {
+      "repository": "aoa-memo",
+      "path": "DESIGN.AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-memo@96ec5d82f174593a1bc1437703d1ddd019474722:DESIGN.AGENTS.md",
+        "aoa-memo@96ec5d82f174593a1bc1437703d1ddd019474722:AGENTS.md"
+      ],
+      "note": "On-demand memo agent-surface design; its size does not tax inherited prompt context."
+    },
+    {
+      "repository": "aoa-playbooks",
+      "path": "DESIGN.AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-playbooks@43107f04e6f4a747509b547d2f4b5fc8555c704f:DESIGN.AGENTS.md",
+        "aoa-playbooks@43107f04e6f4a747509b547d2f4b5fc8555c704f:AGENTS.md"
+      ],
+      "fenced_blocks": [
+        {
+          "sha256": "2f2d9b4afe5d208fdd86a57ce647de3fa58f016015724d1cfe2b917340e3ed9a",
+          "classification": "agent-card-template",
+          "reason": "The block defines the canonical card headings and contains no executable procedure."
+        }
+      ],
+      "note": "On-demand workflow agent-surface design; excluded from inherited chain bytes."
+    },
+    {
+      "repository": "aoa-sdk",
+      "path": "DESIGN.AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-sdk@bfa53b4e8f9d4c4dd327011b77c74f21e2732651:DESIGN.AGENTS.md",
+        "aoa-sdk@bfa53b4e8f9d4c4dd327011b77c74f21e2732651:AGENTS.md"
+      ],
+      "fenced_blocks": [
+        {
+          "sha256": "f8ad93398c59e57c114e44808400f88d49091cd2c7f6236c46910c0a00125d8f",
+          "classification": "agent-card-template",
+          "reason": "The block defines the SDK-aware card shape and conditional route language without executable procedure."
+        }
+      ],
+      "note": "On-demand control-plane agent-surface design; excluded from inherited chain bytes."
+    },
+    {
+      "repository": "aoa-session-memory",
+      "path": "DESIGN.AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-session-memory@6e1e12ac74b9ed2af7fc2d853987e8670da99928:DESIGN.AGENTS.md",
+        "aoa-session-memory@6e1e12ac74b9ed2af7fc2d853987e8670da99928:AGENTS.md"
+      ],
+      "fenced_blocks": [
+        {
+          "sha256": "9482cc4902c99df9e5826aad1a4eb64e7d34fbef7e09d7dea96281be293ba204",
+          "classification": "conceptual-sequence",
+          "reason": "The block shows retrieval escalation order and contains no executable procedure."
+        },
+        {
+          "sha256": "be19bf68e66e22afac9e5fd5308be4edbbb9f6ed8cb35fdafbb44de264d49b78",
+          "classification": "conceptual-sequence",
+          "reason": "The block enumerates distinct evidence lifecycle states and contains no executable procedure."
+        }
+      ],
+      "note": "On-demand session-memory agent design and evidence semantics; excluded from inherited chain bytes."
+    },
+    {
+      "repository": "aoa-skills",
+      "path": "DESIGN.AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-skills@aa35591df2305d3c54fc2dc4f787e390bf53332f:DESIGN.AGENTS.md",
+        "aoa-skills@aa35591df2305d3c54fc2dc4f787e390bf53332f:AGENTS.md"
+      ],
+      "note": "Compact on-demand skill-system design route, distinct from inherited AGENTS guidance."
+    },
+    {
+      "repository": "aoa-stats",
+      "path": "DESIGN.AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-stats@50c532d5b0d7e2d6d19af720e7496c6e8a4bb0c2:DESIGN.AGENTS.md",
+        "aoa-stats@50c532d5b0d7e2d6d19af720e7496c6e8a4bb0c2:AGENTS.md"
+      ],
+      "note": "On-demand stats agent-surface design; excluded from inherited chain bytes."
+    },
+    {
+      "repository": "aoa-techniques",
+      "path": "DESIGN.AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "aoa-techniques@729cf9595a0d240d13d94982390003aa049ef77c:DESIGN.AGENTS.md",
+        "aoa-techniques@729cf9595a0d240d13d94982390003aa049ef77c:AGENTS.md"
+      ],
+      "fenced_blocks": [
+        {
+          "sha256": "2f2d9b4afe5d208fdd86a57ce647de3fa58f016015724d1cfe2b917340e3ed9a",
+          "classification": "agent-card-template",
+          "reason": "The block defines the canonical card headings and contains no executable procedure."
+        }
+      ],
+      "note": "On-demand technique agent-surface design; excluded from inherited chain bytes."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "DESIGN.AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:DESIGN.AGENTS.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:AGENTS.md"
+      ],
+      "note": "On-demand Tree-of-Sophia agent-surface design; excluded from inherited chain bytes."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/medieval-worlds/regions/latin-europe/traditions/fourteenth-century-nominalism-logical-analysis/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/medieval-worlds/regions/latin-europe/traditions/fourteenth-century-nominalism-logical-analysis/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/medieval-worlds/regions/mesoamerica/traditions/central-mexican-pictorial-codical-knowledge-systems/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/medieval-worlds/regions/mesoamerica/traditions/central-mexican-pictorial-codical-knowledge-systems/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/medieval-worlds/regions/mesoamerica/traditions/postclassic-maya-codices-written-cosmology/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/medieval-worlds/regions/mesoamerica/traditions/postclassic-maya-codices-written-cosmology/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/medieval-worlds/regions/north-atlantic/traditions/old-norse-icelandic-manuscript-wisdom/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/medieval-worlds/regions/north-atlantic/traditions/old-norse-icelandic-manuscript-wisdom/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/medieval-worlds/regions/slavic-world/traditions/slavic-christian-literature-byzantine-handoff/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/medieval-worlds/regions/slavic-world/traditions/slavic-christian-literature-byzantine-handoff/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/medieval-worlds/regions/sub-saharan-africa/traditions/timbuktu-sahel-arabic-manuscript-city/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/medieval-worlds/regions/sub-saharan-africa/traditions/timbuktu-sahel-arabic-manuscript-city/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/medieval-worlds/regions/west-africa/traditions/ajami-written-knowledge-zones/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/medieval-worlds/regions/west-africa/traditions/ajami-written-knowledge-zones/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/medieval-worlds/regions/west-asia-central-asia/traditions/manichaean-multilingual-transmission-corpus/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/medieval-worlds/regions/west-asia-central-asia/traditions/manichaean-multilingual-transmission-corpus/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/africa-diaspora/traditions/negritude-pan-africanism-anticolonial-philosophy/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/africa-diaspora/traditions/negritude-pan-africanism-anticolonial-philosophy/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/africa-global-academy/traditions/african-philosophy-academic-field/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/africa-global-academy/traditions/african-philosophy-academic-field/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/african-writing-frontiers/traditions/new-african-scripts-philosophical-modernities/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/african-writing-frontiers/traditions/new-african-scripts-philosophical-modernities/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/anglophone-academy/traditions/professional-philosophy-twentieth-twenty-first-centuries/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/anglophone-academy/traditions/professional-philosophy-twentieth-twenty-first-centuries/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/arab-world/traditions/arab-nahda-philosophical-press-translation-modernity/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/arab-world/traditions/arab-nahda-philosophical-press-translation-modernity/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/atlantic-world/traditions/nineteenth-century-positivism-utilitarianism-liberalism-social-philosophy/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/atlantic-world/traditions/nineteenth-century-positivism-utilitarianism-liberalism-social-philosophy/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/atlantic-world/traditions/salamanca-natural-law-colonial-dispute/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/atlantic-world/traditions/salamanca-natural-law-colonial-dispute/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/australia/traditions/aboriginal-torres-strait-islander-written-academic-philosophies/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/australia/traditions/aboriginal-torres-strait-islander-written-academic-philosophies/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/balkans-eastern-europe/traditions/national-philosophical-fields/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/balkans-eastern-europe/traditions/national-philosophical-fields/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/black-atlantic/traditions/africana-philosophy-diasporic-thought/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/black-atlantic/traditions/africana-philosophy-diasporic-thought/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/britain-europe/traditions/empiricism-scottish-moral-philosophy-political-economy/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/britain-europe/traditions/empiricism-scottish-moral-philosophy-political-economy/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/caribbean-black-atlantic/traditions/anticolonial-creolizing-philosophy/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/caribbean-black-atlantic/traditions/anticolonial-creolizing-philosophy/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/central-europe/traditions/lvov-warsaw-central-european-logical-schools/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/central-europe/traditions/lvov-warsaw-central-european-logical-schools/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/colonial-latin-america/traditions/university-scholasticism-conquest/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/colonial-latin-america/traditions/university-scholasticism-conquest/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/colonial-south-asia/traditions/colonial-india-bengal-renaissance/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/colonial-south-asia/traditions/colonial-india-bengal-renaissance/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/colonized-mesoamerica/traditions/post-conquest-written-corpora/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/colonized-mesoamerica/traditions/post-conquest-written-corpora/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/continental-europe/traditions/hermeneutics-existentialism-modern-philosophical-theology/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/continental-europe/traditions/hermeneutics-existentialism-modern-philosophical-theology/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/continental-europe/traditions/phenomenology-archival-worlds/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/continental-europe/traditions/phenomenology-archival-worlds/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/east-asia-diaspora/traditions/transnational-new-confucianism/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/east-asia-diaspora/traditions/transnational-new-confucianism/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/east-asia/traditions/chinese-buddhist-modernities-academic-canons/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/east-asia/traditions/chinese-buddhist-modernities-academic-canons/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/east-asia/traditions/late-imperial-china-neo-confucian-evidential-statecraft/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/east-asia/traditions/late-imperial-china-neo-confucian-evidential-statecraft/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/east-asia/traditions/modern-contemporary-china-reform-marxism-new-confucianism/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/east-asia/traditions/modern-contemporary-china-reform-marxism-new-confucianism/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/ethiopia/traditions/zera-yacob-geez-rational-philosophy-afterlives/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/ethiopia/traditions/zera-yacob-geez-rational-philosophy-afterlives/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/european-anglophone-field/traditions/analytic-philosophy-disciplinary-field/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/european-anglophone-field/traditions/analytic-philosophy-disciplinary-field/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/european-global-field/traditions/frankfurt-school-critical-theory/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/european-global-field/traditions/frankfurt-school-critical-theory/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/european-global-field/traditions/marxism-socialist-theoretical-traditions/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/european-global-field/traditions/marxism-socialist-theoretical-traditions/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/european-jewish-worlds/traditions/haskalah-modern-jewish-philosophy/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/european-jewish-worlds/traditions/haskalah-modern-jewish-philosophy/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/france-transnational/traditions/structuralism-poststructuralism-theory-fields/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/france-transnational/traditions/structuralism-poststructuralism-theory-fields/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/german-speaking-europe/traditions/german-idealism-research-university/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/german-speaking-europe/traditions/german-idealism-research-university/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/global-field/traditions/ai-data-ethics-philosophy-computation/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/global-field/traditions/ai-data-ethics-philosophy-computation/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/global-field/traditions/analytic-philosophy-after-1980/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/global-field/traditions/analytic-philosophy-after-1980/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/global-field/traditions/comparative-world-philosophy/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/global-field/traditions/comparative-world-philosophy/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/global-field/traditions/continental-philosophy-after-1980/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/global-field/traditions/continental-philosophy-after-1980/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/global-field/traditions/environmental-philosophy-climate-ethics/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/global-field/traditions/environmental-philosophy-climate-ethics/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/global-field/traditions/feminist-philosophy-intersectional-theory/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/global-field/traditions/feminist-philosophy-intersectional-theory/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/global-field/traditions/race-diaspora-migration-philosophy/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/global-field/traditions/race-diaspora-migration-philosophy/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/global-field/traditions/technology-media-cybernetics-digital-culture/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/global-field/traditions/technology-media-cybernetics-digital-culture/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/global-islamic-field/traditions/contemporary-islamic-philosophy-ethics-political-thought/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/global-islamic-field/traditions/contemporary-islamic-philosophy-ethics-political-thought/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/global-jewish-field/traditions/jewish-philosophy-twentieth-twenty-first-centuries/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/global-jewish-field/traditions/jewish-philosophy-twentieth-twenty-first-centuries/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/global-south-global-field/traditions/postcolonial-decolonial-philosophy/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/global-south-global-field/traditions/postcolonial-decolonial-philosophy/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/indigenous-north-america/traditions/modern-writing-treaty-thought-sovereignty/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/indigenous-north-america/traditions/modern-writing-treaty-thought-sovereignty/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/iranian-world/traditions/safavid-post-safavid-isfahan-school/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/iranian-world/traditions/safavid-post-safavid-isfahan-school/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/islamic-world/traditions/islamic-modernism-nineteenth-twentieth-centuries/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/islamic-world/traditions/islamic-modernism-nineteenth-twentieth-centuries/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/japan/traditions/kyoto-school-modernity-religion-war/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/japan/traditions/kyoto-school-modernity-religion-war/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/japan/traditions/postwar-contemporary-japanese-philosophy/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/japan/traditions/postwar-contemporary-japanese-philosophy/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/japan/traditions/tokugawa-confucian-kokugaku-rangaku-buddhist-reforms/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/japan/traditions/tokugawa-confucian-kokugaku-rangaku-buddhist-reforms/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/jewish-diaspora/traditions/early-modern-jewish-print-kabbalah-book-republic/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/jewish-diaspora/traditions/early-modern-jewish-print-kabbalah-book-republic/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/korea/traditions/joseon-confucian-buddhist-modern-academy/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/korea/traditions/joseon-confucian-buddhist-modern-academy/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/latin-america-global-south/traditions/liberation-theology-decoloniality/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/latin-america-global-south/traditions/liberation-theology-decoloniality/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/latin-america/traditions/nineteenth-century-independence-positivism-national-philosophies/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/latin-america/traditions/nineteenth-century-independence-positivism-national-philosophies/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/malay-world/traditions/islamic-malay-philosophical-writing/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/malay-world/traditions/islamic-malay-philosophical-writing/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/ottoman-world/traditions/ottoman-philosophical-theological-logical-tradition/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/ottoman-world/traditions/ottoman-philosophical-theological-logical-tradition/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/pacific-islands/traditions/maori-hawaiian-samoan-written-academic-philosophy/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/pacific-islands/traditions/maori-hawaiian-samoan-written-academic-philosophy/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/philippines/traditions/colonial-catholic-national-philosophical-writing/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/philippines/traditions/colonial-catholic-national-philosophical-writing/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/public-digital-field/traditions/public-philosophy-open-access-media/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/public-digital-field/traditions/public-philosophy-open-access-media/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/punjab-global-diaspora/traditions/sikh-scriptural-philosophical-tradition-modern-exegesis/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/punjab-global-diaspora/traditions/sikh-scriptural-philosophical-tradition-modern-exegesis/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/russian-world/traditions/nineteenth-early-twentieth-century-russian-philosophy/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/russian-world/traditions/nineteenth-early-twentieth-century-russian-philosophy/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/sahel-west-africa/traditions/islamic-manuscript-scholarly-worlds/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/sahel-west-africa/traditions/islamic-manuscript-scholarly-worlds/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/settler-colonial-worlds/traditions/indigenous-rights-theory/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/settler-colonial-worlds/traditions/indigenous-rights-theory/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/south-asia-global-field/traditions/neo-vedanta-national-spiritual-philosophy/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/south-asia-global-field/traditions/neo-vedanta-national-spiritual-philosophy/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/south-asia-islamicate/traditions/mughal-south-asian-islamic-literature/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/south-asia-islamicate/traditions/mughal-south-asian-islamic-literature/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/south-asia/traditions/gandhi-ambedkar-anti-caste-constitutional-philosophy/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/south-asia/traditions/gandhi-ambedkar-anti-caste-constitutional-philosophy/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/south-asia/traditions/late-sanskrit-scholarship-navya-nyaya-after-1500/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/south-asia/traditions/late-sanskrit-scholarship-navya-nyaya-after-1500/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/south-asia/traditions/late-vedanta-bhakti-regional-philosophical-literatures/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/south-asia/traditions/late-vedanta-bhakti-regional-philosophical-literatures/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/south-asian-academy/traditions/contemporary-indian-academic-philosophy/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/south-asian-academy/traditions/contemporary-indian-academic-philosophy/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/south-asian-buddhist-worlds/traditions/buddhist-reforms-print-publics-modernities/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/south-asian-buddhist-worlds/traditions/buddhist-reforms-print-publics-modernities/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/southeast-asia/traditions/manuscript-afterlives-philological-recovery/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/southeast-asia/traditions/manuscript-afterlives-philological-recovery/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/southeast-asian-theravada-worlds/traditions/buddhist-monarchical-theravada-modernities/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/southeast-asian-theravada-worlds/traditions/buddhist-monarchical-theravada-modernities/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/southern-africa-global-field/traditions/ubuntu-communitarianism-reconciliation-law/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/southern-africa-global-field/traditions/ubuntu-communitarianism-reconciliation-law/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/soviet-post-soviet-world/traditions/soviet-post-soviet-philosophy/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/soviet-post-soviet-world/traditions/soviet-post-soviet-philosophy/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/transnational-europe/traditions/philosophy-science-mathematics-logic/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/transnational-europe/traditions/philosophy-science-mathematics-logic/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/transnational-europe/traditions/republic-of-letters-scientific-societies-philosophical-journals/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/transnational-europe/traditions/republic-of-letters-scientific-societies-philosophical-journals/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/transregional-africa/traditions/ajami-publics-african-language-thought/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/transregional-africa/traditions/ajami-publics-african-language-thought/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/united-states-black-thought/traditions/african-american-philosophy/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/united-states-black-thought/traditions/african-american-philosophy/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/united-states/traditions/transcendentalism-pragmatism-democratic-philosophy/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/united-states/traditions/transcendentalism-pragmatism-democratic-philosophy/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/vietnam/traditions/multiscript-anti-colonial-philosophical-writing/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/vietnam/traditions/multiscript-anti-colonial-philosophical-writing/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/west-asia-transregional/traditions/post-ibn-arabi-sufi-metaphysics-commentary-print/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/west-asia-transregional/traditions/post-ibn-arabi-sufi-metaphysics-commentary-print/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/western-europe/traditions/enlightenment-print-public-sphere/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/western-europe/traditions/enlightenment-print-public-sphere/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/western-europe/traditions/reformation-counter-reformation-philosophical-theology/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/western-europe/traditions/reformation-counter-reformation-philosophical-theology/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/western-europe/traditions/renaissance-humanism-early-modern-philology/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/western-europe/traditions/renaissance-humanism-early-modern-philology/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/western-europe/traditions/romanticism-historicism-language-culture/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/western-europe/traditions/romanticism-historicism-language-culture/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/western-europe/traditions/scientific-revolution-early-modern-natural-philosophy/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/western-europe/traditions/scientific-revolution-early-modern-natural-philosophy/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/western-europe/traditions/seventeenth-century-rationalism/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/eras/modernity-and-contemporary-worlds/regions/western-europe/traditions/seventeenth-century-rationalism/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Distinct human branch capsule carrying atlas identity, branch pressure, review posture, and source-return routes; not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/frontiers/writing-and-information-thresholds/andean-khipu-medieval-window/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/frontiers/writing-and-information-thresholds/andean-khipu-medieval-window/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Human frontier capsule carrying explicit non-era guardrails; retained as an on-demand owner surface, not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/philosophy/frontiers/writing-and-information-thresholds/rapa-nui-rongorongo-contact-modern-reception/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/frontiers/writing-and-information-thresholds/rapa-nui-rongorongo-contact-modern-reception/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/philosophy/AGENTS.md"
+      ],
+      "note": "Human frontier capsule carrying explicit non-era guardrails; retained as an on-demand owner surface, not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/research-packets/foundation-laboratory-2026-07/generic-xml-resource-inventory-uxlc-abc-v1/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/research-packets/foundation-laboratory-2026-07/generic-xml-resource-inventory-uxlc-abc-v1/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/research-packets/AGENTS.md"
+      ],
+      "note": "Bounded human laboratory/result entrypoint with evidence limits; retained as an on-demand owner surface, not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/source-witnesses/discovery/candidates/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/source-witnesses/discovery/candidates/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/source-witnesses/AGENTS.md"
+      ],
+      "note": "Human queue/receipt authority map; executable procedure remains in VALIDATION.md, not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "ToS/source-witnesses/discovery/candidates/receipts/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/source-witnesses/discovery/candidates/receipts/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:ToS/source-witnesses/AGENTS.md"
+      ],
+      "note": "Human queue/receipt authority map; executable procedure remains in VALIDATION.md, not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "access/AGENTS.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:access/AGENTS.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:access/AGENTS.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:AGENTS.md"
+      ],
+      "note": "Concise installable-access owner card retained as a local owner surface, not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "access/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:access/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:access/AGENTS.md"
+      ],
+      "note": "Human install, contract, or optional-integration entrypoint retained as an on-demand owner surface, not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "access/contracts/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:access/contracts/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:access/AGENTS.md"
+      ],
+      "note": "Human install, contract, or optional-integration entrypoint retained as an on-demand owner surface, not inherited prompt context."
+    },
+    {
+      "repository": "Tree-of-Sophia",
+      "path": "access/integrations/abyssos/README.md",
+      "review_state": "reviewed",
+      "disposition": "keep",
+      "owner_evidence": [
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:access/integrations/abyssos/README.md",
+        "Tree-of-Sophia@ced821d35b8e64e54a77af75d3ad10c5690b0df5:access/AGENTS.md"
+      ],
+      "note": "Human install, contract, or optional-integration entrypoint retained as an on-demand owner surface, not inherited prompt context."
     }
   ]
 }

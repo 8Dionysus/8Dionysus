@@ -31,9 +31,7 @@ status, and the `aoa-evals` local-port standard only for central adoption work.
 
 ## Validation
 
-```bash
-python ../aoa-evals/scripts/validate_local_eval_port.py --target-root .
-```
+Run `VALIDATION.md` in this directory for `validate_local_eval_port.py`.
 
 ## Closeout
 

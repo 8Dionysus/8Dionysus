@@ -19,6 +19,7 @@ from project_workspace_root import render_agents_text
 
 
 DOCUMENT_NAMES = frozenset({"AGENTS.md", "README.md"})
+SUPPLEMENTAL_AGENT_DOCUMENT_NAMES = frozenset({"DESIGN.AGENTS.md"})
 SHARED_ROOT_OWNER_PATHS = {
     "AGENTS.md": "AGENTS.md",
     "README.md": "docs/WORKSPACE_ROOT_ENTRY.md",
@@ -39,6 +40,18 @@ DISPOSITIONS = frozenset(
     }
 )
 REVIEW_STATES = frozenset({"reviewed", "blocked"})
+AGENTS_FENCE_CLASSIFICATIONS = frozenset(
+    {
+        "agent-card-template",
+        "conceptual-sequence",
+        "decision-record-heading-template",
+        "diagram-example",
+        "filename-template",
+        "operating-contract-template",
+        "source-code-example",
+        "structured-data-example",
+    }
+)
 FALLBACK_SKIP_DIRS = frozenset(
     {
         ".git",
@@ -58,6 +71,14 @@ GENERATED_PARTS = frozenset({"build", "dist", "generated"})
 VENDOR_PARTS = frozenset({".repos", "node_modules", "third_party", "vendor", "vendored"})
 FIXTURE_PARTS = frozenset({"fixture", "fixtures", "testdata"})
 ARCHIVE_PARTS = frozenset({"archive", "archived", "legacy"})
+RUNTIME_SESSION_PARTS = frozenset({".aoa"})
+AUTHORED_SCOPE_EXCLUSION_FLAGS = (
+    "generated",
+    "vendor",
+    "fixture",
+    "archive",
+    "runtime_session",
+)
 README_TOKEN_RE = re.compile(r"(?P<path>(?:\.\.?/)?[A-Za-z0-9_.@+-]+(?:/[A-Za-z0-9_.@+-]+)*/README\.md|README\.md)")
 DOC_LINK_RE = re.compile(
     r"\[[^\]]*\]\((?P<link>[^)]+(?:README|AGENTS)\.md(?:#[^)]*)?)\)"
@@ -87,6 +108,25 @@ MANDATORY_READ_SECTION_RE = re.compile(
     re.IGNORECASE,
 )
 FENCE_START_RE = re.compile(r"^(?P<marker>`{3,}|~{3,})")
+VALIDATION_COMMAND_FENCE_RE = re.compile(
+    r"^ {0,3}```(?:bash|console|sh|shell|zsh|powershell|pwsh|text|plaintext|terminal)?(?:\s+.*)?$",
+    re.IGNORECASE,
+)
+EXECUTABLE_VALIDATION_LINE_RE = re.compile(
+    r"^(?:(?:[A-Za-z_][A-Za-z0-9_]*=[^\s]+)\s+)*(?:"
+    r"python3?(?:\s+-m)?\s+|pytest(?:\s|$)|uv\s+run\s+|"
+    r"git\s+|gh\s+|aoa\s+|skills-ref\s+|ruff\s+|mypy(?:\s|$)|"
+    r"bash\s+|sh\s+|make(?:\s|$)|npm\s+|pnpm\s+|cargo\s+|"
+    r"go\s+|docker\s+|podman\s+)",
+    re.IGNORECASE,
+)
+VALIDATION_ROUTE_ONLY_ASSERTION_RES = (
+    re.compile(r"\bowns no distinct executable procedure\b", re.IGNORECASE),
+    re.compile(
+        r"\bExecutable validation for this (?:part|surface) is routed through\b",
+        re.IGNORECASE,
+    ),
+)
 
 
 def _run_git(repo_root: Path, args: Sequence[str]) -> subprocess.CompletedProcess[bytes]:
@@ -120,12 +160,36 @@ def _is_document(path: str) -> bool:
     return PurePosixPath(path).name in DOCUMENT_NAMES
 
 
+def _is_supplemental_agent_document(path: str) -> bool:
+    return PurePosixPath(path).name in SUPPLEMENTAL_AGENT_DOCUMENT_NAMES
+
+
 def _fallback_document_paths(repo_root: Path) -> list[str]:
     found: list[str] = []
     for current_root, dirs, files in os.walk(repo_root):
         current = Path(current_root)
         dirs[:] = [name for name in dirs if name not in FALLBACK_SKIP_DIRS]
         for name in DOCUMENT_NAMES.intersection(files):
+            found.append((current / name).relative_to(repo_root).as_posix())
+    return sorted(found)
+
+
+def _fallback_validation_paths(repo_root: Path) -> list[str]:
+    found: list[str] = []
+    for current_root, dirs, files in os.walk(repo_root):
+        current = Path(current_root)
+        dirs[:] = [name for name in dirs if name not in FALLBACK_SKIP_DIRS]
+        if "VALIDATION.md" in files:
+            found.append((current / "VALIDATION.md").relative_to(repo_root).as_posix())
+    return sorted(found)
+
+
+def _fallback_supplemental_agent_paths(repo_root: Path) -> list[str]:
+    found: list[str] = []
+    for current_root, dirs, files in os.walk(repo_root):
+        current = Path(current_root)
+        dirs[:] = [name for name in dirs if name not in FALLBACK_SKIP_DIRS]
+        for name in SUPPLEMENTAL_AGENT_DOCUMENT_NAMES.intersection(files):
             found.append((current / name).relative_to(repo_root).as_posix())
     return sorted(found)
 
@@ -200,6 +264,7 @@ def load_dispositions(path: Path | None) -> tuple[dict[tuple[str, str], dict[str
         state = record.get("review_state")
         disposition = record.get("disposition")
         evidence = record.get("owner_evidence", [])
+        fenced_blocks = record.get("fenced_blocks", [])
         key = (repository, document_path)
         if not isinstance(repository, str) or not isinstance(document_path, str):
             issues.append(f"disposition record {index} lacks repository/path")
@@ -218,6 +283,41 @@ def load_dispositions(path: Path | None) -> tuple[dict[tuple[str, str], dict[str
             continue
         if state == "reviewed" and not evidence:
             issues.append(f"{repository}:{document_path} reviewed record lacks owner_evidence")
+            continue
+        if not isinstance(fenced_blocks, list):
+            issues.append(f"{repository}:{document_path} has invalid fenced_blocks")
+            continue
+        seen_fence_digests: set[str] = set()
+        invalid_fence = False
+        for fence_index, fence in enumerate(fenced_blocks):
+            if not isinstance(fence, dict):
+                issues.append(
+                    f"{repository}:{document_path} fenced_blocks[{fence_index}] is not an object"
+                )
+                invalid_fence = True
+                continue
+            digest = fence.get("sha256")
+            classification = fence.get("classification")
+            reason = fence.get("reason")
+            if (
+                not isinstance(digest, str)
+                or not re.fullmatch(r"[0-9a-f]{64}", digest)
+                or classification not in AGENTS_FENCE_CLASSIFICATIONS
+                or not isinstance(reason, str)
+                or not reason.strip()
+            ):
+                issues.append(
+                    f"{repository}:{document_path} fenced_blocks[{fence_index}] is invalid"
+                )
+                invalid_fence = True
+                continue
+            if digest in seen_fence_digests:
+                issues.append(
+                    f"{repository}:{document_path} repeats fenced block digest {digest}"
+                )
+                invalid_fence = True
+            seen_fence_digests.add(digest)
+        if invalid_fence:
             continue
         if key in records:
             issues.append(f"duplicate disposition record for {repository}:{document_path}")
@@ -245,7 +345,68 @@ def _scope_flags(relative: str) -> dict[str, bool]:
         "vendor": bool(parts & VENDOR_PARTS),
         "fixture": bool(parts & FIXTURE_PARTS),
         "archive": bool(parts & ARCHIVE_PARTS),
+        "runtime_session": bool(parts & RUNTIME_SESSION_PARTS),
         "mechanics": "mechanics" in parts,
+    }
+
+
+def _validation_commands(text: str) -> list[tuple[int, str]]:
+    """Extract normalized executable invocations from shell command fences."""
+
+    commands: list[tuple[int, str]] = []
+    in_command_fence = False
+    buffer: list[str] = []
+    start_line = 0
+
+    def flush() -> None:
+        nonlocal buffer, start_line
+        if not buffer:
+            return
+        command = " ".join(part.strip().rstrip("\\`").strip() for part in buffer)
+        command = re.sub(r"\s+", " ", command).strip()
+        if EXECUTABLE_VALIDATION_LINE_RE.match(command):
+            commands.append((start_line, command))
+        buffer = []
+        start_line = 0
+
+    for line_number, raw_line in enumerate(text.splitlines(), start=1):
+        stripped = raw_line.strip()
+        if not in_command_fence:
+            if VALIDATION_COMMAND_FENCE_RE.match(raw_line):
+                in_command_fence = True
+            continue
+        if stripped.startswith("```"):
+            flush()
+            in_command_fence = False
+            continue
+        if not stripped or stripped.startswith("#"):
+            flush()
+            continue
+        line = re.sub(r"^(?:\$|PS>)\s*", "", stripped)
+        if buffer:
+            buffer.append(line)
+            if not line.endswith(("\\", "`")):
+                flush()
+            continue
+        # A shell environment prefix commonly occupies its own continued line,
+        # so it cannot match the executable regex until the following line is
+        # joined. Start any explicit continuation and decide whether it is an
+        # executable invocation only after the complete logical command exists.
+        if EXECUTABLE_VALIDATION_LINE_RE.match(line) or line.endswith(("\\", "`")):
+            buffer = [line]
+            start_line = line_number
+            if not line.endswith(("\\", "`")):
+                flush()
+    flush()
+    return commands
+
+
+def _command_group(command: str, locations: Sequence[dict[str, Any]]) -> dict[str, Any]:
+    return {
+        "fingerprint": hashlib.sha256(command.encode("utf-8")).hexdigest(),
+        "command": command,
+        "occurrences": len(locations),
+        "locations": sorted(locations, key=lambda item: (item["path"], item["line"])),
     }
 
 
@@ -275,6 +436,7 @@ def _extract_references(source: str, text: str, known_paths: set[str]) -> dict[s
     mandatory_resolved_readmes: set[str] = set()
     unresolved_readmes: set[str] = set()
     outbound_docs: set[str] = set()
+    readme_reference_classifications: list[dict[str, Any]] = []
     mandatory_section_level: int | None = None
     lines = text.splitlines()
     paragraph_context: dict[int, str] = {}
@@ -367,6 +529,22 @@ def _extract_references(source: str, text: str, known_paths: set[str]) -> dict[s
             mandatory = (
                 explicit_directive or section_list_item
             ) and not conditional and line_number not in fenced_lines
+            classification = (
+                "fenced-example"
+                if line_number in fenced_lines
+                else "mandatory-preload"
+                if mandatory
+                else "conditional-on-demand"
+                if conditional
+                else "navigational-reference"
+            )
+            readme_reference_classifications.append(
+                {
+                    "line": line_number,
+                    "classification": classification,
+                    "tokens": sorted(set(readme_tokens)),
+                }
+            )
             if mandatory:
                 mandatory_lines.append(line_number)
             for token in readme_tokens:
@@ -388,6 +566,7 @@ def _extract_references(source: str, text: str, known_paths: set[str]) -> dict[s
         "mandatory_resolved_readme_references": sorted(mandatory_resolved_readmes),
         "unresolved_readme_references": sorted(unresolved_readmes),
         "outbound_document_links": sorted(outbound_docs),
+        "readme_reference_classifications": readme_reference_classifications,
     }
 
 
@@ -447,6 +626,47 @@ def _agents_prose_blocks(text: str) -> list[str]:
     return blocks
 
 
+def _agents_fenced_blocks(text: str) -> list[dict[str, Any]]:
+    """Return content-addressed fenced blocks for explicit semantic review."""
+
+    blocks: list[dict[str, Any]] = []
+    fence_marker: str | None = None
+    language = ""
+    body: list[str] = []
+    start_line = 0
+    for line_number, raw_line in enumerate(text.splitlines(), start=1):
+        stripped = raw_line.strip()
+        fence = FENCE_START_RE.match(stripped)
+        if fence:
+            marker = fence.group("marker")
+            if fence_marker is None:
+                fence_marker = marker[0]
+                start_line = line_number
+                language = stripped[len(marker) :].strip().split(maxsplit=1)[0].lower() if stripped[len(marker) :].strip() else ""
+                body = []
+            elif marker[0] == fence_marker:
+                normalized = "\n".join(body).strip()
+                wrapped = f"```{language}\n{normalized}\n```\n"
+                blocks.append(
+                    {
+                        "start_line": start_line,
+                        "end_line": line_number,
+                        "language": language or None,
+                        "sha256": hashlib.sha256(normalized.encode("utf-8")).hexdigest(),
+                        "bytes": len(normalized.encode("utf-8")),
+                        "executable_invocations": len(_validation_commands(wrapped)),
+                    }
+                )
+                fence_marker = None
+                language = ""
+                body = []
+                start_line = 0
+            continue
+        if fence_marker is not None:
+            body.append(raw_line)
+    return blocks
+
+
 def _repeated_agents_blocks(records: Sequence[dict[str, Any]]) -> list[dict[str, Any]]:
     """Describe exact long prose blocks repeated across several tracked cards."""
 
@@ -479,7 +699,7 @@ def _repeated_agents_blocks(records: Sequence[dict[str, Any]]) -> list[dict[str,
         excluded = all(
             any(
                 record_by_path[path]["scope_flags"][name]
-                for name in ("generated", "vendor", "fixture", "archive")
+                for name in AUTHORED_SCOPE_EXCLUSION_FLAGS
             )
             for path in paths
         )
@@ -521,13 +741,33 @@ def _review_record(
             "disposition": None,
             "owner_evidence": [],
             "note": None,
+            "fenced_blocks": [],
         }
     return {
         "review_state": record["review_state"],
         "disposition": record.get("disposition"),
         "owner_evidence": list(record.get("owner_evidence", [])),
         "note": record.get("note"),
+        "fenced_blocks": list(record.get("fenced_blocks", [])),
     }
+
+
+def _reviewed_fenced_blocks(
+    text: str,
+    review: Mapping[str, Any],
+) -> tuple[list[dict[str, Any]], list[str]]:
+    declared = {item["sha256"]: item for item in review["fenced_blocks"]}
+    blocks = _agents_fenced_blocks(text)
+    observed_digests = {block["sha256"] for block in blocks}
+    for block in blocks:
+        declaration = declared.get(block["sha256"])
+        block["classification"] = (
+            declaration["classification"] if declaration else None
+        )
+        block["classification_reason"] = (
+            declaration["reason"] if declaration else None
+        )
+    return blocks, sorted(set(declared) - observed_digests)
 
 
 def scan_repository_corpus(
@@ -541,11 +781,33 @@ def scan_repository_corpus(
     if tracked_paths is None:
         tracked_documents = _fallback_document_paths(repo_root)
         untracked_documents: list[str] = []
+        tracked_supplemental_agent_paths = _fallback_supplemental_agent_paths(
+            repo_root
+        )
+        untracked_supplemental_agent_paths: list[str] = []
+        tracked_validation_paths = _fallback_validation_paths(repo_root)
+        untracked_validation_paths: list[str] = []
         corpus_source = "filesystem-fallback"
     else:
         tracked_documents = [path for path in tracked_paths if _is_document(path)]
         untracked_paths = _git_nul_paths(repo_root, ["ls-files", "-z", "--others", "--exclude-standard"])
         untracked_documents = [path for path in (untracked_paths or []) if _is_document(path)]
+        tracked_supplemental_agent_paths = [
+            path for path in tracked_paths if _is_supplemental_agent_document(path)
+        ]
+        untracked_supplemental_agent_paths = [
+            path
+            for path in (untracked_paths or [])
+            if _is_supplemental_agent_document(path)
+        ]
+        tracked_validation_paths = [
+            path for path in tracked_paths if PurePosixPath(path).name == "VALIDATION.md"
+        ]
+        untracked_validation_paths = [
+            path
+            for path in (untracked_paths or [])
+            if PurePosixPath(path).name == "VALIDATION.md"
+        ]
         corpus_source = "git-tracked-plus-untracked-candidates"
 
     raw_records: list[dict[str, Any]] = []
@@ -575,6 +837,86 @@ def scan_repository_corpus(
                 "_text": text,
             }
         )
+
+    supplemental_agent_records: list[dict[str, Any]] = []
+    for relative, tracked in [
+        *((path, True) for path in tracked_supplemental_agent_paths),
+        *((path, False) for path in untracked_supplemental_agent_paths),
+    ]:
+        raw, content_source, exists = _read_document(repo_root, relative, tracked)
+        text = raw.decode("utf-8", errors="replace")
+        review = _review_record(repository, relative, dispositions)
+        fenced_blocks, stale_fences = _reviewed_fenced_blocks(text, review)
+        supplemental_agent_records.append(
+            {
+                "path": relative,
+                "document_kind": "design-agents",
+                "tracked": tracked,
+                "worktree_status": statuses.get(relative),
+                "exists_in_worktree": exists,
+                "content_source": content_source,
+                "lines": text.count("\n")
+                + (0 if not text or text.endswith("\n") else 1),
+                "bytes": len(raw),
+                "sha256": hashlib.sha256(raw).hexdigest(),
+                "heading_ok": has_level_one_heading(text),
+                "scope_flags": _scope_flags(relative),
+                "review": review,
+                "fenced_blocks": fenced_blocks,
+                "stale_fenced_block_classifications": stale_fences,
+            }
+        )
+
+    validation_records: list[dict[str, Any]] = []
+    validation_occurrences: dict[str, list[dict[str, Any]]] = {}
+    validation_route_only_claim_conflicts: list[dict[str, Any]] = []
+    for relative, tracked in [
+        *((path, True) for path in tracked_validation_paths),
+        *((path, False) for path in untracked_validation_paths),
+    ]:
+        raw, content_source, exists = _read_document(repo_root, relative, tracked)
+        text = raw.decode("utf-8", errors="replace")
+        scope_flags = _scope_flags(relative)
+        commands = _validation_commands(text) if exists else []
+        record = {
+            "path": relative,
+            "tracked": tracked,
+            "worktree_status": statuses.get(relative),
+            "exists_in_worktree": exists,
+            "content_source": content_source,
+            "lines": text.count("\n") + (0 if not text or text.endswith("\n") else 1),
+            "bytes": len(raw),
+            "sha256": hashlib.sha256(raw).hexdigest(),
+            "scope_flags": scope_flags,
+            "executable_invocations": len(commands),
+        }
+        validation_records.append(record)
+        if exists and not any(
+            scope_flags[name] for name in AUTHORED_SCOPE_EXCLUSION_FLAGS
+        ):
+            if commands:
+                conflicting_lines = sorted(
+                    {
+                        line_number
+                        for line_number, line in enumerate(text.splitlines(), start=1)
+                        if any(
+                            pattern.search(line)
+                            for pattern in VALIDATION_ROUTE_ONLY_ASSERTION_RES
+                        )
+                    }
+                )
+                if conflicting_lines:
+                    validation_route_only_claim_conflicts.append(
+                        {
+                            "path": relative,
+                            "claim_lines": conflicting_lines,
+                            "executable_invocations": len(commands),
+                        }
+                    )
+            for line_number, command in commands:
+                validation_occurrences.setdefault(command, []).append(
+                    {"path": relative, "line": line_number, "tracked": tracked}
+                )
 
     known_paths = {record["path"] for record in raw_records}
     by_directory: dict[str, set[str]] = {}
@@ -623,8 +965,57 @@ def scan_repository_corpus(
                 "review": _review_record(repository, record["path"], dispositions),
             }
         )
+        if record["document_kind"] == "agents":
+            (
+                record["fenced_blocks"],
+                record["stale_fenced_block_classifications"],
+            ) = _reviewed_fenced_blocks(
+                record["_text"], record["review"]
+            )
 
     repeated_agents_blocks = _repeated_agents_blocks(raw_records)
+    document_command_occurrences: dict[str, dict[str, list[dict[str, Any]]]] = {
+        "agents": {},
+        "readme": {},
+    }
+    for record in raw_records:
+        if not record["exists_in_worktree"] or any(
+            record["scope_flags"][name]
+            for name in AUTHORED_SCOPE_EXCLUSION_FLAGS
+        ):
+            continue
+        kind = record["document_kind"]
+        for line_number, command in _validation_commands(record["_text"]):
+            document_command_occurrences[kind].setdefault(command, []).append(
+                {
+                    "path": record["path"],
+                    "line": line_number,
+                    "tracked": record["tracked"],
+                }
+            )
+
+    duplicate_validation_commands = [
+        _command_group(command, locations)
+        for command, locations in validation_occurrences.items()
+        if len(locations) > 1
+    ]
+    duplicate_validation_commands.sort(key=lambda group: group["fingerprint"])
+
+    command_overlaps: dict[str, list[dict[str, Any]]] = {}
+    for kind in ("agents", "readme"):
+        for command in sorted(
+            set(validation_occurrences) & set(document_command_occurrences[kind])
+        ):
+            command_overlaps.setdefault(kind, []).append(
+                {
+                    **_command_group(command, validation_occurrences[command]),
+                    "document_locations": sorted(
+                        document_command_occurrences[kind][command],
+                        key=lambda item: (item["path"], item["line"]),
+                    ),
+                }
+            )
+
     for record in raw_records:
         if record["document_kind"] == "agents":
             record.setdefault("repeated_long_agents_block_fingerprints", [])
@@ -645,7 +1036,7 @@ def scan_repository_corpus(
         signature = tuple(record["agents_chain_paths"])
         excluded_surface = any(
             record["scope_flags"][name]
-            for name in ("generated", "vendor", "fixture", "archive")
+            for name in AUTHORED_SCOPE_EXCLUSION_FLAGS
         )
         signature_record = chain_signatures.setdefault(
             signature,
@@ -656,9 +1047,15 @@ def scan_repository_corpus(
         )
     chain_values = list(chain_by_scope.values())
     unique_chain_values = [record["bytes"] for record in chain_signatures.values()]
+    tracked_supplemental_agents = [
+        record for record in supplemental_agent_records if record["tracked"]
+    ]
     reviews = [record["review"]["review_state"] for record in tracked]
+    reviews.extend(
+        record["review"]["review_state"] for record in tracked_supplemental_agents
+    )
     disposition_counts: dict[str, int] = {}
-    for record in tracked:
+    for record in [*tracked, *tracked_supplemental_agents]:
         disposition = record["review"]["disposition"]
         if disposition:
             disposition_counts[disposition] = disposition_counts.get(disposition, 0) + 1
@@ -670,6 +1067,12 @@ def scan_repository_corpus(
         "tracked_document_bytes": sum(record["bytes"] for record in tracked),
         "tracked_agents_bytes": sum(record["bytes"] for record in tracked_agents),
         "tracked_readme_bytes": sum(record["bytes"] for record in tracked_readmes),
+        "tracked_design_agents_files": len(tracked_supplemental_agents),
+        "tracked_design_agents_bytes": sum(
+            record["bytes"] for record in tracked_supplemental_agents
+        ),
+        "untracked_design_agents_candidates": len(supplemental_agent_records)
+        - len(tracked_supplemental_agents),
         "untracked_document_candidates": len(raw_records) - len(tracked),
         "paired_directories": sum(1 for kinds in tracked_dirs.values() if kinds == {"agents", "readme"}),
         "readme_only_directories": sum(1 for kinds in tracked_dirs.values() if kinds == {"readme"}),
@@ -699,6 +1102,9 @@ def scan_repository_corpus(
         "vendor_document_files": sum(record["scope_flags"]["vendor"] for record in tracked),
         "fixture_document_files": sum(record["scope_flags"]["fixture"] for record in tracked),
         "archive_document_files": sum(record["scope_flags"]["archive"] for record in tracked),
+        "runtime_session_document_files": sum(
+            record["scope_flags"]["runtime_session"] for record in tracked
+        ),
         "mechanics_document_files": sum(record["scope_flags"]["mechanics"] for record in tracked),
         "agents_files_referencing_readme": sum(bool(record["readme_reference_lines"]) for record in tracked_agents),
         "agents_files_declaring_mandatory_readme": sum(
@@ -706,6 +1112,103 @@ def scan_repository_corpus(
         ),
         "declared_mandatory_readme_bytes": sum(
             record["declared_mandatory_readme_bytes"] for record in tracked_agents
+        ),
+        "agents_readme_reference_lines": sum(
+            len(record["readme_reference_classifications"])
+            for record in tracked_agents
+        ),
+        "agents_conditional_readme_reference_lines": sum(
+            item["classification"] == "conditional-on-demand"
+            for record in tracked_agents
+            for item in record["readme_reference_classifications"]
+        ),
+        "agents_navigational_readme_reference_lines": sum(
+            item["classification"] == "navigational-reference"
+            for record in tracked_agents
+            for item in record["readme_reference_classifications"]
+        ),
+        "agents_fenced_example_readme_reference_lines": sum(
+            item["classification"] == "fenced-example"
+            for record in tracked_agents
+            for item in record["readme_reference_classifications"]
+        ),
+        "active_authored_agents_fenced_blocks": sum(
+            len(record.get("fenced_blocks", []))
+            for record in tracked_agents
+            if not any(
+                record["scope_flags"][name]
+                for name in AUTHORED_SCOPE_EXCLUSION_FLAGS
+            )
+        ),
+        "active_authored_agents_classified_fenced_blocks": sum(
+            bool(block["classification"])
+            for record in tracked_agents
+            if not any(
+                record["scope_flags"][name]
+                for name in AUTHORED_SCOPE_EXCLUSION_FLAGS
+            )
+            for block in record.get("fenced_blocks", [])
+        ),
+        "active_authored_agents_unclassified_fenced_blocks": sum(
+            not block["classification"]
+            for record in tracked_agents
+            if not any(
+                record["scope_flags"][name]
+                for name in AUTHORED_SCOPE_EXCLUSION_FLAGS
+            )
+            for block in record.get("fenced_blocks", [])
+        ),
+        "active_authored_agents_fenced_executable_invocations": sum(
+            block["executable_invocations"]
+            for record in tracked_agents
+            if not any(
+                record["scope_flags"][name]
+                for name in AUTHORED_SCOPE_EXCLUSION_FLAGS
+            )
+            for block in record.get("fenced_blocks", [])
+        ),
+        "stale_agents_fenced_block_classifications": sum(
+            len(record.get("stale_fenced_block_classifications", []))
+            for record in tracked_agents
+        ),
+        "active_authored_design_agents_fenced_blocks": sum(
+            len(record["fenced_blocks"])
+            for record in tracked_supplemental_agents
+            if not any(
+                record["scope_flags"][name]
+                for name in AUTHORED_SCOPE_EXCLUSION_FLAGS
+            )
+        ),
+        "active_authored_design_agents_classified_fenced_blocks": sum(
+            bool(block["classification"])
+            for record in tracked_supplemental_agents
+            if not any(
+                record["scope_flags"][name]
+                for name in AUTHORED_SCOPE_EXCLUSION_FLAGS
+            )
+            for block in record["fenced_blocks"]
+        ),
+        "active_authored_design_agents_unclassified_fenced_blocks": sum(
+            not block["classification"]
+            for record in tracked_supplemental_agents
+            if not any(
+                record["scope_flags"][name]
+                for name in AUTHORED_SCOPE_EXCLUSION_FLAGS
+            )
+            for block in record["fenced_blocks"]
+        ),
+        "active_authored_design_agents_fenced_executable_invocations": sum(
+            block["executable_invocations"]
+            for record in tracked_supplemental_agents
+            if not any(
+                record["scope_flags"][name]
+                for name in AUTHORED_SCOPE_EXCLUSION_FLAGS
+            )
+            for block in record["fenced_blocks"]
+        ),
+        "stale_design_agents_fenced_block_classifications": sum(
+            len(record["stale_fenced_block_classifications"])
+            for record in tracked_supplemental_agents
         ),
         "repeated_long_agents_block_groups": len(repeated_agents_blocks),
         "authored_repeated_long_agents_block_groups": sum(
@@ -720,6 +1223,62 @@ def scan_repository_corpus(
         "repeated_long_agents_normalized_redundant_bytes": sum(
             group["normalized_redundant_bytes"] for group in repeated_agents_blocks
         ),
+        "tracked_validation_files": sum(record["tracked"] for record in validation_records),
+        "untracked_validation_candidates": sum(
+            not record["tracked"] for record in validation_records
+        ),
+        "active_authored_validation_files": sum(
+            record["exists_in_worktree"]
+            and not any(
+                record["scope_flags"][name]
+                for name in AUTHORED_SCOPE_EXCLUSION_FLAGS
+            )
+            for record in validation_records
+        ),
+        "active_authored_validation_bytes": sum(
+            record["bytes"]
+            for record in validation_records
+            if record["exists_in_worktree"]
+            and not any(
+                record["scope_flags"][name]
+                for name in AUTHORED_SCOPE_EXCLUSION_FLAGS
+            )
+        ),
+        "active_authored_validation_command_owner_files": sum(
+            bool(record["executable_invocations"])
+            for record in validation_records
+            if record["exists_in_worktree"]
+            and not any(
+                record["scope_flags"][name]
+                for name in AUTHORED_SCOPE_EXCLUSION_FLAGS
+            )
+        ),
+        "active_authored_validation_route_only_files": sum(
+            not record["executable_invocations"]
+            for record in validation_records
+            if record["exists_in_worktree"]
+            and not any(
+                record["scope_flags"][name]
+                for name in AUTHORED_SCOPE_EXCLUSION_FLAGS
+            )
+        ),
+        "active_authored_validation_invocations": sum(
+            len(locations) for locations in validation_occurrences.values()
+        ),
+        "active_authored_unique_validation_invocations": len(validation_occurrences),
+        "duplicate_validation_command_groups": len(duplicate_validation_commands),
+        "duplicate_validation_command_occurrences": sum(
+            group["occurrences"] - 1 for group in duplicate_validation_commands
+        ),
+        "agents_validation_command_overlap_groups": len(
+            command_overlaps.get("agents", [])
+        ),
+        "readme_validation_command_overlap_groups": len(
+            command_overlaps.get("readme", [])
+        ),
+        "validation_route_only_claim_conflicts": len(
+            validation_route_only_claim_conflicts
+        ),
         "reviewed_files": reviews.count("reviewed"),
         "blocked_files": reviews.count("blocked"),
         "unreviewed_files": reviews.count("unreviewed"),
@@ -730,12 +1289,24 @@ def scan_repository_corpus(
         "git_snapshot": snapshot,
         "readme_agents_summary": summary,
         "repeated_long_agents_blocks": repeated_agents_blocks,
+        "validation_files": sorted(validation_records, key=lambda record: record["path"]),
+        "duplicate_validation_commands": duplicate_validation_commands,
+        "agents_validation_command_overlaps": command_overlaps.get("agents", []),
+        "readme_validation_command_overlaps": command_overlaps.get("readme", []),
+        "validation_route_only_claim_conflicts": sorted(
+            validation_route_only_claim_conflicts,
+            key=lambda record: record["path"],
+        ),
         "agents_files": sorted(
             [record for record in raw_records if record["document_kind"] == "agents"],
             key=lambda record: record["path"],
         ),
         "readme_files": sorted(
             [record for record in raw_records if record["document_kind"] == "readme"],
+            key=lambda record: record["path"],
+        ),
+        "design_agents_files": sorted(
+            supplemental_agent_records,
             key=lambda record: record["path"],
         ),
     }
@@ -795,7 +1366,7 @@ def summarize_workspace_corpus(
             signature = (repo["name"], tuple(record["agents_chain_paths"]))
             excluded_surface = any(
                 record["scope_flags"][name]
-                for name in ("generated", "vendor", "fixture", "archive")
+                for name in AUTHORED_SCOPE_EXCLUSION_FLAGS
             )
             signature_record = unique_chains.setdefault(
                 signature,
@@ -820,6 +1391,15 @@ def summarize_workspace_corpus(
         "tracked_document_bytes": sum(item["tracked_document_bytes"] for item in summaries),
         "tracked_agents_bytes": sum(item["tracked_agents_bytes"] for item in summaries),
         "tracked_readme_bytes": sum(item["tracked_readme_bytes"] for item in summaries),
+        "tracked_design_agents_files": sum(
+            item["tracked_design_agents_files"] for item in summaries
+        ),
+        "tracked_design_agents_bytes": sum(
+            item["tracked_design_agents_bytes"] for item in summaries
+        ),
+        "untracked_design_agents_candidates": sum(
+            item["untracked_design_agents_candidates"] for item in summaries
+        ),
         "untracked_document_candidates": sum(item["untracked_document_candidates"] for item in summaries),
         "paired_directories": sum(item["paired_directories"] for item in summaries),
         "readme_only_directories": sum(item["readme_only_directories"] for item in summaries),
@@ -857,6 +1437,36 @@ def summarize_workspace_corpus(
         "declared_mandatory_readme_bytes": sum(
             item["declared_mandatory_readme_bytes"] for item in summaries
         ),
+        "agents_readme_reference_lines": sum(
+            item["agents_readme_reference_lines"] for item in summaries
+        ),
+        "agents_conditional_readme_reference_lines": sum(
+            item["agents_conditional_readme_reference_lines"] for item in summaries
+        ),
+        "agents_navigational_readme_reference_lines": sum(
+            item["agents_navigational_readme_reference_lines"] for item in summaries
+        ),
+        "agents_fenced_example_readme_reference_lines": sum(
+            item["agents_fenced_example_readme_reference_lines"] for item in summaries
+        ),
+        "active_authored_agents_fenced_blocks": sum(
+            item["active_authored_agents_fenced_blocks"] for item in summaries
+        ),
+        "active_authored_agents_classified_fenced_blocks": sum(
+            item["active_authored_agents_classified_fenced_blocks"]
+            for item in summaries
+        ),
+        "active_authored_agents_unclassified_fenced_blocks": sum(
+            item["active_authored_agents_unclassified_fenced_blocks"]
+            for item in summaries
+        ),
+        "active_authored_agents_fenced_executable_invocations": sum(
+            item["active_authored_agents_fenced_executable_invocations"]
+            for item in summaries
+        ),
+        "stale_agents_fenced_block_classifications": sum(
+            item["stale_agents_fenced_block_classifications"] for item in summaries
+        ),
         "repeated_long_agents_block_groups": sum(
             item["repeated_long_agents_block_groups"] for item in summaries
         ),
@@ -871,6 +1481,65 @@ def summarize_workspace_corpus(
         ),
         "repeated_long_agents_normalized_redundant_bytes": sum(
             item["repeated_long_agents_normalized_redundant_bytes"] for item in summaries
+        ),
+        "tracked_validation_files": sum(item["tracked_validation_files"] for item in summaries),
+        "untracked_validation_candidates": sum(
+            item["untracked_validation_candidates"] for item in summaries
+        ),
+        "active_authored_validation_files": sum(
+            item["active_authored_validation_files"] for item in summaries
+        ),
+        "active_authored_validation_bytes": sum(
+            item["active_authored_validation_bytes"] for item in summaries
+        ),
+        "active_authored_validation_command_owner_files": sum(
+            item["active_authored_validation_command_owner_files"]
+            for item in summaries
+        ),
+        "active_authored_design_agents_fenced_blocks": sum(
+            item["active_authored_design_agents_fenced_blocks"]
+            for item in summaries
+        ),
+        "active_authored_design_agents_classified_fenced_blocks": sum(
+            item["active_authored_design_agents_classified_fenced_blocks"]
+            for item in summaries
+        ),
+        "active_authored_design_agents_unclassified_fenced_blocks": sum(
+            item["active_authored_design_agents_unclassified_fenced_blocks"]
+            for item in summaries
+        ),
+        "active_authored_design_agents_fenced_executable_invocations": sum(
+            item["active_authored_design_agents_fenced_executable_invocations"]
+            for item in summaries
+        ),
+        "stale_design_agents_fenced_block_classifications": sum(
+            item["stale_design_agents_fenced_block_classifications"]
+            for item in summaries
+        ),
+        "active_authored_validation_route_only_files": sum(
+            item["active_authored_validation_route_only_files"]
+            for item in summaries
+        ),
+        "active_authored_validation_invocations": sum(
+            item["active_authored_validation_invocations"] for item in summaries
+        ),
+        "active_authored_unique_validation_invocations": sum(
+            item["active_authored_unique_validation_invocations"] for item in summaries
+        ),
+        "duplicate_validation_command_groups": sum(
+            item["duplicate_validation_command_groups"] for item in summaries
+        ),
+        "duplicate_validation_command_occurrences": sum(
+            item["duplicate_validation_command_occurrences"] for item in summaries
+        ),
+        "agents_validation_command_overlap_groups": sum(
+            item["agents_validation_command_overlap_groups"] for item in summaries
+        ),
+        "readme_validation_command_overlap_groups": sum(
+            item["readme_validation_command_overlap_groups"] for item in summaries
+        ),
+        "validation_route_only_claim_conflicts": sum(
+            item["validation_route_only_claim_conflicts"] for item in summaries
         ),
         "reviewed_files": tracked_reviewed,
         "blocked_files": tracked_blocked,

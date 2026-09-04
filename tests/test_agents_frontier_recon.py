@@ -63,6 +63,26 @@ class AgentsFrontierReconTests(unittest.TestCase):
         self.assertEqual(["docs/AGENTS.md"], repo["unvalidated_by_any_agents_validator"])
         self.assertEqual(["docs/AGENTS.md"], repo["not_in_nested_validator_map"])
 
+    def test_missing_conventional_validator_does_not_raise_candidate_priority(self) -> None:
+        baseline = {
+            "name": "legacy",
+            "kind": "extra",
+            "checkout_state": "scanned",
+            "high_risk_dirs_without_agents": ["misc"],
+            "missing_required_agents": [],
+        }
+        with_convention = frontier.build_frontier(
+            {"repositories": [{**baseline, "validator_present": True}]}
+        )
+        without_convention = frontier.build_frontier(
+            {"repositories": [{**baseline, "validator_present": False}]}
+        )
+
+        self.assertEqual(
+            with_convention["top_candidates"][0]["score"],
+            without_convention["top_candidates"][0]["score"],
+        )
+
     def test_markdown_contains_candidate_table(self) -> None:
         result = frontier.build_frontier(self.sample_map())
         text = frontier.render_markdown(result)

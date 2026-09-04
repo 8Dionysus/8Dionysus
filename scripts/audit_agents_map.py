@@ -43,6 +43,7 @@ OWNER_REPO = "8Dionysus"
 DEFAULT_DISPOSITIONS_PATH = REPO_ROOT / "manifests" / "readme_agents_dispositions.v1.json"
 ROOT_AGENTS_LONG_LINE_THRESHOLD = 240
 REQUIRED_AGENTS_VARIABLES = frozenset({"REQUIRED_AGENTS", "REQUIRED_AGENTS_DOCS"})
+CONVENTIONAL_NESTED_VALIDATOR_PATH = "scripts/validate_nested_agents.py"
 
 KNOWN_REPOSITORIES: tuple[dict[str, str], ...] = (
     {
@@ -362,19 +363,31 @@ def scan_repo(
     agents_by_rel = {relpath(path, repo_root): path for path in agents_paths}
     root_agents = agents_by_rel.get("AGENTS.md")
     nested_agents = [rel for rel in sorted(agents_by_rel) if rel != "AGENTS.md"]
-    validator_path = repo_root / "scripts" / "validate_nested_agents.py"
+    validator_path = repo_root / CONVENTIONAL_NESTED_VALIDATOR_PATH
+    validator_present = validator_path.is_file()
     required_agents = extract_required_agents_from_validator(validator_path)
     required_set = set(required_agents)
     missing_required = [relative for relative in required_agents if not (repo_root / relative).is_file()]
-    unvalidated_nested = [relative for relative in nested_agents if relative not in required_set]
+    not_in_conventional_validator_map = (
+        [relative for relative in nested_agents if relative not in required_set]
+        if validator_present and required_agents
+        else []
+    )
+    validator_discovery_state = (
+        "not-applicable-no-nested-agents"
+        if not nested_agents
+        else "conventional-map-extracted"
+        if required_agents
+        else "conventional-validator-present-no-static-map"
+        if validator_present
+        else "no-conventional-validator"
+    )
     present_risk_dirs, risk_dirs_without_agents = high_risk_dirs(repo_root)
 
     records = corpus["agents_files"]
     issues: list[str] = []
     if not root_agents:
         issues.append("missing root AGENTS.md")
-    if nested_agents and not validator_path.is_file():
-        issues.append("nested AGENTS.md files exist without scripts/validate_nested_agents.py")
     if missing_required:
         issues.append("validator-required nested AGENTS.md files are missing")
     if any(
@@ -490,11 +503,19 @@ def scan_repo(
         "root_agents_line_count": root_lines,
         "long_root_agents": root_lines > ROOT_AGENTS_LONG_LINE_THRESHOLD,
         "nested_agents_count": len(nested_agents),
-        "validator_present": validator_path.is_file(),
+        # Compatibility field: this reports one historical filename, not every
+        # owner-local validator shape. See validator_discovery_state and D0034.
+        "validator_present": validator_present,
+        "validator_discovery_state": validator_discovery_state,
+        "conventional_nested_validator_path": CONVENTIONAL_NESTED_VALIDATOR_PATH,
         "validator_required_count": len(required_agents),
         "validator_required_agents": required_agents,
         "missing_required_agents": missing_required,
-        "unvalidated_nested_agents": unvalidated_nested,
+        "not_in_conventional_nested_validator_map": not_in_conventional_validator_map,
+        "unvalidated_by_any_agents_validator": [],
+        # Deprecated compatibility field. Static path extraction cannot prove
+        # a negative across owner-local scripts, schemas, tests, or builders.
+        "unvalidated_nested_agents": [],
         "high_risk_dirs_present": present_risk_dirs,
         "high_risk_dirs_without_agents": risk_dirs_without_agents,
         "agents_files": records,
@@ -585,9 +606,13 @@ def missing_repo_record(name: str) -> dict[str, Any]:
         "long_root_agents": False,
         "nested_agents_count": 0,
         "validator_present": False,
+        "validator_discovery_state": "unavailable-checkout",
+        "conventional_nested_validator_path": CONVENTIONAL_NESTED_VALIDATOR_PATH,
         "validator_required_count": 0,
         "validator_required_agents": [],
         "missing_required_agents": [],
+        "not_in_conventional_nested_validator_map": [],
+        "unvalidated_by_any_agents_validator": [],
         "unvalidated_nested_agents": [],
         "high_risk_dirs_present": [],
         "high_risk_dirs_without_agents": [],
@@ -902,6 +927,7 @@ def build_agents_map(
             "repeated_agents_block_threshold": "exact normalized prose, at least 180 bytes in at least 4 tracked AGENTS.md files; fenced examples excluded",
             "validation_command_ownership": "one exact executable invocation per active authored human owner inside each repository; other validation surfaces route by link, lane, runner, or manifest key",
             "validation_command_exclusions": "generated, vendor, fixture, and archive validation surfaces; README overlap is reported for owner review",
+            "nested_validator_discovery": "scripts/validate_nested_agents.py is a compatibility convention only; absence is inventory, not proof of missing owner-local validation",
             "remote_currentness": "not claimed; refs are local snapshots until owner refresh",
             "disposition_authority": "owner evidence; this integration ledger does not decide sibling meaning",
             "workspace_manifest_used": use_workspace_manifest,
@@ -1086,7 +1112,9 @@ def render_markdown(payload: Mapping[str, Any]) -> str:
             "- `VALIDATION files/cmds/duplicates` counts active authored on-demand files, normalized shell invocations, and exact command groups with more than one human owner inside one repository. Generated, vendor, fixture, and archive surfaces are excluded.",
             "- `readme_validation_command_overlap_groups` is a review signal: a public usage example may be valid, but required validation should route to its one procedure owner.",
             "- Dispositions remain `unreviewed` until an owner-evidenced record is added to the integration manifest.",
-            "- `unvalidated_nested_agents` means a nested `AGENTS.md` exists but is not declared by `scripts/validate_nested_agents.py`.",
+            "- `validator_present` reports only the historical `scripts/validate_nested_agents.py` convention; an owner may validate AGENTS through another script, schema, test, or generated contract.",
+            "- `not_in_conventional_nested_validator_map` is populated only when a recognized static required-path map can be extracted from that conventional file. It does not mean that other cards are unvalidated.",
+            "- Deprecated `unvalidated_nested_agents` stays empty because a filename scan cannot prove absence of owner-local validation; `unvalidated_by_any_agents_validator` likewise requires stronger owner evidence than this audit has.",
             "- `high_risk_dirs_without_agents` marks common contract, generated, test, runtime, or source directories without a direct local instruction file.",
             "- `long_root_agents` marks roots that may be ready for slimming after local instructions are pushed down-tree.",
             "",

@@ -126,6 +126,30 @@
           "validator_present": {
             "type": "boolean"
           },
+          "validator_discovery_state": {
+            "enum": [
+              "conventional-map-extracted",
+              "conventional-validator-present-no-static-map",
+              "no-conventional-validator",
+              "not-applicable-no-nested-agents",
+              "unavailable-checkout"
+            ]
+          },
+          "conventional_nested_validator_path": {
+            "type": "string"
+          },
+          "not_in_conventional_nested_validator_map": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "unvalidated_by_any_agents_validator": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
           "git_snapshot": {
             "type": "object"
           },

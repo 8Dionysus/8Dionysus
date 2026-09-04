@@ -114,8 +114,6 @@ def candidate_for(repo: Mapping[str, Any], rel_dir: str) -> dict[str, Any]:
     kind = str(repo.get("kind", ""))
     rule = DIRECTORY_RULES.get(_dir_key(rel_dir), DirectoryRule(40, "P3", "watch", "unclassified high-risk directory"))
     score = rule.base_score + KIND_BOOSTS.get(kind, 0)
-    if not repo.get("validator_present"):
-        score += 10
     if _as_list(repo.get("missing_required_agents")):
         score += 8
     if _as_list(repo.get("invalid_heading_agents")):
@@ -157,7 +155,12 @@ def build_frontier(payload: Mapping[str, Any], *, max_candidates: int | None = N
                 "unvalidated_by_any_agents_validator": _as_list(
                     repo.get("unvalidated_by_any_agents_validator", repo.get("unvalidated_nested_agents", []))
                 ),
-                "not_in_nested_validator_map": _as_list(repo.get("not_in_nested_validator_map", repo.get("unvalidated_nested_agents", []))),
+                "not_in_nested_validator_map": _as_list(
+                    repo.get(
+                        "not_in_nested_validator_map",
+                        repo.get("not_in_conventional_nested_validator_map", repo.get("unvalidated_nested_agents", [])),
+                    )
+                ),
                 "invalid_heading_agents": _as_list(repo.get("invalid_heading_agents")),
                 "non_canonical_heading_agents": _as_list(repo.get("non_canonical_heading_agents")),
                 "candidate_count": len(candidates),

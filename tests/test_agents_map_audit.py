@@ -114,6 +114,12 @@ class AgentsMapAuditTests(unittest.TestCase):
 
             self.assertEqual(scanned["path_hint"], "8Dionysus")
             self.assertEqual(scanned["agents_md_count"], 2)
+            self.assertEqual(scanned["validator_discovery_state"], "no-conventional-validator")
+            self.assertEqual(scanned["unvalidated_nested_agents"], [])
+            self.assertNotIn(
+                "nested AGENTS.md files exist without scripts/validate_nested_agents.py",
+                scanned["issues"],
+            )
 
     def test_live_scan_counts_nested_agents_and_validator_coverage(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
@@ -142,10 +148,33 @@ class AgentsMapAuditTests(unittest.TestCase):
             self.assertEqual(scanned["agents_md_count"], 3)
             self.assertEqual(scanned["nested_agents_count"], 2)
             self.assertTrue(scanned["validator_present"])
+            self.assertEqual(scanned["validator_discovery_state"], "conventional-map-extracted")
             self.assertEqual(scanned["validator_required_count"], 3)
             self.assertEqual(scanned["missing_required_agents"], ["schemas/AGENTS.md"])
             self.assertIn("scripts", scanned["high_risk_dirs_without_agents"])
             self.assertEqual(scanned["unvalidated_nested_agents"], [])
+
+    def test_missing_conventional_validator_is_inventory_not_portable_failure(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            workspace = Path(tmp)
+            repo = workspace / "aoa-models"
+            (repo / "docs").mkdir(parents=True)
+            (repo / "AGENTS.md").write_text("# AGENTS.md\nroot\n", encoding="utf-8")
+            (repo / "docs" / "AGENTS.md").write_text("# AGENTS.md\ndocs\n", encoding="utf-8")
+
+            payload = audit_agents_map.build_agents_map(
+                workspace,
+                known_repositories=("aoa-models",),
+                include_extra_repos=False,
+            )
+            scanned = payload["repositories"][0]
+
+            self.assertFalse(scanned["validator_present"])
+            self.assertEqual(scanned["validator_discovery_state"], "no-conventional-validator")
+            self.assertEqual(scanned["not_in_conventional_nested_validator_map"], [])
+            self.assertEqual(scanned["unvalidated_nested_agents"], [])
+            self.assertEqual(scanned["unvalidated_by_any_agents_validator"], [])
+            self.assertEqual(scanned["issues"], [])
 
     def test_dionysus_legacy_archive_is_not_scanned_as_active_guidance(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
@@ -318,7 +347,12 @@ class AgentsMapAuditTests(unittest.TestCase):
             scanned = payload["repositories"][0]
 
             self.assertEqual(scanned["missing_required_agents"], ["docs/AGENTS.md"])
-            self.assertEqual(scanned["unvalidated_nested_agents"], ["skills/AGENTS.md"])
+            self.assertEqual(
+                scanned["not_in_conventional_nested_validator_map"],
+                ["skills/AGENTS.md"],
+            )
+            self.assertEqual(scanned["unvalidated_nested_agents"], [])
+            self.assertEqual(scanned["unvalidated_by_any_agents_validator"], [])
 
     def test_deleted_placeholder_disposition_accepts_absence_only_for_delete(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:

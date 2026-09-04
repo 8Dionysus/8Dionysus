@@ -109,18 +109,18 @@ For reading guidance, see [AGENTS_FRONTIER_RECON](AGENTS_FRONTIER_RECON.md).
 - `root_document_files`: 40
 - `shared_root_blocked_files`: 0
 - `shared_root_files`: 2
-- `shared_root_files_in_owner_parity`: 0
+- `shared_root_files_in_owner_parity`: 2
 - `shared_root_reviewed_files`: 2
 - `shared_root_unreviewed_files`: 0
 - `stale_agents_fenced_block_classifications`: 0
 - `stale_design_agents_fenced_block_classifications`: 0
-- `tracked_agents_bytes`: 1447730
+- `tracked_agents_bytes`: 1448257
 - `tracked_agents_files`: 884
 - `tracked_design_agents_bytes`: 127046
 - `tracked_design_agents_files`: 15
-- `tracked_document_bytes`: 5303722
+- `tracked_document_bytes`: 5309519
 - `tracked_document_files`: 2847
-- `tracked_readme_bytes`: 3855992
+- `tracked_readme_bytes`: 3861262
 - `tracked_readme_files`: 1963
 - `tracked_validation_files`: 636
 - `unique_agents_chains`: 884
@@ -159,7 +159,7 @@ For reading guidance, see [AGENTS_FRONTIER_RECON](AGENTS_FRONTIER_RECON.md).
 | `aoa-memo` | `scanned` | 118/103 | 164 | 152/151/0 | 68 | 16321/16672 | 0/0 | 0/0 | 283/0 |  |
 | `aoa-session-memory` | `scanned` | 15/15 | 66 | 4/11/0 | 8 | 9419/9419 | 0/0 | 0/0 | 82/0 |  |
 | `aoa-agents` | `scanned` | 66/54 | 185 | 1/79/0 | 55 | 13259/15757 | 0/0 | 0/0 | 252/0 |  |
-| `aoa-models` | `scanned` | 2/2 | 3 | 1/7/0 | 2 | 4813/4813 | 0/0 | 0/0 | 5/0 |  |
+| `aoa-models` | `scanned` | 2/2 | 3 | 1/7/0 | 2 | 5340/5340 | 0/0 | 0/0 | 5/0 |  |
 | `aoa-agon` | `scanned` | 1/1 | 4 | 1/10/0 | 1 | 2602/2602 | 0/0 | 0/0 | 5/0 |  |
 | `aoa-playbooks` | `scanned` | 38/38 | 67 | 22/52/0 | 30 | 9938/10187 | 0/0 | 0/0 | 106/0 |  |
 | `aoa-kag` | `scanned` | 58/54 | 72 | 29/0/0 | 39 | 10408/10433 | 0/0 | 0/0 | 131/0 |  |
@@ -168,8 +168,8 @@ For reading guidance, see [AGENTS_FRONTIER_RECON](AGENTS_FRONTIER_RECON.md).
 
 | File | Declared projection | Owner parity | Review |
 |---|---:|---:|---|
-| `AGENTS.md` | True | False | `reviewed` |
-| `README.md` | True | False | `reviewed` |
+| `AGENTS.md` | True | True | `reviewed` |
+| `README.md` | True | True | `reviewed` |
 
 ## How to read the signals
 

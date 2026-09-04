@@ -4,15 +4,15 @@
   "contract_version": "1.0.0",
   "measurement_id": "8Dionysus/known-repository-root-agents-coverage-ratio",
   "writer_repo": "8Dionysus",
-  "observation_id": "8Dionysus:known-repository-root-agents-coverage-ratio:7e02c01bf7a1f9ec",
-  "observed_at": "2026-09-01T01:36:53Z",
+  "observation_id": "8Dionysus:known-repository-root-agents-coverage-ratio:74e8346cb023bf9c",
+  "observed_at": "2026-09-04T17:32:56Z",
   "object_ref": {
     "kind": "known-public-repository-agents-map-record",
-    "id": "agents-map:7e02c01bf7a1f9ec",
-    "version": "7e02c01bf7a1f9ec6493a9f1dc58cdc177a85fb2"
+    "id": "agents-map:74e8346cb023bf9c",
+    "version": "74e8346cb023bf9c9b9f4ccd9a880d44dd07d90c"
   },
   "population": {
-    "id": "known-public-repository-inventory:7e02c01bf7a1f9ec",
+    "id": "known-public-repository-inventory:74e8346cb023bf9c",
     "definition_ref": "stats/port.manifest.json#/measurements/0/population",
     "size": 21
   },
@@ -22,9 +22,9 @@
   },
   "cohort": null,
   "window": {
-    "id": "source-revision:7e02c01bf7a1f9ec6493a9f1dc58cdc177a85fb2",
-    "start": "2026-09-01T01:36:53Z",
-    "end": "2026-09-01T01:36:53Z",
+    "id": "source-revision:74e8346cb023bf9c9b9f4ccd9a880d44dd07d90c",
+    "start": "2026-09-04T17:32:56Z",
+    "end": "2026-09-04T17:32:56Z",
     "temporality": "instant"
   },
   "dimensions": {},
@@ -54,7 +54,7 @@
       }
     ],
     "derivation_ref": "stats/README.md#current-reference-measurement",
-    "source_revision": "7e02c01bf7a1f9ec6493a9f1dc58cdc177a85fb2"
+    "source_revision": "74e8346cb023bf9c9b9f4ccd9a880d44dd07d90c"
   },
   "reporting_rule": {
     "id": "8Dionysus/known-repository-root-agents-coverage-ratio/reference-census",

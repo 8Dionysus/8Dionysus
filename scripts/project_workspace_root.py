@@ -52,6 +52,12 @@ class Operation:
 
 
 SHARED_ROOT_SURFACES = (
+    SurfaceSpec(
+        "workspace_readme",
+        "docs/WORKSPACE_ROOT_ENTRY.md",
+        "README.md",
+        "render_text",
+    ),
     SurfaceSpec("agents_doc", "AGENTS.md", "AGENTS.md", "render_text"),
     SurfaceSpec("workspace_marker", "AOA_WORKSPACE_ROOT", "AOA_WORKSPACE_ROOT", "copy_file"),
     SurfaceSpec(
@@ -244,7 +250,14 @@ def _projection_contract(repo_root: Path, workspace_root: Path, *, changed: bool
         "apply_via_projection": True,
         "do_not_edit_live_workspace_copy_as_source": True,
         "profile_readme_projected": False,
-        "profile_readme_note": "8Dionysus/README.md stays profile-owned and is not part of the shared-root projection.",
+        "workspace_readme_projected": True,
+        "workspace_readme_source": (
+            repo_root / "docs" / "WORKSPACE_ROOT_ENTRY.md"
+        ).as_posix(),
+        "profile_readme_note": (
+            "8Dionysus/README.md stays profile-owned; the live workspace README "
+            "is rendered from docs/WORKSPACE_ROOT_ENTRY.md."
+        ),
         "workspace_skill_projection_managed": False,
         "workspace_skill_projection_path": (workspace_root / ".agents" / "skills").as_posix(),
         "shared_skill_install_owner": "aoa-skills",

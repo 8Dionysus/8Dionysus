@@ -14,7 +14,28 @@ import audit_agents_map
 
 
 class AgentsMapAuditTests(unittest.TestCase):
-    def test_v1_schema_accepts_payload_without_additive_checkout_requirement(self) -> None:
+    def test_checked_in_v2_map_matches_schema_and_is_path_redacted(self) -> None:
+        root = Path(__file__).resolve().parents[1]
+        rendered = (root / "generated" / "agents_map.min.json").read_text(
+            encoding="utf-8"
+        )
+        payload = json.loads(rendered)
+        schema = json.loads(
+            (root / "schemas" / "agents-map.schema.json").read_text(encoding="utf-8")
+        )
+
+        self.assertEqual(list(Draft202012Validator(schema).iter_errors(payload)), [])
+        self.assertNotIn("/home/", rendered)
+        self.assertNotIn("/srv/", rendered)
+        self.assertEqual(payload["schema_version"], "8dionysus_agents_map_v2")
+        self.assertEqual(
+            payload["totals"]["review_items_total"],
+            payload["totals"]["tracked_document_files"]
+            + payload["totals"]["tracked_design_agents_files"]
+            + payload["totals"]["shared_root_files"],
+        )
+
+    def test_v2_schema_accepts_payload_without_additive_checkout_requirement(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             payload = audit_agents_map.build_agents_map(
                 Path(tmp),
@@ -93,6 +114,12 @@ class AgentsMapAuditTests(unittest.TestCase):
 
             self.assertEqual(scanned["path_hint"], "8Dionysus")
             self.assertEqual(scanned["agents_md_count"], 2)
+            self.assertEqual(scanned["validator_discovery_state"], "no-conventional-validator")
+            self.assertEqual(scanned["unvalidated_nested_agents"], [])
+            self.assertNotIn(
+                "nested AGENTS.md files exist without scripts/validate_nested_agents.py",
+                scanned["issues"],
+            )
 
     def test_live_scan_counts_nested_agents_and_validator_coverage(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
@@ -121,10 +148,33 @@ class AgentsMapAuditTests(unittest.TestCase):
             self.assertEqual(scanned["agents_md_count"], 3)
             self.assertEqual(scanned["nested_agents_count"], 2)
             self.assertTrue(scanned["validator_present"])
+            self.assertEqual(scanned["validator_discovery_state"], "conventional-map-extracted")
             self.assertEqual(scanned["validator_required_count"], 3)
             self.assertEqual(scanned["missing_required_agents"], ["schemas/AGENTS.md"])
             self.assertIn("scripts", scanned["high_risk_dirs_without_agents"])
             self.assertEqual(scanned["unvalidated_nested_agents"], [])
+
+    def test_missing_conventional_validator_is_inventory_not_portable_failure(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            workspace = Path(tmp)
+            repo = workspace / "aoa-models"
+            (repo / "docs").mkdir(parents=True)
+            (repo / "AGENTS.md").write_text("# AGENTS.md\nroot\n", encoding="utf-8")
+            (repo / "docs" / "AGENTS.md").write_text("# AGENTS.md\ndocs\n", encoding="utf-8")
+
+            payload = audit_agents_map.build_agents_map(
+                workspace,
+                known_repositories=("aoa-models",),
+                include_extra_repos=False,
+            )
+            scanned = payload["repositories"][0]
+
+            self.assertFalse(scanned["validator_present"])
+            self.assertEqual(scanned["validator_discovery_state"], "no-conventional-validator")
+            self.assertEqual(scanned["not_in_conventional_nested_validator_map"], [])
+            self.assertEqual(scanned["unvalidated_nested_agents"], [])
+            self.assertEqual(scanned["unvalidated_by_any_agents_validator"], [])
+            self.assertEqual(scanned["issues"], [])
 
     def test_dionysus_legacy_archive_is_not_scanned_as_active_guidance(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
@@ -206,6 +256,34 @@ class AgentsMapAuditTests(unittest.TestCase):
             self.assertNotEqual(scanned["path_hint"], "abyss-stack")
             self.assertNotIn(str(root), scanned["path_hint"])
 
+    def test_isolated_matrix_can_ignore_workspace_manifest(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            workspace = root / "workspace"
+            source = root / "source" / "abyss-stack"
+            matrix = workspace / "abyss-stack"
+            sdk_manifest = workspace / "aoa-sdk" / ".aoa"
+            source.mkdir(parents=True)
+            matrix.mkdir(parents=True)
+            sdk_manifest.mkdir(parents=True)
+            (source / "AGENTS.md").write_text("# AGENTS.md\nsource\n", encoding="utf-8")
+            (matrix / "AGENTS.md").write_text("# AGENTS.md\nmatrix\n", encoding="utf-8")
+            (sdk_manifest / "workspace.toml").write_text(
+                f'\n[repos.abyss-stack]\npreferred = ["{source}"]\n',
+                encoding="utf-8",
+            )
+
+            payload = audit_agents_map.build_agents_map(
+                workspace,
+                known_repositories=("abyss-stack",),
+                include_extra_repos=False,
+                use_workspace_manifest=False,
+            )
+            scanned = payload["repositories"][0]
+
+            self.assertEqual(scanned["path_hint"], "abyss-stack")
+            self.assertTrue(scanned["root_agents_present"])
+
     def test_workspace_manifest_limited_toml_fallback_supports_preferred_paths(self) -> None:
         original_tomllib = audit_agents_map._tomllib
         audit_agents_map._tomllib = None
@@ -269,15 +347,73 @@ class AgentsMapAuditTests(unittest.TestCase):
             scanned = payload["repositories"][0]
 
             self.assertEqual(scanned["missing_required_agents"], ["docs/AGENTS.md"])
-            self.assertEqual(scanned["unvalidated_nested_agents"], ["skills/AGENTS.md"])
+            self.assertEqual(
+                scanned["not_in_conventional_nested_validator_map"],
+                ["skills/AGENTS.md"],
+            )
+            self.assertEqual(scanned["unvalidated_nested_agents"], [])
+            self.assertEqual(scanned["unvalidated_by_any_agents_validator"], [])
+
+    def test_deleted_placeholder_disposition_accepts_absence_only_for_delete(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            workspace = Path(tmp) / "workspace"
+            repo = workspace / "8Dionysus"
+            repo.mkdir(parents=True)
+            (repo / "AGENTS.md").write_text("# AGENTS.md\nroot\n", encoding="utf-8")
+            dispositions = Path(tmp) / "dispositions.json"
+            dispositions.write_text(
+                json.dumps(
+                    {
+                        "schema_version": "8dionysus_readme_agents_dispositions_v1",
+                        "records": [
+                            {
+                                "repository": "8Dionysus",
+                                "path": "obsolete/README.md",
+                                "review_state": "reviewed",
+                                "disposition": "delete-obsolete-placeholder",
+                                "owner_evidence": ["owner:obsolete/README.md"],
+                            },
+                            {
+                                "repository": "8Dionysus",
+                                "path": "expected/README.md",
+                                "review_state": "reviewed",
+                                "disposition": "keep",
+                                "owner_evidence": ["owner:expected/README.md"],
+                            },
+                        ],
+                    }
+                ),
+                encoding="utf-8",
+            )
+
+            payload = audit_agents_map.build_agents_map(
+                workspace,
+                known_repositories=("8Dionysus",),
+                include_extra_repos=False,
+                disposition_manifest_path=dispositions,
+            )
+
+            self.assertEqual(
+                payload["disposition_issues"],
+                [
+                    "disposition target is absent from current corpus: "
+                    "8Dionysus:expected/README.md"
+                ],
+            )
 
     def test_public_baseline_is_stable_and_json_serializable(self) -> None:
         payload = audit_agents_map.build_public_baseline_map()
         rendered = json.dumps(payload, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
 
         self.assertEqual(payload["audit_mode"], "public-baseline")
-        self.assertEqual(payload["totals"]["known_public_repositories"], 16)
+        self.assertEqual(payload["totals"]["known_public_repositories"], 20)
         self.assertIn("Agents-of-Abyss", payload["known_repositories"])
+        self.assertIn("abyss-machine", payload["known_repositories"])
+        self.assertIn("aoa-dashboard", payload["known_repositories"])
+        self.assertIn("aoa-models", payload["known_repositories"])
+        self.assertIn("aoa-session-memory", payload["known_repositories"])
+        self.assertIn("aoa-agon", audit_agents_map.KNOWN_REPO_NAMES)
+        self.assertNotIn("aoa-agon", payload["known_repositories"])
         self.assertIn("agents_map_public_baseline", rendered)
         self.assertNotIn("/mnt/", rendered)
 

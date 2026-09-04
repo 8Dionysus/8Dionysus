@@ -3,6 +3,7 @@ from __future__ import annotations
 from copy import deepcopy
 import json
 from pathlib import Path
+import subprocess
 import unittest
 
 
@@ -71,6 +72,14 @@ class LocalStatsPortTests(unittest.TestCase):
         evidence = json.loads(EVIDENCE_PATH.read_text(encoding="utf-8"))
         packet = json.loads(PACKET_PATH.read_text(encoding="utf-8"))
         derived = derive_known_repository_root_agents_coverage(evidence)
+        source_revision = subprocess.run(
+            ["git", "hash-object", EVIDENCE_PATH],
+            cwd=REPO_ROOT,
+            check=True,
+            capture_output=True,
+            text=True,
+        ).stdout.strip()
+        source_prefix = source_revision[:16]
 
         self.assertEqual(derived["status"], "observed")
         self.assertEqual(packet["population"]["size"], derived["denominator"])
@@ -78,6 +87,19 @@ class LocalStatsPortTests(unittest.TestCase):
         self.assertEqual(packet["value"]["numerator"], derived["numerator"])
         self.assertEqual(packet["value"]["denominator"], derived["denominator"])
         self.assertEqual(packet["value"]["number"], derived["ratio"])
+        self.assertEqual(packet["object_ref"]["id"], f"agents-map:{source_prefix}")
+        self.assertEqual(packet["object_ref"]["version"], source_revision)
+        self.assertEqual(
+            packet["population"]["id"],
+            f"known-public-repository-inventory:{source_prefix}",
+        )
+        self.assertEqual(packet["window"]["id"], f"source-revision:{source_revision}")
+        self.assertEqual(packet["provenance"]["source_revision"], source_revision)
+        self.assertEqual(
+            packet["observation_id"],
+            "8Dionysus:known-repository-root-agents-coverage-ratio:"
+            f"{source_prefix}",
+        )
 
     def test_missing_known_repository_remains_in_denominator(self) -> None:
         payload = {

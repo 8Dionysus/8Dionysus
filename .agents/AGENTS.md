@@ -31,11 +31,9 @@ install surface does not own durable memory truth.
 
 Verify changes with:
 
-```bash
-python scripts/validate_nested_agents.py
-python scripts/build_workspace_memory_map.py --workspace-root <workspace-root> --owner-repo-root . --check
-python scripts/audit_agents_map.py --workspace-root <workspace-root> --write generated/agents_map.min.json --markdown docs/AGENTS_MAP.md
-```
+Run the relevant on-demand route in the repository [VALIDATION](../VALIDATION.md):
+`#codex-plane` for memory-map projection and
+`#agents-map-and-workspace-audit` for the AGENTS-map audit.
 
 The pinned `aoa-skills` home-port check separately proves manifest and byte/mode
 projection parity; it makes no behavioral claim.

@@ -8,10 +8,5 @@ Keep docs route-first and evidence-linked. If a document starts to describe laye
 
 Do not bury active operational rules in long narrative docs when a small local `AGENTS.md`, schema, validator, or script contract would make the rule easier to follow.
 
-Verify with:
-
-```bash
-python scripts/validate_nested_agents.py
-python scripts/audit_agents_map.py --workspace-root <workspace-root> --write generated/agents_map.min.json --markdown docs/AGENTS_MAP.md
-python scripts/build_workspace_memory_map.py --workspace-root <workspace-root> --owner-repo-root . --write generated/workspace_memory_map.min.json --markdown docs/WORKSPACE_MEMORY_MAP.md
-```
+Run the applicable root routes in `../VALIDATION.md#agents-map-and-workspace-audit`
+(`validate_nested_agents.py`, `audit_agents_map.py`).

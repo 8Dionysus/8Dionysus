@@ -23,6 +23,14 @@
 
 - [8DION-D-0025 - Route Active Routing Work Through aoa-sdk](../8DION-D-0025-route-active-routing-through-aoa-sdk.md) (`docs/decisions/8DION-D-0025-route-active-routing-through-aoa-sdk.md`)
 
+## audit completeness
+
+- [8DION-D-0030 - Admit aoa-agon to the Workspace Owner Audit](../8DION-D-0030-admit-aoa-agon-to-workspace-owner-audit.md) (`docs/decisions/8DION-D-0030-admit-aoa-agon-to-workspace-owner-audit.md`)
+
+## authored-surface exclusion
+
+- [8DION-D-0032 - Measure Validation Command Ownership](../8DION-D-0032-measure-validation-command-ownership.md) (`docs/decisions/8DION-D-0032-measure-validation-command-ownership.md`)
+
 ## branch protection
 
 - [8DION-D-0002 - Repo-Family Required Check Contracts Stay Coordination-Only in 8Dionysus](../8DION-D-0002-repo-family-required-check-contracts.md) (`docs/decisions/8DION-D-0002-repo-family-required-check-contracts.md`)
@@ -31,9 +39,17 @@
 
 - [8DION-D-0020 - Retire Unproven Launcher Plugin](../8DION-D-0020-retire-unproven-launcher-plugin.md) (`docs/decisions/8DION-D-0020-retire-unproven-launcher-plugin.md`)
 
+## command ownership
+
+- [8DION-D-0032 - Measure Validation Command Ownership](../8DION-D-0032-measure-validation-command-ownership.md) (`docs/decisions/8DION-D-0032-measure-validation-command-ownership.md`)
+
 ## compatibility
 
 - [8DION-D-0025 - Route Active Routing Work Through aoa-sdk](../8DION-D-0025-route-active-routing-through-aoa-sdk.md) (`docs/decisions/8DION-D-0025-route-active-routing-through-aoa-sdk.md`)
+
+## compatibility telemetry
+
+- [8DION-D-0034 - Treat the Conventional AGENTS Validator as Inventory](../8DION-D-0034-treat-conventional-agents-validator-as-inventory.md) (`docs/decisions/8DION-D-0034-treat-conventional-agents-validator-as-inventory.md`)
 
 ## config-layer composition
 
@@ -102,6 +118,18 @@
 
 - [8DION-D-0021 - Gate Projection on Current Owner Source](../8DION-D-0021-gate-projection-on-current-owner-source.md) (`docs/decisions/8DION-D-0021-gate-projection-on-current-owner-source.md`)
 
+## false-positive prevention
+
+- [8DION-D-0034 - Treat the Conventional AGENTS Validator as Inventory](../8DION-D-0034-treat-conventional-agents-validator-as-inventory.md) (`docs/decisions/8DION-D-0034-treat-conventional-agents-validator-as-inventory.md`)
+
+## fenced-block classification
+
+- [8DION-D-0033 - Audit DESIGN.AGENTS Without Inherited Chain Cost](../8DION-D-0033-audit-design-agents-without-inherited-chain-cost.md) (`docs/decisions/8DION-D-0033-audit-design-agents-without-inherited-chain-cost.md`)
+
+## fenced-example exclusion
+
+- [8DION-D-0031 - Measure Repeated Prompt-Visible AGENTS Blocks](../8DION-D-0031-measure-repeated-prompt-visible-agents-blocks.md) (`docs/decisions/8DION-D-0031-measure-repeated-prompt-visible-agents-blocks.md`)
+
 ## generated map marker
 
 - [8DION-D-0011 - Workspace Memory Map Writeback Sync](../8DION-D-0011-workspace-memory-map-writeback-sync.md) (`docs/decisions/8DION-D-0011-workspace-memory-map-writeback-sync.md`)
@@ -109,6 +137,10 @@
 ## generated route
 
 - [8DION-D-0005 - Workspace Memory Map Tracks Operational Memory Status](../8DION-D-0005-workspace-memory-map-operational-status.md) (`docs/decisions/8DION-D-0005-workspace-memory-map-operational-status.md`)
+
+## generated-view boundary
+
+- [8DION-D-0028 - Audit README and AGENTS as Distinct Owner Surfaces](../8DION-D-0028-audit-readme-and-agents-as-distinct-owner-surfaces.md) (`docs/decisions/8DION-D-0028-audit-readme-and-agents-as-distinct-owner-surfaces.md`)
 
 ## held-out coexistence
 
@@ -121,6 +153,15 @@
 ## host truth boundary
 
 - [8DION-D-0008 - Abyss Machine MCP Codex-Plane Registration](../8DION-D-0008-abyss-machine-mcp-codex-plane-registration.md) (`docs/decisions/8DION-D-0008-abyss-machine-mcp-codex-plane-registration.md`)
+
+## human navigation
+
+- [8DION-D-0029 - Project a Dedicated Workspace-Root README](../8DION-D-0029-project-a-dedicated-workspace-root-readme.md) (`docs/decisions/8DION-D-0029-project-a-dedicated-workspace-root-readme.md`)
+
+## inherited context
+
+- [8DION-D-0031 - Measure Repeated Prompt-Visible AGENTS Blocks](../8DION-D-0031-measure-repeated-prompt-visible-agents-blocks.md) (`docs/decisions/8DION-D-0031-measure-repeated-prompt-visible-agents-blocks.md`)
+- [8DION-D-0033 - Audit DESIGN.AGENTS Without Inherited Chain Cost](../8DION-D-0033-audit-design-agents-without-inherited-chain-cost.md) (`docs/decisions/8DION-D-0033-audit-design-agents-without-inherited-chain-cost.md`)
 
 ## judgment-heavy writeback
 
@@ -137,6 +178,10 @@
 ## local ref alignment
 
 - [8DION-D-0021 - Gate Projection on Current Owner Source](../8DION-D-0021-gate-projection-on-current-owner-source.md) (`docs/decisions/8DION-D-0021-gate-projection-on-current-owner-source.md`)
+
+## local-ref currentness
+
+- [8DION-D-0028 - Audit README and AGENTS as Distinct Owner Surfaces](../8DION-D-0028-audit-readme-and-agents-as-distinct-owner-surfaces.md) (`docs/decisions/8DION-D-0028-audit-readme-and-agents-as-distinct-owner-surfaces.md`)
 
 ## managed source cleanliness
 
@@ -180,10 +225,29 @@
 - [8DION-D-0001 - Shared-Root Projection Lives in 8Dionysus](../8DION-D-0001-shared-root-projection.md) (`docs/decisions/8DION-D-0001-shared-root-projection.md`)
 - [8DION-D-0019 - Deploy-Composed Codex Paths Stay Outside Generic Projection](../8DION-D-0019-deploy-composed-codex-paths.md) (`docs/decisions/8DION-D-0019-deploy-composed-codex-paths.md`)
 - [8DION-D-0026 - Project the Tree of Sophia Runtime Wrapper Without Default Registration](../8DION-D-0026-project-tos-runtime-wrapper-without-default-registration.md) (`docs/decisions/8DION-D-0026-project-tos-runtime-wrapper-without-default-registration.md`)
+- [8DION-D-0034 - Treat the Conventional AGENTS Validator as Inventory](../8DION-D-0034-treat-conventional-agents-validator-as-inventory.md) (`docs/decisions/8DION-D-0034-treat-conventional-agents-validator-as-inventory.md`)
+
+## owner coverage
+
+- [8DION-D-0030 - Admit aoa-agon to the Workspace Owner Audit](../8DION-D-0030-admit-aoa-agon-to-workspace-owner-audit.md) (`docs/decisions/8DION-D-0030-admit-aoa-agon-to-workspace-owner-audit.md`)
+
+## owner evidence
+
+- [8DION-D-0028 - Audit README and AGENTS as Distinct Owner Surfaces](../8DION-D-0028-audit-readme-and-agents-as-distinct-owner-surfaces.md) (`docs/decisions/8DION-D-0028-audit-readme-and-agents-as-distinct-owner-surfaces.md`)
 
 ## owner identity
 
 - [8DION-D-0021 - Gate Projection on Current Owner Source](../8DION-D-0021-gate-projection-on-current-owner-source.md) (`docs/decisions/8DION-D-0021-gate-projection-on-current-owner-source.md`)
+
+## owner parity
+
+- [8DION-D-0029 - Project a Dedicated Workspace-Root README](../8DION-D-0029-project-a-dedicated-workspace-root-readme.md) (`docs/decisions/8DION-D-0029-project-a-dedicated-workspace-root-readme.md`)
+
+## owner review
+
+- [8DION-D-0031 - Measure Repeated Prompt-Visible AGENTS Blocks](../8DION-D-0031-measure-repeated-prompt-visible-agents-blocks.md) (`docs/decisions/8DION-D-0031-measure-repeated-prompt-visible-agents-blocks.md`)
+- [8DION-D-0032 - Measure Validation Command Ownership](../8DION-D-0032-measure-validation-command-ownership.md) (`docs/decisions/8DION-D-0032-measure-validation-command-ownership.md`)
+- [8DION-D-0033 - Audit DESIGN.AGENTS Without Inherited Chain Cost](../8DION-D-0033-audit-design-agents-without-inherited-chain-cost.md) (`docs/decisions/8DION-D-0033-audit-design-agents-without-inherited-chain-cost.md`)
 
 ## owner scope
 
@@ -205,6 +269,10 @@
 
 - [8DION-D-0006 - System Local Memo Port Rollout](../8DION-D-0006-system-local-memo-port-rollout.md) (`docs/decisions/8DION-D-0006-system-local-memo-port-rollout.md`)
 
+## procedure duplication
+
+- [8DION-D-0032 - Measure Validation Command Ownership](../8DION-D-0032-measure-validation-command-ownership.md) (`docs/decisions/8DION-D-0032-measure-validation-command-ownership.md`)
+
 ## profile budget
 
 - [8DION-D-0024 - Deny-by-Default Organ-Fabric Consumer Projection](../8DION-D-0024-deny-by-default-organ-fabric-consumer-projection.md) (`docs/decisions/8DION-D-0024-deny-by-default-organ-fabric-consumer-projection.md`)
@@ -222,6 +290,10 @@
 - [8DION-D-0001 - Shared-Root Projection Lives in 8Dionysus](../8DION-D-0001-shared-root-projection.md) (`docs/decisions/8DION-D-0001-shared-root-projection.md`)
 - [8DION-D-0019 - Deploy-Composed Codex Paths Stay Outside Generic Projection](../8DION-D-0019-deploy-composed-codex-paths.md) (`docs/decisions/8DION-D-0019-deploy-composed-codex-paths.md`)
 
+## prompt-context boundary
+
+- [8DION-D-0029 - Project a Dedicated Workspace-Root README](../8DION-D-0029-project-a-dedicated-workspace-root-readme.md) (`docs/decisions/8DION-D-0029-project-a-dedicated-workspace-root-readme.md`)
+
 ## proof authority boundary
 
 - [8DION-D-0007 - AoA Evals MCP Codex-Plane Registration](../8DION-D-0007-aoa-evals-mcp-codex-plane-registration.md) (`docs/decisions/8DION-D-0007-aoa-evals-mcp-codex-plane-registration.md`)
@@ -229,6 +301,10 @@
 ## public route ownership
 
 - [8DION-D-0025 - Route Active Routing Work Through aoa-sdk](../8DION-D-0025-route-active-routing-through-aoa-sdk.md) (`docs/decisions/8DION-D-0025-route-active-routing-through-aoa-sdk.md`)
+
+## publication boundary
+
+- [8DION-D-0030 - Admit aoa-agon to the Workspace Owner Audit](../8DION-D-0030-admit-aoa-agon-to-workspace-owner-audit.md) (`docs/decisions/8DION-D-0030-admit-aoa-agon-to-workspace-owner-audit.md`)
 
 ## read-only access plane
 
@@ -249,6 +325,10 @@
 ## refusal before planning
 
 - [8DION-D-0021 - Gate Projection on Current Owner Source](../8DION-D-0021-gate-projection-on-current-owner-source.md) (`docs/decisions/8DION-D-0021-gate-projection-on-current-owner-source.md`)
+
+## repeated prose
+
+- [8DION-D-0031 - Measure Repeated Prompt-Visible AGENTS Blocks](../8DION-D-0031-measure-repeated-prompt-visible-agents-blocks.md) (`docs/decisions/8DION-D-0031-measure-repeated-prompt-visible-agents-blocks.md`)
 
 ## reviewed intake boundary
 
@@ -291,6 +371,10 @@
 
 - [8DION-D-0016 - AoA Stats MCP Codex-Plane Cutover](../8DION-D-0016-aoa-stats-mcp-codex-plane-cutover.md) (`docs/decisions/8DION-D-0016-aoa-stats-mcp-codex-plane-cutover.md`)
 
+## source-first projection
+
+- [8DION-D-0029 - Project a Dedicated Workspace-Root README](../8DION-D-0029-project-a-dedicated-workspace-root-readme.md) (`docs/decisions/8DION-D-0029-project-a-dedicated-workspace-root-readme.md`)
+
 ## source-owned templates
 
 - [8DION-D-0003 - Source-Owned Repo Git Hooks](../8DION-D-0003-source-owned-repo-git-hooks.md) (`docs/decisions/8DION-D-0003-source-owned-repo-git-hooks.md`)
@@ -326,6 +410,11 @@
 
 - [8DION-D-0016 - AoA Stats MCP Codex-Plane Cutover](../8DION-D-0016-aoa-stats-mcp-codex-plane-cutover.md) (`docs/decisions/8DION-D-0016-aoa-stats-mcp-codex-plane-cutover.md`)
 
+## tracked corpus
+
+- [8DION-D-0028 - Audit README and AGENTS as Distinct Owner Surfaces](../8DION-D-0028-audit-readme-and-agents-as-distinct-owner-surfaces.md) (`docs/decisions/8DION-D-0028-audit-readme-and-agents-as-distinct-owner-surfaces.md`)
+- [8DION-D-0033 - Audit DESIGN.AGENTS Without Inherited Chain Cost](../8DION-D-0033-audit-design-agents-without-inherited-chain-cost.md) (`docs/decisions/8DION-D-0033-audit-design-agents-without-inherited-chain-cost.md`)
+
 ## transport safety
 
 - [8DION-D-0019 - Deploy-Composed Codex Paths Stay Outside Generic Projection](../8DION-D-0019-deploy-composed-codex-paths.md) (`docs/decisions/8DION-D-0019-deploy-composed-codex-paths.md`)
@@ -338,6 +427,10 @@
 ## unmanaged-hook safety
 
 - [8DION-D-0003 - Source-Owned Repo Git Hooks](../8DION-D-0003-source-owned-repo-git-hooks.md) (`docs/decisions/8DION-D-0003-source-owned-repo-git-hooks.md`)
+
+## validator coverage
+
+- [8DION-D-0034 - Treat the Conventional AGENTS Validator as Inventory](../8DION-D-0034-treat-conventional-agents-validator-as-inventory.md) (`docs/decisions/8DION-D-0034-treat-conventional-agents-validator-as-inventory.md`)
 
 ## workflow drift
 

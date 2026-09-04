@@ -9,7 +9,7 @@ organ.
 
 | Measurement | Question | Reference value |
 | --- | --- | --- |
-| `8Dionysus/known-repository-root-agents-coverage-ratio` | What fraction of known public repositories have an observed root `AGENTS.md` route in the committed live-workspace map? | `16 / 16` at evidence revision `4506bf51ae8c0b1ee8f87d3c7740b3224b75544b` |
+| `8Dionysus/known-repository-root-agents-coverage-ratio` | What fraction of known public repositories have an observed root `AGENTS.md` route in the committed live-workspace map? | `20 / 21`; the reference packet binds the exact evidence blob |
 
 The denominator is every name in the map's `known_repositories` inventory.
 A known repository whose checkout is missing remains in the denominator as
@@ -17,11 +17,18 @@ uncovered. Extra workspace records are excluded. A synthetic
 `public-baseline` map, duplicate record, incomplete population, or malformed
 root-presence field makes the measurement unknown rather than zero.
 
+The one uncovered record is the optional, deprecated `aoa-routing` predecessor.
+Its absence is valid workspace posture and is not a repository-health failure;
+it remains in this measurement because the established population includes
+every owner record named by the map.
+
 ## Evidence posture
 
 The packet is a public reference snapshot derived from the already committed
 `generated/agents_map.min.json`. It is not a live workspace scan and does not
-carry paths, raw guidance, or session state.
+carry paths, raw guidance, or session state. The packet, rather than this
+README, carries the exact map-blob identity so regenerating the README/AGENTS
+corpus cannot create a self-referential evidence cycle.
 
 ## Authority
 

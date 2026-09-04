@@ -42,8 +42,4 @@ record when they do not change the recorded decision.
 
 ## Verify
 
-```bash
-python scripts/generate_decision_indexes.py --check
-python scripts/validate_decision_records.py
-python -m unittest tests.test_decision_indexes
-```
+Use the repository [decision validation route](../../VALIDATION.md#decisions).

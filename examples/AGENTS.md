@@ -8,8 +8,4 @@ Use fake data, minimal fixtures, and explicit boundaries. No secrets, raw privat
 
 If an example encodes a sibling repo contract, keep it synchronized with that owner repo and link back to the source-owned surface.
 
-Verify with:
-
-```bash
-python scripts/validate_nested_agents.py
-```
+Run the root `VALIDATION.md#agents-map-and-workspace-audit` route on demand.

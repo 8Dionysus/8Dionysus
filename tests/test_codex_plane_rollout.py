@@ -79,7 +79,9 @@ class CodexPlaneRolloutTests(unittest.TestCase):
         self.assertIn("edit the source-owned copy under `<workspace-root>/8Dionysus/` first", agents)
         self.assertIn("do not treat the live copies", agents)
         self.assertIn("README.md` profile-owned and GitHub-facing", agents)
-        self.assertIn("do not hand-edit `<workspace-root>/AGENTS.md`", install)
+        self.assertIn("project `docs/WORKSPACE_ROOT_ENTRY.md` separately", agents)
+        self.assertIn("do not hand-edit `<workspace-root>/README.md`", install)
+        self.assertIn("`<workspace-root>/AGENTS.md`", install)
         self.assertIn("use `--check --json` to see the owner repo, source paths, projected paths", install)
         self.assertIn("keep `8Dionysus/README.md` profile-owned", install)
 

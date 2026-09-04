@@ -4,27 +4,27 @@
   "contract_version": "1.0.0",
   "measurement_id": "8Dionysus/known-repository-root-agents-coverage-ratio",
   "writer_repo": "8Dionysus",
-  "observation_id": "8Dionysus:known-repository-root-agents-coverage-ratio:89321d7e685b1c83",
-  "observed_at": "2026-06-28T03:58:56Z",
+  "observation_id": "8Dionysus:known-repository-root-agents-coverage-ratio:ac852bc809f6c404",
+  "observed_at": "2026-09-04T19:49:06Z",
   "object_ref": {
     "kind": "known-public-repository-agents-map-record",
-    "id": "agents-map:89321d7e685b1c83",
-    "version": "4506bf51ae8c0b1ee8f87d3c7740b3224b75544b"
+    "id": "agents-map:ac852bc809f6c404",
+    "version": "ac852bc809f6c404e296852b3f1bc39bd4ecb487"
   },
   "population": {
-    "id": "known-public-repository-inventory:4506bf51ae8c0b1e",
+    "id": "known-public-repository-inventory:ac852bc809f6c404",
     "definition_ref": "stats/port.manifest.json#/measurements/0/population",
-    "size": 16
+    "size": 21
   },
   "sample": {
-    "size": 16,
+    "size": 21,
     "selection": "census of known_repositories matched to live-workspace repository records"
   },
   "cohort": null,
   "window": {
-    "id": "source-revision:4506bf51ae8c0b1ee8f87d3c7740b3224b75544b",
-    "start": "2026-06-28T03:58:56Z",
-    "end": "2026-06-28T03:58:56Z",
+    "id": "source-revision:ac852bc809f6c404e296852b3f1bc39bd4ecb487",
+    "start": "2026-09-04T19:49:06Z",
+    "end": "2026-09-04T19:49:06Z",
     "temporality": "instant"
   },
   "dimensions": {},
@@ -32,13 +32,13 @@
     "status": "observed",
     "kind": "ratio",
     "unit": "1",
-    "number": 1.0,
-    "numerator": 16,
-    "denominator": 16
+    "number": 0.9523809523809523,
+    "numerator": 20,
+    "denominator": 21
   },
   "uncertainty": {
     "status": "not_applicable",
-    "sample_size": 16,
+    "sample_size": 21,
     "method": "not_applicable",
     "reason": "The reference packet is a census of the complete known-repository inventory in the named committed live-workspace map."
   },
@@ -54,7 +54,7 @@
       }
     ],
     "derivation_ref": "stats/README.md#current-reference-measurement",
-    "source_revision": "4506bf51ae8c0b1ee8f87d3c7740b3224b75544b"
+    "source_revision": "ac852bc809f6c404e296852b3f1bc39bd4ecb487"
   },
   "reporting_rule": {
     "id": "8Dionysus/known-repository-root-agents-coverage-ratio/reference-census",
@@ -68,7 +68,7 @@
   },
   "progress": {
     "state": "terminal",
-    "completed": 16,
-    "total": 16
+    "completed": 21,
+    "total": 21
   }
 }

@@ -8,9 +8,5 @@ Keep manifests bounded, reviewable, and reversible. Any quest, campaign, checkpo
 
 When recurrence manifests affect generated maps or reports, rebuild those outputs and report the diff.
 
-Verify with:
-
-```bash
-python scripts/validate_nested_agents.py
-python scripts/audit_agents_map.py --workspace-root <workspace-root> --write generated/agents_map.min.json --markdown docs/AGENTS_MAP.md
-```
+Run the applicable root routes in `../../VALIDATION.md#agents-map-and-workspace-audit`
+(`validate_nested_agents.py`, `audit_agents_map.py`).

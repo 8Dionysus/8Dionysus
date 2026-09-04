@@ -31,10 +31,5 @@ Every record must include `## Index Metadata` with:
 Generated indexes live under `docs/decisions/indexes/` and are read models only.
 Do not edit them by hand. Regenerate them from decision metadata.
 
-Verify with:
-
-```bash
-python scripts/generate_decision_indexes.py --check
-python scripts/validate_decision_records.py
-python -m unittest tests.test_decision_indexes
-```
+Run `../VALIDATION.md#decisions` after decision-lane changes;
+it contains `validate_decision_records.py`.

@@ -8,8 +8,5 @@ Keep profile material legible to new humans and agents. Route detailed doctrine,
 
 No private biographical residue, raw chats, secrets, or local-only assumptions belong in this public surface.
 
-Verify with:
-
-```bash
-python scripts/validate_nested_agents.py
-```
+Run `../VALIDATION.md#agents-map-and-workspace-audit` on demand
+(`validate_nested_agents.py`).

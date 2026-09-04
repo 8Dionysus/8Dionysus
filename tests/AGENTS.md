@@ -8,9 +8,5 @@ Keep tests deterministic, local-only, and public-safe. Do not require network ac
 
 When a validator or schema changes, add or update the narrowest test that catches the intended contract drift.
 
-Verify with:
-
-```bash
-python -m unittest discover -s tests
-python scripts/validate_nested_agents.py
-```
+Run the repository and nested-agent routes in `../VALIDATION.md` on demand;
+the latter is `validate_nested_agents.py`.

@@ -12,7 +12,10 @@ It keeps `8Dionysus` as a route map, not a hidden center of authority.
 - short role descriptions for the current public ecosystem
 - glossary-level orientation
 - one compact capability-map route for already-landed cross-repo families
-- selected shared-root install surfaces projected into the live workspace root, specifically `AGENTS.md`, `AOA_WORKSPACE_ROOT`, `.agents/`, and the project-level `.codex` source layer
+- selected shared-root install surfaces projected into the live workspace root,
+  specifically `AGENTS.md`, the dedicated human entry sourced from
+  `docs/WORKSPACE_ROOT_ENTRY.md`, `AOA_WORKSPACE_ROOT`, `.agents/`, and the
+  project-level `.codex` source layer
 - one admitted repo-local, read-only procedure for diagnosing a concrete skill,
   MCP, or tool delivery disagreement
 - profile-local reflection debt when linked public descriptions drift
@@ -59,6 +62,8 @@ Its changes are honest only when they follow already-landed owner-repo changes a
 That includes the selected shared-root install surfaces it publishes into the
 live workspace root: those files may shape orientation and local bootstrap, but
 they still do not transfer layer authority away from the owning repositories.
+The live root `README.md` is projected from the dedicated workspace-entry
+source; the repository `README.md` remains an independent GitHub profile page.
 
 The profile may link to product-edge repositories such as `ATM10-Agent`, but their supported profiles, release cadence, and public test tiers remain owned by those repositories.
 Any later product-edge tightening also remains owner-repo work rather than a local `8Dionysus` support track.

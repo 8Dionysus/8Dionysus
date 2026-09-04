@@ -11,11 +11,18 @@ narrows the lane.
 source-linked records over the public ecosystem profile and workspace memory map
 for `aoa-kag` registry, composition, and MCP consumers.
 
-## Read before editing
+## Route
 
-Read the root `AGENTS.md`, this card, `kag/README.md`, `kag/manifest.json`,
-`README.md`, `stats/README.md`, `docs/WORKSPACE_MEMORY_MAP.md`, and
-`generated/workspace_memory_map.min.json` before changing provider records.
+Root `AGENTS.md` supplies repository boundaries. Start with
+`kag/manifest.json` and the touched records. Open only the matching owner
+surface:
+
+- provider topology or owner-return route: `kag/README.md`
+- public ecosystem route: root `README.md`
+- local measurement meaning: `stats/README.md`
+- memory-map source or projection:
+  `generated/workspace_memory_map.min.json` and
+  `docs/WORKSPACE_MEMORY_MAP.md`
 
 ## Boundaries
 

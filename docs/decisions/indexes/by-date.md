@@ -76,3 +76,19 @@
 
 - [8DION-D-0026 - Project the Tree of Sophia Runtime Wrapper Without Default Registration](../8DION-D-0026-project-tos-runtime-wrapper-without-default-registration.md) (`docs/decisions/8DION-D-0026-project-tos-runtime-wrapper-without-default-registration.md`)
 - [8DION-D-0027 - Defer Project MCP Registration to Explicit Rollout](../8DION-D-0027-defer-project-mcp-registration-to-explicit-rollout.md) (`docs/decisions/8DION-D-0027-defer-project-mcp-registration-to-explicit-rollout.md`)
+
+## 2026-08-30
+
+- [8DION-D-0028 - Audit README and AGENTS as Distinct Owner Surfaces](../8DION-D-0028-audit-readme-and-agents-as-distinct-owner-surfaces.md) (`docs/decisions/8DION-D-0028-audit-readme-and-agents-as-distinct-owner-surfaces.md`)
+- [8DION-D-0029 - Project a Dedicated Workspace-Root README](../8DION-D-0029-project-a-dedicated-workspace-root-readme.md) (`docs/decisions/8DION-D-0029-project-a-dedicated-workspace-root-readme.md`)
+
+## 2026-08-31
+
+- [8DION-D-0030 - Admit aoa-agon to the Workspace Owner Audit](../8DION-D-0030-admit-aoa-agon-to-workspace-owner-audit.md) (`docs/decisions/8DION-D-0030-admit-aoa-agon-to-workspace-owner-audit.md`)
+- [8DION-D-0031 - Measure Repeated Prompt-Visible AGENTS Blocks](../8DION-D-0031-measure-repeated-prompt-visible-agents-blocks.md) (`docs/decisions/8DION-D-0031-measure-repeated-prompt-visible-agents-blocks.md`)
+
+## 2026-09-04
+
+- [8DION-D-0032 - Measure Validation Command Ownership](../8DION-D-0032-measure-validation-command-ownership.md) (`docs/decisions/8DION-D-0032-measure-validation-command-ownership.md`)
+- [8DION-D-0033 - Audit DESIGN.AGENTS Without Inherited Chain Cost](../8DION-D-0033-audit-design-agents-without-inherited-chain-cost.md) (`docs/decisions/8DION-D-0033-audit-design-agents-without-inherited-chain-cost.md`)
+- [8DION-D-0034 - Treat the Conventional AGENTS Validator as Inventory](../8DION-D-0034-treat-conventional-agents-validator-as-inventory.md) (`docs/decisions/8DION-D-0034-treat-conventional-agents-validator-as-inventory.md`)

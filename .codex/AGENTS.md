@@ -2,135 +2,96 @@
 
 ## Guidance for `.codex/`
 
-`.codex/` holds Codex-plane projection, regeneration, wrapper, and local operator-adjacent surfaces for the public entry repository. It may help agents orient in the workspace, but it does not own AoA doctrine, runtime truth, or sibling repo contracts.
+`.codex/` holds Codex-plane projection, regeneration, wrappers, hooks, tests,
+and local operator-adjacent surfaces for the public entry repository. It does
+not own AoA doctrine, sibling contracts, runtime truth, or domain meaning.
 
-Keep projected copies secondary. Source-owned files in this repository may be edited; installed live copies should be treated as evidence of projection drift, not authority.
+## Source and projection boundary
 
-The generic shared-root projector manages only the source-owned subset of this
-tree. It excludes `.codex/config.toml` because live registration may be a
-deployment composition over the portable rendered source, and it excludes
-`.codex/agents/` because agent projection belongs to `aoa-agents` plus the
-deployment policy. It also excludes deploy-local `generated/` and `worktrees/`.
-Use the dedicated owner route for each excluded path; do not force parity by
-copying or pruning it through `project_workspace_root.py`.
+Source-owned files in this checkout may be edited. Installed workspace copies
+are secondary evidence of projection or deployment drift.
 
-The checked-in project config intentionally emits no MCP server tables because
-Codex composes global and project tables additively. Portable stdio fields under
-the same stable names as deploy-composed HTTP fields make the complete config
-invalid before a client starts. Stable names and launcher sources remain in the
-runtime manifest; registration belongs to the explicit rollout below.
+The generic shared-root projector manages only its declared source subset. It
+excludes live `.codex/config.toml`, whose registration may be deploy-composed;
+`.codex/agents/`, whose role projection belongs to `aoa-agents`; and
+deploy-local `generated/` and `worktrees/`. Use each excluded path's named
+owner route rather than forcing copy or prune parity.
 
-The OS Abyss organ-fabric consumer projection lives under
-`config/codex_plane/organ_fabric/`. It is profile-scoped and deny-by-default:
-only an entirely admitted profile with exact consumer-schema, canary, owner
-acceptance, and rollback receipts may render. The renderer emits a review
-fragment only and has no live apply authority. Keep the legacy stable-name
-render intact until the explicit rollout proves replacement and consumer-zero.
-See `docs/CODEX_ORGAN_FABRIC_CONSUMER.md`.
+The checked-in project config intentionally emits no MCP tables. Codex composes
+global and project tables additively, so portable stdio and deployed HTTP
+fields under one stable name would form an invalid transport before startup.
+Stable names and launcher sources stay in
+`config/codex_plane/runtime_manifest.v1.json`; registration changes use the
+explicit rollout in `docs/CODEX_PLANE_REGENERATION.md`.
 
-The checked-in `tos-corpus-mcp-server.py` wrapper is only a source-owned
-runtime projection route to the stack package. Its presence is not admission:
-`tos_corpus` must remain absent from the portable stable runtime manifest while
-the Tree of Sophia contour is suspended or lacks the complete organ-fabric
-receipt set. Only the deny-by-default organ-fabric rollout may register it.
+The installed `aoa-workspace-project` launcher does not fetch. It must refuse
+before diff planning unless the selected owner checkout matches its available
+local source ref and all managed source paths are clean. Use an explicit clean
+current `--source-root`; use the direct Python entrypoint only for a
+non-mutating branch preview.
 
-No secrets, tokens, private hostnames, unreviewed hooks, or hidden local automation may be added here. Any mutating helper must stay bounded, documented, reversible, and route-aware.
+## Organ-fabric consumer
 
-The installed `aoa-workspace-project` launcher must reconcile the selected
-owner checkout before it plans live operations. It compares source `HEAD` with
-an already available local ref, verifies that projector-controlled and managed
-source paths are clean, and refuses before diff planning when either check
-fails. It does not fetch or claim remote freshness. Use an explicit
-`--source-root` for a clean merged checkout instead of borrowing a stale
-canonical checkout; use the direct Python entrypoint for non-mutating branch
-preview.
+`config/codex_plane/organ_fabric/` is deny-by-default. A bounded profile may
+render only with exact admission, consumer-schema, central-proof, canary,
+owner-acceptance, and rollback receipts. The render is a review fragment, not
+live apply authority. Keep the legacy stable-name route until rollout proves
+replacement and consumer-zero.
 
-Statistical access in the Codex plane uses `aoa_stats` as a read-only access
-plane. Use it to inspect the derived catalog, central boundary references,
-owner-local `stats/` ports, and measurement-packet compatibility. Statistical
-meaning and the public read contract remain in `aoa-stats`; local questions and
-evidence remain with their owner repositories; runnable MCP service code
-remains in `abyss-stack`.
+The `tos-corpus-mcp-server.py` wrapper is only a source projection to the
+stack package. It does not admit or register `tos_corpus`; that contour stays
+suspended until its organ-fabric receipts close.
 
-Memory access in the Codex plane uses `aoa_memo` as an access plane. Use it for
-brief, search, local-port status, candidate creation, port indexing, and intake
-review when work asks for recall, continuity, preservation, compaction recovery,
-or memory handoff. Use `generated/workspace_memory_map.min.json` to inspect
-which roots have local ports or route-only status. Durable reviewed memory still
-lands through `aoa-memo`.
+## Access-plane routes
 
-Session-evidence access in the Codex plane uses `aoa_session_memory` as an
-access plane. Use it to inspect `.aoa` search, route maps, session briefs,
-retrieval packets, evidence handles, freshness, diagnostics, and non-mutating
-maintenance plans when work asks to debug or study a stable skill, MCP, hook,
-tool, path, goal, or other recurring agent-process anchor. Raw transcript,
-segment indexes, atlas maps, diagnostics, and reviewed distillation authority
-remain in `.aoa`; the MCP must return refs and route signals, not become truth.
+Open `docs/CODEX_PLANE_REGENERATION.md` and the matching decision record only
+when registration semantics are in scope. For a wrapper or consumer change,
+return evidence to the named owner:
 
-Bounded proof access in the Codex plane uses `aoa_evals` as an access plane.
-Use it to select and inspect eval bundles, generated readers, comparison
-records, read-only find-or-propose eval-need routes, runtime evidence templates,
-runtime freshness status, candidate evidence packet validation, stack-owned
-runtime candidate exports, and candidate-only report skeletons. Candidate
-validation, find-or-propose results, and runtime export reads are pre-review
-only. Verdicts, proposal approval, source bundle creation, evidence acceptance,
-receipt publication, bundle promotion, and proof authority remain in
-`aoa-evals`.
+- `aoa_stats`: read-only statistical access; meaning stays in `aoa-stats`
+  and local questions stay with their repositories
+- `aoa_memo`: recall, local-port, candidate, index, and intake access;
+  durable reviewed memory stays in `aoa-memo`
+- `aoa_session_memory`: read-only `.aoa` refs, packets, freshness, and
+  diagnostics; raw and reviewed session authority stays in `.aoa`
+- `aoa_evals`: selection, inspection, candidate validation, and candidate
+  exports; verdict, acceptance, promotion, and proof stay in `aoa-evals`
+- `aoa_kag`: provider, source-return, freshness, composition, and validation
+  access; KAG contracts stay in `aoa-kag`
+- `aoa_decisions`: search and packetization; authored decisions and local
+  index validators stay in their owner repositories
+- `abyss_machine`: compact safe host reads and preflight; machine truth,
+  policy, mutation, and ledger authority stay in `abyss-machine`
+- `aoa_4pda_connector`, `aoa_telegram_connector`, and
+  `aoa_discord_connector`: external evidence access; source policy,
+  credentials, packets, and generated storage stay with connector owners
 
-KAG access in the Codex plane uses `aoa_kag` as an access plane. Use it to
-inspect KAG provider status, provider records, source-return routes, freshness
-handles, registry slices, composition slices, validation status, and prompt
-routes. KAG schema, readiness, generated provider maps, and provider-home
-validation remain in `aoa-kag`; runnable MCP service code remains in
-`abyss-stack`; source meaning remains with the provider repositories.
+Runnable access-plane packages remain with `abyss-stack` unless a named owner
+contract says otherwise. No access plane becomes source truth by registration.
 
-Decision-lane access in the Codex plane uses `aoa_decisions` as an access
-plane. Use it to search, inspect, and packetize workspace `docs/decisions/`
-records before broad repo reads. The service refreshes its generated graph
-cache before reads when the input fingerprint changes. Decision creation,
-correction, supersession, and authority still land in the owning repository's
-source decision notes and local decision-index validators.
+## Stop lines
 
-Host-machine context in the Codex plane uses `abyss_machine` as an access plane.
-Use it for compact owner-aware machine briefs, evidence maps, safe read surfaces
-such as resource/memory/typing/nervous status, focused nervous recall, and
-non-mutating route preflight. Host facts, policy, mutation authority, and
-change-ledger truth remain in `abyss-machine`; MCP does not run arbitrary shell,
-privileged commands, repair, cleanup, service lifecycle, or process mutation.
+No secrets, tokens, private hostnames, hidden automation, or unreviewed hooks
+belong here. Mutating helpers must stay bounded, documented, reversible, and
+owner-routed.
 
-External connector evidence uses the stable Codex-plane handles
-`aoa_4pda_connector`, `aoa_telegram_connector`, and
-`aoa_discord_connector`. The checked-in launchers resolve the stack-owned MCP
-packages without moving source policy, packet truth, credentials, or generated
-storage out of the corresponding connector owner repositories. Authenticated
-loopback HTTP remains a deploy-composed live transport; the checked-in source
-registration stays portable stdio.
+If a handle reports `Transport closed`, do not claim availability from
+registration. Run its service CLI or stdio smoke check, then restart the Codex
+MCP host/session before relying on live calls.
 
-If an MCP tool handle reports `Transport closed`, do not claim live MCP
-availability from registration alone. Run the service CLI or stdio smoke check,
-then restart the Codex MCP host/session before relying on live tool calls.
+For one concrete mismatch across owner source, projection, host scope,
+prompt/catalog, config, transport, and service, route to
+`skills/aoa-workspace-diagnose`. It diagnoses read-only and never authorizes
+repair, install, restart, or configuration mutation.
 
-For a concrete disagreement among owner source, repository projection, host
-scope, prompt/catalog visibility, config, stable name, transport, and owner
-service, route to `skills/aoa-workspace-diagnose`. The home skill diagnoses
-read-only; it does not replace `.codex/bin/aoa-codex-doctor`, status, bootstrap,
-or any owner repair workflow. Workspace orientation, growth comparison, and
-seed routing use owner surfaces plus KAG or task-local composition; this
-repository no longer packages a generic launcher plugin.
+## Verify
 
-Verify with:
+Run only the checks matching the changed surface:
 
-```bash
-python scripts/validate_nested_agents.py
-python scripts/render_codex_organ_fabric.py --check
-python scripts/validate_codex_organ_fabric.py
-python scripts/build_workspace_memory_map.py --workspace-root <workspace-root> --owner-repo-root . --check
-python /srv/AbyssOS/8Dionysus/scripts/smoke_aoa_stats_mcp.py --workspace-root /srv/AbyssOS
-python /srv/AbyssOS/8Dionysus/scripts/smoke_aoa_memo_mcp.py --workspace-root /srv/AbyssOS
-python /srv/AbyssOS/8Dionysus/scripts/smoke_aoa_session_memory_mcp.py --workspace-root /srv/AbyssOS
-python /srv/AbyssOS/8Dionysus/scripts/smoke_aoa_evals_mcp.py --workspace-root /srv/AbyssOS
-python /srv/AbyssOS/8Dionysus/scripts/smoke_aoa_kag_mcp.py --workspace-root /srv/AbyssOS
-python /srv/AbyssOS/8Dionysus/scripts/smoke_aoa_decisions_mcp.py --workspace-root /srv/AbyssOS
-python /srv/AbyssOS/8Dionysus/scripts/smoke_abyss_machine_mcp.py --workspace-root /srv/AbyssOS
-python scripts/audit_agents_map.py --workspace-root <workspace-root> --write generated/agents_map.min.json --markdown docs/AGENTS_MAP.md
-```
+Run the relevant on-demand route in the repository [VALIDATION](../VALIDATION.md):
+`#codex-plane` for organ-fabric and memory-map projection, and
+`#agents-map-and-workspace-audit` for the AGENTS-map audit.
+
+For a changed MCP wrapper or registration, run its matching
+`scripts/smoke_*_mcp.py` check. Do not run every access-plane smoke test for an
+unrelated `.codex/` edit.

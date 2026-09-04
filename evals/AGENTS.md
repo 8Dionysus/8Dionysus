@@ -13,11 +13,11 @@ before it is accepted, rejected, or normalized by `aoa-evals`.
 authority. This port owns only profile-local and workspace-route intake, cases,
 fixtures, suites, reports, and source refs.
 
-## Read before editing
+## Route
 
-Read the root `AGENTS.md`, then this card, `README.md`, `PORT.yaml`, and the
-nearest intake, suites, or reports surface you will touch. For central proof
-adoption rules, read the local eval-port standard in `aoa-evals`.
+Root `AGENTS.md` supplies repository boundaries. Start with `PORT.yaml` and
+the nearest touched eval surface. Open `README.md` for public port topology or
+status, and the `aoa-evals` local-port standard only for central adoption work.
 
 ## Boundaries
 
@@ -31,9 +31,7 @@ adoption rules, read the local eval-port standard in `aoa-evals`.
 
 ## Validation
 
-```bash
-python ../aoa-evals/scripts/validate_local_eval_port.py --target-root .
-```
+Run `VALIDATION.md` in this directory for `validate_local_eval_port.py`.
 
 ## Closeout
 

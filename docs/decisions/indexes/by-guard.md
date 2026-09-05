@@ -149,6 +149,7 @@
 ## historical recovery
 
 - [8DION-D-0035 - Distinguish Historical Retirement in the Corpus Audit](../8DION-D-0035-distinguish-historical-retirement-in-corpus-audit.md) (`docs/decisions/8DION-D-0035-distinguish-historical-retirement-in-corpus-audit.md`)
+- [8DION-D-0036 - Retire Unused Profile Outputs and Producer](../8DION-D-0036-retire-unused-profile-outputs.md) (`docs/decisions/8DION-D-0036-retire-unused-profile-outputs.md`)
 
 ## hook boundary
 
@@ -239,6 +240,7 @@
 
 - [8DION-D-0028 - Audit README and AGENTS as Distinct Owner Surfaces](../8DION-D-0028-audit-readme-and-agents-as-distinct-owner-surfaces.md) (`docs/decisions/8DION-D-0028-audit-readme-and-agents-as-distinct-owner-surfaces.md`)
 - [8DION-D-0035 - Distinguish Historical Retirement in the Corpus Audit](../8DION-D-0035-distinguish-historical-retirement-in-corpus-audit.md) (`docs/decisions/8DION-D-0035-distinguish-historical-retirement-in-corpus-audit.md`)
+- [8DION-D-0036 - Retire Unused Profile Outputs and Producer](../8DION-D-0036-retire-unused-profile-outputs.md) (`docs/decisions/8DION-D-0036-retire-unused-profile-outputs.md`)
 
 ## owner identity
 
@@ -302,6 +304,10 @@
 ## proof authority boundary
 
 - [8DION-D-0007 - AoA Evals MCP Codex-Plane Registration](../8DION-D-0007-aoa-evals-mcp-codex-plane-registration.md) (`docs/decisions/8DION-D-0007-aoa-evals-mcp-codex-plane-registration.md`)
+
+## public entry
+
+- [8DION-D-0036 - Retire Unused Profile Outputs and Producer](../8DION-D-0036-retire-unused-profile-outputs.md) (`docs/decisions/8DION-D-0036-retire-unused-profile-outputs.md`)
 
 ## public route ownership
 

@@ -43,6 +43,7 @@
 - [8DION-D-0033 - Audit DESIGN.AGENTS Without Inherited Chain Cost](../8DION-D-0033-audit-design-agents-without-inherited-chain-cost.md) (`docs/decisions/8DION-D-0033-audit-design-agents-without-inherited-chain-cost.md`)
 - [8DION-D-0034 - Treat the Conventional AGENTS Validator as Inventory](../8DION-D-0034-treat-conventional-agents-validator-as-inventory.md) (`docs/decisions/8DION-D-0034-treat-conventional-agents-validator-as-inventory.md`)
 - [8DION-D-0035 - Distinguish Historical Retirement in the Corpus Audit](../8DION-D-0035-distinguish-historical-retirement-in-corpus-audit.md) (`docs/decisions/8DION-D-0035-distinguish-historical-retirement-in-corpus-audit.md`)
+- [8DION-D-0036 - Retire Unused Profile Outputs and Producer](../8DION-D-0036-retire-unused-profile-outputs.md) (`docs/decisions/8DION-D-0036-retire-unused-profile-outputs.md`)
 
 ## abyss-machine
 

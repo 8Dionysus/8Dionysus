@@ -101,6 +101,10 @@
 
 - [8DION-D-0003 - Source-Owned Repo Git Hooks](../8DION-D-0003-source-owned-repo-git-hooks.md) (`docs/decisions/8DION-D-0003-source-owned-repo-git-hooks.md`)
 
+## .github/workflows/update-github-stats.yml
+
+- [8DION-D-0036 - Retire Unused Profile Outputs and Producer](../8DION-D-0036-retire-unused-profile-outputs.md) (`docs/decisions/8DION-D-0036-retire-unused-profile-outputs.md`)
+
 ## AGENTS.md
 
 - [8DION-D-0001 - Shared-Root Projection Lives in 8Dionysus](../8DION-D-0001-shared-root-projection.md) (`docs/decisions/8DION-D-0001-shared-root-projection.md`)
@@ -236,11 +240,16 @@
 
 - [8DION-D-0006 - System Local Memo Port Rollout](../8DION-D-0006-system-local-memo-port-rollout.md) (`docs/decisions/8DION-D-0006-system-local-memo-port-rollout.md`)
 
+## profile/
+
+- [8DION-D-0036 - Retire Unused Profile Outputs and Producer](../8DION-D-0036-retire-unused-profile-outputs.md) (`docs/decisions/8DION-D-0036-retire-unused-profile-outputs.md`)
+
 ## README.md
 
 - [8DION-D-0023 - Dionysus Conversational Portrait Route](../8DION-D-0023-dionysus-conversational-portrait-route.md) (`docs/decisions/8DION-D-0023-dionysus-conversational-portrait-route.md`)
 - [8DION-D-0025 - Route Active Routing Work Through aoa-sdk](../8DION-D-0025-route-active-routing-through-aoa-sdk.md) (`docs/decisions/8DION-D-0025-route-active-routing-through-aoa-sdk.md`)
 - [8DION-D-0029 - Project a Dedicated Workspace-Root README](../8DION-D-0029-project-a-dedicated-workspace-root-readme.md) (`docs/decisions/8DION-D-0029-project-a-dedicated-workspace-root-readme.md`)
+- [8DION-D-0036 - Retire Unused Profile Outputs and Producer](../8DION-D-0036-retire-unused-profile-outputs.md) (`docs/decisions/8DION-D-0036-retire-unused-profile-outputs.md`)
 
 ## repo-local memo ports
 

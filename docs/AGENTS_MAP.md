@@ -109,7 +109,7 @@ For reading guidance, see [AGENTS_FRONTIER_RECON](AGENTS_FRONTIER_RECON.md).
 - `root_document_files`: 40
 - `shared_root_blocked_files`: 0
 - `shared_root_files`: 2
-- `shared_root_files_in_owner_parity`: 0
+- `shared_root_files_in_owner_parity`: 2
 - `shared_root_reviewed_files`: 2
 - `shared_root_unreviewed_files`: 0
 - `stale_agents_fenced_block_classifications`: 0
@@ -168,8 +168,8 @@ For reading guidance, see [AGENTS_FRONTIER_RECON](AGENTS_FRONTIER_RECON.md).
 
 | File | Declared projection | Owner parity | Review |
 |---|---:|---:|---|
-| `AGENTS.md` | True | False | `reviewed` |
-| `README.md` | True | False | `reviewed` |
+| `AGENTS.md` | True | True | `reviewed` |
+| `README.md` | True | True | `reviewed` |
 
 ## How to read the signals
 

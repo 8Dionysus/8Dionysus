@@ -1283,34 +1283,37 @@
       "repository": "Agents-of-Abyss",
       "path": "mechanics/AGENTS.md",
       "review_state": "reviewed",
-      "disposition": "keep",
+      "disposition": "slim-rewrite",
       "owner_evidence": [
         "Agents-of-Abyss@eef37d5e44a475a1bed58d0b444f45bef32adc21:mechanics/AGENTS.md",
-        "Agents-of-Abyss@eef37d5e44a475a1bed58d0b444f45bef32adc21:AGENTS.md"
+        "Agents-of-Abyss@eef37d5e44a475a1bed58d0b444f45bef32adc21:AGENTS.md",
+        "Agents-of-Abyss@bd956ebfd653bbd5fc71adfbc64ffe8a7d3c6dbd:mechanics/AGENTS.md"
       ],
-      "note": "Current mechanics agents owner surface retained; no owner-base content delta was observed."
+      "note": "Package-wide docs are content-driven and optional; canonical source existence, lane selection, and stop-lines remain."
     },
     {
       "repository": "Agents-of-Abyss",
       "path": "mechanics/README.md",
       "review_state": "reviewed",
-      "disposition": "keep",
+      "disposition": "slim-rewrite",
       "owner_evidence": [
         "Agents-of-Abyss@eef37d5e44a475a1bed58d0b444f45bef32adc21:mechanics/README.md",
-        "Agents-of-Abyss@eef37d5e44a475a1bed58d0b444f45bef32adc21:mechanics/AGENTS.md"
+        "Agents-of-Abyss@eef37d5e44a475a1bed58d0b444f45bef32adc21:mechanics/AGENTS.md",
+        "Agents-of-Abyss@bd956ebfd653bbd5fc71adfbc64ffe8a7d3c6dbd:mechanics/README.md"
       ],
-      "note": "Current mechanics readme owner surface retained; no owner-base content delta was observed."
+      "note": "Package-wide docs are content-driven and optional; canonical source existence, lane selection, and stop-lines remain."
     },
     {
       "repository": "Agents-of-Abyss",
       "path": "mechanics/agon/AGENTS.md",
       "review_state": "reviewed",
-      "disposition": "keep",
+      "disposition": "slim-rewrite",
       "owner_evidence": [
         "Agents-of-Abyss@eef37d5e44a475a1bed58d0b444f45bef32adc21:mechanics/agon/AGENTS.md",
-        "Agents-of-Abyss@eef37d5e44a475a1bed58d0b444f45bef32adc21:mechanics/AGENTS.md"
+        "Agents-of-Abyss@eef37d5e44a475a1bed58d0b444f45bef32adc21:mechanics/AGENTS.md",
+        "Agents-of-Abyss@bd956ebfd653bbd5fc71adfbc64ffe8a7d3c6dbd:mechanics/agon/AGENTS.md"
       ],
-      "note": "Current mechanics agents owner surface retained; no owner-base content delta was observed."
+      "note": "Package-wide docs are content-driven and optional; canonical source existence, lane selection, and stop-lines remain."
     },
     {
       "repository": "Agents-of-Abyss",
@@ -1327,23 +1330,29 @@
       "repository": "Agents-of-Abyss",
       "path": "mechanics/agon/docs/AGENTS.md",
       "review_state": "reviewed",
-      "disposition": "keep",
+      "disposition": "delete-obsolete-placeholder",
       "owner_evidence": [
         "Agents-of-Abyss@eef37d5e44a475a1bed58d0b444f45bef32adc21:mechanics/agon/docs/AGENTS.md",
-        "Agents-of-Abyss@eef37d5e44a475a1bed58d0b444f45bef32adc21:mechanics/agon/AGENTS.md"
+        "Agents-of-Abyss@eef37d5e44a475a1bed58d0b444f45bef32adc21:mechanics/agon/AGENTS.md",
+        "Agents-of-Abyss@da07fef15a6db979e7d1b1c79f90db7b988e75d8:mechanics/agon/docs/AGENTS.md",
+        "Agents-of-Abyss@c8a72fdd5163fffdf11834522474cbae2056b38a:mechanics/agon/PARTS.md",
+        "Agents-of-Abyss@c8a72fdd5163fffdf11834522474cbae2056b38a:mechanics/agon/AGENTS.md"
       ],
-      "note": "Current mechanics agents owner surface retained; no owner-base content delta was observed."
+      "note": "Duplicate route/future placeholder removed; current package/part contract and provenance remain; recover the exact historical file from Agents-of-Abyss@da07fef15a6db979e7d1b1c79f90db7b988e75d8:mechanics/agon/docs/AGENTS.md."
     },
     {
       "repository": "Agents-of-Abyss",
       "path": "mechanics/agon/docs/README.md",
       "review_state": "reviewed",
-      "disposition": "keep",
+      "disposition": "delete-obsolete-placeholder",
       "owner_evidence": [
         "Agents-of-Abyss@eef37d5e44a475a1bed58d0b444f45bef32adc21:mechanics/agon/docs/README.md",
-        "Agents-of-Abyss@eef37d5e44a475a1bed58d0b444f45bef32adc21:mechanics/agon/docs/AGENTS.md"
+        "Agents-of-Abyss@eef37d5e44a475a1bed58d0b444f45bef32adc21:mechanics/agon/docs/AGENTS.md",
+        "Agents-of-Abyss@da07fef15a6db979e7d1b1c79f90db7b988e75d8:mechanics/agon/docs/README.md",
+        "Agents-of-Abyss@c8a72fdd5163fffdf11834522474cbae2056b38a:mechanics/agon/PARTS.md",
+        "Agents-of-Abyss@c8a72fdd5163fffdf11834522474cbae2056b38a:mechanics/agon/AGENTS.md"
       ],
-      "note": "Current mechanics readme owner surface retained; no owner-base content delta was observed."
+      "note": "Duplicate route/future placeholder removed; current package/part contract and provenance remain; recover the exact historical file from Agents-of-Abyss@da07fef15a6db979e7d1b1c79f90db7b988e75d8:mechanics/agon/docs/README.md."
     },
     {
       "repository": "Agents-of-Abyss",
@@ -2402,12 +2411,13 @@
       "repository": "Agents-of-Abyss",
       "path": "mechanics/experience/AGENTS.md",
       "review_state": "reviewed",
-      "disposition": "keep",
+      "disposition": "slim-rewrite",
       "owner_evidence": [
         "Agents-of-Abyss@eef37d5e44a475a1bed58d0b444f45bef32adc21:mechanics/experience/AGENTS.md",
-        "Agents-of-Abyss@eef37d5e44a475a1bed58d0b444f45bef32adc21:mechanics/AGENTS.md"
+        "Agents-of-Abyss@eef37d5e44a475a1bed58d0b444f45bef32adc21:mechanics/AGENTS.md",
+        "Agents-of-Abyss@bd956ebfd653bbd5fc71adfbc64ffe8a7d3c6dbd:mechanics/experience/AGENTS.md"
       ],
-      "note": "Current mechanics agents owner surface retained; no owner-base content delta was observed."
+      "note": "Package-wide docs are content-driven and optional; canonical source existence, lane selection, and stop-lines remain."
     },
     {
       "repository": "Agents-of-Abyss",
@@ -2424,23 +2434,29 @@
       "repository": "Agents-of-Abyss",
       "path": "mechanics/experience/docs/AGENTS.md",
       "review_state": "reviewed",
-      "disposition": "keep",
+      "disposition": "delete-obsolete-placeholder",
       "owner_evidence": [
         "Agents-of-Abyss@eef37d5e44a475a1bed58d0b444f45bef32adc21:mechanics/experience/docs/AGENTS.md",
-        "Agents-of-Abyss@eef37d5e44a475a1bed58d0b444f45bef32adc21:mechanics/experience/AGENTS.md"
+        "Agents-of-Abyss@eef37d5e44a475a1bed58d0b444f45bef32adc21:mechanics/experience/AGENTS.md",
+        "Agents-of-Abyss@da07fef15a6db979e7d1b1c79f90db7b988e75d8:mechanics/experience/docs/AGENTS.md",
+        "Agents-of-Abyss@c8a72fdd5163fffdf11834522474cbae2056b38a:mechanics/experience/PARTS.md",
+        "Agents-of-Abyss@c8a72fdd5163fffdf11834522474cbae2056b38a:mechanics/experience/AGENTS.md"
       ],
-      "note": "Current mechanics agents owner surface retained; no owner-base content delta was observed."
+      "note": "Duplicate route/future placeholder removed; current package/part contract and provenance remain; recover the exact historical file from Agents-of-Abyss@da07fef15a6db979e7d1b1c79f90db7b988e75d8:mechanics/experience/docs/AGENTS.md."
     },
     {
       "repository": "Agents-of-Abyss",
       "path": "mechanics/experience/docs/README.md",
       "review_state": "reviewed",
-      "disposition": "keep",
+      "disposition": "delete-obsolete-placeholder",
       "owner_evidence": [
         "Agents-of-Abyss@eef37d5e44a475a1bed58d0b444f45bef32adc21:mechanics/experience/docs/README.md",
-        "Agents-of-Abyss@eef37d5e44a475a1bed58d0b444f45bef32adc21:mechanics/experience/docs/AGENTS.md"
+        "Agents-of-Abyss@eef37d5e44a475a1bed58d0b444f45bef32adc21:mechanics/experience/docs/AGENTS.md",
+        "Agents-of-Abyss@da07fef15a6db979e7d1b1c79f90db7b988e75d8:mechanics/experience/docs/README.md",
+        "Agents-of-Abyss@c8a72fdd5163fffdf11834522474cbae2056b38a:mechanics/experience/PARTS.md",
+        "Agents-of-Abyss@c8a72fdd5163fffdf11834522474cbae2056b38a:mechanics/experience/AGENTS.md"
       ],
-      "note": "Current mechanics readme owner surface retained; no owner-base content delta was observed."
+      "note": "Duplicate route/future placeholder removed; current package/part contract and provenance remain; recover the exact historical file from Agents-of-Abyss@da07fef15a6db979e7d1b1c79f90db7b988e75d8:mechanics/experience/docs/README.md."
     },
     {
       "repository": "Agents-of-Abyss",
@@ -2938,12 +2954,13 @@
       "repository": "Agents-of-Abyss",
       "path": "mechanics/questbook/AGENTS.md",
       "review_state": "reviewed",
-      "disposition": "keep",
+      "disposition": "slim-rewrite",
       "owner_evidence": [
         "Agents-of-Abyss@eef37d5e44a475a1bed58d0b444f45bef32adc21:mechanics/questbook/AGENTS.md",
-        "Agents-of-Abyss@eef37d5e44a475a1bed58d0b444f45bef32adc21:mechanics/AGENTS.md"
+        "Agents-of-Abyss@eef37d5e44a475a1bed58d0b444f45bef32adc21:mechanics/AGENTS.md",
+        "Agents-of-Abyss@bd956ebfd653bbd5fc71adfbc64ffe8a7d3c6dbd:mechanics/questbook/AGENTS.md"
       ],
-      "note": "Current mechanics agents owner surface retained; no owner-base content delta was observed."
+      "note": "Package-wide docs are content-driven and optional; canonical source existence, lane selection, and stop-lines remain."
     },
     {
       "repository": "Agents-of-Abyss",
@@ -2960,23 +2977,29 @@
       "repository": "Agents-of-Abyss",
       "path": "mechanics/questbook/docs/AGENTS.md",
       "review_state": "reviewed",
-      "disposition": "keep",
+      "disposition": "delete-obsolete-placeholder",
       "owner_evidence": [
         "Agents-of-Abyss@eef37d5e44a475a1bed58d0b444f45bef32adc21:mechanics/questbook/docs/AGENTS.md",
-        "Agents-of-Abyss@eef37d5e44a475a1bed58d0b444f45bef32adc21:mechanics/questbook/AGENTS.md"
+        "Agents-of-Abyss@eef37d5e44a475a1bed58d0b444f45bef32adc21:mechanics/questbook/AGENTS.md",
+        "Agents-of-Abyss@da07fef15a6db979e7d1b1c79f90db7b988e75d8:mechanics/questbook/docs/AGENTS.md",
+        "Agents-of-Abyss@c8a72fdd5163fffdf11834522474cbae2056b38a:mechanics/questbook/PARTS.md",
+        "Agents-of-Abyss@c8a72fdd5163fffdf11834522474cbae2056b38a:mechanics/questbook/AGENTS.md"
       ],
-      "note": "Current mechanics agents owner surface retained; no owner-base content delta was observed."
+      "note": "Duplicate route/future placeholder removed; current package/part contract and provenance remain; recover the exact historical file from Agents-of-Abyss@da07fef15a6db979e7d1b1c79f90db7b988e75d8:mechanics/questbook/docs/AGENTS.md."
     },
     {
       "repository": "Agents-of-Abyss",
       "path": "mechanics/questbook/docs/README.md",
       "review_state": "reviewed",
-      "disposition": "keep",
+      "disposition": "delete-obsolete-placeholder",
       "owner_evidence": [
         "Agents-of-Abyss@eef37d5e44a475a1bed58d0b444f45bef32adc21:mechanics/questbook/docs/README.md",
-        "Agents-of-Abyss@eef37d5e44a475a1bed58d0b444f45bef32adc21:mechanics/questbook/docs/AGENTS.md"
+        "Agents-of-Abyss@eef37d5e44a475a1bed58d0b444f45bef32adc21:mechanics/questbook/docs/AGENTS.md",
+        "Agents-of-Abyss@da07fef15a6db979e7d1b1c79f90db7b988e75d8:mechanics/questbook/docs/README.md",
+        "Agents-of-Abyss@c8a72fdd5163fffdf11834522474cbae2056b38a:mechanics/questbook/PARTS.md",
+        "Agents-of-Abyss@c8a72fdd5163fffdf11834522474cbae2056b38a:mechanics/questbook/AGENTS.md"
       ],
-      "note": "Current mechanics readme owner surface retained; no owner-base content delta was observed."
+      "note": "Duplicate route/future placeholder removed; current package/part contract and provenance remain; recover the exact historical file from Agents-of-Abyss@da07fef15a6db979e7d1b1c79f90db7b988e75d8:mechanics/questbook/docs/README.md."
     },
     {
       "repository": "Agents-of-Abyss",
@@ -3522,12 +3545,13 @@
       "repository": "Agents-of-Abyss",
       "path": "mechanics/rpg/AGENTS.md",
       "review_state": "reviewed",
-      "disposition": "keep",
+      "disposition": "slim-rewrite",
       "owner_evidence": [
         "Agents-of-Abyss@eef37d5e44a475a1bed58d0b444f45bef32adc21:mechanics/rpg/AGENTS.md",
-        "Agents-of-Abyss@eef37d5e44a475a1bed58d0b444f45bef32adc21:mechanics/AGENTS.md"
+        "Agents-of-Abyss@eef37d5e44a475a1bed58d0b444f45bef32adc21:mechanics/AGENTS.md",
+        "Agents-of-Abyss@bd956ebfd653bbd5fc71adfbc64ffe8a7d3c6dbd:mechanics/rpg/AGENTS.md"
       ],
-      "note": "Current mechanics agents owner surface retained; no owner-base content delta was observed."
+      "note": "Package-wide docs are content-driven and optional; canonical source existence, lane selection, and stop-lines remain."
     },
     {
       "repository": "Agents-of-Abyss",
@@ -3544,23 +3568,29 @@
       "repository": "Agents-of-Abyss",
       "path": "mechanics/rpg/docs/AGENTS.md",
       "review_state": "reviewed",
-      "disposition": "keep",
+      "disposition": "delete-obsolete-placeholder",
       "owner_evidence": [
         "Agents-of-Abyss@eef37d5e44a475a1bed58d0b444f45bef32adc21:mechanics/rpg/docs/AGENTS.md",
-        "Agents-of-Abyss@eef37d5e44a475a1bed58d0b444f45bef32adc21:mechanics/rpg/AGENTS.md"
+        "Agents-of-Abyss@eef37d5e44a475a1bed58d0b444f45bef32adc21:mechanics/rpg/AGENTS.md",
+        "Agents-of-Abyss@da07fef15a6db979e7d1b1c79f90db7b988e75d8:mechanics/rpg/docs/AGENTS.md",
+        "Agents-of-Abyss@c8a72fdd5163fffdf11834522474cbae2056b38a:mechanics/rpg/PARTS.md",
+        "Agents-of-Abyss@c8a72fdd5163fffdf11834522474cbae2056b38a:mechanics/rpg/AGENTS.md"
       ],
-      "note": "Current mechanics agents owner surface retained; no owner-base content delta was observed."
+      "note": "Duplicate route/future placeholder removed; current package/part contract and provenance remain; recover the exact historical file from Agents-of-Abyss@da07fef15a6db979e7d1b1c79f90db7b988e75d8:mechanics/rpg/docs/AGENTS.md."
     },
     {
       "repository": "Agents-of-Abyss",
       "path": "mechanics/rpg/docs/README.md",
       "review_state": "reviewed",
-      "disposition": "keep",
+      "disposition": "delete-obsolete-placeholder",
       "owner_evidence": [
         "Agents-of-Abyss@eef37d5e44a475a1bed58d0b444f45bef32adc21:mechanics/rpg/docs/README.md",
-        "Agents-of-Abyss@eef37d5e44a475a1bed58d0b444f45bef32adc21:mechanics/rpg/docs/AGENTS.md"
+        "Agents-of-Abyss@eef37d5e44a475a1bed58d0b444f45bef32adc21:mechanics/rpg/docs/AGENTS.md",
+        "Agents-of-Abyss@da07fef15a6db979e7d1b1c79f90db7b988e75d8:mechanics/rpg/docs/README.md",
+        "Agents-of-Abyss@c8a72fdd5163fffdf11834522474cbae2056b38a:mechanics/rpg/PARTS.md",
+        "Agents-of-Abyss@c8a72fdd5163fffdf11834522474cbae2056b38a:mechanics/rpg/AGENTS.md"
       ],
-      "note": "Current mechanics readme owner surface retained; no owner-base content delta was observed."
+      "note": "Duplicate route/future placeholder removed; current package/part contract and provenance remain; recover the exact historical file from Agents-of-Abyss@da07fef15a6db979e7d1b1c79f90db7b988e75d8:mechanics/rpg/docs/README.md."
     },
     {
       "repository": "Agents-of-Abyss",
@@ -9448,20 +9478,22 @@
       "disposition": "slim-rewrite",
       "owner_evidence": [
         "abyss-stack@656c7f4212eb3ee52ee04c42cb13bbda9c67c5b2:mechanics/AGENTS.md",
-        "abyss-stack@656c7f4212eb3ee52ee04c42cb13bbda9c67c5b2:AGENTS.md"
+        "abyss-stack@656c7f4212eb3ee52ee04c42cb13bbda9c67c5b2:AGENTS.md",
+        "abyss-stack@4573ae5944b35a0e134cf073f2a2295731772bd3:mechanics/AGENTS.md"
       ],
-      "note": "Current mechanics agents changed against the available owner branch base; scoped for slim rewrite."
+      "note": "Package-wide docs are content-driven and optional; canonical source existence, lane selection, and stop-lines remain."
     },
     {
       "repository": "abyss-stack",
       "path": "mechanics/README.md",
       "review_state": "reviewed",
-      "disposition": "keep",
+      "disposition": "slim-rewrite",
       "owner_evidence": [
         "abyss-stack@656c7f4212eb3ee52ee04c42cb13bbda9c67c5b2:mechanics/README.md",
-        "abyss-stack@656c7f4212eb3ee52ee04c42cb13bbda9c67c5b2:mechanics/AGENTS.md"
+        "abyss-stack@656c7f4212eb3ee52ee04c42cb13bbda9c67c5b2:mechanics/AGENTS.md",
+        "abyss-stack@4573ae5944b35a0e134cf073f2a2295731772bd3:mechanics/README.md"
       ],
-      "note": "Current mechanics readme owner surface retained; no owner-base content delta was observed."
+      "note": "Package-wide docs are content-driven and optional; canonical source existence, lane selection, and stop-lines remain."
     },
     {
       "repository": "abyss-stack",
@@ -9489,12 +9521,15 @@
       "repository": "abyss-stack",
       "path": "mechanics/agon-runtime/docs/README.md",
       "review_state": "reviewed",
-      "disposition": "keep",
+      "disposition": "delete-obsolete-placeholder",
       "owner_evidence": [
         "abyss-stack@656c7f4212eb3ee52ee04c42cb13bbda9c67c5b2:mechanics/agon-runtime/docs/README.md",
-        "abyss-stack@656c7f4212eb3ee52ee04c42cb13bbda9c67c5b2:mechanics/agon-runtime/AGENTS.md"
+        "abyss-stack@656c7f4212eb3ee52ee04c42cb13bbda9c67c5b2:mechanics/agon-runtime/AGENTS.md",
+        "abyss-stack@9af3697a6b3a98fa0404573f78466b795943683f:mechanics/agon-runtime/docs/README.md",
+        "abyss-stack@b3240cc47a51b8b658214beeae0c8d54290f8cb1:mechanics/agon-runtime/PARTS.md",
+        "abyss-stack@b3240cc47a51b8b658214beeae0c8d54290f8cb1:mechanics/agon-runtime/AGENTS.md"
       ],
-      "note": "Current mechanics readme owner surface retained; no owner-base content delta was observed."
+      "note": "Duplicate route/future placeholder removed; current package/part contract and provenance remain; recover the exact historical file from abyss-stack@9af3697a6b3a98fa0404573f78466b795943683f:mechanics/agon-runtime/docs/README.md."
     },
     {
       "repository": "abyss-stack",
@@ -9596,12 +9631,15 @@
       "repository": "abyss-stack",
       "path": "mechanics/config-projection/docs/README.md",
       "review_state": "reviewed",
-      "disposition": "keep",
+      "disposition": "delete-obsolete-placeholder",
       "owner_evidence": [
         "abyss-stack@656c7f4212eb3ee52ee04c42cb13bbda9c67c5b2:mechanics/config-projection/docs/README.md",
-        "abyss-stack@656c7f4212eb3ee52ee04c42cb13bbda9c67c5b2:mechanics/config-projection/AGENTS.md"
+        "abyss-stack@656c7f4212eb3ee52ee04c42cb13bbda9c67c5b2:mechanics/config-projection/AGENTS.md",
+        "abyss-stack@9af3697a6b3a98fa0404573f78466b795943683f:mechanics/config-projection/docs/README.md",
+        "abyss-stack@b3240cc47a51b8b658214beeae0c8d54290f8cb1:mechanics/config-projection/PARTS.md",
+        "abyss-stack@b3240cc47a51b8b658214beeae0c8d54290f8cb1:mechanics/config-projection/AGENTS.md"
       ],
-      "note": "Current mechanics readme owner surface retained; no owner-base content delta was observed."
+      "note": "Duplicate route/future placeholder removed; current package/part contract and provenance remain; recover the exact historical file from abyss-stack@9af3697a6b3a98fa0404573f78466b795943683f:mechanics/config-projection/docs/README.md."
     },
     {
       "repository": "abyss-stack",
@@ -9728,12 +9766,15 @@
       "repository": "abyss-stack",
       "path": "mechanics/diagnostic-spine/docs/README.md",
       "review_state": "reviewed",
-      "disposition": "keep",
+      "disposition": "delete-obsolete-placeholder",
       "owner_evidence": [
         "abyss-stack@656c7f4212eb3ee52ee04c42cb13bbda9c67c5b2:mechanics/diagnostic-spine/docs/README.md",
-        "abyss-stack@656c7f4212eb3ee52ee04c42cb13bbda9c67c5b2:mechanics/diagnostic-spine/AGENTS.md"
+        "abyss-stack@656c7f4212eb3ee52ee04c42cb13bbda9c67c5b2:mechanics/diagnostic-spine/AGENTS.md",
+        "abyss-stack@9af3697a6b3a98fa0404573f78466b795943683f:mechanics/diagnostic-spine/docs/README.md",
+        "abyss-stack@b3240cc47a51b8b658214beeae0c8d54290f8cb1:mechanics/diagnostic-spine/PARTS.md",
+        "abyss-stack@b3240cc47a51b8b658214beeae0c8d54290f8cb1:mechanics/diagnostic-spine/AGENTS.md"
       ],
-      "note": "Current mechanics readme owner surface retained; no owner-base content delta was observed."
+      "note": "Duplicate route/future placeholder removed; current package/part contract and provenance remain; recover the exact historical file from abyss-stack@9af3697a6b3a98fa0404573f78466b795943683f:mechanics/diagnostic-spine/docs/README.md."
     },
     {
       "repository": "abyss-stack",
@@ -9828,12 +9869,15 @@
       "repository": "abyss-stack",
       "path": "mechanics/experience-runtime/docs/README.md",
       "review_state": "reviewed",
-      "disposition": "keep",
+      "disposition": "delete-obsolete-placeholder",
       "owner_evidence": [
         "abyss-stack@656c7f4212eb3ee52ee04c42cb13bbda9c67c5b2:mechanics/experience-runtime/docs/README.md",
-        "abyss-stack@656c7f4212eb3ee52ee04c42cb13bbda9c67c5b2:mechanics/experience-runtime/AGENTS.md"
+        "abyss-stack@656c7f4212eb3ee52ee04c42cb13bbda9c67c5b2:mechanics/experience-runtime/AGENTS.md",
+        "abyss-stack@9af3697a6b3a98fa0404573f78466b795943683f:mechanics/experience-runtime/docs/README.md",
+        "abyss-stack@b3240cc47a51b8b658214beeae0c8d54290f8cb1:mechanics/experience-runtime/PARTS.md",
+        "abyss-stack@b3240cc47a51b8b658214beeae0c8d54290f8cb1:mechanics/experience-runtime/AGENTS.md"
       ],
-      "note": "Current mechanics readme owner surface retained; no owner-base content delta was observed."
+      "note": "Duplicate route/future placeholder removed; current package/part contract and provenance remain; recover the exact historical file from abyss-stack@9af3697a6b3a98fa0404573f78466b795943683f:mechanics/experience-runtime/docs/README.md."
     },
     {
       "repository": "abyss-stack",
@@ -9935,12 +9979,15 @@
       "repository": "abyss-stack",
       "path": "mechanics/federation-seams/docs/README.md",
       "review_state": "reviewed",
-      "disposition": "keep",
+      "disposition": "delete-obsolete-placeholder",
       "owner_evidence": [
         "abyss-stack@656c7f4212eb3ee52ee04c42cb13bbda9c67c5b2:mechanics/federation-seams/docs/README.md",
-        "abyss-stack@656c7f4212eb3ee52ee04c42cb13bbda9c67c5b2:mechanics/federation-seams/AGENTS.md"
+        "abyss-stack@656c7f4212eb3ee52ee04c42cb13bbda9c67c5b2:mechanics/federation-seams/AGENTS.md",
+        "abyss-stack@9af3697a6b3a98fa0404573f78466b795943683f:mechanics/federation-seams/docs/README.md",
+        "abyss-stack@b3240cc47a51b8b658214beeae0c8d54290f8cb1:mechanics/federation-seams/PARTS.md",
+        "abyss-stack@b3240cc47a51b8b658214beeae0c8d54290f8cb1:mechanics/federation-seams/AGENTS.md"
       ],
-      "note": "Current mechanics readme owner surface retained; no owner-base content delta was observed."
+      "note": "Duplicate route/future placeholder removed; current package/part contract and provenance remain; recover the exact historical file from abyss-stack@9af3697a6b3a98fa0404573f78466b795943683f:mechanics/federation-seams/docs/README.md."
     },
     {
       "repository": "abyss-stack",
@@ -10103,12 +10150,15 @@
       "repository": "abyss-stack",
       "path": "mechanics/governed-execution/docs/README.md",
       "review_state": "reviewed",
-      "disposition": "keep",
+      "disposition": "delete-obsolete-placeholder",
       "owner_evidence": [
         "abyss-stack@656c7f4212eb3ee52ee04c42cb13bbda9c67c5b2:mechanics/governed-execution/docs/README.md",
-        "abyss-stack@656c7f4212eb3ee52ee04c42cb13bbda9c67c5b2:mechanics/governed-execution/AGENTS.md"
+        "abyss-stack@656c7f4212eb3ee52ee04c42cb13bbda9c67c5b2:mechanics/governed-execution/AGENTS.md",
+        "abyss-stack@9af3697a6b3a98fa0404573f78466b795943683f:mechanics/governed-execution/docs/README.md",
+        "abyss-stack@b3240cc47a51b8b658214beeae0c8d54290f8cb1:mechanics/governed-execution/PARTS.md",
+        "abyss-stack@b3240cc47a51b8b658214beeae0c8d54290f8cb1:mechanics/governed-execution/AGENTS.md"
       ],
-      "note": "Current mechanics readme owner surface retained; no owner-base content delta was observed."
+      "note": "Duplicate route/future placeholder removed; current package/part contract and provenance remain; recover the exact historical file from abyss-stack@9af3697a6b3a98fa0404573f78466b795943683f:mechanics/governed-execution/docs/README.md."
     },
     {
       "repository": "abyss-stack",
@@ -10279,12 +10329,15 @@
       "repository": "abyss-stack",
       "path": "mechanics/inference-pilots/docs/README.md",
       "review_state": "reviewed",
-      "disposition": "keep",
+      "disposition": "delete-obsolete-placeholder",
       "owner_evidence": [
         "abyss-stack@656c7f4212eb3ee52ee04c42cb13bbda9c67c5b2:mechanics/inference-pilots/docs/README.md",
-        "abyss-stack@656c7f4212eb3ee52ee04c42cb13bbda9c67c5b2:mechanics/inference-pilots/AGENTS.md"
+        "abyss-stack@656c7f4212eb3ee52ee04c42cb13bbda9c67c5b2:mechanics/inference-pilots/AGENTS.md",
+        "abyss-stack@9af3697a6b3a98fa0404573f78466b795943683f:mechanics/inference-pilots/docs/README.md",
+        "abyss-stack@b3240cc47a51b8b658214beeae0c8d54290f8cb1:mechanics/inference-pilots/PARTS.md",
+        "abyss-stack@b3240cc47a51b8b658214beeae0c8d54290f8cb1:mechanics/inference-pilots/AGENTS.md"
       ],
-      "note": "Current mechanics readme owner surface retained; no owner-base content delta was observed."
+      "note": "Duplicate route/future placeholder removed; current package/part contract and provenance remain; recover the exact historical file from abyss-stack@9af3697a6b3a98fa0404573f78466b795943683f:mechanics/inference-pilots/docs/README.md."
     },
     {
       "repository": "abyss-stack",
@@ -10487,12 +10540,15 @@
       "repository": "abyss-stack",
       "path": "mechanics/machine-fit/docs/README.md",
       "review_state": "reviewed",
-      "disposition": "keep",
+      "disposition": "delete-obsolete-placeholder",
       "owner_evidence": [
         "abyss-stack@656c7f4212eb3ee52ee04c42cb13bbda9c67c5b2:mechanics/machine-fit/docs/README.md",
-        "abyss-stack@656c7f4212eb3ee52ee04c42cb13bbda9c67c5b2:mechanics/machine-fit/AGENTS.md"
+        "abyss-stack@656c7f4212eb3ee52ee04c42cb13bbda9c67c5b2:mechanics/machine-fit/AGENTS.md",
+        "abyss-stack@9af3697a6b3a98fa0404573f78466b795943683f:mechanics/machine-fit/docs/README.md",
+        "abyss-stack@b3240cc47a51b8b658214beeae0c8d54290f8cb1:mechanics/machine-fit/PARTS.md",
+        "abyss-stack@b3240cc47a51b8b658214beeae0c8d54290f8cb1:mechanics/machine-fit/AGENTS.md"
       ],
-      "note": "Current mechanics readme owner surface retained; no owner-base content delta was observed."
+      "note": "Duplicate route/future placeholder removed; current package/part contract and provenance remain; recover the exact historical file from abyss-stack@9af3697a6b3a98fa0404573f78466b795943683f:mechanics/machine-fit/docs/README.md."
     },
     {
       "repository": "abyss-stack",
@@ -10608,12 +10664,15 @@
       "repository": "abyss-stack",
       "path": "mechanics/runtime-lifecycle/docs/README.md",
       "review_state": "reviewed",
-      "disposition": "keep",
+      "disposition": "delete-obsolete-placeholder",
       "owner_evidence": [
         "abyss-stack@656c7f4212eb3ee52ee04c42cb13bbda9c67c5b2:mechanics/runtime-lifecycle/docs/README.md",
-        "abyss-stack@656c7f4212eb3ee52ee04c42cb13bbda9c67c5b2:mechanics/runtime-lifecycle/AGENTS.md"
+        "abyss-stack@656c7f4212eb3ee52ee04c42cb13bbda9c67c5b2:mechanics/runtime-lifecycle/AGENTS.md",
+        "abyss-stack@9af3697a6b3a98fa0404573f78466b795943683f:mechanics/runtime-lifecycle/docs/README.md",
+        "abyss-stack@b3240cc47a51b8b658214beeae0c8d54290f8cb1:mechanics/runtime-lifecycle/PARTS.md",
+        "abyss-stack@b3240cc47a51b8b658214beeae0c8d54290f8cb1:mechanics/runtime-lifecycle/AGENTS.md"
       ],
-      "note": "Current mechanics readme owner surface retained; no owner-base content delta was observed."
+      "note": "Duplicate route/future placeholder removed; current package/part contract and provenance remain; recover the exact historical file from abyss-stack@9af3697a6b3a98fa0404573f78466b795943683f:mechanics/runtime-lifecycle/docs/README.md."
     },
     {
       "repository": "abyss-stack",
@@ -10740,12 +10799,15 @@
       "repository": "abyss-stack",
       "path": "mechanics/runtime-repair/docs/README.md",
       "review_state": "reviewed",
-      "disposition": "keep",
+      "disposition": "delete-obsolete-placeholder",
       "owner_evidence": [
         "abyss-stack@656c7f4212eb3ee52ee04c42cb13bbda9c67c5b2:mechanics/runtime-repair/docs/README.md",
-        "abyss-stack@656c7f4212eb3ee52ee04c42cb13bbda9c67c5b2:mechanics/runtime-repair/AGENTS.md"
+        "abyss-stack@656c7f4212eb3ee52ee04c42cb13bbda9c67c5b2:mechanics/runtime-repair/AGENTS.md",
+        "abyss-stack@9af3697a6b3a98fa0404573f78466b795943683f:mechanics/runtime-repair/docs/README.md",
+        "abyss-stack@b3240cc47a51b8b658214beeae0c8d54290f8cb1:mechanics/runtime-repair/PARTS.md",
+        "abyss-stack@b3240cc47a51b8b658214beeae0c8d54290f8cb1:mechanics/runtime-repair/AGENTS.md"
       ],
-      "note": "Current mechanics readme owner surface retained; no owner-base content delta was observed."
+      "note": "Duplicate route/future placeholder removed; current package/part contract and provenance remain; recover the exact historical file from abyss-stack@9af3697a6b3a98fa0404573f78466b795943683f:mechanics/runtime-repair/docs/README.md."
     },
     {
       "repository": "abyss-stack",
@@ -29430,12 +29492,15 @@
       "repository": "aoa-techniques",
       "path": "mechanics/agon/docs/README.md",
       "review_state": "reviewed",
-      "disposition": "keep",
+      "disposition": "delete-obsolete-placeholder",
       "owner_evidence": [
         "aoa-techniques@95a5cd0215769b5cff6f719be648da2003b02b3c:mechanics/agon/docs/README.md",
-        "aoa-techniques@95a5cd0215769b5cff6f719be648da2003b02b3c:mechanics/agon/AGENTS.md"
+        "aoa-techniques@95a5cd0215769b5cff6f719be648da2003b02b3c:mechanics/agon/AGENTS.md",
+        "aoa-techniques@a6c7b3954f98ad2abb6c766cba7f50ced5e0fb7d:mechanics/agon/docs/README.md",
+        "aoa-techniques@a07282d50511f56f0946c288176f31aeaecbed4f:mechanics/agon/PARTS.md",
+        "aoa-techniques@a07282d50511f56f0946c288176f31aeaecbed4f:mechanics/agon/AGENTS.md"
       ],
-      "note": "Current mechanics readme owner surface retained; no owner-base content delta was observed."
+      "note": "Duplicate route/future placeholder removed; current package/part contract and provenance remain; recover the exact historical file from aoa-techniques@a6c7b3954f98ad2abb6c766cba7f50ced5e0fb7d:mechanics/agon/docs/README.md."
     },
     {
       "repository": "aoa-techniques",

@@ -7,19 +7,19 @@
     "algorithm": "sha256:canonical-json-file-inventory-v2",
     "base_ref": "3920ffb7889921a1d38f3b767a48a20754fdffd3",
     "contract_version": "aoa-kag:budget-receipt-candidate-identity-v2",
-    "excluded_path": "kag/receipts/index_family_budget/526221d34671cea6c75be5dc84c2a5f469b550856f757d823c4e6321e77d2186.json",
-    "family_digest": "526221d34671cea6c75be5dc84c2a5f469b550856f757d823c4e6321e77d2186",
+    "excluded_path": "kag/receipts/index_family_budget/7afd2a05317d0cf2968117420393a0b517b2542e277187c962a05fff290ec854.json",
+    "family_digest": "7afd2a05317d0cf2968117420393a0b517b2542e277187c962a05fff290ec854",
     "file_count": 637,
-    "seal": "671e0e9760e2bc5fe47f1d3d8c67ffca3949b751534711dc9e02e486a9238ee0",
-    "source_epoch": "sha256:0937d7c388bc95ee88cc1cf67fb326ce6d4cc524b3f5265af6fc276526e4557c",
-    "source_snapshot": "sha256:c7b0a516b9bd24d177242fc3ab2d01bc9c3f347d5c155446333acad8df1cb20a"
+    "seal": "f89c2b3daa797efa18f960c2362174dcd78b34f346090e80e7d9cdc8c8be855c",
+    "source_epoch": "sha256:82bc26f7b8912bc3a416c8200f579fb733d3a1dede0807c18e09156f085ee3a7",
+    "source_snapshot": "sha256:6ad76759dd10cb1dbe05d087c185f05864314a5c6c55938f877c0d5b68b9c3ea"
   },
   "changed_generated_bytes": 4746355,
   "changed_generated_files": 276,
   "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
   "default_limit_bytes": 1048576,
-  "head_family_digest": "526221d34671cea6c75be5dc84c2a5f469b550856f757d823c4e6321e77d2186",
-  "head_source_snapshot": "sha256:c7b0a516b9bd24d177242fc3ab2d01bc9c3f347d5c155446333acad8df1cb20a",
+  "head_family_digest": "7afd2a05317d0cf2968117420393a0b517b2542e277187c962a05fff290ec854",
+  "head_source_snapshot": "sha256:6ad76759dd10cb1dbe05d087c185f05864314a5c6c55938f877c0d5b68b9c3ea",
   "producer_identity": {
     "action": {
       "bytes": 5200,
@@ -1362,7 +1362,7 @@
     "revision_binding": "content-addressed-procedure-import-closure-portable-runtime-contract-and-descriptor-io-v1",
     "source_digest": "4882f50ab3a09b04b02715510f2e5dbec13fa60a5032f98e9e043dc9e79f812e"
   },
-  "reason": "Root-approved exact 27-record readme/agents disposition follow-through: 19 retired placeholder records and 8 retained slim-rewrite records; preserve owner evidence and regenerate canonical projections.",
+  "reason": "Root-approved exact owner-evidence correction: aoa-techniques current source refs use published candidate 53d1797; baseline recovery and all other dispositions preserved.",
   "repo": "8Dionysus",
   "schema_version": "aoa-repo-local-kag-budget-receipt-v2",
   "scope": "generated_delta",

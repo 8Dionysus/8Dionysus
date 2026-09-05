@@ -54,29 +54,29 @@ For reading guidance, see [AGENTS_FRONTIER_RECON](AGENTS_FRONTIER_RECON.md).
 - `active_authored_design_agents_fenced_blocks`: 5
 - `active_authored_design_agents_fenced_executable_invocations`: 0
 - `active_authored_design_agents_unclassified_fenced_blocks`: 0
-- `active_authored_unique_validation_invocations`: 335
-- `active_authored_validation_bytes`: 125659
-- `active_authored_validation_command_owner_files`: 38
-- `active_authored_validation_files`: 117
-- `active_authored_validation_invocations`: 335
-- `active_authored_validation_route_only_files`: 79
-- `agents_conditional_readme_reference_lines`: 71
+- `active_authored_unique_validation_invocations`: 351
+- `active_authored_validation_bytes`: 128483
+- `active_authored_validation_command_owner_files`: 46
+- `active_authored_validation_files`: 127
+- `active_authored_validation_invocations`: 351
+- `active_authored_validation_route_only_files`: 81
+- `agents_conditional_readme_reference_lines`: 72
 - `agents_fenced_example_readme_reference_lines`: 0
 - `agents_files_declaring_mandatory_readme`: 0
-- `agents_files_referencing_readme`: 98
-- `agents_md_files`: 223
-- `agents_navigational_readme_reference_lines`: 60
-- `agents_only_directories`: 64
-- `agents_readme_reference_lines`: 131
+- `agents_files_referencing_readme`: 101
+- `agents_md_files`: 237
+- `agents_navigational_readme_reference_lines`: 64
+- `agents_only_directories`: 75
+- `agents_readme_reference_lines`: 136
 - `agents_validation_command_overlap_groups`: 0
 - `archive_document_files`: 1
 - `authored_repeated_long_agents_block_groups`: 0
 - `authored_unique_chains_over_budget`: 0
 - `blocked_files`: 0
 - `chain_max_bytes`: 20319
-- `chain_p50_bytes`: 9551
+- `chain_p50_bytes`: 9369
 - `chain_p95_bytes`: 18584
-- `chain_scopes`: 599
+- `chain_scopes`: 619
 - `chain_scopes_over_budget`: 0
 - `declared_mandatory_readme_bytes`: 0
 - `duplicate_validation_command_groups`: 0
@@ -87,26 +87,26 @@ For reading guidance, see [AGENTS_FRONTIER_RECON](AGENTS_FRONTIER_RECON.md).
 - `generated_document_files`: 7
 - `high_risk_dirs_without_agents`: 30
 - `known_repositories`: 21
-- `known_repositories_missing`: 15
+- `known_repositories_missing`: 14
 - `long_root_agents`: 0
 - `mechanics_document_files`: 403
 - `missing_required_agents`: 0
-- `nested_agents_files`: 213
+- `nested_agents_files`: 226
 - `optional_repositories_missing`: 1
-- `paired_directories`: 159
-- `readme_only_directories`: 376
+- `paired_directories`: 162
+- `readme_only_directories`: 382
 - `readme_validation_command_overlap_groups`: 0
 - `repeated_long_agents_block_groups`: 0
 - `repeated_long_agents_block_instances`: 0
 - `repeated_long_agents_normalized_redundant_bytes`: 0
-- `repos_with_issues`: 20
+- `repos_with_issues`: 19
 - `repositories_listed`: 26
-- `repositories_scanned`: 10
-- `review_items_total`: 762
+- `repositories_scanned`: 11
+- `review_items_total`: 785
 - `review_items_unreviewed`: 20
-- `reviewed_files`: 742
-- `root_agents_present`: 10
-- `root_document_files`: 20
+- `reviewed_files`: 765
+- `root_agents_present`: 11
+- `root_document_files`: 22
 - `shared_root_blocked_files`: 0
 - `shared_root_files`: 0
 - `shared_root_files_in_owner_parity`: 0
@@ -114,18 +114,18 @@ For reading guidance, see [AGENTS_FRONTIER_RECON](AGENTS_FRONTIER_RECON.md).
 - `shared_root_unreviewed_files`: 0
 - `stale_agents_fenced_block_classifications`: 0
 - `stale_design_agents_fenced_block_classifications`: 0
-- `tracked_agents_bytes`: 451300
-- `tracked_agents_files`: 223
+- `tracked_agents_bytes`: 476730
+- `tracked_agents_files`: 237
 - `tracked_design_agents_bytes`: 49031
 - `tracked_design_agents_files`: 4
-- `tracked_document_bytes`: 1911324
-- `tracked_document_files`: 758
-- `tracked_readme_bytes`: 1460024
-- `tracked_readme_files`: 535
-- `tracked_validation_files`: 117
-- `unique_agents_chains`: 223
+- `tracked_document_bytes`: 1957637
+- `tracked_document_files`: 781
+- `tracked_readme_bytes`: 1480907
+- `tracked_readme_files`: 544
+- `tracked_validation_files`: 127
+- `unique_agents_chains`: 237
 - `unique_chain_max_bytes`: 20319
-- `unique_chain_p50_bytes`: 9415
+- `unique_chain_p50_bytes`: 9113
 - `unique_chain_p95_bytes`: 18506
 - `unique_chains_over_budget`: 0
 - `unreviewed_files`: 20
@@ -134,8 +134,8 @@ For reading guidance, see [AGENTS_FRONTIER_RECON](AGENTS_FRONTIER_RECON.md).
 - `untracked_validation_candidates`: 0
 - `unvalidated_nested_agents`: 0
 - `validation_route_only_claim_conflicts`: 0
-- `validator_required_agents`: 73
-- `validators_present`: 3
+- `validator_required_agents`: 86
+- `validators_present`: 4
 - `vendor_document_files`: 0
 
 ## Repository coverage
@@ -147,7 +147,7 @@ For reading guidance, see [AGENTS_FRONTIER_RECON](AGENTS_FRONTIER_RECON.md).
 | `Tree-of-Sophia` | `missing` | 0/0 | 0 | 0/0/0 | 0 | / | / | 0/0 | 0/0 | known repository checkout not found under workspace root |
 | `abyss-stack` | `scanned` | 54/54 | 143 | 7/201/0 | 51 | 12212/14444 | 0/0 | 0/0 | 198/0 |  |
 | `abyss-machine` | `missing` | 0/0 | 0 | 0/0/0 | 0 | / | / | 0/0 | 0/0 | known repository checkout not found under workspace root |
-| `ATM10-Agent` | `missing` | 0/0 | 0 | 0/0/0 | 0 | / | / | 0/0 | 0/0 | known repository checkout not found under workspace root |
+| `ATM10-Agent` | `scanned` | 14/14 | 9 | 10/16/0 | 3 | 9189/9189 | 0/0 | 0/0 | 23/0 |  |
 | `Dionysus` | `missing` | 0/0 | 0 | 0/0/0 | 0 | / | / | 0/0 | 0/0 | known repository checkout not found under workspace root |
 | `aoa-sdk` | `missing` | 0/0 | 0 | 0/0/0 | 0 | / | / | 0/0 | 0/0 | known repository checkout not found under workspace root |
 | `aoa-dashboard` | `missing` | 0/0 | 0 | 0/0/0 | 0 | / | / | 0/0 | 0/0 | known repository checkout not found under workspace root |

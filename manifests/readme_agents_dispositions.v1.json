@@ -29497,8 +29497,8 @@
         "aoa-techniques@95a5cd0215769b5cff6f719be648da2003b02b3c:mechanics/agon/docs/README.md",
         "aoa-techniques@95a5cd0215769b5cff6f719be648da2003b02b3c:mechanics/agon/AGENTS.md",
         "aoa-techniques@a6c7b3954f98ad2abb6c766cba7f50ced5e0fb7d:mechanics/agon/docs/README.md",
-        "aoa-techniques@a07282d50511f56f0946c288176f31aeaecbed4f:mechanics/agon/PARTS.md",
-        "aoa-techniques@a07282d50511f56f0946c288176f31aeaecbed4f:mechanics/agon/AGENTS.md"
+        "aoa-techniques@53d1797b07662ee7dbcb2a60a01678283d046591:mechanics/agon/PARTS.md",
+        "aoa-techniques@53d1797b07662ee7dbcb2a60a01678283d046591:mechanics/agon/AGENTS.md"
       ],
       "note": "Duplicate route/future placeholder removed; current package/part contract and provenance remain; recover the exact historical file from aoa-techniques@a6c7b3954f98ad2abb6c766cba7f50ced5e0fb7d:mechanics/agon/docs/README.md."
     },

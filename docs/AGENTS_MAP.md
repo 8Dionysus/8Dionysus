@@ -54,11 +54,11 @@ For reading guidance, see [AGENTS_FRONTIER_RECON](AGENTS_FRONTIER_RECON.md).
 - `active_authored_design_agents_fenced_blocks`: 11
 - `active_authored_design_agents_fenced_executable_invocations`: 0
 - `active_authored_design_agents_unclassified_fenced_blocks`: 0
-- `active_authored_unique_validation_invocations`: 1094
-- `active_authored_validation_bytes`: 425218
+- `active_authored_unique_validation_invocations`: 1098
+- `active_authored_validation_bytes`: 429928
 - `active_authored_validation_command_owner_files`: 337
 - `active_authored_validation_files`: 590
-- `active_authored_validation_invocations`: 1094
+- `active_authored_validation_invocations`: 1098
 - `active_authored_validation_route_only_files`: 253
 - `agents_conditional_readme_reference_lines`: 122
 - `agents_fenced_example_readme_reference_lines`: 0
@@ -73,8 +73,8 @@ For reading guidance, see [AGENTS_FRONTIER_RECON](AGENTS_FRONTIER_RECON.md).
 - `authored_repeated_long_agents_block_groups`: 0
 - `authored_unique_chains_over_budget`: 0
 - `blocked_files`: 0
-- `chain_max_bytes`: 20091
-- `chain_p50_bytes`: 10981
+- `chain_max_bytes`: 20319
+- `chain_p50_bytes`: 11007
 - `chain_p95_bytes`: 18011
 - `chain_scopes`: 1975
 - `chain_scopes_over_budget`: 0
@@ -114,19 +114,19 @@ For reading guidance, see [AGENTS_FRONTIER_RECON](AGENTS_FRONTIER_RECON.md).
 - `shared_root_unreviewed_files`: 0
 - `stale_agents_fenced_block_classifications`: 0
 - `stale_design_agents_fenced_block_classifications`: 0
-- `tracked_agents_bytes`: 1319579
+- `tracked_agents_bytes`: 1321000
 - `tracked_agents_files`: 789
-- `tracked_design_agents_bytes`: 125992
+- `tracked_design_agents_bytes`: 126175
 - `tracked_design_agents_files`: 15
-- `tracked_document_bytes`: 5034500
+- `tracked_document_bytes`: 5040733
 - `tracked_document_files`: 2514
-- `tracked_readme_bytes`: 3714921
+- `tracked_readme_bytes`: 3719733
 - `tracked_readme_files`: 1725
 - `tracked_validation_files`: 600
 - `unique_agents_chains`: 789
-- `unique_chain_max_bytes`: 20091
+- `unique_chain_max_bytes`: 20319
 - `unique_chain_p50_bytes`: 9552
-- `unique_chain_p95_bytes`: 17050
+- `unique_chain_p95_bytes`: 17096
 - `unique_chains_over_budget`: 0
 - `unreviewed_files`: 0
 - `untracked_design_agents_candidates`: 0
@@ -143,26 +143,26 @@ For reading guidance, see [AGENTS_FRONTIER_RECON](AGENTS_FRONTIER_RECON.md).
 | Repository | State | AGENTS corpus/active | README | VALIDATION files/cmds/duplicates | Pairs | Unique chain p95/max | Over 32 KiB authored/excluded | Repeated long blocks/redundant bytes | Reviewed/unreviewed | Issues |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|
 | `8Dionysus` | `scanned` | 21/21 | 12 | 4/20/0 | 6 | 8312/10715 | 0/0 | 0/0 | 33/0 |  |
-| `Agents-of-Abyss` | `scanned` | 56/56 | 186 | 101/102/0 | 47 | 18591/18867 | 0/0 | 0/0 | 243/0 |  |
+| `Agents-of-Abyss` | `scanned` | 56/56 | 186 | 101/102/0 | 47 | 18674/18950 | 0/0 | 0/0 | 243/0 |  |
 | `Tree-of-Sophia` | `scanned` | 55/55 | 319 | 12/25/0 | 33 | 17096/18220 | 0/0 | 0/0 | 375/0 |  |
 | `abyss-stack` | `scanned` | 54/54 | 153 | 7/200/0 | 51 | 12212/14427 | 0/0 | 0/0 | 208/0 |  |
 | `abyss-machine` | `scanned` | 60/60 | 38 | 10/5/0 | 27 | 9944/13417 | 0/0 | 0/0 | 100/0 |  |
 | `ATM10-Agent` | `scanned` | 14/14 | 9 | 10/16/0 | 3 | 9189/9189 | 0/0 | 0/0 | 23/0 |  |
 | `Dionysus` | `scanned` | 3/3 | 6 | 1/1/0 | 3 | 4548/4548 | 0/0 | 0/0 | 9/0 |  |
-| `aoa-sdk` | `scanned` | 46/46 | 129 | 66/213/0 | 38 | 12240/13281 | 0/0 | 0/0 | 176/0 |  |
+| `aoa-sdk` | `scanned` | 46/46 | 129 | 66/217/0 | 38 | 12240/13281 | 0/0 | 0/0 | 176/0 |  |
 | `aoa-dashboard` | `scanned` | 2/2 | 2 | 1/5/0 | 1 | 1581/1581 | 0/0 | 0/0 | 4/0 |  |
-| `aoa-techniques` | `scanned` | 76/76 | 118 | 1/1/0 | 46 | 18925/20091 | 0/0 | 0/0 | 195/0 |  |
+| `aoa-techniques` | `scanned` | 76/76 | 118 | 1/1/0 | 46 | 19153/20319 | 0/0 | 0/0 | 195/0 |  |
 | `aoa-skills` | `scanned` | 25/25 | 24 | 1/7/0 | 16 | 6342/6887 | 0/0 | 0/0 | 50/0 |  |
-| `aoa-evals` | `scanned` | 70/70 | 153 | 122/109/0 | 62 | 16238/19354 | 0/0 | 0/0 | 224/0 |  |
-| `aoa-stats` | `scanned` | 44/44 | 83 | 45/81/0 | 35 | 12346/12893 | 0/0 | 0/0 | 128/0 |  |
+| `aoa-evals` | `scanned` | 70/70 | 153 | 122/110/0 | 62 | 16296/19412 | 0/0 | 0/0 | 224/0 |  |
+| `aoa-stats` | `scanned` | 44/44 | 83 | 45/81/0 | 35 | 12410/12893 | 0/0 | 0/0 | 128/0 |  |
 | `aoa-routing` | `missing` | 0/0 | 0 | 0/0/0 | 0 | / | / | 0/0 | 0/0 |  |
-| `aoa-memo` | `scanned` | 102/102 | 119 | 151/150/0 | 52 | 16321/16672 | 0/0 | 0/0 | 222/0 |  |
+| `aoa-memo` | `scanned` | 102/102 | 119 | 151/149/0 | 52 | 16321/16672 | 0/0 | 0/0 | 222/0 |  |
 | `aoa-session-memory` | `scanned` | 15/15 | 66 | 4/11/0 | 8 | 9419/9419 | 0/0 | 0/0 | 82/0 |  |
 | `aoa-agents` | `scanned` | 53/53 | 173 | 1/79/0 | 43 | 13500/15757 | 0/0 | 0/0 | 227/0 |  |
 | `aoa-models` | `scanned` | 2/2 | 3 | 1/7/0 | 2 | 5340/5340 | 0/0 | 0/0 | 5/0 |  |
 | `aoa-agon` | `scanned` | 1/1 | 4 | 1/10/0 | 1 | 2602/2602 | 0/0 | 0/0 | 5/0 |  |
-| `aoa-playbooks` | `scanned` | 37/37 | 60 | 22/52/0 | 30 | 9938/10187 | 0/0 | 0/0 | 98/0 |  |
-| `aoa-kag` | `scanned` | 53/53 | 68 | 29/0/0 | 35 | 10408/10433 | 0/0 | 0/0 | 122/0 |  |
+| `aoa-playbooks` | `scanned` | 37/37 | 60 | 22/52/0 | 30 | 10085/10334 | 0/0 | 0/0 | 98/0 |  |
+| `aoa-kag` | `scanned` | 53/53 | 68 | 29/0/0 | 35 | 10408/10592 | 0/0 | 0/0 | 122/0 |  |
 
 ## Shared-root projection posture
 

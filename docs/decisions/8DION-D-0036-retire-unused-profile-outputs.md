@@ -12,8 +12,8 @@
 
 ## Status
 
-Accepted by the repository owner as a bounded retirement of five obsolete
-profile outputs and their unused scheduled producer.
+Accepted. This bounded retirement removes four unused profile assets and their
+scheduled producer.
 
 ## Context
 

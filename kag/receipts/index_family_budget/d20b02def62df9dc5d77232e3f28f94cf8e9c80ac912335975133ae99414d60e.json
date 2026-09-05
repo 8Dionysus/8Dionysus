@@ -1,25 +1,25 @@
 {
-  "allowed_bytes": 3956510,
-  "allowed_tracked_bytes": 4883787,
+  "allowed_bytes": 3991332,
+  "allowed_tracked_bytes": 4884083,
   "approved_by": "repository-owner",
   "base_ref": "155a0e0a2224ea8548201680d1095a5e762b521e",
   "candidate_identity": {
     "algorithm": "sha256:canonical-json-file-inventory-v2",
     "base_ref": "155a0e0a2224ea8548201680d1095a5e762b521e",
     "contract_version": "aoa-kag:budget-receipt-candidate-identity-v2",
-    "excluded_path": "kag/receipts/index_family_budget/7af8af69f19cc8eb0d24f87add762f0988350527b13a21788fe6c75bd5079b6d.json",
-    "family_digest": "7af8af69f19cc8eb0d24f87add762f0988350527b13a21788fe6c75bd5079b6d",
+    "excluded_path": "kag/receipts/index_family_budget/d20b02def62df9dc5d77232e3f28f94cf8e9c80ac912335975133ae99414d60e.json",
+    "family_digest": "d20b02def62df9dc5d77232e3f28f94cf8e9c80ac912335975133ae99414d60e",
     "file_count": 638,
-    "seal": "c0803a51dc7c326b43333d7e083d101ead91449dfae5f87726eb7afd7fecee7f",
-    "source_epoch": "sha256:f1c2293a820cc7b029fbbb4e2bd4401e7b4e96db369e6cf54f5b380265f230e3",
-    "source_snapshot": "sha256:96ec539d5094a953c14ed4f781048e187922d92f52fd493cf8991d31d41eb751"
+    "seal": "5eb4d925a54f82750919abe972dba144264f37d176c30ab290602d19f2d1164c",
+    "source_epoch": "sha256:2169bd87a1f3bc0a913803ca58e07b85424d166a050a417217604ab60e9239be",
+    "source_snapshot": "sha256:84a698d75e934e70f26aaba79f82050d5683950c50294b51698a8a311e33bc39"
   },
-  "changed_generated_bytes": 3956510,
+  "changed_generated_bytes": 3991332,
   "changed_generated_files": 251,
   "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
   "default_limit_bytes": 1048576,
-  "head_family_digest": "7af8af69f19cc8eb0d24f87add762f0988350527b13a21788fe6c75bd5079b6d",
-  "head_source_snapshot": "sha256:96ec539d5094a953c14ed4f781048e187922d92f52fd493cf8991d31d41eb751",
+  "head_family_digest": "d20b02def62df9dc5d77232e3f28f94cf8e9c80ac912335975133ae99414d60e",
+  "head_source_snapshot": "sha256:84a698d75e934e70f26aaba79f82050d5683950c50294b51698a8a311e33bc39",
   "producer_identity": {
     "action": {
       "bytes": 5200,
@@ -600,9 +600,9 @@
         "state": "present"
       },
       {
-        "bytes": 7765,
-        "content_digest": "320608860cc49fa224a913b37b0024b25fa0a72666a833c4f780a0412219e243",
-        "git_blob": "sha1:745f202addd6df3bb89e212a5b194ae7d7f70fc6",
+        "bytes": 8135,
+        "content_digest": "f37f0980fc0985d0dc5ea175d90c64164d0b94e08f85a139955e89d2c2d7da40",
+        "git_blob": "sha1:2380703d832c0fc9a08172250fe142be34a1bcc3",
         "path": "scripts/validate_nested_agents.py",
         "state": "present"
       },
@@ -1160,7 +1160,7 @@
         "state": "present"
       }
     ],
-    "identity_digest": "0ea5c2c65b19ea5a0669ff6e6e756fc0204d080eb4f250352c6375d12842f016",
+    "identity_digest": "f441608835a9c184969c5f9498fc449787207ed01b12f1987a5aeff5ffb80992",
     "owner": "aoa-kag",
     "procedure_manifest": {
       "action_inputs": [
@@ -1360,12 +1360,12 @@
       "schema_path": "schemas/repo-local-kag-budget-producer-manifest.schema.json"
     },
     "revision_binding": "content-addressed-procedure-import-closure-portable-runtime-contract-and-descriptor-io-v1",
-    "source_digest": "df3b43c667409671f5b5fc71b847a54b0f5aed3b4d9cafb2ca7046896f5c2c37"
+    "source_digest": "4882f50ab3a09b04b02715510f2e5dbec13fa60a5032f98e9e043dc9e79f812e"
   },
-  "reason": "Operator-approved Spark and historical-tree retirement integration, 8DION-D-0035. Refresh derived navigation after verified exact-history disposition records and branch-matrix map/stat-reference companion update. Admit only this exact generated delta/source epoch; unchanged permanent limits, reference-only map observations, no semantic quality, runtime, CI, release or owner-acceptance claim.",
+  "reason": "8DION-D-0035: bind reviewed recoverable historical retirement census and reference measurement to final owner branches, using exact pinned producer; remove superseded task receipts.",
   "repo": "8Dionysus",
   "schema_version": "aoa-repo-local-kag-budget-receipt-v2",
   "scope": "generated_delta",
-  "tracked_bytes": 4883787,
+  "tracked_bytes": 4884083,
   "tracked_bytes_max": 5242880
 }

@@ -1,24 +1,24 @@
 {
-  "allowed_bytes": 4745168,
-  "allowed_tracked_bytes": 4871224,
+  "allowed_bytes": 4746355,
+  "allowed_tracked_bytes": 4872684,
   "approved_by": "repository-owner",
   "base_ref": "3920ffb7889921a1d38f3b767a48a20754fdffd3",
   "candidate_identity": {
     "algorithm": "sha256:canonical-json-file-inventory-v2",
     "base_ref": "3920ffb7889921a1d38f3b767a48a20754fdffd3",
     "contract_version": "aoa-kag:budget-receipt-candidate-identity-v2",
-    "excluded_path": "kag/receipts/index_family_budget/5f1738846f104072161c6baa8c70233c97836a8f306278c66f0fc03ad0876365.json",
-    "family_digest": "5f1738846f104072161c6baa8c70233c97836a8f306278c66f0fc03ad0876365",
+    "excluded_path": "kag/receipts/index_family_budget/526221d34671cea6c75be5dc84c2a5f469b550856f757d823c4e6321e77d2186.json",
+    "family_digest": "526221d34671cea6c75be5dc84c2a5f469b550856f757d823c4e6321e77d2186",
     "file_count": 637,
-    "seal": "cc8e63281e01b7c56de6e311636c5f8846425dd87cf6e88c50cb0288d6748938",
+    "seal": "671e0e9760e2bc5fe47f1d3d8c67ffca3949b751534711dc9e02e486a9238ee0",
     "source_epoch": "sha256:0937d7c388bc95ee88cc1cf67fb326ce6d4cc524b3f5265af6fc276526e4557c",
     "source_snapshot": "sha256:c7b0a516b9bd24d177242fc3ab2d01bc9c3f347d5c155446333acad8df1cb20a"
   },
-  "changed_generated_bytes": 4745168,
+  "changed_generated_bytes": 4746355,
   "changed_generated_files": 276,
   "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
   "default_limit_bytes": 1048576,
-  "head_family_digest": "5f1738846f104072161c6baa8c70233c97836a8f306278c66f0fc03ad0876365",
+  "head_family_digest": "526221d34671cea6c75be5dc84c2a5f469b550856f757d823c4e6321e77d2186",
   "head_source_snapshot": "sha256:c7b0a516b9bd24d177242fc3ab2d01bc9c3f347d5c155446333acad8df1cb20a",
   "producer_identity": {
     "action": {
@@ -1366,6 +1366,6 @@
   "repo": "8Dionysus",
   "schema_version": "aoa-repo-local-kag-budget-receipt-v2",
   "scope": "generated_delta",
-  "tracked_bytes": 4871224,
+  "tracked_bytes": 4872684,
   "tracked_bytes_max": 5242880
 }

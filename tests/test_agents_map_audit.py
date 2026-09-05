@@ -401,6 +401,46 @@ class AgentsMapAuditTests(unittest.TestCase):
                 ],
             )
 
+    def test_history_retirement_requires_exact_same_owner_source_and_decision(self) -> None:
+        record = {
+            "repository": "8Dionysus",
+            "path": "legacy/README.md",
+            "review_state": "reviewed",
+            "disposition": "retire-to-git-history",
+            "owner_evidence": [
+                "8Dionysus@" + "a" * 40 + ":legacy/README.md",
+                "8Dionysus@" + "b" * 40 + ":docs/decisions/8DION-D-0035-history.md",
+            ],
+        }
+        invalid_evidence = [
+            record["owner_evidence"][:1],
+            [record["owner_evidence"][0].replace("a" * 40, "main"), record["owner_evidence"][1]],
+            [record["owner_evidence"][0].replace("legacy/README.md", "other/README.md"), record["owner_evidence"][1]],
+            [record["owner_evidence"][0], record["owner_evidence"][1].replace("8Dionysus@", "other-owner@")],
+        ]
+        with tempfile.TemporaryDirectory() as tmp:
+            workspace = Path(tmp) / "workspace"
+            (workspace / "8Dionysus").mkdir(parents=True)
+            (workspace / "8Dionysus" / "AGENTS.md").write_text("# Root\n", encoding="utf-8")
+            dispositions = Path(tmp) / "dispositions.json"
+            for evidence in [record["owner_evidence"], *invalid_evidence]:
+                with self.subTest(evidence=evidence):
+                    dispositions.write_text(json.dumps({
+                        "schema_version": "8dionysus_readme_agents_dispositions_v1",
+                        "records": [{**record, "owner_evidence": evidence}],
+                    }), encoding="utf-8")
+                    payload = audit_agents_map.build_agents_map(
+                        workspace, known_repositories=("8Dionysus",),
+                        include_extra_repos=False, disposition_manifest_path=dispositions,
+                    )
+                    if evidence == record["owner_evidence"]:
+                        self.assertEqual([], payload["disposition_issues"])
+                    else:
+                        self.assertTrue(any(
+                            "history retirement requires exact owner source and decision refs" in issue
+                            for issue in payload["disposition_issues"]
+                        ))
+
     def test_public_baseline_is_stable_and_json_serializable(self) -> None:
         payload = audit_agents_map.build_public_baseline_map()
         rendered = json.dumps(payload, ensure_ascii=False, sort_keys=True, separators=(",", ":"))

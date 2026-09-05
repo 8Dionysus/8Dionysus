@@ -83,9 +83,17 @@
 
 - [8DION-D-0003 - Source-Owned Repo Git Hooks](../8DION-D-0003-source-owned-repo-git-hooks.md) (`docs/decisions/8DION-D-0003-source-owned-repo-git-hooks.md`)
 
+## GitHub automation
+
+- [8DION-D-0036 - Retire Unused Profile Outputs and Producer](../8DION-D-0036-retire-unused-profile-outputs.md) (`docs/decisions/8DION-D-0036-retire-unused-profile-outputs.md`)
+
 ## github required checks
 
 - [8DION-D-0002 - Repo-Family Required Check Contracts Stay Coordination-Only in 8Dionysus](../8DION-D-0002-repo-family-required-check-contracts.md) (`docs/decisions/8DION-D-0002-repo-family-required-check-contracts.md`)
+
+## historical recovery
+
+- [8DION-D-0036 - Retire Unused Profile Outputs and Producer](../8DION-D-0036-retire-unused-profile-outputs.md) (`docs/decisions/8DION-D-0036-retire-unused-profile-outputs.md`)
 
 ## host-machine route
 
@@ -181,6 +189,10 @@
 - [8DION-D-0001 - Shared-Root Projection Lives in 8Dionysus](../8DION-D-0001-shared-root-projection.md) (`docs/decisions/8DION-D-0001-shared-root-projection.md`)
 - [8DION-D-0023 - Dionysus Conversational Portrait Route](../8DION-D-0023-dionysus-conversational-portrait-route.md) (`docs/decisions/8DION-D-0023-dionysus-conversational-portrait-route.md`)
 - [8DION-D-0025 - Route Active Routing Work Through aoa-sdk](../8DION-D-0025-route-active-routing-through-aoa-sdk.md) (`docs/decisions/8DION-D-0025-route-active-routing-through-aoa-sdk.md`)
+
+## public profile
+
+- [8DION-D-0036 - Retire Unused Profile Outputs and Producer](../8DION-D-0036-retire-unused-profile-outputs.md) (`docs/decisions/8DION-D-0036-retire-unused-profile-outputs.md`)
 
 ## public profile boundary
 

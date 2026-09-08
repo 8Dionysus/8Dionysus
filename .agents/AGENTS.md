@@ -7,7 +7,7 @@
 This source owns local agent-facing companions for the public entry repository.
 It currently owns no workspace plugin marketplace or plugin source. It does not
 own a shared `.agents/skills/` projection. Shared AoA bundles install once
-through the `aoa-skills` `user-default` profile, while a repository may project
+through the `aoa-skills` `os-user-default` profile, while a repository may project
 only the bundles admitted from its own top-level `skills/` home.
 
 In the `8Dionysus` source checkout, the only current repo-home projection is

@@ -281,7 +281,7 @@ def _projection_contract(repo_root: Path, workspace_root: Path, *, changed: bool
             "agent projections through aoa-agents while preserving deployment policy."
         ),
         "skill_projection_note": (
-            "Shared AoA skills install once through the aoa-skills user-default profile. "
+            "Shared AoA skills install once through the aoa-skills os-user-default profile. "
             "A repository projection may contain only that repository's admitted home bundles."
         ),
         "source_root": repo_root.as_posix(),

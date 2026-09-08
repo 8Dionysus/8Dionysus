@@ -101,55 +101,52 @@ Decision note:
 
 ## Foundation install
 
-After the sibling checkouts are present, use the passive `aoa-sdk` bootstrap
-to install the exact `aoa-skills` `user-default` profile into the verified user
-skill root:
+After the sibling checkouts are present, select the clean owner sources and
+install the `aoa-skills` `os-user-default` profile into the verified Codex user
+skill root. The profile is assembled from shared bundles and admitted owner
+homes; it is distinct from the explicit portable consumer profiles.
+
+The owner installer provides preview, execute, and complete parity checks:
 
 ```bash
-aoa workspace bootstrap <workspace-root> --profile user-default --json
-aoa workspace bootstrap <workspace-root> --profile user-default --execute --json
-aoa skills inspect <workspace-root>/8Dionysus --root <workspace-root> --json
-```
-
-The command copies only the advertised shared bundle into the user root. It
-does not mutate workspace guidance, install repository profiles, or create a
-workspace-wide skill projection. The selected `8Dionysus` shared-root install
-surfaces are projected separately.
-
-It also does not install `aoa-workspace-diagnose` at user or workspace scope.
-Codex discovers that owner home from `8Dionysus/.agents/skills/` only when the
-active repository scope is `8Dionysus`. A session launched from the workspace
-root or another sibling should not see it unless that host performs an explicit
-owner-approved retrieval.
-
-Manual install remains available as the lower-level fallback:
-
-Install the same user profile directly from `aoa-skills`:
-
-```bash
-python <workspace-root>/aoa-skills/scripts/install_skill_pack.py \
+python -B <workspace-root>/aoa-skills/scripts/install_os_skill_profile.py \
   --repo-root <workspace-root>/aoa-skills \
-  --profile user-default \
-  --dest-root "${CODEX_HOME:-$HOME/.codex}/skills" \
-  --mode copy \
-  --execute \
-  --format json
-```
-
-Verify the result:
-
-```bash
-python <workspace-root>/aoa-skills/scripts/verify_skill_pack.py \
+  --profile os-user-default --format json
+python -B <workspace-root>/aoa-skills/scripts/install_os_skill_profile.py \
   --repo-root <workspace-root>/aoa-skills \
-  --profile user-default \
-  --install-root "${CODEX_HOME:-$HOME/.codex}/skills" \
-  --format json
+  --profile os-user-default --execute --format json
+python -B <workspace-root>/aoa-skills/scripts/install_os_skill_profile.py \
+  --repo-root <workspace-root>/aoa-skills \
+  --profile os-user-default --check --format json
 ```
 
-The deferred shared bundles are available for explicit research and manual
-comparison, not implicit installation. A repository-scoped profile is an
-input to that repository's admitted home-skill builder; `aoa workspace
-bootstrap` intentionally refuses to install it.
+The destination defaults to `${CODEX_HOME:-$HOME/.codex}/skills`. When an owner
+checkout contains unrelated work, use the installer's explicit
+`--source-root owner-repo=/path/to/clean-current-worktree`; preserve the dirty
+checkout. Source locators must remain available for subsequent owner reads.
+
+The `.aoa` owner installs its two session-memory links before aggregate
+installation. The aggregate checks these links but does not create or repair
+them. Use `aoa-skills:mechanics/release-support/docs/INSTALL_AND_PROFILES.md`
+for those owner operations, collision review, and a bounded rollback route.
+The SDK workspace-bootstrap adapter delegates OS profile operations to that
+owner installer; its explicit portable route remains a separate contract.
+
+This installs the user catalog without changing workspace guidance or creating
+a workspace-wide skill projection. Project the selected `8Dionysus` shared-root
+install surfaces separately.
+
+`aoa-workspace-diagnose` remains a repository home skill. Codex discovers
+`8Dionysus/.agents/skills/aoa-workspace-diagnose` only in the `8Dionysus` scope;
+do not install it at user or workspace scope. Check the actual host catalog in
+a fresh context after delivery, including another repository and a project
+without local skills. File parity alone does not establish prompt visibility.
+
+The old `user-default` portable profile is no longer the normal user-catalog
+route. `portable-consumer-advertised` and `portable-consumer-all-sources` are
+explicit external consumer transports, not substitutes for `os-user-default`.
+The latter includes deferred bundles only for explicit research/comparison;
+keep their non-implicit posture and avoid duplicate prompt-visible packages.
 
 ### Legacy workspace projection cleanup
 
